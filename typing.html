@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="GAME 14 TYPE ATTACK。表示された日本語を日本語IMEで入力する20秒タイピング。1人用とオンライン2人対戦に対応。">
-  <title>GAME 14 - TYPE ATTACK | 20秒ミニゲームズ</title>
+  <meta name="description" content="GAME 14 HIRAGANA TYPE ATTACK。表示されたひらがなを、ひらがなだけで入力する20秒タイピング。1人用とオンライン2人対戦に対応。">
+  <title>GAME 14 - HIRAGANA TYPE ATTACK | 20秒ミニゲームズ</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mode-switch.css">
   <link rel="stylesheet" href="arcade.css">
@@ -26,9 +26,9 @@
     </div>
 
     <section class="hero typing-hero">
-      <p class="eyebrow">GAME 14 / JAPANESE TYPE ATTACK</p>
-      <h1>20秒、<br>日本語で打て。</h1>
-      <p>表示された日本語を、日本語キーボード・IMEでそのまま入力。20.0秒で自動終了します。1人用はBEST更新、オンラインは同じお題順で2人同時スコア勝負。</p>
+      <p class="eyebrow">GAME 14 / HIRAGANA TYPE ATTACK</p>
+      <h1>20秒、<br>ひらがなで打て。</h1>
+      <p>表示されるお題はすべてひらがな。入力もひらがなだけで判定します。漢字・カタカナ・英字は使いません。1人用はBEST更新、オンラインは同じお題順で2人同時スコア勝負。</p>
     </section>
 
     <section id="game" class="section typing-section">
@@ -39,7 +39,7 @@
 
       <div id="arcade-lobby" class="arcade-lobby hidden">
         <div class="arcade-lobby-head">
-          <h2>日本語タイピング 対戦ロビー</h2>
+          <h2>ひらがなタイピング 対戦ロビー</h2>
           <span id="network-badge" class="arcade-network-badge">未接続</span>
         </div>
         <div class="arcade-lobby-grid">
@@ -82,33 +82,33 @@
           <canvas id="arcade-canvas" width="1" height="1" aria-hidden="true"></canvas>
           <div class="speed-lines" aria-hidden="true"></div>
           <div class="typing-word-card">
-            <p class="typing-label">この日本語を入力</p>
-            <div id="typing-japanese" class="typing-japanese">タイピング</div>
-            <div id="typing-target" class="typing-target" aria-live="polite">日本語IMEで入力</div>
+            <p class="typing-label">このひらがなを入力</p>
+            <div id="typing-japanese" class="typing-japanese">たいぴんぐ</div>
+            <div id="typing-target" class="typing-target" aria-live="polite">ひらがなで入力</div>
             <div class="typing-input-wrap">
-              <input id="typing-input" type="text" inputmode="text" lang="ja" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="done" aria-label="日本語入力" placeholder="日本語で入力" disabled>
-              <span id="typing-input-hint">正しい日本語を入力して Enter</span>
+              <input id="typing-input" type="text" inputmode="text" lang="ja" pattern="[ぁ-ゖ]+" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="done" aria-label="ひらがな入力" placeholder="ひらがなで入力" disabled>
+              <span id="typing-input-hint">ひらがなだけで入力</span>
             </div>
           </div>
 
           <div id="arcade-toast" class="arcade-toast"></div>
           <div id="arcade-overlay" class="arcade-overlay">
             <div class="arcade-overlay-card">
-              <h2>JAPANESE TYPE ATTACK</h2>
-              <p id="overlay-message">表示された日本語を日本語IMEで入力。変換を確定すると正解判定します。20秒間でできるだけ多く入力しよう。</p>
+              <h2>HIRAGANA TYPE ATTACK</h2>
+              <p id="overlay-message">表示されるお題はすべてひらがな。ひらがなだけで入力してください。正解するとすぐ次のお題へ進みます。</p>
               <button id="arcade-start" class="arcade-main-action" type="button">20秒スタート</button>
             </div>
           </div>
         </div>
 
         <div class="arcade-controls typing-controls">
-          <div class="arcade-help">PC: 日本語IMEをONにして入力<br>スマホ: 日本語キーボードで入力</div>
+          <div class="arcade-help">PC: 日本語入力をひらがなにして入力<br>スマホ: かなキーボードでひらがな入力</div>
           <div id="mobile-controls" class="typing-mobile-controls">
-            <button id="typing-keyboard-btn" type="button">⌨ 日本語キーボードを開く</button>
+            <button id="typing-keyboard-btn" type="button">⌨ ひらがなキーボードを開く</button>
           </div>
         </div>
       </div>
-      <p class="arcade-note">オンライン対戦はSupabase Realtime。ログイン不要・同じ乱数シードで同じ日本語のお題順を使います。</p>
+      <p class="arcade-note">ローマ字表示はありません。ゲーム側の正解判定も、ひらがなだけを受け付けます。</p>
     </section>
   </main>
 
