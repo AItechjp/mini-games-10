@@ -117,12 +117,14 @@
   }
 
   function handleRemoteSegment(payload) {
-    if (!payload || payload.sender === playerToken || payload.revision !== boardRevision) return;
-    const seg = payload.segment;
-    if (!seg) return;
-    if (syncing) liveBuffer.push(seg);
-    else remember(seg);
-    drawSegment(seg);
+    if (!payload || payload.sender === playerToken || !payload.segment) return;
+    if (syncing) {
+      liveBuffer.push({ revision: payload.revision, segment: payload.segment });
+      return;
+    }
+    if (payload.revision !== boardRevision) return;
+    remember(payload.segment);
+    drawSegment(payload.segment);
   }
 
   function handleClear(payload) {
@@ -141,18 +143,26 @@
     syncing = true;
     liveBuffer = [];
     snapshotAcceptedAt = 0;
+    incomingSnapshots.clear();
     broadcast('sync-request', { sender: playerToken });
     setTimeout(() => {
-      if (syncing && incomingSnapshots.size === 0) {
-        syncing = false;
-        liveBuffer.forEach(remember);
-        liveBuffer = [];
+      if (!syncing || snapshotAcceptedAt) return;
+      if (liveBuffer.length) {
+        const chosenRevision = liveBuffer[liveBuffer.length - 1].revision;
+        boardRevision = chosenRevision || boardRevision;
+        const buffered = liveBuffer.filter(item => item.revision === boardRevision).map(item => item.segment);
+        history.push(...buffered);
+        if (history.length > HISTORY_LIMIT) history = history.slice(-HISTORY_LIMIT);
+        redraw();
       }
+      liveBuffer = [];
+      incomingSnapshots.clear();
+      syncing = false;
     }, 2500);
   }
 
   function respondSnapshot(payload) {
-    if (!payload?.sender || payload.sender === playerToken || !history.length) return;
+    if (!payload?.sender || payload.sender === playerToken) return;
     const requester = payload.sender;
     const delay = 120 + Math.floor(Math.random() * 260);
     setTimeout(async () => {
@@ -205,8 +215,9 @@
     const merged = [];
     for (let i = 0; i < snap.total; i++) merged.push(...(snap.chunks.get(i) || []));
     boardRevision = snap.revision || boardRevision;
+    const buffered = liveBuffer.filter(item => item.revision === boardRevision).map(item => item.segment);
     history = merged.slice(-HISTORY_LIMIT);
-    history.push(...liveBuffer.filter(seg => seg && seg.revision !== 'obsolete'));
+    history.push(...buffered);
     if (history.length > HISTORY_LIMIT) history = history.slice(-HISTORY_LIMIT);
     liveBuffer = [];
     syncing = false;
@@ -296,8 +307,7 @@
       history = [];
       redraw();
       requestSnapshot();
-      history.replaceState?.();
-      try { history && window.history.replaceState(null, '', `whiteboard.html?room=${roomCode}`); } catch (_) {}
+      try { window.history.replaceState(null, '', `whiteboard.html?room=${roomCode}`); } catch (_) {}
       setMessage('リアルタイム共有中。全消去ボタンも参加者全員に同期されます。');
     }).catch(async () => {
       await leaveRoom();
