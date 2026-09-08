@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="GAME 14 TYPE ATTACK。日本語のお題をローマ字で入力する20秒タイピングゲーム。WPM・正確率・ミス数・BESTを記録。">
+  <meta name="description" content="GAME 14 TYPE ATTACK。日本語のお題をローマ字で入力する20秒タイピング。1人用とオンライン2人対戦に対応。">
   <title>GAME 14 - TYPE ATTACK | 20秒ミニゲームズ</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mode-switch.css">
+  <link rel="stylesheet" href="arcade.css">
   <link rel="stylesheet" href="typing.css">
 </head>
-<body class="typing-page">
+<body class="arcade-page typing-page" data-game-id="type-attack">
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="index.html">20秒ミニゲームズ</a>
-      <nav><a href="#game">GAME 14</a><a href="solo.html">ゲーム一覧</a></nav>
+      <nav><a href="#game">GAME 14</a><a href="online.html">対戦一覧</a></nav>
     </div>
   </header>
 
@@ -27,57 +28,95 @@
     <section class="hero typing-hero">
       <p class="eyebrow">GAME 14 / TYPE ATTACK</p>
       <h1>20秒、<br>打ち切れ。</h1>
-      <p>日本語のお題をローマ字でタイプ。1文字ごとに判定し、20.0秒で自動終了。速さだけでなく正確さも記録します。</p>
-      <a class="primary-btn" href="#game">タイピングを始める</a>
+      <p>日本語のお題をローマ字でタイプ。1文字ごとに判定し、20.0秒で自動終了。1人用はBEST更新、オンラインは同じお題順で2人同時スコア勝負。</p>
     </section>
 
     <section id="game" class="section typing-section">
-      <div class="typing-shell">
-        <div class="typing-hud" aria-label="ゲーム成績">
-          <div><span>TIME</span><strong id="typing-time">20.0</strong></div>
-          <div><span>SCORE</span><strong id="typing-score">0</strong></div>
+      <div class="arcade-game-mode">
+        <button class="arcade-mode-btn" data-arcade-mode="solo" type="button">1人で遊ぶ</button>
+        <button class="arcade-mode-btn" data-arcade-mode="online" type="button">オンライン対戦</button>
+      </div>
+
+      <div id="arcade-lobby" class="arcade-lobby hidden">
+        <div class="arcade-lobby-head">
+          <h2>TYPE ATTACK 対戦ロビー</h2>
+          <span id="network-badge" class="arcade-network-badge">未接続</span>
+        </div>
+        <div class="arcade-lobby-grid">
+          <div class="arcade-lobby-card">
+            <h3>PLAYER 1</h3>
+            <p>部屋を作って6桁コードを相手に送ります。ホストが対戦開始します。</p>
+            <button id="create-duel" type="button">部屋を作る</button>
+            <div id="created-room" class="hidden">
+              <div id="duel-room-code" class="arcade-room-code">------</div>
+              <button id="copy-duel-code" type="button">コードをコピー</button>
+            </div>
+          </div>
+          <div class="arcade-lobby-card">
+            <h3>PLAYER 2</h3>
+            <p>相手から届いた6桁コードを入力します。開始はホストと同期します。</p>
+            <input id="join-duel-code" maxlength="6" placeholder="ABC123" autocomplete="off">
+            <button id="join-duel" type="button">参加する</button>
+          </div>
+        </div>
+        <div class="arcade-status"><strong id="duel-status">部屋を作るか参加してください。</strong> <span id="duel-detail"></span></div>
+      </div>
+
+      <div class="arcade-shell typing-shell">
+        <div class="arcade-hud">
+          <div><span>TIME</span><strong id="arcade-time">20.0</strong></div>
+          <div><span>YOU</span><strong id="arcade-score">0</strong></div>
+          <div id="rival-hud" class="arcade-rival hidden-hud"><span>RIVAL</span><strong id="arcade-rival">0</strong></div>
+          <div><span>BEST</span><strong id="arcade-best">0</strong></div>
+        </div>
+
+        <div class="typing-metrics" aria-label="タイピング詳細">
           <div><span>WPM</span><strong id="typing-wpm">0</strong></div>
           <div><span>ACCURACY</span><strong id="typing-accuracy">100%</strong></div>
           <div><span>MISS</span><strong id="typing-miss">0</strong></div>
-          <div><span>BEST</span><strong id="typing-best">0</strong></div>
+          <div><span>WORDS</span><strong id="typing-words">0</strong></div>
+          <div><span>KEYS</span><strong id="typing-keys">0</strong></div>
         </div>
 
-        <div class="typing-arena" id="typing-arena">
+        <div class="arcade-canvas-wrap typing-arena" id="typing-arena">
+          <canvas id="arcade-canvas" width="1" height="1" aria-hidden="true"></canvas>
           <div class="speed-lines" aria-hidden="true"></div>
           <div class="typing-word-card">
             <p class="typing-label">TYPE THIS</p>
-            <div id="typing-japanese" class="typing-japanese">タイピング</div>
+            <div id="typing-japanese" class="typing-japanese">たいぴんぐ</div>
             <div id="typing-target" class="typing-target" aria-live="polite"></div>
             <div class="typing-input-wrap">
               <input id="typing-input" type="text" inputmode="text" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="done" aria-label="ローマ字入力" disabled>
-              <span id="typing-input-hint">ここをタップしてキーボードを表示</span>
-            </div>
-            <div class="typing-progress-row">
-              <span>WORDS <strong id="typing-words">0</strong></span>
-              <span>KEYS <strong id="typing-keys">0</strong></span>
+              <span id="typing-input-hint">スタート後に入力できます</span>
             </div>
           </div>
 
-          <div id="typing-overlay" class="typing-overlay">
-            <div class="typing-overlay-card">
-              <p class="typing-overlay-kicker">GAME 14</p>
-              <h2 id="typing-overlay-title">TYPE ATTACK</h2>
-              <p id="typing-overlay-message">日本語のお題の下に表示されるローマ字を入力。<br>ミスしても止まらず、20秒間打ち続けよう。</p>
-              <button id="typing-start" class="typing-main-action" type="button">20秒スタート</button>
+          <div id="arcade-toast" class="arcade-toast"></div>
+          <div id="arcade-overlay" class="arcade-overlay">
+            <div class="arcade-overlay-card">
+              <h2>TYPE ATTACK</h2>
+              <p id="overlay-message">日本語のお題の下に表示されるローマ字を入力。ミスした文字は自動で戻ります。</p>
+              <button id="arcade-start" class="arcade-main-action" type="button">20秒スタート</button>
             </div>
           </div>
         </div>
 
-        <div class="typing-help">
-          <span><strong>PC</strong> キーボードでそのまま入力</span>
-          <span><strong>スマホ</strong> 入力欄をタップして英字キーボードで入力</span>
+        <div class="arcade-controls typing-controls">
+          <div class="arcade-help">PC: キーボードでそのまま入力<br>スマホ: 英字キーボードを使って入力</div>
+          <div id="mobile-controls" class="typing-mobile-controls">
+            <button id="typing-keyboard-btn" type="button">⌨ キーボードを開く</button>
+          </div>
         </div>
       </div>
+      <p class="arcade-note">オンライン対戦はSupabase Realtime。ログイン不要・同じ乱数シードで同じお題順を使います。</p>
     </section>
   </main>
 
   <footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
   <script src="mode-switch.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
   <script src="typing.js"></script>
+  <script src="arcade-duel.js"></script>
 </body>
 </html>
