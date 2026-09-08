@@ -3,28 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="オンラインで2人対戦できる20秒ミニゲーム10本。部屋コードで友達とすぐ遊べます。" />
-  <title>20秒オンライン対戦ミニゲームズ</title>
+  <meta name="description" content="1人でもオンライン2人対戦でも遊べる、20秒ミニゲーム10本。" />
+  <title>20秒ミニゲームズ</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="online.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="#home">20秒オンライン対戦</a>
-      <nav><a href="#lobby">対戦ロビー</a><a href="#games">ゲーム一覧</a></nav>
+      <a class="brand" href="#home">20秒ミニゲームズ</a>
+      <nav><a href="#modes">モード選択</a><a href="#games">ゲーム一覧</a></nav>
     </div>
   </header>
 
   <main class="wrap">
     <section id="home" class="hero">
-      <p class="eyebrow">10 ONLINE BATTLE GAMES</p>
-      <h1>20秒で、決着。</h1>
-      <p>離れた相手とオンライン2人対戦。インストール不要、部屋コードだけで遊べます。</p>
-      <a class="primary-btn" href="#lobby">対戦を始める</a>
+      <p class="eyebrow">10 QUICK BROWSER GAMES</p>
+      <h1>20秒で、遊ぼう。</h1>
+      <p>1人でハイスコアに挑戦するか、離れた友達とオンライン対戦。全部20秒、インストール不要です。</p>
+      <a class="primary-btn" href="#modes">遊び方を選ぶ</a>
     </section>
 
-    <section id="lobby" class="section lobby-section">
+    <section id="modes" class="section mode-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">PLAY MODE</p><h2>遊び方を選ぶ</h2></div>
+        <p id="mode-label">モードを選択してください。</p>
+      </div>
+      <div class="mode-grid">
+        <article class="mode-card">
+          <span class="mode-kicker">SOLO</span>
+          <h3>1人で遊ぶ</h3>
+          <p>接続不要ですぐ開始。10ゲームすべて20秒。端末内にBESTスコアを保存します。</p>
+          <button id="solo-mode-btn" class="mode-action" type="button">1人用を選ぶ</button>
+        </article>
+        <article class="mode-card">
+          <span class="mode-kicker">ONLINE 2 PLAYERS</span>
+          <h3>オンライン対戦</h3>
+          <p>部屋コードで2台を接続。同じゲームを同時に20秒プレイしてスコアで勝負します。</p>
+          <button id="online-mode-btn" class="mode-action" type="button">対戦用を選ぶ</button>
+        </article>
+      </div>
+      <div id="selected-mode-bar" class="selected-mode-bar hidden">
+        <strong id="selected-mode-text"></strong>
+        <button id="change-mode-btn" class="mini-btn" type="button">モードを変更</button>
+      </div>
+    </section>
+
+    <section id="lobby" class="section lobby-section hidden">
       <div class="section-heading">
         <div><p class="eyebrow">ONLINE LOBBY</p><h2>2人対戦ロビー</h2></div>
         <p id="connection-badge" class="connection-badge">未接続</p>
@@ -62,10 +87,10 @@
       </div>
     </section>
 
-    <section id="games" class="section">
+    <section id="games" class="section hidden">
       <div class="section-heading">
-        <div><p class="eyebrow">20 SECOND BATTLES</p><h2>ゲーム一覧</h2></div>
-        <p>全ゲーム20秒。ホストが選ぶと相手側も同じゲームが開きます。</p>
+        <div><p class="eyebrow">20 SECOND GAMES</p><h2>ゲーム一覧</h2></div>
+        <p id="games-mode-help">モードを選ぶとプレイできます。</p>
       </div>
       <div id="game-grid" class="game-grid"></div>
     </section>
@@ -74,25 +99,25 @@
       <div class="play-topbar">
         <button id="back-btn" class="ghost-btn" type="button">← 一覧へ</button>
         <div class="play-title-wrap"><span id="play-number"></span><h2 id="play-title"></h2></div>
-        <button id="restart-btn" class="ghost-btn" type="button">再戦</button>
+        <button id="restart-btn" class="ghost-btn" type="button">もう一度</button>
       </div>
       <div class="stats versus-stats">
         <div><span>TIME</span><strong id="time-value">20.0</strong></div>
-        <div class="you-stat"><span>YOU</span><strong id="score-value">0</strong></div>
-        <div class="rival-stat"><span>RIVAL</span><strong id="rival-value">0</strong></div>
+        <div class="you-stat"><span id="you-label">SCORE</span><strong id="score-value">0</strong></div>
+        <div id="rival-stat" class="rival-stat"><span>RIVAL</span><strong id="rival-value">0</strong></div>
       </div>
       <div id="game-stage" class="game-stage" tabindex="0"></div>
       <p id="game-message" class="game-message"></p>
     </section>
 
     <section class="section info-section">
-      <p class="eyebrow">HOW IT WORKS</p>
-      <h2>オンライン対戦について</h2>
-      <p>接続にはPeerJS Cloudを使い、対戦中のデータはWebRTCでブラウザ同士を直接接続して送ります。無料の公開シグナリングサービスを利用するため、一部の厳しい社内ネットワークや特殊なNAT環境では接続できない場合があります。</p>
+      <p class="eyebrow">ABOUT</p>
+      <h2>20秒ミニゲームズ</h2>
+      <p>1人用はブラウザだけで完結します。オンライン対戦はPeerJS Cloudを接続の仲介に使い、対戦中のデータはWebRTCでブラウザ同士を直接送ります。</p>
     </section>
   </main>
 
-  <footer><div class="wrap">© 2026 20秒オンライン対戦ミニゲームズ</div></footer>
+  <footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
   <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js"></script>
   <script src="app.js" defer></script>
 </body>
