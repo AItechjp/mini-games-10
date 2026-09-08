@@ -7,35 +7,46 @@
   <title>20秒ミニゲームズ</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="online.css" />
+  <link rel="stylesheet" href="mode-switch.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="index.html">20秒ミニゲームズ</a>
-      <div class="header-mode-switch" aria-label="プレイモード">
-        <a class="mode-switch-btn" href="solo.html">1人用</a>
-        <a class="mode-switch-btn" href="online.html">オンライン対戦</a>
-      </div>
+      <nav><a href="#modes">モード選択</a></nav>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="hero home-hero">
+    <div class="mode-switch-bar" aria-label="プレイモード切替">
+      <button class="mode-switch-btn" type="button" data-mode-href="solo.html">1人用</button>
+      <button class="mode-switch-btn" type="button" data-mode-href="online.html">オンライン対戦</button>
+    </div>
+
+    <section class="hero">
       <p class="eyebrow">10 QUICK BROWSER GAMES</p>
       <h1>20秒で、遊ぼう。</h1>
       <p>同じ10種類のミニゲームを、1人でもオンライン2人対戦でも遊べます。制限時間はすべて20秒です。</p>
+    </section>
 
-      <div class="hero-mode-buttons" aria-label="モードを選択">
-        <a class="hero-mode-btn" href="solo.html">
-          <span>SOLO</span>
-          <strong>1人で遊ぶ</strong>
-          <small>接続不要・BEST保存</small>
-        </a>
-        <a class="hero-mode-btn" href="online.html">
-          <span>ONLINE / 2 PLAYERS</span>
-          <strong>オンライン対戦</strong>
-          <small>部屋コードで友達と対戦</small>
-        </a>
+    <section id="modes" class="section mode-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">PLAY MODE</p><h2>モードを選ぶ</h2></div>
+        <p>上の2ボタンからいつでも切り替えられます。</p>
+      </div>
+      <div class="mode-grid">
+        <article class="mode-card">
+          <span class="mode-kicker">SOLO</span>
+          <h3>1人で遊ぶ</h3>
+          <p>接続不要ですぐ開始。BESTスコアはこの端末のブラウザに保存されます。</p>
+          <button class="mode-action" type="button" data-mode-href="solo.html">1人用を開く</button>
+        </article>
+        <article class="mode-card">
+          <span class="mode-kicker">ONLINE / 2 PLAYERS</span>
+          <h3>オンライン対戦</h3>
+          <p>部屋コードで2台を接続。同じゲームを同時に20秒プレイして勝負します。</p>
+          <button class="mode-action" type="button" data-mode-href="online.html">対戦用を開く</button>
+        </article>
       </div>
     </section>
 
@@ -47,5 +58,6 @@
   </main>
 
   <footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
+  <script src="mode-switch.js"></script>
 </body>
 </html>
