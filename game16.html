@@ -6,6 +6,7 @@
   <meta name="description" content="GAME 16 MOUNTAIN SHADOW。美麗な山岳地帯を人型エージェントで潜入する約5分の3Dオープンワールド・ステルスミッション。">
   <title>GAME 16 - MOUNTAIN SHADOW</title>
   <link rel="stylesheet" href="stealth16.css">
+  <link rel="stylesheet" href="backend.css">
 </head>
 <body>
 <div id="stealth-app">
@@ -24,8 +25,11 @@
   <div class="s16-reticle" aria-hidden="true"></div>
   <div class="s16-touch" id="s16-touch"><div class="s16-stick" id="s16-stick"><i id="s16-knob"></i></div><div class="s16-touch-actions"><button id="s16-crouch">CROUCH</button><button id="s16-action">ACTION</button><button id="s16-sprint">SPRINT</button></div></div>
   <div id="s16-overlay" class="s16-overlay">
-    <div class="s16-card"><p class="s16-kicker">GAME 16 / 5 MIN STEALTH MISSION</p><h1 id="s16-overlay-title">MOUNTAIN<br>SHADOW</h1><p id="s16-overlay-message">夜明けの高山地帯へ人型エージェントで潜入。<br>①レーダー停止 → ②機密データ回収 → ③渓谷から脱出。<br><br>警備兵の視界を避け、森・岩・建物を遮蔽物に使え。</p><div id="s16-result" class="s16-result hidden"><div><span>RESULT</span><strong id="s16-result-label">WIN</strong></div><div><span>TIME</span><strong id="s16-result-time">--:--</strong></div><div><span>STEALTH</span><strong id="s16-result-stealth">---</strong></div></div><div class="s16-controls"><span>PC：WASD / Shift 走る / C しゃがむ / E 操作 / ドラッグ 視点</span><span>スマホ：左スティック / 右側ドラッグ / 各ボタン</span></div><button id="s16-start" type="button">潜入開始</button></div>
+    <div class="s16-card"><p class="s16-kicker">GAME 16 / 5 MIN STEALTH MISSION</p><h1 id="s16-overlay-title">MOUNTAIN<br>SHADOW</h1><p id="s16-overlay-message">夜明けの高山地帯へ人型エージェントで潜入。<br>①レーダー停止 → ②機密データ回収 → ③渓谷から脱出。<br><br>警備兵の視界を避け、森・岩・建物を遮蔽物に使え。ミッション結果はバックエンドへ保存されます。</p><div id="s16-result" class="s16-result hidden"><div><span>RESULT</span><strong id="s16-result-label">WIN</strong></div><div><span>TIME</span><strong id="s16-result-time">--:--</strong></div><div><span>STEALTH</span><strong id="s16-result-stealth">---</strong></div></div><div class="s16-controls"><span>PC：WASD / Shift 走る / C しゃがむ / E 操作 / ドラッグ 視点</span><span>スマホ：左スティック / 右側ドラッグ / 各ボタン</span></div><button id="s16-start" type="button">潜入開始</button></div>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script>
+<script src="supabase-config.js"></script>
 <script type="module" src="stealth16.js"></script>
+<script src="custom-backend.js"></script>
 </body></html>
