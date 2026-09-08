@@ -3,62 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-  <meta name="description" content="5エリア構成の協力プレイ対応3DゾンビサバイバルFPS。大量の人型ゾンビ、ゴール方位表示、ライフ3、各エリア固有ボス、3段階難易度。">
+  <meta name="description" content="全5面・迷路型の協力ゾンビサバイバルFPS。ライフ3、通常ゾンビは1発撃破、RUNNER、固有ボス、支援アイテム、ミニマップ対応。">
   <title>GAME 23 - OUTBREAK: BLACK SITE</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mode-switch.css">
   <link rel="stylesheet" href="game23.css">
 </head>
 <body class="outbreak-page">
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="index.html">20秒ミニゲームズ</a>
-    <nav><a href="#mission">MISSION</a><a href="online.html">ゲーム一覧</a></nav>
-  </div>
-</header>
+<header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">20秒ミニゲームズ</a><nav><a href="#mission">MISSION</a><a href="online.html">ゲーム一覧</a></nav></div></header>
 <main class="wrap outbreak-wrap">
   <div class="mode-switch-bar" aria-label="サイトモード">
     <button class="mode-switch-btn" data-mode-href="solo.html">1人用</button>
     <button class="mode-switch-btn" data-mode-href="online.html">オンライン対戦</button>
     <button class="mode-switch-btn" data-mode-href="chat.html">チャット</button>
   </div>
-
   <section class="hero outbreak-hero">
-    <p class="eyebrow">GAME 23 / 5-AREA CO-OP HORDE SURVIVAL</p>
+    <p class="eyebrow">GAME 23 / 5-AREA MAZE CO-OP SURVIVAL</p>
     <h1>OUTBREAK: BLACK SITE</h1>
-    <p>豪華な感染施設を埋め尽くすゾンビの大群を撃ち抜け。通常ゾンビは一撃、各区域には固有ボス。ライフは3、接触で1減少。画面上部の矢印を追ってゴールへ到達すればエリアクリア。</p>
+    <p>豪華施設を汚染したゾンビの大群を突破する迷路型FPS。ライフ3。通常ゾンビは1発、RUNNERは高速追跡。袋小路の支援アイテムを拾い、各区域のゴールへ到達せよ。</p>
   </section>
-
   <section id="mission" class="outbreak-panel">
     <div class="outbreak-toolbar">
-      <div class="outbreak-switch" aria-label="プレイ人数">
-        <button id="mode-solo" class="outbreak-choice active" type="button">SOLO</button>
-        <button id="mode-coop" class="outbreak-choice" type="button">CO-OP</button>
-      </div>
-      <div class="difficulty-switch" aria-label="難易度">
-        <button class="difficulty-btn" data-difficulty="easy" type="button">EASY</button>
-        <button class="difficulty-btn active" data-difficulty="normal" type="button">NORMAL</button>
-        <button class="difficulty-btn danger" data-difficulty="nightmare" type="button">NIGHTMARE</button>
-      </div>
+      <div class="outbreak-switch" aria-label="プレイ人数"><button id="mode-solo" class="outbreak-choice active" type="button">SOLO</button><button id="mode-coop" class="outbreak-choice" type="button">CO-OP</button></div>
+      <div class="difficulty-switch" aria-label="難易度"><button class="difficulty-btn" data-difficulty="easy" type="button">EASY</button><button class="difficulty-btn active" data-difficulty="normal" type="button">NORMAL</button><button class="difficulty-btn danger" data-difficulty="nightmare" type="button">NIGHTMARE</button></div>
       <button id="outbreak-fullscreen" class="outbreak-choice" type="button">全画面</button>
     </div>
-
     <div id="coop-lobby" class="coop-lobby hidden">
-      <div class="coop-card">
-        <span>HOST</span><h3>部屋を作る</h3>
-        <p>6桁コードを相手に送ってください。ホストが難易度と開始を管理します。</p>
-        <button id="coop-create" type="button">部屋を作る</button>
-        <div id="coop-created" class="hidden"><strong id="coop-room-code">------</strong><button id="coop-copy" type="button">コピー</button></div>
-      </div>
-      <div class="coop-card">
-        <span>GUEST</span><h3>部屋に参加</h3>
-        <p>相手の6桁コードを入力すると同じ感染区域へ接続します。</p>
-        <input id="coop-join-code" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="ABC123">
-        <button id="coop-join" type="button">参加する</button>
-      </div>
+      <div class="coop-card"><span>HOST</span><h3>部屋を作る</h3><p>6桁コードを相手へ送ります。ホストが難易度と開始を管理します。</p><button id="coop-create" type="button">部屋を作る</button><div id="coop-created" class="hidden"><strong id="coop-room-code">------</strong><button id="coop-copy" type="button">コピー</button></div></div>
+      <div class="coop-card"><span>GUEST</span><h3>部屋に参加</h3><p>相手の6桁コードで同じ感染区域へ接続します。</p><input id="coop-join-code" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="ABC123"><button id="coop-join" type="button">参加する</button></div>
       <div class="coop-status"><strong id="coop-status">未接続</strong><span id="coop-detail">Supabase Realtime / 2 players</span></div>
     </div>
-
     <div class="outbreak-shell">
       <div class="outbreak-hud">
         <div><span>AREA</span><strong id="hud-area">1 / 5</strong></div>
@@ -68,40 +42,23 @@
         <div><span>GOAL</span><strong id="hud-goal">---</strong></div>
         <div id="mate-hud" class="hidden"><span>PARTNER</span><strong id="hud-mate">---</strong></div>
       </div>
-
       <div id="game23-frame" class="game23-frame">
         <canvas id="game23-canvas" aria-label="OUTBREAK BLACK SITE 3Dゲーム画面"></canvas>
-        <div id="goal-compass" class="goal-compass" aria-label="ゴール方向">
-          <div id="goal-arrow" class="goal-arrow">▲</div>
-          <div><span>EVAC ROUTE</span><strong id="goal-direction">GOAL ---</strong></div>
-        </div>
+        <div class="goal-guide" aria-label="ゴール方向"><div id="goal-arrow" class="goal-arrow">▲</div><strong id="goal-direction">GOAL ---</strong></div>
+        <aside class="minimap-panel" aria-label="ミニマップ"><span>MAP</span><canvas id="minimap" width="190" height="190"></canvas><small>白=自分 / 黄=相方 / 緑=GOAL<br>赤=感染者 / 橙=RUNNER</small></aside>
+        <div id="item-status" class="item-status">NO SHIELD</div>
         <div class="crosshair" aria-hidden="true"></div>
         <div id="damage-flash" class="damage-flash"></div>
-        <div id="boss-banner" class="boss-banner hidden"><span id="boss-kicker">BOSS ENCOUNTER</span><strong id="boss-name">---</strong></div>
+        <div id="boss-banner" class="boss-banner hidden"><span>BOSS ENCOUNTER</span><strong id="boss-name">---</strong></div>
         <div id="mission-toast" class="mission-toast"></div>
-
         <div id="touch-left" class="touch-zone touch-left" aria-hidden="true"><div id="touch-stick" class="touch-stick"></div></div>
         <div id="touch-right" class="touch-zone touch-right" aria-hidden="true"></div>
         <button id="touch-fire" class="touch-fire" type="button" aria-label="射撃">FIRE</button>
-
-        <div id="game23-overlay" class="game23-overlay">
-          <div class="overlay-card">
-            <p class="eyebrow">BLACK SITE HORDE PROTOCOL</p>
-            <h2 id="overlay-title">感染区域へ侵入</h2>
-            <p id="overlay-text">画面上部の矢印がゴール方向。PC: WASD移動 / マウス視点 / クリック・Space射撃。スマホ: 左ドラッグ移動 / 右ドラッグ視点 / FIRE。人型ゾンビの大群を一撃で倒しながら走り抜けろ。</p>
-            <button id="game23-start" type="button">ミッション開始</button>
-          </div>
-        </div>
+        <div id="game23-overlay" class="game23-overlay"><div class="overlay-card"><p class="eyebrow">BLACK SITE PROTOCOL</p><h2 id="overlay-title">感染区域へ侵入</h2><p id="overlay-text">上部の矢印とミニマップを使い、迷路を突破してゴールへ。通常ゾンビは1発、ボスは複数発。</p><button id="game23-start" type="button">ミッション開始</button></div></div>
       </div>
-
-      <div class="mission-strip">
-        <div><span>01</span><strong>QUARANTINE GATE</strong><small>CRIMSON WARDEN</small></div>
-        <div><span>02</span><strong>ABANDONED WARD</strong><small>SIREN NURSE</small></div>
-        <div><span>03</span><strong>FREIGHT TUNNEL</strong><small>IRON BUTCHER</small></div>
-        <div><span>04</span><strong>HIVE LAB</strong><small>HIVE QUEEN</small></div>
-        <div><span>05</span><strong>ZERO SECTOR</strong><small>NULL TYRANT</small></div>
-      </div>
-      <p class="outbreak-note">高速移動＋大量ゾンビのHORDE仕様。NORMALでも最大94体、NIGHTMAREは最大124体。CO-OPでは2人そろってゴールへ到達すると次エリアへ進みます。</p>
+      <div class="item-legend"><div><b class="item-dot med"></b><strong>MEDKIT</strong><span>ライフ+1</span></div><div><b class="item-dot adr"></b><strong>ADRENALINE</strong><span>10秒高速化</span></div><div><b class="item-dot shield"></b><strong>ANTIVIRAL</strong><span>接触1回無効</span></div></div>
+      <div class="mission-strip"><div><span>01</span><strong>QUARANTINE GATE</strong><small>CRIMSON WARDEN</small></div><div><span>02</span><strong>ABANDONED WARD</strong><small>SIREN NURSE</small></div><div><span>03</span><strong>FREIGHT TUNNEL</strong><small>IRON BUTCHER</small></div><div><span>04</span><strong>HIVE LAB</strong><small>HIVE QUEEN</small></div><div><span>05</span><strong>ZERO SECTOR</strong><small>NULL TYRANT</small></div></div>
+      <p class="outbreak-note">各エリアは自動生成の迷路構成。袋小路には支援アイテム、通路には瓦礫・箱・柱・血痕・隔離警告表示があります。音声・BGMは使用していません。</p>
     </div>
   </section>
 </main>
@@ -110,6 +67,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script>
 <script src="supabase-config.js"></script>
 <script src="game-backend.js"></script>
-<script type="module" src="game23.js"></script>
+<script type="module" src="game23-v2-loader.js"></script>
 </body>
 </html>
