@@ -16,6 +16,22 @@
     if (transportEl) transportEl.textContent = text;
   };
 
+  const loadGameBackend = () => {
+    if (!document.querySelector('link[href="backend.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'backend.css';
+      document.head.appendChild(link);
+    }
+    if (!window.GameBackend && !document.querySelector('script[src="game-backend.js"]')) {
+      const backend = document.createElement('script');
+      backend.src = 'game-backend.js';
+      backend.async = false;
+      document.head.appendChild(backend);
+    }
+  };
+
+  loadGameBackend();
   setEnabled(false);
 
   const cfg = window.SUPABASE_CONFIG || {};
@@ -26,7 +42,7 @@
   if (canUseSupabase) {
     window.Peer = window.SupabasePeer;
     window.MULTIPLAYER_TRANSPORT = 'supabase';
-    setTransport('Supabase Realtime');
+    setTransport('Supabase Realtime + DB');
     setEnabled(true);
     return;
   }
