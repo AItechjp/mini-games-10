@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="description" content="GAME 16 MOUNTAIN SHADOW。美しい山岳地帯の敵拠点へ潜入する約5分の3Dオープンワールド・ステルスミッション。">
+  <title>GAME 16 - MOUNTAIN SHADOW | 20秒ミニゲームズ</title>
+  <link rel="stylesheet" href="stealth16.css">
+</head>
+<body>
+<div id="stealth-app">
+  <div id="mountain-game" aria-label="3D山岳ステルスゲーム"></div>
+  <header class="s16-topbar"><a href="solo.html" class="s16-back">← GAME LIST</a><div class="s16-title"><span>GAME 16</span><strong>MOUNTAIN SHADOW</strong></div><button id="s16-fullscreen" type="button">FULLSCREEN</button></header>
+  <section class="s16-hud">
+    <div class="s16-objective"><span>MISSION</span><strong id="s16-objective">山岳レーダーを停止せよ</strong><small id="s16-distance">-- m</small></div>
+    <div class="s16-stats"><div><span>TIME</span><strong id="s16-time">05:00</strong></div><div><span>STANCE</span><strong id="s16-stance">WALK</strong></div></div>
+    <div class="s16-detect"><div><span>DETECTION</span><strong id="s16-alert-label">HIDDEN</strong></div><div class="s16-detect-track"><i id="s16-detect-fill"></i></div></div>
+  </section>
+  <canvas id="s16-minimap" width="180" height="180" aria-label="ミニマップ"></canvas>
+  <div id="s16-prompt" class="s16-prompt hidden">E / ACTION</div>
+  <div id="s16-interact" class="s16-interact hidden"><span id="s16-interact-label">HACKING</span><div><i id="s16-interact-fill"></i></div></div>
+  <div class="s16-reticle" aria-hidden="true"></div>
+  <div class="s16-touch" id="s16-touch">
+    <div class="s16-stick" id="s16-stick"><i id="s16-knob"></i></div>
+    <div class="s16-touch-actions"><button id="s16-crouch">CROUCH</button><button id="s16-action">ACTION</button><button id="s16-sprint">SPRINT</button></div>
+  </div>
+  <div id="s16-overlay" class="s16-overlay">
+    <div class="s16-card"><p class="s16-kicker">GAME 16 / 5 MIN MISSION</p><h1 id="s16-overlay-title">MOUNTAIN<br>SHADOW</h1><p id="s16-overlay-message">夜明け前の山岳地帯へ潜入。<br>①レーダー停止 → ②機密データ回収 → ③南東の渓谷から脱出。<br><br>警備兵の視界を避け、森と岩を遮蔽物に使え。</p><div class="s16-controls"><span>PC：WASD / Shift 走る / C しゃがむ / E 操作 / ドラッグ 視点</span><span>スマホ：左スティック / 右側ドラッグ / 各ボタン</span></div><button id="s16-start" type="button">潜入開始</button></div>
+  </div>
+</div>
+<script type="module" src="stealth16.js"></script>
+</body></html>
