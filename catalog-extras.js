@@ -19,6 +19,31 @@
     { n: 22, title: 'マルバツゲーム', badge: 'BOARD / 3×3', desc: online ? '3×3の○×ゲームを部屋コードで2人対戦。短時間で決着。' : '3×3の○×ゲーム。ミニマックスCPUと短時間勝負。', href: classic('ttt'), action: online ? 'マルバツで対戦' : 'CPUとマルバツ' },
     { n: 23, title: 'OUTBREAK: BLACK SITE', badge: '3D FPS / 5 AREAS / CO-OP', desc: online ? '全5面の協力ゾンビサバイバル。人型プレイヤーをRealtime同期し、2人そろって各エリアのゴールを目指す。ライフ3・3段階難易度・固有ボス。' : '全5面の3DゾンビサバイバルFPS。通常ゾンビは1発、各面に固有ボス。ライフ3で各ゴールを目指す。EASY/NORMAL/NIGHTMARE対応。', href: `game23.html?mode=${online ? 'coop' : 'solo'}`, action: online ? '2人協力ミッション' : 'BLACK SITEへ侵入' }
   ];
+  if (online) {
+    const party = [
+      [24,'REACTOR RELAY','CO-OP / 5 MIN','制御コードを2人でつなぎ、原子炉を安定化。'],
+      [25,'METEOR DEFENSE','CO-OP / DEFENSE','迫る隕石を分担迎撃。基地HPを守り切れ。'],
+      [26,'CARGO RUSH','VS / RISK','3レーンから貨物を回収。安全策か高配当か。'],
+      [27,'VIRUS PURGE','CO-OP / SPEED','感染ノードを同時駆除し、ネットワークを救う。'],
+      [28,'TREASURE HEIST','VS / TREASURE','宝箱の当たりと罠を読み、先に75コイン。'],
+      [29,'SKY TOWER BUILDERS','CO-OP / BUILD','資材を共有し、空中塔を16階まで建築。'],
+      [30,'ESCAPE SWITCH','CO-OP / PUZZLE','色スイッチを正しい順で解除して脱出。'],
+      [31,'SNOWBALL ARENA','VS / DUEL','チャージ・ガード・雪玉攻撃の読み合い。'],
+      [32,'CRYSTAL CAPTURE','VS / REACTION','出現クリスタルを早取りして45点先取。'],
+      [33,'BOMB PASS','VS / HOT POTATO','導火線が切れる前に爆弾を相手へPASS。'],
+      [34,'KITCHEN CHAOS','CO-OP / COOKING','注文どおりに2人で食材を連携投入。'],
+      [35,'GHOST HUNT','VS / HUNT','暗闇から出るゴーストを先に40体捕獲。'],
+      [36,'SPACE SALVAGE','VS / RISK','宇宙漂流物を回収。レア品か故障かの勝負。'],
+      [37,'BRIDGE BUILDERS','CO-OP / BUILD','木材・ロープ・金属を集めて橋を架ける。'],
+      [38,'LASER MAZE','CO-OP / MAZE','共有ドローンを2人で誘導し迷路を5回突破。'],
+      [39,'CASTLE SIEGE','VS / STRATEGY','攻撃・防御・チャージで相手の城を破壊。'],
+      [40,'FISHING FRENZY','VS / TIMING','ゲージ中央でHOOK。先に100kg釣り上げる。'],
+      [41,'FIRE BRIGADE','CO-OP / DEFENSE','広がる火災を分担消火し、建物を守る。'],
+      [42,'RHYTHM RELAY','CO-OP / RHYTHM','4ビートを交互につないでライブ成功を狙う。'],
+      [43,'CROWN RACE','VS / RACE','安全道・近道・ワープを選び、先に王冠へ。']
+    ];
+    party.forEach(([n,title,badge,desc])=>extras.push({n,title,badge,desc,href:`party.html?game=${n}`,action:'約5分マッチを開く'}));
+  }
   for (const g of extras) {
     const card = document.createElement('article');
     card.className = 'game-card extra-card';
