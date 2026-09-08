@@ -1,0 +1,27 @@
+function syncModeUI(){$('#mode-solo').classList.toggle('active',state.mode==='solo');$('#mode-coop').classList.toggle('active',state.mode==='coop');$('#coop-lobby').classList.toggle('hidden',state.mode!=='coop');if(state.mode==='coop'){setOverlay('CO-OP ULTIMATE BLACK SITE','6つの感染区域を2人で突破。洋館・雪山・峡谷・港湾・ネオン都市・悪魔城。巨大ボスを倒して出口封印を解除してください。','パートナー待ち',true);startBtn.disabled=true;updateLobby();}else{state.role='host';setOverlay('ULTIMATE BLACK SITE','6ステージ完全別レイアウト。上部矢印とミニマップを頼りに迷路を突破し、各面の巨大ボスを倒してゴールへ。発光弱点は5倍ダメージ。','ミッション開始',true);startBtn.disabled=false;}}
+$('#mode-solo').addEventListener('click',()=>{if(state.running)return;state.mode='solo';syncModeUI();});
+$('#mode-coop').addEventListener('click',()=>{if(state.running)return;state.mode='coop';syncModeUI();});
+document.querySelectorAll('.difficulty-btn').forEach(b=>b.addEventListener('click',()=>{if(state.running||state.role==='guest')return;state.difficulty=b.dataset.difficulty;syncDifficultyUI();if(state.mode==='coop'&&state.connected)send('settings',{difficulty:state.difficulty,hostId:state.playerId});}));
+startBtn.addEventListener('click',()=>{if(!state.running)resetMission();});
+$('#coop-create').addEventListener('click',async()=>{const c=roomCode();$('#coop-room-code').textContent=c;$('#coop-created').classList.remove('hidden');await connect('host',c);});
+$('#coop-copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(state.room);toast('部屋コードをコピーしました');}catch{toast('コピーできませんでした');}});
+$('#coop-join').addEventListener('click',async()=>{const c=$('#coop-join-code').value.trim().toUpperCase();if(!/^[A-Z0-9]{6}$/.test(c)){toast('6桁コードを入力');return;}await connect('guest',c);});
+$('#coop-join-code').addEventListener('input',e=>e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,6));
+$('#outbreak-fullscreen').addEventListener('click',()=>{if(!document.fullscreenElement)frame.requestFullscreen?.();else document.exitFullscreen?.();});
+addEventListener('keydown',e=>{keys.add(e.code);if(e.code==='Space'){e.preventDefault();shoot();}});addEventListener('keyup',e=>keys.delete(e.code));
+canvas.addEventListener('click',()=>{if(matchMedia('(pointer:fine)').matches){if(document.pointerLockElement!==canvas)canvas.requestPointerLock?.();else shoot();}});
+document.addEventListener('pointerlockchange',()=>pointerLocked=document.pointerLockElement===canvas);
+document.addEventListener('mousemove',e=>{if(!pointerLocked||!state.running)return;local.yaw-=e.movementX*.00225;local.pitch=clamp(local.pitch-e.movementY*.0018,-1.08,1.04);});
+function touchPoint(e){return{x:e.clientX,y:e.clientY};}
+touchLeft.addEventListener('pointerdown',e=>{leftTouch=e.pointerId;touchLeft.setPointerCapture(e.pointerId);const r=touchLeft.getBoundingClientRect();touchStick.style.left=`${e.clientX-r.left}px`;touchStick.style.top=`${e.clientY-r.top}px`;});
+touchLeft.addEventListener('pointermove',e=>{if(e.pointerId!==leftTouch)return;const r=touchLeft.getBoundingClientRect(),cx=parseFloat(touchStick.style.left)||r.width*.35,cy=parseFloat(touchStick.style.top)||r.height*.6;touchMove.x=clamp((e.clientX-r.left-cx)/46,-1,1);touchMove.y=clamp((e.clientY-r.top-cy)/46,-1,1);touchStick.style.transform=`translate(-50%,-50%) translate(${touchMove.x*22}px,${touchMove.y*22}px)`;});
+function endLeft(e){if(e.pointerId!==leftTouch)return;leftTouch=null;touchMove.x=touchMove.y=0;touchStick.style.transform='translate(-50%,-50%)';}
+touchLeft.addEventListener('pointerup',endLeft);touchLeft.addEventListener('pointercancel',endLeft);
+touchRight.addEventListener('pointerdown',e=>{rightTouch=e.pointerId;lastRight=touchPoint(e);touchRight.setPointerCapture(e.pointerId);});
+touchRight.addEventListener('pointermove',e=>{if(e.pointerId!==rightTouch||!lastRight)return;const p=touchPoint(e);local.yaw-=(p.x-lastRight.x)*.006;local.pitch=clamp(local.pitch-(p.y-lastRight.y)*.0046,-1.05,1.02);lastRight=p;});
+function endRight(e){if(e.pointerId!==rightTouch)return;rightTouch=null;lastRight=null;}
+touchRight.addEventListener('pointerup',endRight);touchRight.addEventListener('pointercancel',endRight);
+$('#touch-fire').addEventListener('pointerdown',e=>{e.preventDefault();shoot();});
+let lastMapDraw=0,lastHudRefresh=0;
+function animate(){requestAnimationFrame(animate);const dt=Math.min(.04,clock.getDelta()),now=performance.now();updateLocal(dt);if(isHost()){const me=state.players.get(state.playerId);if(me)Object.assign(me,{x:local.x,z:local.z,yaw:local.yaw,lives:state.localLives,shield:state.shield,adr:state.adrenalineUntil});hostWorldStep(dt,now);goalCheck(now);}networkTick(now);updateHordeVisuals(now);updateStageVisuals(now);updateGoalHud();updateTimer();updateBossHud();if(now-lastMapDraw>115){lastMapDraw=now;drawMinimap();}if(now-lastHudRefresh>220){lastHudRefresh=now;updateHud();}renderer.render(scene,camera);}
+syncModeUI();syncDifficultyUI();updateHud();animate();
