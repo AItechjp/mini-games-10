@@ -4,9 +4,11 @@
   const cfg=window.SUPABASE_CONFIG||{};
   const nameEl=$('#chat-name'),listEl=$('#chat-messages'),form=$('#chat-form'),input=$('#chat-input'),sendBtn=$('#chat-send'),statusEl=$('#chat-status'),dot=$('#chat-dot'),onlineEl=$('#chat-online'),feedback=$('#chat-feedback'),countEl=$('#chat-count');
   const ROOM='lobby';
-  let token=localStorage.getItem('guest-chat-token');if(!token){token=crypto.randomUUID();localStorage.setItem('guest-chat-token',token);}
+  const storageGet=k=>{try{return localStorage.getItem(k);}catch(_){return null;}};const storageSet=(k,v)=>{try{localStorage.setItem(k,v);}catch(_){} };
+  const makeUuid=()=>typeof crypto.randomUUID==='function'?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=crypto.getRandomValues(new Uint8Array(1))[0]&15,v=c==='x'?r:(r&3)|8;return v.toString(16);});
+  let token=storageGet('guest-chat-token');if(!token){token=makeUuid();storageSet('guest-chat-token',token);}
   const short=token.slice(0,4).toUpperCase();
-  let nickname=localStorage.getItem('guest-chat-name')||`Guest-${short}`;nameEl.value=nickname;
+  let nickname=storageGet('guest-chat-name')||`Guest-${short}`;nameEl.value=nickname;
   const seen=new Set();let channel=null,sending=false;
   if(!cfg.enabled||!cfg.url||!cfg.publishableKey||!window.supabase?.createClient){statusEl.textContent='接続できません';feedback.textContent='Supabase設定を確認してください';feedback.classList.add('chat-error');sendBtn.disabled=true;return;}
   const client=window.supabase.createClient(cfg.url,cfg.publishableKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
@@ -34,7 +36,7 @@
     if(!(data||[]).length)listEl.innerHTML='<div class="chat-empty">まだメッセージがありません。最初の一言を送ってみよう。</div>';
     listEl.scrollTop=listEl.scrollHeight;
   }
-  async function trackPresence(){if(!channel)return;try{await channel.track({clientToken:token,nickname,joinedAt:Date.now()});}catch(_){}}
+  async function trackPresence(){if(!channel)return;try{await channel.track({clientToken:token,nickname,joinedAt:Date.now()});}catch(_){} }
   function updatePresence(){
     if(!channel)return;const state=channel.presenceState();let n=0;for(const arr of Object.values(state))n+=Array.isArray(arr)?arr.length:0;onlineEl.textContent=String(n);
   }
@@ -60,7 +62,7 @@
     if(error){
       const msg=String(error.message||'');feedback.textContent=msg.includes('RATE_LIMITED')?'連投防止: 1秒あけて送信してください':'送信に失敗しました。もう一度試してください。';feedback.classList.add('chat-error');
     }else{
-      localStorage.setItem('guest-chat-name',nickname);const row=Array.isArray(data)?data[0]:data;const message={...row,client_token:token};addMessage(message,true);input.value='';countEl.textContent='0';feedback.textContent='送信しました';
+      storageSet('guest-chat-name',nickname);const row=Array.isArray(data)?data[0]:data;const message={...row,client_token:token};addMessage(message,true);input.value='';countEl.textContent='0';feedback.textContent='送信しました';
       try{await channel?.send({type:'broadcast',event:'message',payload:{message:{...row,clientToken:token}}});}catch(_){}
     }
     setTimeout(()=>{sending=false;sendBtn.disabled=false;if(!feedback.classList.contains('chat-error'))feedback.textContent='リアルタイム接続済み';},650);
@@ -68,7 +70,7 @@
   form.addEventListener('submit',e=>{e.preventDefault();sendMessage();});
   input.addEventListener('input',()=>countEl.textContent=String(input.value.length));
   input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}});
-  nameEl.addEventListener('change',async()=>{const v=nameEl.value.trim().slice(0,16);if(v){nickname=v;nameEl.value=v;localStorage.setItem('guest-chat-name',v);await trackPresence();}});
-  window.addEventListener('beforeunload',()=>{try{channel?.untrack();}catch(_){}});
+  nameEl.addEventListener('change',async()=>{const v=nameEl.value.trim().slice(0,16);if(v){nickname=v;nameEl.value=v;storageSet('guest-chat-name',v);await trackPresence();}});
+  window.addEventListener('beforeunload',()=>{try{channel?.untrack();}catch(_){} });
   loadRecent();subscribe();
 })();

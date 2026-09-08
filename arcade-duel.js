@@ -39,7 +39,8 @@
   const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   const ROUND_MS = 20000;
   const START_DELAY_MS = 2300;
-  const playerToken = crypto.randomUUID();
+  const makeUuid = () => typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=crypto.getRandomValues(new Uint8Array(1))[0]&15,v=c==='x'?r:(r&3)|8;return v.toString(16);});
+  const playerToken = makeUuid();
   const bestKey = `arcade-best-${gameId}`;
 
   let mode = new URLSearchParams(location.search).get('mode') === 'online' ? 'online' : 'solo';
@@ -67,8 +68,10 @@
   let rivalFinished = false;
   let rivalStats = {};
 
-  const getBest = () => Number(localStorage.getItem(bestKey) || 0);
-  const setBest = score => { if (score > getBest()) localStorage.setItem(bestKey, String(score)); };
+  const storageGet = key => { try { return localStorage.getItem(key); } catch (_) { return null; } };
+  const storageSet = (key, value) => { try { localStorage.setItem(key, value); } catch (_) {} };
+  const getBest = () => Number(storageGet(bestKey) || 0);
+  const setBest = score => { if (score > getBest()) storageSet(bestKey, String(score)); };
 
   function toast(text) {
     toastEl.textContent = text;
