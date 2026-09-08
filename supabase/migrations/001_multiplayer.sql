@@ -1,5 +1,8 @@
--- Supabase multiplayer foundation for 20-second mini games.
--- Run this migration after enabling Anonymous Sign-Ins in Supabase Auth.
+-- Supabase Realtime multiplayer foundation for the 20-second mini games.
+-- Requirements:
+-- 1) Enable Anonymous Sign-Ins in Supabase Auth.
+-- 2) Use a browser-safe publishable key (sb_publishable_*), never a secret/service_role key.
+-- 3) The client joins private Realtime channels named room:ABC123.
 
 create table if not exists public.game_rooms (
   code text primary key check (code ~ '^[A-Z0-9]{6}$'),
@@ -24,6 +27,10 @@ create index if not exists room_players_user_id_idx on public.room_players(user_
 
 alter table public.game_rooms enable row level security;
 alter table public.room_players enable row level security;
+
+grant usage on schema public to authenticated;
+grant select on public.game_rooms to authenticated;
+grant select on public.room_players to authenticated;
 
 create or replace function public.is_room_member(p_room_code text)
 returns boolean
@@ -59,6 +66,7 @@ begin
     raise exception 'INVALID_ROOM_CODE';
   end if;
 
+  -- Opportunistic cleanup keeps the tiny room table from accumulating stale rooms.
   delete from public.game_rooms where expires_at < now();
 
   begin
@@ -88,6 +96,9 @@ begin
   if auth.uid() is null then
     raise exception 'AUTH_REQUIRED';
   end if;
+  if normalized !~ '^[A-Z0-9]{6}$' then
+    raise exception 'INVALID_ROOM_CODE';
+  end if;
 
   select * into target
   from public.game_rooms
@@ -113,7 +124,9 @@ begin
 
   insert into public.room_players(room_code, user_id, role)
   values (normalized, auth.uid(), 'guest')
-  on conflict (room_code, user_id) do update set role = excluded.role;
+  on conflict (room_code, user_id) do update
+    set role = excluded.role,
+        joined_at = now();
 
   return query select normalized, 'guest'::text;
 end;
@@ -140,7 +153,8 @@ begin
   where room_code = normalized and user_id = auth.uid();
 
   if was_host then
-    delete from public.game_rooms where code = normalized and host_id = auth.uid();
+    delete from public.game_rooms
+    where code = normalized and host_id = auth.uid();
   end if;
 end;
 $$;
@@ -152,20 +166,24 @@ grant execute on function public.create_game_room(text) to authenticated;
 grant execute on function public.join_game_room(text) to authenticated;
 grant execute on function public.leave_game_room(text) to authenticated;
 
--- Direct table writes are intentionally not granted; clients use the RPC functions above.
+-- Table access: members can only read the room they belong to.
+drop policy if exists "members can read their room" on public.game_rooms;
 create policy "members can read their room"
 on public.game_rooms
 for select
 to authenticated
 using (public.is_room_member(code));
 
+drop policy if exists "members can read room players" on public.room_players;
 create policy "members can read room players"
 on public.room_players
 for select
 to authenticated
 using (public.is_room_member(room_code));
 
--- Private Realtime channel authorization. Channel topic format: room:ABC123
+-- Private Realtime authorization. Topic format: room:ABC123.
+-- These policies cover Broadcast and Presence; only room members may send/receive.
+drop policy if exists "room members can receive realtime" on realtime.messages;
 create policy "room members can receive realtime"
 on realtime.messages
 for select
@@ -174,6 +192,7 @@ using (
   public.is_room_member(split_part(realtime.topic(), ':', 2))
 );
 
+drop policy if exists "room members can send realtime" on realtime.messages;
 create policy "room members can send realtime"
 on realtime.messages
 for insert
