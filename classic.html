@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="大富豪、ババ抜き、UNO風カードゲーム、オセロ、マルバツをCPU戦またはログイン不要の2人オンライン対戦で遊べます。">
+  <title>クラシック対戦ゲーム - 20秒ミニゲームズ</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mode-switch.css">
+  <link rel="stylesheet" href="classic.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">20秒ミニゲームズ</a><nav><a href="solo.html">1人用</a><a href="online.html">オンライン</a><a href="whiteboard.html">ホワイトボード</a></nav></div></header>
+<main class="wrap classic-shell">
+  <section class="classic-hero">
+    <div><p id="game-kicker" class="eyebrow">CLASSIC GAME</p><h1 id="game-title">クラシックゲーム</h1><p id="game-summary">読み込み中…</p></div>
+    <div class="classic-actions"><a class="ghost-link" href="solo.html">← ゲーム一覧</a><button id="rules-btn" class="ghost-btn" type="button">ルール</button><button id="fullscreen-btn" class="ghost-btn" type="button">全画面</button></div>
+  </section>
+
+  <div class="mode-switch-bar classic-mode-bar" aria-label="プレイモード切替">
+    <button id="solo-mode-btn" class="mode-switch-btn" type="button">CPU対戦</button>
+    <button id="online-mode-btn" class="mode-switch-btn" type="button">オンライン2人対戦</button>
+  </div>
+
+  <section id="lobby" class="classic-lobby hidden" aria-live="polite">
+    <div class="classic-lobby-head"><div><p class="eyebrow">ROOM CODE BATTLE</p><h2>部屋コードで対戦</h2></div><span id="connection-badge" class="classic-badge">未接続</span></div>
+    <div class="classic-lobby-grid">
+      <article class="classic-lobby-card"><span>PLAYER 1 / HOST</span><h3>部屋を作る</h3><p>6桁コードを相手に送ります。ホスト側がゲーム状態を管理します。</p><button id="create-room-btn" class="classic-primary" type="button">部屋を作る</button><div id="room-created" class="room-created hidden"><small>ROOM CODE</small><strong id="room-code-display">------</strong><button id="copy-room-btn" class="classic-mini" type="button">コピー</button></div></article>
+      <article class="classic-lobby-card"><span>PLAYER 2 / GUEST</span><h3>部屋に参加</h3><p>相手から届いたコードを入力してください。</p><form id="join-form" class="classic-join"><input id="room-code-input" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="ABC123" aria-label="部屋コード"><button class="classic-primary" type="submit">参加する</button></form></article>
+    </div>
+    <div class="classic-status"><strong id="connection-status">「部屋を作る」か「部屋に参加」を選んでください。</strong><span id="connection-detail">Supabase Realtimeで接続します。</span></div>
+  </section>
+
+  <section id="game-panel" class="classic-game-panel">
+    <div class="classic-scorebar">
+      <div><span>YOU</span><strong id="you-label">PLAYER</strong><small id="you-sub">準備中</small></div>
+      <div class="classic-center-status"><span id="turn-label">TURN</span><strong id="status-label">ゲームを準備しています</strong></div>
+      <div><span>RIVAL</span><strong id="rival-label">CPU</strong><small id="rival-sub">準備中</small></div>
+    </div>
+    <div id="game-stage" class="classic-stage" aria-live="polite"></div>
+    <div class="classic-controlbar"><button id="pass-btn" class="classic-secondary hidden" type="button">パス</button><button id="draw-btn" class="classic-secondary hidden" type="button">山札から引く</button><button id="new-game-btn" class="classic-primary" type="button">新しいゲーム</button></div>
+    <p id="game-message" class="classic-message"></p>
+  </section>
+</main>
+
+<dialog id="rules-dialog" class="rules-dialog"><div><div class="rules-head"><h2 id="rules-title">ルール</h2><button id="rules-close" class="classic-mini" type="button">閉じる</button></div><div id="rules-body" class="rules-body"></div></div></dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script>
+<script src="supabase-config.js"></script>
+<script src="peer-supabase-shim.js"></script>
+<script src="classic.js" defer></script>
+</body>
+</html>
