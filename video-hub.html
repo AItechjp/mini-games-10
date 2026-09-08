@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071018">
+<title>STREAMBOX - Video Hub</title>
+<style>
+:root{--bg:#071018;--panel:#0d1722;--panel2:#111f2c;--line:#203244;--text:#f7fbff;--muted:#8fa4b7;--accent:#ff3d64;--accent2:#6ae4ff}
+*{box-sizing:border-box}html,body{margin:0;background:radial-gradient(circle at 20% 0,#10293b 0,#071018 45%,#04080d 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit}.shell{max-width:1450px;margin:auto;padding:18px}.top{position:sticky;top:0;z-index:10;display:grid;grid-template-columns:auto minmax(220px,720px) auto;gap:16px;align-items:center;background:rgba(7,16,24,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:12px 18px;margin:-18px -18px 20px}
+.brand{display:flex;gap:10px;align-items:center;color:white;text-decoration:none;font-weight:900;letter-spacing:.08em}.brand b{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--accent),#ff8a5d);box-shadow:0 8px 28px #ff3d6438}.search{display:flex;gap:8px}.search input{width:100%;background:#09131c;border:1px solid var(--line);color:white;border-radius:14px;padding:12px 14px;outline:none}.search input:focus{border-color:var(--accent2)}.btn{border:1px solid var(--line);background:var(--panel2);color:white;border-radius:12px;padding:10px 14px;cursor:pointer}.btn.primary{border:0;background:linear-gradient(135deg,var(--accent),#ff7a46);font-weight:800}.back{color:var(--muted);text-decoration:none;white-space:nowrap}
+.hero{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,.7fr);gap:18px;margin-bottom:18px}.player-card,.side-card{background:linear-gradient(180deg,#0e1a26,#0a141e);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 24px 70px #0006}.stage{aspect-ratio:16/9;background:#020406;display:grid;place-items:center}.stage video,.stage iframe{width:100%;height:100%;border:0}.empty-stage{text-align:center;color:var(--muted);padding:30px}.empty-stage strong{display:block;color:white;font-size:28px;margin-bottom:8px}.now{padding:16px 18px}.now h1{font-size:clamp(20px,3vw,32px);margin:0 0 8px}.meta{color:var(--muted);font-size:14px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.side-card{padding:16px}.side-card h2{margin:0 0 12px;font-size:17px}.form{display:grid;gap:10px}.form input,.form select{width:100%;background:#07111a;border:1px solid var(--line);border-radius:12px;color:white;padding:11px}.hint{color:var(--muted);font-size:12px;line-height:1.6}.tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 14px}.tab{white-space:nowrap;border:1px solid var(--line);background:#0b1620;color:#b8c8d5;padding:8px 12px;border-radius:999px;cursor:pointer}.tab.active{background:white;color:#06101a;border-color:white}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{border:1px solid transparent;background:transparent;color:white;text-align:left;cursor:pointer;padding:0;border-radius:16px}.card:hover{background:#0b1620;border-color:var(--line)}.thumb{aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg,#152f42,#6c2642);display:grid;place-items:center;font-weight:900;font-size:30px;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover}.card-body{padding:9px 4px 12px}.card h3{font-size:15px;line-height:1.35;margin:0 0 6px}.small{font-size:12px;color:var(--muted)}.section-head{display:flex;justify-content:space-between;align-items:end;margin:28px 0 12px}.section-head h2{margin:0}.pill{font-size:12px;color:var(--accent2);border:1px solid #245168;background:#0c2230;border-radius:999px;padding:5px 9px}.toast{position:fixed;right:18px;bottom:18px;background:#11202d;border:1px solid var(--line);padding:12px 15px;border-radius:12px;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:none}
+@media(max-width:900px){.top{grid-template-columns:1fr auto}.search{grid-column:1/-1;grid-row:2}.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.shell{padding:12px}.top{margin:-12px -12px 14px;padding:10px 12px}.grid{grid-template-columns:1fr}.brand span{display:none}.hero{gap:12px}.side-card{padding:13px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+<a class="brand" href="apps.html"><b>▶</b><span>STREAMBOX</span></a>
+<div class="search"><input id="search" type="search" placeholder="タイトル・チャンネル・タグを検索"><button class="btn" id="clearSearch">クリア</button></div>
+<a class="back" href="apps.html">← アプリ一覧</a>
+</header>
+
+<section class="hero">
+<article class="player-card">
+<div id="stage" class="stage"><div class="empty-stage"><strong>STREAMBOX</strong>動画URLを追加すると、ここですぐ再生できます。</div></div>
+<div class="now">
+<h1 id="nowTitle">まだ動画が選択されていません</h1>
+<div id="nowMeta" class="meta">YouTube / MP4 / WebM / ローカル動画に対応</div>
+<div class="actions">
+<button class="btn" id="favBtn">☆ お気に入り</button>
+<button class="btn" id="pipBtn">PiP</button>
+<button class="btn" id="copyBtn">URLコピー</button>
+<button class="btn" id="removeBtn">削除</button>
+</div>
+</div>
+</article>
+
+<aside class="side-card">
+<h2>ライブラリに追加</h2>
+<form id="addForm" class="form">
+<input id="titleInput" maxlength="120" placeholder="タイトル">
+<input id="urlInput" inputmode="url" placeholder="YouTube / mp4 / webm URL">
+<input id="channelInput" maxlength="80" placeholder="チャンネル名（任意）">
+<input id="tagsInput" maxlength="120" placeholder="タグ 例: ゲーム, 技術">
+<button class="btn primary" type="submit">＋ 動画を追加</button>
+</form>
+<div style="height:10px"></div>
+<label class="btn" style="display:block;text-align:center">
+ローカル動画を開く<input id="fileInput" type="file" accept="video/*" hidden>
+</label>
+<p class="hint">追加したURL・お気に入り・視聴履歴はこの端末だけに保存します。YouTubeは埋め込み再生、直接動画URLはHTML5プレイヤーで再生します。ローカル動画はページを閉じると消えます。</p>
+</aside>
+</section>
+
+<div class="tabs" id="tabs">
+<button class="tab active" data-filter="all">ホーム</button>
+<button class="tab" data-filter="favorites">お気に入り</button>
+<button class="tab" data-filter="history">履歴</button>
+</div>
+
+<div class="section-head"><div><span class="pill">PERSONAL VIDEO HUB</span><h2>動画</h2></div><span id="count" class="small">0本</span></div>
+<section id="grid" class="grid"></section>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+(()=>{'use strict';
+const KEY='streambox-library-v1', HIST='streambox-history-v1', FAV='streambox-favs-v1';
+const $=s=>document.querySelector(s), grid=$('#grid'), stage=$('#stage'), toast=$('#toast');
+let items=[], history=[], favs=new Set(), selected=null, filter='all', localSeq=0;
+try{items=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(_){}
+try{history=JSON.parse(localStorage.getItem(HIST)||'[]')}catch(_){}
+try{favs=new Set(JSON.parse(localStorage.getItem(FAV)||'[]'))}catch(_){}
+const uid=()=>crypto.randomUUID?crypto.randomUUID():'v'+Date.now().toString(36)+Math.random().toString(36).slice(2);
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+function note(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(note.t);note.t=setTimeout(()=>toast.classList.remove('show'),1600)}
+function ytId(url){try{const u=new URL(url);if(u.hostname.includes('youtu.be'))return u.pathname.slice(1).split('/')[0];if(u.hostname.includes('youtube.com')){if(u.pathname==='/watch')return u.searchParams.get('v');const m=u.pathname.match(/\/(?:shorts|embed)\/([^/?]+)/);return m&&m[1]}}catch(_){}return null}
+function kind(url){return ytId(url)?'youtube':/\.(mp4|webm|ogg)(\?|#|$)/i.test(url)?'video':'video'}
+function thumb(item){const y=ytId(item.url);return y?`https://i.ytimg.com/vi/${encodeURIComponent(y)}/hqdefault.jpg`:''}
+function persist(){const safe=items.filter(x=>!x.local);localStorage.setItem(KEY,JSON.stringify(safe));localStorage.setItem(HIST,JSON.stringify(history.slice(0,60)));localStorage.setItem(FAV,JSON.stringify([...favs]))}
+function card(item){
+ const image=thumb(item); const watched=history.includes(item.id); const fav=favs.has(item.id);
+ return `<button class="card" data-id="${esc(item.id)}"><div class="thumb">${image?`<img loading="lazy" src="${esc(image)}" alt="">`:'▶'}</div><div class="card-body"><h3>${esc(item.title||'無題の動画')}</h3><div class="small">${esc(item.channel||'マイライブラリ')} · ${fav?'★ ':''}${watched?'視聴済み':''}</div></div></button>`;
+}
+function visible(){
+ const q=$('#search').value.trim().toLowerCase();
+ let list=items.filter(x=>!q||`${x.title} ${x.channel} ${x.tags}`.toLowerCase().includes(q));
+ if(filter==='favorites')list=list.filter(x=>favs.has(x.id));
+ if(filter==='history'){const pos=new Map(history.map((id,i)=>[id,i]));list=list.filter(x=>pos.has(x.id)).sort((a,b)=>pos.get(a.id)-pos.get(b.id))}
+ return list;
+}
+function render(){const list=visible();grid.innerHTML=list.map(card).join('')||`<div class="empty-stage"><strong>動画がありません</strong>右上のフォームから追加してください。</div>`;$('#count').textContent=`${list.length}本`;grid.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>play(b.dataset.id))}
+function play(id){const item=items.find(x=>x.id===id);if(!item)return;selected=item;history=[id,...history.filter(x=>x!==id)].slice(0,60);persist();const y=ytId(item.url);stage.innerHTML=y?`<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(y)}?autoplay=1&playsinline=1" title="${esc(item.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`:`<video id="nativeVideo" src="${esc(item.url)}" controls autoplay playsinline></video>`;$('#nowTitle').textContent=item.title||'無題の動画';$('#nowMeta').textContent=`${item.channel||'マイライブラリ'} · ${(item.tags||'タグなし')}`;syncFav();render()}
+function syncFav(){$('#favBtn').textContent=selected&&favs.has(selected.id)?'★ お気に入り済み':'☆ お気に入り'}
+$('#addForm').addEventListener('submit',e=>{e.preventDefault();const url=$('#urlInput').value.trim(),title=$('#titleInput').value.trim();if(!url||!title)return note('タイトルとURLを入力してください');try{new URL(url)}catch(_){return note('URL形式を確認してください')}items.unshift({id:uid(),title,url,channel:$('#channelInput').value.trim(),tags:$('#tagsInput').value.trim(),createdAt:Date.now(),kind:kind(url)});persist();e.target.reset();render();note('追加しました')});
+$('#fileInput').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;const item={id:'local-'+(++localSeq),title:f.name,url:URL.createObjectURL(f),channel:'ローカルファイル',tags:'local',local:true};items.unshift(item);render();play(item.id)});
+$('#search').addEventListener('input',render);$('#clearSearch').onclick=()=>{$('#search').value='';render()};
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(!b)return;filter=b.dataset.filter;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));render()});
+$('#favBtn').onclick=()=>{if(!selected)return note('動画を選択してください');favs.has(selected.id)?favs.delete(selected.id):favs.add(selected.id);persist();syncFav();render()};
+$('#pipBtn').onclick=async()=>{const v=$('#nativeVideo');if(!v)return note('PiPは直接動画URLで利用できます');try{if(document.pictureInPictureElement)await document.exitPictureInPicture();else await v.requestPictureInPicture()}catch(_){note('PiPを開始できませんでした')}};
+$('#copyBtn').onclick=async()=>{if(!selected)return note('動画を選択してください');try{await navigator.clipboard.writeText(selected.url);note('URLをコピーしました')}catch(_){note('コピーできませんでした')}};
+$('#removeBtn').onclick=()=>{if(!selected)return note('動画を選択してください');const id=selected.id;if(selected.local)URL.revokeObjectURL(selected.url);items=items.filter(x=>x.id!==id);history=history.filter(x=>x!==id);favs.delete(id);selected=null;persist();stage.innerHTML='<div class="empty-stage"><strong>STREAMBOX</strong>動画を選択してください。</div>';$('#nowTitle').textContent='まだ動画が選択されていません';$('#nowMeta').textContent='YouTube / MP4 / WebM / ローカル動画に対応';syncFav();render();note('削除しました')};
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;if(e.key==='/' ){e.preventDefault();$('#search').focus()}if(e.key===' '){const v=$('#nativeVideo');if(v){e.preventDefault();v.paused?v.play():v.pause()}}});
+render();syncFav();
+})();
+</script>
+</body>
+</html>
