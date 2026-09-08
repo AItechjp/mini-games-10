@@ -15,12 +15,14 @@
   const startButton = $('#arcade-start');
 
   const entries = [
-    'さくら','富士山','新幹線','東京','名古屋','岐阜','日本','寿司','ラーメン','天ぷら',
-    'ねこ','いぬ','ペンギン','とら','海','空','星','月','太陽','光',
-    '未来','ゲーム','パソコン','キーボード','スマホ','音楽','映画','漫画','アニメ','スポーツ',
-    'テニス','サッカー','野球','自転車','電車','飛行機','旅行','温泉','サウナ','花火',
-    '祭り','公園','山','川','森','朝','昼','夜','おはよう','ありがとう',
-    '楽しい','速い','強い','すごい','力','勝負','スピード','チャレンジ','タイピング','激速'
+    'さくら','ふじさん','しんかんせん','とうきょう','なごや','ぎふ','にほん','すし','てんぷら','ねこ',
+    'いぬ','ぺんぎん','とら','うみ','そら','ほし','つき','たいよう','ひかり','みらい',
+    'おんがく','えいが','まんが','じてんしゃ','でんしゃ','ひこうき','りょこう','おんせん','はなび','まつり',
+    'こうえん','やま','かわ','もり','あさ','ひる','よる','おはよう','ありがとう','たのしい',
+    'はやい','つよい','すごい','ちから','しょうぶ','たいぴんぐ','げきはや','ともだち','がっこう','せんせい',
+    'きょうしつ','としょかん','こうじょう','しごと','やすみ','ごはん','たまご','さかな','やさい','くだもの',
+    'りんご','みかん','すいか','いちご','おちゃ','みず','あめ','ゆき','かぜ','くも',
+    'はる','なつ','あき','ふゆ','きょう','あした','きのう','じかん','でんわ','しゃしん'
   ];
 
   const rng32 = seed => {
@@ -35,21 +37,22 @@
   };
 
   const normalize = value => String(value || '').normalize('NFKC').trim();
+  const isHiraganaOnly = value => /^[ぁ-ゖ]+$/.test(value);
 
   function primeKeyboard() {
     if (!input) return;
     input.disabled = false;
     input.readOnly = true;
     try { input.focus({ preventScroll: true }); } catch (_) { input.focus(); }
-    hintEl.textContent = '開始までそのまま待ってください';
+    hintEl.textContent = 'ひらがなキーボードを用意してください';
   }
 
   keyboardBtn?.addEventListener('click', primeKeyboard);
   startButton?.addEventListener('pointerdown', primeKeyboard, { passive: true });
 
   window.ARCADE_GAME = {
-    title: 'JAPANESE TYPE ATTACK',
-    instructions: '表示された日本語を日本語IMEでそのまま入力。変換確定後、Enterで判定します。20秒で何問クリアできるか勝負。',
+    title: 'HIRAGANA TYPE ATTACK',
+    instructions: '表示されたお題を、ひらがなだけで入力してください。漢字・カタカナ・英字は不正解です。20秒で何問クリアできるか勝負。',
     roundMs: 20000,
     durationLabel: '20秒',
 
@@ -85,7 +88,7 @@
 
       function renderTarget() {
         jpEl.textContent = current;
-        targetEl.textContent = '日本語で入力 → Enter';
+        targetEl.textContent = 'ひらがなで入力 → Enter';
       }
 
       function nextEntry() {
@@ -105,48 +108,76 @@
         input.classList.add('shake');
       }
 
+      function registerMiss(message = 'ひらがなだけで入力') {
+        misses += 1;
+        attempts += 1;
+        flashMiss();
+        onToast?.('MISS');
+        hintEl.textContent = message;
+        input.value = '';
+        renderMetrics();
+      }
+
       function submit() {
         if (!running || composing) return;
         const value = normalize(input.value);
         if (!value) return;
-        attempts += 1;
 
-        if (value === normalize(current)) {
+        if (!isHiraganaOnly(value)) {
+          registerMiss('漢字・カタカナ・英字は使えません');
+          return;
+        }
+
+        attempts += 1;
+        if (value === current) {
           const len = Array.from(current).length;
           correctChars += len;
           clears += 1;
           completedScore += len * 20 + 100;
           onScore(completedScore);
           onToast?.('GOOD!');
+          hintEl.textContent = 'ひらがなだけで入力';
           nextEntry();
         } else {
           misses += 1;
           flashMiss();
           onToast?.('MISS');
+          hintEl.textContent = 'お題と同じひらがなを入力';
           input.value = '';
         }
         renderMetrics();
       }
 
+      function maybeAutoSubmit() {
+        if (!running || composing) return;
+        const value = normalize(input.value);
+        if (value === current) submit();
+      }
+
+      function handleInput() {
+        if (!running || composing) return;
+        const value = normalize(input.value);
+        if (!value) return;
+        if (/[A-Za-zァ-ヶ一-龯々〆ヵヶ]/.test(value)) {
+          hintEl.textContent = 'ひらがなのみ入力できます';
+        } else {
+          hintEl.textContent = 'ひらがなだけで入力';
+        }
+        maybeAutoSubmit();
+      }
+
       function handleKeydown(e) {
-        if (!running) return;
-        if (e.key !== 'Enter') return;
+        if (!running || e.key !== 'Enter') return;
         if (e.isComposing || composing || e.keyCode === 229) return;
         e.preventDefault();
         submit();
       }
 
-      function handleCompositionStart() {
-        composing = true;
-      }
-
+      function handleCompositionStart() { composing = true; }
       function handleCompositionEnd() {
         composing = false;
         if (!running) return;
-        const value = normalize(input.value);
-        if (value && value === normalize(current)) {
-          submit();
-        }
+        maybeAutoSubmit();
       }
 
       function handlePaste(e) { e.preventDefault(); }
@@ -165,6 +196,7 @@
         metricRaf = requestAnimationFrame(metricLoop);
       }
 
+      input.addEventListener('input', handleInput);
       input.addEventListener('keydown', handleKeydown);
       input.addEventListener('compositionstart', handleCompositionStart);
       input.addEventListener('compositionend', handleCompositionEnd);
@@ -172,12 +204,12 @@
       input.addEventListener('drop', handleDrop);
       input.addEventListener('blur', handleBlur);
 
-      jpEl.textContent = 'タイピング';
-      targetEl.textContent = '日本語で入力 → Enter';
+      jpEl.textContent = 'たいぴんぐ';
+      targetEl.textContent = 'ひらがなで入力';
       input.disabled = true;
       input.readOnly = true;
       input.value = '';
-      hintEl.textContent = 'スタート後に日本語で入力できます';
+      hintEl.textContent = 'スタート後にひらがなで入力できます';
       renderMetrics();
 
       return {
@@ -195,7 +227,7 @@
           input.disabled = false;
           input.readOnly = false;
           input.value = '';
-          hintEl.textContent = '日本語IMEで入力して Enter';
+          hintEl.textContent = 'ひらがなだけで入力';
           onScore(0);
           nextEntry();
           renderMetrics(startedAt);
@@ -217,6 +249,7 @@
         destroy() {
           running = false;
           cancelAnimationFrame(metricRaf);
+          input.removeEventListener('input', handleInput);
           input.removeEventListener('keydown', handleKeydown);
           input.removeEventListener('compositionstart', handleCompositionStart);
           input.removeEventListener('compositionend', handleCompositionEnd);
