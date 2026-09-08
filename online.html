@@ -12,12 +12,15 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="index.html">20秒ミニゲームズ</a>
-      <nav><a href="index.html">モード選択</a><a href="#lobby">対戦ロビー</a><a href="#games">ゲーム一覧</a></nav>
+      <div class="header-mode-switch" aria-label="プレイモード">
+        <a class="mode-switch-btn" href="solo.html">1人用</a>
+        <a class="mode-switch-btn active" aria-current="page" href="online.html">オンライン対戦</a>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
-    <section id="home" class="hero">
+    <section id="home" class="hero compact-hero">
       <p class="eyebrow">ONLINE / 2 PLAYERS</p>
       <h1>20秒で、決着。</h1>
       <p>離れた相手とオンライン2人対戦。インストール不要、部屋コードだけで遊べます。</p>
