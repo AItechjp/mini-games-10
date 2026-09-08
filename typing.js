@@ -52,7 +52,7 @@
 
   window.ARCADE_GAME = {
     title: 'HIRAGANA TYPE ATTACK',
-    instructions: '表示されたお題を、ひらがなだけで入力してください。漢字・カタカナ・英字は不正解です。20秒で何問クリアできるか勝負。',
+    instructions: '表示されたお題をひらがなで入力。正しいひらがなを1文字入力するたびにその場で進み、最後の文字まで入ると自動で次のお題へ進みます。',
     roundMs: 20000,
     durationLabel: '20秒',
 
@@ -63,15 +63,16 @@
       let rand = Math.random;
       let current = entries[0];
       let lastIndex = -1;
+      let acceptedLength = 0;
       let completedScore = 0;
       let clears = 0;
       let correctChars = 0;
       let misses = 0;
-      let attempts = 0;
       let composing = false;
 
       function metrics(now = performance.now()) {
-        const accuracy = attempts ? Math.round((clears / attempts) * 100) : 100;
+        const total = correctChars + misses;
+        const accuracy = total ? Math.round((correctChars / total) * 100) : 100;
         const elapsedMinutes = Math.max((now - startedAt) / 60000, 1 / 60000);
         const cpm = startedAt && correctChars ? Math.round(correctChars / elapsedMinutes) : 0;
         return { accuracy, cpm };
@@ -88,7 +89,13 @@
 
       function renderTarget() {
         jpEl.textContent = current;
-        targetEl.textContent = 'ひらがなで入力 → Enter';
+        targetEl.textContent = '';
+        Array.from(current).forEach((char, i) => {
+          const span = document.createElement('span');
+          span.textContent = char;
+          span.className = i < acceptedLength ? 'done' : i === acceptedLength ? 'current' : 'pending';
+          targetEl.appendChild(span);
+        });
       }
 
       function nextEntry() {
@@ -98,8 +105,10 @@
         }
         lastIndex = idx;
         current = entries[idx];
+        acceptedLength = 0;
         input.value = '';
         renderTarget();
+        hintEl.textContent = 'ひらがなを1文字ずつ入力';
       }
 
       function flashMiss() {
@@ -108,76 +117,81 @@
         input.classList.add('shake');
       }
 
-      function registerMiss(message = 'ひらがなだけで入力') {
+      function registerMiss() {
         misses += 1;
-        attempts += 1;
         flashMiss();
         onToast?.('MISS');
-        hintEl.textContent = message;
-        input.value = '';
-        renderMetrics();
+        const expected = Array.from(current)[acceptedLength] || '';
+        hintEl.textContent = expected ? `次は「${expected}」` : 'ひらがなを入力';
       }
 
-      function submit() {
+      function acceptCharacter(char) {
+        const chars = Array.from(current);
+        const expected = chars[acceptedLength];
+        if (char !== expected) {
+          registerMiss();
+          return false;
+        }
+
+        acceptedLength += 1;
+        correctChars += 1;
+        completedScore += 20;
+        onScore(completedScore);
+        renderTarget();
+
+        if (acceptedLength >= chars.length) {
+          clears += 1;
+          completedScore += 100;
+          onScore(completedScore);
+          onToast?.('GOOD!');
+          nextEntry();
+        } else {
+          hintEl.textContent = 'そのまま次のひらがなを入力';
+        }
+        return true;
+      }
+
+      function consumeInput() {
         if (!running || composing) return;
         const value = normalize(input.value);
         if (!value) return;
+        input.value = '';
 
         if (!isHiraganaOnly(value)) {
-          registerMiss('漢字・カタカナ・英字は使えません');
+          registerMiss();
+          hintEl.textContent = 'ひらがなだけ入力できます';
+          renderMetrics();
           return;
         }
 
-        attempts += 1;
-        if (value === current) {
-          const len = Array.from(current).length;
-          correctChars += len;
-          clears += 1;
-          completedScore += len * 20 + 100;
-          onScore(completedScore);
-          onToast?.('GOOD!');
-          hintEl.textContent = 'ひらがなだけで入力';
-          nextEntry();
-        } else {
-          misses += 1;
-          flashMiss();
-          onToast?.('MISS');
-          hintEl.textContent = 'お題と同じひらがなを入力';
-          input.value = '';
+        for (const char of Array.from(value)) {
+          if (!acceptCharacter(char)) break;
         }
         renderMetrics();
       }
 
-      function maybeAutoSubmit() {
-        if (!running || composing) return;
-        const value = normalize(input.value);
-        if (value === current) submit();
+      function handleInput(e) {
+        if (!running || composing || e.isComposing) return;
+        consumeInput();
       }
 
-      function handleInput() {
-        if (!running || composing) return;
-        const value = normalize(input.value);
-        if (!value) return;
-        if (/[A-Za-zァ-ヶ一-龯々〆ヵヶ]/.test(value)) {
-          hintEl.textContent = 'ひらがなのみ入力できます';
-        } else {
-          hintEl.textContent = 'ひらがなだけで入力';
-        }
-        maybeAutoSubmit();
+      function handleCompositionStart() {
+        composing = true;
       }
 
-      function handleKeydown(e) {
-        if (!running || e.key !== 'Enter') return;
-        if (e.isComposing || composing || e.keyCode === 229) return;
-        e.preventDefault();
-        submit();
-      }
-
-      function handleCompositionStart() { composing = true; }
       function handleCompositionEnd() {
         composing = false;
         if (!running) return;
-        maybeAutoSubmit();
+        setTimeout(() => {
+          if (running && input.value) consumeInput();
+        }, 0);
+      }
+
+      function handleKeydown(e) {
+        if (!running) return;
+        if (e.key === 'Enter' && !e.isComposing && !composing) {
+          e.preventDefault();
+        }
       }
 
       function handlePaste(e) { e.preventDefault(); }
@@ -204,12 +218,13 @@
       input.addEventListener('drop', handleDrop);
       input.addEventListener('blur', handleBlur);
 
-      jpEl.textContent = 'たいぴんぐ';
-      targetEl.textContent = 'ひらがなで入力';
+      current = 'たいぴんぐ';
+      acceptedLength = 0;
+      renderTarget();
       input.disabled = true;
       input.readOnly = true;
       input.value = '';
-      hintEl.textContent = 'スタート後にひらがなで入力できます';
+      hintEl.textContent = 'スタート後、ひらがなを1文字ずつ入力';
       renderMetrics();
 
       return {
@@ -218,16 +233,15 @@
           running = true;
           startedAt = performance.now();
           lastIndex = -1;
+          acceptedLength = 0;
           completedScore = 0;
           clears = 0;
           correctChars = 0;
           misses = 0;
-          attempts = 0;
           composing = false;
           input.disabled = false;
           input.readOnly = false;
           input.value = '';
-          hintEl.textContent = 'ひらがなだけで入力';
           onScore(0);
           nextEntry();
           renderMetrics(startedAt);
