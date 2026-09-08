@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#eef2f8">
+  <meta name="description" content="ログイン不要で共有できるリアルタイムホワイトボード。スマホ・タブレットのタッチ、ペン、マウスで描画できます。">
+  <title>共有ホワイトボード - 20秒ミニゲームズ</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="whiteboard.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">20秒ミニゲームズ</a><nav><a href="solo.html">1人用</a><a href="online.html">オンライン</a><a href="chat.html">チャット</a></nav></div></header>
+<main class="wrap wb-shell">
+  <section class="wb-hero"><div><p class="eyebrow">GAME 17 / SHARED WHITEBOARD</p><h1>共有ホワイトボード</h1><p>ログイン不要。部屋コードを共有すれば、スマホの指・タッチペン・マウスで同じボードへリアルタイムに描けます。</p></div><a class="wb-back" href="index.html">← トップへ</a></section>
+
+  <section class="wb-room">
+    <div class="wb-room-head"><div><span id="wb-state" class="wb-state">未接続</span><strong id="wb-room-label">部屋を作成、または参加してください</strong></div><div class="wb-users"><span>ONLINE</span><strong id="wb-user-count">0</strong></div></div>
+    <div class="wb-room-grid">
+      <div class="wb-room-card"><span>CREATE</span><h2>新しいボード</h2><button id="wb-create" class="wb-primary" type="button">部屋を作る</button><div id="wb-code-wrap" class="wb-code-wrap hidden"><small>ROOM CODE</small><strong id="wb-code">------</strong><button id="wb-copy" class="wb-mini" type="button">コピー</button></div></div>
+      <div class="wb-room-card"><span>JOIN</span><h2>共有ボードに参加</h2><form id="wb-join"><input id="wb-code-input" maxlength="6" autocapitalize="characters" autocomplete="off" placeholder="ABC123" aria-label="ホワイトボード部屋コード"><button class="wb-primary" type="submit">参加</button></form></div>
+    </div>
+  </section>
+
+  <section class="wb-workspace">
+    <div class="wb-toolbar" aria-label="描画ツール">
+      <div class="wb-tool-group"><span>COLOR</span><button class="wb-color active" data-color="#111827" style="--swatch:#111827" aria-label="黒"></button><button class="wb-color" data-color="#ef4444" style="--swatch:#ef4444" aria-label="赤"></button><button class="wb-color" data-color="#2563eb" style="--swatch:#2563eb" aria-label="青"></button><button class="wb-color" data-color="#16a34a" style="--swatch:#16a34a" aria-label="緑"></button><button class="wb-color" data-color="#f59e0b" style="--swatch:#f59e0b" aria-label="黄"></button></div>
+      <div class="wb-tool-group"><span>WIDTH</span><button class="wb-width" data-width="3">細</button><button class="wb-width active" data-width="7">中</button><button class="wb-width" data-width="15">太</button></div>
+      <div class="wb-tool-group wb-tool-right"><button id="wb-clear" class="wb-danger" type="button">全消去</button><button id="wb-fullscreen" class="wb-mini" type="button">全画面</button></div>
+    </div>
+    <div class="wb-canvas-wrap"><canvas id="wb-canvas" width="1600" height="1000" aria-label="共有ホワイトボード"></canvas><div id="wb-overlay" class="wb-overlay">部屋へ接続すると描けます</div></div>
+    <p id="wb-message" class="wb-message">描いた線はSupabase Realtimeで共有されます。</p>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script>
+<script src="supabase-config.js"></script>
+<script src="whiteboard.js" defer></script>
+</body>
+</html>
