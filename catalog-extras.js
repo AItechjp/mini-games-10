@@ -16,7 +16,8 @@
     { n: 19, title: 'ババ抜き', badge: 'CARDS / OLD MAID', desc: online ? '部屋コードで2人ババ抜き。相手の裏向きカードを引き、最後のジョーカーを避けよう。' : 'CPUとババ抜き。ペアは自動で捨て、最後のジョーカーを避けよう。', href: classic('oldmaid'), action: online ? 'ババ抜きで対戦' : 'CPUとババ抜き' },
     { n: 20, title: 'COLOR UNO', badge: 'CARDS / UNO', desc: online ? '色・数字・記号を合わせる2人カード対戦。SKIP、+2、WILD、W+4入り。' : 'CPUとUNOルールのカード対戦。SKIP、+2、WILD、W+4入り。', href: classic('uno'), action: online ? 'UNOで対戦' : 'CPUとUNO' },
     { n: 21, title: 'オセロ', badge: 'BOARD / OTHELLO', desc: online ? '8×8の本格オセロを部屋コードで2人対戦。置ける場所をガイド表示。' : '8×8の本格オセロをCPUと対戦。置ける場所をガイド表示。', href: classic('othello'), action: online ? 'オセロで対戦' : 'CPUとオセロ' },
-    { n: 22, title: 'マルバツゲーム', badge: 'BOARD / 3×3', desc: online ? '3×3の○×ゲームを部屋コードで2人対戦。短時間で決着。' : '3×3の○×ゲーム。ミニマックスCPUと短時間勝負。', href: classic('ttt'), action: online ? 'マルバツで対戦' : 'CPUとマルバツ' }
+    { n: 22, title: 'マルバツゲーム', badge: 'BOARD / 3×3', desc: online ? '3×3の○×ゲームを部屋コードで2人対戦。短時間で決着。' : '3×3の○×ゲーム。ミニマックスCPUと短時間勝負。', href: classic('ttt'), action: online ? 'マルバツで対戦' : 'CPUとマルバツ' },
+    { n: 23, title: 'OUTBREAK: BLACK SITE', badge: '3D FPS / 5 AREAS / CO-OP', desc: online ? '全5面の協力ゾンビサバイバル。人型プレイヤーをRealtime同期し、2人そろって各エリアのゴールを目指す。ライフ3・3段階難易度・固有ボス。' : '全5面の3DゾンビサバイバルFPS。通常ゾンビは1発、各面に固有ボス。ライフ3で各ゴールを目指す。EASY/NORMAL/NIGHTMARE対応。', href: `game23.html?mode=${online ? 'coop' : 'solo'}`, action: online ? '2人協力ミッション' : 'BLACK SITEへ侵入' }
   ];
   for (const g of extras) {
     const card = document.createElement('article');
