@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="description" content="5エリア構成の協力プレイ対応3DゾンビサバイバルFPS。ライフ3、通常ゾンビは1発撃破、各エリアに固有ボス、3段階難易度。">
+  <title>GAME 23 - OUTBREAK: BLACK SITE</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mode-switch.css">
+  <link rel="stylesheet" href="game23.css">
+</head>
+<body class="outbreak-page">
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">20秒ミニゲームズ</a>
+    <nav><a href="#mission">MISSION</a><a href="online.html">ゲーム一覧</a></nav>
+  </div>
+</header>
+<main class="wrap outbreak-wrap">
+  <div class="mode-switch-bar" aria-label="サイトモード">
+    <button class="mode-switch-btn" data-mode-href="solo.html">1人用</button>
+    <button class="mode-switch-btn" data-mode-href="online.html">オンライン対戦</button>
+    <button class="mode-switch-btn" data-mode-href="chat.html">チャット</button>
+  </div>
+
+  <section class="hero outbreak-hero">
+    <p class="eyebrow">GAME 23 / 5-AREA CO-OP SURVIVAL</p>
+    <h1>OUTBREAK: BLACK SITE</h1>
+    <p>封鎖された5つの感染区域を突破して最終脱出地点へ。通常ゾンビは一撃、各区域には固有ボス。ライフは3、接触で1減少。クリア条件はただ一つ、ゴールへ到達すること。</p>
+  </section>
+
+  <section id="mission" class="outbreak-panel">
+    <div class="outbreak-toolbar">
+      <div class="outbreak-switch" aria-label="プレイ人数">
+        <button id="mode-solo" class="outbreak-choice active" type="button">SOLO</button>
+        <button id="mode-coop" class="outbreak-choice" type="button">CO-OP</button>
+      </div>
+      <div class="difficulty-switch" aria-label="難易度">
+        <button class="difficulty-btn" data-difficulty="easy" type="button">EASY</button>
+        <button class="difficulty-btn active" data-difficulty="normal" type="button">NORMAL</button>
+        <button class="difficulty-btn danger" data-difficulty="nightmare" type="button">NIGHTMARE</button>
+      </div>
+      <button id="outbreak-fullscreen" class="outbreak-choice" type="button">全画面</button>
+    </div>
+
+    <div id="coop-lobby" class="coop-lobby hidden">
+      <div class="coop-card">
+        <span>HOST</span><h3>部屋を作る</h3>
+        <p>6桁コードを相手に送ってください。ホストが難易度と開始を管理します。</p>
+        <button id="coop-create" type="button">部屋を作る</button>
+        <div id="coop-created" class="hidden"><strong id="coop-room-code">------</strong><button id="coop-copy" type="button">コピー</button></div>
+      </div>
+      <div class="coop-card">
+        <span>GUEST</span><h3>部屋に参加</h3>
+        <p>相手の6桁コードを入力すると同じ感染区域へ接続します。</p>
+        <input id="coop-join-code" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="ABC123">
+        <button id="coop-join" type="button">参加する</button>
+      </div>
+      <div class="coop-status"><strong id="coop-status">未接続</strong><span id="coop-detail">Supabase Realtime / 2 players</span></div>
+    </div>
+
+    <div class="outbreak-shell">
+      <div class="outbreak-hud">
+        <div><span>AREA</span><strong id="hud-area">1 / 5</strong></div>
+        <div><span>LIFE</span><strong id="hud-life">♥♥♥</strong></div>
+        <div><span>TIME</span><strong id="hud-time">0:00</strong></div>
+        <div><span>BOSS</span><strong id="hud-boss">---</strong></div>
+        <div><span>GOAL</span><strong id="hud-goal">---</strong></div>
+        <div id="mate-hud" class="hidden"><span>PARTNER</span><strong id="hud-mate">---</strong></div>
+      </div>
+
+      <div id="game23-frame" class="game23-frame">
+        <canvas id="game23-canvas" aria-label="OUTBREAK BLACK SITE 3Dゲーム画面"></canvas>
+        <div class="crosshair" aria-hidden="true"></div>
+        <div id="damage-flash" class="damage-flash"></div>
+        <div id="boss-banner" class="boss-banner hidden"><span id="boss-kicker">BOSS ENCOUNTER</span><strong id="boss-name">---</strong></div>
+        <div id="mission-toast" class="mission-toast"></div>
+
+        <div id="touch-left" class="touch-zone touch-left" aria-hidden="true"><div id="touch-stick" class="touch-stick"></div></div>
+        <div id="touch-right" class="touch-zone touch-right" aria-hidden="true"></div>
+        <button id="touch-fire" class="touch-fire" type="button" aria-label="射撃">FIRE</button>
+
+        <div id="game23-overlay" class="game23-overlay">
+          <div class="overlay-card">
+            <p class="eyebrow">BLACK SITE PROTOCOL</p>
+            <h2 id="overlay-title">感染区域へ侵入</h2>
+            <p id="overlay-text">PC: WASD移動 / マウスで視点 / クリック・Spaceで射撃。スマホ: 左ドラッグで移動 / 右ドラッグで視点 / FIREで射撃。通常ゾンビは1発、ボスは複数発。ゴール到達でエリアクリア。</p>
+            <button id="game23-start" type="button">ミッション開始</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mission-strip">
+        <div><span>01</span><strong>QUARANTINE GATE</strong><small>CRIMSON WARDEN</small></div>
+        <div><span>02</span><strong>ABANDONED WARD</strong><small>SIREN NURSE</small></div>
+        <div><span>03</span><strong>FREIGHT TUNNEL</strong><small>IRON BUTCHER</small></div>
+        <div><span>04</span><strong>HIVE LAB</strong><small>HIVE QUEEN</small></div>
+        <div><span>05</span><strong>ZERO SECTOR</strong><small>NULL TYRANT</small></div>
+      </div>
+      <p class="outbreak-note">各エリアは直行でも長く、戦闘と回避を含め約3分想定。CO-OPでは参加中の2人がそろってゴールへ到達すると次エリアへ進みます。</p>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
+<script src="mode-switch.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script>
+<script src="supabase-config.js"></script>
+<script src="game-backend.js"></script>
+<script type="module" src="game23.js"></script>
+</body>
+</html>
