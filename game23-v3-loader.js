@@ -1,4 +1,4 @@
-const PARTS = [1,2,3,4,5,6,7,8,9].map(n => `game23-v3-part${n}.js?v=expansion-1`);
+const PARTS = [1,2,3,4,5,6,7,8,9,10].map(n => `game23-v3-part${n}.js?v=expansion-2`);
 const overlayTitle = document.querySelector('#overlay-title');
 const overlayText = document.querySelector('#overlay-text');
 const start = document.querySelector('#game23-start');
