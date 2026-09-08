@@ -1,0 +1,42 @@
+  itemGroup=new THREE.Group();scene.add(itemGroup);const shuffled=[...state.deadEnds].sort(()=>rand()-.5),types=['medkit','adrenaline','shield'];let count=Math.min(8,shuffled.length);for(let i=0;i<count;i++){const c=shuffled[i],p=cellCenter(state.maze,c.x,c.y),type=types[i%types.length],id=`item${i}`;const color=type==='medkit'?0x42ff7a:type==='adrenaline'?0xffb13b:0x5ad7ff;const g=new THREE.Group();const core=new THREE.Mesh(type==='shield'?new THREE.OctahedronGeometry(.65):new THREE.BoxGeometry(1.0,.75,.45),mat(color,color,1.9,.22,.35));g.add(core);const ring=new THREE.Mesh(new THREE.TorusGeometry(.9,.07,8,24),mat(color,color,1.4,.18,.2));ring.rotation.x=Math.PI/2;g.add(ring);g.position.set(p.x,1.05,p.z);g.userData.itemId=id;itemGroup.add(g);state.items.set(id,{id,type,x:p.x,z:p.z,taken:false,mesh:g});}
+}
+
+function buildEnvironment(){
+  clearScene();const s=currentStage(),rand=mulberry32(state.seed^((state.area+1)*0x9e3779b9));
+  scene.background=new THREE.Color(s.fog);scene.fog=new THREE.FogExp2(s.fog,state.area===4?.0125:.0098);
+  scene.add(new THREE.HemisphereLight(0xe8f0e8,0x160c0a,1.28));const key=new THREE.DirectionalLight(0xfff3dc,1.35);key.position.set(18,30,26);scene.add(key);
+  camera.clear();muzzleLight=new THREE.PointLight(0xffd8a0,0,10);camera.add(muzzleLight);scene.add(camera);
+  const floor=new THREE.Mesh(new THREE.PlaneGeometry(s.width,s.length+90),new THREE.MeshStandardMaterial({color:s.floor,roughness:.2,metalness:.25}));floor.rotation.x=-Math.PI/2;floor.position.z=-s.length/2+18;scene.add(floor);
+  addBox(0,8.2,-s.length/2+18,s.width+6,.42,s.length+90,0x10100f,false,0,.34,.4);
+  addBox(-s.width/2-1,3.8,-s.length/2+18,2,7.6,s.length+90,s.wall,true);addBox(s.width/2+1,3.8,-s.length/2+18,2,7.6,s.length+90,s.wall,true);addBox(0,3.8,34,s.width+4,7.6,2,s.wall,true);addBox(0,3.8,-s.length-3,s.width+4,7.6,2,s.wall,true);
+  for(const x of [-s.width*.27,0,s.width*.27])addBox(x,.018,-s.length/2+18,.16,.035,s.length+72,s.luxury,false,0,.22,.75);
+  for(let z=-18,i=0;z>-s.length+15;z-=55,i++){if(i%2===0)addLuxuryArch(z,s.width-7,s);if(i%3===1)addChandelier(z-10,s,rand);}
+  state.maze=generateMaze(s,rand);renderMaze(s);addMazeObstacles(s,rand);
+  for(let i=0;i<34;i++){const x=(rand()-.5)*(s.width-12),z=-20-rand()*(s.length-60);if(i<20)addBloodSplat(x,z,.55+rand()*.9);if(i%6===0)addWarningSign(i%12===0?-s.width/2+1.2:s.width/2-1.2,z,i%12===0?Math.PI/2:-Math.PI/2);}
+  addDeadEndItems(s,rand);
+  const gp=cellCenter(state.maze,state.maze.goal.x,state.maze.goal.y);state.goal=new THREE.Vector3(gp.x,0,gp.z);
+  const goalMat=new THREE.MeshStandardMaterial({color:0xb5ffd0,emissive:0x23ff74,emissiveIntensity:3.2,transparent:true,opacity:.92,roughness:.12});const ring=new THREE.Mesh(new THREE.TorusGeometry(4.5,.48,12,46),goalMat);ring.rotation.x=Math.PI/2;ring.position.set(gp.x,.6,gp.z);scene.add(ring);for(let i=0;i<3;i++){const halo=new THREE.Mesh(new THREE.TorusGeometry(3.2+i*.75,.08,8,34),goalMat);halo.position.set(gp.x,2.0+i*1.5,gp.z);halo.rotation.y=i*.45;scene.add(halo);}const beam=new THREE.Mesh(new THREE.CylinderGeometry(3,3,8,24,1,true),new THREE.MeshBasicMaterial({color:0x51ff94,transparent:true,opacity:.1,side:THREE.DoubleSide}));beam.position.set(gp.x,4,gp.z);scene.add(beam);
+  const sp=cellCenter(state.maze,state.maze.start.x,state.maze.start.y);local.x=sp.x+(state.mode==='coop'&&state.role==='guest'?1.2:-1.2);local.z=sp.z;local.yaw=0;local.pitch=0;updateCamera();const me=state.players.get(state.playerId)||{};Object.assign(me,{id:state.playerId,x:local.x,z:local.z,yaw:local.yaw,lives:state.localLives,shield:state.shield});state.players.set(state.playerId,me);
+}
+
+function makeHorde(capacity){
+  const meshes={body:new THREE.InstancedMesh(GEO.torso,MAT.cloth,capacity),head:new THREE.InstancedMesh(GEO.head,MAT.skin,capacity),lArm:new THREE.InstancedMesh(GEO.arm,MAT.skinDark,capacity),rArm:new THREE.InstancedMesh(GEO.arm,MAT.skinDark,capacity),lLeg:new THREE.InstancedMesh(GEO.leg,MAT.clothBlood,capacity),rLeg:new THREE.InstancedMesh(GEO.leg,MAT.clothBlood,capacity),eyes:new THREE.InstancedMesh(GEO.eye,MAT.eyes,capacity),jaw:new THREE.InstancedMesh(GEO.jaw,MAT.jaw,capacity),shoulder:new THREE.InstancedMesh(GEO.shoulder,MAT.skinDark,capacity)};
+  for(const m of Object.values(meshes)){m.instanceMatrix.setUsage(THREE.DynamicDrawUsage);m.frustumCulled=false;m.userData.hordePart=true;scene.add(m);}for(let i=0;i<capacity;i++){const skin=SKIN_COLORS[i%SKIN_COLORS.length],cloth=CLOTH_COLORS[(i*3)%CLOTH_COLORS.length];meshes.head.setColorAt(i,skin);meshes.lArm.setColorAt(i,skin);meshes.rArm.setColorAt(i,skin);meshes.shoulder.setColorAt(i,skin);meshes.body.setColorAt(i,cloth);meshes.lLeg.setColorAt(i,cloth);meshes.rLeg.setColorAt(i,cloth);}for(const m of Object.values(meshes))if(m.instanceColor)m.instanceColor.needsUpdate=true;horde={...meshes,capacity};
+}
+function setInstance(mesh,index,e,ox,oy,oz,rx,ry,rz,sx=1,sy=1,sz=1){const c=Math.cos(e.visualYaw||0),s=Math.sin(e.visualYaw||0);dummy.position.set(e.x+ox*c+oz*s,oy,e.z-ox*s+oz*c);dummy.rotation.set(rx,(e.visualYaw||0)+ry,rz);dummy.scale.set(sx,sy,sz);dummy.updateMatrix();mesh.setMatrixAt(index,dummy.matrix);}
+function hideInstance(mesh,index){dummy.position.set(0,-1000,0);dummy.rotation.set(0,0,0);dummy.scale.set(.001,.001,.001);dummy.updateMatrix();mesh.setMatrixAt(index,dummy.matrix);}
+function updateHordeVisuals(now){
+  if(!horde){animateBoss(now);return;}const t=now*.001;
+  for(const e of state.enemies.values()){
+    if(e.boss)continue;const i=e.index;if(i<0||i>=horde.capacity)continue;if(e.dead){for(const k of ['body','head','lArm','rArm','lLeg','rLeg','eyes','jaw','shoulder'])hideInstance(horde[k],i);continue;}
+    const runner=e.type==='runner',crawler=e.type==='crawler',freq=(runner?8.8:5.2)+e.speed*.55,gait=Math.sin(t*freq+e.phase),gait2=Math.sin(t*freq+e.phase+1.7),bob=Math.abs(Math.sin(t*(runner?8:5)+e.phase))*(runner?.16:.10),lean=(runner?.55:.32)+e.lean,drag=e.drag?(.18+.12*Math.sin(t*2+e.phase)):0,baseY=crawler?.45:0;
+    setInstance(horde.body,i,e,0,baseY+1.28+bob,0,lean,0,e.twist+gait*.035,1,e.bodyScale,1);
+    setInstance(horde.head,i,e,e.headSide,baseY+2.03+bob,-.16,lean*.55,e.headYaw,e.headTilt+Math.sin(t*2.6+e.phase)*.10,e.headScale,e.headScale,e.headScale);
+    setInstance(horde.lArm,i,e,-.5,baseY+1.35+bob,-.22,-1.12+gait*.48,0,-.22-e.armDrop,1,1.12,1);
+    setInstance(horde.rArm,i,e,.5,baseY+1.34+bob,-.25,-1.05-gait2*.52,0,.20+e.armDrop,1,1.1,1);
+    setInstance(horde.lLeg,i,e,-.23,baseY+.47,0,gait*(e.drag?.22:.58)+drag,0,0,1,1.05,1);
+    setInstance(horde.rLeg,i,e,.23,baseY+.47,0,-gait*(e.drag?.58:.48),0,0,1,1.05,1);
+    setInstance(horde.eyes,i,e,e.headSide,baseY+2.07+bob,-.325,lean*.45,e.headYaw,e.headTilt*.8,.9,.9,.9);
+    setInstance(horde.jaw,i,e,e.headSide,baseY+1.91+bob,-.29,lean*.45,e.headYaw,.05+e.headTilt*.7,1,runner?1.35:1,1);
+    setInstance(horde.shoulder,i,e,e.shoulderSide,baseY+1.72+bob,-.02,0,0,0,e.shoulderScale,e.shoulderScale,e.shoulderScale);
+  }
