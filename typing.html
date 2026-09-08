@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="mode-switch.css">
   <link rel="stylesheet" href="arcade.css">
   <link rel="stylesheet" href="typing.css">
+  <link rel="stylesheet" href="backend.css">
 </head>
 <body class="arcade-page typing-page" data-game-id="type-attack">
   <header class="site-header">
@@ -108,15 +109,16 @@
           </div>
         </div>
       </div>
-      <p class="arcade-note">入力済みの文字は緑、次に入力する文字は下線で表示。ローマ字入力やEnter確定は不要です。</p>
+      <p class="arcade-note">入力済みの文字は緑、次に入力する文字は下線で表示。ローマ字入力やEnter確定は不要。結果はバックエンドへ保存されます。</p>
     </section>
   </main>
 
   <footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
   <script src="mode-switch.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script>
   <script src="supabase-config.js"></script>
   <script src="typing.js"></script>
   <script src="arcade-duel.js"></script>
+  <script src="custom-backend.js"></script>
 </body>
 </html>
