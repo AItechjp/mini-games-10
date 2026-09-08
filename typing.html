@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="GAME 14 HIRAGANA TYPE ATTACK。表示されたひらがなを、ひらがなだけで入力する20秒タイピング。1人用とオンライン2人対戦に対応。">
+  <meta name="description" content="GAME 14 HIRAGANA TYPE ATTACK。表示されたひらがなを1文字ずつ入力して進める20秒タイピング。1人用とオンライン2人対戦に対応。">
   <title>GAME 14 - HIRAGANA TYPE ATTACK | 20秒ミニゲームズ</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mode-switch.css">
@@ -28,7 +28,7 @@
     <section class="hero typing-hero">
       <p class="eyebrow">GAME 14 / HIRAGANA TYPE ATTACK</p>
       <h1>20秒、<br>ひらがなで打て。</h1>
-      <p>表示されるお題はすべてひらがな。入力もひらがなだけで判定します。漢字・カタカナ・英字は使いません。1人用はBEST更新、オンラインは同じお題順で2人同時スコア勝負。</p>
+      <p>表示されたひらがなを1文字ずつ入力。正しい文字を入れるたびにその場で進み、最後まで入力すると自動で次のお題へ。Enterは不要です。</p>
     </section>
 
     <section id="game" class="section typing-section">
@@ -82,12 +82,12 @@
           <canvas id="arcade-canvas" width="1" height="1" aria-hidden="true"></canvas>
           <div class="speed-lines" aria-hidden="true"></div>
           <div class="typing-word-card">
-            <p class="typing-label">このひらがなを入力</p>
+            <p class="typing-label">このひらがなを順番に入力</p>
             <div id="typing-japanese" class="typing-japanese">たいぴんぐ</div>
-            <div id="typing-target" class="typing-target" aria-live="polite">ひらがなで入力</div>
+            <div id="typing-target" class="typing-target" aria-live="polite"></div>
             <div class="typing-input-wrap">
-              <input id="typing-input" type="text" inputmode="text" lang="ja" pattern="[ぁ-ゖ]+" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="done" aria-label="ひらがな入力" placeholder="ひらがなで入力" disabled>
-              <span id="typing-input-hint">ひらがなだけで入力</span>
+              <input id="typing-input" type="text" inputmode="text" lang="ja" pattern="[ぁ-ゖ]+" autocomplete="off" autocapitalize="none" spellcheck="false" aria-label="ひらがな入力" placeholder="ひらがなを入力" disabled>
+              <span id="typing-input-hint">正しいひらがなを1文字入力するたびに進みます</span>
             </div>
           </div>
 
@@ -95,20 +95,20 @@
           <div id="arcade-overlay" class="arcade-overlay">
             <div class="arcade-overlay-card">
               <h2>HIRAGANA TYPE ATTACK</h2>
-              <p id="overlay-message">表示されるお題はすべてひらがな。ひらがなだけで入力してください。正解するとすぐ次のお題へ進みます。</p>
+              <p id="overlay-message">ひらがなを1文字ずつ入力。合っていれば即座に次の文字へ進み、1語完成すると自動で次のお題へ進みます。Enterは不要です。</p>
               <button id="arcade-start" class="arcade-main-action" type="button">20秒スタート</button>
             </div>
           </div>
         </div>
 
         <div class="arcade-controls typing-controls">
-          <div class="arcade-help">PC: 日本語入力をひらがなにして入力<br>スマホ: かなキーボードでひらがな入力</div>
+          <div class="arcade-help">PC: 日本語入力をひらがなにして入力<br>スマホ: かなキーボードで1文字ずつ入力</div>
           <div id="mobile-controls" class="typing-mobile-controls">
             <button id="typing-keyboard-btn" type="button">⌨ ひらがなキーボードを開く</button>
           </div>
         </div>
       </div>
-      <p class="arcade-note">ローマ字表示はありません。ゲーム側の正解判定も、ひらがなだけを受け付けます。</p>
+      <p class="arcade-note">入力済みの文字は緑、次に入力する文字は下線で表示。ローマ字入力やEnter確定は不要です。</p>
     </section>
   </main>
 
