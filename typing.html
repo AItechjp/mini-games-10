@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="GAME 14 TYPE ATTACK。日本語のお題をローマ字で入力する20秒タイピングゲーム。WPM・正確率・ミス数・BESTを記録。">
+  <title>GAME 14 - TYPE ATTACK | 20秒ミニゲームズ</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mode-switch.css">
+  <link rel="stylesheet" href="typing.css">
+</head>
+<body class="typing-page">
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">20秒ミニゲームズ</a>
+      <nav><a href="#game">GAME 14</a><a href="solo.html">ゲーム一覧</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="mode-switch-bar" aria-label="サイトモード">
+      <button class="mode-switch-btn" data-mode-href="solo.html">1人用</button>
+      <button class="mode-switch-btn" data-mode-href="online.html">オンライン対戦</button>
+      <button class="mode-switch-btn" data-mode-href="chat.html">チャット</button>
+    </div>
+
+    <section class="hero typing-hero">
+      <p class="eyebrow">GAME 14 / TYPE ATTACK</p>
+      <h1>20秒、<br>打ち切れ。</h1>
+      <p>日本語のお題をローマ字でタイプ。1文字ごとに判定し、20.0秒で自動終了。速さだけでなく正確さも記録します。</p>
+      <a class="primary-btn" href="#game">タイピングを始める</a>
+    </section>
+
+    <section id="game" class="section typing-section">
+      <div class="typing-shell">
+        <div class="typing-hud" aria-label="ゲーム成績">
+          <div><span>TIME</span><strong id="typing-time">20.0</strong></div>
+          <div><span>SCORE</span><strong id="typing-score">0</strong></div>
+          <div><span>WPM</span><strong id="typing-wpm">0</strong></div>
+          <div><span>ACCURACY</span><strong id="typing-accuracy">100%</strong></div>
+          <div><span>MISS</span><strong id="typing-miss">0</strong></div>
+          <div><span>BEST</span><strong id="typing-best">0</strong></div>
+        </div>
+
+        <div class="typing-arena" id="typing-arena">
+          <div class="speed-lines" aria-hidden="true"></div>
+          <div class="typing-word-card">
+            <p class="typing-label">TYPE THIS</p>
+            <div id="typing-japanese" class="typing-japanese">タイピング</div>
+            <div id="typing-target" class="typing-target" aria-live="polite"></div>
+            <div class="typing-input-wrap">
+              <input id="typing-input" type="text" inputmode="text" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="done" aria-label="ローマ字入力" disabled>
+              <span id="typing-input-hint">ここをタップしてキーボードを表示</span>
+            </div>
+            <div class="typing-progress-row">
+              <span>WORDS <strong id="typing-words">0</strong></span>
+              <span>KEYS <strong id="typing-keys">0</strong></span>
+            </div>
+          </div>
+
+          <div id="typing-overlay" class="typing-overlay">
+            <div class="typing-overlay-card">
+              <p class="typing-overlay-kicker">GAME 14</p>
+              <h2 id="typing-overlay-title">TYPE ATTACK</h2>
+              <p id="typing-overlay-message">日本語のお題の下に表示されるローマ字を入力。<br>ミスしても止まらず、20秒間打ち続けよう。</p>
+              <button id="typing-start" class="typing-main-action" type="button">20秒スタート</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="typing-help">
+          <span><strong>PC</strong> キーボードでそのまま入力</span>
+          <span><strong>スマホ</strong> 入力欄をタップして英字キーボードで入力</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
+  <script src="mode-switch.js"></script>
+  <script src="typing.js"></script>
+</body>
+</html>
