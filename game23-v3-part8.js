@@ -84,3 +84,22 @@ uxFire.addEventListener('pointerup',uxFireStop,{capture:true});uxFire.addEventLi
 
 document.addEventListener('mousemove',e=>{if(!pointerLocked||!state.running)return;e.stopImmediatePropagation();local.yaw-=clamp(e.movementX,-80,80)*.00185;local.pitch=clamp(local.pitch-clamp(e.movementY,-70,70)*.00155,-1.08,1.04);},{capture:true});
 frame.addEventListener('contextmenu',e=>{if(uxTouch)e.preventDefault();},{capture:true});
+
+/* Camera-relative movement fix: joystick/WASD now follow the view direction exactly.
+   Up = forward, down = back, left = left, right = right at every yaw angle. */
+updateLocal=function(dt){
+  if(!state.running||state.localLives<=0)return;
+  let forward=(keys.has('KeyW')?1:0)-(keys.has('KeyS')?1:0)-touchMove.y;
+  let strafe=(keys.has('KeyD')?1:0)-(keys.has('KeyA')?1:0)+touchMove.x;
+  const mag=Math.hypot(forward,strafe);if(mag>1){forward/=mag;strafe/=mag;}
+  const boost=performance.now()<state.adrenalineUntil?1.35:1,sp=difficulty().speed*boost;
+  const sx=Math.sin(local.yaw),cz=Math.cos(local.yaw);
+  const dx=(-sx*forward+cz*strafe)*sp*dt;
+  const dz=(-cz*forward-sx*strafe)*sp*dt;
+  if(!blocked(local.x+dx,local.z,.68))local.x+=dx;
+  if(!blocked(local.x,local.z+dz,.68))local.z+=dz;
+  updateCamera();
+  const me=state.players.get(state.playerId)||{};
+  Object.assign(me,{id:state.playerId,x:local.x,z:local.z,yaw:local.yaw,lives:state.localLives,shield:state.shield,adr:state.adrenalineUntil});
+  state.players.set(state.playerId,me);
+};
