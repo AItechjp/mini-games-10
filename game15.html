@@ -6,6 +6,7 @@
   <meta name="description" content="GAME 15 CHAIN ORBS。時間無制限の1人対CPU連鎖パズル。連鎖でおじゃまを送り、先に盤面が埋まった側が敗北。">
   <title>GAME 15 - CHAIN ORBS VS CPU</title>
   <link rel="stylesheet" href="puzzle15.css">
+  <link rel="stylesheet" href="backend.css">
 </head>
 <body>
 <div id="p15-app">
@@ -18,7 +19,7 @@
   <main class="p15-stage">
     <section class="p15-intro">
       <div><span class="p15-kicker">ENDLESS SOLO BATTLE</span><h1>CHAIN ORBS <em>VS CPU</em></h1></div>
-      <p>時間制限なし。4個以上つなげて消し、連鎖でおじゃまオーブを相手へ送れ。盤面の上まで埋まった側が負け。</p>
+      <p>時間制限なし。4個以上つなげて消し、連鎖でおじゃまオーブを相手へ送れ。盤面の上まで埋まった側が負け。対戦結果とスコアはバックエンドへ保存されます。</p>
     </section>
 
     <section class="p15-arena" aria-label="CPU対戦パズル">
@@ -59,6 +60,9 @@
     </div>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script>
+<script src="supabase-config.js"></script>
 <script src="puzzle15.js"></script>
+<script src="custom-backend.js"></script>
 </body>
 </html>
