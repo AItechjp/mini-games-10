@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="1人で遊べる20秒ミニゲーム10本。ハイスコアは端末に保存されます。" />
+  <title>20秒ミニゲームズ - 1人用</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">20秒ミニゲームズ</a>
+      <nav><a href="index.html">モード選択</a><a href="#games">ゲーム一覧</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">SOLO / 20 SECONDS</p>
+      <h1>1人で、20秒勝負。</h1>
+      <p>接続不要ですぐ遊べます。10ゲームすべて20秒。BESTスコアはこの端末に保存されます。</p>
+      <a class="primary-btn" href="#games">ゲームを選ぶ</a>
+    </section>
+
+    <section id="games" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">SOLO GAMES</p><h2>ゲーム一覧</h2></div>
+        <p>全ゲーム20秒。何度でも挑戦できます。</p>
+      </div>
+      <div id="game-grid" class="game-grid"></div>
+    </section>
+
+    <section id="play" class="play-section hidden" aria-live="polite">
+      <div class="play-topbar">
+        <button id="back-btn" class="ghost-btn" type="button">← 一覧へ</button>
+        <div class="play-title-wrap"><span id="play-number"></span><h2 id="play-title"></h2></div>
+        <button id="restart-btn" class="ghost-btn" type="button">もう一度</button>
+      </div>
+      <div class="stats">
+        <div><span>TIME</span><strong id="time-value">20.0</strong></div>
+        <div><span>SCORE</span><strong id="score-value">0</strong></div>
+        <div><span>BEST</span><strong id="best-value">0</strong></div>
+      </div>
+      <div id="game-stage" class="game-stage" tabindex="0"></div>
+      <p id="game-message" class="game-message"></p>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
+  <script src="solo.js" defer></script>
+</body>
+</html>
