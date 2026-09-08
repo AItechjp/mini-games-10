@@ -2,46 +2,63 @@
 const uxShell=frame.closest('.outbreak-shell')||frame;
 const uxFullscreen=$('#outbreak-fullscreen');
 const uxTouch=matchMedia('(pointer:coarse)').matches||(navigator.maxTouchPoints||0)>0;
-let uxFallback=false,uxFireTimer=0,uxFirePointer=null,uxLookX=0,uxLookY=0;
+let uxFallback=false,uxNativeRequested=false,uxFireTimer=0,uxFirePointer=null,uxLookX=0,uxLookY=0;
 
 const uxRotate=document.createElement('div');
 uxRotate.className='orientation-hint hidden';
 uxRotate.innerHTML='<strong>横向きでプレイ</strong><span>端末を90°回転してください</span>';
 frame.appendChild(uxRotate);
 const uxExit=document.createElement('button');
-uxExit.type='button';uxExit.className='game23-exit';uxExit.textContent='×';uxExit.setAttribute('aria-label','全画面を終了');frame.appendChild(uxExit);
+uxExit.type='button';uxExit.className='game23-exit';uxExit.textContent='×';uxExit.setAttribute('aria-label','ゲーム全画面を終了');frame.appendChild(uxExit);
 const uxKnob=document.createElement('div');uxKnob.className='touch-knob';touchStick.appendChild(uxKnob);
 
 function uxActive(){return !!document.fullscreenElement||document.body.classList.contains('game23-focus-mode');}
 function uxOrientationHint(){uxRotate.classList.toggle('hidden',!(uxTouch&&uxActive()&&innerHeight>innerWidth));}
 function uxLockLandscape(){if(!uxTouch)return;try{const p=screen.orientation?.lock?.('landscape');p?.catch?.(()=>{});}catch{}}
-function uxEnter(){
-  document.body.classList.add('game23-focus-mode');uxFallback=true;uxOrientationHint();
-  try{
-    if(!document.fullscreenElement&&uxShell.requestFullscreen){
-      const p=uxShell.requestFullscreen({navigationUI:'hide'});
-      Promise.resolve(p).then(()=>{uxFallback=false;uxLockLandscape();uxOrientationHint();setTimeout(resize,50);}).catch(()=>{uxLockLandscape();uxOrientationHint();});
-    }else uxLockLandscape();
-  }catch{uxLockLandscape();}
+function uxRestoreScroll(){
+  document.body.classList.remove('game23-focus-mode');
+  document.body.style.overflow='';document.body.style.overscrollBehavior='';
+  document.documentElement.style.overflow='';document.documentElement.style.overscrollBehavior='';
+  uxFallback=false;uxOrientationHint();
+  requestAnimationFrame(()=>{try{window.scrollBy(0,0);}catch{}setTimeout(resize,30);});
+}
+function uxEnter(nativeFullscreen=false){
+  document.body.classList.add('game23-focus-mode');uxFallback=true;uxNativeRequested=!!nativeFullscreen;uxOrientationHint();
+  /* Touch devices default to CSS immersive mode. This avoids Chrome's persistent
+     Fullscreen API notice. Native fullscreen is only requested by the explicit button. */
+  if(nativeFullscreen){
+    try{
+      if(!document.fullscreenElement&&uxShell.requestFullscreen){
+        const p=uxShell.requestFullscreen({navigationUI:'hide'});
+        Promise.resolve(p).then(()=>{uxFallback=false;uxLockLandscape();uxOrientationHint();setTimeout(resize,50);}).catch(()=>{uxFallback=true;uxOrientationHint();});
+      }else uxLockLandscape();
+    }catch{}
+  }
   setTimeout(resize,50);
 }
 async function uxLeave(){
   try{if(document.fullscreenElement)await document.exitFullscreen();}catch{}
   try{screen.orientation?.unlock?.();}catch{}
-  uxFallback=false;document.body.classList.remove('game23-focus-mode');uxOrientationHint();setTimeout(resize,50);
+  uxNativeRequested=false;uxRestoreScroll();
 }
 function uxLabels(){
-  uxFullscreen.textContent=uxTouch?'横向き全画面':'全画面';
-  if(uxTouch&&!state.running&&state.mode==='solo'&&!startBtn.disabled)startBtn.textContent='横向き全画面で開始';
+  uxFullscreen.textContent=uxTouch?'Chrome全画面':'全画面';
+  if(uxTouch&&!state.running&&state.mode==='solo'&&!startBtn.disabled)startBtn.textContent='横向きで開始';
 }
 uxLabels();
-startBtn.addEventListener('click',()=>{uxEnter();setTimeout(uxLabels,0);},{capture:true});
-uxFullscreen.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();uxActive()?uxLeave():uxEnter();},{capture:true});
+startBtn.addEventListener('click',()=>{uxEnter(false);setTimeout(uxLabels,0);},{capture:true});
+uxFullscreen.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();if(document.fullscreenElement)uxLeave();else uxEnter(true);},{capture:true});
 uxExit.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();uxLeave();});
 $('#mode-solo').addEventListener('click',()=>setTimeout(uxLabels,0),{capture:true});
 $('#mode-coop').addEventListener('click',()=>setTimeout(uxLabels,0),{capture:true});
-document.addEventListener('fullscreenchange',()=>{if(document.fullscreenElement){document.body.classList.add('game23-focus-mode');uxFallback=false;}else if(!uxFallback){document.body.classList.remove('game23-focus-mode');try{screen.orientation?.unlock?.();}catch{}}uxOrientationHint();setTimeout(resize,50);});
+document.addEventListener('fullscreenchange',()=>{
+  if(document.fullscreenElement){document.body.classList.add('game23-focus-mode');uxFallback=false;}
+  else if(uxNativeRequested){uxNativeRequested=false;uxRestoreScroll();try{screen.orientation?.unlock?.();}catch{}}
+  uxOrientationHint();setTimeout(resize,50);
+});
 addEventListener('resize',uxOrientationHint,{passive:true});try{screen.orientation?.addEventListener?.('change',uxOrientationHint);}catch{}
+addEventListener('pagehide',uxRestoreScroll);addEventListener('beforeunload',uxRestoreScroll);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&!state.running&&!document.fullscreenElement)uxRestoreScroll();});
 
 function uxJoyCenter(){const r=touchStick.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2,r:Math.max(38,r.width*.39)};}
 function uxJoyApply(e){
