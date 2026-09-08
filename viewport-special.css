@@ -1,0 +1,46 @@
+/* GAME 15 + GAME 16 viewport safety overrides */
+html,body{max-width:100%;overflow-x:hidden}
+
+/* GAME 15 */
+#p15-app{max-width:100%;min-width:0}
+.p15-stage,.p15-arena,.p15-board-card,.p15-canvas-shell,.p15-controls{min-width:0}
+@media(max-width:900px){
+  html,body{height:auto;min-height:100%}
+  #p15-app{min-height:100svh;overflow-x:hidden;overflow-y:auto;padding-bottom:max(10px,env(safe-area-inset-bottom))}
+  .p15-topbar{height:54px;padding:7px 8px;gap:7px}
+  .p15-back,.p15-fullscreen{padding:8px 10px;font-size:.66rem;white-space:nowrap}
+  .p15-stage{width:calc(100% - 10px);padding:8px 0 14px}
+  .p15-arena{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px;align-items:start}
+  .p15-board-card{padding:5px;border-radius:15px;overflow:hidden}
+  .p15-card-head{margin-bottom:4px;gap:4px}.p15-card-head>div:first-child span{font-size:.48rem}.p15-card-head>div:first-child strong{font-size:.78rem}.p15-score small{font-size:.46rem}.p15-score b{font-size:.82rem}
+  .p15-meter{gap:4px;margin-bottom:4px}.p15-meter>div{height:4px}.p15-meter strong{font-size:.6rem;min-width:16px}
+  .p15-canvas-shell{border-radius:12px}.p15-canvas-shell canvas{display:block;width:100%;height:auto;max-height:44svh;object-fit:contain;margin:auto}
+  .p15-next{grid-template-columns:46px 1fr;gap:3px;margin-top:4px;padding:3px 4px;border-radius:10px}.p15-next>span{display:none}.p15-next canvas{width:44px;height:32px}.p15-next small{font-size:.42rem}.p15-next strong{font-size:.8rem}
+  .p15-versus{grid-template-columns:46px 1fr 1fr;gap:4px}.p15-vs-mark{font-size:1.25rem}.p15-battle-state,.p15-attack-flow{padding:5px;border-radius:10px}.p15-battle-state span,.p15-attack-flow span{font-size:.42rem}.p15-battle-state strong,.p15-attack-flow strong{font-size:.68rem}.p15-battle-state small,.p15-attack-flow small{font-size:.46rem}
+  .p15-controls{margin-top:6px;gap:6px}.p15-touch{position:sticky;bottom:max(4px,env(safe-area-inset-bottom));gap:4px;padding:5px;border-radius:13px}.p15-touch button{min-width:0;min-height:42px;padding:0;border-radius:11px;font-size:.9rem}.p15-touch .p15-drop{font-size:.6rem;letter-spacing:.08em}
+  .p15-overlay{padding:10px}.p15-result-card{max-height:92svh;overflow:auto;padding:20px 14px;border-radius:22px}.p15-result-card h2{font-size:clamp(2rem,11vw,3.4rem)}.p15-result-card p{font-size:.86rem}.p15-rule-chips{margin:12px 0}
+}
+@media(max-width:390px){
+  .p15-canvas-shell canvas{max-height:40svh}.p15-topbar{height:50px}.p15-back,.p15-fullscreen{font-size:.6rem;padding:7px 8px}.p15-touch button{min-height:40px}.p15-next canvas{width:38px;height:28px}.p15-next{grid-template-columns:40px 1fr}.p15-versus{grid-template-columns:40px 1fr 1fr}
+}
+@media(orientation:landscape) and (max-height:560px){
+  #p15-app{min-height:100svh}.p15-topbar{height:46px}.p15-stage{padding-top:4px}.p15-arena{grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);align-items:center}.p15-versus{grid-column:auto;grid-row:auto;display:grid;grid-template-columns:1fr;gap:4px}.p15-canvas-shell canvas{max-height:calc(100svh - 150px)}.p15-next{display:none}.p15-controls{margin-top:4px}.p15-touch button{min-height:36px}
+}
+
+/* GAME 16 */
+#stealth-app,#mountain-game{max-width:100%;max-height:100%}.s16-card{max-height:92svh;overflow:auto}
+@media(pointer:coarse),(max-width:800px){
+  .s16-topbar{gap:6px;padding:max(7px,env(safe-area-inset-top)) 8px 6px}.s16-back,.s16-topbar button{padding:8px 10px;font-size:.62rem;white-space:nowrap}
+  .s16-hud{top:54px;left:8px;width:min(300px,calc(100% - 112px));gap:5px}.s16-objective,.s16-stats,.s16-detect{border-radius:11px}.s16-objective{padding:7px 9px;grid-template-columns:minmax(0,1fr) auto;gap:2px}.s16-objective strong{font-size:.74rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.s16-objective small{font-size:.68rem}.s16-stats{width:100%}.s16-stats>div{padding:6px 7px;min-width:0}.s16-stats span{font-size:.44rem}.s16-stats strong{display:block;font-size:.68rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.s16-detect{width:100%;padding:6px 8px}
+  #s16-minimap{top:54px;right:8px;width:94px;height:94px;border-radius:14px}
+  .s16-progress{top:auto;bottom:128px;gap:5px;padding:6px 8px;max-width:calc(100% - 16px);white-space:nowrap}.s16-progress span{font-size:.44rem}.s16-progress i{width:8px}
+  .s16-touch{padding:0 10px;bottom:max(8px,env(safe-area-inset-bottom))}.s16-stick{width:104px;height:104px}.s16-stick i{width:44px;height:44px;left:29px;top:29px}.s16-touch-actions{grid-template-columns:repeat(2,62px);gap:6px}.s16-touch-actions button{min-height:48px;border-radius:13px;font-size:.55rem}.s16-touch-actions #s16-action{min-height:102px}
+  .s16-prompt{bottom:23%;max-width:80%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.s16-interact{bottom:18%;width:min(280px,62vw)}
+  .s16-card{padding:18px 14px;border-radius:22px}.s16-card h1{font-size:clamp(2.2rem,13vw,4rem)}.s16-card>p{font-size:.8rem;line-height:1.5}.s16-controls{margin:10px 0}.s16-result{margin:10px 0}
+}
+@media(max-width:420px){
+  .s16-hud{width:calc(100% - 16px)}#s16-minimap{display:none}.s16-progress{bottom:116px}.s16-stick{width:94px;height:94px}.s16-stick i{width:40px;height:40px;left:26px;top:26px}.s16-touch-actions{grid-template-columns:repeat(2,56px)}.s16-touch-actions button{min-height:44px}.s16-touch-actions #s16-action{min-height:94px}.s16-objective strong{font-size:.7rem}.s16-prompt{bottom:25%}.s16-interact{bottom:20%}
+}
+@media(orientation:landscape) and (max-height:560px){
+  .s16-topbar{padding-top:5px}.s16-hud{top:44px;left:6px;width:250px}.s16-objective{padding:5px 7px}.s16-stats>div{padding:4px 5px}.s16-detect{padding:4px 6px}#s16-minimap{top:44px;width:76px;height:76px}.s16-progress{bottom:86px}.s16-stick{width:78px;height:78px}.s16-stick i{width:34px;height:34px;left:21px;top:21px}.s16-touch-actions{grid-template-columns:repeat(2,54px);gap:4px}.s16-touch-actions button{min-height:38px}.s16-touch-actions #s16-action{min-height:80px}.s16-touch{padding:0 8px}.s16-prompt{bottom:22%}.s16-interact{bottom:15%}.s16-card{max-width:560px;padding:12px}.s16-card h1{font-size:2.3rem}.s16-card>p{font-size:.72rem}.s16-controls{display:none}
+}
