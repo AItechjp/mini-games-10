@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="オンラインで2人対戦できる20秒ミニゲーム10本。部屋コードで友達とすぐ遊べます。" />
+  <title>20秒オンライン対戦ミニゲームズ</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="online.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">20秒ミニゲームズ</a>
+      <nav><a href="index.html">モード選択</a><a href="#lobby">対戦ロビー</a><a href="#games">ゲーム一覧</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="home" class="hero">
+      <p class="eyebrow">ONLINE / 2 PLAYERS</p>
+      <h1>20秒で、決着。</h1>
+      <p>離れた相手とオンライン2人対戦。インストール不要、部屋コードだけで遊べます。</p>
+      <a class="primary-btn" href="#lobby">対戦を始める</a>
+    </section>
+
+    <section id="lobby" class="section lobby-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">ONLINE LOBBY</p><h2>2人対戦ロビー</h2></div>
+        <p id="connection-badge" class="connection-badge">未接続</p>
+      </div>
+
+      <div class="lobby-grid">
+        <article class="lobby-card">
+          <span class="lobby-step">PLAYER 1 / HOST</span>
+          <h3>部屋を作る</h3>
+          <p>部屋コードを作り、相手に送ります。ゲーム選択と開始はホストが行います。</p>
+          <button id="create-room-btn" class="lobby-action" type="button">部屋を作る</button>
+          <div id="room-created" class="room-created hidden">
+            <span>部屋コード</span>
+            <strong id="room-code-display">------</strong>
+            <button id="copy-room-btn" class="mini-btn" type="button">コードをコピー</button>
+            <p>この6桁を相手に送ってください。</p>
+          </div>
+        </article>
+
+        <article class="lobby-card">
+          <span class="lobby-step">PLAYER 2 / GUEST</span>
+          <h3>部屋に参加</h3>
+          <p>相手から届いた6桁の部屋コードを入力します。</p>
+          <form id="join-form" class="join-form">
+            <label for="room-code-input">部屋コード</label>
+            <input id="room-code-input" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="ABC123" />
+            <button class="lobby-action" type="submit">参加する</button>
+          </form>
+        </article>
+      </div>
+
+      <div id="connection-panel" class="connection-panel">
+        <strong id="connection-status">「部屋を作る」か「部屋に参加」を選んでください。</strong>
+        <span id="connection-detail">接続後、ホストが下の10ゲームから1つ選びます。</span>
+      </div>
+    </section>
+
+    <section id="games" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">20 SECOND BATTLES</p><h2>ゲーム一覧</h2></div>
+        <p>全ゲーム20秒。ホストが選ぶと相手側も同じゲームが開きます。</p>
+      </div>
+      <div id="game-grid" class="game-grid"></div>
+    </section>
+
+    <section id="play" class="play-section hidden" aria-live="polite">
+      <div class="play-topbar">
+        <button id="back-btn" class="ghost-btn" type="button">← 一覧へ</button>
+        <div class="play-title-wrap"><span id="play-number"></span><h2 id="play-title"></h2></div>
+        <button id="restart-btn" class="ghost-btn" type="button">再戦</button>
+      </div>
+      <div class="stats versus-stats">
+        <div><span>TIME</span><strong id="time-value">20.0</strong></div>
+        <div class="you-stat"><span>YOU</span><strong id="score-value">0</strong></div>
+        <div class="rival-stat"><span>RIVAL</span><strong id="rival-value">0</strong></div>
+      </div>
+      <div id="game-stage" class="game-stage" tabindex="0"></div>
+      <p id="game-message" class="game-message"></p>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© 2026 20秒オンライン対戦ミニゲームズ</div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
