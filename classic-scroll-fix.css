@@ -1,0 +1,57 @@
+/* Classic games: prefer scrolling over clipping. Daifugo can start with 26 cards per player. */
+html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;overflow-y:auto!important}
+.classic-shell{overflow:visible!important}
+.classic-game-panel{overflow:visible!important;min-width:0}
+.classic-stage{height:auto!important;max-height:none!important;min-height:520px;overflow:visible!important;contain:none!important}
+.table-zone{height:auto!important;max-height:none!important;overflow:visible!important;min-width:0}
+.rival-area,.center-area,.you-area{min-width:0;overflow:visible!important}
+.hand{width:100%;max-width:100%;overflow-x:auto!important;overflow-y:visible!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-gutter:stable;padding-bottom:14px}
+.hand>.playing-card,.hand>.uno-card{flex:0 0 auto}
+.classic-controlbar{position:sticky;bottom:0;z-index:30;background:rgba(10,15,29,.96);border-top:1px solid var(--classic-line);padding:12px 20px max(12px,env(safe-area-inset-bottom));backdrop-filter:blur(12px)}
+.classic-controlbar .classic-primary,.classic-controlbar .classic-secondary{min-height:46px}
+.classic-message{background:rgba(10,15,29,.92);padding-top:10px!important;margin:0}
+
+/* Daifugo/Old Maid/UNO: never clip tall card tables. */
+body:has(#game-stage .table-zone) .classic-stage{min-height:0!important}
+body:has(#game-stage .table-zone) .classic-game-panel{overflow:visible!important}
+
+@media(max-width:760px){
+  .classic-stage{min-height:0!important;padding:10px!important}
+  .table-zone{gap:12px!important}
+  .rival-area,.center-area,.you-area{padding:10px!important;border-radius:16px!important}
+  .area-head{align-items:flex-start;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+  .area-head h3{font-size:.86rem}
+  .area-head span{font-size:.76rem}
+  .hand{min-height:92px!important;gap:6px!important;padding:6px 2px 12px!important}
+  .playing-card{width:58px!important;height:86px!important}
+  .playing-card .rank{font-size:1rem!important}.playing-card .suit{font-size:1.35rem!important}
+  .uno-card{width:60px!important;height:90px!important}
+  .pile{min-height:106px!important}
+  .center-area .action-row{margin-top:8px}
+  .center-area .action-row .choice-btn{width:100%;min-height:48px}
+  .classic-controlbar{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px!important;padding:8px 10px max(9px,env(safe-area-inset-bottom))!important}
+  .classic-controlbar>*{width:100%;min-width:0}
+  .classic-controlbar .classic-primary:last-child:nth-child(3){grid-column:1/-1}
+}
+
+@media(max-width:420px){
+  .classic-stage{padding:8px!important}
+  .rival-area,.center-area,.you-area{padding:8px!important}
+  .playing-card{width:54px!important;height:80px!important}
+  .hand{min-height:86px!important}
+  .classic-controlbar .classic-primary,.classic-controlbar .classic-secondary{font-size:.84rem;padding:9px 8px}
+}
+
+@media(orientation:landscape) and (max-height:560px){
+  html,body{overflow-y:auto!important}
+  .classic-hero{padding:12px 0 8px!important}
+  .classic-hero p:not(.eyebrow){display:none}
+  .classic-mode-bar{margin-bottom:8px!important}
+  .classic-scorebar>div{padding:6px 8px!important}
+  .classic-stage{padding:8px!important}
+  .table-zone{gap:8px!important}
+  .hand{min-height:78px!important;padding-bottom:8px!important}
+  .playing-card{width:50px!important;height:74px!important}
+  .pile{min-height:82px!important}
+  .classic-controlbar{position:sticky!important;bottom:0!important}
+}
