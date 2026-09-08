@@ -6,21 +6,23 @@
   <meta name="description" content="1人で遊べる20秒ミニゲーム10本。ハイスコアは端末に保存されます。" />
   <title>20秒ミニゲームズ - 1人用</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="online.css" />
+  <link rel="stylesheet" href="mode-switch.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="index.html">20秒ミニゲームズ</a>
-      <div class="header-mode-switch" aria-label="プレイモード">
-        <a class="mode-switch-btn active" aria-current="page" href="solo.html">1人用</a>
-        <a class="mode-switch-btn" href="online.html">オンライン対戦</a>
-      </div>
+      <nav><a href="#games">ゲーム一覧</a></nav>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="hero compact-hero">
+    <div class="mode-switch-bar" aria-label="プレイモード切替">
+      <button class="mode-switch-btn" type="button" aria-pressed="true" data-mode-href="solo.html">1人用</button>
+      <button class="mode-switch-btn" type="button" aria-pressed="false" data-mode-href="online.html">オンライン対戦</button>
+    </div>
+
+    <section class="hero">
       <p class="eyebrow">SOLO / 20 SECONDS</p>
       <h1>1人で、20秒勝負。</h1>
       <p>接続不要ですぐ遊べます。10ゲームすべて20秒。BESTスコアはこの端末に保存されます。</p>
@@ -52,6 +54,7 @@
   </main>
 
   <footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
+  <script src="mode-switch.js"></script>
   <script src="solo.js" defer></script>
 </body>
 </html>
