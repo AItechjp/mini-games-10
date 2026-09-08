@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080d12">
+<title>DARK INTEL WATCH - Safe Threat Intelligence Dashboard</title>
+<style>
+:root{--bg:#080d12;--panel:#0d141b;--panel2:#111b24;--line:#263440;--text:#f5f7fa;--muted:#97a8b6;--cyan:#74e7ff;--amber:#ffc766;--red:#ff758c;--green:#66e6a9}
+*{box-sizing:border-box}html,body{margin:0;background:radial-gradient(circle at 50% -10%,#172b35 0,#080d12 45%,#04070a 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select,textarea{font:inherit}.wrap{max-width:1460px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center}.brand{font-weight:900;letter-spacing:.11em}.back{color:var(--muted);text-decoration:none}.hero{margin:18px 0;background:linear-gradient(180deg,#101a22,#0a1117);border:1px solid var(--line);border-radius:24px;padding:22px}.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:.18em;font-weight:800}.hero h1{font-size:clamp(28px,5vw,50px);margin:7px 0 10px;line-height:1}.hero p{color:var(--muted);line-height:1.7;max-width:950px}.safe{border:1px solid #4d4530;background:#1a170f;color:#ead8a8;padding:12px 14px;border-radius:14px;font-size:12px;line-height:1.65;margin-top:14px}
+.controls{display:grid;grid-template-columns:1.2fr .8fr .8fr auto;gap:10px;margin:14px 0}.input,.select,.btn,.textarea{border:1px solid var(--line);background:#091119;color:white;border-radius:13px;padding:11px 12px;outline:none}.input:focus,.select:focus,.textarea:focus{border-color:var(--cyan)}.btn{cursor:pointer;font-weight:800}.btn.primary{background:linear-gradient(135deg,#24b7d4,#73e7ba);border:0;color:#041015}.btn.bad{color:#ffd7de;border-color:#56313a}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}.metric{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:14px}.metric span{display:block;color:var(--muted);font-size:11px}.metric strong{display:block;margin-top:7px;font-size:22px}
+.layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:14px}.panel{background:linear-gradient(180deg,#0d151d,#091017);border:1px solid var(--line);border-radius:20px;overflow:hidden}.panel-head{padding:14px 15px;border-bottom:1px solid var(--line);display:flex;gap:10px;justify-content:space-between;align-items:center}.panel-head h2{font-size:17px;margin:0}.tools{display:flex;gap:8px;flex-wrap:wrap}.table-wrap{overflow:auto;max-height:650px}.table{width:100%;border-collapse:collapse;min-width:900px}.table th,.table td{padding:10px 11px;border-bottom:1px solid #1a2731;font-size:12px;text-align:left;vertical-align:top}.table th{position:sticky;top:0;background:#101a22;z-index:2;color:#a8b9c5}.ioc{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.sev{display:inline-block;padding:3px 8px;border-radius:999px;border:1px solid var(--line)}.sev.high{color:#ffd2da;border-color:#5a303a;background:#211014}.sev.medium{color:#ffe0a3;border-color:#58492a;background:#1d170b}.sev.low{color:#baf3db;border-color:#26533f;background:#0c1d16}.side{padding:15px}.side h3{margin:0 0 8px;font-size:14px}.side p,.side li{color:var(--muted);font-size:12px;line-height:1.7}.textarea{width:100%;min-height:150px;resize:vertical}.form{display:grid;gap:9px}.preview{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#071016;border:1px solid var(--line);padding:10px;border-radius:12px;color:#c8d7e1;min-height:42px;word-break:break-all}.empty{padding:50px 20px;text-align:center;color:var(--muted)}.toast{position:fixed;right:18px;bottom:18px;background:#12202b;border:1px solid var(--line);padding:12px 14px;border-radius:12px;opacity:0;transform:translateY(8px);transition:.2s}.toast.show{opacity:1;transform:none}
+@media(max-width:920px){.controls{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.layout{grid-template-columns:1fr}}
+@media(max-width:560px){.wrap{padding:12px}.hero{padding:16px}.controls{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand">DARK INTEL WATCH</div><a class="back" href="apps.html">← アプリ一覧</a></header>
+<section class="hero">
+<div class="eyebrow">SAFE THREAT INTELLIGENCE DASHBOARD</div>
+<h1>ダークウェブ情報を、危険なリンクにせず管理。</h1>
+<p>脅威インテリジェンスの収集・整理用ダッシュボードです。報告元から得たIOCやダークウェブ関連情報を取り込み、URLはハッシュ化・伏せ字化して安全に一覧化します。検索、重複排除、深刻度、報告状況、CSV/JSON出力に対応します。</p>
+<div class="safe">安全上、このページは生きている .onion URL を探索・検証・公開したり、クリック可能な形で保存したりしません。入力された .onion / URL は表示前に不可逆ハッシュと伏せ字へ変換し、外部へアクセスしません。「稼働中」は直接確認ではなく、取り込んだ報告元のステータスとして扱います。</div>
+</section>
+
+<div class="controls">
+<input id="search" class="input" placeholder="ハッシュ・カテゴリ・タグ・出典を検索">
+<select id="severity" class="select"><option value="all">深刻度: すべて</option><option>high</option><option>medium</option><option>low</option></select>
+<select id="state" class="select"><option value="all">状態: すべて</option><option value="reported-active">reported-active</option><option value="unknown">unknown</option><option value="inactive">inactive</option></select>
+<button id="clear" class="btn bad">全削除</button>
+</div>
+
+<section class="stats">
+<div class="metric"><span>INDICATORS</span><strong id="mTotal">0</strong></div>
+<div class="metric"><span>HIGH</span><strong id="mHigh">0</strong></div>
+<div class="metric"><span>REPORTED ACTIVE</span><strong id="mActive">0</strong></div>
+<div class="metric"><span>UNIQUE SOURCES</span><strong id="mSources">0</strong></div>
+</section>
+
+<section class="layout">
+<article class="panel">
+<div class="panel-head"><h2>脅威インテリジェンス一覧</h2><div class="tools"><button id="csv" class="btn">CSV</button><button id="json" class="btn">JSON</button></div></div>
+<div class="table-wrap">
+<table class="table"><thead><tr><th>Indicator</th><th>SHA-256</th><th>Category</th><th>Severity</th><th>Status</th><th>Source</th><th>Last report</th></tr></thead><tbody id="rows"></tbody></table>
+</div>
+</article>
+
+<aside class="panel side">
+<h3>IOCを追加</h3>
+<form id="form" class="form">
+<textarea id="ioc" class="textarea" placeholder="URL / .onion / domain / hash を1行ずつ入力"></textarea>
+<div id="preview" class="preview">入力すると安全な表示プレビューが出ます。</div>
+<select id="cat" class="select"><option>dark-web-mention</option><option>phishing</option><option>malware</option><option>ransomware</option><option>credential-leak</option><option>other</option></select>
+<select id="sev" class="select"><option>high</option><option selected>medium</option><option>low</option></select>
+<select id="st" class="select"><option value="reported-active">reported-active</option><option value="unknown" selected>unknown</option><option value="inactive">inactive</option></select>
+<input id="source" class="input" placeholder="出典名 例: vendor report / SOC">
+<button class="btn primary" type="submit">安全化して追加</button>
+</form>
+<h3 style="margin-top:18px">JSON一括取込</h3>
+<p>配列形式のJSONを貼り付けると、<code>indicator/url/domain</code>、<code>category</code>、<code>severity</code>、<code>status</code>、<code>source</code> を読み取ります。URLは必ず安全化して保存します。</p>
+<button id="importBtn" class="btn">JSONを貼り付けて取込</button>
+</aside>
+</section>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+(()=>{'use strict';
+const KEY='dark-intel-watch-v1', $=s=>document.querySelector(s), rows=$('#rows'), toast=$('#toast');
+let items=[];try{items=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(_){}
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+function note(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(note.t);note.t=setTimeout(()=>toast.classList.remove('show'),1700)}
+async function sha256(text){const b=new TextEncoder().encode(text.trim());const h=await crypto.subtle.digest('SHA-256',b);return[...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+function normalize(v){return String(v||'').trim().replace(/\s+/g,'')}
+function masked(v){
+ const s=normalize(v);if(!s)return'';
+ if(/^[a-f0-9]{64}$/i.test(s))return`sha256:${s.slice(0,10)}…${s.slice(-8)}`;
+ if(/\.onion(?:\/|$)/i.test(s)){const host=s.replace(/^https?:\/\//i,'').split('/')[0];return`${host.slice(0,5)}…${host.slice(-8)}`}
+ try{const u=new URL(/^https?:\/\//i.test(s)?s:`https://${s}`);const host=u.hostname;return`${host.slice(0,6)}…${host.slice(-6)}${u.pathname&&u.pathname!=='/'?' /…':''}`}catch(_){}
+ return s.length>22?`${s.slice(0,10)}…${s.slice(-8)}`:s;
+}
+function safeItem(i){return{id:i.id||crypto.randomUUID?.()||('i'+Date.now()+Math.random()),display:i.display,hash:i.hash,category:i.category||'other',severity:['high','medium','low'].includes(i.severity)?i.severity:'medium',status:['reported-active','unknown','inactive'].includes(i.status)?i.status:'unknown',source:String(i.source||'manual').slice(0,120),reportedAt:i.reportedAt||new Date().toISOString()}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(items))}
+function filtered(){const q=$('#search').value.trim().toLowerCase(),sev=$('#severity').value,st=$('#state').value;return items.filter(x=>(sev==='all'||x.severity===sev)&&(st==='all'||x.status===st)&&(!q||`${x.display} ${x.hash} ${x.category} ${x.source}`.toLowerCase().includes(q)))}
+function render(){const list=filtered();rows.innerHTML=list.length?list.map(x=>`<tr><td class="ioc">${esc(x.display)}</td><td class="ioc" title="${esc(x.hash)}">${esc(x.hash.slice(0,12))}…</td><td>${esc(x.category)}</td><td><span class="sev ${esc(x.severity)}">${esc(x.severity)}</span></td><td>${esc(x.status)}</td><td>${esc(x.source)}</td><td>${esc(new Date(x.reportedAt).toLocaleString())}</td></tr>`).join(''):`<tr><td colspan="7"><div class="empty">IOCがありません。</div></td></tr>`;$('#mTotal').textContent=items.length;$('#mHigh').textContent=items.filter(x=>x.severity==='high').length;$('#mActive').textContent=items.filter(x=>x.status==='reported-active').length;$('#mSources').textContent=new Set(items.map(x=>x.source)).size}
+async function addIndicators(values,meta){let n=0;for(const raw of values){const v=normalize(raw);if(!v)continue;const hash=await sha256(v);if(items.some(x=>x.hash===hash))continue;items.unshift(safeItem({display:masked(v),hash,...meta}));n++}persist();render();return n}
+$('#ioc').addEventListener('input',()=>{const v=$('#ioc').value.trim().split(/\n/).filter(Boolean)[0]||'';$('#preview').textContent=v?masked(v):'入力すると安全な表示プレビューが出ます。'});
+$('#form').addEventListener('submit',async e=>{e.preventDefault();const vals=$('#ioc').value.split(/\n/);const n=await addIndicators(vals,{category:$('#cat').value,severity:$('#sev').value,status:$('#st').value,source:$('#source').value||'manual'});$('#ioc').value='';$('#preview').textContent='入力すると安全な表示プレビューが出ます。';note(`${n}件追加しました`)});
+$('#importBtn').onclick=async()=>{const text=prompt('JSON配列を貼り付けてください');if(!text)return;let arr;try{arr=JSON.parse(text);if(!Array.isArray(arr))throw 0}catch(_){return note('JSON配列として読み取れません')};let n=0;for(const x of arr.slice(0,500)){const value=x.indicator||x.url||x.domain||x.hash;if(!value)continue;n+=await addIndicators([value],{category:x.category||'other',severity:x.severity||'medium',status:x.status||'unknown',source:x.source||'import',reportedAt:x.reportedAt||x.date})}note(`${n}件取り込みました`)};
+$('#search').addEventListener('input',render);$('#severity').addEventListener('change',render);$('#state').addEventListener('change',render);$('#clear').onclick=()=>{if(confirm('この端末に保存した脅威インテリジェンスを全削除しますか？')){items=[];persist();render();note('削除しました')}};
+function exportFile(type){if(!items.length)return note('出力するデータがありません');let blob,name;if(type==='json'){blob=new Blob([JSON.stringify(items,null,2)],{type:'application/json'});name='dark-intel-sanitized.json'}else{const head=['display','hash','category','severity','status','source','reportedAt'];const csv=[head.join(','),...items.map(x=>head.map(k=>`"${String(x[k]??'').replaceAll('"','""')}"`).join(','))].join('\n');blob=new Blob(['\ufeff'+csv],{type:'text/csv'});name='dark-intel-sanitized.csv'}const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+$('#csv').onclick=()=>exportFile('csv');$('#json').onclick=()=>exportFile('json');render();
+})();
+</script>
+</body>
+</html>
