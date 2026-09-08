@@ -1,0 +1,34 @@
+function addBox(x,y,z,w,h,d,color,solid=true,emissive=0,rough=.58,metal=.12){const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(color,emissive,emissive?1.4:0,rough,metal));mesh.position.set(x,y,z);scene.add(mesh);if(solid)state.walls.push({minX:x-w/2,maxX:x+w/2,minZ:z-d/2,maxZ:z+d/2});return mesh;}
+function addCylinder(x,y,z,r,h,color,emissive=0){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,12),mat(color,emissive,emissive?1.1:0,.35,.42));m.position.set(x,y,z);scene.add(m);return m;}
+function addLuxuryArch(z,width,s){const gold=s.luxury;addBox(-width/2+1.2,4,z,1.3,8,.8,gold,false,0,.25,.65);addBox(width/2-1.2,4,z,1.3,8,.8,gold,false,0,.25,.65);addBox(0,7.45,z,width-1.2,.55,.8,gold,false,0,.25,.65);const glow=new THREE.PointLight(s.accent,.75,26);glow.position.set(0,6.3,z);scene.add(glow);}
+function addChandelier(z,s,rand){const g=new THREE.Group();const ring=new THREE.Mesh(new THREE.TorusGeometry(2.25,.12,8,26),mat(s.luxury,0,0,.2,.8));ring.rotation.x=Math.PI/2;g.add(ring);for(let i=0;i<8;i++){const a=i/8*Math.PI*2;const c=new THREE.Mesh(new THREE.OctahedronGeometry(.15),mat(0xffffff,s.accent,1.4,.08,.05));c.position.set(Math.cos(a)*2.1,-.45-Math.abs(Math.sin(a*2))*.3,Math.sin(a)*2.1);g.add(c);}g.position.set(0,7.1,z);scene.add(g);const light=new THREE.PointLight(s.luxury,1.0+rand()*.35,32);light.position.set(0,5.8,z);scene.add(light);}
+
+function makeWarningTexture(text='INFECTED'){const c=document.createElement('canvas');c.width=512;c.height=256;const x=c.getContext('2d');x.fillStyle='#160607';x.fillRect(0,0,512,256);x.strokeStyle='#e34242';x.lineWidth=18;x.strokeRect(12,12,488,232);x.fillStyle='#ffdfd2';x.textAlign='center';x.font='900 66px sans-serif';x.fillText('BIOHAZARD',256,108);x.fillStyle='#ff5555';x.font='900 54px sans-serif';x.fillText(text,256,186);return new THREE.CanvasTexture(c);}
+function makeBloodTexture(){const c=document.createElement('canvas');c.width=256;c.height=256;const x=c.getContext('2d');x.clearRect(0,0,256,256);x.fillStyle='rgba(92,0,12,.78)';for(let i=0;i<18;i++){x.beginPath();const px=128+(Math.random()-.5)*150,py=128+(Math.random()-.5)*150,r=8+Math.random()*35;x.ellipse(px,py,r,r*(.35+Math.random()*.9),Math.random()*Math.PI,0,Math.PI*2);x.fill();}const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;}
+const warningTextures=[makeWarningTexture('KEEP OUT'),makeWarningTexture('INFECTED'),makeWarningTexture('QUARANTINE')];
+const bloodTexture=makeBloodTexture();
+function addWarningSign(x,z,rot=0){const m=new THREE.Mesh(new THREE.PlaneGeometry(4.8,2.4),new THREE.MeshBasicMaterial({map:warningTextures[Math.floor(Math.random()*warningTextures.length)],side:THREE.DoubleSide}));m.position.set(x,2.5,z);m.rotation.y=rot;scene.add(m);}
+function addBloodSplat(x,z,scale=1){const m=new THREE.Mesh(new THREE.PlaneGeometry(4*scale,4*scale),new THREE.MeshBasicMaterial({map:bloodTexture,transparent:true,depthWrite:false,opacity:.82}));m.rotation.x=-Math.PI/2;m.rotation.z=Math.random()*Math.PI;m.position.set(x,.035,z);scene.add(m);}
+
+function generateMaze(s,rand){
+  const cols=s.cols,rows=s.rows,cells=Array.from({length:rows},()=>Array.from({length:cols},()=>({v:false,w:[true,true,true,true]})));
+  const sx=Math.floor(cols/2),sy=0,stack=[[sx,sy]];cells[sy][sx].v=true;
+  const dirs=[[0,-1,0,2],[1,0,1,3],[0,1,2,0],[-1,0,3,1]];
+  while(stack.length){const [cx,cy]=stack[stack.length-1],choices=[];for(const d of dirs){const nx=cx+d[0],ny=cy+d[1];if(nx>=0&&nx<cols&&ny>=0&&ny<rows&&!cells[ny][nx].v)choices.push(d);}if(!choices.length){stack.pop();continue;}const d=choices[Math.floor(rand()*choices.length)],nx=cx+d[0],ny=cy+d[1];cells[cy][cx].w[d[2]]=false;cells[ny][nx].w[d[3]]=false;cells[ny][nx].v=true;stack.push([nx,ny]);}
+  for(let i=0;i<Math.floor(rows*cols*.08);i++){const x=Math.floor(rand()*cols),y=Math.floor(rand()*rows),d=dirs[Math.floor(rand()*4)],nx=x+d[0],ny=y+d[1];if(nx>=0&&nx<cols&&ny>=0&&ny<rows){cells[y][x].w[d[2]]=false;cells[ny][nx].w[d[3]]=false;}}
+  const cellW=(s.width-8)/cols,cellD=(s.length-58)/rows,originX=-(s.width-8)/2,originZ=22;
+  const maze={cols,rows,cells,cellW,cellD,originX,originZ,start:{x:sx,y:sy},goal:{x:sx,y:rows-1}};
+  let far={x:sx,y:rows-1},best=-1;const dist=mazeDistances(maze,sx,sy);for(let x=0;x<cols;x++){const d=dist[(rows-1)*cols+x];if(d>best){best=d;far={x,y:rows-1};}}maze.goal=far;
+  state.deadEnds=[];for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const degree=mazeNeighbors(maze,x,y).length;if(degree===1&&!(x===sx&&y===sy)&&!(x===far.x&&y===far.y))state.deadEnds.push({x,y});}
+  return maze;
+}
+function mazeNeighbors(maze,x,y){const out=[],c=maze.cells[y]?.[x];if(!c)return out;if(!c.w[0]&&y>0)out.push({x,y:y-1});if(!c.w[1]&&x<maze.cols-1)out.push({x:x+1,y});if(!c.w[2]&&y<maze.rows-1)out.push({x,y:y+1});if(!c.w[3]&&x>0)out.push({x:x-1,y});return out;}
+function mazeDistances(maze,sx,sy){const n=maze.cols*maze.rows,dist=new Array(n).fill(Infinity),q=[[sx,sy]];dist[sy*maze.cols+sx]=0;for(let qi=0;qi<q.length;qi++){const [x,y]=q[qi],base=dist[y*maze.cols+x];for(const nb of mazeNeighbors(maze,x,y)){const idx=nb.y*maze.cols+nb.x;if(dist[idx]===Infinity){dist[idx]=base+1;q.push([nb.x,nb.y]);}}}return dist;}
+function cellCenter(maze,x,y){return{x:maze.originX+x*maze.cellW+maze.cellW/2,z:maze.originZ-y*maze.cellD-maze.cellD/2};}
+function worldToCell(x,z){const m=state.maze;if(!m)return{x:0,y:0};return{x:clamp(Math.floor((x-m.originX)/m.cellW),0,m.cols-1),y:clamp(Math.floor((m.originZ-z)/m.cellD),0,m.rows-1)};}
+function renderMaze(s){const m=state.maze,th=1.15,h=4.5;addBox(m.originX,h/2,m.originZ-m.rows*m.cellD/2,th,h,m.rows*m.cellD+th,s.wall,true,0,.62,.13);state.mazeWalls.push({x1:m.originX,x2:m.originX,z1:m.originZ-m.rows*m.cellD,z2:m.originZ});addBox(m.originX+m.cols*m.cellW/2,h/2,m.originZ,m.cols*m.cellW+th,h,th,s.wall,true,0,.62,.13);state.mazeWalls.push({x1:m.originX,x2:m.originX+m.cols*m.cellW,z1:m.originZ,z2:m.originZ});for(let y=0;y<m.rows;y++)for(let x=0;x<m.cols;x++){const c=m.cells[y][x],p=cellCenter(m,x,y);if(c.w[1]){const wx=p.x+m.cellW/2;addBox(wx,h/2,p.z,th,h,m.cellD+th,s.wall,true,0,.62,.13);state.mazeWalls.push({x1:wx,x2:wx,z1:p.z-m.cellD/2,z2:p.z+m.cellD/2});}if(c.w[2]){const wz=p.z-m.cellD/2;addBox(p.x,h/2,wz,m.cellW+th,h,th,s.wall,true,0,.62,.13);state.mazeWalls.push({x1:p.x-m.cellW/2,x2:p.x+m.cellW/2,z1:wz,z2:wz});}}
+}
+function addMazeObstacles(s,rand){
+  const m=state.maze;let placed=0;for(let y=1;y<m.rows-2;y++)for(let x=0;x<m.cols;x++){if(rand()>.18)continue;const p=cellCenter(m,x,y),ox=(rand()-.5)*m.cellW*.35,oz=(rand()-.5)*m.cellD*.28;if(rand()<.55)addBox(p.x+ox,.7,p.z+oz,1.8+rand()*1.8,1.4,1.8+rand()*2.0,rand()<.45?0x46362e:0x252a2b,true,0,.8,.08);else addCylinder(p.x+ox,1.2,p.z+oz,.55+rand()*.25,2.4,0x3a3331);if(++placed>44)return;}
+}
+function addDeadEndItems(s,rand){
