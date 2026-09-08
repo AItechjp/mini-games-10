@@ -6,28 +6,22 @@
   const targetEl = $('#typing-target');
   const input = $('#typing-input');
   const hintEl = $('#typing-input-hint');
-  const wpmEl = $('#typing-wpm');
+  const cpmEl = $('#typing-wpm');
   const accuracyEl = $('#typing-accuracy');
   const missEl = $('#typing-miss');
-  const wordsEl = $('#typing-words');
-  const keysEl = $('#typing-keys');
+  const clearsEl = $('#typing-words');
+  const charsEl = $('#typing-keys');
   const keyboardBtn = $('#typing-keyboard-btn');
   const startButton = $('#arcade-start');
 
   const entries = [
-    ['さくら','sakura'],['ふじさん','fujisan'],['しんかんせん','shinkansen'],['とうきょう','toukyou'],['なごや','nagoya'],
-    ['ぎふ','gifu'],['にほん','nihon'],['すし','sushi'],['らーめん','ramen'],['てんぷら','tenpura'],
-    ['ねこ','neko'],['いぬ','inu'],['ぺんぎん','pengin'],['とら','tora'],['うみ','umi'],
-    ['そら','sora'],['ほし','hoshi'],['つき','tsuki'],['たいよう','taiyou'],['ひかり','hikari'],
-    ['みらい','mirai'],['げーむ','game'],['ぱそこん','pasokon'],['きーぼーど','keyboard'],['すまほ','sumaho'],
-    ['おんがく','ongaku'],['えいが','eiga'],['まんが','manga'],['あにめ','anime'],['すぽーつ','sports'],
-    ['てにす','tennis'],['さっかー','soccer'],['やきゅう','yakyuu'],['じてんしゃ','jitensha'],['でんしゃ','densha'],
-    ['ひこうき','hikouki'],['りょこう','ryokou'],['おんせん','onsen'],['さうな','sauna'],['はなび','hanabi'],
-    ['まつり','matsuri'],['こうえん','kouen'],['やま','yama'],['かわ','kawa'],['もり','mori'],
-    ['あさ','asa'],['ひる','hiru'],['よる','yoru'],['おはよう','ohayou'],['ありがとう','arigatou'],
-    ['たのしい','tanoshii'],['はやい','hayai'],['つよい','tsuyoi'],['すごい','sugoi'],['ちから','chikara'],
-    ['しょうぶ','shoubu'],['すぴーど','speed'],['ちゃれんじ','challenge'],['たいぴんぐ','typing'],['げきはや','gekihaya']
-  ].map(([jp, roman]) => ({ jp, roman }));
+    'さくら','富士山','新幹線','東京','名古屋','岐阜','日本','寿司','ラーメン','天ぷら',
+    'ねこ','いぬ','ペンギン','とら','海','空','星','月','太陽','光',
+    '未来','ゲーム','パソコン','キーボード','スマホ','音楽','映画','漫画','アニメ','スポーツ',
+    'テニス','サッカー','野球','自転車','電車','飛行機','旅行','温泉','サウナ','花火',
+    '祭り','公園','山','川','森','朝','昼','夜','おはよう','ありがとう',
+    '楽しい','速い','強い','すごい','力','勝負','スピード','チャレンジ','タイピング','激速'
+  ];
 
   const rng32 = seed => {
     let a = seed >>> 0;
@@ -39,6 +33,8 @@
       return ((t ^ t >>> 14) >>> 0) / 4294967296;
     };
   };
+
+  const normalize = value => String(value || '').normalize('NFKC').trim();
 
   function primeKeyboard() {
     if (!input) return;
@@ -52,8 +48,8 @@
   startButton?.addEventListener('pointerdown', primeKeyboard, { passive: true });
 
   window.ARCADE_GAME = {
-    title: 'TYPE ATTACK',
-    instructions: '日本語のお題の下に表示されるローマ字を1文字ずつ入力。ミスした文字は自動で戻ります。20秒でスコアを伸ばそう。',
+    title: 'JAPANESE TYPE ATTACK',
+    instructions: '表示された日本語を日本語IMEでそのまま入力。変換確定後、Enterで判定します。20秒で何問クリアできるか勝負。',
     roundMs: 20000,
     durationLabel: '20秒',
 
@@ -64,39 +60,32 @@
       let rand = Math.random;
       let current = entries[0];
       let lastIndex = -1;
-      let acceptedLength = 0;
       let completedScore = 0;
-      let wordsDone = 0;
-      let correctKeys = 0;
+      let clears = 0;
+      let correctChars = 0;
       let misses = 0;
-
-      const currentScore = () => completedScore + acceptedLength * 10;
+      let attempts = 0;
+      let composing = false;
 
       function metrics(now = performance.now()) {
-        const attempts = correctKeys + misses;
-        const accuracy = attempts ? Math.round((correctKeys / attempts) * 100) : 100;
+        const accuracy = attempts ? Math.round((clears / attempts) * 100) : 100;
         const elapsedMinutes = Math.max((now - startedAt) / 60000, 1 / 60000);
-        const wpm = startedAt && correctKeys ? Math.round((correctKeys / 5) / elapsedMinutes) : 0;
-        return { accuracy, wpm };
+        const cpm = startedAt && correctChars ? Math.round(correctChars / elapsedMinutes) : 0;
+        return { accuracy, cpm };
       }
 
       function renderMetrics(now = performance.now()) {
         const m = metrics(now);
-        wpmEl.textContent = String(m.wpm);
+        cpmEl.textContent = String(m.cpm);
         accuracyEl.textContent = `${m.accuracy}%`;
         missEl.textContent = String(misses);
-        wordsEl.textContent = String(wordsDone);
-        keysEl.textContent = String(correctKeys);
+        clearsEl.textContent = String(clears);
+        charsEl.textContent = String(correctChars);
       }
 
       function renderTarget() {
-        targetEl.textContent = '';
-        Array.from(current.roman).forEach((char, i) => {
-          const span = document.createElement('span');
-          span.textContent = char;
-          span.className = i < acceptedLength ? 'done' : i === acceptedLength ? 'current' : 'pending';
-          targetEl.appendChild(span);
-        });
+        jpEl.textContent = current;
+        targetEl.textContent = '日本語で入力 → Enter';
       }
 
       function nextEntry() {
@@ -106,9 +95,7 @@
         }
         lastIndex = idx;
         current = entries[idx];
-        acceptedLength = 0;
         input.value = '';
-        jpEl.textContent = current.jp;
         renderTarget();
       }
 
@@ -118,33 +105,48 @@
         input.classList.add('shake');
       }
 
-      function handleInput() {
-        if (!running) return;
-        const cleaned = input.value.toLowerCase().replace(/[^a-z]/g, '');
-        if (cleaned !== input.value) input.value = cleaned;
+      function submit() {
+        if (!running || composing) return;
+        const value = normalize(input.value);
+        if (!value) return;
+        attempts += 1;
 
-        if (!current.roman.startsWith(cleaned)) {
-          misses += 1;
-          input.value = current.roman.slice(0, acceptedLength);
-          flashMiss();
-          onToast?.('MISS');
-          renderMetrics();
-          return;
-        }
-
-        if (cleaned.length > acceptedLength) correctKeys += cleaned.length - acceptedLength;
-        acceptedLength = cleaned.length;
-        renderTarget();
-
-        if (acceptedLength === current.roman.length) {
-          completedScore += current.roman.length * 10 + 50;
-          wordsDone += 1;
+        if (value === normalize(current)) {
+          const len = Array.from(current).length;
+          correctChars += len;
+          clears += 1;
+          completedScore += len * 20 + 100;
           onScore(completedScore);
+          onToast?.('GOOD!');
           nextEntry();
         } else {
-          onScore(currentScore());
+          misses += 1;
+          flashMiss();
+          onToast?.('MISS');
+          input.value = '';
         }
         renderMetrics();
+      }
+
+      function handleKeydown(e) {
+        if (!running) return;
+        if (e.key !== 'Enter') return;
+        if (e.isComposing || composing || e.keyCode === 229) return;
+        e.preventDefault();
+        submit();
+      }
+
+      function handleCompositionStart() {
+        composing = true;
+      }
+
+      function handleCompositionEnd() {
+        composing = false;
+        if (!running) return;
+        const value = normalize(input.value);
+        if (value && value === normalize(current)) {
+          submit();
+        }
       }
 
       function handlePaste(e) { e.preventDefault(); }
@@ -163,19 +165,19 @@
         metricRaf = requestAnimationFrame(metricLoop);
       }
 
-      input.addEventListener('input', handleInput);
+      input.addEventListener('keydown', handleKeydown);
+      input.addEventListener('compositionstart', handleCompositionStart);
+      input.addEventListener('compositionend', handleCompositionEnd);
       input.addEventListener('paste', handlePaste);
       input.addEventListener('drop', handleDrop);
       input.addEventListener('blur', handleBlur);
 
-      jpEl.textContent = 'たいぴんぐ';
-      current = { jp: 'たいぴんぐ', roman: 'typing' };
-      acceptedLength = 0;
-      renderTarget();
+      jpEl.textContent = 'タイピング';
+      targetEl.textContent = '日本語で入力 → Enter';
       input.disabled = true;
       input.readOnly = true;
       input.value = '';
-      hintEl.textContent = 'スタート後に入力できます';
+      hintEl.textContent = 'スタート後に日本語で入力できます';
       renderMetrics();
 
       return {
@@ -184,15 +186,16 @@
           running = true;
           startedAt = performance.now();
           lastIndex = -1;
-          acceptedLength = 0;
           completedScore = 0;
-          wordsDone = 0;
-          correctKeys = 0;
+          clears = 0;
+          correctChars = 0;
           misses = 0;
+          attempts = 0;
+          composing = false;
           input.disabled = false;
           input.readOnly = false;
           input.value = '';
-          hintEl.textContent = 'ミスした文字は自動で戻ります';
+          hintEl.textContent = '日本語IMEで入力して Enter';
           onScore(0);
           nextEntry();
           renderMetrics(startedAt);
@@ -208,13 +211,15 @@
           input.blur();
           const m = metrics(performance.now());
           renderMetrics();
-          return { words: wordsDone, wpm: m.wpm, accuracy: m.accuracy, misses, keys: correctKeys };
+          return { words: clears, cpm: m.cpm, accuracy: m.accuracy, misses, keys: correctChars };
         },
 
         destroy() {
           running = false;
           cancelAnimationFrame(metricRaf);
-          input.removeEventListener('input', handleInput);
+          input.removeEventListener('keydown', handleKeydown);
+          input.removeEventListener('compositionstart', handleCompositionStart);
+          input.removeEventListener('compositionend', handleCompositionEnd);
           input.removeEventListener('paste', handlePaste);
           input.removeEventListener('drop', handleDrop);
           input.removeEventListener('blur', handleBlur);
