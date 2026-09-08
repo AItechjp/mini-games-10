@@ -21,8 +21,7 @@
 
   function pageMode() {
     const path = location.pathname.toLowerCase();
-    if (path.endsWith('/online.html') || path.endsWith('online.html')) return 'online';
-    return 'solo';
+    return path.endsWith('/online.html') || path.endsWith('online.html') ? 'online' : 'solo';
   }
 
   function activeGameId() {
@@ -104,11 +103,12 @@
     panel = document.createElement('section');
     panel.id = 'backend-leaderboard-panel';
     panel.className = 'backend-panel';
-    panel.innerHTML = '<div class="backend-panel-head"><div><span>GLOBAL BACKEND</span><strong>オンラインランキング</strong></div><small id="backend-submit-status">Supabase接続中</small></div><div id="backend-leaderboard" class="backend-leaderboard"><p>ランキングを読み込み中…</p></div>';
+    panel.innerHTML = '<div class="backend-panel-head"><div><span>GLOBAL BACKEND</span><strong>オンラインランキング</strong></div><small id="backend-submit-status">Supabase接続中</small></div><div id="backend-leaderboard" class="backend-leaderboard"><p>ゲームを選ぶとランキングを表示します。</p></div>';
     play.appendChild(panel);
     return panel;
   }
 
+  let leaderboardRequest = 0;
   async function renderLeaderboard(gameId = activeGameId(), mode = pageMode()) {
     const panel = ensureLeaderboardPanel();
     const box = panel?.querySelector('#backend-leaderboard');
@@ -117,15 +117,18 @@
       box.innerHTML = '<p>バックエンド設定が見つかりません。</p>';
       return;
     }
+    const request = ++leaderboardRequest;
     box.innerHTML = '<p>ランキングを読み込み中…</p>';
     try {
       const [rows, mine] = await Promise.all([leaderboard(gameId, mode, 10), personalBest(gameId, mode)]);
+      if (request !== leaderboardRequest) return;
       if (!rows.length) {
         box.innerHTML = `<p>まだ記録がありません。最初の記録を作れます。<br><small>あなたのBEST: ${mine}</small></p>`;
         return;
       }
       box.innerHTML = `<div class="backend-my-best">あなたのBEST <strong>${mine}</strong></div><ol>${rows.map(row => `<li><span>#${row.rank} ${row.player_label}</span><strong>${row.score}</strong></li>`).join('')}</ol>`;
     } catch (error) {
+      if (request !== leaderboardRequest) return;
       console.warn('[GameBackend] leaderboard failed', error);
       box.innerHTML = '<p>ランキングを取得できませんでした。</p>';
     }
@@ -173,22 +176,34 @@
   function installGameInstrumentation() {
     const play = document.querySelector('#play');
     const stage = document.querySelector('#game-stage');
+    const number = document.querySelector('#play-number');
     if (!play || !stage) return;
     ensureLeaderboardPanel();
 
-    const update = () => {
-      if (!play.classList.contains('hidden')) {
-        renderLeaderboard().catch(() => {});
-        submitDetectedResult().catch(() => {});
-      }
+    let resultTimer = 0;
+    const stageObserver = new MutationObserver(() => {
+      clearTimeout(resultTimer);
+      resultTimer = setTimeout(() => submitDetectedResult().catch(() => {}), 60);
+    });
+    stageObserver.observe(stage, { subtree: true, childList: true, characterData: true });
+
+    let leaderboardTimer = 0;
+    const refreshLeaderboard = () => {
+      if (play.classList.contains('hidden')) return;
+      clearTimeout(leaderboardTimer);
+      leaderboardTimer = setTimeout(() => renderLeaderboard().catch(() => {}), 80);
     };
 
-    const observer = new MutationObserver(() => {
-      clearTimeout(observer._timer);
-      observer._timer = setTimeout(update, 80);
-    });
-    observer.observe(play, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['class'] });
-    update();
+    const playObserver = new MutationObserver(refreshLeaderboard);
+    playObserver.observe(play, { attributes: true, attributeFilter: ['class'] });
+
+    if (number) {
+      const numberObserver = new MutationObserver(refreshLeaderboard);
+      numberObserver.observe(number, { subtree: true, childList: true, characterData: true });
+    }
+
+    refreshLeaderboard();
+    submitDetectedResult().catch(() => {});
   }
 
   async function installIndexStatus() {
@@ -222,8 +237,10 @@
     renderLeaderboard
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
+  const boot = () => {
     installGameInstrumentation();
     installIndexStatus();
-  });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
+  else boot();
 })();
