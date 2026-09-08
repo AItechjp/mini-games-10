@@ -46,7 +46,7 @@ const camera = new THREE.PerspectiveCamera(72, 16/9, .08, 180);
 const raycaster = new THREE.Raycaster();
 raycaster.far = 95;
 const clock = new THREE.Clock();
-const local = { x:0, z:10, yaw:Math.PI, pitch:0, vx:0, vz:0 };
+const local = { x:0, z:10, yaw:0, pitch:0, vx:0, vz:0 };
 const keys = new Set();
 let remoteMeshes = new Map();
 let muzzleLight = null;
@@ -94,7 +94,7 @@ function buildEnvironment(){
   scene.background=new THREE.Color(s.fog); scene.fog=new THREE.FogExp2(s.fog, state.area===4?.018:.0135);
   scene.add(new THREE.HemisphereLight(0xcfe2dc,0x14110e,1.25));
   const sun=new THREE.DirectionalLight(0xffffff,1.35); sun.position.set(20,35,30); scene.add(sun);
-  muzzleLight=new THREE.PointLight(0xffd4a1,0,9); camera.add(muzzleLight); scene.add(camera);
+  camera.clear(); muzzleLight=new THREE.PointLight(0xffd4a1,0,9); camera.add(muzzleLight); scene.add(camera);
 
   const floor=new THREE.Mesh(new THREE.PlaneGeometry(s.width,s.length+80,18,70),new THREE.MeshStandardMaterial({color:s.floor,roughness:1,metalness:.05}));
   floor.rotation.x=-Math.PI/2; floor.position.z=-s.length/2+20; scene.add(floor);
@@ -128,7 +128,7 @@ function buildEnvironment(){
   beam.position.set(0,4,-s.length+18); scene.add(beam);
   state.goal=new THREE.Vector3(0,0,-s.length+18);
 
-  local.x=0; local.z=14; local.yaw=Math.PI; local.pitch=0; updateCamera();
+  local.x=0; local.z=14; local.yaw=0; local.pitch=0; updateCamera();
   state.players.set(state.playerId,{id:state.playerId,x:local.x,z:local.z,yaw:local.yaw,lives:state.localLives,role:state.role});
 }
 
@@ -221,7 +221,7 @@ function hostWorldStep(dt,now){
   for(const e of state.enemies.values()){
     if(e.dead) continue; const n=nearestLivingPlayer(e); if(!n) continue;
     const dx=n.p.x-e.x,dz=n.p.z-e.z,len=Math.hypot(dx,dz)||1;
-    const mult=e.boss?1:1; const step=e.speed*mult*dt;
+    const step=e.speed*dt;
     const nx=e.x+dx/len*step,nz=e.z+dz/len*step;
     if(!blocked(nx,nz)){e.x=nx;e.z=nz;} else if(!blocked(nx,e.z)) e.x=nx; else if(!blocked(e.x,nz)) e.z=nz;
     const mesh=state.enemyMeshes.get(e.id); if(mesh){ mesh.position.set(e.x,0,e.z); mesh.rotation.y=Math.atan2(dx,dz); }
@@ -310,7 +310,7 @@ function beginArea(fromStart=true){
 function resetMission(){
   state.completed=false; state.area=0; state.seed=state.mode==='coop'?(hashCode(state.room||'BLACKSITE')^Date.now())>>>0:(Date.now()>>>0); state.localLives=3;
   for(const p of state.players.values()) p.lives=3;
-  state.players.set(state.playerId,{id:state.playerId,x:0,z:14,yaw:Math.PI,lives:3,role:state.role});
+  state.players.set(state.playerId,{id:state.playerId,x:0,z:14,yaw:0,lives:3,role:state.role});
   if(state.mode==='coop' && !isHost()){ toast('ホストの開始を待っています'); return; }
   if(state.mode==='coop' && !state.partnerReady){ toast('パートナーの接続を待っています'); return; }
   send('start',{area:0,seed:state.seed,difficulty:state.difficulty,lives:[...state.players.values()].map(p=>[p.id,3]),hostId:state.playerId});
@@ -363,14 +363,14 @@ function onNetwork(m){
   if(!m||m.from===state.playerId)return;
   switch(m.kind){
     case 'hello':
-      if(state.role==='host'){ state.partnerReady=true; state.players.set(m.from,{id:m.from,x:0,z:14,yaw:Math.PI,lives:3}); send('settings',{difficulty:state.difficulty,hostId:state.playerId}); updateLobby(); }
+      if(state.role==='host'){ state.partnerReady=true; state.players.set(m.from,{id:m.from,x:0,z:14,yaw:0,lives:3}); send('settings',{difficulty:state.difficulty,hostId:state.playerId}); updateLobby(); }
       else if(m.role==='host'){ state.hostId=m.from; state.partnerReady=true; updateLobby(); }
       break;
     case 'settings':
       if(state.role==='guest'){ state.difficulty=m.difficulty||state.difficulty; state.hostId=m.hostId||m.from; syncDifficultyUI(); state.partnerReady=true; updateLobby(); }
       break;
     case 'start':
-      if(state.role==='guest'){ state.area=m.area||0; state.seed=m.seed>>>0; state.difficulty=m.difficulty||'normal'; state.hostId=m.hostId||m.from; state.localLives=3; state.players.clear(); for(const [id,lives] of m.lives||[]) state.players.set(id,{id,x:0,z:14,yaw:Math.PI,lives}); if(!state.players.has(state.playerId))state.players.set(state.playerId,{id:state.playerId,x:0,z:14,yaw:Math.PI,lives:3}); syncDifficultyUI(); state.startedAt=performance.now(); beginArea(false); }
+      if(state.role==='guest'){ state.area=m.area||0; state.seed=m.seed>>>0; state.difficulty=m.difficulty||'normal'; state.hostId=m.hostId||m.from; state.localLives=3; state.players.clear(); for(const [id,lives] of m.lives||[]) state.players.set(id,{id,x:0,z:14,yaw:0,lives}); if(!state.players.has(state.playerId))state.players.set(state.playerId,{id:state.playerId,x:0,z:14,yaw:0,lives:3}); syncDifficultyUI(); state.startedAt=performance.now(); beginArea(false); }
       break;
     case 'player':
       if(state.role==='host'&&m.area===state.area){ const p=state.players.get(m.from)||{id:m.from,lives:3}; Object.assign(p,{x:m.x,z:m.z,yaw:m.yaw}); state.players.set(m.from,p); }
@@ -391,7 +391,7 @@ function onNetwork(m){
       if(state.role==='guest'&&m.area===state.area){ state.running=false; toast(`AREA ${state.area+1} CLEAR`,2200); }
       break;
     case 'area_start':
-      if(state.role==='guest'){ state.area=m.area;state.seed=m.seed>>>0;state.difficulty=m.difficulty||state.difficulty;for(const [id,lives] of m.lives||[]){const p=state.players.get(id)||{id,x:0,z:14,yaw:Math.PI};p.lives=lives;state.players.set(id,p);if(id===state.playerId)state.localLives=lives;}beginArea(false); }
+      if(state.role==='guest'){ state.area=m.area;state.seed=m.seed>>>0;state.difficulty=m.difficulty||state.difficulty;for(const [id,lives] of m.lives||[]){const p=state.players.get(id)||{id,x:0,z:14,yaw:0};p.lives=lives;state.players.set(id,p);if(id===state.playerId)state.localLives=lives;}beginArea(false); }
       break;
     case 'fail':
       if(state.role==='guest'){state.running=false;setOverlay('MISSION FAILED',m.reason||'チームが倒れた。','ホストの再開を待つ',true);startBtn.disabled=true;}
