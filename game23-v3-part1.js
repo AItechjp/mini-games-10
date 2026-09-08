@@ -24,12 +24,12 @@ const touchRight = $('#touch-right');
 const touchStick = $('#touch-stick');
 
 const STAGES = [
-  {key:'mansion',name:'BLOOD MOON MANOR',jp:'血月の洋館',boss:'LORD NECROHOUND',bossType:'werewolf',accent:0xdc2848,luxury:0xe9c77a,fog:0x070505,sky:0x11080a,floor:0x1c1214,wall:0x352327,cols:13,rows:31,cell:5.6,loops:.08,bossScale:3.5},
-  {key:'mountain',name:'FROSTBITE RIDGE',jp:'凍てつく霊峰',boss:'GORAM THE HOWLER',bossType:'yeti',accent:0x89dcff,luxury:0xe8f3ff,fog:0x091117,sky:0x111d2a,floor:0x24302f,wall:0x46504f,cols:15,rows:34,cell:5.8,loops:.14,bossScale:4.1},
-  {key:'river',name:'DROWNED RAVINE',jp:'濁流の峡谷',boss:'ABYSSAL CROCODRAKE',bossType:'croc',accent:0x39f2c4,luxury:0xb6e2d8,fog:0x061111,sky:0x10252a,floor:0x1c2b27,wall:0x324b43,cols:15,rows:33,cell:5.7,loops:.20,bossScale:4.0},
-  {key:'sea',name:'TEMPEST HARBOR',jp:'暴嵐の港湾',boss:'LEVIATHAN REAVER',bossType:'leviathan',accent:0x4ac8ff,luxury:0xd8e9f3,fog:0x050b10,sky:0x101925,floor:0x14232d,wall:0x29485b,cols:17,rows:34,cell:5.5,loops:.18,bossScale:4.4},
-  {key:'city',name:'NEON DEADLINE',jp:'終末ネオンシティ',boss:'TITAN EXECUTIONER',bossType:'titan',accent:0xff7b32,luxury:0xcbd4df,fog:0x07070b,sky:0x11121a,floor:0x17191d,wall:0x303943,cols:17,rows:36,cell:5.45,loops:.26,bossScale:4.7},
-  {key:'castle',name:'DEVIL CASTLE NOCTURNE',jp:'悪魔城ノクターン',boss:'ARCHDEMON VALZAROTH',bossType:'demon',accent:0xb84dff,luxury:0xf0cc6c,fog:0x050207,sky:0x140617,floor:0x160f1a,wall:0x342440,cols:17,rows:39,cell:5.55,loops:.12,bossScale:5.7}
+  {key:'mansion',name:'BLOOD MOON MANOR',jp:'血月の洋館',boss:'LORD NECROHOUND',bossType:'werewolf',accent:0xdc2848,luxury:0xe9c77a,fog:0x070505,sky:0x11080a,floor:0x1c1214,wall:0x352327,cols:11,rows:27,cell:5.6,loops:.18,bossScale:3.5},
+  {key:'mountain',name:'FROSTBITE RIDGE',jp:'凍てつく霊峰',boss:'GORAM THE HOWLER',bossType:'yeti',accent:0x89dcff,luxury:0xe8f3ff,fog:0x091117,sky:0x111d2a,floor:0x24302f,wall:0x46504f,cols:13,rows:29,cell:5.8,loops:.22,bossScale:4.1},
+  {key:'river',name:'DROWNED RAVINE',jp:'濁流の峡谷',boss:'ABYSSAL CROCODRAKE',bossType:'croc',accent:0x39f2c4,luxury:0xb6e2d8,fog:0x061111,sky:0x10252a,floor:0x1c2b27,wall:0x324b43,cols:13,rows:28,cell:5.7,loops:.28,bossScale:4.0},
+  {key:'sea',name:'TEMPEST HARBOR',jp:'暴嵐の港湾',boss:'LEVIATHAN REAVER',bossType:'leviathan',accent:0x4ac8ff,luxury:0xd8e9f3,fog:0x050b10,sky:0x101925,floor:0x14232d,wall:0x29485b,cols:13,rows:29,cell:5.5,loops:.26,bossScale:4.4},
+  {key:'city',name:'NEON DEADLINE',jp:'終末ネオンシティ',boss:'TITAN EXECUTIONER',bossType:'titan',accent:0xff7b32,luxury:0xcbd4df,fog:0x07070b,sky:0x11121a,floor:0x17191d,wall:0x303943,cols:15,rows:31,cell:5.45,loops:.32,bossScale:4.7},
+  {key:'castle',name:'DEVIL CASTLE NOCTURNE',jp:'悪魔城ノクターン',boss:'ARCHDEMON VALZAROTH',bossType:'demon',accent:0xb84dff,luxury:0xf0cc6c,fog:0x050207,sky:0x140617,floor:0x160f1a,wall:0x342440,cols:15,rows:34,cell:5.55,loops:.20,bossScale:5.7}
 ];
 
 const DIFF = {
