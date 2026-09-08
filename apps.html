@@ -3,34 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="実際に使えそうなWebアプリ案100個。仕事、生活、お金、健康、学習、旅行、家族、クリエイター、開発、地域の10カテゴリ。">
+<meta name="description" content="実際に使えるWebアプリ100個。仕事、生活、お金、健康、学習、旅行、家族、クリエイター、開発、地域の10カテゴリ。">
 <title>使えるアプリ100 - 20秒ミニゲームズ</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="apps.css">
+<link rel="stylesheet" href="apps-open.css">
 </head>
 <body>
 <header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">20秒ミニゲームズ</a><nav><a href="index.html">ゲーム</a><a href="#catalog">アプリ100</a><a href="#favorites">お気に入り</a></nav></div></header>
 <main class="wrap app100-wrap">
 <section class="app100-hero">
-<div><p class="eyebrow">USEFUL APP IDEAS / 100</p><h1>使えそうなアプリ案、100個。</h1><p>日常で本当に使えるもの、一人開発しやすいもの、月額課金や広告につなげやすいものを中心に100案を整理。気になる案は★保存できます。</p></div>
-<div class="app100-hero-actions"><a class="primary-btn" href="#catalog">100案を見る</a><a class="ghost-btn" href="index.html">← ゲームへ戻る</a></div>
+<div><p class="eyebrow">USEFUL APPS / 100 IMPLEMENTED</p><h1>使えるWebアプリ、100個。</h1><p>100案すべて実装済み。各カードの「開く / 使う」から起動できます。入力内容は基本的にこの端末へ自動保存し、共有系アプリはSupabase Realtimeのルームコードにも対応します。</p></div>
+<div class="app100-hero-actions"><a class="primary-btn" href="#catalog">100アプリを見る</a><a class="ghost-btn" href="index.html">← ゲームへ戻る</a></div>
 </section>
-<section class="app100-stats" aria-label="アプリ案サマリー">
-<div><span>TOTAL</span><strong>100</strong></div><div><span>CATEGORIES</span><strong>10</strong></div><div><span>FAVORITES</span><strong id="favorite-count">0</strong></div><div><span>VISIBLE</span><strong id="visible-count">100</strong></div>
+<section class="app100-stats" aria-label="アプリサマリー">
+<div><span>TOTAL</span><strong>100</strong></div><div><span>IMPLEMENTED</span><strong>100</strong></div><div><span>FAVORITES</span><strong id="favorite-count">0</strong></div><div><span>VISIBLE</span><strong id="visible-count">100</strong></div>
 </section>
 <section id="catalog" class="section app100-catalog">
-<div class="section-heading"><div><p class="eyebrow">APP CATALOG</p><h2>企画を探す</h2></div><p>検索・カテゴリ・難易度で絞り込みできます。</p></div>
+<div class="section-heading"><div><p class="eyebrow">APP CATALOG</p><h2>アプリを使う</h2></div><p>検索・カテゴリ・難易度で絞り込みできます。</p></div>
 <div class="app100-controls">
 <label class="app100-search"><span>検索</span><input id="app-search" type="search" placeholder="例: 家計、AI、旅行、PDF、勉強"></label>
 <div id="category-filters" class="app100-chips" aria-label="カテゴリ"></div>
 <div class="app100-selects"><label>難易度<select id="difficulty-filter"><option value="all">すべて</option><option value="かんたん">かんたん</option><option value="普通">普通</option><option value="高め">高め</option></select></label><label>表示<select id="favorite-filter"><option value="all">すべて</option><option value="favorites">★お気に入りのみ</option></select></label></div>
 </div>
 <div id="app-grid" class="app100-grid"></div>
-<p id="empty-state" class="app100-empty hidden">条件に合うアプリ案がありません。</p>
+<p id="empty-state" class="app100-empty hidden">条件に合うアプリがありません。</p>
 </section>
-<section id="favorites" class="section app100-note"><p class="eyebrow">HOW TO USE</p><h2>次に作る候補を残せます</h2><p>カード右上の★を押すと、この端末のブラウザにお気に入り保存されます。あとから「★お気に入りのみ」で絞り込めます。</p></section>
+<section id="favorites" class="section app100-note"><p class="eyebrow">HOW TO USE</p><h2>100個すべてそのまま起動できます</h2><p>★でお気に入り保存。「開く / 使う」で実装版へ移動します。個別アプリの保存データは、そのアプリ画面から消去できます。</p></section>
 </main>
-<footer><div class="wrap">© 2026 20秒ミニゲームズ / APP IDEAS 100</div></footer>
+<footer><div class="wrap">© 2026 20秒ミニゲームズ / 100 WEB APPS</div></footer>
 <script src="apps.js" defer></script>
+<script src="apps-open.js" defer></script>
 </body>
 </html>
