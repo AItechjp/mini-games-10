@@ -4,27 +4,28 @@
   const $ = (s) => document.querySelector(s);
   const params = new URLSearchParams(location.search);
   const COLORS = ['🔴', '🟡', '🟢', '🔵'];
+  const soloMode = params.get('mode') === 'solo';
 
   const GAMES = {
-    24: { title:'REACTOR RELAY', mode:'CO-OP', kind:'sequence', goal:90, desc:'原子炉の制御コードを2人で順番につなぐ。', items:['A','B','C','D'] },
-    25: { title:'METEOR DEFENSE', mode:'CO-OP', kind:'targets', goal:55, desc:'迫る隕石を分担迎撃し、基地を守る。', icon:'☄️' },
+    24: { title:'REACTOR RELAY', mode:'CO-OP', kind:'sequence', goal:90, desc:'原子炉の制御コードを順番につなぐ。', items:['A','B','C','D'] },
+    25: { title:'METEOR DEFENSE', mode:'CO-OP', kind:'targets', goal:55, desc:'迫る隕石を迎撃し、基地を守る。', icon:'☄️' },
     26: { title:'CARGO RUSH', mode:'VS', kind:'risk', goal:80, desc:'安全・高速・危険レーンを選び貨物点を競う。', items:['SAFE','FAST','RISK'] },
-    27: { title:'VIRUS PURGE', mode:'CO-OP', kind:'targets', goal:60, desc:'感染ノードを2人で同時駆除する。', icon:'🦠' },
+    27: { title:'VIRUS PURGE', mode:'CO-OP', kind:'targets', goal:60, desc:'感染ノードを高速で駆除する。', icon:'🦠' },
     28: { title:'TREASURE HEIST', mode:'VS', kind:'risk', goal:75, desc:'宝箱の当たりと罠を読み、先に75点。', items:['SAFE BOX','GOLD BOX','CURSED BOX'] },
-    29: { title:'SKY TOWER BUILDERS', mode:'CO-OP', kind:'build', goal:16, desc:'資材を共有し空中塔を16階まで建てる。', icon:'🏗️' },
+    29: { title:'SKY TOWER BUILDERS', mode:'CO-OP', kind:'build', goal:16, desc:'資材を集め空中塔を16階まで建てる。', icon:'🏗️' },
     30: { title:'ESCAPE SWITCH', mode:'CO-OP', kind:'sequence', goal:80, desc:'色スイッチを正しい順で解除して脱出。', items:COLORS },
     31: { title:'SNOWBALL ARENA', mode:'VS', kind:'duel', goal:0, desc:'チャージ・ガード・雪玉攻撃でKOを狙う。', icon:'❄️' },
     32: { title:'CRYSTAL CAPTURE', mode:'VS', kind:'targets', goal:45, desc:'出現するクリスタルを早取りして45点先取。', icon:'💎' },
     33: { title:'BOMB PASS', mode:'VS', kind:'bomb', goal:0, desc:'導火線が切れる前に爆弾を相手へ渡す。', icon:'💣' },
-    34: { title:'KITCHEN CHAOS', mode:'CO-OP', kind:'sequence', goal:100, desc:'注文どおりに食材を2人で連携投入。', items:['🍖','🥕','🍞','🧀'] },
+    34: { title:'KITCHEN CHAOS', mode:'CO-OP', kind:'sequence', goal:100, desc:'注文どおりに食材を連携投入。', items:['🍖','🥕','🍞','🧀'] },
     35: { title:'GHOST HUNT', mode:'VS', kind:'targets', goal:40, desc:'暗闇から出るゴーストを先に40体捕獲。', icon:'👻' },
     36: { title:'SPACE SALVAGE', mode:'VS', kind:'risk', goal:90, desc:'宇宙漂流物を回収し、レア品か故障かを競う。', items:['SAFE','DEEP','UNKNOWN'] },
     37: { title:'BRIDGE BUILDERS', mode:'CO-OP', kind:'build', goal:20, desc:'木材・ロープ・金属を集め橋を20区画架設。', icon:'🌉' },
     38: { title:'LASER MAZE', mode:'CO-OP', kind:'maze', goal:5, desc:'共有ドローンを誘導し迷路を5回突破。', icon:'🤖' },
     39: { title:'CASTLE SIEGE', mode:'VS', kind:'duel', goal:0, desc:'攻撃・防御・チャージで相手の城を破壊。', icon:'🏰' },
     40: { title:'FISHING FRENZY', mode:'VS', kind:'timing', goal:100, desc:'ゲージ中央でHOOKし先に100kg釣る。', icon:'🎣' },
-    41: { title:'FIRE BRIGADE', mode:'CO-OP', kind:'targets', goal:65, desc:'広がる火災を分担消火して建物を守る。', icon:'🔥' },
-    42: { title:'RHYTHM RELAY', mode:'CO-OP', kind:'sequence', goal:100, desc:'4ビートを2人でつないでライブ成功。', items:['🥁','👏','🔔','🎸'] },
+    41: { title:'FIRE BRIGADE', mode:'CO-OP', kind:'targets', goal:65, desc:'広がる火災を消火して建物を守る。', icon:'🔥' },
+    42: { title:'RHYTHM RELAY', mode:'CO-OP', kind:'sequence', goal:100, desc:'4ビートをつないでライブ成功。', items:['🥁','👏','🔔','🎸'] },
     43: { title:'CROWN RACE', mode:'VS', kind:'risk', goal:70, desc:'安全道・近道・ワープを選び先に王冠へ。', items:['ROAD','DASH','WARP'] }
   };
 
@@ -33,22 +34,24 @@
   const game = GAMES[gameNo];
 
   const el = {
-    kicker: $('#game-kicker'), title: $('#game-title'), summary: $('#game-summary'),
-    badge: $('#connection-badge'), create: $('#create-room-btn'), made: $('#room-created'),
-    room: $('#room-code-display'), copy: $('#copy-room-btn'), join: $('#join-form'), input: $('#room-code-input'),
-    connStatus: $('#connection-status'), connDetail: $('#connection-detail'), start: $('#start-btn'), restart: $('#restart-btn'),
-    time: $('#time-value'), you: $('#you-value'), rival: $('#rival-value'), rivalLabel: $('#rival-label'), team: $('#team-value'),
+    kicker: $('#game-kicker'), title: $('#game-title'), summary: $('#game-summary'), lobby: $('#lobby'),
+    badge: $('#connection-badge'), create: $('#create-room-btn'), made: $('#room-created'), room: $('#room-code-display'),
+    copy: $('#copy-room-btn'), join: $('#join-form'), input: $('#room-code-input'), connStatus: $('#connection-status'),
+    connDetail: $('#connection-detail'), start: $('#start-btn'), restart: $('#restart-btn'), time: $('#time-value'),
+    you: $('#you-value'), rival: $('#rival-value'), rivalLabel: $('#rival-label'), team: $('#team-value'),
     status: $('#status-label'), stage: $('#game-stage'), message: $('#game-message'), dialog: $('#rules-dialog'),
     rulesTitle: $('#rules-title'), rulesBody: $('#rules-body')
   };
 
-  document.title = `${game.title} - PARTY 5`;
-  el.kicker.textContent = `GAME ${gameNo} / ${game.mode}`;
+  document.title = `${game.title} - ${soloMode ? 'SOLO' : 'PARTY 5'}`;
+  el.kicker.textContent = `GAME ${gameNo} / ${soloMode ? 'SOLO' : game.mode}`;
   el.title.textContent = game.title;
-  el.summary.textContent = game.desc;
-  el.rivalLabel.textContent = game.mode === 'CO-OP' ? 'PARTNER' : 'RIVAL';
+  el.summary.textContent = soloMode
+    ? `${game.desc} ${game.mode === 'CO-OP' ? 'CPUパートナーと協力して挑戦。' : 'CPUと対戦。'}`
+    : `${game.desc} 2人オンラインで遊べます。`;
+  el.rivalLabel.textContent = soloMode ? (game.mode === 'CO-OP' ? 'CPU PARTNER' : 'CPU') : (game.mode === 'CO-OP' ? 'PARTNER' : 'RIVAL');
   el.rulesTitle.textContent = `${game.title} のルール`;
-  el.rulesBody.innerHTML = `<p>${game.desc}</p><ul><li>ログイン不要のオンライン2人プレイ。</li><li>最大5分。目標達成・KOならその場で終了。</li><li>${game.mode === 'CO-OP' ? '2人で同じ目標を達成すればクリア。' : '相手より先に目標到達、または相手をKOすれば勝利。'}</li></ul>`;
+  el.rulesBody.innerHTML = `<p>${game.desc}</p><ul><li>最大5分。目標達成・KOならその場で終了。</li><li>${soloMode ? (game.mode === 'CO-OP' ? 'CPUパートナーが自動でサポートします。' : 'CPUとの1人対戦です。') : 'ログイン不要のオンライン2人プレイです。'}</li><li>${game.mode === 'CO-OP' ? 'チーム目標を達成すればクリア。' : '相手より先に目標到達、または相手をKOすれば勝利。'}</li></ul>`;
 
   $('#rules-btn').onclick = () => el.dialog.showModal();
   $('#rules-close').onclick = () => el.dialog.close();
@@ -57,15 +60,26 @@
     try { document.fullscreenElement ? await document.exitFullscreen() : await document.documentElement.requestFullscreen(); } catch (_) {}
   };
 
+  const modeButtons = Array.from(document.querySelectorAll('.mode-switch-btn'));
+  if (soloMode) {
+    el.lobby?.classList.add('hidden');
+    modeButtons.forEach((b) => b.setAttribute('aria-pressed', b.dataset.modeHref === 'solo.html' ? 'true' : 'false'));
+    const back = document.querySelector('.party-actions a');
+    if (back) { back.href = 'solo.html#games'; back.textContent = '← 1人用一覧'; }
+  }
+
   const ROOM_PREFIX = 'mg20-';
   const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let peer = null, conn = null, role = '', localPlayer = 0, connected = false, state = null, hostTimer = 0, lastSync = 0;
+  let peer = null, conn = null, role = soloMode ? 'host' : '', localPlayer = 0;
+  let connected = soloMode, state = null, hostTimer = 0, lastSync = 0;
 
   const rand = (n) => Math.floor(Math.random() * n);
   const roomCode = () => Array.from({length:6}, () => ROOM_CHARS[rand(ROOM_CHARS.length)]).join('');
   const normalize = (v) => String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+  const authoritative = () => role === 'host' && (soloMode || connected);
 
   function setConnection(title, detail = '', status = 'idle') {
+    if (!el.connStatus) return;
     el.connStatus.textContent = title;
     el.connDetail.textContent = detail;
     el.badge.textContent = status === 'connected' ? '接続中' : status === 'waiting' ? '待機中' : status === 'error' ? 'エラー' : '未接続';
@@ -78,8 +92,10 @@
     try { peer?.destroy(); } catch (_) {}
     peer = conn = null;
     state = null;
-    connected = false;
-    el.start.disabled = true;
+    connected = soloMode;
+    role = soloMode ? 'host' : '';
+    localPlayer = 0;
+    el.start.disabled = !soloMode;
     el.restart.disabled = true;
   }
 
@@ -90,14 +106,14 @@
   }
 
   function send(data) {
-    if (!conn?.open) return;
+    if (soloMode || !conn?.open) return;
     try { conn.send(data); } catch (_) {}
   }
 
   function sync(force = false) {
-    if (role !== 'host' || !state) return;
+    if (soloMode || role !== 'host' || !state) return;
     const now = Date.now();
-    if (!force && now - lastSync < 300) return;
+    if (!force && now - lastSync < 250) return;
     lastSync = now;
     send({ type:'state', gameNo, state });
   }
@@ -126,34 +142,36 @@
     conn.on('error', (error) => setConnection('通信エラー', peerError(error), 'error'));
   }
 
-  el.create.onclick = () => {
-    if (!window.SupabasePeer) return setConnection('Supabase通信を読み込めません', '', 'error');
-    destroyConnection();
-    role = 'host'; localPlayer = 0;
-    const code = roomCode();
-    el.made.classList.remove('hidden'); el.room.textContent = code;
-    setConnection('部屋を作成中…', `ROOM ${code}`, 'waiting');
-    peer = new SupabasePeer(ROOM_PREFIX + code.toLowerCase());
-    peer.on('open', () => setConnection('相手の参加待ち', `ROOM ${code}`, 'waiting'));
-    peer.on('connection', attach);
-    peer.on('error', (error) => setConnection('接続エラー', peerError(error), 'error'));
-  };
+  if (!soloMode) {
+    el.create.onclick = () => {
+      if (!window.SupabasePeer) return setConnection('Supabase通信を読み込めません', '', 'error');
+      destroyConnection();
+      role = 'host'; localPlayer = 0;
+      const code = roomCode();
+      el.made.classList.remove('hidden'); el.room.textContent = code;
+      setConnection('部屋を作成中…', `ROOM ${code}`, 'waiting');
+      peer = new SupabasePeer(ROOM_PREFIX + code.toLowerCase());
+      peer.on('open', () => setConnection('相手の参加待ち', `ROOM ${code}`, 'waiting'));
+      peer.on('connection', attach);
+      peer.on('error', (error) => setConnection('接続エラー', peerError(error), 'error'));
+    };
 
-  el.join.onsubmit = (e) => {
-    e.preventDefault();
-    const code = normalize(el.input.value);
-    if (code.length !== 6) return setConnection('6桁コードを入力してください', '', 'error');
-    destroyConnection(); role = 'guest'; localPlayer = 1;
-    setConnection('接続中…', `ROOM ${code}`, 'waiting');
-    peer = new SupabasePeer();
-    peer.on('open', () => attach(peer.connect(ROOM_PREFIX + code.toLowerCase())));
-    peer.on('error', (error) => setConnection('接続エラー', peerError(error), 'error'));
-  };
+    el.join.onsubmit = (e) => {
+      e.preventDefault();
+      const code = normalize(el.input.value);
+      if (code.length !== 6) return setConnection('6桁コードを入力してください', '', 'error');
+      destroyConnection(); role = 'guest'; localPlayer = 1;
+      setConnection('接続中…', `ROOM ${code}`, 'waiting');
+      peer = new SupabasePeer();
+      peer.on('open', () => attach(peer.connect(ROOM_PREFIX + code.toLowerCase())));
+      peer.on('error', (error) => setConnection('接続エラー', peerError(error), 'error'));
+    };
 
-  el.input.oninput = () => { el.input.value = normalize(el.input.value); };
-  el.copy.onclick = async () => {
-    try { await navigator.clipboard.writeText(el.room.textContent); el.copy.textContent = 'コピー済み'; setTimeout(() => el.copy.textContent = 'コピー', 900); } catch (_) {}
-  };
+    el.input.oninput = () => { el.input.value = normalize(el.input.value); };
+    el.copy.onclick = async () => {
+      try { await navigator.clipboard.writeText(el.room.textContent); el.copy.textContent = 'コピー済み'; setTimeout(() => el.copy.textContent = 'コピー', 900); } catch (_) {}
+    };
+  }
 
   function makeSequence() { return Array.from({length:5}, () => game.items[rand(game.items.length)]); }
   function makeTargets(count) {
@@ -163,8 +181,11 @@
   }
 
   function startGame() {
-    if (role !== 'host' || !connected) return;
-    state = { endAt:Date.now()+300000, ended:false, scores:[0,0], team:0, message:'START!', last:[0,0] };
+    if (!authoritative()) return;
+    state = {
+      endAt:Date.now()+300000, ended:false, scores:[0,0], team:0, message:'START!', last:[0,0],
+      cpuAt:Date.now()+700+rand(500)
+    };
     if (game.kind === 'targets') { state.targets = makeTargets(game.mode === 'CO-OP' ? 3 : 1); state.baseHp = 5; state.spawnAt = Date.now()+1300; }
     if (game.kind === 'sequence') { state.sequence = makeSequence(); state.sequencePos = 0; }
     if (game.kind === 'build') state.resources = { wood:0, rope:0, metal:0 };
@@ -173,7 +194,8 @@
     if (game.kind === 'risk' || game.kind === 'timing') state.cooldown = [0,0];
     if (game.kind === 'maze') { state.x = 0; state.y = 0; state.round = 0; }
     sync(true); render();
-    clearInterval(hostTimer); hostTimer = setInterval(hostTick, 220);
+    el.restart.disabled = false;
+    clearInterval(hostTimer); hostTimer = setInterval(hostTick, 180);
   }
 
   el.start.onclick = startGame;
@@ -188,14 +210,14 @@
   function checkGoal() {
     if (game.mode === 'CO-OP' && game.goal && state.team >= game.goal) return finish('coop', '協力ミッションクリア！');
     if (game.mode === 'VS' && game.goal) {
-      if (state.scores[0] >= game.goal) return finish(0, 'PLAYER 1 WIN!');
-      if (state.scores[1] >= game.goal) return finish(1, 'PLAYER 2 WIN!');
+      if (state.scores[0] >= game.goal) return finish(0, soloMode ? 'YOU WIN!' : 'PLAYER 1 WIN!');
+      if (state.scores[1] >= game.goal) return finish(1, soloMode ? 'CPU WIN!' : 'PLAYER 2 WIN!');
     }
   }
 
   function submit(action) {
     if (!state || state.ended) return;
-    if (role === 'guest') send({ type:'action', gameNo, action });
+    if (!soloMode && role === 'guest') send({ type:'action', gameNo, action });
     else applyAction(action, 0);
   }
 
@@ -212,17 +234,15 @@
           const empty = state.targets.map((v,j) => v ? -1 : j).filter((j) => j >= 0);
           if (empty.length) state.targets[empty[rand(empty.length)]] = 1;
         }
-        state.message = 'GET!'; checkGoal();
-      } else if (game.mode === 'CO-OP') {
-        state.baseHp--; state.message = 'MISS!';
-        if (state.baseHp <= 0) finish(null, 'BASE DOWN');
+        state.message = player === 0 ? 'GET!' : (soloMode ? 'CPU GET!' : 'RIVAL GET!');
+        checkGoal();
       }
     }
 
     else if (game.kind === 'sequence') {
       if (action.value === state.sequence[state.sequencePos]) {
         state.sequencePos++; state.scores[player]++; state.team++;
-        if (state.sequencePos >= state.sequence.length) { state.team += 2; state.sequence = makeSequence(); state.sequencePos = 0; }
+        if (state.sequencePos >= state.sequence.length) { state.team += 2; state.sequence = makeSequence(); state.sequencePos = 0; state.message = 'CHAIN +2'; }
       } else {
         state.team = Math.max(0, state.team - 1); state.sequencePos = Math.max(0, state.sequencePos - 1); state.message = 'MISS';
       }
@@ -238,17 +258,20 @@
       else if (choice === 1) points = Math.random() < .2 ? -2 : 3 + rand(5);
       else points = Math.random() < .35 ? -(2 + rand(5)) : 6 + rand(8);
       state.scores[player] = Math.max(0, state.scores[player] + points);
-      state.message = `${points > 0 ? '+' : ''}${points}`; checkGoal();
+      state.message = `${player === 1 && soloMode ? 'CPU ' : ''}${points > 0 ? '+' : ''}${points}`;
+      checkGoal();
     }
 
     else if (game.kind === 'build') {
-      if (action.resource) { state.resources[action.resource]++; state.scores[player]++; }
+      if (action.resource && Object.prototype.hasOwnProperty.call(state.resources, action.resource)) {
+        state.resources[action.resource]++; state.scores[player]++;
+      }
       if (action.build) {
         const cost = gameNo === 37 ? {wood:2,rope:1,metal:1} : {wood:1,rope:1,metal:1};
         if (Object.keys(cost).every((k) => state.resources[k] >= cost[k])) {
           Object.keys(cost).forEach((k) => state.resources[k] -= cost[k]);
-          state.team++; state.scores[player]++; checkGoal();
-        } else state.message = '資材不足';
+          state.team++; state.scores[player]++; state.message = 'BUILD!'; checkGoal();
+        } else if (player === 0) state.message = '資材不足';
       }
     }
 
@@ -256,20 +279,22 @@
       if (player !== state.holder) return;
       state.holder = 1 - player; state.passes++; state.scores[player]++;
       state.fuseAt = now + Math.max(1300, 4500 - state.passes * 140);
+      state.message = player === 0 ? 'PASS!' : (soloMode ? 'CPU PASS!' : 'RIVAL PASS!');
     }
 
     else if (game.kind === 'duel') {
       if (now - state.last[player] < 450) return;
       state.last[player] = now;
-      if (action.move === 'charge') state.energy[player] = Math.min(5, state.energy[player] + 1);
-      if (action.move === 'guard') state.guard[player] = true;
+      if (action.move === 'charge') { state.energy[player] = Math.min(5, state.energy[player] + 1); state.message = player === 0 ? 'CHARGE' : 'CPU CHARGE'; }
+      if (action.move === 'guard') { state.guard[player] = true; state.message = player === 0 ? 'GUARD' : 'CPU GUARD'; }
       if (action.move === 'attack') {
-        if (state.energy[player] <= 0) { state.message = 'ENERGY 0'; sync(true); render(); return; }
+        if (state.energy[player] <= 0) { if (player === 0) state.message = 'ENERGY 0'; sync(true); render(); return; }
         state.energy[player]--;
         let damage = 9 + rand(8);
         if (state.guard[1-player]) { damage = Math.ceil(damage * .35); state.guard[1-player] = false; }
         state.hp[1-player] = Math.max(0, state.hp[1-player] - damage); state.scores[player] += damage;
-        if (state.hp[1-player] <= 0) return finish(player, `PLAYER ${player+1} KO WIN!`);
+        state.message = `${player === 0 ? 'HIT' : (soloMode ? 'CPU HIT' : 'RIVAL HIT')} -${damage}`;
+        if (state.hp[1-player] <= 0) return finish(player, soloMode ? (player === 0 ? 'YOU KO WIN!' : 'CPU KO WIN!') : `PLAYER ${player+1} KO WIN!`);
       }
     }
 
@@ -279,7 +304,7 @@
       const x = (Math.sin((now % 2400) / 2400 * Math.PI * 2 - Math.PI/2) + 1) / 2;
       const d = Math.abs(x - .5);
       const points = d < .07 ? 12 : d < .15 ? 8 : d < .25 ? 4 : 1;
-      state.scores[player] += points; state.message = `HOOK +${points}`; checkGoal();
+      state.scores[player] += points; state.message = `${player === 1 && soloMode ? 'CPU ' : ''}HOOK +${points}`; checkGoal();
     }
 
     else if (game.kind === 'maze') {
@@ -288,33 +313,102 @@
       if (action.dir === 'left') x--; if (action.dir === 'right') x++;
       if (x < 0 || x > 6 || y < 0 || y > 6) return;
       state.x = x; state.y = y; state.scores[player]++;
-      if (x === 6 && y === 6) { state.team++; state.x = 0; state.y = 0; if (state.team >= game.goal) return finish('coop', '5回脱出成功！'); }
+      if (x === 6 && y === 6) {
+        state.team++; state.x = 0; state.y = 0; state.message = `ESCAPE ${state.team}/${game.goal}`;
+        if (state.team >= game.goal) return finish('coop', '5回脱出成功！');
+      }
     }
 
     sync(true); render();
   }
 
+  function cpuMove(now) {
+    if (!soloMode || !state || state.ended) return;
+    let delay = 650 + rand(650);
+
+    if (game.kind === 'targets') {
+      const active = state.targets.map((v,i) => v ? i : -1).filter((i) => i >= 0);
+      if (active.length) applyAction({i:active[rand(active.length)]}, 1);
+      delay = game.mode === 'CO-OP' ? 850 + rand(700) : 500 + rand(750);
+    }
+    else if (game.kind === 'sequence') {
+      applyAction({value:state.sequence[state.sequencePos]}, 1);
+      delay = 700 + rand(700);
+    }
+    else if (game.kind === 'risk') {
+      const r = Math.random();
+      applyAction({choice:r < .28 ? 0 : r < .74 ? 1 : 2}, 1);
+      delay = 700 + rand(800);
+    }
+    else if (game.kind === 'build') {
+      const cost = gameNo === 37 ? {wood:2,rope:1,metal:1} : {wood:1,rope:1,metal:1};
+      if (Object.keys(cost).every((k) => state.resources[k] >= cost[k])) applyAction({build:true}, 1);
+      else {
+        const need = Object.keys(cost).filter((k) => state.resources[k] < cost[k]);
+        applyAction({resource:need[rand(need.length)] || ['wood','rope','metal'][rand(3)]}, 1);
+      }
+      delay = 650 + rand(600);
+    }
+    else if (game.kind === 'bomb') {
+      if (state.holder === 1) applyAction({pass:true}, 1);
+      delay = 900 + rand(900);
+    }
+    else if (game.kind === 'duel') {
+      if (state.energy[1] === 0) applyAction({move:'charge'}, 1);
+      else {
+        const low = state.hp[1] < 35;
+        const r = Math.random();
+        applyAction({move:r < (low ? .32 : .18) ? 'guard' : r < .72 ? 'attack' : 'charge'}, 1);
+      }
+      delay = 520 + rand(700);
+    }
+    else if (game.kind === 'timing') {
+      const x = (Math.sin((now % 2400) / 2400 * Math.PI * 2 - Math.PI/2) + 1) / 2;
+      if (Math.abs(x - .5) < .18) { applyAction({hook:true}, 1); delay = 850 + rand(850); }
+      else delay = 120;
+    }
+    else if (game.kind === 'maze') {
+      const choices = [];
+      if (state.x < 6) choices.push('right','right');
+      if (state.y < 6) choices.push('down','down');
+      if (state.x > 0) choices.push('left');
+      if (state.y > 0) choices.push('up');
+      applyAction({dir:choices[rand(choices.length)] || 'right'}, 1);
+      delay = 850 + rand(650);
+    }
+    state.cpuAt = Date.now() + delay;
+  }
+
   function hostTick() {
-    if (role !== 'host' || !state || state.ended) return;
+    if (!authoritative() || !state || state.ended) return;
     const now = Date.now();
     if (now >= state.endAt) {
       if (game.mode === 'CO-OP') return finish(null, 'TIME UP');
       const a = state.scores[0], b = state.scores[1];
-      return finish(a === b ? 'draw' : a > b ? 0 : 1, a === b ? 'DRAW' : `PLAYER ${a > b ? 1 : 2} WIN!`);
+      return finish(a === b ? 'draw' : a > b ? 0 : 1, a === b ? 'DRAW' : (soloMode ? (a > b ? 'YOU WIN!' : 'CPU WIN!') : `PLAYER ${a > b ? 1 : 2} WIN!`));
     }
+
     if (game.kind === 'targets' && game.mode === 'CO-OP' && now >= state.spawnAt) {
-      state.spawnAt = now + 1100 + rand(800);
+      state.spawnAt = now + 900 + rand(700);
       const empty = state.targets.map((v,i) => v ? -1 : i).filter((i) => i >= 0);
       if (empty.length) state.targets[empty[rand(empty.length)]] = 1;
-      if (state.targets.filter(Boolean).length >= 7) { state.baseHp--; const active = state.targets.map((v,i)=>v?i:-1).filter((i)=>i>=0); if (active.length) state.targets[active[rand(active.length)]] = 0; if (state.baseHp <= 0) return finish(null, 'BASE DOWN'); }
+      if (state.targets.filter(Boolean).length >= 7) {
+        state.baseHp--;
+        const active = state.targets.map((v,i)=>v?i:-1).filter((i)=>i>=0);
+        if (active.length) state.targets[active[rand(active.length)]] = 0;
+        if (state.baseHp <= 0) return finish(null, 'BASE DOWN');
+      }
       sync(true);
     }
+
     if (game.kind === 'bomb' && now >= state.fuseAt) {
       const loser = state.holder;
       state.life[loser]--;
-      if (state.life[loser] <= 0) return finish(1-loser, `PLAYER ${2-loser} WIN!`);
-      state.holder = 1-loser; state.passes = 0; state.fuseAt = now + 6000; sync(true);
+      if (state.life[loser] <= 0) return finish(1-loser, soloMode ? (loser === 0 ? 'CPU WIN!' : 'YOU WIN!') : `PLAYER ${2-loser} WIN!`);
+      state.holder = 1-loser; state.passes = 0; state.fuseAt = now + 6000; state.message = 'BOOM!'; sync(true);
     }
+
+    if (soloMode && now >= (state.cpuAt || 0)) cpuMove(now);
     renderTime();
   }
 
@@ -333,15 +427,16 @@
     if (!state) {
       el.you.textContent = '0'; el.rival.textContent = '0';
       el.team.textContent = game.mode === 'CO-OP' ? `0 / ${game.goal}` : '—';
-      el.status.textContent = connected ? (role === 'host' ? '準備OK' : 'ホスト開始待ち') : '接続待ち';
-      el.stage.innerHTML = `<div class="party-center"><div><div class="party-target">${game.icon || '🎮'}</div><h3>${game.mode === 'CO-OP' ? '2人協力' : '2人対戦'}</h3><p>${game.desc}</p></div></div>`;
+      el.status.textContent = soloMode ? '1人プレイ準備OK' : (connected ? (role === 'host' ? '準備OK' : 'ホスト開始待ち') : '接続待ち');
+      el.message.textContent = soloMode ? 'ゲーム開始を押してください。' : '2人そろったらスタートできます。';
+      el.stage.innerHTML = `<div class="party-center"><div><div class="party-target">${game.icon || '🎮'}</div><h3>${soloMode ? (game.mode === 'CO-OP' ? 'YOU + CPU' : 'YOU VS CPU') : (game.mode === 'CO-OP' ? '2人協力' : '2人対戦')}</h3><p>${game.desc}</p></div></div>`;
       return;
     }
 
     el.you.textContent = state.scores[localPlayer];
     el.rival.textContent = state.scores[1-localPlayer];
     el.team.textContent = game.mode === 'CO-OP' ? `${state.team}/${game.goal}` : game.kind === 'duel' ? `HP ${state.hp[localPlayer]}` : `GOAL ${game.goal || 'KO'}`;
-    el.status.textContent = state.ended ? 'FINISHED' : game.mode;
+    el.status.textContent = state.ended ? 'FINISHED' : (soloMode ? 'SOLO' : game.mode);
     el.message.textContent = state.message || '';
 
     if (state.ended) {
@@ -365,10 +460,10 @@
     }
     else if (game.kind === 'bomb') {
       const mine = state.holder === localPlayer;
-      el.stage.innerHTML = `<div class="party-center"><div><div class="party-target">💣</div><h3>${mine ? 'あなたが爆弾を所持！' : '相手が所持'}</h3><p>FUSE ${Math.max(0,(state.fuseAt-Date.now())/1000).toFixed(1)}s</p><p>P1 ${'♥'.repeat(state.life[0])} / P2 ${'♥'.repeat(state.life[1])}</p>${mine ? button('PASS!',{pass:1},'party-big-button') : ''}</div></div>`;
+      el.stage.innerHTML = `<div class="party-center"><div><div class="party-target">💣</div><h3>${mine ? 'あなたが爆弾を所持！' : (soloMode ? 'CPUが所持' : '相手が所持')}</h3><p>FUSE ${Math.max(0,(state.fuseAt-Date.now())/1000).toFixed(1)}s</p><p>YOU ${'♥'.repeat(state.life[0])} / ${soloMode ? 'CPU' : 'P2'} ${'♥'.repeat(state.life[1])}</p>${mine ? button('PASS!',{pass:1},'party-big-button') : ''}</div></div>`;
     }
     else if (game.kind === 'duel') {
-      el.stage.innerHTML = `<div class="party-center"><div><div class="party-target">${game.icon}</div><p>YOU HP ${state.hp[localPlayer]} / EN ${state.energy[localPlayer]} ${state.guard[localPlayer]?'🛡️':''}</p><p>RIVAL HP ${state.hp[1-localPlayer]} / EN ${state.energy[1-localPlayer]} ${state.guard[1-localPlayer]?'🛡️':''}</p><div class="party-buttons">${button('⚡ CHARGE',{move:'charge'})}${button('🛡️ GUARD',{move:'guard'})}${button('💥 ATTACK',{move:'attack'},'party-big-button')}</div></div></div>`;
+      el.stage.innerHTML = `<div class="party-center"><div><div class="party-target">${game.icon}</div><p>YOU HP ${state.hp[localPlayer]} / EN ${state.energy[localPlayer]} ${state.guard[localPlayer]?'🛡️':''}</p><p>${soloMode ? 'CPU' : 'RIVAL'} HP ${state.hp[1-localPlayer]} / EN ${state.energy[1-localPlayer]} ${state.guard[1-localPlayer]?'🛡️':''}</p><div class="party-buttons">${button('⚡ CHARGE',{move:'charge'})}${button('🛡️ GUARD',{move:'guard'})}${button('💥 ATTACK',{move:'attack'},'party-big-button')}</div></div></div>`;
     }
     else if (game.kind === 'timing') {
       const x = ((Math.sin((Date.now()%2400)/2400*Math.PI*2-Math.PI/2)+1)/2)*100;
@@ -400,5 +495,9 @@
     if (state && !state.ended && (game.kind === 'bomb' || game.kind === 'timing')) render();
   }, 220);
 
+  if (soloMode) {
+    el.start.disabled = false;
+    el.restart.disabled = true;
+  }
   render();
 })();
