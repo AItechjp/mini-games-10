@@ -37,7 +37,10 @@
   }) : null;
 
   const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  const ROUND_MS = 20000;
+  const ROUND_MS = Math.max(1000, Number(gameDef.roundMs) || 20000);
+  const ROUND_SECONDS = ROUND_MS / 1000;
+  const ROUND_LABEL = gameDef.durationLabel || `${Math.round(ROUND_SECONDS)}秒`;
+  const INITIAL_TIME = ROUND_SECONDS.toFixed(1);
   const START_DELAY_MS = 2300;
   const makeUuid = () => typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=crypto.getRandomValues(new Uint8Array(1))[0]&15,v=c==='x'?r:(r&3)|8;return v.toString(16);});
   const playerToken = makeUuid();
@@ -377,7 +380,7 @@
     rivalScore = 0;
     scoreEl.textContent = '0';
     rivalEl.textContent = '0';
-    timeEl.textContent = '20.0';
+    timeEl.textContent = INITIAL_TIME;
     overlay.classList.add('hidden');
     roundStartedAt = performance.now();
     createEngine();
@@ -429,7 +432,7 @@
   function showResult() {
     const solo = mode === 'solo';
     const myStats = statsText(finalStats);
-    const vs = solo ? `<div class="arcade-result-score">${localScore}</div><p>BEST ${getBest()}${myStats ? `<br>${myStats}` : ''}</p>` : `<div class="arcade-result-vs"><span>YOU<strong>${localScore}</strong></span><b>VS</b><span>RIVAL<strong>${rivalScore}</strong></span></div><p>${myStats || '20秒バトル終了'}</p>`;
+    const vs = solo ? `<div class="arcade-result-score">${localScore}</div><p>BEST ${getBest()}${myStats ? `<br>${myStats}` : ''}</p>` : `<div class="arcade-result-vs"><span>YOU<strong>${localScore}</strong></span><b>VS</b><span>RIVAL<strong>${rivalScore}</strong></span></div><p>${myStats || `${ROUND_LABEL}バトル終了`}</p>`;
     setOverlay(resultHeadline(), vs, solo ? 'もう一回' : role === 'host' ? '再戦する' : 'ホストの再戦待ち', solo || (role === 'host' && connected));
     overlay.dataset.result = '1';
   }
@@ -450,7 +453,7 @@
     rivalScore = 0;
     scoreEl.textContent = '0';
     rivalEl.textContent = '0';
-    timeEl.textContent = '20.0';
+    timeEl.textContent = INITIAL_TIME;
     bestEl.textContent = String(getBest());
     lobby.classList.toggle('hidden', mode !== 'online');
     rivalHud.classList.toggle('hidden-hud', mode !== 'online');
@@ -459,12 +462,12 @@
     url.searchParams.set('mode', mode);
     history.replaceState(null, '', url);
     if (mode === 'solo') {
-      setOverlay(gameDef.title, gameDef.instructions, '20秒スタート', true);
+      setOverlay(gameDef.title, gameDef.instructions, `${ROUND_LABEL}スタート`, true);
     } else if (!hasSupabase) {
       setOverlay(gameDef.title, 'Supabaseを読み込めませんでした。通信環境を確認してください。', '対戦を利用できません', false);
       setNetworkState('error', 'Supabaseを読み込めません', 'ページを再読み込みしてください。');
     } else {
-      setOverlay(gameDef.title, '部屋を作るか参加すると、ここから20秒対戦を開始できます。', '接続待ち', false);
+      setOverlay(gameDef.title, `部屋を作るか参加すると、ここから${ROUND_LABEL}対戦を開始できます。`, '接続待ち', false);
       setNetworkState('idle', '部屋を作るか参加してください。', 'ログインは不要です。');
     }
   }
