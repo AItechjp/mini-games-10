@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-  <meta name="description" content="5エリア構成の協力プレイ対応3DゾンビサバイバルFPS。ライフ3、通常ゾンビは1発撃破、各エリアに固有ボス、3段階難易度。">
+  <meta name="description" content="5エリア構成の協力プレイ対応3DゾンビサバイバルFPS。大量の人型ゾンビ、ゴール方位表示、ライフ3、各エリア固有ボス、3段階難易度。">
   <title>GAME 23 - OUTBREAK: BLACK SITE</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mode-switch.css">
@@ -24,9 +24,9 @@
   </div>
 
   <section class="hero outbreak-hero">
-    <p class="eyebrow">GAME 23 / 5-AREA CO-OP SURVIVAL</p>
+    <p class="eyebrow">GAME 23 / 5-AREA CO-OP HORDE SURVIVAL</p>
     <h1>OUTBREAK: BLACK SITE</h1>
-    <p>封鎖された5つの感染区域を突破して最終脱出地点へ。通常ゾンビは一撃、各区域には固有ボス。ライフは3、接触で1減少。クリア条件はただ一つ、ゴールへ到達すること。</p>
+    <p>豪華な感染施設を埋め尽くすゾンビの大群を撃ち抜け。通常ゾンビは一撃、各区域には固有ボス。ライフは3、接触で1減少。画面上部の矢印を追ってゴールへ到達すればエリアクリア。</p>
   </section>
 
   <section id="mission" class="outbreak-panel">
@@ -71,6 +71,10 @@
 
       <div id="game23-frame" class="game23-frame">
         <canvas id="game23-canvas" aria-label="OUTBREAK BLACK SITE 3Dゲーム画面"></canvas>
+        <div id="goal-compass" class="goal-compass" aria-label="ゴール方向">
+          <div id="goal-arrow" class="goal-arrow">▲</div>
+          <div><span>EVAC ROUTE</span><strong id="goal-direction">GOAL ---</strong></div>
+        </div>
         <div class="crosshair" aria-hidden="true"></div>
         <div id="damage-flash" class="damage-flash"></div>
         <div id="boss-banner" class="boss-banner hidden"><span id="boss-kicker">BOSS ENCOUNTER</span><strong id="boss-name">---</strong></div>
@@ -82,9 +86,9 @@
 
         <div id="game23-overlay" class="game23-overlay">
           <div class="overlay-card">
-            <p class="eyebrow">BLACK SITE PROTOCOL</p>
+            <p class="eyebrow">BLACK SITE HORDE PROTOCOL</p>
             <h2 id="overlay-title">感染区域へ侵入</h2>
-            <p id="overlay-text">PC: WASD移動 / マウスで視点 / クリック・Spaceで射撃。スマホ: 左ドラッグで移動 / 右ドラッグで視点 / FIREで射撃。通常ゾンビは1発、ボスは複数発。ゴール到達でエリアクリア。</p>
+            <p id="overlay-text">画面上部の矢印がゴール方向。PC: WASD移動 / マウス視点 / クリック・Space射撃。スマホ: 左ドラッグ移動 / 右ドラッグ視点 / FIRE。人型ゾンビの大群を一撃で倒しながら走り抜けろ。</p>
             <button id="game23-start" type="button">ミッション開始</button>
           </div>
         </div>
@@ -97,7 +101,7 @@
         <div><span>04</span><strong>HIVE LAB</strong><small>HIVE QUEEN</small></div>
         <div><span>05</span><strong>ZERO SECTOR</strong><small>NULL TYRANT</small></div>
       </div>
-      <p class="outbreak-note">各エリアは直行でも長く、戦闘と回避を含め約3分想定。CO-OPでは参加中の2人がそろってゴールへ到達すると次エリアへ進みます。</p>
+      <p class="outbreak-note">高速移動＋大量ゾンビのHORDE仕様。NORMALでも最大94体、NIGHTMAREは最大124体。CO-OPでは2人そろってゴールへ到達すると次エリアへ進みます。</p>
     </div>
   </section>
 </main>
