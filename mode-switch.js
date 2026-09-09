@@ -1,5 +1,22 @@
 (() => {
   'use strict';
+
+  const loadSiteAds = () => {
+    if (document.querySelector('script[data-site-ads-config],script[src="ads-config.js"]')) return;
+    const config = document.createElement('script');
+    config.src = 'ads-config.js';
+    config.dataset.siteAdsConfig = 'true';
+    config.onload = () => {
+      if (document.querySelector('script[data-site-ads-bootstrap],script[src="ads-bootstrap.js"]')) return;
+      const bootstrap = document.createElement('script');
+      bootstrap.src = 'ads-bootstrap.js';
+      bootstrap.dataset.siteAdsBootstrap = 'true';
+      document.head.appendChild(bootstrap);
+    };
+    document.head.appendChild(config);
+  };
+  loadSiteAds();
+
   document.querySelectorAll('.mode-switch-bar').forEach(bar => {
     if (!bar.querySelector('[data-mode-href="apps.html"]')) {
       const button = document.createElement('button');
