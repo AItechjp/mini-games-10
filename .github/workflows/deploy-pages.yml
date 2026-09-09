@@ -24,6 +24,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - name: Validate JavaScript
         shell: bash
         run: |
@@ -31,7 +36,28 @@ jobs:
           while IFS= read -r -d '' file; do
             echo "Checking $file"
             node --check "$file"
-          done < <(find . -maxdepth 1 -type f -name '*.js' -print0)
+          done < <(find . -maxdepth 2 -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
+
+      - name: Install browser smoke-test runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Smoke test all 320 modes locally
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 >/tmp/mega-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid || true' EXIT
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null
+          MEGA_BASE_URL=http://127.0.0.1:4173/ MEGA_FULL=1 node tests/mega-smoke.mjs
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -44,3 +70,20 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify deployed Pages in browser
+        shell: bash
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -euo pipefail
+          ok=0
+          for i in {1..18}; do
+            if curl -fsS "${PAGE_URL}mega-arcade.html" | grep -q 'mega-final.js'; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          test "$ok" = 1
+          MEGA_BASE_URL="$PAGE_URL" MEGA_FULL=0 node tests/mega-smoke.mjs
