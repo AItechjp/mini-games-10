@@ -14,7 +14,7 @@ if (game23Crypto && typeof game23Crypto.randomUUID !== 'function') {
   catch { try { game23Crypto.randomUUID = fallbackUUID; } catch {} }
 }
 
-const PARTS = [1,2,3,4,5,6,7,8,9,10].map(n => `game23-v3-part${n}.js?v=openworld-verified-2`);
+const PARTS = [1,2,3,4,5,6,7,8,9,10].map(n => `game23-v3-part${n}.js?v=openworld-verified-3`);
 const THREE_IMPORT = "import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';";
 const THREE_SOURCES = [
   'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js',
@@ -24,13 +24,14 @@ const overlayTitle = document.querySelector('#overlay-title');
 const overlayText = document.querySelector('#overlay-text');
 const start = document.querySelector('#game23-start');
 
-async function fetchWithTimeout(url, ms = 12000) {
+async function reachable(url, ms = 10000) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), ms);
   try {
     const res = await fetch(url, { cache: 'force-cache', signal: controller.signal });
     if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
-    return await res.text();
+    await res.body?.cancel?.();
+    return true;
   } finally { clearTimeout(timer); }
 }
 
@@ -45,21 +46,20 @@ try {
     return res.text();
   }));
 
-  let threeText = '';
+  let threeSource = '';
   let lastThreeError = null;
   for (const source of THREE_SOURCES) {
-    try { threeText = await fetchWithTimeout(source); if (threeText) break; }
+    try { if (await reachable(source)) { threeSource = source; break; } }
     catch (err) { lastThreeError = err; }
   }
-  if (!threeText) throw lastThreeError || new Error('Three.js could not be loaded');
+  if (!threeSource) throw lastThreeError || new Error('Three.js could not be loaded');
 
-  const threeUrl = URL.createObjectURL(new Blob([threeText], { type: 'text/javascript' }));
   let source = partTexts.join('\n');
   if (!source.includes(THREE_IMPORT)) throw new Error('Three.js import marker not found');
-  source = source.replace(THREE_IMPORT, `import * as THREE from '${threeUrl}';`);
+  source = source.replace(THREE_IMPORT, `import * as THREE from '${threeSource}';`);
   const gameUrl = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
   try { await import(gameUrl); }
-  finally { URL.revokeObjectURL(gameUrl); URL.revokeObjectURL(threeUrl); }
+  finally { URL.revokeObjectURL(gameUrl); }
 } catch (err) {
   console.error('GAME23 OPEN WORLD load failed', err);
   if (overlayTitle) overlayTitle.textContent = 'LOAD ERROR';
