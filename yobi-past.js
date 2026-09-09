@@ -234,9 +234,11 @@
     });
     $('resetPastProgress').addEventListener('click', () => {
       if (!confirm('過去問の進捗・メモをすべて削除しますか？')) return;
+      closeRunner();
       localStorage.removeItem(STORAGE_KEY);
       state.progress = {};
-      closeRunner();
+      state.current = null;
+      $('runner').classList.remove('active');
       render();
     });
   }
