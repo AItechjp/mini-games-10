@@ -1,6 +1,5 @@
 name: Deploy Cloudflare Pages
 
-# Fresh run forced after repository secrets update (2026-09-09).
 on:
   push:
     branches: ["main"]
@@ -33,6 +32,9 @@ jobs:
             node --check "$file"
           done < <(find . -maxdepth 2 -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
 
+      - name: Validate preliminary-exam 1000-question bank
+        run: node tests/yobi-bank-smoke.mjs
+
       - name: Build static bundle
         shell: bash
         run: |
@@ -50,6 +52,11 @@ jobs:
           test -f dist/index.html
           test -f dist/mega-arcade.html
           test -f dist/mega-final.js
+          test -f dist/yobi-quiz.html
+          test -f dist/yobi-complete-data.js
+          test -f dist/yobi-complete-fixes.js
+          test -f dist/yobi-complete.js
+          grep -q 'yobi-complete.js' dist/yobi-quiz.html
           test -f dist/supabase-config.js
 
       - name: Detect Cloudflare credentials
