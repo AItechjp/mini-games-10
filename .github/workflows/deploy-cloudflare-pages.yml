@@ -1,5 +1,6 @@
 name: Deploy Cloudflare Pages
 
+# Fresh runs resolve the current repository secrets.
 on:
   push:
     branches: ["main"]
