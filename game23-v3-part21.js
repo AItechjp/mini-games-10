@@ -53,6 +53,15 @@ function p21RestartAreaAfterWipe(){
   send('area_start',{area:state.area,seed:state.seed,difficulty:state.difficulty,lives:[...state.players.values()].map(p=>[p.id,P21_CONTINUE_LIVES])});
   beginArea(false);toast(`AREA ${state.area+1} を最初から再開`,1500);
 }
+function p21RequestPersonalContinue(){
+  if(!p21PersonalContinuePending||state.mode!=='coop')return false;
+  if(isHost())p21RevivePlayer(state.playerId);
+  else if(!p21ReviveRequestPending){
+    p21ReviveRequestPending=true;startBtn.disabled=true;startBtn.textContent='復帰待ち';
+    send('coop_revive_request',{area:state.area});toast('ホストへ復帰を要求しました',900);
+  }
+  return true;
+}
 
 /* Any single down no longer ends co-op. Only a full team wipe stops the current area. */
 const p21BaseFailMission=failMission;
@@ -84,16 +93,15 @@ resetMission=function(){
     if(isHost())p21RestartAreaAfterWipe();else toast('ホストの再開を待っています');
     return;
   }
-  if(p21PersonalContinuePending){
-    if(isHost())p21RevivePlayer(state.playerId);
-    else if(!p21ReviveRequestPending){
-      p21ReviveRequestPending=true;startBtn.disabled=true;startBtn.textContent='復帰待ち';
-      send('coop_revive_request',{area:state.area});toast('ホストへ復帰を要求しました',900);
-    }
-    return;
-  }
+  if(p21PersonalContinuePending){p21RequestPersonalContinue();return;}
   return p21BaseResetMission();
 };
+/* During a single-player down the shared world stays running, so the old click handler would skip resetMission().
+   Capture this specific button state and route it directly to the personal continue path. */
+startBtn.addEventListener('click',e=>{
+  if(!p21PersonalContinuePending)return;
+  e.preventDefault();e.stopImmediatePropagation();p21RequestPersonalContinue();
+},{capture:true});
 
 /* Extend co-op protocol with down/revive/team-wipe events. */
 const p21BaseNetwork=onNetwork;
