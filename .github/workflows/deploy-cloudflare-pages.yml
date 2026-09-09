@@ -82,14 +82,22 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          token="${RAW_CLOUDFLARE_API_TOKEN//$'\r'/}"
-          token="${token//$'\n'/}"
-          token="${token#Authorization: Bearer }"
-          token="${token#authorization: bearer }"
-          token="${token#Bearer }"
-          token="${token#bearer }"
-          token="${token#\"}"
-          token="${token%\"}"
+          token="$(python - <<'PY'
+          import os, re
+          raw = os.environ.get('RAW_CLOUDFLARE_API_TOKEN', '')
+          s = raw.replace('\r', '').replace('\n', '').strip()
+          s = s.strip('"\'').strip()
+          m = re.search(r'(?i)\bbearer\s+([A-Za-z0-9._~+/-]+)', s)
+          if m:
+              s = m.group(1)
+          else:
+              m = re.search(r'cfut_[A-Za-z0-9_-]+', s)
+              if m:
+                  s = m.group(0)
+          s = s.strip().strip('"\'')
+          print(s, end='')
+          PY
+          )"
           test -n "$token"
           echo "::add-mask::$token"
           printf 'CLOUDFLARE_API_TOKEN_NORMALIZED=%s\n' "$token" >> "$GITHUB_ENV"
@@ -104,7 +112,7 @@ jobs:
             -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN_NORMALIZED}")"
           if [ "$status" != "200" ] || [ "$(jq -r '.success // false' /tmp/cf-token.json)" != "true" ] || [ "$(jq -r '.result.status // empty' /tmp/cf-token.json)" != "active" ]; then
             cat /tmp/cf-token.json
-            echo "::error::Cloudflare API token is not valid and active. Save only the one-time API Token secret value in CLOUDFLARE_API_TOKEN (not the token name, token ID, API key, or a curl command)."
+            echo "::error::Cloudflare API token is not valid and active. Save only the one-time API Token secret value in CLOUDFLARE_API_TOKEN (not the token name, token ID, Global API Key, or a curl command)."
             exit 1
           fi
           echo "Cloudflare API token is valid and active."
