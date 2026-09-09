@@ -41,14 +41,12 @@
       '<aside id="' + SLOT_ID + '" aria-label="広告">' +
         '<div class="site-ninja-admax-label">ADVERTISEMENT</div>' +
         '<!-- admax -->' +
-        '<script src="' + TAG_URL + '"><\\/script>' +
+        '<script src="' + TAG_URL + '"></script>' +
         '<!-- admax -->' +
       '</aside>'
     );
     document.addEventListener('DOMContentLoaded', moveSlot, { once: true });
   } else {
-    // The supplied tag is synchronous. Loading it after parsing can break document.write based ads,
-    // so use the isolated legacy frame only as a late-load fallback.
     ensureStyle();
     const slot = document.createElement('aside');
     slot.id = SLOT_ID;
