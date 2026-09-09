@@ -61,7 +61,7 @@ jobs:
           done
           curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null
           curl -fsS http://127.0.0.1:4173/yobi-quiz.html | grep -q 'yobi-past.js'
-          curl -fsS http://127.0.0.1:4173/game23.html | grep -q 'game23-v3-loader.js'
+          curl -fsS http://127.0.0.1:4173/game23.html | grep -q 'game23-v4.js'
           curl -fsS http://127.0.0.1:4173/fps.html | grep -q 'fps-game.js'
           MEGA_BASE_URL=http://127.0.0.1:4173/ MEGA_FULL=1 node tests/mega-smoke.mjs
           YOBI_BASE_URL=http://127.0.0.1:4173/ node tests/yobi-past-smoke.mjs
@@ -88,7 +88,7 @@ jobs:
           set -euo pipefail
           ok=0
           for i in {1..18}; do
-            if curl -fsS "${PAGE_URL}mega-arcade.html" | grep -q 'mega-final.js' && curl -fsS "${PAGE_URL}yobi-quiz.html" | grep -q 'yobi-past.js' && curl -fsS "${PAGE_URL}game23.html" | grep -q 'game23-v3-loader.js' && curl -fsS "${PAGE_URL}fps.html" | grep -q 'LIMINAL ZOMBIE FPS — REBORN'; then
+            if curl -fsS "${PAGE_URL}mega-arcade.html" | grep -q 'mega-final.js' && curl -fsS "${PAGE_URL}yobi-quiz.html" | grep -q 'yobi-past.js' && curl -fsS "${PAGE_URL}game23.html" | grep -q 'game23-v4.js' && curl -fsS "${PAGE_URL}fps.html" | grep -q 'LIMINAL ZOMBIE FPS — REBORN'; then
               ok=1
               break
             fi
