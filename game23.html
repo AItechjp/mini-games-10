@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="description" content="洋館、雪山、川、海、都会、悪魔城の6区域を突破する協力対応3DゾンビサバイバルFPS。全画面限定プレイ、適応型サウンド、10種の感染体、無限湧き、エリア別巨大ボス、20キルドロップ対応。">
+  <meta name="description" content="洋館、雪山、川、海、都会、悪魔城の6区域を突破する協力対応3DゾンビサバイバルFPS。全画面限定プレイ、適応型サウンド、10種の感染体、無限湧き、エリア別巨大ボス、協力コンティニュー対応。">
   <title>GAME 23 - OUTBREAK: BLACK SITE ULTIMATE</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mode-switch.css">
@@ -31,14 +31,14 @@
         <div id="item-status" class="item-status">強化なし</div><div class="crosshair" aria-hidden="true"></div><div id="damage-flash" class="damage-flash"></div>
         <div id="boss-banner" class="boss-banner hidden"><span>TITAN-CLASS BOSS</span><strong id="boss-name">---</strong><em id="boss-phase">PHASE 1 / WEAK POINT ×5</em></div><div id="mission-toast" class="mission-toast"></div>
         <div id="touch-left" class="touch-zone touch-left" aria-hidden="true"><div id="touch-stick" class="touch-stick"></div></div><div id="touch-right" class="touch-zone touch-right" aria-hidden="true"></div><button id="touch-fire" class="touch-fire" type="button" aria-label="射撃">FIRE</button>
-        <div id="game23-overlay" class="game23-overlay"><div class="overlay-card"><p class="eyebrow">BLACK SITE / ULTIMATE PROTOCOL</p><h2 id="overlay-title">ULTIMATE BLACK SITE</h2><p id="overlay-text">プレイ開始後は全画面限定。射撃・リロード・被弾・感染体接近・ボス・アイテム・エリア突破に連動するサウンド付き。横向き推奨。</p><button id="game23-start" type="button">全画面で開始</button></div></div>
+        <div id="game23-overlay" class="game23-overlay"><div class="overlay-card"><p class="eyebrow">BLACK SITE / ULTIMATE PROTOCOL</p><h2 id="overlay-title">ULTIMATE BLACK SITE</h2><p id="overlay-text">プレイ開始後は全画面限定。CO-OPは片方が倒れても相方が生きていれば進行を維持して復帰可能。2人とも倒れた場合のみ現在AREAの最初から再開。</p><button id="game23-start" type="button">全画面で開始</button></div></div>
       </div>
       <div class="item-legend"><div><b class="item-dot life"></b><strong>救急スプレー</strong><span>ライフ+1</span></div><div><b class="item-dot infinite"></b><strong>無限弾薬</strong><span>30秒 弾数無限</span></div><div><b class="item-dot invincible"></b><strong>完全防護薬</strong><span>30秒 完全無敵</span></div><div><b class="item-dot launcher"></b><strong>ロケットランチャー</strong><span>30秒 / 10発 / 広範囲×3</span></div></div>
       <div class="mission-strip"><div><span>01</span><strong>BLOOD MOON MANOR</strong><small>LORD NECROHOUND</small></div><div><span>02</span><strong>FROSTBITE RIDGE</strong><small>GORAM THE HOWLER</small></div><div><span>03</span><strong>DROWNED RAVINE</strong><small>ABYSSAL CROCODRAKE</small></div><div><span>04</span><strong>TEMPEST HARBOR</strong><small>LEVIATHAN REAVER</small></div><div><span>05</span><strong>NEON DEADLINE</strong><small>TITAN EXECUTIONER</small></div><div><span>06</span><strong>DEVIL CASTLE</strong><small>ARCHDEMON VALZAROTH</small></div></div>
-      <p class="outbreak-note">デブゾンビは3発、その他の通常敵は1発。10種類それぞれ速度・動き・攻撃方法・シルエットが異なり、撃破後も別タイプとして無限に補充されます。プレイ中は全画面固定、ゲーム内右上からサウンドON/OFFを切り替えできます。</p>
+      <p class="outbreak-note">CO-OPでは片方のライフが0でも相方が生存していれば、敵・ボスHP・進行状況を維持して相方の近くからライフ3で復帰。2人とも戦闘不能になった場合だけ、そのAREAを最初から再開します。プレイ中は全画面固定、右上からサウンドON/OFF切替可能。</p>
     </div>
   </section>
 </main>
 <footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
-<script src="mode-switch.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script><script src="supabase-config.js"></script><script src="game-backend.js"></script><script type="module" src="game23-v3-loader.js?v=fullscreen-audio-1"></script>
+<script src="mode-switch.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script><script src="supabase-config.js"></script><script src="game-backend.js"></script><script type="module" src="game23-v3-loader.js?v=coop-continue-1"></script>
 </body></html>
