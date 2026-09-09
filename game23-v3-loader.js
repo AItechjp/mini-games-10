@@ -14,14 +14,14 @@ if (game23Crypto && typeof game23Crypto.randomUUID !== 'function') {
   catch { try { game23Crypto.randomUUID = fallbackUUID; } catch {} }
 }
 
-const PARTS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map(n => `game23-v3-part${n}.js?v=fullscreen-audio-1`);
+const PARTS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21].map(n => `game23-v3-part${n}.js?v=coop-continue-1`);
 const overlayTitle = document.querySelector('#overlay-title');
 const overlayText = document.querySelector('#overlay-text');
 const start = document.querySelector('#game23-start');
 try {
   if (start) start.disabled = true;
   if (overlayTitle) overlayTitle.textContent = 'ULTIMATE BLACK SITE LOADING';
-  if (overlayText) overlayText.textContent = '全画面戦闘モード・3D感染区域・適応型サウンドを構築中…';
+  if (overlayText) overlayText.textContent = '全画面戦闘・協力コンティニュー・適応型サウンドを構築中…';
   const texts = await Promise.all(PARTS.map(async path => {
     const res = await fetch(path, { cache: 'no-store' });
     if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
