@@ -1,7 +1,6 @@
 // AdSense configuration for aitechd.com.
-// Set client to your real publisher ID (ca-pub-XXXXXXXXXXXXXXXX) after AdSense approval.
 window.SITE_ADSENSE = Object.assign({
   enabled: true,
-  client: "",
+  client: "ca-pub-5820558629755748",
   autoAds: true
 }, window.SITE_ADSENSE || {});
