@@ -1,17 +1,18 @@
 # Game backend
 
-This project uses **Supabase** as the shared backend and **GitHub Pages** for the static frontend.
+This project uses **Supabase** as the shared backend and publishes the same static game frontend to both **GitHub Pages** and **Cloudflare Pages**. The existing GitHub Pages deployment remains intact; Cloudflare Pages is an additional production frontend.
 
 ## Stack
 
-- Frontend: HTML / CSS / vanilla JavaScript on GitHub Pages
+- Frontend: HTML / CSS / vanilla JavaScript
+- Existing hosting: GitHub Pages via `.github/workflows/deploy-pages.yml`
+- Additional hosting: Cloudflare Pages via `.github/workflows/deploy-cloudflare-pages.yml`
 - Database: Supabase Postgres
 - Realtime multiplayer: Supabase Realtime Broadcast + Presence
 - Guest chat: Supabase RPC + Realtime
 - Persistent game results: Supabase Postgres through validated RPC functions
-- Deployment: `.github/workflows/deploy-pages.yml`
 
-Cloudflare was intentionally not added because the project already had a working Supabase project and Realtime room system. Keeping one backend avoids duplicating room state, credentials, and free-tier usage across two providers.
+Both frontends use the same Supabase project and browser-safe publishable key. This keeps room state, chat, score data, and realtime channels shared regardless of which frontend URL a player opens. Cloudflare is used only as an additional static delivery layer; it does not duplicate the database or realtime state.
 
 ## Persistent data
 
@@ -52,23 +53,29 @@ Direct anonymous table access is revoked. Browser clients call RPC functions ins
 
 ## Security model
 
-- The browser only contains the Supabase **publishable key**. No service-role key is shipped to GitHub Pages.
+- The browser contains only the Supabase **publishable key**. No service-role key is shipped to either frontend.
 - `game_scores` has RLS enabled and anonymous/authenticated users have no direct SELECT/INSERT/UPDATE/DELETE privileges.
 - Writes go through `SECURITY DEFINER` RPC functions with explicit input validation.
 - Core online score writes require a currently active room and a host/guest token that belongs to that room.
 - Dedicated arcade online results require an active room whose `game_id` matches the game being submitted.
 - Score submissions have UUID idempotency keys and a simple per-browser rate limit.
 - Leaderboards expose a masked player label rather than the raw anonymous token.
+- Cloudflare API credentials are stored only as GitHub Actions secrets and are never copied into the static bundle.
 
 The client still runs the games, so this is abuse-resistant persistence rather than a fully server-authoritative anti-cheat system.
 
 ## Frontend integration
 
+- `supabase-config.js`: shared browser-safe Supabase configuration for GitHub Pages and Cloudflare Pages
 - `game-backend.js`: GAME 01–10 score saving, personal best, global leaderboard, backend overview card
 - `custom-backend.js`: GAME 11/12/14/15/16 result saving
 - `backend.css`: leaderboard/status UI
 - `peer-supabase-shim.js`: Supabase Realtime transport compatibility for the original online game UI
 - `online-bootstrap.js`: selects Supabase transport and loads the shared backend integration
+
+## Cloudflare deployment
+
+The Cloudflare workflow builds a clean `dist/` directory containing the playable static site while excluding repository metadata, GitHub workflows, Supabase SQL migrations, Markdown documentation, and the example Supabase config. See `CLOUDFLARE.md` for the deployment setup and required GitHub Actions secrets.
 
 ## Migrations
 

@@ -1,4 +1,4 @@
-// Browser-safe Supabase configuration for GitHub Pages.
+// Browser-safe Supabase configuration shared by GitHub Pages and Cloudflare Pages.
 // Publishable keys are intended for public browser clients.
 window.SUPABASE_CONFIG = {
   enabled: true,
