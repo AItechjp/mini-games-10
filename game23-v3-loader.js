@@ -1,11 +1,11 @@
-const PARTS = [1,2,3,4,5,6,7,8,9,10,11,12,13].map(n => `game23-v3-part${n}.js?v=route-variation-1`);
+const PARTS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14].map(n => `game23-v3-part${n}.js?v=infected-classes-1`);
 const overlayTitle = document.querySelector('#overlay-title');
 const overlayText = document.querySelector('#overlay-text');
 const start = document.querySelector('#game23-start');
 try {
   if (start) start.disabled = true;
   if (overlayTitle) overlayTitle.textContent = 'ULTIMATE BLACK SITE LOADING';
-  if (overlayText) overlayText.textContent = '高性能描画・景観・障害物・特殊感染体を構築中…';
+  if (overlayText) overlayText.textContent = '10種感染体・無限湧き・エリア別ボス・高性能描画を構築中…';
   const texts = await Promise.all(PARTS.map(async path => {
     const res = await fetch(path, { cache: 'no-store' });
     if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
