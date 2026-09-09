@@ -17,32 +17,6 @@
   };
   loadSiteAds();
 
-  const loadNinjaAdMax = () => {
-    if (window.__SITE_NINJA_DIRECT_REQUESTED__) return;
-    window.__SITE_NINJA_DIRECT_REQUESTED__ = true;
-    if (document.readyState === 'loading') {
-      document.write('<script src="ninja-admax-direct.js" data-site-ninja-direct></script>');
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = 'ninja-admax-direct.js';
-    script.dataset.siteNinjaDirect = 'true';
-    document.head.appendChild(script);
-  };
-  loadNinjaAdMax();
-
-  const loadNinjaAutoAds = () => {
-    const autoId = '3d14f0b981955243bf1b454d41f64146';
-    if (document.querySelector(`script[src="https://adm.shinobi.jp/st/auto.js"][data-admax-id="${autoId}"]`)) return;
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://adm.shinobi.jp/st/auto.js';
-    script.dataset.admaxId = autoId;
-    script.dataset.siteNinjaAuto = 'true';
-    document.head.appendChild(script);
-  };
-  loadNinjaAutoAds();
-
   document.querySelectorAll('.mode-switch-bar').forEach(bar => {
     if (!bar.querySelector('[data-mode-href="apps.html"]')) {
       const button = document.createElement('button');
