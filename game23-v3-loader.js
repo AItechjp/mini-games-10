@@ -1,11 +1,11 @@
-const PARTS = [1,2,3,4,5,6,7,8,9,10].map(n => `game23-v3-part${n}.js?v=expansion-2`);
+const PARTS = [1,2,3,4,5,6,7,8,9,10,11].map(n => `game23-v3-part${n}.js?v=performance-1`);
 const overlayTitle = document.querySelector('#overlay-title');
 const overlayText = document.querySelector('#overlay-text');
 const start = document.querySelector('#game23-start');
 try {
   if (start) start.disabled = true;
   if (overlayTitle) overlayTitle.textContent = 'ULTIMATE BLACK SITE LOADING';
-  if (overlayText) overlayText.textContent = '空・景観・特殊感染体・強化アイテムを構築中…';
+  if (overlayText) overlayText.textContent = '高性能描画・景観・特殊感染体・強化アイテムを構築中…';
   const texts = await Promise.all(PARTS.map(async path => {
     const res = await fetch(path, { cache: 'no-store' });
     if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
