@@ -40,7 +40,7 @@ for (const subject of subjects) {
 const official = data.official?.blocks || [];
 if (official.length !== 4) throw new Error(`official blocks ${official.length}, expected 4`);
 const minutes = official.reduce((sum, block) => sum + block.minutes, 0);
-if (minutes !== 330) throw new Error(`official timer total ${minutes}, expected 330`);
+if (minutes !== 300) throw new Error(`official timer total ${minutes}, expected 300`);
 
 const gen02 = data.cards.find(x => x.id === 'gen02');
 if (gen02?.title !== '十分条件') throw new Error('general-education condition label normalization failed');
