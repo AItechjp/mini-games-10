@@ -3,13 +3,14 @@ const p19ScrollStyle=document.createElement('style');
 p19ScrollStyle.textContent=`
 html,body{overflow-y:auto!important;overscroll-behavior-y:auto!important}
 body:not(.game23-focus-mode){touch-action:pan-y!important}
+.p19-scroll-down{display:none}
 @media(pointer:coarse){
  body.game23-playing:not(.game23-focus-mode) .game23-frame,
  body.game23-playing:not(.game23-focus-mode) #game23-canvas{touch-action:pan-y!important}
  body.game23-playing:not(.game23-focus-mode) .touch-zone{touch-action:pan-y!important}
  body.game23-playing:not(.game23-focus-mode) .touch-fire,
  body.game23-playing:not(.game23-focus-mode) .ux-reload{touch-action:manipulation!important}
- .p19-scroll-down{position:absolute;z-index:55;left:50%;bottom:8px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(3,8,9,.78);color:#fff;padding:7px 12px;font-size:.62rem;font-weight:900;letter-spacing:.04em;backdrop-filter:blur(7px);touch-action:manipulation}
+ .p19-scroll-down{display:block;position:absolute;z-index:55;left:50%;bottom:8px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(3,8,9,.78);color:#fff;padding:7px 12px;font-size:.62rem;font-weight:900;letter-spacing:.04em;backdrop-filter:blur(7px);touch-action:manipulation}
  body.game23-focus-mode .p19-scroll-down{display:none!important}
 }
 `;
@@ -34,7 +35,7 @@ frame.addEventListener('pointerdown',e=>{
 frame.addEventListener('pointermove',e=>{
   const g=p19Gesture;if(!g||g.id!==e.pointerId||!p19NormalMode())return;
   const dx=e.clientX-g.startX,dy=e.clientY-g.startY;
-  if(!g.scrolling&&Math.abs(dy)>10&&Math.abs(dy)>Math.abs(dx)*1.12){g.scrolling=true;p19CancelGamePointer(e.pointerId);}
+  if(!g.scrolling&&Math.abs(dy)>8&&Math.abs(dy)>Math.abs(dx)*1.05){g.scrolling=true;p19CancelGamePointer(e.pointerId);}
   if(!g.scrolling)return;
   const delta=g.lastY-e.clientY;g.lastY=e.clientY;
   if(Math.abs(delta)>.2)window.scrollBy(0,delta);
