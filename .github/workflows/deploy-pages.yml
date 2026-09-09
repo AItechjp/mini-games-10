@@ -38,26 +38,31 @@ jobs:
             node --check "$file"
           done < <(find . -maxdepth 2 -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
 
+      - name: Validate preliminary-exam 1000-question bank
+        run: node tests/yobi-bank-smoke.mjs
+
       - name: Install browser smoke-test runtime
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0
           npx playwright install --with-deps chromium
 
-      - name: Smoke test all 320 modes locally
+      - name: Smoke test games and learning tools locally
         shell: bash
         run: |
           set -euo pipefail
-          python3 -m http.server 4173 >/tmp/mega-http.log 2>&1 &
+          python3 -m http.server 4173 >/tmp/site-http.log 2>&1 &
           server_pid=$!
           trap 'kill $server_pid || true' EXIT
           for i in {1..20}; do
-            if curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null; then
+            if curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null && curl -fsS http://127.0.0.1:4173/yobi-quiz.html >/dev/null; then
               break
             fi
             sleep 1
           done
           curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null
+          curl -fsS http://127.0.0.1:4173/yobi-quiz.html | grep -q 'yobi-complete.js'
           MEGA_BASE_URL=http://127.0.0.1:4173/ MEGA_FULL=1 node tests/mega-smoke.mjs
+          YOBI_BASE_URL=http://127.0.0.1:4173/ node tests/yobi-ui-smoke.mjs
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -79,7 +84,7 @@ jobs:
           set -euo pipefail
           ok=0
           for i in {1..18}; do
-            if curl -fsS "${PAGE_URL}mega-arcade.html" | grep -q 'mega-final.js'; then
+            if curl -fsS "${PAGE_URL}mega-arcade.html" | grep -q 'mega-final.js' && curl -fsS "${PAGE_URL}yobi-quiz.html" | grep -q 'yobi-complete.js'; then
               ok=1
               break
             fi
@@ -87,3 +92,4 @@ jobs:
           done
           test "$ok" = 1
           MEGA_BASE_URL="$PAGE_URL" MEGA_FULL=0 node tests/mega-smoke.mjs
+          YOBI_BASE_URL="$PAGE_URL" node tests/yobi-ui-smoke.mjs
