@@ -8,6 +8,14 @@ const errors = [];
 page.on('pageerror', err => errors.push(`pageerror: ${err.message}`));
 page.on('console', msg => { if (msg.type() === 'error') errors.push(`console: ${msg.text()}`); });
 
+// Keep product smoke tests deterministic: third-party ad networks can return
+// desktop-sized creatives to CI's desktop UA even when the viewport is mobile.
+await page.route('https://adm.shinobi.jp/**', route => route.fulfill({
+  status: 200,
+  contentType: 'application/javascript; charset=utf-8',
+  body: ''
+}));
+
 async function failIfErrors(where){
   if(errors.length) throw new Error(`${where}\n${errors.splice(0).join('\n')}`);
 }
