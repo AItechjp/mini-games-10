@@ -30,7 +30,7 @@ jobs:
           while IFS= read -r -d '' file; do
             echo "Checking $file"
             node --check "$file"
-          done < <(find . -maxdepth 1 -type f -name '*.js' -print0)
+          done < <(find . -maxdepth 2 -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
 
       - name: Build static bundle
         shell: bash
@@ -47,19 +47,28 @@ jobs:
             --exclude '*.md' \
             --exclude 'supabase-config.example.js'
           test -f dist/index.html
+          test -f dist/mega-arcade.html
+          test -f dist/mega-final.js
           test -f dist/supabase-config.js
 
-      - name: Verify Cloudflare credentials
+      - name: Detect Cloudflare credentials
+        id: cloudflare
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         shell: bash
         run: |
           set -euo pipefail
-          test -n "${CLOUDFLARE_ACCOUNT_ID:-}" || { echo "::error::Missing CLOUDFLARE_ACCOUNT_ID repository secret"; exit 1; }
-          test -n "${CLOUDFLARE_API_TOKEN:-}" || { echo "::error::Missing CLOUDFLARE_API_TOKEN repository secret"; exit 1; }
+          if [ -n "${CLOUDFLARE_ACCOUNT_ID:-}" ] && [ -n "${CLOUDFLARE_API_TOKEN:-}" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "Cloudflare credentials detected."
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Cloudflare credentials are not configured; GitHub Pages remains the active public deployment and Cloudflare deployment is skipped."
+          fi
 
       - name: Ensure Cloudflare Pages project
+        if: steps.cloudflare.outputs.configured == 'true'
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -81,6 +90,7 @@ jobs:
           fi
 
       - name: Deploy to Cloudflare Pages
+        if: steps.cloudflare.outputs.configured == 'true'
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
