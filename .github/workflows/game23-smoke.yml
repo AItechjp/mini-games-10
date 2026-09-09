@@ -1,0 +1,37 @@
+name: GAME 23 Startup Smoke
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - 'game23.html'
+      - 'game23*.js'
+      - 'game23*.css'
+      - 'tests/game23-smoke.mjs'
+      - '.github/workflows/game23-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Chromium smoke runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Launch GAME 23 on Android-like browser
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 >/tmp/game23-http.log 2>&1 &
+          pid=$!
+          trap 'kill $pid || true' EXIT
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4173/game23.html >/dev/null && break || sleep 1; done
+          GAME23_BASE_URL=http://127.0.0.1:4173/ node tests/game23-smoke.mjs
