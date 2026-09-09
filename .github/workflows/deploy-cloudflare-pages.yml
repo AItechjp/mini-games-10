@@ -1,6 +1,6 @@
 name: Deploy Cloudflare Pages
 
-# Fresh runs resolve the current repository secrets.
+# Fresh run forced after repository secrets update (2026-09-09).
 on:
   push:
     branches: ["main"]
