@@ -17,6 +17,22 @@
   };
   loadSiteAds();
 
+  const loadNinjaAdMax = () => {
+    if (document.querySelector('script[data-site-ninja-config],script[src="ninja-admax-config.js"]')) return;
+    const config = document.createElement('script');
+    config.src = 'ninja-admax-config.js';
+    config.dataset.siteNinjaConfig = 'true';
+    config.onload = () => {
+      if (document.querySelector('script[data-site-ninja-bootstrap],script[src="ninja-admax-bootstrap.js"]')) return;
+      const bootstrap = document.createElement('script');
+      bootstrap.src = 'ninja-admax-bootstrap.js';
+      bootstrap.dataset.siteNinjaBootstrap = 'true';
+      document.head.appendChild(bootstrap);
+    };
+    document.head.appendChild(config);
+  };
+  loadNinjaAdMax();
+
   document.querySelectorAll('.mode-switch-bar').forEach(bar => {
     if (!bar.querySelector('[data-mode-href="apps.html"]')) {
       const button = document.createElement('button');
