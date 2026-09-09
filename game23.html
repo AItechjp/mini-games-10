@@ -5,46 +5,40 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#050608">
-  <meta name="description" content="三人称肩越し視点で6つのダークファンタジー感染領域を突破する3DサバイバルホラーTPS。亡者の群れ、巨大ボス、魔晶石、城塞、雨・雪・嵐、回避と弱点射撃を実装。">
-  <title>THE BLIGHTED — Dark Fantasy Survival TPS</title>
-  <link rel="stylesheet" href="game23-v4.css?v=1">
+  <meta name="description" content="洋館、雪山、川、海、都会、悪魔城の6区域を突破する協力対応3DゾンビサバイバルFPS。巨大ボス、特殊感染体、20キルドロップ、広域探索フィールド、ミニマップ、3段階難易度。">
+  <title>GAME 23 - OUTBREAK: BLACK SITE ULTIMATE</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mode-switch.css">
+  <link rel="stylesheet" href="game23.css">
+  <link rel="stylesheet" href="game23-v3.css?v=ultimate-1">
+  <link rel="stylesheet" href="game23-controls.css?v=controls-4">
 </head>
-<body class="outbreak-v4">
-<div id="v4-root" class="v4-root">
-  <canvas id="v4-canvas" class="v4-canvas" aria-label="THE BLIGHTED 3D survival game"></canvas>
-  <div class="v4-vignette"></div><div class="v4-grain"></div><div id="v4-blood" class="v4-blood"></div><div id="v4-flash" class="v4-flash"></div>
-
-  <header class="v4-top">
-    <div class="v4-chapter"><small id="v4-stage">CHAPTER I — ASHES REMAIN</small><strong id="v4-chapter">THE FALLEN ABBEY</strong><div class="v4-objective" id="v4-objective">Reach the Inner Sanctum<span id="v4-objective-sub">Purge the blighted and break the seal</span></div></div>
-    <div id="v4-boss" class="v4-boss"><div id="v4-boss-name" class="v4-boss-name">THE HOLLOW KING</div><div class="v4-boss-track"><div id="v4-boss-fill" class="v4-boss-fill"></div></div></div>
-    <div class="v4-stage-count">CURSED REALMS<b>6</b></div>
-  </header>
-
-  <div class="v4-hud-left">
-    <div class="v4-hp-row"><div id="v4-hearts" class="v4-hearts"></div></div>
-    <div class="v4-hpbar"><div id="v4-hpfill" class="v4-hpfill"></div></div>
-    <div class="v4-items"><div class="v4-item active"><b>Q</b>ELIXIR × <span id="v4-potion">3</span></div><div class="v4-item"><b>SHIFT</b>DODGE</div><div class="v4-item"><b>R</b>RELOAD</div></div>
-  </div>
-  <div class="v4-hud-right"><div class="v4-weapon">ARC-LANCE RIFLE</div><div class="v4-ammo"><b id="v4-ammo">8</b> <span>/ <b id="v4-reserve">48</b></span></div><div class="v4-reload-note">R / RELOAD</div><div class="v4-kills">PURGED <b id="v4-kills">0</b> / <b id="v4-target">18</b></div></div>
-  <div id="v4-crosshair" class="v4-crosshair"><i></i></div><div id="v4-toast" class="v4-toast"></div><div id="v4-prompt" class="v4-prompt"></div>
-
-  <div class="v4-mobile">
-    <div id="v4-stick-zone" class="v4-stick-zone"><div class="v4-stick"><div id="v4-knob" class="v4-knob"></div></div></div>
-    <div id="v4-look-zone" class="v4-look-zone"></div>
-    <div class="v4-actions"><button id="v4-heal" class="v4-btn heal" type="button">HEAL</button><button id="v4-dodge" class="v4-btn dodge" type="button">DODGE</button><button id="v4-fire" class="v4-btn fire" type="button">FIRE</button></div>
-  </div>
-
-  <div id="v4-overlay" class="v4-overlay">
-    <div class="v4-card">
-      <div class="eyebrow">A WORLD THAT REMEMBERS / SURVIVE THE BLIGHT</div>
-      <h1 id="v4-title">THE BLIGHTED<em>DARK FANTASY SURVIVAL</em></h1>
-      <p id="v4-text">呪われた大聖堂、氷結要塞、沈んだ峡谷、暴嵐の港、魔導都市、悪魔城。肩越し三人称視点で亡者の群れを撃ち抜き、各領域の巨大守護者を倒して夜明けへ進め。</p>
-      <button id="v4-start" type="button">ENTER THE FALLEN ABBEY</button>
-      <div class="v4-controls">PC: WASD 移動 / マウス 視点 / 左クリック・Space 射撃 / R リロード / Shift 回避 / Q 回復<br>スマホ: 左スティック 移動 / 右ドラッグ 視点 / FIRE 射撃 / DODGE 回避 / HEAL 回復</div>
+<body class="outbreak-page">
+<header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">20秒ミニゲームズ</a><nav><a href="#mission">MISSION</a><a href="online.html">ゲーム一覧</a></nav></div></header>
+<main class="wrap outbreak-wrap">
+  <div class="mode-switch-bar" aria-label="サイトモード"><button class="mode-switch-btn" data-mode-href="solo.html">1人用</button><button class="mode-switch-btn" data-mode-href="online.html">オンライン対戦</button><button class="mode-switch-btn" data-mode-href="chat.html">チャット</button></div>
+  <section class="hero outbreak-hero"><p class="eyebrow">GAME 23 / ULTIMATE 6-AREA CO-OP SURVIVAL</p><h1>OUTBREAK:<br>BLACK SITE</h1><p>洋館、雪山、濁流の峡谷、荒海の港湾、ネオン都市、そして悪魔城。6つすべてが別景観の長距離セミオープンフィールド。景色を楽しみながら感染者の群れを突破し、各区域の超大型ボスを撃破して出口封印を解除せよ。</p></section>
+  <section id="mission" class="outbreak-panel">
+    <div class="outbreak-toolbar"><div class="outbreak-switch" aria-label="プレイ人数"><button id="mode-solo" class="outbreak-choice active" type="button">SOLO</button><button id="mode-coop" class="outbreak-choice" type="button">CO-OP</button></div><div class="difficulty-switch" aria-label="難易度"><button class="difficulty-btn" data-difficulty="easy" type="button">EASY</button><button class="difficulty-btn active" data-difficulty="normal" type="button">NORMAL</button><button class="difficulty-btn danger" data-difficulty="nightmare" type="button">NIGHTMARE</button></div><button id="outbreak-fullscreen" class="outbreak-choice" type="button">横向き全画面</button></div>
+    <div id="coop-lobby" class="coop-lobby hidden"><div class="coop-card"><span>HOST</span><h3>部屋を作る</h3><p>6桁コードを相手に送信。ホストが難易度と開始を管理します。</p><button id="coop-create" type="button">部屋を作る</button><div id="coop-created" class="hidden"><strong id="coop-room-code">------</strong><button id="coop-copy" type="button">コピー</button></div></div><div class="coop-card"><span>GUEST</span><h3>部屋に参加</h3><p>相手の6桁コードを入力して同じ感染区域へ。</p><input id="coop-join-code" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="ABC123"><button id="coop-join" type="button">参加する</button></div><div class="coop-status"><strong id="coop-status">未接続</strong><span id="coop-detail">Supabase Realtime / 2 players</span></div></div>
+    <div class="outbreak-shell">
+      <div class="outbreak-hud"><div><span>AREA</span><strong id="hud-area">1 / 6</strong></div><div><span>LIFE</span><strong id="hud-life">♥♥♥</strong></div><div><span>TIME</span><strong id="hud-time">0:00</strong></div><div><span>BOSS</span><strong id="hud-boss">---</strong></div><div><span>GOAL</span><strong id="hud-goal">SEALED</strong></div><div id="mate-hud" class="hidden"><span>PARTNER</span><strong id="hud-mate">---</strong></div></div>
+      <div id="game23-frame" class="game23-frame" data-theme="mansion">
+        <canvas id="game23-canvas" aria-label="OUTBREAK BLACK SITE ULTIMATE 3Dゲーム画面"></canvas>
+        <div class="stage-ident"><strong id="stage-title">AREA 1 / 6 — 血月の洋館</strong><span id="stage-subtitle">BLOOD MOON MANOR</span></div>
+        <div class="goal-guide" aria-label="ゴール方向"><div id="goal-arrow" class="goal-arrow">▲</div><strong id="goal-direction">BOSS → EXIT</strong></div>
+        <aside class="minimap-panel" aria-label="ミニマップ"><span>TACTICAL MAP</span><canvas id="minimap" width="210" height="210"></canvas><small>白=自分 / 黄=相方 / 緑=GOAL<br>赤=感染者 / 橙=高速種 / 紫=リッカー / 大=デブゾンビ</small></aside>
+        <div id="item-status" class="item-status">強化なし</div><div class="crosshair" aria-hidden="true"></div><div id="damage-flash" class="damage-flash"></div>
+        <div id="boss-banner" class="boss-banner hidden"><span>TITAN-CLASS BOSS</span><strong id="boss-name">---</strong><em id="boss-phase">PHASE 1 / WEAK POINT ×5</em></div><div id="mission-toast" class="mission-toast"></div>
+        <div id="touch-left" class="touch-zone touch-left" aria-hidden="true"><div id="touch-stick" class="touch-stick"></div></div><div id="touch-right" class="touch-zone touch-right" aria-hidden="true"></div><button id="touch-fire" class="touch-fire" type="button" aria-label="射撃">FIRE</button>
+        <div id="game23-overlay" class="game23-overlay"><div class="overlay-card"><p class="eyebrow">BLACK SITE / ULTIMATE PROTOCOL</p><h2 id="overlay-title">ULTIMATE BLACK SITE</h2><p id="overlay-text">横向き推奨。20体撃破ごとに強化アイテムがドロップ。高速犬、リッカー、重装デブゾンビ、巨大ボスを突破せよ。</p><button id="game23-start" type="button">横向き全画面で開始</button></div></div>
+      </div>
+      <div class="item-legend"><div><b class="item-dot life"></b><strong>救急スプレー</strong><span>ライフ+1</span></div><div><b class="item-dot infinite"></b><strong>無限弾薬</strong><span>30秒 弾数無限</span></div><div><b class="item-dot invincible"></b><strong>完全防護薬</strong><span>30秒 完全無敵</span></div><div><b class="item-dot launcher"></b><strong>ロケットランチャー</strong><span>30秒 / 10発 / 広範囲×3</span></div></div>
+      <div class="mission-strip"><div><span>01</span><strong>BLOOD MOON MANOR</strong><small>LORD NECROHOUND</small></div><div><span>02</span><strong>FROSTBITE RIDGE</strong><small>GORAM THE HOWLER</small></div><div><span>03</span><strong>DROWNED RAVINE</strong><small>ABYSSAL CROCODRAKE</small></div><div><span>04</span><strong>TEMPEST HARBOR</strong><small>LEVIATHAN REAVER</small></div><div><span>05</span><strong>NEON DEADLINE</strong><small>TITAN EXECUTIONER</small></div><div><span>06</span><strong>DEVIL CASTLE</strong><small>ARCHDEMON VALZAROTH</small></div></div>
+      <p class="outbreak-note">各エリアは広域探索フィールド・空・遠景・景観・ランドマーク・照明・ボス形状まで別設計。特殊感染体と20キルドロップを実装。音声・BGMは使用していません。</p>
     </div>
-  </div>
-</div>
-<script type="module" src="game23-v4.js?v=1"></script>
-</body>
-</html>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
+<script src="mode-switch.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script><script src="supabase-config.js"></script><script src="game-backend.js"></script><script type="module" src="game23-v3-loader.js?v=openworld-verified-1"></script>
+</body></html>
