@@ -18,18 +18,16 @@
   loadSiteAds();
 
   const loadNinjaAdMax = () => {
-    if (document.querySelector('script[data-site-ninja-config],script[src="ninja-admax-config.js"]')) return;
-    const config = document.createElement('script');
-    config.src = 'ninja-admax-config.js';
-    config.dataset.siteNinjaConfig = 'true';
-    config.onload = () => {
-      if (document.querySelector('script[data-site-ninja-bootstrap],script[src="ninja-admax-bootstrap.js"]')) return;
-      const bootstrap = document.createElement('script');
-      bootstrap.src = 'ninja-admax-bootstrap.js';
-      bootstrap.dataset.siteNinjaBootstrap = 'true';
-      document.head.appendChild(bootstrap);
-    };
-    document.head.appendChild(config);
+    if (window.__SITE_NINJA_DIRECT_REQUESTED__) return;
+    window.__SITE_NINJA_DIRECT_REQUESTED__ = true;
+    if (document.readyState === 'loading') {
+      document.write('<script src="ninja-admax-direct.js" data-site-ninja-direct></script>');
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'ninja-admax-direct.js';
+    script.dataset.siteNinjaDirect = 'true';
+    document.head.appendChild(script);
   };
   loadNinjaAdMax();
 
