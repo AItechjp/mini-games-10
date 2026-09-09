@@ -11,6 +11,7 @@ page.on('console',m=>{
   if(m.type()!=='error')return;
   const text=m.text();
   if(/Failed to load resource/i.test(text))return;
+  if(/Report Only.*Refused to frame 'https:\/\/www\.google\.com\/'/i.test(text))return;
   errors.push(`console: ${text}`);
 });
 page.on('response',r=>{
