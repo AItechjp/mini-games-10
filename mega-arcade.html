@@ -16,77 +16,35 @@
       <a class="icon-btn" href="index.html" aria-label="ホームへ">⌂</a>
     </div>
   </header>
-
   <main>
     <section class="mega-hero">
       <div class="hero-glow hero-glow-a"></div><div class="hero-glow hero-glow-b"></div>
       <p class="eyebrow">BROWSER GAME COLLECTION</p>
       <h1>320モード。<br><span>タップですぐ遊べる。</span></h1>
       <p class="hero-copy">スマホゲーム100、オリジナルカード100、ボードゲーム100、トランプ20。インストール不要・縦横対応・タッチ最適化。</p>
-      <div class="hero-stats">
-        <div><strong>100</strong><span>スマホ</span></div>
-        <div><strong>100</strong><span>カード</span></div>
-        <div><strong>100</strong><span>ボード</span></div>
-        <div><strong>20</strong><span>トランプ</span></div>
-      </div>
+      <div class="hero-stats"><div><strong>100</strong><span>スマホ</span></div><div><strong>100</strong><span>カード</span></div><div><strong>100</strong><span>ボード</span></div><div><strong>20</strong><span>トランプ</span></div></div>
       <a href="#catalog" class="hero-cta">ゲームを選ぶ <span>↓</span></a>
     </section>
-
     <section id="catalog" class="catalog-shell">
-      <div class="catalog-top">
-        <div>
-          <p class="eyebrow">GAME LIBRARY</p>
-          <h2>ゲームを選ぶ</h2>
-        </div>
-        <div class="catalog-count"><strong id="visibleCount">320</strong><span>MODES</span></div>
-      </div>
-
-      <label class="search-box">
-        <span>⌕</span>
-        <input id="searchInput" type="search" autocomplete="off" placeholder="ゲーム名を検索">
-        <button id="clearSearch" type="button" aria-label="検索を消す">×</button>
-      </label>
-
+      <div class="catalog-top"><div><p class="eyebrow">GAME LIBRARY</p><h2>ゲームを選ぶ</h2></div><div class="catalog-count"><strong id="visibleCount">320</strong><span>MODES</span></div></div>
+      <label class="search-box"><span>⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="ゲーム名を検索"><button id="clearSearch" type="button" aria-label="検索を消す">×</button></label>
       <div id="tabs" class="tabs" role="tablist">
-        <button class="tab active" data-cat="all" type="button">全部 <b>320</b></button>
-        <button class="tab" data-cat="mobile" type="button">スマホ <b>100</b></button>
-        <button class="tab" data-cat="card" type="button">カード <b>100</b></button>
-        <button class="tab" data-cat="board" type="button">ボード <b>100</b></button>
-        <button class="tab" data-cat="playing" type="button">トランプ <b>20</b></button>
-        <button class="tab" data-cat="favorite" type="button">★ <b id="favCount">0</b></button>
+        <button class="tab active" data-cat="all" type="button">全部 <b>320</b></button><button class="tab" data-cat="mobile" type="button">スマホ <b>100</b></button><button class="tab" data-cat="card" type="button">カード <b>100</b></button><button class="tab" data-cat="board" type="button">ボード <b>100</b></button><button class="tab" data-cat="playing" type="button">トランプ <b>20</b></button><button class="tab" data-cat="favorite" type="button">★ <b id="favCount">0</b></button>
       </div>
-
-      <div id="gameGrid" class="game-grid" aria-live="polite"></div>
-      <div id="emptyState" class="empty-state hidden"><span>⌕</span><h3>見つかりませんでした</h3><p>別のキーワードで検索してください。</p></div>
+      <div id="gameGrid" class="game-grid" aria-live="polite"></div><div id="emptyState" class="empty-state hidden"><span>⌕</span><h3>見つかりませんでした</h3><p>別のキーワードで検索してください。</p></div>
     </section>
   </main>
-
   <section id="playScreen" class="play-screen hidden" aria-live="polite">
-    <header class="play-header">
-      <button id="closeGame" class="play-back" type="button">← <span>一覧</span></button>
-      <div class="play-heading"><small id="playCategory">MOBILE</small><strong id="playTitle">GAME</strong></div>
-      <div class="play-actions">
-        <button id="favGame" class="play-icon" type="button" aria-label="お気に入り">☆</button>
-        <button id="fullscreenBtn" class="play-icon" type="button" aria-label="全画面">⛶</button>
-      </div>
-    </header>
-    <div class="play-info">
-      <div id="playBadges" class="play-badges"></div>
-      <p id="playDescription"></p>
-    </div>
-    <div id="gameStage" class="game-stage"></div>
-    <div class="play-footer">
-      <button id="restartGame" class="restart-btn" type="button">↻ もう一度</button>
-      <p id="playHint">画面をタップしてプレイ</p>
-    </div>
+    <header class="play-header"><button id="closeGame" class="play-back" type="button">← <span>一覧</span></button><div class="play-heading"><small id="playCategory">MOBILE</small><strong id="playTitle">GAME</strong></div><div class="play-actions"><button id="favGame" class="play-icon" type="button" aria-label="お気に入り">☆</button><button id="fullscreenBtn" class="play-icon" type="button" aria-label="全画面">⛶</button></div></header>
+    <div class="play-info"><div id="playBadges" class="play-badges"></div><p id="playDescription"></p></div><div id="gameStage" class="game-stage"></div><div class="play-footer"><button id="restartGame" class="restart-btn" type="button">↻ もう一度</button><p id="playHint">画面をタップしてプレイ</p></div>
   </section>
-
   <div id="toast" class="toast" role="status"></div>
   <script src="mega-core.js" defer></script>
   <script src="mega-mobile.js" defer></script>
   <script src="mega-card.js" defer></script>
   <script src="mega-board.js" defer></script>
-  <script src="mega-playing.js" defer></script>
+  <script src="mega-playing-a.js" defer></script>
+  <script src="mega-playing-b.js" defer></script>
   <script src="mega-init.js" defer></script>
 </body>
 </html>
