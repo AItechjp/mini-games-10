@@ -54,15 +54,17 @@ jobs:
           server_pid=$!
           trap 'kill $server_pid || true' EXIT
           for i in {1..20}; do
-            if curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null && curl -fsS http://127.0.0.1:4173/yobi-quiz.html >/dev/null; then
+            if curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null && curl -fsS http://127.0.0.1:4173/yobi-quiz.html >/dev/null && curl -fsS http://127.0.0.1:4173/game23.html >/dev/null; then
               break
             fi
             sleep 1
           done
           curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null
           curl -fsS http://127.0.0.1:4173/yobi-quiz.html | grep -q 'yobi-past.js'
+          curl -fsS http://127.0.0.1:4173/game23.html | grep -q 'game23-v3-loader.js'
           MEGA_BASE_URL=http://127.0.0.1:4173/ MEGA_FULL=1 node tests/mega-smoke.mjs
           YOBI_BASE_URL=http://127.0.0.1:4173/ node tests/yobi-past-smoke.mjs
+          GAME23_BASE_URL=http://127.0.0.1:4173/ node tests/game23-smoke.mjs
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -84,7 +86,7 @@ jobs:
           set -euo pipefail
           ok=0
           for i in {1..18}; do
-            if curl -fsS "${PAGE_URL}mega-arcade.html" | grep -q 'mega-final.js' && curl -fsS "${PAGE_URL}yobi-quiz.html" | grep -q 'yobi-past.js'; then
+            if curl -fsS "${PAGE_URL}mega-arcade.html" | grep -q 'mega-final.js' && curl -fsS "${PAGE_URL}yobi-quiz.html" | grep -q 'yobi-past.js' && curl -fsS "${PAGE_URL}game23.html" | grep -q 'game23-v3-loader.js'; then
               ok=1
               break
             fi
@@ -93,3 +95,4 @@ jobs:
           test "$ok" = 1
           MEGA_BASE_URL="$PAGE_URL" MEGA_FULL=0 node tests/mega-smoke.mjs
           YOBI_BASE_URL="$PAGE_URL" node tests/yobi-past-smoke.mjs
+          GAME23_BASE_URL="$PAGE_URL" node tests/game23-smoke.mjs
