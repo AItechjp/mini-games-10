@@ -32,8 +32,8 @@ jobs:
             node --check "$file"
           done < <(find . -maxdepth 2 -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
 
-      - name: Validate preliminary-exam 1000-question bank
-        run: node tests/yobi-bank-smoke.mjs
+      - name: Validate past-question-only learning source
+        run: node tests/yobi-past-source.mjs
 
       - name: Build static bundle
         shell: bash
@@ -53,10 +53,10 @@ jobs:
           test -f dist/mega-arcade.html
           test -f dist/mega-final.js
           test -f dist/yobi-quiz.html
-          test -f dist/yobi-complete-data.js
-          test -f dist/yobi-complete-fixes.js
-          test -f dist/yobi-complete.js
-          grep -q 'yobi-complete.js' dist/yobi-quiz.html
+          test -f dist/yobi-past.js
+          test -f dist/yobi-past.css
+          grep -q 'yobi-past.js' dist/yobi-quiz.html
+          ! grep -q 'yobi-complete.js' dist/yobi-quiz.html
           test -f dist/supabase-config.js
 
       - name: Detect Cloudflare credentials
