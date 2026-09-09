@@ -1,4 +1,4 @@
-const PARTS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].map(n => `game23-v3-part${n}.js?v=touch-fix-1`);
+const PARTS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].map(n => `game23-v3-part${n}.js?v=startup-fix-2`);
 const overlayTitle = document.querySelector('#overlay-title');
 const overlayText = document.querySelector('#overlay-text');
 const start = document.querySelector('#game23-start');
@@ -16,5 +16,10 @@ try {
 } catch (err) {
   console.error('GAME23 ULTIMATE load failed', err);
   if (overlayTitle) overlayTitle.textContent = 'LOAD ERROR';
-  if (overlayText) overlayText.textContent = 'ゲーム本体の読み込みに失敗しました。ページを再読み込みしてください。';
+  if (overlayText) overlayText.textContent = `ゲーム本体の読み込みに失敗しました。${err?.message||''}`;
+  if (start) {
+    start.disabled = false;
+    start.textContent = '再読み込み';
+    start.onclick = () => location.reload();
+  }
 }
