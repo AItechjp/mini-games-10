@@ -16,12 +16,22 @@ jobs:
         shell: bash
         run: |
           set +e
-          echo '=== apex IPv4 ==='
-          getent ahostsv4 aitechd.com || true
-          echo '=== www IPv4 ==='
-          getent ahostsv4 www.aitechd.com || true
-          echo '=== CNAME via nslookup ==='
+          echo '=== NS ==='
+          nslookup -type=NS aitechd.com || true
+          echo '=== apex A default resolver ==='
+          nslookup -type=A aitechd.com || true
+          echo '=== apex A on お名前.com authoritative DNS ==='
+          for ns in 01.dnsv.jp 02.dnsv.jp 03.dnsv.jp 04.dnsv.jp; do
+            echo "--- $ns ---"
+            nslookup -type=A aitechd.com "$ns" || true
+          done
+          echo '=== www CNAME default resolver ==='
           nslookup -type=CNAME www.aitechd.com || true
+          echo '=== www CNAME on お名前.com authoritative DNS ==='
+          for ns in 01.dnsv.jp 02.dnsv.jp 03.dnsv.jp 04.dnsv.jp; do
+            echo "--- $ns ---"
+            nslookup -type=CNAME www.aitechd.com "$ns" || true
+          done
           echo '=== HTTPS apex ==='
           curl -I -L --max-time 20 https://aitechd.com/ || true
           echo '=== HTTPS www ==='
