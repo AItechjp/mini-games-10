@@ -11,175 +11,23 @@
 <body>
   <header class="topbar">
     <a class="back" href="index.html" aria-label="トップへ戻る">←</a>
-    <div>
-      <p class="kicker">PRELIMINARY BAR EXAM / COMPLETE 2026</p>
-      <h1>予備試験 短答クエスト COMPLETE</h1>
-    </div>
+    <div><p class="kicker">PRELIMINARY BAR EXAM / COMPLETE 2026</p><h1>予備試験 短答クエスト COMPLETE</h1></div>
     <button id="resetProgress" class="ghost small" type="button">記録リセット</button>
   </header>
-
   <main class="shell">
     <section id="homeView" class="view active">
-      <div class="hero panel">
-        <div class="hero-copy">
-          <span class="badge complete-badge">全8科目・<strong id="bankCount" class="bank-number">1,000</strong>問</span>
-          <h2>短答対策を、1ページで完結。</h2>
-          <p>憲法・行政法・民法・商法・民事訴訟法・刑法・刑事訴訟法・一般教養を、条文・制度・根拠・事例の複数方向から反復。選択肢は毎回シャッフルされます。</p>
-          <div class="hero-actions">
-            <button id="quickStart" class="primary" type="button">総合20問を開始</button>
-            <button id="reviewMistakes" class="secondary" type="button">誤答だけ復習</button>
-            <button id="reviewStarred" class="secondary" type="button">★だけ復習</button>
-          </div>
-        </div>
-        <div class="score-ring" aria-label="累計正答率">
-          <strong id="overallRate">--%</strong>
-          <span>累計正答率</span>
-        </div>
-      </div>
-
-      <section class="stats-grid five" aria-label="学習状況">
-        <article class="stat"><span>回答数</span><strong id="statAttempts">0</strong></article>
-        <article class="stat"><span>正解数</span><strong id="statCorrect">0</strong></article>
-        <article class="stat"><span>誤答ストック</span><strong id="statWrong">0</strong></article>
-        <article class="stat"><span>お気に入り</span><strong id="statStarred">0</strong></article>
-        <article class="stat"><span>習熟済み問題</span><strong id="masteredCount">0</strong></article>
-      </section>
-
-      <section class="panel setup-panel">
-        <div class="section-title">
-          <div><p class="kicker">CUSTOM DRILL</p><h2>演習を自由に作る</h2></div>
-          <span class="target good-target">継続目標 70%+</span>
-        </div>
-        <div class="controls complete">
-          <label>科目
-            <select id="subjectSelect"></select>
-          </label>
-          <label>論点
-            <select id="tagSelect"><option value="all">全論点</option></select>
-          </label>
-          <label>難易度
-            <select id="difficultySelect">
-              <option value="all">全難易度</option>
-              <option value="基礎">基礎</option>
-              <option value="標準">標準</option>
-              <option value="応用">応用</option>
-            </select>
-          </label>
-          <label>問題数
-            <select id="countSelect">
-              <option value="10">10問</option>
-              <option value="20" selected>20問</option>
-              <option value="30">30問</option>
-              <option value="50">50問</option>
-              <option value="100">100問</option>
-              <option value="all">該当する全問</option>
-            </select>
-          </label>
-          <label>出題順
-            <select id="orderSelect">
-              <option value="random">ランダム</option>
-              <option value="weak">苦手優先</option>
-              <option value="new">未回答優先</option>
-              <option value="recentWrong">直近誤答優先</option>
-              <option value="starred">お気に入りのみ</option>
-            </select>
-          </label>
-        </div>
-        <button id="customStart" class="primary wide" type="button">この条件でスタート</button>
-      </section>
-
-      <section class="panel official-panel">
-        <div class="section-title">
-          <div><p class="kicker">2026 OFFICIAL-TIME TRAINING</p><h2>本番時間演習</h2></div>
-          <span>令和8年の時間枠に対応</span>
-        </div>
-        <div class="mock-grid">
-          <button class="mock-card" type="button" data-exam-block="civil"><strong>民法・商法・民訴</strong><span>3科目ミックス / 実戦配分45問</span><b>90分</b></button>
-          <button class="mock-card" type="button" data-exam-block="public"><strong>憲法・行政法</strong><span>2科目ミックス / 実戦配分24問</span><b>60分</b></button>
-          <button class="mock-card" type="button" data-exam-block="criminal"><strong>刑法・刑訴</strong><span>2科目ミックス / 実戦配分26問</span><b>60分</b></button>
-          <button class="mock-card" type="button" data-exam-block="general"><strong>一般教養</strong><span>論理・数理・科学・社会 / 20問</span><b>90分</b></button>
-        </div>
-        <button id="fullMock" class="primary wide full-mock" type="button">フル模試 115問・計330分を開始</button>
-        <p class="bank-note">時間は令和8年予備試験の公式時間割を反映。問題数はこの1,000問バンクを使った学習用配分で、法務省の問題そのものを転載したものではありません。</p>
-      </section>
-
-      <section class="panel weak-panel">
-        <div class="section-title"><div><p class="kicker">WEAKNESS ANALYSIS</p><h2>苦手論点</h2></div><span>正答率が低い順</span></div>
-        <div id="weakTopics" class="weak-grid"></div>
-      </section>
-
-      <section class="section-block">
-        <div class="section-title"><div><p class="kicker">SUBJECTS</p><h2>科目別トレーニング</h2></div><span>各科目125問</span></div>
-        <div id="subjectGrid" class="subject-grid"></div>
-      </section>
-
-      <section class="panel data-panel">
-        <div class="section-title"><div><p class="kicker">LEARNING DATA</p><h2>成績の保存・移行</h2></div><span>ログイン不要</span></div>
-        <div class="data-tools">
-          <button id="exportProgress" class="secondary" type="button">成績をJSON保存</button>
-          <button id="importProgress" class="secondary" type="button">成績を読み込む</button>
-          <input id="importFile" type="file" accept="application/json,.json" hidden>
-        </div>
-        <div class="official-facts">
-          <div class="official-fact"><span>令和8年短答実施日</span><strong>2026年7月19日</strong></div>
-          <div class="official-fact"><span>令和8年合格点</span><strong>165 / 270点</strong></div>
-          <div class="official-fact"><span>本問題集の推奨目標</span><strong>70%以上を継続</strong></div>
-        </div>
-        <div class="official-alert"><strong>学習用オリジナル問題集：</strong>現行制度の主要条文・基本論点を中心に作成しています。法改正や判例変更があり得るため、受験時は法務省の出題資料・最新六法・受験指導教材でも最終確認してください。</div>
-        <div class="source-links">
-          <a href="https://www.moj.go.jp/jinji/shihoushiken/jinji07_00210.html" target="_blank" rel="noopener noreferrer">法務省 令和8年予備試験Q&amp;A</a>
-          <a href="https://www.moj.go.jp/jinji/shihoushiken/jinji07_00317.html" target="_blank" rel="noopener noreferrer">法務省 令和8年短答問題</a>
-          <a href="https://www.moj.go.jp/jinji/shihoushiken/jinji07_00319.html" target="_blank" rel="noopener noreferrer">法務省 短答結果</a>
-        </div>
-      </section>
+      <div class="hero panel"><div class="hero-copy"><span class="badge complete-badge">全8科目・<strong id="bankCount" class="bank-number">1,000</strong>問</span><h2>短答対策を、1ページで完結。</h2><p>憲法・行政法・民法・商法・民事訴訟法・刑法・刑事訴訟法・一般教養を、条文・制度・根拠・事例の複数方向から反復。選択肢は毎回シャッフルされます。</p><div class="hero-actions"><button id="quickStart" class="primary" type="button">総合20問を開始</button><button id="reviewMistakes" class="secondary" type="button">誤答だけ復習</button><button id="reviewStarred" class="secondary" type="button">★だけ復習</button></div></div><div class="score-ring" aria-label="累計正答率"><strong id="overallRate">--%</strong><span>累計正答率</span></div></div>
+      <section class="stats-grid five" aria-label="学習状況"><article class="stat"><span>回答数</span><strong id="statAttempts">0</strong></article><article class="stat"><span>正解数</span><strong id="statCorrect">0</strong></article><article class="stat"><span>誤答ストック</span><strong id="statWrong">0</strong></article><article class="stat"><span>お気に入り</span><strong id="statStarred">0</strong></article><article class="stat"><span>習熟済み問題</span><strong id="masteredCount">0</strong></article></section>
+      <section class="panel setup-panel"><div class="section-title"><div><p class="kicker">CUSTOM DRILL</p><h2>演習を自由に作る</h2></div><span class="target good-target">継続目標 70%+</span></div><div class="controls complete"><label>科目<select id="subjectSelect"></select></label><label>論点<select id="tagSelect"><option value="all">全論点</option></select></label><label>難易度<select id="difficultySelect"><option value="all">全難易度</option><option value="基礎">基礎</option><option value="標準">標準</option><option value="応用">応用</option></select></label><label>問題数<select id="countSelect"><option value="10">10問</option><option value="20" selected>20問</option><option value="30">30問</option><option value="50">50問</option><option value="100">100問</option><option value="all">該当する全問</option></select></label><label>出題順<select id="orderSelect"><option value="random">ランダム</option><option value="weak">苦手優先</option><option value="new">未回答優先</option><option value="recentWrong">直近誤答優先</option><option value="starred">お気に入りのみ</option></select></label></div><button id="customStart" class="primary wide" type="button">この条件でスタート</button></section>
+      <section class="panel official-panel"><div class="section-title"><div><p class="kicker">2026 OFFICIAL-TIME TRAINING</p><h2>本番時間演習</h2></div><span>令和8年の時間枠に対応</span></div><div class="mock-grid"><button class="mock-card" type="button" data-exam-block="civil"><strong>民法・商法・民訴</strong><span>3科目ミックス / 実戦配分45問</span><b>90分</b></button><button class="mock-card" type="button" data-exam-block="public"><strong>憲法・行政法</strong><span>2科目ミックス / 実戦配分24問</span><b>60分</b></button><button class="mock-card" type="button" data-exam-block="criminal"><strong>刑法・刑訴</strong><span>2科目ミックス / 実戦配分26問</span><b>60分</b></button><button class="mock-card" type="button" data-exam-block="general"><strong>一般教養</strong><span>論理・数理・科学・社会 / 20問</span><b>90分</b></button></div><button id="fullMock" class="primary wide full-mock" type="button">フル模試 115問・計300分を開始</button><p class="bank-note">時間は令和8年予備試験の公式時間割を反映。問題数はこの1,000問バンクを使った学習用配分で、法務省の問題そのものを転載したものではありません。</p></section>
+      <section class="panel weak-panel"><div class="section-title"><div><p class="kicker">WEAKNESS ANALYSIS</p><h2>苦手論点</h2></div><span>正答率が低い順</span></div><div id="weakTopics" class="weak-grid"></div></section>
+      <section class="section-block"><div class="section-title"><div><p class="kicker">SUBJECTS</p><h2>科目別トレーニング</h2></div><span>各科目125問</span></div><div id="subjectGrid" class="subject-grid"></div></section>
+      <section class="panel data-panel"><div class="section-title"><div><p class="kicker">LEARNING DATA</p><h2>成績の保存・移行</h2></div><span>ログイン不要</span></div><div class="data-tools"><button id="exportProgress" class="secondary" type="button">成績をJSON保存</button><button id="importProgress" class="secondary" type="button">成績を読み込む</button><input id="importFile" type="file" accept="application/json,.json" hidden></div><div class="official-facts"><div class="official-fact"><span>令和8年短答実施日</span><strong>2026年7月19日</strong></div><div class="official-fact"><span>令和8年合格点</span><strong>165 / 270点</strong></div><div class="official-fact"><span>本問題集の推奨目標</span><strong>70%以上を継続</strong></div></div><div class="official-alert"><strong>学習用オリジナル問題集：</strong>現行制度の主要条文・基本論点を中心に作成しています。法改正や判例変更があり得るため、受験時は法務省の出題資料・最新六法・受験指導教材でも最終確認してください。</div><div class="source-links"><a href="https://www.moj.go.jp/jinji/shihoushiken/jinji07_00210.html" target="_blank" rel="noopener noreferrer">法務省 令和8年予備試験Q&amp;A</a><a href="https://www.moj.go.jp/jinji/shihoushiken/jinji07_00317.html" target="_blank" rel="noopener noreferrer">法務省 令和8年短答問題</a><a href="https://www.moj.go.jp/jinji/shihoushiken/jinji07_00319.html" target="_blank" rel="noopener noreferrer">法務省 短答結果</a></div></section>
     </section>
-
-    <section id="quizView" class="view">
-      <div class="session-strip"><span id="sessionLabel">カスタム演習</span><strong id="timerText" class="timer" hidden></strong></div>
-      <div class="quiz-top">
-        <button id="quitQuiz" class="ghost" type="button">← 終了</button>
-        <div class="progress-wrap"><div id="progressBar" class="progress-bar"></div></div>
-        <span id="progressText">1 / 20</span>
-      </div>
-
-      <article class="question-card panel">
-        <div class="question-meta">
-          <span id="qSubject" class="subject-pill"></span>
-          <span id="qDifficulty" class="difficulty-pill"></span>
-          <span id="qTag" class="tag-pill"></span>
-          <span id="qSourceType" class="source-pill"></span>
-          <button id="starQuestion" class="star" type="button" aria-label="お気に入り">☆</button>
-        </div>
-        <h2 id="questionText"></h2>
-        <div id="options" class="options"></div>
-        <div id="feedback" class="feedback" hidden>
-          <p id="feedbackHeadline" class="feedback-head"></p>
-          <p id="explanation"></p>
-          <div id="basis" class="basis"></div>
-          <button id="nextQuestion" class="primary wide" type="button">次の問題</button>
-        </div>
-      </article>
-      <p class="keyboard-help">キーボード: 1〜4で回答 / Enterで次へ</p>
-    </section>
-
-    <section id="resultView" class="view">
-      <article class="result-card panel">
-        <p class="kicker">SESSION COMPLETE</p>
-        <h2 id="resultTitle">演習完了</h2>
-        <div class="result-score"><strong id="resultRate">0%</strong><span id="resultCount">0 / 0</span></div>
-        <p id="resultMessage"></p>
-        <div id="resultBreakdown" class="breakdown"></div>
-        <div class="result-actions">
-          <button id="retryWrong" class="primary" type="button">今回の誤答を解き直す</button>
-          <button id="backHome" class="secondary" type="button">ホームへ</button>
-        </div>
-      </article>
-    </section>
+    <section id="quizView" class="view"><div class="session-strip"><span id="sessionLabel">カスタム演習</span><strong id="timerText" class="timer" hidden></strong></div><div class="quiz-top"><button id="quitQuiz" class="ghost" type="button">← 終了</button><div class="progress-wrap"><div id="progressBar" class="progress-bar"></div></div><span id="progressText">1 / 20</span></div><article class="question-card panel"><div class="question-meta"><span id="qSubject" class="subject-pill"></span><span id="qDifficulty" class="difficulty-pill"></span><span id="qTag" class="tag-pill"></span><span id="qSourceType" class="source-pill"></span><button id="starQuestion" class="star" type="button" aria-label="お気に入り">☆</button></div><h2 id="questionText"></h2><div id="options" class="options"></div><div id="feedback" class="feedback" hidden><p id="feedbackHeadline" class="feedback-head"></p><p id="explanation"></p><div id="basis" class="basis"></div><button id="nextQuestion" class="primary wide" type="button">次の問題</button></div></article><p class="keyboard-help">キーボード: 1〜4で回答 / Enterで次へ</p></section>
+    <section id="resultView" class="view"><article class="result-card panel"><p class="kicker">SESSION COMPLETE</p><h2 id="resultTitle">演習完了</h2><div class="result-score"><strong id="resultRate">0%</strong><span id="resultCount">0 / 0</span></div><p id="resultMessage"></p><div id="resultBreakdown" class="breakdown"></div><div class="result-actions"><button id="retryWrong" class="primary" type="button">今回の誤答を解き直す</button><button id="backHome" class="secondary" type="button">ホームへ</button></div></article></section>
   </main>
-
   <footer>© 2026 20秒ミニゲームズ / 予備試験短答 学習補助用オリジナル問題集</footer>
-  <script src="yobi-complete-data.js"></script>
-  <script src="yobi-complete-fixes.js"></script>
-  <script src="yobi-complete.js"></script>
+  <script src="yobi-complete-data.js"></script><script src="yobi-complete-fixes.js"></script><script src="yobi-complete.js"></script>
 </body>
 </html>
