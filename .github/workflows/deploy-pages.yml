@@ -12,7 +12,8 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  # Finish the active deployment; queue the latest update without starving publication.
+  cancel-in-progress: false
 
 jobs:
   deploy:
