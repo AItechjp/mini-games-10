@@ -1,12 +1,21 @@
 name: GAME 23 Startup Smoke
 
 on:
+  pull_request:
+    paths:
+      - 'game23.html'
+      - 'game23*.js'
+      - 'game23*.css'
+      - 'assets/game23/**'
+      - 'tests/game23-smoke.mjs'
+      - '.github/workflows/game23-smoke.yml'
   push:
     branches: ["main"]
     paths:
       - 'game23.html'
       - 'game23*.js'
       - 'game23*.css'
+      - 'assets/game23/**'
       - 'tests/game23-smoke.mjs'
       - '.github/workflows/game23-smoke.yml'
   workflow_dispatch:

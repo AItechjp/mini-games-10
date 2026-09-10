@@ -1,0 +1,20 @@
+{
+  "source": "OpenAI built-in image_gen",
+  "mode": "generate",
+  "requests": 3,
+  "variants": 0,
+  "prompts": [
+    {
+      "key": "limestone",
+      "prompt": "Use case: photorealistic-natural\nAsset type: production albedo texture for a 3D survival horror game, 1024 by 1024 pixels, square.\nPrimary request: seamless tileable weathered gothic limestone and flagstone paving, also usable on old stone walls. Irregular old gray limestone blocks with fine dark seams, chipped edges, damp mineral variations, subtle small traces of moss, realistic fine stone grain.\nComposition: orthographic directly overhead material scan, entire image is the surface, full edge-to-edge texture. Match opposite edges for repetition on both axes.\nLighting: flat, diffuse, even illumination with no directional shadows, ambient occlusion kept very subtle. No highlights baked into the texture.\nConstraints: original material, clean usable tiled texture; no perspective, no scene, no objects, no border, no text, no watermark."
+    },
+    {
+      "key": "corpse_skin",
+      "prompt": "Use case: photorealistic-natural\nAsset type: production albedo texture for 3D zombie bodies in an original survival horror game, 1024 by 1024 pixels, square.\nPrimary request: seamless tileable corpse skin surface. Sickly gray-beige pale skin, faint purple-blue fine veins, mottled capillaries, fine wrinkles and pores, a few small healed blemishes. Restrained non-graphic, non-bloody horror material.\nComposition: flat orthographic close-up material sample, entire image is the surface, full edge-to-edge texture. Match opposite edges for repetition on both axes.\nLighting: flat even diffuse lighting without deep shadows, without highlights or shading gradients baked into the texture.\nConstraints: material only, no body parts, no face, no gore, no blood, no open wounds, no scene, no text, no border, no watermark."
+    },
+    {
+      "key": "military_canvas",
+      "prompt": "Use case: photorealistic-natural\nAsset type: production albedo texture for torn clothing in an original 3D survival horror game, 1024 by 1024 pixels, square.\nPrimary request: seamless tileable aged charcoal-olive military canvas fabric. Fine visible micro woven threads, subtle grime, irregular weathering, sparse worn seams, realistic rough fabric texture. Restrained low-saturation charcoal and olive palette.\nComposition: flat orthographic material sample, entire image is fabric, full edge-to-edge texture. Match opposite edges for repetition on both axes.\nLighting: flat even diffuse lighting with no shadows, no shading gradient, no baked highlights.\nConstraints: original material; no large identifiable objects, no clothing silhouette, no folds casting shadows, no scene, no text, no insignia, no border, no watermark."
+    }
+  ]
+}
