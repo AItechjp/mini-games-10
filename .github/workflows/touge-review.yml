@@ -1,0 +1,40 @@
+name: Touge visual and gameplay QA
+on:
+  push:
+    branches: [main]
+    paths: ['touge/**', 'tests/touge-smoke.mjs', '.github/workflows/touge-review.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: touge-review
+  cancel-in-progress: true
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Prepare self-hosted renderer and browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0 three@0.180.0
+          npx playwright install --with-deps chromium
+          mkdir -p touge/vendor
+          cp -r node_modules/three/build node_modules/three/examples touge/vendor/
+          cp node_modules/three/LICENSE touge/vendor/LICENSE
+          mkdir -p test-output
+          tar -czf test-output/touge-runtime.tar.gz touge tests/touge-smoke.mjs
+      - name: Verify touge vehicle dynamics and actual WebGL frames
+        run: |
+          python3 -m http.server 4173 >/tmp/touge-http.log 2>&1 &
+          node tests/touge-smoke.mjs
+      - name: Save screenshots and reproducible runtime
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: touge-review
+          path: test-output/
+          retention-days: 7
