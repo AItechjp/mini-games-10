@@ -1,0 +1,32 @@
+name: Verify public arcade delivery
+on:
+  push:
+    branches: ['codex/arcade-public-check']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify the live public game site
+        run: |
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          const root='https://aitechd.com/';
+          async function get(path){const r=await fetch(new URL(path,root),{signal:AbortSignal.timeout(30000)});assert.equal(r.status,200,path+' HTTP status');return r;}
+          const home=await (await get('')).text();assert(home.includes('arcade100/'));assert(home.includes('BLACK'));assert(home.includes('SKYBREAK'));assert(home.includes('AETHER'));
+          const page=await (await get('arcade100/')).text();assert(page.includes('id="stage"'));assert(page.includes('app.mjs'));
+          for(const file of ['app.mjs','engine.mjs','network.mjs','crypto.mjs','render.mjs','engines/arena.mjs','engines/combat.mjs','engines/race.mjs','engines/sports.mjs','engines/board.mjs','engines/cards.mjs','engines/puzzle.mjs','engines/social.mjs']){const r=await get('arcade100/'+file);assert(/javascript/.test(r.headers.get('content-type')),file+' module MIME');const source=await r.text();assert(source.length>100,file+' content');}
+          const catalog=await (await get('arcade100/catalog.mjs')).text();const {GAMES}=await import('data:text/javascript;base64,'+Buffer.from(catalog).toString('base64'));assert.equal(GAMES.length,100);assert.equal(new Set(GAMES.map(g=>g.id)).size,100);assert(GAMES.every(g=>g.onlineRequired&&['pvp','coop'].includes(g.mode)));
+          for(const name of ['actors','props','worlds']){const r=await get('arcade100/assets/'+name+'.webp');assert(/image\/webp/.test(r.headers.get('content-type')));const bytes=Buffer.from(await r.arrayBuffer());assert.equal(bytes.subarray(0,4).toString(),'RIFF');assert.equal(bytes.subarray(8,12).toString(),'WEBP');assert(bytes.length>100000);}
+          const backend=await fetch(root+'arcade100/backend/handler.mjs',{signal:AbortSignal.timeout(30000)});assert.equal(backend.status,404,'backend source is excluded');
+          const smash=await (await get('smash.html')).text();assert(smash.includes('smash-online.mjs'));const zombie=await (await get('game23.html')).text();assert(zombie.includes('game23-v3-loader.js'));
+          const archive=await (await get('archive.html')).text();assert(archive.includes('mega-arcade.html'));assert(archive.includes('yobi-quiz.html'));
+          const room=await fetch('https://dcvtubivtextycifngtk.supabase.co/functions/v1/arcade-rooms',{signal:AbortSignal.timeout(20000)});assert.equal(room.status,200);assert.equal((await room.json()).status,'ready');
+          const card=await fetch('https://aether-card-duel.douga071132.chatgpt.site',{signal:AbortSignal.timeout(30000)});assert.equal(card.status,200);assert((await card.text()).includes('AETHER'));
+          console.log('PASS: live hub, all 100 catalog entries, JavaScript module MIME types, WebP images, excluded backend source, SKYBREAK, BLACK SITE, AETHER and archive');
+          JS
