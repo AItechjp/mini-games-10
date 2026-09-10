@@ -14,7 +14,10 @@ if (game23Crypto && typeof game23Crypto.randomUUID !== 'function') {
   catch { try { game23Crypto.randomUUID = fallbackUUID; } catch {} }
 }
 
-const PARTS = [1,2,3,4,5,6,7,8,9,10].map(n => `game23-v3-part${n}.js?v=openworld-verified-3`);
+const PARTS = [
+  ...[1,2,3,4,5,6,7,8,9,10].map(n => `game23-v3-part${n}.js?v=openworld-lite-1`),
+  'game23-v3-part11-lite.js?v=openworld-lite-1'
+];
 const THREE_IMPORT = "import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';";
 const THREE_SOURCES = [
   'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js',
