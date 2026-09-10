@@ -1,0 +1,32 @@
+name: Touge public gameplay verification
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/touge-public-check.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Prepare verification browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0 three@0.180.0
+          npx playwright install --with-deps chromium
+      - name: Verify public racing entry and real desktop and touch gameplay
+        env:
+          TOUGE_BASE_URL: https://aitechd.com/
+        run: node tests/touge-smoke.mjs
+      - name: Retain public gameplay evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: touge-public-gameplay
+          path: test-output/
+          retention-days: 7
