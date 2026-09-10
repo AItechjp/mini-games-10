@@ -1,0 +1,51 @@
+name: HTTPS full-site security audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/https-security-audit.yml
+      - tests/https-live.mjs
+
+permissions:
+  contents: read
+  pages: read
+
+concurrency:
+  group: https-security-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify server enforcement and approved certificate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p test-output/https
+          gh api "repos/$GITHUB_REPOSITORY/pages" --jq '{cname,https_enforced,https_certificate}' > test-output/https/pages-settings.json
+          cat test-output/https/pages-settings.json
+          jq -e '.cname == "aitechd.com" and .https_enforced == true and .https_certificate.state == "approved"' test-output/https/pages-settings.json
+      - name: Install full Chromium runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Inspect all live pages without bypassing certificate errors
+        env:
+          HTTPS_BASE_URL: https://aitechd.com/
+        run: node tests/https-live.mjs
+      - name: Save full security evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: https-security-verification
+          path: test-output/https/
+          retention-days: 7
+          if-no-files-found: error
