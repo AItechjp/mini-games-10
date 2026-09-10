@@ -21,14 +21,14 @@ async function load(page){listen(page);await page.goto(base+(live?'racing.html?b
 async function shot(page,name){await page.screenshot({path:'test-output/'+name+'.png',timeout:90000,animations:'disabled'});}
 try{
  const context=await browser.newContext({viewport:{width:1280,height:720},deviceScaleFactor:1});const page=await context.newPage();await load(page);
- if(!live)await page.evaluate(()=>__touge.test.freeze(true));
- await shot(page,'01-garage');assert.equal(errors.length,0,errors.join('\n'));report.checks.push('high-quality WebGL scene and shaders boot');
+ if(!live){await page.evaluate(()=>__touge.test.freeze(true));await shot(page,'01-garage');}
+ assert.equal(errors.length,0,errors.join('\n'));report.checks.push('high-quality WebGL scene and shaders boot');
  await page.locator('#quality').selectOption('balanced');await page.waitForFunction(()=>!__touge.stats.warming);await page.locator('#start-btn').click();
  if(!live){await page.evaluate(()=>{const t=__touge.test;t.step(3.5,{gas:1});t.set({s:1200,x:-1.5,v:30,rival:1225,rv:30});});await shot(page,'02-race');report.camera=await page.evaluate(()=>__touge.test.metrics());assert(Math.hypot(...report.camera.camera.map((v,i)=>v-report.camera.player[i]))<12);await page.evaluate(()=>{__touge.test.clear();__touge.test.freeze(false);});}
  await page.waitForFunction(()=>__touge.state==='race',null,{timeout:90000});const initial=await page.evaluate(()=>__touge.stats);
  await page.waitForFunction(a=>__touge.stats.frames>a.frames+8&&__touge.stats.s>a.s+1,initial,{timeout:90000});report.checks.push('real animation loop advances driving');
  await page.locator('#pause-btn').click();assert.equal(await page.evaluate(()=>__touge.state),'paused');const paused=await page.evaluate(()=>__touge.stats.t);await page.waitForTimeout(350);assert.equal(await page.evaluate(()=>__touge.stats.t),paused);
- if(live){await page.locator('#pause-layer').evaluate(e=>e.style.visibility='hidden');await shot(page,'02-race');await page.locator('#pause-layer').evaluate(e=>e.style.visibility='');}
+ if(live){await page.locator('#pause-layer').evaluate(e=>e.style.visibility='hidden');await shot(page,'07-live-race');await page.locator('#pause-layer').evaluate(e=>e.style.visibility='');}
  await page.locator('#resume-btn').click();assert.equal(await page.evaluate(()=>__touge.state),'race');report.checks.push('pause and resume');
  if(!live){await page.evaluate(()=>__touge.test.freeze(true));await page.keyboard.press('KeyC');await page.evaluate(()=>__touge.test.render());await shot(page,'03-bonnet');await page.keyboard.press('KeyC');await page.keyboard.press('KeyC');await page.evaluate(()=>{const t=__touge.test;t.set({s:__touge.stats.length-1,v:30,rival:__touge.stats.length-15,rivalFinish:null});t.step(.1,{gas:1});});await page.locator('#finish-layer:not(.hidden)').waitFor();assert.match(await page.locator('#finish-title').innerText(),/WIN|FINISH/);await shot(page,'04-finish');await page.locator('#retry-btn').click();assert.equal(await page.evaluate(()=>__touge.stats.score),0);assert.equal(await page.evaluate(()=>__touge.state),'count');report.checks.push('camera modes, finish UI and clean retry');}
  assert.equal(errors.length,0,errors.join('\n'));await context.close();
@@ -37,7 +37,18 @@ try{
  await mp.waitForFunction(()=>__touge.state==='race',null,{timeout:90000});
  if(live)await mp.waitForFunction(()=>__touge.stats.v>12,null,{timeout:90000});
  const left=await mp.locator('[data-hold="left"]').boundingBox(),drift=await mp.locator('[data-hold="drift"]').boundingBox();const session=await mobile.newCDPSession(mp);await session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:left.x+left.width/2,y:left.y+left.height/2,id:0},{x:drift.x+drift.width/2,y:drift.y+drift.height/2,id:1}]});await mp.waitForFunction(()=>__touge.stats.drift&&__touge.stats.score>0,null,{timeout:90000});
- if(!live)await mp.evaluate(()=>{__touge.test.freeze(true);__touge.test.render();});await shot(mp,'05-mobile-drift');await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});report.checks.push('simultaneous touch steering and drift');
- if(!live)await mp.evaluate(()=>__touge.test.freeze(false));await mp.locator('#pause-btn').click();await mp.setViewportSize({width:412,height:915});await shot(mp,'06-portrait');assert.equal(errors.length,0,errors.join('\n'));report.checks.push('scrolling menu and portrait resize');await mobile.close();
- report.ok=true;await writeFile('test-output/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));
+ report.mobileDrift=await mp.evaluate(()=>({score:__touge.stats.score,speed:__touge.stats.v*3.6,drift:__touge.stats.drift}));
+ if(!live){
+  await mp.evaluate(()=>{__touge.test.freeze(true);__touge.test.render();});await shot(mp,'05-mobile-drift');
+  await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await mp.evaluate(()=>__touge.test.freeze(false));await mp.locator('#pause-btn').click();
+ }else{
+  // Assert real drift first, then use the public pause control for a stable GPU capture.
+  await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await mp.locator('#pause-btn').click();
+  await mp.waitForFunction(()=>__touge.state==='paused');await mp.waitForTimeout(350);
+  await mp.locator('#pause-layer').evaluate(e=>e.style.visibility='hidden');await shot(mp,'08-live-mobile');await mp.locator('#pause-layer').evaluate(e=>e.style.visibility='');
+ }
+ report.checks.push('simultaneous touch steering and drift');
+ assert.equal(await mp.evaluate(()=>__touge.state),'paused');await mp.setViewportSize({width:412,height:915});await mp.waitForFunction(()=>!__touge.stats.warming);
+ await shot(mp,live?'09-live-portrait':'06-portrait');assert.equal(errors.length,0,errors.join('\n'));report.checks.push('scrolling menu and portrait resize');await mobile.close();
+ report.ok=true;await writeFile('test-output/'+(live?'live-report.json':'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
 }finally{await browser.close();}
