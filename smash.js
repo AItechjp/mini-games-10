@@ -60,6 +60,11 @@
   let hitFreeze = 0;
   let cameraZoom = 1;
   let audioContext = null;
+  let onlineSession = null;
+  let onlineRemote = {};
+  let countdownTimer = null;
+  let winnerSlot = null;
+  const arenaIllustration=new Image();arenaIllustration.src='arcade100/assets/worlds.webp';
 
   const held = new Set();
   const pressed = new Set();
@@ -90,6 +95,8 @@
       document.querySelectorAll('[data-mode]').forEach(item => item.classList.toggle('active', item === button));
       $('opponent-picker').firstElementChild.textContent = mode === 'cpu' ? '対戦相手' : 'PLAYER 2';
       $('cpu-level-wrap').classList.toggle('disabled-option', mode !== 'cpu');
+      $('online-room')?.classList.toggle('hidden', mode !== 'online');
+      $('start-btn').classList.toggle('hidden', mode === 'online');
       tone(430, .05, 'square', .02);
     });
   });
@@ -126,6 +133,7 @@
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     canvas.viewWidth = innerWidth;
     canvas.viewHeight = innerHeight;
+    if(onlineSession){canvas.viewWidth=1280;canvas.viewHeight=720;ctx.setTransform(ratio*innerWidth/1280,0,0,ratio*innerHeight/720,0,0);}
   }
   addEventListener('resize', resize);
   resize();
@@ -149,6 +157,9 @@
   }
 
   function startMatch() {
+    if(mode==='online'&&!onlineSession?.starting){window.dispatchEvent(new CustomEvent('skybreak-start-request'));return;}
+    if(onlineSession)onlineSession.starting=false;
+    clearInterval(countdownTimer);winnerSlot=null;
     initAudio();
     const choices = [0,1,2,3].filter(index => index !== selected);
     const rival = opponent < 0 ? choices[Math.floor(Math.random() * choices.length)] : opponent;
@@ -169,13 +180,13 @@
     let count = 3;
     announce('3');
     tone(330, .08, 'square', .035);
-    const timer = setInterval(() => {
+    countdownTimer = setInterval(() => {
       count -= 1;
       if (count > 0) {
         announce(String(count));
         tone(330 + (3 - count) * 80, .08, 'square', .035);
       } else {
-        clearInterval(timer);
+        clearInterval(countdownTimer);
         announce('GO!');
         tone(720, .16, 'sawtooth', .045);
         gameState = 'playing';
@@ -185,6 +196,8 @@
   }
 
   function returnToMenu() {
+    clearInterval(countdownTimer);
+    if(onlineSession){window.dispatchEvent(new CustomEvent('skybreak-leave-request'));onlineSession=null;mode='cpu';resize();}
     gameState = 'menu';
     Object.values(screens).forEach(screen => screen.classList.add('hidden'));
     screens.start.classList.remove('hidden');
@@ -193,6 +206,7 @@
   }
 
   function togglePause() {
+    if(onlineSession){announce('オンライン対戦中');return;}
     if (gameState === 'playing') {
       gameState = 'paused';
       screens.pause.classList.remove('hidden');
@@ -212,12 +226,13 @@
   }
 
   function controlFor(player) {
+    if(onlineSession&&player.slot!==onlineSession.side){const c={...onlineRemote};for(const key of Object.keys(onlineRemote))if(key.endsWith('Press')||key.endsWith('Release'))onlineRemote[key]=false;return c;}
     if (player.cpu) return cpuControl(player);
-    const map = player.slot === 0
+    const map = onlineSession || player.slot === 0
       ? {left:'KeyA', right:'KeyD', down:'KeyS', up:'KeyW', attack:'KeyJ', special:'KeyK', shield:'KeyL', grab:'KeyI'}
       : {left:'ArrowLeft', right:'ArrowRight', down:'ArrowDown', up:'ArrowUp', attack:'Numpad1', special:'Numpad2', shield:'Numpad3', grab:'Numpad0'};
-    const touchAllowed = player.slot === 0;
-    const pad = navigator.getGamepads?.()[player.slot];
+    const touchAllowed = !!onlineSession || player.slot === 0;
+    const pad = navigator.getGamepads?.()[onlineSession?0:player.slot];
     const oldPad = player.padButtons || [];
     const padButton = index => Boolean(pad?.buttons[index]?.pressed);
     const padPress = index => padButton(index) && !oldPad[index];
@@ -939,11 +954,12 @@
   }
 
   function finishMatch(winnerIndex) {
+    winnerSlot=winnerIndex;
     if (gameState === 'result') return;
     gameState = 'result';
     const winner = players[winnerIndex];
     const loser = players[1 - winnerIndex];
-    const localTitle = mode === 'local' ? `PLAYER ${winnerIndex + 1} WINS` : winnerIndex === 0 ? 'VICTORY' : 'DEFEAT';
+    const localTitle = onlineSession ? (winnerIndex===onlineSession.side?'VICTORY':'DEFEAT') : mode === 'local' ? `PLAYER ${winnerIndex + 1} WINS` : winnerIndex === 0 ? 'VICTORY' : 'DEFEAT';
     $('result-title').textContent = localTitle;
     $('result-copy').innerHTML = `${winner.fighter.name} WIN<br>K.O. ${winner.kos}　与ダメージ ${Math.round(winner.damageGiven)}%<br>${loser.fighter.name} 残り ${loser.stocks} STOCK`;
     $('winner-art').style.setProperty('--winner', winner.fighter.color);
@@ -1060,6 +1076,7 @@
     ctx.save();
     if (screenShake > 0) ctx.translate((Math.random()-.5)*screenShake,(Math.random()-.5)*screenShake);
     drawBackground(width,height);
+    if(arenaIllustration.complete&&arenaIllustration.naturalWidth){const sw=arenaIllustration.width/4,sh=arenaIllustration.height/4,index=stageKey==='ruins'?0:stageKey==='final'?14:13;ctx.save();ctx.globalAlpha=.42;ctx.drawImage(arenaIllustration,(index%4)*sw,Math.floor(index/4)*sh,sw,sh,0,-height*.3,width,height*1.3);ctx.restore();}
     const spread = players.length > 1 ? Math.hypot(players[0].x-players[1].x,(players[0].y-players[1].y)*.7) : 0;
     const targetZoom = clamp(1-(spread-Math.min(340,width*.34))/Math.max(900,width*1.25),.86,1);
     cameraZoom += (targetZoom-cameraZoom)*.055;
@@ -1223,13 +1240,15 @@
   function frame(now) {
     const dt=Math.min(.033,Math.max(0,(now-lastTime)/1000));
     lastTime=now;
-    if(hitFreeze>0)hitFreeze-=dt;else update(dt);
+    if(onlineSession?.side===1){if(players[1]){window.dispatchEvent(new CustomEvent('skybreak-control',{detail:controlFor(players[1])}));pressed.clear();released.clear();touchPressed.clear();touchReleased.clear();}}else {if(hitFreeze>0)hitFreeze-=dt;else update(dt);}
+    if(onlineSession?.side===0)window.dispatchEvent(new CustomEvent('skybreak-frame'));
     draw();
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
 
   addEventListener('keydown', event => {
+    if(event.target.matches('input,textarea,select'))return;
     if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space'].includes(event.code))event.preventDefault();
     if(!held.has(event.code))pressed.add(event.code);
     held.add(event.code);
@@ -1245,5 +1264,16 @@
     const up=event=>{event.preventDefault();if(touchHeld.has(key))touchReleased.add(key);touchHeld.delete(key);button.classList.remove('pressed');};
     button.addEventListener('pointerdown',down);button.addEventListener('pointerup',up);button.addEventListener('pointercancel',up);button.addEventListener('pointerleave',up);
   });
-  document.addEventListener('visibilitychange',()=>{if(document.hidden&&gameState==='playing')togglePause()});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){held.clear();pressed.clear();touchHeld.clear();}if(document.hidden&&gameState==='playing'&&!onlineSession)togglePause()});
+  window.SKYBREAK_BRIDGE={
+    getConfig(){return {fighter:selected,stage:stageKey,items:itemsEnabled};},
+    start(config,side){onlineSession={side,starting:true};mode='online';selected=config.fighters[0];opponent=config.fighters[1];stageKey=STAGES[config.stage]?config.stage:'battlefield';itemsEnabled=!!config.items;onlineRemote={};resize();startMatch();},
+    controls(control){for(const key of ['left','right','down','up','jumpPress','jumpRelease','attack','attackPress','attackRelease','specialPress','shield','shieldPress','grabPress','anyPress']){if(key.endsWith('Press')||key.endsWith('Release'))onlineRemote[key]=onlineRemote[key]||!!control[key];else onlineRemote[key]=!!control[key];}},
+    snapshot(){return JSON.parse(JSON.stringify({id:'skybreak',phase:gameState==='result'?'over':'playing',gameState,players,projectiles,particles:particles.slice(-100),items,effects,itemClock,matchTime,stageKey,itemsEnabled,screenShake,winnerSlot},(key,value)=>['owner','grabbing','grabbedBy'].includes(key)&&value&&Number.isInteger(value.slot)?{$player:value.slot}:value));},
+    apply(snapshot){if(snapshot.id!=='skybreak'||!Array.isArray(snapshot.players)||snapshot.players.length!==2)return;clearInterval(countdownTimer);players=snapshot.players;const visited=new WeakSet();const restore=value=>{if(!value||typeof value!=='object')return value;if(Number.isInteger(value.$player))return players[value.$player]||null;if(visited.has(value))return value;visited.add(value);for(const key of Object.keys(value))value[key]=restore(value[key]);return value;};players.forEach(restore);projectiles=restore(snapshot.projectiles||[]);particles=snapshot.particles||[];items=snapshot.items||[];effects=restore(snapshot.effects||[]);itemClock=snapshot.itemClock;matchTime=snapshot.matchTime;stageKey=snapshot.stageKey;itemsEnabled=snapshot.itemsEnabled;screenShake=snapshot.screenShake||0;const previous=gameState;gameState=snapshot.gameState;Object.values(screens).forEach(screen=>screen.classList.add('hidden'));$('hud').classList.remove('hidden');$('touch-controls').classList.remove('hidden');updateHud();if(gameState==='result'){if(previous!=='result'){gameState='playing';finishMatch(snapshot.winnerSlot??0);}else {screens.result.classList.remove('hidden');$('touch-controls').classList.add('hidden');}}},
+    restore(snapshot,side){onlineSession={side,starting:false};mode='online';resize();this.apply(snapshot);},
+    message:announce,
+    stop(){onlineSession=null;mode='cpu';returnToMenu();resize();}
+  };
+  window.dispatchEvent(new CustomEvent('skybreak-ready'));
 })();

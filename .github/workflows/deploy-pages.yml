@@ -39,6 +39,11 @@ jobs:
           done < <(find . -maxdepth 2 -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
       - name: Validate past-question-only learning source
         run: node tests/yobi-past-source.mjs
+      - name: Verify arcade game rules and room security
+        run: |
+          node tests/arcade-games.mjs
+          node tests/arcade-online.mjs
+          node tests/smash-online-state.mjs
       - name: Install browser smoke-test runtime and self-hosted 3D engine
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0 three@0.180.0
@@ -91,14 +96,14 @@ jobs:
           jq -e '.cname == "aitechd.com" and .https_enforced == true and .https_certificate.state == "approved"' /tmp/pages-security.json
       - name: Stage public files without test runtimes or reports
         run: |
-          mkdir -p _site
-          rsync -a ./ _site/ --exclude '.git/' --exclude '.github/' --exclude 'node_modules/' --exclude 'tests/' --exclude 'supabase/' --exclude '_site/' --exclude 'test-output/' --exclude 'test-results/' --exclude 'playwright-report/' --exclude 'https-hardening.mjs'
-          test -f _site/https-release.json
-          test ! -d _site/node_modules
+          node scripts/build-static.mjs
+          test -f dist/https-release.json
+          test ! -d dist/node_modules
+          test ! -d dist/arcade100/backend
       - name: Upload hardened artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: '_site'
+          path: 'dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

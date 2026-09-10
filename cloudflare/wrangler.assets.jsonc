@@ -1,0 +1,11 @@
+{
+  // Optional static-delivery migration. This config does NOT implement game rooms.
+  // Build from the repository root: node scripts/build-static.mjs
+  // Existing GitHub Pages / Cloudflare Pages publishing continues independently.
+  "name": "aitechjp-games",
+  "compatibility_date": "2026-09-10",
+  "assets": {
+    "directory": "../dist",
+    "not_found_handling": "404-page"
+  }
+}
