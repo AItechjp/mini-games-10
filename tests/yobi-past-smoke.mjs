@@ -18,7 +18,7 @@ try {
  const bank=await(await page.request.get(root+'assets/tanto/bank.json')).json();const q=bank.find(q=>q.id===id);
  for(let i=0;i<q.answer.length;i++)await page.locator('[data-slot="'+(q.kind==='vector'?i:0)+'"][data-choice="'+q.answer[i]+'"]').click();
  await page.click('[data-grade="sure"]');
- await page.waitForSelector('.feedback');assert((await page.locator('.feedback h3').innerText()).includes('正解'));
+ await page.waitForSelector('.feedback');assert(await page.locator('.feedback').getByRole('heading',{name:'正解',exact:true}).isVisible());
  await page.fill('#answerMemo','根拠を翌日確認する。');
  await page.click('[data-action="bookmark"]');await page.click('[data-action="saveExit"]');
  await page.reload({waitUntil:'domcontentloaded'});await page.waitForSelector('[data-action="resume"]');await page.click('[data-action="resume"]');
