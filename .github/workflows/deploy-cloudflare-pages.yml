@@ -39,16 +39,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf dist
-          mkdir -p dist
-          rsync -a ./ dist/ \
-            --exclude '.git/' \
-            --exclude '.github/' \
-            --exclude 'supabase/' \
-            --exclude 'dist/' \
-            --exclude 'cloudflare/' \
-            --exclude '*.md' \
-            --exclude 'supabase-config.example.js'
+          node scripts/build-static.mjs
           test -f dist/index.html
           test -f dist/mega-arcade.html
           test -f dist/mega-final.js
