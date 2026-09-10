@@ -36,18 +36,25 @@ try{
  if(!live)await mp.evaluate(()=>{const t=__touge.test;t.step(3.5,{gas:1});t.set({s:100,v:30,rival:160,x:0});t.clear();});
  await mp.waitForFunction(()=>__touge.state==='race',null,{timeout:90000});
  if(live)await mp.waitForFunction(()=>__touge.stats.v>12,null,{timeout:90000});
- const left=await mp.locator('[data-hold="left"]').boundingBox(),drift=await mp.locator('[data-hold="drift"]').boundingBox();const session=await mobile.newCDPSession(mp);await session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:left.x+left.width/2,y:left.y+left.height/2,id:0},{x:drift.x+drift.width/2,y:drift.y+drift.height/2,id:1}]});await mp.waitForFunction(()=>__touge.stats.drift&&__touge.stats.score>0,null,{timeout:90000});
- report.mobileDrift=await mp.evaluate(()=>({score:__touge.stats.score,speed:__touge.stats.v*3.6,drift:__touge.stats.drift}));
+ const left=await mp.locator('[data-hold="left"]').boundingBox(),drift=await mp.locator('[data-hold="drift"]').boundingBox();
+ const beforeDrift=await mp.evaluate(()=>({state:__touge.state,...__touge.stats}));assert.equal(beforeDrift.score,0);
+ const session=await mobile.newCDPSession(mp);
+ await session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:left.x+left.width/2,y:left.y+left.height/2,id:0},{x:drift.x+drift.width/2,y:drift.y+drift.height/2,id:1}]});
+ // Score persists after a short drift ends; checking only the transient flag is racy on software GPUs.
+ // It can increase only through the real game's successful-drift branch, with no public state injection.
+ try{await mp.waitForFunction(score=>__touge.stats.score>score,beforeDrift.score,{timeout:90000});}
+ catch(error){const after=await mp.evaluate(()=>({state:__touge.state,...__touge.stats,active:[...document.querySelectorAll('[data-hold].active')].map(e=>e.dataset.hold)}));await writeFile('test-output/touch-failure.json',JSON.stringify({beforeDrift,after,left,drift,errors},null,2));console.error('Touch diagnostics',JSON.stringify({beforeDrift,after,left,drift,errors}));throw error;}
+ report.mobileDrift=await mp.evaluate(()=>({score:__touge.stats.score,speed:__touge.stats.v*3.6,drift:__touge.stats.drift,steer:__touge.stats.steer}));
+ assert(report.mobileDrift.score>beforeDrift.score);
  if(!live){
   await mp.evaluate(()=>{__touge.test.freeze(true);__touge.test.render();});await shot(mp,'05-mobile-drift');
   await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await mp.evaluate(()=>__touge.test.freeze(false));await mp.locator('#pause-btn').click();
  }else{
-  // Assert real drift first, then use the public pause control for a stable GPU capture.
   await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await mp.locator('#pause-btn').click();
   await mp.waitForFunction(()=>__touge.state==='paused');await mp.waitForTimeout(350);
   await mp.locator('#pause-layer').evaluate(e=>e.style.visibility='hidden');await shot(mp,'08-live-mobile');await mp.locator('#pause-layer').evaluate(e=>e.style.visibility='');
  }
- report.checks.push('simultaneous touch steering and drift');
+ report.checks.push('simultaneous touch steering and earned drift score');
  assert.equal(await mp.evaluate(()=>__touge.state),'paused');await mp.setViewportSize({width:412,height:915});await mp.waitForFunction(()=>!__touge.stats.warming);
  await shot(mp,live?'09-live-portrait':'06-portrait');assert.equal(errors.length,0,errors.join('\n'));report.checks.push('scrolling menu and portrait resize');await mobile.close();
  report.ok=true;await writeFile('test-output/'+(live?'live-report.json':'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
