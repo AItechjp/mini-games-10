@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 // Build tools, tests, plans and database code never enter the public artifact.
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const output = join(root, 'dist');
-const excludedDirs = new Set(['dist','node_modules','supabase','backend','cloudflare','scripts','tests','docs','roadmap','coverage','test-results','playwright-report']);
+const excludedDirs = new Set(['dist','node_modules','supabase','backend','cloudflare','scripts','tests','docs','roadmap','coverage','test-results','test-output','_site','playwright-report']);
 const excludedFiles = new Set(['https-hardening.mjs','supabase-config.example.js','package.json','package-lock.json','pnpm-lock.yaml','yarn.lock','tsconfig.json','jsconfig.json']);
 const publicFiles = new Set(['CNAME','.nojekyll','_headers','_redirects']);
 const extensions = new Set(['.html','.css','.js','.mjs','.json','.txt','.xml','.svg','.png','.jpg','.jpeg','.webp','.avif','.gif','.ico','.woff','.woff2','.ttf','.otf','.mp3','.ogg','.wav','.m4a','.mp4','.webm','.glb','.gltf','.bin','.obj','.mtl','.ktx2','.basis','.wasm','.webmanifest']);
