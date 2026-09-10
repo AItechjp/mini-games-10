@@ -1,0 +1,68 @@
+name: HTTPS diagnostics
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/https-diagnostics.yml]
+permissions:
+  contents: read
+  pages: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Inspect Pages configuration and public transport
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/pages" --jq '{cname,https_enforced,https_certificate,status,build_type,html_url}'
+          for host in aitechd.com www.aitechd.com; do
+            echo "DNS: $host"
+            dig +short "$host" A
+            dig +short "$host" AAAA
+            dig +short "$host" CAA
+            for scheme in http https; do
+              for path in / /yobi-quiz.html /game23.html; do
+                echo "HEAD: $scheme://$host$path"
+                curl --connect-timeout 10 --max-time 20 -sSI "$scheme://$host$path" || true
+              done
+            done
+          done
+      - name: Inspect browser security without ignoring TLS errors
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+          cat > /tmp/https-diagnose-source.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch({headless:true,args:['--enable-unsafe-swiftshader']});
+          for (const url of ['https://aitechd.com/','https://aitechd.com/yobi-quiz.html','https://aitechd.com/game23.html','https://www.aitechd.com/','http://aitechd.com/','http://aitechd.com/yobi-quiz.html']) {
+            const context=await browser.newContext({ignoreHTTPSErrors:false});
+            const page=await context.newPage();
+            const cdp=await context.newCDPSession(page);
+            const report={url,security:[],issues:[],errors:[],insecure:[],failed:[]};
+            cdp.on('Security.visibleSecurityStateChanged',e=>report.security.push(e.visibleSecurityState));
+            cdp.on('Audits.issueAdded',e=>report.issues.push(e.issue));
+            page.on('pageerror',e=>report.errors.push(e.message));
+            page.on('console',msg=>{if(msg.type()==='error'||/mixed content|content security policy/i.test(msg.text()))report.errors.push(msg.text());});
+            page.on('request',req=>{if(/^(http|ws):/.test(req.url()))report.insecure.push({url:req.url(),type:req.resourceType()});});
+            page.on('requestfailed',req=>report.failed.push({url:req.url(),failure:req.failure()}));
+            await cdp.send('Security.enable');await cdp.send('Audits.enable');
+            try {
+              const res=await page.goto(url,{waitUntil:'domcontentloaded',timeout:45000});
+              await page.waitForTimeout(url.includes('game23')?10000:3000);
+              report.status=res?.status();report.tls=await res?.securityDetails();
+              report.state=await page.evaluate(()=>({url:location.href,secure:isSecureContext,csp:[...document.querySelectorAll('meta[http-equiv="Content-Security-Policy"]')].map(e=>e.content),title:document.title,frames:[...document.querySelectorAll('iframe')].map(e=>e.src)}));
+            }catch(e){report.navigationError=e.message;}
+            report.security=report.security.map(e=>({...e,certificateSecurityState:e.certificateSecurityState?{...e.certificateSecurityState,certificate:undefined}:undefined}));
+            console.log('HTTPS_DIAGNOSTIC '+JSON.stringify(report));
+            await context.close();
+          }
+          await browser.close();
+          EOF
+          cp /tmp/https-diagnose-source.mjs ./https-diagnose-runtime.mjs
+          node https-diagnose-runtime.mjs
