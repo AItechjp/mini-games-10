@@ -23,12 +23,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-
       - name: Validate JavaScript
         shell: bash
         run: |
@@ -37,15 +35,15 @@ jobs:
             echo "Checking $file"
             node --check "$file"
           done < <(find . -maxdepth 2 -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
-
       - name: Validate past-question-only learning source
         run: node tests/yobi-past-source.mjs
-
-      - name: Install browser smoke-test runtime
+      - name: Install browser smoke-test runtime and self-hosted 3D engine
         run: |
-          npm install --no-save --no-package-lock playwright@1.55.0
+          npm install --no-save --no-package-lock playwright@1.55.0 three@0.180.0
           npx playwright install --with-deps chromium
-
+          mkdir -p touge/vendor
+          cp -r node_modules/three/build node_modules/three/examples touge/vendor/
+          cp node_modules/three/LICENSE touge/vendor/LICENSE
       - name: Smoke test games and learning tools locally
         shell: bash
         run: |
@@ -67,10 +65,9 @@ jobs:
           YOBI_BASE_URL=http://127.0.0.1:4173/ node tests/yobi-past-smoke.mjs
           GAME23_BASE_URL=http://127.0.0.1:4173/ node tests/game23-smoke.mjs
           FPS_BASE_URL=http://127.0.0.1:4173/ node tests/fps-smoke.mjs
-
+          TOUGE_BASE_URL=http://127.0.0.1:4173/ node tests/touge-smoke.mjs
       - name: Harden every public web asset for HTTPS
         run: node https-hardening.mjs
-
       - name: Verify hardening is idempotent
         shell: bash
         run: |
@@ -79,19 +76,15 @@ jobs:
           node https-hardening.mjs
           after="$(git diff -- . ':!.github' ':!tests' ':!supabase' | sha256sum | cut -d' ' -f1)"
           test "$before" = "$after"
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
       - name: Upload hardened artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: '.'
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
       - name: Verify deployed Pages in browser
         shell: bash
         env:
@@ -111,7 +104,7 @@ jobs:
           YOBI_BASE_URL="$PAGE_URL" node tests/yobi-past-smoke.mjs
           GAME23_BASE_URL="$PAGE_URL" node tests/game23-smoke.mjs
           FPS_BASE_URL="$PAGE_URL" node tests/fps-smoke.mjs
-
+          TOUGE_BASE_URL="$PAGE_URL" node tests/touge-smoke.mjs
       - name: Verify custom domain is HTTPS-only with no mixed content
         shell: bash
         env:
@@ -128,3 +121,10 @@ jobs:
           done
           test "$ready" = 1
           node tests/https-live.mjs
+      - name: Retain racing verification screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: touge-deployed-verification
+          path: test-output/
+          retention-days: 7
