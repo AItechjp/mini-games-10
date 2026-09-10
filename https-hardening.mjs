@@ -2,7 +2,8 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const skipDirs = new Set(['.git', 'node_modules']);
+const skipDirs = new Set(['.git', '.github', 'node_modules', 'tests', 'supabase']);
+const skipFiles = new Set(['https-hardening.mjs']);
 const webExts = new Set(['.html', '.htm', '.css', '.js', '.mjs']);
 const namespaceTokens = new Map([
   ['http://www.w3.org/2000/svg', '__W3C_SVG_NAMESPACE__'],
@@ -28,18 +29,16 @@ function upgradeAbsoluteTransport(text) {
   text = protectNamespaces(text);
   text = text.replace(/http:\/\/[^\s"'`<>)}\]]+/gi, match => {
     if (isLocalhostUrl(match)) return match;
-    return `https://${match.slice('http://'.length)}`;
+    return `https://${match.slice(7)}`;
   });
   text = text.replace(/ws:\/\/[^\s"'`<>)}\]]+/gi, match => {
     if (/^ws:\/\/(?:localhost|127\.0\.0\.1|\[::1\])(?=[:/]|$)/i.test(match)) return match;
-    return `wss://${match.slice('ws://'.length)}`;
+    return `wss://${match.slice(5)}`;
   });
   return restoreNamespaces(text);
 }
 
 function removeDisabledThirdPartyAds(html) {
-  // Ads are disabled site-wide. Do not allow a stale ad tag to introduce a
-  // cross-origin frame that can downgrade subresources behind our back.
   return html
     .replace(/<script\b[^>]*\bsrc=["']https?:\/\/adm\.shinobi\.jp\/[^"']*["'][^>]*>\s*<\/script>/gi, '')
     .replace(/<script\b[^>]*\bsrc=["']https?:\/\/pagead2\.googlesyndication\.com\/[^"']*["'][^>]*>\s*<\/script>/gi, '')
@@ -76,7 +75,7 @@ async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const files = [];
   for (const entry of entries) {
-    if (skipDirs.has(entry.name)) continue;
+    if (entry.isDirectory() && skipDirs.has(entry.name)) continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) files.push(...await walk(full));
     else files.push(full);
@@ -84,12 +83,16 @@ async function walk(dir) {
   return files;
 }
 
-const files = (await walk(root)).filter(file => webExts.has(path.extname(file).toLowerCase()));
+const files = (await walk(root)).filter(file => {
+  if (skipFiles.has(path.basename(file))) return false;
+  return webExts.has(path.extname(file).toLowerCase());
+});
+
 let changed = 0;
 for (const file of files) {
   const ext = path.extname(file).toLowerCase();
   const before = await fs.readFile(file, 'utf8');
-  let after = ext === '.html' || ext === '.htm' ? hardenHtml(before) : upgradeAbsoluteTransport(before);
+  const after = ext === '.html' || ext === '.htm' ? hardenHtml(before) : upgradeAbsoluteTransport(before);
   if (after !== before) {
     await fs.writeFile(file, after, 'utf8');
     changed += 1;
@@ -110,4 +113,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`HTTPS hardening complete. ${files.length} web assets checked, ${changed} updated.`);
+console.log(`HTTPS hardening complete. ${files.length} public web assets checked, ${changed} updated.`);
