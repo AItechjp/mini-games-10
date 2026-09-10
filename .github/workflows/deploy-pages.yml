@@ -21,6 +21,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -45,6 +46,18 @@ jobs:
           mkdir -p touge/vendor
           cp -r node_modules/three/build node_modules/three/examples touge/vendor/
           cp node_modules/three/LICENSE touge/vendor/LICENSE
+      - name: Harden every public web asset for HTTPS
+        run: node https-hardening.mjs
+      - name: Verify hardening is idempotent
+        shell: bash
+        run: |
+          set -euo pipefail
+          before="$(git diff -- . ':!.github' ':!tests' ':!supabase' | sha256sum | cut -d' ' -f1)"
+          cp https-release.json /tmp/https-release-first.json
+          node https-hardening.mjs
+          after="$(git diff -- . ':!.github' ':!tests' ':!supabase' | sha256sum | cut -d' ' -f1)"
+          test "$before" = "$after"
+          cmp https-release.json /tmp/https-release-first.json
       - name: Smoke test games and learning tools locally
         shell: bash
         run: |
@@ -67,22 +80,25 @@ jobs:
           GAME23_BASE_URL=http://127.0.0.1:4173/ node tests/game23-smoke.mjs
           FPS_BASE_URL=http://127.0.0.1:4173/ node tests/fps-smoke.mjs
           TOUGE_BASE_URL=http://127.0.0.1:4173/ node tests/touge-smoke.mjs
-      - name: Harden every public web asset for HTTPS
-        run: node https-hardening.mjs
-      - name: Verify hardening is idempotent
-        shell: bash
-        run: |
-          set -euo pipefail
-          before="$(git diff -- . ':!.github' ':!tests' ':!supabase' | sha256sum | cut -d' ' -f1)"
-          node https-hardening.mjs
-          after="$(git diff -- . ':!.github' ':!tests' ':!supabase' | sha256sum | cut -d' ' -f1)"
-          test "$before" = "$after"
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Verify domain and server-side HTTPS enforcement
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/pages" > /tmp/pages-security.json
+          jq '{cname,https_enforced,https_certificate}' /tmp/pages-security.json
+          jq -e '.cname == "aitechd.com" and .https_enforced == true and .https_certificate.state == "approved"' /tmp/pages-security.json
+      - name: Stage public files without test runtimes or reports
+        run: |
+          mkdir -p _site
+          rsync -a ./ _site/ --exclude '.git/' --exclude '.github/' --exclude 'node_modules/' --exclude 'tests/' --exclude 'supabase/' --exclude '_site/' --exclude 'test-output/' --exclude 'test-results/' --exclude 'playwright-report/' --exclude 'https-hardening.mjs'
+          test -f _site/https-release.json
+          test ! -d _site/node_modules
       - name: Upload hardened artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: '.'
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
@@ -106,22 +122,18 @@ jobs:
           GAME23_BASE_URL="$PAGE_URL" node tests/game23-smoke.mjs
           FPS_BASE_URL="$PAGE_URL" node tests/fps-smoke.mjs
           TOUGE_BASE_URL="$PAGE_URL" node tests/touge-smoke.mjs
-      - name: Verify custom domain is HTTPS-only with no mixed content
-        shell: bash
+      - name: Verify every page in desktop and Android Chromium
         env:
           HTTPS_BASE_URL: https://aitechd.com/
-        run: |
-          set -euo pipefail
-          ready=0
-          for i in {1..18}; do
-            if curl --proto '=https' --tlsv1.2 -fsS https://aitechd.com/game23.html | grep -q 'game23-v3-loader.js'; then
-              ready=1
-              break
-            fi
-            sleep 5
-          done
-          test "$ready" = 1
-          node tests/https-live.mjs
+          HTTPS_EXPECT_COMMIT: ${{ github.sha }}
+        run: node tests/https-live.mjs
+      - name: Retain HTTPS security evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: https-security-verification
+          path: test-output/https/
+          retention-days: 7
       - name: Retain racing verification screenshots
         if: always()
         uses: actions/upload-artifact@v4
