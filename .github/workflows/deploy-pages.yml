@@ -123,6 +123,7 @@ jobs:
           FPS_BASE_URL="$PAGE_URL" node tests/fps-smoke.mjs
           TOUGE_BASE_URL="$PAGE_URL" node tests/touge-smoke.mjs
       - name: Verify every page in desktop and Android Chromium
+        if: ${{ !cancelled() && steps.deployment.outcome == 'success' }}
         env:
           HTTPS_BASE_URL: https://aitechd.com/
           HTTPS_EXPECT_COMMIT: ${{ github.sha }}
