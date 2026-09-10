@@ -1,0 +1,21 @@
+name: Aether Online Live Check
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tests/aether-online-live.mjs'
+      - '.github/workflows/aether-online-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  online:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test two independent players against the live card server
+        run: node tests/aether-online-live.mjs
