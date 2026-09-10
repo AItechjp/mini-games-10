@@ -1,0 +1,37 @@
+name: Arcade 100 gameplay and online review
+on:
+  pull_request:
+    paths: ['arcade100/**', 'smash*', 'tests/arcade*', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
+  push:
+    branches: ['main']
+    paths: ['arcade100/**', 'smash*', 'tests/arcade*', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify all game engines
+        run: node tests/arcade-games.mjs
+      - name: Verify room security and concurrency
+        run: node tests/arcade-online.mjs
+      - name: Syntax and static bundle
+        run: |
+          node --check arcade100/app.mjs
+          node --check arcade100/render.mjs
+          node --check arcade100/network.mjs
+          node --check smash.js
+          node --check smash-online.mjs
+          node scripts/build-static.mjs
+          test -f dist/arcade100/index.html
+          test ! -d dist/arcade100/backend
+      - name: Install live integration dependency
+        run: npm install --prefix /tmp/arcade-ci --no-audit --no-fund @supabase/supabase-js@2.57.0
+      - name: Verify deployed multiplayer service
+        run: node tests/arcade-online-live.mjs

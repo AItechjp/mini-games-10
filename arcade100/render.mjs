@@ -4,7 +4,7 @@ const ACTOR={4:4,7:7,61:5,62:12,65:0,68:5,69:6,81:10,86:6,87:3,88:10,89:6,92:15,
 export function boardLayout(s){const w=s.board.w,h=s.board.h,size=Math.min(72,720/w,445/h);return {x:500-w*size/2,y:90+(445-h*size)/2,size,w,h};}
 export class Renderer{
  constructor(canvas){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.images={};this.state=null;this.side=0;this.selected=-1;this.pointer={x:500,y:300};this.time=0;}
- async load(){await Promise.all(['worlds','actors','props'].map(name=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{this.images[name]=img;resolve();};img.onerror=()=>reject(new Error('画像を読み込めませんでした。'));img.src=new URL('./assets/'+name+'.png',import.meta.url).href;})));}
+ async load(){await Promise.all(['worlds','actors','props'].map(name=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{this.images[name]=img;resolve();};img.onerror=()=>reject(new Error('画像を読み込めませんでした。'));img.src=new URL('./assets/'+name+'.webp',import.meta.url).href;})));}
  tile(kind,index,x,y,w,h=w,alpha=1){const img=this.images[kind];if(!img)return;const c=this.ctx,sw=img.width/4,sh=img.height/4;c.save();c.globalAlpha=alpha;c.drawImage(img,(index%4)*sw,Math.floor(index/4)*sh,sw,sh,x,y,w,h);c.restore();}
  text(text,x,y,size=16,color='#f3f6ff',align='center',weight=600){const c=this.ctx;c.fillStyle=color;c.font=weight+' '+size+'px "Noto Sans JP",sans-serif';c.textAlign=align;c.textBaseline='middle';c.fillText(String(text),x,y);}
  rect(x,y,w,h,color,r=9,stroke=null){const c=this.ctx;c.fillStyle=color;c.beginPath();c.roundRect(x,y,w,h,r);c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=1.5;c.stroke();}}
