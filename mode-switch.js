@@ -1,35 +1,12 @@
 (() => {
   'use strict';
 
-  const loadSiteAds = () => {
-    if (document.querySelector('script[data-site-ads-config],script[src="ads-config.js"]')) return;
-    const config = document.createElement('script');
-    config.src = 'ads-config.js';
-    config.dataset.siteAdsConfig = 'true';
-    config.onload = () => {
-      if (document.querySelector('script[data-site-ads-bootstrap],script[src="ads-bootstrap.js"]')) return;
-      const bootstrap = document.createElement('script');
-      bootstrap.src = 'ads-bootstrap.js';
-      bootstrap.dataset.siteAdsBootstrap = 'true';
-      document.head.appendChild(bootstrap);
-    };
-    document.head.appendChild(config);
-  };
-  loadSiteAds();
-
-  const loadNinjaAdMax = () => {
-    if (window.__SITE_NINJA_DIRECT_REQUESTED__) return;
-    window.__SITE_NINJA_DIRECT_REQUESTED__ = true;
-    if (document.readyState === 'loading') {
-      document.write('<script src="ninja-admax-direct.js" data-site-ninja-direct></script>');
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = 'ninja-admax-direct.js';
-    script.dataset.siteNinjaDirect = 'true';
-    document.head.appendChild(script);
-  };
-  loadNinjaAdMax();
+  /* Ads are intentionally disabled site-wide. Remove any stale slot that may have
+     survived browser back/forward cache, and do not load AdSense/Ninja scripts. */
+  document.documentElement.dataset.ads = 'disabled';
+  document.documentElement.dataset.adsense = 'disabled';
+  document.documentElement.dataset.ninjaAdmax = 'disabled';
+  document.querySelectorAll('#site-ninja-admax-direct, ins.adsbygoogle, [data-site-ad]').forEach(node => node.remove());
 
   document.querySelectorAll('.mode-switch-bar').forEach(bar => {
     if (!bar.querySelector('[data-mode-href="apps.html"]')) {
