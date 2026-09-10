@@ -1,0 +1,1181 @@
+{
+  "checked": "2026-09-10",
+  "years": [
+    2011,
+    2025
+  ],
+  "subjects": [
+    "憲法",
+    "行政法",
+    "民法",
+    "商法",
+    "民事訴訟法",
+    "刑法",
+    "刑事訴訟法",
+    "民事実務基礎",
+    "刑事実務基礎"
+  ],
+  "papers": 135,
+  "sourceType": "法務省公表の問題・出題趣旨から本文を抽出。図表・別紙は原本PDFで確認。",
+  "questionMirror": "https://github.com/osanamikoji/bar-exam-data",
+  "purposeMirror": "https://github.com/atsushi-kk/mock-exam-generator-test/tree/main/ソース/過去問/_pdf",
+  "documents": [
+    {
+      "year": 2025,
+      "url": "https://www.moj.go.jp/content/001456182.pdf",
+      "sha256": "e407a23d50cbba4ff0c825822fb380e503af3ac1930322b7c3c8e68f3bbb0f35"
+    },
+    {
+      "year": 2024,
+      "url": "https://www.moj.go.jp/content/001432532.pdf",
+      "sha256": "0ea639fd71e390b34340a4279e853d3d3c33348aa26c8986400ab69fb8b874f8"
+    },
+    {
+      "year": 2023,
+      "url": "https://www.moj.go.jp/content/001411617.pdf",
+      "sha256": "82217ef4dde730bcab07f1869d7a071b1f2b03fc9ee3f92239fbc521be8ec963"
+    },
+    {
+      "year": 2022,
+      "url": "https://www.moj.go.jp/content/001386520.pdf",
+      "sha256": "6c72dd675c2e0dec469e8233ab15ea66f7770d41a424e50168eb9bab66523689"
+    },
+    {
+      "year": 2021,
+      "url": "https://www.moj.go.jp/content/001358663.pdf",
+      "sha256": "a60846a01c43d4a2e6f3609c1a314dd4eed0decefe2769ec17e8be33b3d1a5fa"
+    },
+    {
+      "year": 2020,
+      "url": "https://www.moj.go.jp/content/001340861.pdf",
+      "sha256": "1a6bc570a745341d0d4130040bb712f8aadbd25697d8c026491a908a9e1f5cff"
+    },
+    {
+      "year": 2019,
+      "url": "https://www.moj.go.jp/content/001309069.pdf",
+      "sha256": "a6bf944c5ab403a3b34837eaa6fb77508d29032469c82cbe856e9cb6bb61ab47"
+    },
+    {
+      "year": 2018,
+      "url": "https://www.moj.go.jp/content/001281223.pdf",
+      "sha256": "1ce1df3e04e426da09803868059d121aa89e6e6457e2507d5932036d6673be0a"
+    },
+    {
+      "year": 2017,
+      "url": "https://www.moj.go.jp/content/001267367.pdf",
+      "sha256": "9a4f3dfe2ce24211c4fa7aada3bdf7ff3a533d1c540a5c91c3232946f4dcf2cf"
+    },
+    {
+      "year": 2016,
+      "url": "https://www.moj.go.jp/content/001209315.pdf",
+      "sha256": "7c7687d10fae00caead7acece2f1a7e154301660b3c71cb01187e90d08c3ec88"
+    },
+    {
+      "year": 2015,
+      "url": "https://www.moj.go.jp/content/001165558.pdf",
+      "sha256": "9b2632104e6d1da185f8f0f6f99174d82174dbd735bbe4a166837d8a3a0b2f56"
+    },
+    {
+      "year": 2014,
+      "url": "https://www.moj.go.jp/content/001128604.pdf",
+      "sha256": "35719fdb6e674db94b86be3c8dec92c892640338c6c347605ba28981cae757b0"
+    },
+    {
+      "year": 2013,
+      "url": "https://www.moj.go.jp/content/000116083.pdf",
+      "sha256": "90a2c7fad13bf60b6e7924e89ec48bf9fc3b172210cfbda4b63ec904c63df7bc"
+    },
+    {
+      "year": 2012,
+      "url": "https://www.moj.go.jp/content/000104034.pdf",
+      "sha256": "a13d8db1dfd64d99067fbbee65d02b77fc78b82cbb3fd70ebf15712fdcd8703a"
+    },
+    {
+      "year": 2011,
+      "url": "https://www.moj.go.jp/content/000081212.pdf",
+      "sha256": "69742b130703f9f376554e058f90113e0a396724463026977b847e26fbe98743"
+    }
+  ],
+  "audit": [
+    {
+      "id": "yobi-2011-01",
+      "source": "https://www.moj.go.jp/content/000081212.pdf",
+      "questionChars": 2281,
+      "purposeChars": 387,
+      "sourcePage": 1,
+      "purposePage": 2
+    },
+    {
+      "id": "yobi-2011-02",
+      "source": "https://www.moj.go.jp/content/000081212.pdf",
+      "questionChars": 2259,
+      "purposeChars": 205,
+      "sourcePage": 3,
+      "purposePage": 4
+    },
+    {
+      "id": "yobi-2011-06",
+      "source": "https://www.moj.go.jp/content/000081212.pdf",
+      "questionChars": 1248,
+      "purposeChars": 244,
+      "sourcePage": 5,
+      "purposePage": 5
+    },
+    {
+      "id": "yobi-2011-07",
+      "source": "https://www.moj.go.jp/content/000081212.pdf",
+      "questionChars": 545,
+      "purposeChars": 204,
+      "sourcePage": 6,
+      "purposePage": 6
+    },
+    {
+      "id": "yobi-2011-03",
+      "source": "https://www.moj.go.jp/content/000081212.pdf",
+      "questionChars": 605,
+      "purposeChars": 224,
+      "sourcePage": 7,
+      "purposePage": 7
+    },
+    {
+      "id": "yobi-2011-04",
+      "source": "https://www.moj.go.jp/content/000081212.pdf",
+      "questionChars": 1818,
+      "purposeChars": 312,
+      "sourcePage": 8,
+      "purposePage": 9
+    },
+    {
+      "id": "yobi-2011-05",
+      "source": "https://www.moj.go.jp/content/000081212.pdf",
+      "questionChars": 1680,
+      "purposeChars": 348,
+      "sourcePage": 10,
+      "purposePage": 10
+    },
+    {
+      "id": "yobi-2011-08",
+      "source": "https://www.moj.go.jp/content/000081212.pdf",
+      "questionChars": 19206,
+      "purposeChars": 413,
+      "sourcePage": 12,
+      "purposePage": 19
+    },
+    {
+      "id": "yobi-2011-09",
+      "source": "https://www.moj.go.jp/content/000081212.pdf",
+      "questionChars": 4697,
+      "purposeChars": 187,
+      "sourcePage": 20,
+      "purposePage": 25
+    },
+    {
+      "id": "yobi-2012-01",
+      "source": "https://www.moj.go.jp/content/000104034.pdf",
+      "questionChars": 2208,
+      "purposeChars": 323,
+      "sourcePage": 1,
+      "purposePage": 2
+    },
+    {
+      "id": "yobi-2012-02",
+      "source": "https://www.moj.go.jp/content/000104034.pdf",
+      "questionChars": 2077,
+      "purposeChars": 261,
+      "sourcePage": 4,
+      "purposePage": 5
+    },
+    {
+      "id": "yobi-2012-03",
+      "source": "https://www.moj.go.jp/content/000104034.pdf",
+      "questionChars": 2056,
+      "purposeChars": 251,
+      "sourcePage": 7,
+      "purposePage": 8
+    },
+    {
+      "id": "yobi-2012-04",
+      "source": "https://www.moj.go.jp/content/000104034.pdf",
+      "questionChars": 1440,
+      "purposeChars": 322,
+      "sourcePage": 9,
+      "purposePage": 10
+    },
+    {
+      "id": "yobi-2012-05",
+      "source": "https://www.moj.go.jp/content/000104034.pdf",
+      "questionChars": 2026,
+      "purposeChars": 236,
+      "sourcePage": 11,
+      "purposePage": 12
+    },
+    {
+      "id": "yobi-2012-06",
+      "source": "https://www.moj.go.jp/content/000104034.pdf",
+      "questionChars": 1555,
+      "purposeChars": 271,
+      "sourcePage": 13,
+      "purposePage": 13
+    },
+    {
+      "id": "yobi-2012-07",
+      "source": "https://www.moj.go.jp/content/000104034.pdf",
+      "questionChars": 688,
+      "purposeChars": 167,
+      "sourcePage": 15,
+      "purposePage": 15
+    },
+    {
+      "id": "yobi-2012-08",
+      "source": "https://www.moj.go.jp/content/000104034.pdf",
+      "questionChars": 19378,
+      "purposeChars": 373,
+      "sourcePage": 16,
+      "purposePage": 24
+    },
+    {
+      "id": "yobi-2012-09",
+      "source": "https://www.moj.go.jp/content/000104034.pdf",
+      "questionChars": 5969,
+      "purposeChars": 221,
+      "sourcePage": 25,
+      "purposePage": 28
+    },
+    {
+      "id": "yobi-2013-01",
+      "source": "https://www.moj.go.jp/content/000116083.pdf",
+      "questionChars": 826,
+      "purposeChars": 537,
+      "sourcePage": 1,
+      "purposePage": 1
+    },
+    {
+      "id": "yobi-2013-02",
+      "source": "https://www.moj.go.jp/content/000116083.pdf",
+      "questionChars": 2008,
+      "purposeChars": 295,
+      "sourcePage": 3,
+      "purposePage": 4
+    },
+    {
+      "id": "yobi-2013-03",
+      "source": "https://www.moj.go.jp/content/000116083.pdf",
+      "questionChars": 1432,
+      "purposeChars": 407,
+      "sourcePage": 6,
+      "purposePage": 7
+    },
+    {
+      "id": "yobi-2013-04",
+      "source": "https://www.moj.go.jp/content/000116083.pdf",
+      "questionChars": 1675,
+      "purposeChars": 475,
+      "sourcePage": 8,
+      "purposePage": 9
+    },
+    {
+      "id": "yobi-2013-05",
+      "source": "https://www.moj.go.jp/content/000116083.pdf",
+      "questionChars": 1553,
+      "purposeChars": 361,
+      "sourcePage": 10,
+      "purposePage": 11
+    },
+    {
+      "id": "yobi-2013-06",
+      "source": "https://www.moj.go.jp/content/000116083.pdf",
+      "questionChars": 1895,
+      "purposeChars": 295,
+      "sourcePage": 12,
+      "purposePage": 13
+    },
+    {
+      "id": "yobi-2013-07",
+      "source": "https://www.moj.go.jp/content/000116083.pdf",
+      "questionChars": 458,
+      "purposeChars": 283,
+      "sourcePage": 14,
+      "purposePage": 14
+    },
+    {
+      "id": "yobi-2013-08",
+      "source": "https://www.moj.go.jp/content/000116083.pdf",
+      "questionChars": 19497,
+      "purposeChars": 467,
+      "sourcePage": 15,
+      "purposePage": 23
+    },
+    {
+      "id": "yobi-2013-09",
+      "source": "https://www.moj.go.jp/content/000116083.pdf",
+      "questionChars": 5968,
+      "purposeChars": 320,
+      "sourcePage": 24,
+      "purposePage": 27
+    },
+    {
+      "id": "yobi-2014-01",
+      "source": "https://www.moj.go.jp/content/001128604.pdf",
+      "questionChars": 1413,
+      "purposeChars": 620,
+      "sourcePage": 1,
+      "purposePage": 2
+    },
+    {
+      "id": "yobi-2014-02",
+      "source": "https://www.moj.go.jp/content/001128604.pdf",
+      "questionChars": 1959,
+      "purposeChars": 334,
+      "sourcePage": 3,
+      "purposePage": 4
+    },
+    {
+      "id": "yobi-2014-03",
+      "source": "https://www.moj.go.jp/content/001128604.pdf",
+      "questionChars": 1503,
+      "purposeChars": 478,
+      "sourcePage": 5,
+      "purposePage": 6
+    },
+    {
+      "id": "yobi-2014-04",
+      "source": "https://www.moj.go.jp/content/001128604.pdf",
+      "questionChars": 1602,
+      "purposeChars": 439,
+      "sourcePage": 7,
+      "purposePage": 8
+    },
+    {
+      "id": "yobi-2014-05",
+      "source": "https://www.moj.go.jp/content/001128604.pdf",
+      "questionChars": 1170,
+      "purposeChars": 547,
+      "sourcePage": 9,
+      "purposePage": 9
+    },
+    {
+      "id": "yobi-2014-06",
+      "source": "https://www.moj.go.jp/content/001128604.pdf",
+      "questionChars": 2007,
+      "purposeChars": 297,
+      "sourcePage": 11,
+      "purposePage": 12
+    },
+    {
+      "id": "yobi-2014-07",
+      "source": "https://www.moj.go.jp/content/001128604.pdf",
+      "questionChars": 1214,
+      "purposeChars": 325,
+      "sourcePage": 13,
+      "purposePage": 13
+    },
+    {
+      "id": "yobi-2014-08",
+      "source": "https://www.moj.go.jp/content/001128604.pdf",
+      "questionChars": 5255,
+      "purposeChars": 504,
+      "sourcePage": 15,
+      "purposePage": 18
+    },
+    {
+      "id": "yobi-2014-09",
+      "source": "https://www.moj.go.jp/content/001128604.pdf",
+      "questionChars": 8347,
+      "purposeChars": 403,
+      "sourcePage": 19,
+      "purposePage": 24
+    },
+    {
+      "id": "yobi-2015-01",
+      "source": "https://www.moj.go.jp/content/001165558.pdf",
+      "questionChars": 1031,
+      "purposeChars": 779,
+      "sourcePage": 1,
+      "purposePage": 1
+    },
+    {
+      "id": "yobi-2015-02",
+      "source": "https://www.moj.go.jp/content/001165558.pdf",
+      "questionChars": 2751,
+      "purposeChars": 509,
+      "sourcePage": 3,
+      "purposePage": 5
+    },
+    {
+      "id": "yobi-2015-03",
+      "source": "https://www.moj.go.jp/content/001165558.pdf",
+      "questionChars": 1835,
+      "purposeChars": 290,
+      "sourcePage": 6,
+      "purposePage": 7
+    },
+    {
+      "id": "yobi-2015-04",
+      "source": "https://www.moj.go.jp/content/001165558.pdf",
+      "questionChars": 1786,
+      "purposeChars": 514,
+      "sourcePage": 8,
+      "purposePage": 9
+    },
+    {
+      "id": "yobi-2015-05",
+      "source": "https://www.moj.go.jp/content/001165558.pdf",
+      "questionChars": 817,
+      "purposeChars": 545,
+      "sourcePage": 10,
+      "purposePage": 10
+    },
+    {
+      "id": "yobi-2015-06",
+      "source": "https://www.moj.go.jp/content/001165558.pdf",
+      "questionChars": 1704,
+      "purposeChars": 280,
+      "sourcePage": 12,
+      "purposePage": 13
+    },
+    {
+      "id": "yobi-2015-07",
+      "source": "https://www.moj.go.jp/content/001165558.pdf",
+      "questionChars": 1282,
+      "purposeChars": 539,
+      "sourcePage": 14,
+      "purposePage": 15
+    },
+    {
+      "id": "yobi-2015-08",
+      "source": "https://www.moj.go.jp/content/001165558.pdf",
+      "questionChars": 6523,
+      "purposeChars": 460,
+      "sourcePage": 16,
+      "purposePage": 20
+    },
+    {
+      "id": "yobi-2015-09",
+      "source": "https://www.moj.go.jp/content/001165558.pdf",
+      "questionChars": 6834,
+      "purposeChars": 353,
+      "sourcePage": 22,
+      "purposePage": 25
+    },
+    {
+      "id": "yobi-2016-01",
+      "source": "https://www.moj.go.jp/content/001209315.pdf",
+      "questionChars": 1039,
+      "purposeChars": 621,
+      "sourcePage": 1,
+      "purposePage": 1
+    },
+    {
+      "id": "yobi-2016-02",
+      "source": "https://www.moj.go.jp/content/001209315.pdf",
+      "questionChars": 4299,
+      "purposeChars": 1182,
+      "sourcePage": 3,
+      "purposePage": 6
+    },
+    {
+      "id": "yobi-2016-03",
+      "source": "https://www.moj.go.jp/content/001209315.pdf",
+      "questionChars": 1432,
+      "purposeChars": 327,
+      "sourcePage": 8,
+      "purposePage": 9
+    },
+    {
+      "id": "yobi-2016-04",
+      "source": "https://www.moj.go.jp/content/001209315.pdf",
+      "questionChars": 1827,
+      "purposeChars": 495,
+      "sourcePage": 10,
+      "purposePage": 11
+    },
+    {
+      "id": "yobi-2016-05",
+      "source": "https://www.moj.go.jp/content/001209315.pdf",
+      "questionChars": 2218,
+      "purposeChars": 451,
+      "sourcePage": 12,
+      "purposePage": 13
+    },
+    {
+      "id": "yobi-2016-06",
+      "source": "https://www.moj.go.jp/content/001209315.pdf",
+      "questionChars": 1980,
+      "purposeChars": 446,
+      "sourcePage": 14,
+      "purposePage": 15
+    },
+    {
+      "id": "yobi-2016-07",
+      "source": "https://www.moj.go.jp/content/001209315.pdf",
+      "questionChars": 1185,
+      "purposeChars": 336,
+      "sourcePage": 16,
+      "purposePage": 16
+    },
+    {
+      "id": "yobi-2016-08",
+      "source": "https://www.moj.go.jp/content/001209315.pdf",
+      "questionChars": 4228,
+      "purposeChars": 437,
+      "sourcePage": 18,
+      "purposePage": 21
+    },
+    {
+      "id": "yobi-2016-09",
+      "source": "https://www.moj.go.jp/content/001209315.pdf",
+      "questionChars": 6998,
+      "purposeChars": 391,
+      "sourcePage": 22,
+      "purposePage": 26
+    },
+    {
+      "id": "yobi-2017-01",
+      "source": "https://www.moj.go.jp/content/001267367.pdf",
+      "questionChars": 1324,
+      "purposeChars": 807,
+      "sourcePage": 1,
+      "purposePage": 1
+    },
+    {
+      "id": "yobi-2017-02",
+      "source": "https://www.moj.go.jp/content/001267367.pdf",
+      "questionChars": 4313,
+      "purposeChars": 1436,
+      "sourcePage": 3,
+      "purposePage": 6
+    },
+    {
+      "id": "yobi-2017-03",
+      "source": "https://www.moj.go.jp/content/001267367.pdf",
+      "questionChars": 2306,
+      "purposeChars": 271,
+      "sourcePage": 8,
+      "purposePage": 9
+    },
+    {
+      "id": "yobi-2017-04",
+      "source": "https://www.moj.go.jp/content/001267367.pdf",
+      "questionChars": 2080,
+      "purposeChars": 552,
+      "sourcePage": 10,
+      "purposePage": 11
+    },
+    {
+      "id": "yobi-2017-05",
+      "source": "https://www.moj.go.jp/content/001267367.pdf",
+      "questionChars": 1580,
+      "purposeChars": 551,
+      "sourcePage": 12,
+      "purposePage": 13
+    },
+    {
+      "id": "yobi-2017-06",
+      "source": "https://www.moj.go.jp/content/001267367.pdf",
+      "questionChars": 2433,
+      "purposeChars": 862,
+      "sourcePage": 14,
+      "purposePage": 15
+    },
+    {
+      "id": "yobi-2017-07",
+      "source": "https://www.moj.go.jp/content/001267367.pdf",
+      "questionChars": 1321,
+      "purposeChars": 590,
+      "sourcePage": 16,
+      "purposePage": 16
+    },
+    {
+      "id": "yobi-2017-08",
+      "source": "https://www.moj.go.jp/content/001267367.pdf",
+      "questionChars": 4788,
+      "purposeChars": 477,
+      "sourcePage": 18,
+      "purposePage": 21
+    },
+    {
+      "id": "yobi-2017-09",
+      "source": "https://www.moj.go.jp/content/001267367.pdf",
+      "questionChars": 7641,
+      "purposeChars": 342,
+      "sourcePage": 22,
+      "purposePage": 26
+    },
+    {
+      "id": "yobi-2018-01",
+      "source": "https://www.moj.go.jp/content/001281223.pdf",
+      "questionChars": 1796,
+      "purposeChars": 548,
+      "sourcePage": 1,
+      "purposePage": 2
+    },
+    {
+      "id": "yobi-2018-02",
+      "source": "https://www.moj.go.jp/content/001281223.pdf",
+      "questionChars": 1885,
+      "purposeChars": 1318,
+      "sourcePage": 3,
+      "purposePage": 4
+    },
+    {
+      "id": "yobi-2018-03",
+      "source": "https://www.moj.go.jp/content/001281223.pdf",
+      "questionChars": 1950,
+      "purposeChars": 651,
+      "sourcePage": 6,
+      "purposePage": 7
+    },
+    {
+      "id": "yobi-2018-04",
+      "source": "https://www.moj.go.jp/content/001281223.pdf",
+      "questionChars": 2234,
+      "purposeChars": 946,
+      "sourcePage": 8,
+      "purposePage": 9
+    },
+    {
+      "id": "yobi-2018-05",
+      "source": "https://www.moj.go.jp/content/001281223.pdf",
+      "questionChars": 1999,
+      "purposeChars": 386,
+      "sourcePage": 11,
+      "purposePage": 12
+    },
+    {
+      "id": "yobi-2018-06",
+      "source": "https://www.moj.go.jp/content/001281223.pdf",
+      "questionChars": 2295,
+      "purposeChars": 713,
+      "sourcePage": 13,
+      "purposePage": 14
+    },
+    {
+      "id": "yobi-2018-07",
+      "source": "https://www.moj.go.jp/content/001281223.pdf",
+      "questionChars": 1140,
+      "purposeChars": 716,
+      "sourcePage": 15,
+      "purposePage": 15
+    },
+    {
+      "id": "yobi-2018-08",
+      "source": "https://www.moj.go.jp/content/001281223.pdf",
+      "questionChars": 4653,
+      "purposeChars": 545,
+      "sourcePage": 17,
+      "purposePage": 20
+    },
+    {
+      "id": "yobi-2018-09",
+      "source": "https://www.moj.go.jp/content/001281223.pdf",
+      "questionChars": 7543,
+      "purposeChars": 405,
+      "sourcePage": 21,
+      "purposePage": 25
+    },
+    {
+      "id": "yobi-2019-01",
+      "source": "https://www.moj.go.jp/content/001309069.pdf",
+      "questionChars": 1574,
+      "purposeChars": 660,
+      "sourcePage": 1,
+      "purposePage": 2
+    },
+    {
+      "id": "yobi-2019-02",
+      "source": "https://www.moj.go.jp/content/001309069.pdf",
+      "questionChars": 3065,
+      "purposeChars": 844,
+      "sourcePage": 3,
+      "purposePage": 6
+    },
+    {
+      "id": "yobi-2019-03",
+      "source": "https://www.moj.go.jp/content/001309069.pdf",
+      "questionChars": 1589,
+      "purposeChars": 485,
+      "sourcePage": 7,
+      "purposePage": 8
+    },
+    {
+      "id": "yobi-2019-04",
+      "source": "https://www.moj.go.jp/content/001309069.pdf",
+      "questionChars": 2138,
+      "purposeChars": 1254,
+      "sourcePage": 9,
+      "purposePage": 10
+    },
+    {
+      "id": "yobi-2019-05",
+      "source": "https://www.moj.go.jp/content/001309069.pdf",
+      "questionChars": 1281,
+      "purposeChars": 524,
+      "sourcePage": 12,
+      "purposePage": 12
+    },
+    {
+      "id": "yobi-2019-06",
+      "source": "https://www.moj.go.jp/content/001309069.pdf",
+      "questionChars": 1859,
+      "purposeChars": 901,
+      "sourcePage": 14,
+      "purposePage": 14
+    },
+    {
+      "id": "yobi-2019-07",
+      "source": "https://www.moj.go.jp/content/001309069.pdf",
+      "questionChars": 1272,
+      "purposeChars": 1246,
+      "sourcePage": 16,
+      "purposePage": 16
+    },
+    {
+      "id": "yobi-2019-08",
+      "source": "https://www.moj.go.jp/content/001309069.pdf",
+      "questionChars": 5056,
+      "purposeChars": 522,
+      "sourcePage": 18,
+      "purposePage": 21
+    },
+    {
+      "id": "yobi-2019-09",
+      "source": "https://www.moj.go.jp/content/001309069.pdf",
+      "questionChars": 6311,
+      "purposeChars": 293,
+      "sourcePage": 22,
+      "purposePage": 25
+    },
+    {
+      "id": "yobi-2020-01",
+      "source": "https://www.moj.go.jp/content/001340861.pdf",
+      "questionChars": 1139,
+      "purposeChars": 656,
+      "sourcePage": 1,
+      "purposePage": 1
+    },
+    {
+      "id": "yobi-2020-02",
+      "source": "https://www.moj.go.jp/content/001340861.pdf",
+      "questionChars": 3095,
+      "purposeChars": 575,
+      "sourcePage": 3,
+      "purposePage": 6
+    },
+    {
+      "id": "yobi-2020-03",
+      "source": "https://www.moj.go.jp/content/001340861.pdf",
+      "questionChars": 1884,
+      "purposeChars": 483,
+      "sourcePage": 7,
+      "purposePage": 8
+    },
+    {
+      "id": "yobi-2020-04",
+      "source": "https://www.moj.go.jp/content/001340861.pdf",
+      "questionChars": 1943,
+      "purposeChars": 697,
+      "sourcePage": 9,
+      "purposePage": 10
+    },
+    {
+      "id": "yobi-2020-05",
+      "source": "https://www.moj.go.jp/content/001340861.pdf",
+      "questionChars": 1480,
+      "purposeChars": 523,
+      "sourcePage": 11,
+      "purposePage": 12
+    },
+    {
+      "id": "yobi-2020-06",
+      "source": "https://www.moj.go.jp/content/001340861.pdf",
+      "questionChars": 2258,
+      "purposeChars": 957,
+      "sourcePage": 13,
+      "purposePage": 14
+    },
+    {
+      "id": "yobi-2020-07",
+      "source": "https://www.moj.go.jp/content/001340861.pdf",
+      "questionChars": 875,
+      "purposeChars": 1292,
+      "sourcePage": 15,
+      "purposePage": 15
+    },
+    {
+      "id": "yobi-2020-08",
+      "source": "https://www.moj.go.jp/content/001340861.pdf",
+      "questionChars": 6277,
+      "purposeChars": 527,
+      "sourcePage": 17,
+      "purposePage": 20
+    },
+    {
+      "id": "yobi-2020-09",
+      "source": "https://www.moj.go.jp/content/001340861.pdf",
+      "questionChars": 5919,
+      "purposeChars": 268,
+      "sourcePage": 22,
+      "purposePage": 25
+    },
+    {
+      "id": "yobi-2021-01",
+      "source": "https://www.moj.go.jp/content/001358663.pdf",
+      "questionChars": 1333,
+      "purposeChars": 1472,
+      "sourcePage": 1,
+      "purposePage": 1
+    },
+    {
+      "id": "yobi-2021-02",
+      "source": "https://www.moj.go.jp/content/001358663.pdf",
+      "questionChars": 3679,
+      "purposeChars": 600,
+      "sourcePage": 3,
+      "purposePage": 6
+    },
+    {
+      "id": "yobi-2021-03",
+      "source": "https://www.moj.go.jp/content/001358663.pdf",
+      "questionChars": 2744,
+      "purposeChars": 418,
+      "sourcePage": 7,
+      "purposePage": 8
+    },
+    {
+      "id": "yobi-2021-04",
+      "source": "https://www.moj.go.jp/content/001358663.pdf",
+      "questionChars": 2354,
+      "purposeChars": 840,
+      "sourcePage": 10,
+      "purposePage": 11
+    },
+    {
+      "id": "yobi-2021-05",
+      "source": "https://www.moj.go.jp/content/001358663.pdf",
+      "questionChars": 1425,
+      "purposeChars": 821,
+      "sourcePage": 12,
+      "purposePage": 12
+    },
+    {
+      "id": "yobi-2021-06",
+      "source": "https://www.moj.go.jp/content/001358663.pdf",
+      "questionChars": 2267,
+      "purposeChars": 889,
+      "sourcePage": 14,
+      "purposePage": 15
+    },
+    {
+      "id": "yobi-2021-07",
+      "source": "https://www.moj.go.jp/content/001358663.pdf",
+      "questionChars": 1666,
+      "purposeChars": 795,
+      "sourcePage": 16,
+      "purposePage": 16
+    },
+    {
+      "id": "yobi-2021-08",
+      "source": "https://www.moj.go.jp/content/001358663.pdf",
+      "questionChars": 6043,
+      "purposeChars": 551,
+      "sourcePage": 18,
+      "purposePage": 21
+    },
+    {
+      "id": "yobi-2021-09",
+      "source": "https://www.moj.go.jp/content/001358663.pdf",
+      "questionChars": 6707,
+      "purposeChars": 532,
+      "sourcePage": 22,
+      "purposePage": 27
+    },
+    {
+      "id": "yobi-2022-01",
+      "source": "https://www.moj.go.jp/content/001386520.pdf",
+      "questionChars": 1326,
+      "purposeChars": 1357,
+      "sourcePage": 1,
+      "purposePage": 1
+    },
+    {
+      "id": "yobi-2022-02",
+      "source": "https://www.moj.go.jp/content/001386520.pdf",
+      "questionChars": 3173,
+      "purposeChars": 527,
+      "sourcePage": 3,
+      "purposePage": 6
+    },
+    {
+      "id": "yobi-2022-03",
+      "source": "https://www.moj.go.jp/content/001386520.pdf",
+      "questionChars": 2209,
+      "purposeChars": 330,
+      "sourcePage": 7,
+      "purposePage": 8
+    },
+    {
+      "id": "yobi-2022-04",
+      "source": "https://www.moj.go.jp/content/001386520.pdf",
+      "questionChars": 1803,
+      "purposeChars": 844,
+      "sourcePage": 9,
+      "purposePage": 10
+    },
+    {
+      "id": "yobi-2022-05",
+      "source": "https://www.moj.go.jp/content/001386520.pdf",
+      "questionChars": 1865,
+      "purposeChars": 963,
+      "sourcePage": 11,
+      "purposePage": 12
+    },
+    {
+      "id": "yobi-2022-06",
+      "source": "https://www.moj.go.jp/content/001386520.pdf",
+      "questionChars": 2877,
+      "purposeChars": 946,
+      "sourcePage": 13,
+      "purposePage": 14
+    },
+    {
+      "id": "yobi-2022-07",
+      "source": "https://www.moj.go.jp/content/001386520.pdf",
+      "questionChars": 1152,
+      "purposeChars": 707,
+      "sourcePage": 15,
+      "purposePage": 15
+    },
+    {
+      "id": "yobi-2022-08",
+      "source": "https://www.moj.go.jp/content/001386520.pdf",
+      "questionChars": 5318,
+      "purposeChars": 601,
+      "sourcePage": 17,
+      "purposePage": 20
+    },
+    {
+      "id": "yobi-2022-09",
+      "source": "https://www.moj.go.jp/content/001386520.pdf",
+      "questionChars": 7667,
+      "purposeChars": 621,
+      "sourcePage": 21,
+      "purposePage": 25
+    },
+    {
+      "id": "yobi-2023-01",
+      "source": "https://www.moj.go.jp/content/001411617.pdf",
+      "questionChars": 1725,
+      "purposeChars": 1779,
+      "sourcePage": 1,
+      "purposePage": 2
+    },
+    {
+      "id": "yobi-2023-02",
+      "source": "https://www.moj.go.jp/content/001411617.pdf",
+      "questionChars": 4022,
+      "purposeChars": 1136,
+      "sourcePage": 4,
+      "purposePage": 7
+    },
+    {
+      "id": "yobi-2023-03",
+      "source": "https://www.moj.go.jp/content/001411617.pdf",
+      "questionChars": 3141,
+      "purposeChars": 627,
+      "sourcePage": 9,
+      "purposePage": 11
+    },
+    {
+      "id": "yobi-2023-04",
+      "source": "https://www.moj.go.jp/content/001411617.pdf",
+      "questionChars": 2462,
+      "purposeChars": 921,
+      "sourcePage": 12,
+      "purposePage": 13
+    },
+    {
+      "id": "yobi-2023-05",
+      "source": "https://www.moj.go.jp/content/001411617.pdf",
+      "questionChars": 1811,
+      "purposeChars": 885,
+      "sourcePage": 15,
+      "purposePage": 16
+    },
+    {
+      "id": "yobi-2023-06",
+      "source": "https://www.moj.go.jp/content/001411617.pdf",
+      "questionChars": 1754,
+      "purposeChars": 1293,
+      "sourcePage": 17,
+      "purposePage": 17
+    },
+    {
+      "id": "yobi-2023-07",
+      "source": "https://www.moj.go.jp/content/001411617.pdf",
+      "questionChars": 1447,
+      "purposeChars": 415,
+      "sourcePage": 19,
+      "purposePage": 19
+    },
+    {
+      "id": "yobi-2023-08",
+      "source": "https://www.moj.go.jp/content/001411617.pdf",
+      "questionChars": 6810,
+      "purposeChars": 753,
+      "sourcePage": 21,
+      "purposePage": 25
+    },
+    {
+      "id": "yobi-2023-09",
+      "source": "https://www.moj.go.jp/content/001411617.pdf",
+      "questionChars": 6477,
+      "purposeChars": 297,
+      "sourcePage": 26,
+      "purposePage": 30
+    },
+    {
+      "id": "yobi-2024-01",
+      "source": "https://www.moj.go.jp/content/001432532.pdf",
+      "questionChars": 2115,
+      "purposeChars": 714,
+      "sourcePage": 1,
+      "purposePage": 2
+    },
+    {
+      "id": "yobi-2024-02",
+      "source": "https://www.moj.go.jp/content/001432532.pdf",
+      "questionChars": 3129,
+      "purposeChars": 818,
+      "sourcePage": 4,
+      "purposePage": 6
+    },
+    {
+      "id": "yobi-2024-03",
+      "source": "https://www.moj.go.jp/content/001432532.pdf",
+      "questionChars": 3560,
+      "purposeChars": 710,
+      "sourcePage": 8,
+      "purposePage": 10
+    },
+    {
+      "id": "yobi-2024-04",
+      "source": "https://www.moj.go.jp/content/001432532.pdf",
+      "questionChars": 2261,
+      "purposeChars": 908,
+      "sourcePage": 12,
+      "purposePage": 13
+    },
+    {
+      "id": "yobi-2024-05",
+      "source": "https://www.moj.go.jp/content/001432532.pdf",
+      "questionChars": 1616,
+      "purposeChars": 989,
+      "sourcePage": 15,
+      "purposePage": 16
+    },
+    {
+      "id": "yobi-2024-06",
+      "source": "https://www.moj.go.jp/content/001432532.pdf",
+      "questionChars": 2655,
+      "purposeChars": 591,
+      "sourcePage": 17,
+      "purposePage": 18
+    },
+    {
+      "id": "yobi-2024-07",
+      "source": "https://www.moj.go.jp/content/001432532.pdf",
+      "questionChars": 1174,
+      "purposeChars": 199,
+      "sourcePage": 20,
+      "purposePage": 20
+    },
+    {
+      "id": "yobi-2024-08",
+      "source": "https://www.moj.go.jp/content/001432532.pdf",
+      "questionChars": 5618,
+      "purposeChars": 718,
+      "sourcePage": 22,
+      "purposePage": 26
+    },
+    {
+      "id": "yobi-2024-09",
+      "source": "https://www.moj.go.jp/content/001432532.pdf",
+      "questionChars": 4559,
+      "purposeChars": 280,
+      "sourcePage": 27,
+      "purposePage": 30
+    },
+    {
+      "id": "yobi-2025-01",
+      "source": "https://www.moj.go.jp/content/001456182.pdf",
+      "questionChars": 1678,
+      "purposeChars": 2176,
+      "sourcePage": 1,
+      "purposePage": 2
+    },
+    {
+      "id": "yobi-2025-02",
+      "source": "https://www.moj.go.jp/content/001456182.pdf",
+      "questionChars": 3905,
+      "purposeChars": 1778,
+      "sourcePage": 4,
+      "purposePage": 7
+    },
+    {
+      "id": "yobi-2025-03",
+      "source": "https://www.moj.go.jp/content/001456182.pdf",
+      "questionChars": 2851,
+      "purposeChars": 925,
+      "sourcePage": 10,
+      "purposePage": 12
+    },
+    {
+      "id": "yobi-2025-04",
+      "source": "https://www.moj.go.jp/content/001456182.pdf",
+      "questionChars": 2635,
+      "purposeChars": 631,
+      "sourcePage": 13,
+      "purposePage": 14
+    },
+    {
+      "id": "yobi-2025-05",
+      "source": "https://www.moj.go.jp/content/001456182.pdf",
+      "questionChars": 1485,
+      "purposeChars": 1028,
+      "sourcePage": 16,
+      "purposePage": 16
+    },
+    {
+      "id": "yobi-2025-06",
+      "source": "https://www.moj.go.jp/content/001456182.pdf",
+      "questionChars": 2506,
+      "purposeChars": 690,
+      "sourcePage": 18,
+      "purposePage": 19
+    },
+    {
+      "id": "yobi-2025-07",
+      "source": "https://www.moj.go.jp/content/001456182.pdf",
+      "questionChars": 1160,
+      "purposeChars": 444,
+      "sourcePage": 20,
+      "purposePage": 20
+    },
+    {
+      "id": "yobi-2025-08",
+      "source": "https://www.moj.go.jp/content/001456182.pdf",
+      "questionChars": 7969,
+      "purposeChars": 727,
+      "sourcePage": 22,
+      "purposePage": 27
+    },
+    {
+      "id": "yobi-2025-09",
+      "source": "https://www.moj.go.jp/content/001456182.pdf",
+      "questionChars": 4490,
+      "purposeChars": 512,
+      "sourcePage": 29,
+      "purposePage": 32
+    }
+  ]
+}
