@@ -18,7 +18,11 @@ const PARTS = [
   ...[1,2,3,4,5,6,7,8,9,10].map(n => `game23-v3-part${n}.js?v=horror-world-2`),
   'game23-v3-part11-lite.js?v=horror-world-2',
   'game23-v3-part12-world.js?v=horror-world-2',
-  'game23-v3-part13-perf.js?v=horror-world-2'
+  'game23-v3-part13-perf.js?v=horror-world-2',
+  'game23-cinematic-core.js?v=cinematic-20260911',
+  'game23-cinematic-world.js?v=cinematic-20260911',
+  'game23-cinematic-actors.js?v=cinematic-20260911',
+  'game23-cinematic-render.js?v=cinematic-20260911'
 ];
 const THREE_IMPORT = "import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';";
 const THREE_SOURCES = [

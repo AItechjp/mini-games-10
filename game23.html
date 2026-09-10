@@ -12,12 +12,13 @@
   <link rel="stylesheet" href="game23.css">
   <link rel="stylesheet" href="game23-v3.css?v=ultimate-1">
   <link rel="stylesheet" href="game23-controls.css?v=controls-4">
+  <link rel="stylesheet" href="game23-cinematic.css?v=cinematic-20260911">
 </head>
 <body class="outbreak-page">
 <header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">20秒ミニゲームズ</a><nav><a href="#mission">MISSION</a><a href="online.html">ゲーム一覧</a></nav></div></header>
 <main class="wrap outbreak-wrap">
   <div class="mode-switch-bar" aria-label="サイトモード"><button class="mode-switch-btn" data-mode-href="solo.html">1人用</button><button class="mode-switch-btn" data-mode-href="online.html">オンライン対戦</button><button class="mode-switch-btn" data-mode-href="chat.html">チャット</button></div>
-  <section class="hero outbreak-hero"><p class="eyebrow">GAME 23 / HORROR OPEN-WORLD FPS</p><h1>OUTBREAK:<br>BLACK SITE</h1><p>霧の洋館、雪山、濁流の峡谷、暴嵐の港湾、封鎖された終末都市、そして悪魔城。蛇行する探索路には廃車・倒木・墓石・検疫バリケードが密集。特性の違う感染体10種を撃ち抜き、各区域の超大型ボスを倒して脱出せよ。</p></section>
+  <section class="hero outbreak-hero"><p class="eyebrow">GAME 23 / HORROR OPEN-WORLD FPS</p><h1>OUTBREAK:<br>BLACK SITE</h1><p>洋館から悪魔城まで、6つの感染区域を突破。10種の感染体と巨大ボスを倒し、生還せよ。</p></section>
   <section id="mission" class="outbreak-panel">
     <div class="outbreak-toolbar"><div class="outbreak-switch" aria-label="プレイ人数"><button id="mode-solo" class="outbreak-choice active" type="button">SOLO</button><button id="mode-coop" class="outbreak-choice" type="button">CO-OP</button></div><div class="difficulty-switch" aria-label="難易度"><button class="difficulty-btn" data-difficulty="easy" type="button">EASY</button><button class="difficulty-btn active" data-difficulty="normal" type="button">NORMAL</button><button class="difficulty-btn danger" data-difficulty="nightmare" type="button">NIGHTMARE</button></div><button id="outbreak-fullscreen" class="outbreak-choice" type="button">横向き全画面</button></div>
     <div id="coop-lobby" class="coop-lobby hidden"><div class="coop-card"><span>HOST</span><h3>部屋を作る</h3><p>6桁コードを相手に送信。ホストが難易度と開始を管理します。</p><button id="coop-create" type="button">部屋を作る</button><div id="coop-created" class="hidden"><strong id="coop-room-code">------</strong><button id="coop-copy" type="button">コピー</button></div></div><div class="coop-card"><span>GUEST</span><h3>部屋に参加</h3><p>相手の6桁コードを入力して同じ感染区域へ。</p><input id="coop-join-code" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="ABC123"><button id="coop-join" type="button">参加する</button></div><div class="coop-status"><strong id="coop-status">未接続</strong><span id="coop-detail">Supabase Realtime / 2 players</span></div></div>
@@ -35,10 +36,10 @@
       </div>
       <div class="item-legend"><div><b class="item-dot life"></b><strong>救急スプレー</strong><span>ライフ+1</span></div><div><b class="item-dot infinite"></b><strong>無限弾薬</strong><span>30秒 弾数無限</span></div><div><b class="item-dot invincible"></b><strong>完全防護薬</strong><span>30秒 完全無敵</span></div><div><b class="item-dot launcher"></b><strong>ロケットランチャー</strong><span>30秒 / 10発 / 広範囲×3</span></div></div>
       <div class="mission-strip"><div><span>01</span><strong>BLOOD MOON MANOR</strong><small>LORD NECROHOUND</small></div><div><span>02</span><strong>FROSTBITE RIDGE</strong><small>GORAM THE HOWLER</small></div><div><span>03</span><strong>DROWNED RAVINE</strong><small>ABYSSAL CROCODRAKE</small></div><div><span>04</span><strong>TEMPEST HARBOR</strong><small>LEVIATHAN REAVER</small></div><div><span>05</span><strong>NEON DEADLINE</strong><small>TITAN EXECUTIONER</small></div><div><span>06</span><strong>DEVIL CASTLE</strong><small>ARCHDEMON VALZAROTH</small></div></div>
-      <p class="outbreak-note">FPS視点を維持したまま、蛇行ルート、遮蔽物、感染体10種、固有3Dモデル、霧・照明・環境演出を追加。スマホでは自動的に軽量描画を使用します。</p>
+      <p class="outbreak-note">左で移動、右で視点、FIREで射撃。PCはWASD・マウス・Space、Rでリロード、Fでライト。画質は自動・高画質・標準・軽量から選べます。</p>
     </div>
   </section>
 </main>
 <footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
-<script src="mode-switch.js?v=noads-1"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script><script src="supabase-config.js"></script><script src="game-backend.js"></script><script type="module" src="game23-v3-loader.js?v=horror-world-2"></script>
+<script src="mode-switch.js?v=noads-1"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script><script src="supabase-config.js"></script><script src="game-backend.js"></script><script type="module" src="game23-v3-loader.js?v=cinematic-20260911"></script>
 </body></html>
