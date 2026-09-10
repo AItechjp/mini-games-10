@@ -1,0 +1,8 @@
+const enc=new TextEncoder(),dec=new TextDecoder();
+export const hex=b=>Array.from(new Uint8Array(b),n=>n.toString(16).padStart(2,'0')).join('');
+const b64=b=>{let s='';for(const n of new Uint8Array(b))s+=String.fromCharCode(n);return btoa(s);};
+const un64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+export async function identity(saved){if(saved){const privateKey=await crypto.subtle.importKey('jwk',saved.privateKey,{name:'ECDH',namedCurve:'P-256'},false,['deriveKey']);return {...saved,key:privateKey};}const pair=await crypto.subtle.generateKey({name:'ECDH',namedCurve:'P-256'},true,['deriveKey']);return {token:hex(crypto.getRandomValues(new Uint8Array(32))),publicKey:await crypto.subtle.exportKey('jwk',pair.publicKey),privateKey:await crypto.subtle.exportKey('jwk',pair.privateKey),key:pair.privateKey};}
+export async function sharedKey(privateKey,publicKey){const remote=await crypto.subtle.importKey('jwk',publicKey,{name:'ECDH',namedCurve:'P-256'},false,[]);return crypto.subtle.deriveKey({name:'ECDH',public:remote},privateKey,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
+export async function seal(key,body,context){const iv=crypto.getRandomValues(new Uint8Array(12));return {iv:b64(iv),data:b64(await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:enc.encode(context)},key,enc.encode(JSON.stringify(body))))};}
+export async function open(key,packet,context){if(typeof packet.data!=='string'||packet.data.length>700000)throw new Error('Packet too large');return JSON.parse(dec.decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:un64(packet.iv),additionalData:enc.encode(context)},key,un64(packet.data))));}

@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {makeHandler} from '../arcade100/backend/handler.mjs';
+import {identity,sharedKey,seal,open} from '../arcade100/crypto.mjs';
+const rooms=new Map(),rates=new Map();
+const db={rate:async(k,limit)=>{rates.set(k,(rates.get(k)||0)+1);return rates.get(k)<=limit;},get:async code=>structuredClone(rooms.get(code)),insert:async r=>{if(rooms.has(r.code))return null;rooms.set(r.code,structuredClone(r));return structuredClone(r);},update:async(code,revision,patch)=>{const r=rooms.get(code);if(!r||r.revision!==revision)return null;Object.assign(r,structuredClone(patch));return structuredClone(r);},cleanup:async()=>{}};
+const handler=makeHandler(db),host=await identity(),guest=await identity(),stranger=await identity();
+async function api(who,op,extra={}){const r=await handler(new Request('https://test/functions/v1/arcade-rooms',{method:'POST',headers:{'Content-Type':'application/json',Origin:'https://aitechd.com'},body:JSON.stringify({protocol:1,token:who.token,publicKey:who.publicKey,name:op,op,...extra})}));return {status:r.status,...await r.json()};}
+const created=await api(host,'create',{game:'g031'});assert.equal(created.status,'waiting');assert.match(created.room,/^[A-HJ-NP-Z2-9]{6}$/);assert(!JSON.stringify(created).includes('hash'));
+const joined=await api(guest,'join',{room:created.room});assert.equal(joined.side,1);assert.equal(joined.members.length,2);
+assert.equal((await api(stranger,'get',{room:created.room})).status,403);
+assert.equal((await api(stranger,'join',{room:created.room})).status,409);
+assert.equal((await api(guest,'start',{room:created.room})).status,403);
+assert.equal((await api(host,'start',{room:created.room})).status,409);
+await api(guest,'ready',{room:created.room,ready:true});assert.equal((await api(host,'start',{room:created.room})).status,'playing');
+assert.equal((await api(host,'start',{room:created.room})).status,409);
+const saved={id:'g031',phase:'playing',data:{hidden:'secret'}};
+assert.equal((await api(guest,'checkpoint',{room:created.room,state:saved})).status,403);
+await api(host,'checkpoint',{room:created.room,state:saved});assert.deepEqual((await api(host,'resume',{room:created.room})).checkpoint,saved);assert(!('checkpoint' in await api(guest,'resume',{room:created.room})));
+const a=await sharedKey(host.key,guest.publicKey),b=await sharedKey(guest.key,host.publicKey),bad=await sharedKey(stranger.key,host.publicKey),context=created.topic+':host:guest';
+const packet=await seal(a,{type:'state',hand:[1,2,3]},context);assert.deepEqual(await open(b,packet,context),{type:'state',hand:[1,2,3]});await assert.rejects(()=>open(b,packet,context+'wrong'));await assert.rejects(()=>open(bad,packet,context));
+const full=await api(host,'create',{game:'g020'});const many=await Promise.all([1,2,3,4].map(async()=>api(await identity(),'join',{room:full.room})));assert.equal(many.filter(r=>r.members).length,3);assert.equal(rooms.get(full.room).members.length,4);
+const restored=await identity({...host,key:undefined});assert.deepEqual(restored.publicKey,host.publicKey);
+await api(host,'leave',{room:created.room});assert.equal((await api(guest,'get',{room:created.room})).status,404);
+console.log('PASS: room authorization, capacity races, readiness, private checkpoints, reconnect keys, authenticated encryption, teardown');
