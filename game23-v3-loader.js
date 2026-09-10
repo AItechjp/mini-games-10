@@ -15,8 +15,9 @@ if (game23Crypto && typeof game23Crypto.randomUUID !== 'function') {
 }
 
 const PARTS = [
-  ...[1,2,3,4,5,6,7,8,9,10].map(n => `game23-v3-part${n}.js?v=openworld-lite-1`),
-  'game23-v3-part11-lite.js?v=openworld-lite-1'
+  ...[1,2,3,4,5,6,7,8,9,10].map(n => `game23-v3-part${n}.js?v=horror-world-1`),
+  'game23-v3-part11-lite.js?v=horror-world-1',
+  'game23-v3-part12-world.js?v=horror-world-1'
 ];
 const THREE_IMPORT = "import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';";
 const THREE_SOURCES = [
@@ -41,7 +42,7 @@ async function reachable(url, ms = 10000) {
 try {
   if (start) start.disabled = true;
   if (overlayTitle) overlayTitle.textContent = 'ULTIMATE BLACK SITE LOADING';
-  if (overlayText) overlayText.textContent = '広域探索エリア・感染者群・巨大ボスを構築中…';
+  if (overlayText) overlayText.textContent = '蛇行する探索路・障害物・感染体10種・巨大ボスを構築中…';
 
   const partTexts = await Promise.all(PARTS.map(async path => {
     const res = await fetch(path, { cache: 'no-store' });
