@@ -1,0 +1,90 @@
+name: Diagnose live HTTPS warning
+on:
+  push:
+    branches: ['diagnose/https-warning-20260911']
+    paths: ['.github/workflows/https-warning-diagnostic.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Prepare isolated browser runtime
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/https-probe"
+          cd "$RUNNER_TEMP/https-probe"
+          npm install --no-save --no-package-lock playwright@1.55.0 >install.log 2>&1 || { cat install.log; exit 1; }
+          npx playwright install --with-deps chromium >browser-install.log 2>&1 || { tail -60 browser-install.log; exit 1; }
+      - name: Inspect public DNS, TLS, redirects and browser security state
+        shell: bash
+        run: |
+          cd "$RUNNER_TEMP/https-probe"
+          cat >diagnose.mjs <<'JS'
+          import { chromium } from 'playwright';
+          import dns from 'node:dns/promises';
+          import tls from 'node:tls';
+          const log = (kind, data) => console.log(kind + ' ' + JSON.stringify(data));
+          for (const host of ['aitechd.com','www.aitechd.com']) {
+            for (const type of ['A','AAAA','CNAME','CAA','NS']) {
+              try { log('DNS',{host,type,answers:await dns.resolve(host,type)}); }
+              catch(e) { log('DNS',{host,type,error:e.code}); }
+            }
+            await new Promise(resolve => {
+              const sock = tls.connect({host,port:443,servername:host,rejectUnauthorized:true}, () => {
+                const cert=sock.getPeerCertificate();
+                log('TLS',{host,authorized:sock.authorized,protocol:sock.getProtocol(),subject:cert.subject,issuer:cert.issuer,validFrom:cert.valid_from,validTo:cert.valid_to,SAN:cert.subjectaltname});
+                sock.end(); resolve();
+              });
+              sock.setTimeout(15000,()=>sock.destroy(new Error('TLS timeout')));
+              sock.on('error',e=>{log('TLS',{host,error:e.message});resolve();});
+            });
+          }
+          const browser=await chromium.launch({headless:true,channel:'chromium'});
+          log('BROWSER',{version:browser.version()});
+          const context=await browser.newContext({ignoreHTTPSErrors:false,viewport:{width:412,height:915},isMobile:true,hasTouch:true,userAgent:'Mozilla/5.0 (Linux; Android 16; Pixel 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Mobile Safari/537.36'});
+          for (const url of ['http://aitechd.com/','http://aitechd.com/yobi-quiz.html','https://aitechd.com/yobi-quiz.html','https://www.aitechd.com/yobi-quiz.html']) {
+            try {
+              const r=await context.request.get(url,{maxRedirects:0,timeout:20000});
+              const h=r.headers();
+              log('HTTP_RESPONSE',{url,status:r.status(),location:h.location,server:h.server,hsts:h['strict-transport-security'],csp:h['content-security-policy'],lastModified:h['last-modified']});
+            } catch(e) {log('HTTP_RESPONSE',{url,error:e.message});}
+          }
+          for (const target of ['https://aitechd.com/','https://aitechd.com/yobi-quiz.html','http://aitechd.com/yobi-quiz.html','https://www.aitechd.com/yobi-quiz.html']) {
+            const page=await context.newPage();
+            const cdp=await context.newCDPSession(page);
+            let security=null;
+            const failures=[], insecure=[], consoleIssues=[];
+            cdp.on('Security.visibleSecurityStateChanged',({visibleSecurityState:v})=>{
+              const c=v.certificateSecurityState;
+              security={state:v.securityState,issues:v.securityStateIssueIds,safetyTip:v.safetyTipInfo,certificate:c?{subject:c.subjectName,issuer:c.issuer,protocol:c.protocol,error:c.certificateNetworkError,modern:c.modernSSL}:null};
+            });
+            await cdp.send('Security.enable');
+            await cdp.send('Log.enable');
+            cdp.on('Log.entryAdded',({entry})=>{if(/mixed|insecure|certificate/i.test(entry.text))consoleIssues.push(entry.text);});
+            page.on('request',r=>{if(/^http:|^ws:/.test(r.url())&&!r.isNavigationRequest())insecure.push(r.url());});
+            page.on('requestfailed',r=>failures.push({url:r.url(),reason:r.failure()?.errorText}));
+            page.on('websocket',s=>{if(!s.url().startsWith('wss:'))insecure.push(s.url());});
+            try {
+              const response=await page.goto(target,{waitUntil:'load',timeout:30000});
+              await page.waitForTimeout(5000);
+              const dom=await page.evaluate(()=>({url:location.href,secureContext:isSecureContext,title:document.title,csp:[...document.querySelectorAll('meta[http-equiv]')].filter(e=>e.httpEquiv.toLowerCase()==='content-security-policy').map(e=>e.content),httpsGuard:!!document.getElementById('https-only-bootstrap'),insecureResources:performance.getEntriesByType('resource').map(e=>e.name).filter(x=>/^(http|ws):/.test(x)),forms:[...document.forms].map(f=>f.action),serviceWorker:navigator.serviceWorker?.controller?.scriptURL||null}));
+              log('PAGE',{target,status:response?.status(),security,dom,insecure,failures,consoleIssues});
+              if(target==='https://aitechd.com/yobi-quiz.html') {
+                const start=page.getByRole('button',{name:/今日の20問/}).first();
+                if(await start.count()) {
+                  await start.click(); await page.waitForTimeout(3000);
+                  log('AFTER_START',{target,url:page.url(),security,insecure,failures,consoleIssues});
+                }
+              }
+            } catch(e) {log('PAGE',{target,error:e.message,security,failures,consoleIssues});}
+            await page.close();
+          }
+          await context.close();
+          await browser.close();
+          JS
+          node diagnose.mjs
