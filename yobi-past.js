@@ -1,249 +1,140 @@
 (() => {
   'use strict';
-
-  const YEARS = {
-    2026: {
-      label: '令和8年',
-      preliminary: {
-        problem: 'https://www.moj.go.jp/jinji/shihoushiken/jinji07_00317.html',
-        answer: 'https://www.moj.go.jp/jinji/shihoushiken/jinji07_00319.html'
-      },
-      bar: {
-        problem: 'https://www.moj.go.jp/jinji/shihoushiken/jinji08_00295.html',
-        answer: 'https://www.moj.go.jp/jinji/shihoushiken/jinji08_00296.html'
-      }
-    },
-    2025: {
-      label: '令和7年',
-      preliminary: {
-        problem: 'https://www.moj.go.jp/jinji/shihoushiken/jinji07_00287.html',
-        answer: 'https://www.moj.go.jp/jinji/shihoushiken/jinji07_00289.html'
-      },
-      bar: {
-        problem: 'https://www.moj.go.jp/jinji/shihoushiken/jinji08_00267.html',
-        answer: 'https://www.moj.go.jp/jinji/shihoushiken/jinji08_00270.html'
-      }
-    },
-    2024: {
-      label: '令和6年',
-      preliminary: {
-        problem: 'https://www.moj.go.jp/jinji/shihoushiken/jinji07_00228.html',
-        answer: 'https://www.moj.go.jp/jinji/shihoushiken/jinji07_00258.html'
-      },
-      bar: {
-        problem: 'https://www.moj.go.jp/jinji/shihoushiken/jinji08_00241.html',
-        answer: 'https://www.moj.go.jp/jinji/shihoushiken/jinji08_00245.html'
-      }
-    }
-  };
-
-  const BLOCKS = {
-    preliminary: [
-      { key: 'civil', title: '民法・商法・民事訴訟法', minutes: 90, detail: '同一問題冊子で3科目を解く本番ブロック', badge: '予備試験' },
-      { key: 'public', title: '憲法・行政法', minutes: 60, detail: '同一問題冊子で2科目を解く本番ブロック', badge: '予備試験' },
-      { key: 'criminal', title: '刑法・刑事訴訟法', minutes: 60, detail: '同一問題冊子で2科目を解く本番ブロック', badge: '予備試験' },
-      { key: 'general', title: '一般教養科目', minutes: 90, detail: '公式問題冊子から本番どおり選択して解答', badge: '予備試験' }
-    ],
-    bar: [
-      { key: 'constitutional', title: '憲法', minutes: 50, detail: '司法試験の公式短答式・憲法', badge: '司法試験' },
-      { key: 'civil', title: '民法', minutes: 75, detail: '司法試験の公式短答式・民法', badge: '司法試験' },
-      { key: 'criminal', title: '刑法', minutes: 50, detail: '司法試験の公式短答式・刑法', badge: '司法試験' }
-    ]
-  };
-
-  const STORAGE_KEY = 'yobiPastOnlyProgressV1';
-  const state = {
-    exam: 'preliminary',
-    year: 2026,
-    current: null,
-    timerRemaining: 0,
-    timerId: null,
-    running: false,
-    progress: loadProgress()
-  };
-
-  const $ = id => document.getElementById(id);
-
-  function loadProgress() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
-    catch { return {}; }
+  const E=globalThis.YobiEngine, KEY='yobiTantoNotebookV3';
+  const $=id=>document.getElementById(id), esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fmt=n=>Number(n||0).toLocaleString('ja-JP'), era=y=>y>=2019?`令和${y-2018}年`:`平成${y-1988}年`;
+  const examName=e=>e==='preliminary'?'予備試験':'司法試験';
+  const pct=(a,b)=>b?Math.round(a/b*100):0;
+  let BANK=[],META={},GUIDE={},BYID=new Map(),data=E.emptyStore(),view='home',timer=null,toastTimer=null,lastResult=null;
+  let filters={exam:'preliminary',subject:'all',year:'recent',topic:'all',status:'all',search:'',count:'20',order:'random'};
+  let examYear=2025,examType='preliminary',listLimit=20;
+  function toast(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,3500);}
+  function storageError(message){$('storageNotice').textContent=message;$('storageNotice').hidden=false;}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(data));}catch{storageError('このブラウザには進捗を保存できません。学習を続けられますが、ページを閉じる前に「成績・復習」からバックアップしてください。');}}
+  function load(){try{const raw=localStorage.getItem(KEY);if(raw){data=JSON.parse(raw);if(data.schema!==3||!data.records||!Array.isArray(data.history))throw Error('invalid');}else{const old=localStorage.getItem('yobiPastOnlyProgressV1');if(old)data.legacy=JSON.parse(old);}data.settings={goal:20,large:false,...data.settings};data.daily=data.daily||{};}catch{data=E.emptyStore();storageError('保存データを読み取れませんでした。新しい学習を始めるとこの端末の保存内容が更新されます。バックアップがある場合は先に復元してください。');}document.body.classList.toggle('large-type',data.settings.large);}
+  const external=(url,label)=>`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`;
+  function setView(name,focus=true){view=name;document.querySelectorAll('.view').forEach(el=>el.hidden=el.id!==name+'View');document.querySelectorAll('[data-view]').forEach(b=>{const active=b.dataset.view===name;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});if(name==='home')renderHome();if(name==='practice')renderPractice();if(name==='exam')renderExam();if(name==='progress')renderProgress();if(name==='sources')renderSources();if(focus){$('main').focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}}
+  function kpi(value,label){return `<div class="kpi"><strong>${value}</strong><span>${label}</span></div>`;}
+  function renderHome(){
+    const legal=BANK.filter(q=>!q.pdfOnly),s=E.stats(legal,data),daily=data.daily[E.dayKey()]||{attempts:0,correct:0};
+    $('homeView').innerHTML=`<div class="section-title"><div><p class="eyebrow">PAST PAPERS / STUDY NOTEBOOK</p><h1>今日の積み重ねを、得点に。</h1></div><span class="subtle">法律 ${fmt(META.legalCount)}問 · 一般教養 ${fmt(META.generalCount)}問</span></div>
+    ${data.session?`<div class="notice row spread"><span>中断中：${esc(data.session.title)}（${data.session.index+1} / ${data.session.ids.length}問目）</span><button class="btn" data-action="resume">続きから解く</button></div>`:''}
+    <div class="welcome"><article class="panel focus-card"><p class="eyebrow">TODAY'S PRACTICE</p><h2>${s.due?`復習のタイミングです。${s.due}問`:'法律7科目を、少しずつ。'}</h2><p class="subtle">期限が来た復習を優先し、未演習の過去問を各科目から出題します。間違えた問題と迷った正解は、もう一度。</p><div class="actions"><button class="btn" data-action="daily">今日の${data.settings.goal}問を始める →</button><button class="btn secondary" data-action="wrong">誤答を復習 ${s.wrong}</button></div></article>
+    <article class="panel daily"><p class="eyebrow">DAILY GOAL</p><div class="row spread"><div><span class="goal-number">${daily.attempts}</span><span class="subtle"> / ${data.settings.goal}問</span></div><label class="field">1日の目標<select id="dailyGoal">${[10,20,30,50].map(n=>`<option value="${n}" ${data.settings.goal===n?'selected':''}>${n}問</option>`).join('')}</select></label></div><div class="progress" role="img" aria-label="今日の目標 ${Math.min(pct(daily.attempts,data.settings.goal),100)}パーセント"><i style="width:${Math.min(pct(daily.attempts,data.settings.goal),100)}%"></i></div><p class="subtle" style="margin-top:1rem">${daily.attempts>=data.settings.goal?'今日の目標を達成しました。復習メモも見返しておきましょう。':'通勤や休憩に少しずつ。演習は1問ごとに保存します。'}</p></article></div>
+    <div class="kpis">${kpi(`${fmt(s.seen)}<small class="small"> / ${fmt(s.total)}</small>`,'法律の演習済み設問')}${kpi(s.firstRate===null?'—':s.firstRate+'%','法律・初回の正答率')}${kpi(s.mastered,'日を空けて3回以上理解して正解')}${kpi(s.due,'復習期限が来た法律問題')}</div>
+    <div class="section-title"><h2>科目から始める</h2><button class="link-button" data-view="practice">すべての演習条件</button></div><div class="subject-grid">${E.SUBJECTS.map(subject=>{const b=BANK.filter(q=>q.subject===subject),z=E.stats(b,data);return `<button class="subject-card" data-subject="${subject}"><h3>${subject}<span class="count">${fmt(b.length)}問</span></h3><div class="progress"><i style="width:${pct(z.seen,z.total)}%"></i></div><span class="small muted">${subject==='一般教養'?'公式冊子で演習':`演習済み ${z.seen} / ${z.total} · 初回 ${z.firstRate===null?'—':z.firstRate+'%'}`}</span></button>`;}).join('')}</div>
+    <div class="section-title"><h2>合格を目指す使い方</h2><span class="small muted">目標値は学習の目安です</span></div><div class="steps"><div class="step"><span>01 / 一巡</span><h3>まずは直近年度を全科目</h3><p>問題の正答と、なぜ他の肢が違うのかを確認。根拠を復習メモに残します。</p></div><div class="step"><span>02 / 定着</span><h3>誤答・迷った正解を優先</h3><p>解き直しは翌日、3日後、7日後へ。日を空けて3回確信を持って解けたら定着扱いです。</p></div><div class="step"><span>03 / 時間内の演習</span><h3>年度別テストで8割を目標に</h3><p>未演習の年度を残し、時間内の得点と一般教養も確認。学習済みの正答率だけでは合否を判断しません。</p></div></div>`;
+    $('dailyGoal').onchange=e=>{data.settings.goal=Number(e.target.value);save();renderHome();};
   }
-  function saveProgress() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress));
+  const opt=(value,label,current)=>`<option value="${esc(value)}" ${String(value)===String(current)?'selected':''}>${esc(label)}</option>`;
+  function renderPractice(){listLimit=20;const topics=[...new Set(BANK.filter(q=>filters.subject==='all'||q.subject===filters.subject).flatMap(q=>q.topics))].sort();
+    $('practiceView').innerHTML=`<p class="eyebrow">QUESTION BANK</p><h1>過去問演習</h1><p class="subtle">年度・科目・論点を選んで、実際の短答を解く。</p><div class="panel"><div class="filters">
+    <label class="field">試験<select data-filter="exam">${opt('all','両方',filters.exam)}${opt('preliminary','予備試験',filters.exam)}${opt('bar','司法試験',filters.exam)}</select></label>
+    <label class="field">科目<select data-filter="subject">${opt('all','全科目',filters.subject)}${E.SUBJECTS.map(s=>opt(s,s,filters.subject)).join('')}</select></label>
+    <label class="field">年度<select data-filter="year">${opt('recent','2020年以降',filters.year)}${opt('all','全収録年度',filters.year)}${[...new Set(BANK.map(q=>q.year))].sort((a,b)=>b-a).map(y=>opt(y,`${y}年（${era(y)}）`,filters.year)).join('')}</select></label>
+    <label class="field">復習状態<select data-filter="status">${Object.entries({all:'すべて',new:'未演習',due:'復習期限',wrong:'前回誤答',unsure:'迷った・勘',bookmark:'ブックマーク',mastered:'定着済み'}).map(([k,l])=>opt(k,l,filters.status)).join('')}</select></label>
+    <label class="field wide">論点<select data-filter="topic">${opt('all','すべての論点',filters.topic)}${topics.map(t=>opt(t,t,filters.topic)).join('')}</select></label>
+    <label class="field wide">本文・メモを検索<input id="questionSearch" value="${esc(filters.search)}" type="search" placeholder="例：原告適格、抵当権、伝聞"></label>
+    <label class="field">1セットの問題数<select data-filter="count">${[5,10,20,30,50,100].map(n=>opt(n,n+'問',filters.count)).join('')}</select></label><label class="field">順序<select data-filter="order">${opt('random','ランダム',filters.order)}${opt('year','年度・問題番号順',filters.order)}</select></label></div>
+    <div class="filter-footer"><span id="filterCount" class="subtle"></span><button id="startFiltered" class="btn" data-action="filtered">この条件で始める →</button></div></div><div id="questionList"></div>`;
+    document.querySelectorAll('[data-filter]').forEach(el=>el.onchange=()=>{filters[el.dataset.filter]=el.value;if(el.dataset.filter==='subject'){filters.topic='all';renderPractice();}else{listLimit=20;renderQuestionList();}});
+    let delay;$('questionSearch').oninput=e=>{filters.search=e.target.value;clearTimeout(delay);delay=setTimeout(()=>{listLimit=20;renderQuestionList();},160);};renderQuestionList();
   }
-  function keyFor(exam, year, block) { return `${exam}:${year}:${block}`; }
-  function getProgress(exam, year, block) {
-    return state.progress[keyFor(exam, year, block)] || { completed: false, memo: '', updatedAt: null };
+  function selectedBank(){return E.filterBank(BANK,data,filters);}
+  function renderQuestionList(){const qs=selectedBank();$('filterCount').textContent=`${fmt(qs.length)}問が該当`; $('startFiltered').disabled=!qs.length;
+    $('questionList').innerHTML=`${filters.subject==='一般教養'?'<p class="notice" style="margin-top:1rem">一般教養は、図表や引用文を含む公式PDFを参照して回答します。冊子の全設問のうち、正答データを収録した設問が対象です。</p>':''}<div class="section-title"><h2>収録設問</h2><span class="small muted">${Math.min(listLimit,qs.length)} / ${fmt(qs.length)}問を表示</span></div>${qs.length?`<div class="results-list">${qs.slice(0,listLimit).map(q=>{const r=data.records[q.id],status=!r?.attempts?'未演習':r.lastCorrect?r.confidence==='sure'?'正解':'迷った正解':'誤答';return `<div class="question-row"><div class="row-meta">${examName(q.exam)} ${q.year}<br>${q.subject} 第${q.n}問</div><div><p class="excerpt">${esc(q.pdfOnly?'公式冊子の第'+q.n+'問':q.text.replace(/^〔[^〕]+〕\s*（[^）]+）/,'').replace(/\n/g,' ').slice(0,85))}${q.pdfOnly?'':'…'}</p><span class="small muted">${esc(q.topics.slice(0,2).join(' / '))} · ${status}${r?.bookmark?' · ★':''}</span></div><button class="quiet" data-open="${q.id}">解く</button></div>`;}).join('')}</div>${qs.length>listLimit?'<div class="actions"><button class="btn secondary" data-action="more">さらに20問</button></div>':''}`:'<div class="panel empty">該当する問題がありません。年度・科目・復習状態の条件を変更してください。</div>'}`;
   }
-
-  function renderYears() {
-    const host = $('yearGroup');
-    host.innerHTML = '';
-    Object.keys(YEARS).sort((a,b)=>Number(b)-Number(a)).forEach(year => {
-      const btn = document.createElement('button');
-      btn.className = `year-btn${Number(year)===state.year?' active':''}`;
-      btn.type = 'button';
-      btn.textContent = `${YEARS[year].label} / ${year}`;
-      btn.addEventListener('click', () => { state.year = Number(year); render(); });
-      host.appendChild(btn);
-    });
+  function renderExam(){const years=[...new Set(BANK.filter(q=>q.exam===examType).map(q=>q.year))].sort((a,b)=>b-a);if(!years.includes(examYear))examYear=years[0];const blocks=examType==='preliminary'?Object.entries(E.BLOCKS):[['憲法',{label:'憲法',minutes:50}],['民法',{label:'民法',minutes:75}],['刑法',{label:'刑法',minutes:50}]];
+    $('examView').innerHTML=`<p class="eyebrow">YEARLY PRACTICE</p><h1>年度別テスト</h1><p class="subtle">時間を計り、提出後にまとめて採点。出題当時の問題を、冊子と同じ順に解きます。</p><div class="panel row spread"><div class="pills"><button class="pill ${examType==='preliminary'?'active':''}" data-examtype="preliminary">予備試験</button><button class="pill ${examType==='bar'?'active':''}" data-examtype="bar">司法試験</button></div><label class="field">年度<select id="examYear">${years.map(y=>opt(y,`${y}年（${era(y)}）`,examYear)).join('')}</select></label></div><p class="notice warning" style="margin-top:1rem">部分点を確認できていない問題は、完全一致による練習点で集計します。公式の合否判定には使用しません。中断したテストは「一時停止あり」と記録します。</p>${(META.gradingNotes||[]).filter(n=>n.exam===examType&&n.year===examYear).map(n=>`<p class="notice">${esc(n.note)} ${external(n.source,'公式の扱い')}</p>`).join('')}<div class="exam-cards">${blocks.map(([key,b])=>{const q=BANK.filter(q=>q.exam===examType&&q.year===examYear&&q.block===key),p=META.coverage.find(p=>p.exam===examType&&p.year===examYear&&p.block===key),seen=q.filter(q=>data.records[q.id]?.attempts).length;return `<article class="panel exam-card"><div class="row spread"><h2>${b.label}</h2><span class="badge">${b.minutes}分</span></div><p class="subtle">${q.length}問 / 冊子${p?.count||'—'}問${key==='general'?' · 最大20問を選択して解答':''}<br>未演習 ${q.length-seen}問${p?.missing?.length?` · 正答未収録 ${p.missing.length}問`:''}</p><div class="actions"><button class="btn" data-test="${esc(key)}" ${q.length?'':'disabled'}>テストを開始</button>${p?external(p.source,'公式冊子'):''}</div></article>`;}).join('')}</div><div class="section-title"><h2>時間内に解くための確認</h2></div><div class="panel"><p>法律科目は各ブロックの制限時間で演習します。一般教養は公式冊子から解答する問題を選び、20問まで回答してください。残り時間が0になると自動提出します。</p><p class="subtle">2026年の試験問題は、この版の自動採点には未収録です。最新年度は ${external('https://www.moj.go.jp/jinji/shihoushiken/jinji07_00026.html','法務省の予備試験案内')} で確認してください。</p></div>`;
+    $('examYear').onchange=e=>{examYear=Number(e.target.value);renderExam();};
   }
-
-  function renderExamToggle() {
-    document.querySelectorAll('[data-exam]').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.exam === state.exam);
-      btn.onclick = () => {
-        state.exam = btn.dataset.exam;
-        render();
-      };
-    });
+  function startSession(qs,mode='practice',title='過去問演習',minutes=0,block=''){
+    if(!qs.length){toast('この条件の問題はありません。');return;}
+    if(data.session&&!confirm('中断中の演習を終了して、新しい演習を始めますか？回答済みの学習記録は残ります。'))return;
+    const now=Date.now();data.session={id:String(now),mode,title,ids:qs.map(q=>q.id),index:0,answers:{},confidence:{},graded:{},flags:{},started:now,duration:minutes*60000,deadline:minutes?now+minutes*60000:0,remainingMs:minutes*60000,paused:false,pauses:0,block};save();setView('session');renderSession();startClock();
   }
-
-  function renderPapers() {
-    const host = $('paperGrid');
-    const yearData = YEARS[state.year];
-    const blocks = BLOCKS[state.exam];
-    host.innerHTML = '';
-    blocks.forEach(block => {
-      const progress = getProgress(state.exam, state.year, block.key);
-      const card = document.createElement('article');
-      card.className = 'paper-card past-panel';
-      card.innerHTML = `
-        <div class="eyebrow">${block.badge} / ${yearData.label}</div>
-        <h3>${block.title}</h3>
-        <p>${block.detail}</p>
-        <div class="paper-meta"><span class="chip">本番 ${block.minutes}分</span><span class="chip">法務省公式問題のみ</span><span class="chip">${progress.completed ? '完了済み' : '未完了'}</span></div>
-        <div class="paper-actions"><button class="btn primary" type="button" data-start="${block.key}">${progress.completed ? 'もう一度解く' : '演習を開始'}</button><a class="btn ghost" href="${yearData[state.exam].problem}" target="_blank" rel="noopener noreferrer">公式問題ページ</a></div>`;
-      host.appendChild(card);
-    });
-    host.querySelectorAll('[data-start]').forEach(btn => btn.addEventListener('click', () => startRunner(btn.dataset.start)));
+  function current(){const s=data.session;return s?BYID.get(s.ids[s.index]):null;}
+  function picked(q){return data.session.answers[q.id]||(q.kind==='vector'?q.answer.map(()=>''):[]);}
+  function complete(q){return E.grade(q,picked(q)).complete;}
+  function clockText(){const sec=E.remaining(data.session);return sec===null?'時間制限なし':`${Math.floor(sec/60).toString().padStart(2,'0')}:${(sec%60).toString().padStart(2,'0')}`;}
+  function startClock(){clearInterval(timer);timer=setInterval(()=>{if(!data.session)return;const sec=E.remaining(data.session);if($('examClock')){$('examClock').textContent=clockText();$('examClock').classList.toggle('expiring',sec!==null&&sec<300);}if(sec===0&&!data.session.paused)finishSession(true);},1000);}
+  function renderSession(){const s=data.session,q=current();if(!s||!q){data.session=null;save();setView('home');return;}const r=data.records[q.id]||{},isExam=s.mode==='exam',done=!!s.graded[q.id];const completed=s.ids.filter(id=>E.grade(BYID.get(id),s.answers[id]||[]).complete).length;
+    $('sessionView').innerHTML=`<div class="session-top"><div><p class="eyebrow">${isExam?'YEARLY TEST':'PRACTICE'}</p><h2>${esc(s.title)}</h2><span class="subtle">${s.index+1} / ${s.ids.length}問 · 回答 ${completed}${s.block==='general'?' / 20問':''}</span></div><div style="text-align:right"><div id="examClock" class="timer">${clockText()}</div><button class="link-button" data-action="saveExit">中断して保存</button></div></div><div class="progress" style="margin-bottom:1rem"><i style="width:${pct(completed,s.ids.length)}%"></i></div>
+    ${s.paused?'<div class="notice row spread"><span>タイマーを一時停止しています。</span><button class="btn" data-action="continueTimer">再開する</button></div>':''}
+    <div class="session-layout"><article class="panel question-panel"><div class="row spread"><span class="badge">${q.subject}</span><button class="quiet" data-action="bookmark" aria-pressed="${r.bookmark?'true':'false'}">${r.bookmark?'★ 保存済み':'☆ 保存'}</button></div><p class="q-source" style="margin-top:.8rem">${q.year}年（${era(q.year)}）${examName(q.exam)} · 第${q.n}問 · ${q.points}点</p><h1 class="question-title">${esc(q.topics.slice(0,2).join(' / '))}</h1>
+    ${q.year<2020&&!q.pdfOnly?'<div class="notice warning">旧年度の問題です。民法改正などにより現行法と異なる場合があります。正答は出題当時の基準です。</div>':''}
+    ${s.paused?'<div class="empty">再開すると問題を表示します。</div>':`<div class="question-text">${esc(q.text)}</div>
+    ${q.needsPdf?`<div class="notice" style="margin-top:1rem">${q.pdfOnly?'図表・長文・共通の文章は公式冊子で確認してください。':'図表などは公式冊子でも確認してください。'} ${external(q.source+'#page='+q.page,'該当ページを開く')}</div>`:''}
+    <details class="source-details" ${q.pdfOnly?'open':''}><summary>公式の問題冊子を表示</summary><p class="small muted">PDF ${q.page}ページ付近。表示されない場合は ${external(q.source+'#page='+q.page,'別タブで開く')}。</p><iframe class="pdf-frame" data-pdf="${esc(q.source+'#page='+q.page)}" ${q.pdfOnly?'src="'+esc(q.source+'#page='+q.page)+'"':''} loading="lazy" title="${q.year}年 ${q.subject} 公式問題冊子"></iframe></details>
+    <div class="answer-area" id="answerArea">${renderChoices(q,done)}</div>
+    ${done?feedback(q):isExam?`<div class="certainty" aria-label="回答の確信度">${[['sure','確信あり'],['unsure','迷っている'],['guess','勘で選択']].map(([v,l])=>`<button class="pill ${s.confidence[q.id]===v?'active':''}" data-confidence="${v}">${l}</button>`).join('')}</div>`:'<div class="actions" id="submitActions">'+[['sure','確信して回答'],['unsure','迷って回答'],['guess','勘で回答']].map(([v,l])=>`<button class="btn ${v==='sure'?'':'secondary'}" data-grade="${v}" ${complete(q)?'':'disabled'}>${l}</button>`).join('')+'</div>'}
+    ${done?`<div class="note-editor"><label for="mistakeReason">つまずいた理由</label><select id="mistakeReason" class="quiet">${Object.entries({'':'選択してください',knowledge:'知識が曖昧',reading:'問題文の読み違い',confusion:'似た制度と混同',time:'時間不足',guess:'根拠なく選んだ'}).map(([v,l])=>opt(v,l,r.reason||'')).join('')}</select><label for="answerMemo">復習メモ・根拠</label><textarea id="answerMemo" rows="3" maxlength="12000" placeholder="結論 → 根拠となる条文・判例 → 誤っている肢の訂正">${esc(r.note||'')}</textarea></div>`:''}
+    <div class="question-actions"><button class="quiet" data-action="previous" ${s.index===0?'disabled':''}>← 前の問題</button><button class="quiet" data-action="flag" aria-pressed="${s.flags[q.id]?'true':'false'}">${s.flags[q.id]?'見直し中 ✓':'あとで見直す'}</button><button class="btn" data-action="next">${s.index===s.ids.length-1?'回答一覧へ':'次の問題 →'}</button></div>`}</article>
+    <aside class="panel session-aside"><h3>回答一覧</h3><p class="small muted">緑：回答済み / 下線：見直し</p><div class="question-map">${s.ids.map((id,i)=>`<button class="map-button ${i===s.index?'current':''} ${E.grade(BYID.get(id),s.answers[id]||[]).complete?'answered':''} ${s.flags[id]?'flagged':''}" data-jump="${i}" aria-label="${i+1}問目${s.flags[id]?' 見直し':''}">${s.block==='general'?BYID.get(id).n:i+1}</button>`).join('')}</div><div class="actions"><button class="btn secondary" data-action="finish">${isExam?'提出して採点':'演習を終了'}</button></div><p class="small muted" style="margin-top:1rem">${isExam?'正答は提出後に表示します。':'回答後に正答・関連する学習ポイントを確認できます。'}</p></aside></div>`;
+    document.querySelectorAll('details.source-details').forEach(d=>d.ontoggle=()=>{if(d.open){const frame=d.querySelector('iframe');if(frame&&!frame.src)frame.src=frame.dataset.pdf;}});
+    if($('answerMemo'))$('answerMemo').oninput=e=>{const record=data.records[q.id]||{};record.note=e.target.value;data.records[q.id]=record;save();};
+    if($('mistakeReason'))$('mistakeReason').onchange=e=>{data.records[q.id].reason=e.target.value;save();};
   }
-
-  function updateStats() {
-    const keys = [];
-    Object.keys(YEARS).forEach(year => {
-      Object.entries(BLOCKS).forEach(([exam, blocks]) => blocks.forEach(block => keys.push(keyFor(exam, year, block.key))));
-    });
-    const completed = keys.filter(k => state.progress[k]?.completed).length;
-    $('completedSets').textContent = completed;
-    $('totalSets').textContent = keys.length;
-    const updates = keys.map(k => state.progress[k]?.updatedAt).filter(Boolean).sort().reverse();
-    $('lastStudy').textContent = updates.length ? new Date(updates[0]).toLocaleDateString('ja-JP') : '未開始';
+  function renderChoices(q,done){const a=picked(q);if(q.kind==='vector')return q.answer.map((_,i)=>`<fieldset class="answer-slot"><legend>${'アイウエオカキクケコ'[i]} の解答</legend><div class="option-grid">${Array.from({length:q.maxChoice},(_,j)=>`<button class="choice" data-slot="${i}" data-choice="${j+1}" aria-pressed="${a[i]===String(j+1)}" ${done?'disabled':''}>${j+1}</button>`).join('')}</div></fieldset>`).join('')+'<p class="small muted">番号の意味は問題文の指示に従ってください。</p>';
+    return `<fieldset class="answer-slot"><legend>${q.kind==='set'?`${q.answer.length}個選択してください（順不同）`:'正しい解答番号を1つ選択'}</legend><div class="option-grid">${Array.from({length:q.maxChoice},(_,j)=>`<button class="choice" data-slot="0" data-choice="${j+1}" aria-pressed="${a.includes(String(j+1))}" ${done?'disabled':''}>${j+1}</button>`).join('')}</div></fieldset>`;
   }
-
-  function render() {
-    renderYears();
-    renderExamToggle();
-    renderPapers();
-    updateStats();
-    $('currentScope').textContent = `${YEARS[state.year].label} ${state.exam === 'preliminary' ? '予備試験' : '司法試験'}`;
+  function answerText(q,a){if(q.kind==='vector')return a.map((x,i)=>`${'アイウエオカキクケコ'[i]}：${x}`).join('　');return a.join('・');}
+  function feedback(q){const result=E.grade(q,data.session.answers[q.id]||[]),r=data.records[q.id]||{},guides=q.topics.map(t=>GUIDE[q.subject+'|'+t]).filter(Boolean).slice(0,2);
+    return `<div class="feedback ${result.correct?'':'wrong'}" role="status"><h3>${result.correct?'正解':'もう一度、根拠を確認'}</h3><p><strong>正答：${esc(answerText(q,result.expected))}</strong><br><span class="subtle">あなたの回答：${esc(answerText(q,result.actual))||'未回答'}${q.kind==='vector'?` · ${result.matched} / ${q.answer.length}肢一致`:''}</span></p><p class="small muted">${q.answerSource?'公式正答PDFと照合済み。':'正答：ShigyoBench収録値（出題当時）。'}${r.confidence!=='sure'&&result.correct?'迷った正解も復習対象に残します。':''}</p>
+    ${guides.length?`<h3>関連する学習ポイント</h3>${guides.map(g=>`<p><strong>${esc(g.title)}</strong><br>${esc(g.text)}</p><div class="resource-links">${(g.links||[]).map(l=>external(l.url,esc(l.label))).join('')}</div>`).join('')}<p class="small muted" style="margin-top:.8rem">論点別の確認事項です。この設問の全肢解説ではありません。条文の適用時点にも注意してください。</p>`:'<p class="subtle">正答の根拠と、誤った肢のどこを直せば正しくなるかをメモしてください。</p>'}
+    <div class="resource-links">${external(q.source+'#page='+q.page,'公式問題')}${q.answerSource?external(q.answerSource,'公式正答'):external(META.dataset,'正答データの出典')}${external('https://laws.e-gov.go.jp/','現行の条文')}${external('https://www.courts.go.jp/app/hanrei_jp/search1','判例検索')}</div></div>`;
   }
-
-  function startRunner(blockKey) {
-    stopTimer();
-    const block = BLOCKS[state.exam].find(x => x.key === blockKey);
-    const yearData = YEARS[state.year];
-    const p = getProgress(state.exam, state.year, blockKey);
-    state.current = { exam: state.exam, year: state.year, blockKey, block, yearData };
-    state.timerRemaining = block.minutes * 60;
-    $('runnerLabel').textContent = `${yearData.label} / ${block.badge}`;
-    $('runnerTitle').textContent = block.title;
-    $('runnerDetail').textContent = `${block.minutes}分。法務省公式問題ページから該当する短答式PDFを開いて解いてください。`;
-    $('officialProblem').href = yearData[state.exam].problem;
-    $('officialAnswer').href = yearData[state.exam].answer;
-    $('answerMemo').value = p.memo || '';
-    $('markComplete').textContent = p.completed ? '完了済み（更新する）' : 'このセットを完了にする';
-    $('runner').classList.add('active');
-    $('runner').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    updateTimerText();
+  function choose(value,slot){const s=data.session,q=current();if(!q||s.paused||s.graded[q.id])return;let a=picked(q).slice();if(q.kind==='vector')a[slot]=value;else if(q.kind==='set'){if(a.includes(value))a=a.filter(x=>x!==value);else{if(a.length>=q.answer.length){toast(`${q.answer.length}個まで選択できます。選択済みの番号をタップすると解除できます。`);return;}a.push(value);}}else a=a.includes(value)?[]:[value];
+    if(s.block==='general'&&!s.answers[q.id]?.length&&a.length&&s.ids.filter(id=>s.answers[id]?.length).length>=20){toast('一般教養は20問までです。変更する場合は、選択済みの問題の解答を解除してください。');return;}
+    s.answers[q.id]=a;save();$('answerArea').innerHTML=renderChoices(q,false);document.querySelectorAll('[data-grade]').forEach(b=>b.disabled=!complete(q));document.querySelectorAll('[data-jump]').forEach(b=>{const id=s.ids[Number(b.dataset.jump)];b.classList.toggle('answered',E.grade(BYID.get(id),s.answers[id]||[]).complete);});
   }
-
-  function updateTimerText() {
-    const min = Math.floor(state.timerRemaining / 60);
-    const sec = state.timerRemaining % 60;
-    $('timerText').textContent = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+  function submit(confidence){const s=data.session,q=current();if(!q||s.mode==='exam'||s.graded[q.id]||!complete(q))return;s.confidence[q.id]=confidence;E.recordAttempt(data,q,picked(q),confidence);s.graded[q.id]=true;save();renderSession();document.querySelector('.feedback')?.scrollIntoView({block:'nearest',behavior:'smooth'});}
+  function finishSession(automatic=false){const s=data.session;if(!s)return;const attempted=s.ids.filter(id=>E.grade(BYID.get(id),s.answers[id]||[]).complete);const target=s.block==='general'?20:s.ids.length;
+    if(!automatic&&!confirm(`${s.mode==='exam'?'提出して採点':'演習を終了'}しますか？ 回答済み ${attempted.length} / ${target}問${s.mode==='exam'&&attempted.length<target?'。未回答は0点です':''}`))return;
+    const scoringIds=s.block==='general'?attempted.slice(0,20):s.mode==='exam'?s.ids:s.ids.filter(id=>s.graded[id]);let correct=0,points=0,max=0;const wrong=[];
+    for(const id of scoringIds){const q=BYID.get(id),a=s.answers[id]||[],g=E.grade(q,a);if(!s.graded[id]){if(a.some(Boolean))E.recordAttempt(data,q,a,s.confidence[id]||'unsure');s.graded[id]=true;}correct+=g.correct?1:0;points+=g.points;max+=g.max;if(!g.correct)wrong.push(id);}
+    if(s.block==='general'&&s.mode==='exam')max=60;
+    const result={id:s.id,title:s.title,at:Date.now(),mode:s.mode,total:s.block==='general'&&s.mode==='exam'?20:scoringIds.length,correct,points,max,wrong,pauses:s.pauses||0,automatic,ids:scoringIds,answers:s.answers,confidence:s.confidence};
+    data.history.push({...result,ids:undefined,answers:undefined,confidence:undefined});data.history=data.history.slice(-100);data.session=null;lastResult=result;clearInterval(timer);save();setView('result');renderResult(result);
   }
-  function startTimer() {
-    if (!state.current || state.running) return;
-    state.running = true;
-    $('timerStart').textContent = '計測中';
-    state.timerId = setInterval(() => {
-      if (state.timerRemaining > 0) {
-        state.timerRemaining -= 1;
-        updateTimerText();
-      } else {
-        stopTimer();
-        $('timerText').textContent = '終了';
-      }
-    }, 1000);
+  function renderResult(r){$('resultView').innerHTML=`<p class="eyebrow">SESSION RESULT</p><h1>${esc(r.title)}</h1><div class="welcome"><div class="panel focus-card"><p class="subtle">${r.mode==='exam'?'練習点（未確認の部分点は加算しません）':'完全一致の正答数'}</p><div class="result-score">${r.mode==='exam'?r.points:r.correct}<small> / ${r.mode==='exam'?r.max:r.total}${r.mode==='exam'?'点':'問'}</small></div><p class="subtle" style="margin-top:.8rem">完全一致 ${r.correct} / ${r.total}問 · ${r.pauses?'一時停止あり':'一時停止なし'}${r.automatic?' · 時間切れで提出':''}</p></div><div class="panel"><h2>次の復習へ</h2><p class="subtle">${r.wrong.length?`間違えた${r.wrong.length}問を解き直せます。日を空けた復習も続けてください。`:'迷った正解があれば、確信を持って解けるまで復習しましょう。'}</p><div class="actions"><button class="btn" data-action="retryResult" ${r.wrong.length?'':'disabled'}>今回の誤答を解き直す</button><button class="btn secondary" data-view="home">今日の学習へ</button></div></div></div><div class="section-title"><h2>設問ごとの結果</h2></div><div class="panel table-wrap"><table><thead><tr><th>設問</th><th>あなたの回答</th><th>正答</th><th>結果</th><th>復習</th></tr></thead><tbody>${r.ids.map(id=>{const q=BYID.get(id),g=E.grade(q,r.answers[id]||[]);return `<tr><td>${q.subject} 第${q.n}問</td><td>${esc(answerText(q,g.actual))||'未回答'}</td><td>${esc(answerText(q,g.expected))}</td><td>${g.correct?'正解':'誤答'}</td><td><button class="quiet" data-open="${id}">開く</button></td></tr>`;}).join('')}</tbody></table></div>`;}
+  function renderProgress(){const s=E.stats(BANK,data),days=Array.from({length:7},(_,i)=>E.dayKey(Date.now()-(6-i)*E.DAY)),max=Math.max(data.settings.goal,...days.map(d=>data.daily[d]?.attempts||0));
+    $('progressView').innerHTML=`<p class="eyebrow">PROGRESS & REVIEW</p><h1>成績・復習</h1><p class="subtle">初回の正答率と、復習後の定着を分けて確認します。</p><div class="kpis">${kpi(fmt(s.seen),'演習済み設問')}${kpi(s.firstRate===null?'—':s.firstRate+'%','初回正答率')}${kpi(s.latestRate===null?'—':s.latestRate+'%','各設問の直近正答率')}${kpi(s.mastered,'日を空けて3回以上理解して正解')}</div><div class="two-col"><article class="panel"><h2>復習リスト</h2><div class="actions">${[['due','復習期限',s.due],['wrong','前回誤答',s.wrong],['unsure','迷った・勘',s.unsure],['bookmark','保存した問題',s.bookmarks]].map(([v,l,n])=>`<button class="btn secondary" data-review="${v}">${l} ${n}</button>`).join('')}</div><p class="small muted" style="margin-top:1rem">確信を持った正解だけが定着に進みます。同じ日に何度正解しても定着段階は1段階までです。</p></article><article class="panel"><h2>直近7日間の演習数</h2><div class="trend">${days.map(d=>`<div class="trend-col"><span>${data.daily[d]?.attempts||0}</span><i style="height:${(data.daily[d]?.attempts||0)/max*95}px"></i><span>${d.slice(5).replace('-','/')}</span></div>`).join('')}</div></article></div>
+    <div class="section-title"><h2>科目別の到達状況</h2></div><div class="panel table-wrap"><table><thead><tr><th>科目</th><th>演習済み / 収録</th><th>初回正答率</th><th>直近正答率</th><th>定着</th><th>復習期限</th></tr></thead><tbody>${E.SUBJECTS.map(sub=>{const z=E.stats(BANK.filter(q=>q.subject===sub),data);return `<tr><td><button class="link-button" data-subject="${sub}">${sub}</button></td><td>${z.seen} / ${z.total}</td><td>${z.firstRate===null?'—':z.firstRate+'%'}</td><td>${z.latestRate===null?'—':z.latestRate+'%'}</td><td>${z.mastered}</td><td>${z.due}</td></tr>`;}).join('')}</tbody></table></div>
+    <div class="section-title"><h2>直近の演習記録</h2></div><div class="panel">${data.history.length?`<div class="table-wrap"><table><thead><tr><th>日付</th><th>演習</th><th>正答</th><th>練習点</th></tr></thead><tbody>${data.history.slice(-15).reverse().map(h=>`<tr><td>${new Date(h.at).toLocaleDateString('ja-JP')}</td><td>${esc(h.title)}${h.pauses?' / 中断あり':''}</td><td>${h.correct} / ${h.total}</td><td>${h.points} / ${h.max}</td></tr>`).join('')}</tbody></table></div>`:'<p class="empty">演習を終了すると、ここに記録が残ります。</p>'}</div>
+    <div class="section-title"><h2>学習記録の持ち運び</h2></div><div class="panel"><p class="subtle">この端末の記録をファイルに保存し、別の端末で復元できます。自動での端末間同期はありません。</p><div class="actions"><button class="btn secondary" data-action="export">バックアップを保存</button><label class="btn secondary" for="importBackup">バックアップを復元</label><input id="importBackup" type="file" accept="application/json,.json" hidden><button class="quiet" data-action="reset">学習記録をリセット</button></div>${Object.keys(data.legacy||{}).length?`<details class="source-details"><summary>以前のPDF演習メモ</summary>${Object.entries(data.legacy).map(([k,v])=>`<p><strong>${esc(k)}</strong><br>${esc(v.memo||'メモなし')}</p>`).join('')}</details>`:''}</div>`;
+    $('importBackup').onchange=async e=>{const file=e.target.files[0];if(!file)return;if(file.size>15*1024*1024){toast('ファイルが大きすぎます。');return;}try{const restored=E.validateBackup(JSON.parse(await file.text()),BANK);if(!confirm(`${Object.keys(restored.records).length}問の学習記録で、この端末の記録を置き換えますか？`))return;restored.legacy=data.legacy;data=restored;save();document.body.classList.toggle('large-type',data.settings.large);renderProgress();toast('学習記録を復元しました。');}catch(error){toast(error.message||'バックアップを読み取れませんでした。');}};
   }
-  function pauseTimer() {
-    if (!state.running) return;
-    clearInterval(state.timerId);
-    state.timerId = null;
-    state.running = false;
-    $('timerStart').textContent = '再開';
+  function renderSources(){const legal=BANK.filter(q=>!q.pdfOnly);$('sourcesView').innerHTML=`<p class="eyebrow">SCOPE & SOURCES</p><h1>収録・出典</h1><div class="panel"><h2>実際の短答過去問を使う</h2><p>法律 ${fmt(legal.length)}問は画面内で演習できます。一般教養 ${fmt(META.generalCount)}問は公式PDFを参照しながら回答します。オリジナル問題・生成した類題は出題しません。</p><p>予備試験は2011〜2025年、司法試験はこの版に収録された2015年以降の年度を扱います。各年度の不足設問は下表で確認できます。全年度・全設問・現行法対応が完了した教材ではありません。</p><p class="subtle">問題本文は法務省の公表PDFのテキストを使用し、${external(META.textMirror,'bar-exam-data')} の転記資料と設問単位で照合しています。正答は ${external(META.dataset,'ShigyoBench（藤堂真登・石川真之介）')} の公開データに基づきます。公式正答PDFと追加照合した問題は回答後に表示します。</p><p class="subtle">ShigyoBenchは ${external('https://creativecommons.org/licenses/by-nc/4.0/','CC BY-NC 4.0')}。このページは無料・広告なしの非営利学習用です。問題本文の権利は試験実施機関等に帰属します。科目分類・改行整形・演習用の項目を追加しています。</p></div>
+    <div class="section-title"><h2>正答・解説の扱い</h2></div><div class="panel"><ul><li>採点は出題当時の正答に基づきます。法改正後の結論とは異なる場合があります。</li><li>設問ごとの全肢解説・現行法との整合性の全問専門家監修は未実施です。関連する学習ポイントは、条文や判例を確認するための補助です。</li><li>本文の欠落・正答との対応が不確かな設問は自動採点の対象から除いています。</li><li>一般教養の図表や第三者の引用文は転載せず、公式冊子を参照します。</li><li>「練習点」は部分点を未確認の場合は加算しません。公式の合格基準を代用する値ではありません。</li></ul><div class="resource-links">${external('https://www.moj.go.jp/jinji/shihoushiken/jinji07_00026.html','予備試験・法務省')}${external('https://www.moj.go.jp/jinji/shihoushiken/jinji08_00025.html','司法試験・法務省')}${external('https://laws.e-gov.go.jp/','e-Gov法令検索')}</div></div>
+    <div class="section-title"><h2>年度・冊子ごとの収録状況</h2></div><div class="panel table-wrap"><table class="source-table"><thead><tr><th>試験 / 年</th><th>科目</th><th>収録 / 冊子</th><th>未収録の設問番号</th><th>原本</th></tr></thead><tbody>${META.coverage.map(p=>`<tr><td>${examName(p.exam)} ${p.year}</td><td>${esc(p.label)}</td><td>${p.loaded} / ${p.count}</td><td>${p.missing.length?p.missing.join('・'):'なし'}</td><td>${external(p.source,'PDF')}</td></tr>`).join('')}</tbody></table></div>`;}
+  async function handle(e){const b=e.target.closest('button,[data-view]');if(!b)return;
+    if(b.dataset.view){if(data.session?.mode==='exam'&&!data.session.paused){E.pause(data.session);save();}setView(b.dataset.view);return;}
+    if(b.dataset.subject){filters={...filters,subject:b.dataset.subject,topic:'all',status:'all',search:''};if(b.dataset.subject==='一般教養')filters.exam='preliminary';setView('practice');return;}
+    if(b.dataset.review){filters={...filters,status:b.dataset.review,year:'all',subject:'all',topic:'all',exam:'all',search:''};setView('practice');return;}
+    if(b.dataset.examtype){examType=b.dataset.examtype;renderExam();return;}
+    if(b.dataset.open){startSession([BYID.get(b.dataset.open)],'practice','1問を復習');return;}
+    if(b.dataset.choice){choose(b.dataset.choice,Number(b.dataset.slot));return;}
+    if(b.dataset.grade){submit(b.dataset.grade);return;}
+    if(b.dataset.confidence){data.session.confidence[current().id]=b.dataset.confidence;save();document.querySelectorAll('[data-confidence]').forEach(el=>el.classList.toggle('active',el.dataset.confidence===b.dataset.confidence));return;}
+    if(b.dataset.jump){data.session.index=Number(b.dataset.jump);save();renderSession();window.scrollTo({top:0,behavior:'instant'});return;}
+    if(b.dataset.test){const key=b.dataset.test,qs=BANK.filter(q=>q.exam===examType&&q.year===examYear&&q.block===key).sort((a,b)=>a.n-b.n),minutes=examType==='preliminary'?E.BLOCKS[key].minutes:key==='民法'?75:50;startSession(qs,'exam',`${examYear}年 ${examName(examType)} ${E.BLOCKS[key]?.label||key}`,minutes,key);return;}
+    const action=b.dataset.action;
+    if(action==='daily')startSession(E.dailyQueue(BANK.filter(q=>q.exam==='preliminary'&&!q.pdfOnly),data,data.settings.goal),'practice','今日の'+data.settings.goal+'問');
+    if(action==='wrong')startSession(E.shuffle(E.filterBank(BANK,data,{status:'wrong'})).slice(0,20),'practice','誤答の復習');
+    if(action==='filtered'){let qs=selectedBank();if(filters.order==='random')qs=E.shuffle(qs);startSession(qs.slice(0,Number(filters.count)),'practice',(filters.subject==='all'?'過去問':filters.subject)+'演習');}
+    if(action==='more'){listLimit+=20;renderQuestionList();}
+    if(action==='resume'){if(data.session.paused)E.resume(data.session);save();setView('session');renderSession();startClock();}
+    if(action==='continueTimer'){E.resume(data.session);save();renderSession();}
+    if(action==='saveExit'){if(data.session.mode==='exam')E.pause(data.session);save();setView('home');toast('途中までの回答を保存しました。');}
+    if(action==='bookmark'){const q=current(),r=data.records[q.id]||{};r.bookmark=!r.bookmark;data.records[q.id]=r;save();b.textContent=r.bookmark?'★ 保存済み':'☆ 保存';b.setAttribute('aria-pressed',String(r.bookmark));}
+    if(action==='flag'){const s=data.session,id=current().id;s.flags[id]=!s.flags[id];save();renderSession();}
+    if(action==='previous'||action==='next'){const s=data.session;if(action==='next'&&s.index===s.ids.length-1){document.querySelector('.session-aside').scrollIntoView({behavior:'smooth',block:'start'});toast('回答一覧で見直すか、演習を終了してください。');return;}s.index=Math.max(0,s.index+(action==='next'?1:-1));save();renderSession();window.scrollTo({top:0,behavior:'instant'});}
+    if(action==='finish')finishSession();
+    if(action==='retryResult'&&lastResult)startSession(lastResult.wrong.map(id=>BYID.get(id)),'practice','今回の誤答を復習');
+    if(action==='export'){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`tanto-notebook-${E.dayKey()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('学習記録をダウンロードしました。');}
+    if(action==='reset'&&confirm('この端末の短答ノートの学習記録と中断中の演習をすべて削除しますか？必要なら先にバックアップしてください。')){const legacy=data.legacy;data=E.emptyStore();data.legacy=legacy;save();clearInterval(timer);renderProgress();}
   }
-  function stopTimer() {
-    if (state.timerId) clearInterval(state.timerId);
-    state.timerId = null;
-    state.running = false;
-    if ($('timerStart')) $('timerStart').textContent = '開始';
-  }
-  function resetTimer() {
-    if (!state.current) return;
-    stopTimer();
-    state.timerRemaining = state.current.block.minutes * 60;
-    updateTimerText();
-  }
-
-  function persistCurrent(completed) {
-    if (!state.current) return;
-    const k = keyFor(state.current.exam, state.current.year, state.current.blockKey);
-    state.progress[k] = {
-      completed: Boolean(completed || state.progress[k]?.completed),
-      memo: $('answerMemo').value,
-      updatedAt: new Date().toISOString()
-    };
-    saveProgress();
-    updateStats();
-    renderPapers();
-  }
-
-  function closeRunner() {
-    if (state.current) persistCurrent(false);
-    stopTimer();
-    $('runner').classList.remove('active');
-    state.current = null;
-  }
-
-  function wire() {
-    $('timerStart').addEventListener('click', startTimer);
-    $('timerPause').addEventListener('click', pauseTimer);
-    $('timerReset').addEventListener('click', resetTimer);
-    $('closeRunner').addEventListener('click', closeRunner);
-    $('answerMemo').addEventListener('input', () => {
-      if (!state.current) return;
-      const k = keyFor(state.current.exam, state.current.year, state.current.blockKey);
-      state.progress[k] = { completed: state.progress[k]?.completed || false, memo: $('answerMemo').value, updatedAt: new Date().toISOString() };
-      saveProgress();
-    });
-    $('markComplete').addEventListener('click', () => {
-      persistCurrent(true);
-      $('markComplete').textContent = '完了済み ✓';
-    });
-    $('resetPastProgress').addEventListener('click', () => {
-      if (!confirm('過去問の進捗・メモをすべて削除しますか？')) return;
-      closeRunner();
-      localStorage.removeItem(STORAGE_KEY);
-      state.progress = {};
-      state.current = null;
-      $('runner').classList.remove('active');
-      render();
-    });
-  }
-
-  window.YOBI_PAST_ONLY = { YEARS, BLOCKS };
-  wire();
-  render();
+  async function boot(){try{const responses=await Promise.all(['assets/tanto/bank.json?v=20260911','assets/tanto/manifest.json?v=20260911','assets/tanto/guide.json?v=20260911'].map(async url=>{const r=await fetch(url);if(!r.ok)throw Error('資料を読み込めませんでした。');return r.json();}));[BANK,META,GUIDE]=responses;if(!Array.isArray(BANK)||BANK.length!==META.count)throw Error('問題データの整合性を確認できませんでした。');BYID=new Map(BANK.map(q=>[q.id,q]));load();if(data.session&&!data.session.ids?.every(id=>BYID.has(id))){data.session=null;save();}document.addEventListener('click',handle);$('fontSize').onclick=()=>{data.settings.large=!data.settings.large;document.body.classList.toggle('large-type',data.settings.large);$('fontSize').textContent=data.settings.large?'文字 標準':'文字 大';save();};$('loading').hidden=true;setView('home',false);if(data.session)startClock();}catch(error){$('loading').innerHTML=`<h1>読み込みを完了できませんでした</h1><p>${esc(error.message)} 通信状態を確認して、再読み込みしてください。</p><button class="btn" id="reloadData">再読み込み</button>`;$('reloadData').onclick=()=>location.reload();}}
+  boot();
 })();
