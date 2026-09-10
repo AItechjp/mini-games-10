@@ -13,14 +13,14 @@ const redirects = [];
 const sleep = ms => new Promise(resolve=>setTimeout(resolve,ms));
 const check = (ok,message) => { if (!ok) failures.push(message); };
 const insecure = url => /^(?:http|ws):/i.test(url);
-const safePath = value => typeof value === 'string' && !value.startsWith('/') && !value.split('/').includes('..') && /\.html?$/i.test(value);
+const safePath = value => typeof value === 'string' && !value.startsWith('/') && !value.split('/').includes('..') && /\.html?$/i.test(value) && new URL(value,base).origin===base.origin;
 
 // Verify the deployed build, not an older cached page with similar text.
 let release;
 for (let attempt=0; attempt<24; attempt++) {
   try {
     const response=await fetch(new URL(`https-release.json?audit=${process.env.GITHUB_SHA || version}-${attempt}`,base),{signal:AbortSignal.timeout(15000)});
-    if(response.ok()) {
+    if(response.ok) {
       const data=await response.json();
       if(data.version===version && (!process.env.HTTPS_EXPECT_COMMIT || data.commit===process.env.HTTPS_EXPECT_COMMIT)) { release=data;break; }
     }
@@ -32,6 +32,10 @@ if(!release || !Array.isArray(release.pages) || !release.pages.includes('index.h
 const tracked=execFileSync('git',['ls-files','-z','*.html','*.htm'],{encoding:'utf8'}).split('\0').filter(Boolean).filter(p=>!/(^|\/)(?:tests|node_modules|vendor|test-output|\.github|tools|scripts)\//.test(p));
 for(const path of tracked) check(release.pages.includes(path),`Published manifest omits source HTML: ${path}`);
 const paths=[...new Set(['',...release.pages])];
+async function saveReport(complete=false) {
+  const report={version,commit:release.commit,checkedAt:new Date().toISOString(),complete,browser:'full Chromium',base:base.href,htmlDocuments:release.pages.length,checks:results.length,redirects,failures,results};
+  await fs.writeFile(`${out}/report.json`,JSON.stringify(report,null,2));
+}
 
 // Check actual server redirects. JavaScript redirects do not pass this test.
 const aliases=base.hostname==='aitechd.com'?['aitechd.com','www.aitechd.com']:[base.hostname];
@@ -58,6 +62,7 @@ for(const hostname of aliases) {
     await response.body?.cancel();
   }catch(error){failures.push(`TLS validation failed for ${hostname}: ${error.message}`);}
 }
+await saveReport();
 
 // Use full Chromium/new headless, NOT headless-shell: it exposes the browser's
 // visible Security state (the state behind Chrome's site-information warning).
@@ -110,12 +115,12 @@ try {
       }catch(error){failures.push(`${profile.name} ${path}: ${error.message}`);row.error=error.message;}
       row.ok=failures.length===start;
       results.push(row);
+      await saveReport();
       console.log(`HTTPS ${row.ok?'PASS':'FAIL'} ${profile.name} ${path||'/'} security=${security?.securityState || 'unobserved'} mixed=${row.insecure.length+row.securityIssues.length} errors=${row.pageErrors.length}`);
       await context.close();
     }
   }
 }finally{await browser.close();}
-const report={version,commit:release.commit,checkedAt:new Date().toISOString(),browser:'full Chromium',base:base.href,htmlDocuments:release.pages.length,checks:results.length,redirects,failures,results};
-await fs.writeFile(`${out}/report.json`,JSON.stringify(report,null,2));
+await saveReport(true);
 console.log(JSON.stringify({httpsAudit:failures.length?'FAILED':'PASSED',htmlDocuments:release.pages.length,checks:results.length,redirects:redirects.length,failures},null,2));
 if(failures.length)process.exitCode=1;
