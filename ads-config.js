@@ -1,6 +1,8 @@
-// AdSense configuration for aitechd.com.
+// Advertising disabled for aitechd.com.
 window.SITE_ADSENSE = Object.assign({
-  enabled: true,
-  client: "ca-pub-5820558629755748",
-  autoAds: true
+  enabled: false,
+  client: "",
+  autoAds: false
 }, window.SITE_ADSENSE || {});
+window.SITE_ADSENSE.enabled = false;
+window.SITE_ADSENSE.autoAds = false;
