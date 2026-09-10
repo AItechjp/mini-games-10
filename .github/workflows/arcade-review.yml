@@ -1,10 +1,10 @@
 name: Arcade 100 gameplay and online review
 on:
   pull_request:
-    paths: ['arcade100/**', 'smash*', 'tests/arcade*', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
+    paths: ['arcade100/**', 'smash*', 'tests/arcade*', 'tests/smash-online-state.mjs', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
   push:
     branches: ['main']
-    paths: ['arcade100/**', 'smash*', 'tests/arcade*', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
+    paths: ['arcade100/**', 'smash*', 'tests/arcade*', 'tests/smash-online-state.mjs', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -21,6 +21,8 @@ jobs:
         run: node tests/arcade-games.mjs
       - name: Verify room security and concurrency
         run: node tests/arcade-online.mjs
+      - name: Verify SKYBREAK multiplayer snapshots
+        run: node tests/smash-online-state.mjs
       - name: Syntax and static bundle
         run: |
           node --check arcade100/app.mjs
