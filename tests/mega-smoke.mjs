@@ -66,8 +66,15 @@ for(const id of ids){
 
 errors.length = 0;
 await page.goto(root + 'index.html', {waitUntil:'domcontentloaded'});
-const megaLinks = await page.locator('a[href="mega-arcade.html"], [data-mode-href="mega-arcade.html"]').count();
-if(megaLinks < 1) throw new Error('index.html has no MEGA ARCADE entry');
+let megaLinks = await page.locator('a[href="mega-arcade.html"], [data-mode-href="mega-arcade.html"]').count();
+if(megaLinks < 1) {
+  const archive = page.locator('a[href="archive.html"]').first();
+  if(await archive.count() !== 1) throw new Error('The home page has no link to the game archive');
+  await archive.click();
+  await page.waitForURL('**/archive.html');
+  megaLinks = await page.locator('a[href="mega-arcade.html"], [data-mode-href="mega-arcade.html"]').count();
+}
+if(megaLinks < 1) throw new Error('MEGA ARCADE is not accessible from the home page or its archive');
 
 console.log(`MEGA ARCADE smoke OK: ${full ? ids.length : 'representative'} modes; catalog=320; profiles=320`);
 await browser.close();
