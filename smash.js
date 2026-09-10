@@ -65,6 +65,10 @@
   let countdownTimer = null;
   let winnerSlot = null;
   const arenaIllustration=new Image();arenaIllustration.src='arcade100/assets/worlds.webp';
+  const fighterIllustration=new Image();fighterIllustration.src='arcade100/assets/fighters.webp';
+  const FIGHTER_FRAMES=[[[31,36,262,255],[325,48,252,237],[633,66,390,216],[1019,53,214,238]],[[38,331,241,285],[350,343,292,259],[633,354,349,257],[1009,354,223,238]],[[39,646,235,273],[324,665,286,244],[635,687,367,228],[1011,664,226,229]],[[32,950,243,275],[340,960,268,248],[645,933,326,289],[1026,951,195,260]]];
+  function fighterPortraitStyle(index){const [x,y,w,h]=FIGHTER_FRAMES[index][0];return `background-image:url('arcade100/assets/fighters.webp');background-size:${1254/w*100}% ${1254/h*100}%;background-position:${x/(1254-w)*100}% ${y/(1254-h)*100}%;aspect-ratio:${w}/${h}`;}
+
 
   const held = new Set();
   const pressed = new Set();
@@ -76,7 +80,7 @@
   function renderRoster() {
     $('roster').innerHTML = ROSTER.map((f, i) => `
       <button class="fighter-card ${i === selected ? 'active' : ''}" style="--fighter:${f.color}" data-fighter="${i}" type="button">
-        <span class="glyph">${f.glyph}</span><strong>${f.name}</strong><span>${f.title}</span><small>${f.special}</small>
+        <span class="fighter-illustration" aria-hidden="true" style="${fighterPortraitStyle(i)}"></span><strong>${f.name}</strong><span>${f.title}</span><small>${f.special}</small>
       </button>`).join('');
     document.querySelectorAll('[data-fighter]').forEach(button => {
       button.addEventListener('click', () => {
@@ -962,7 +966,7 @@
     const localTitle = onlineSession ? (winnerIndex===onlineSession.side?'VICTORY':'DEFEAT') : mode === 'local' ? `PLAYER ${winnerIndex + 1} WINS` : winnerIndex === 0 ? 'VICTORY' : 'DEFEAT';
     $('result-title').textContent = localTitle;
     $('result-copy').innerHTML = `${winner.fighter.name} WIN<br>K.O. ${winner.kos}　与ダメージ ${Math.round(winner.damageGiven)}%<br>${loser.fighter.name} 残り ${loser.stocks} STOCK`;
-    $('winner-art').style.setProperty('--winner', winner.fighter.color);
+    $('winner-art').style.cssText=fighterPortraitStyle(ROSTER.findIndex(f=>f.id===winner.fighter.id));$('winner-art').style.setProperty('--winner',winner.fighter.color);
     screens.result.classList.remove('hidden');
     $('touch-controls').classList.add('hidden');
     tone(523, .14, 'triangle', .04);
@@ -1056,7 +1060,7 @@
       $(`${prefix}-damage`).innerHTML = `${Math.round(player.damage)}<em>%</em>`;
       $(`${prefix}-damage`).style.color = damageColor(player.damage);
       $(`${prefix}-stocks`).textContent = Array(Math.max(0,player.stocks)).fill('●').join(' ');
-      $(`${prefix}-portrait`).style.setProperty('--fighter',player.fighter.color);
+      $(`${prefix}-portrait`).style.cssText=fighterPortraitStyle(ROSTER.findIndex(f=>f.id===player.fighter.id));$(`${prefix}-portrait`).style.setProperty('--fighter',player.fighter.color);
     });
     const minutes = Math.floor(matchTime / 60);
     const seconds = Math.ceil(matchTime % 60);
@@ -1076,7 +1080,7 @@
     ctx.save();
     if (screenShake > 0) ctx.translate((Math.random()-.5)*screenShake,(Math.random()-.5)*screenShake);
     drawBackground(width,height);
-    if(arenaIllustration.complete&&arenaIllustration.naturalWidth){const sw=arenaIllustration.width/4,sh=arenaIllustration.height/4,index=stageKey==='ruins'?0:stageKey==='final'?14:13;ctx.save();ctx.globalAlpha=.42;ctx.drawImage(arenaIllustration,(index%4)*sw,Math.floor(index/4)*sh,sw,sh,0,-height*.3,width,height*1.3);ctx.restore();}
+    if(arenaIllustration.complete&&arenaIllustration.naturalWidth){const sw=arenaIllustration.width/4,sh=arenaIllustration.height/4,index=stageKey==='ruins'?0:stageKey==='final'?14:13;ctx.save();ctx.globalAlpha=.77;ctx.drawImage(arenaIllustration,(index%4)*sw,Math.floor(index/4)*sh,sw,sh,0,-height*.3,width,height*1.3);ctx.restore();}
     const spread = players.length > 1 ? Math.hypot(players[0].x-players[1].x,(players[0].y-players[1].y)*.7) : 0;
     const targetZoom = clamp(1-(spread-Math.min(340,width*.34))/Math.max(900,width*1.25),.86,1);
     cameraZoom += (targetZoom-cameraZoom)*.055;
@@ -1160,6 +1164,13 @@
   function drawFighterBody(player) {
     const f=player.fighter;
     const attacking=Boolean(player.action);
+    if(fighterIllustration.complete&&fighterIllustration.naturalWidth){
+      const index=Math.max(0,ROSTER.findIndex(v=>v.id===f.id)),pose=player.hitstun>0?3:attacking?2:!player.grounded||Math.abs(player.vx)>1?1:0;
+      const [sx,sy,sw,sh]=FIGHTER_FRAMES[index][pose],scale=(index===1?100:92)/FIGHTER_FRAMES[index][0][3];
+      ctx.save();ctx.shadowColor=f.color+'80';ctx.shadowBlur=7;
+      const anchor=pose===2?.37:pose===1?.55:.5;
+      ctx.drawImage(fighterIllustration,sx,sy,sw,sh,-sw*scale*anchor,player.height/2-sh*scale,sw*scale,sh*scale);ctx.restore();return;
+    }
     ctx.shadowBlur=17;ctx.shadowColor=f.color;
     ctx.fillStyle=f.dark;roundedRect(-player.width*.46,-17,player.width*.92,39,9);ctx.fill();
     ctx.fillStyle=f.color;roundedRect(-player.width*.39,-15,player.width*.78,25,8);ctx.fill();ctx.shadowBlur=0;
