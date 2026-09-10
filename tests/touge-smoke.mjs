@@ -6,8 +6,9 @@ import { fresh,step,clamp } from '../touge/physics.mjs';
 const base=process.env.TOUGE_BASE_URL||'http://127.0.0.1:4173/';const live=!base.includes('127.0.0.1')&&!base.includes('localhost');
 await mkdir('test-output',{recursive:true});const track=createTrack(),report={length:track.length,checks:[]};
 let r=fresh();r.v=30;const before=r.v;step(r,1,{brake:1},track);assert(r.v<before-10);report.checks.push('braking');
-r=fresh();r.v=30;for(let i=0;i<90;i++)step(r,1/120,{gas:1,steer:.6,drift:true},track);assert(r.score>0&&Math.abs(r.slip)>.1);report.checks.push('drift and score');
+r=fresh();r.v=30;r.rival=600;for(let i=0;i<90;i++)step(r,1/120,{gas:1,steer:.6,drift:true},track);assert(r.score>0&&Math.abs(r.slip)>.1&&r.contacts===0);report.checks.push('isolated drift and score');
 r=fresh();r.v=35;r.x=5.44;step(r,.1,{steer:1},track);assert(r.contacts>0&&r.v<35);report.checks.push('guardrail impact');
+r=fresh();r.v=30;r.rival=11;r.x=track.rivalLane(11);step(r,.01,{gas:1},track);assert(r.contacts>0&&r.v<30);report.checks.push('rival collision');
 r=fresh();for(let j=0;j<36001&&!r.finished;j++)step(r,1/120,{gas:0},track);assert(r.finished&&r.reason==='time'&&r.t===300);report.checks.push('300-second timeout');
 for(const hz of [60,120]){r=fresh();for(let j=0;j<hz*301&&!r.finished;j++){const k=track.at(r.s).k,steer=clamp((k*r.v*r.v*.092*.24+(-2.7-r.x)*2)/(1.5+r.v*.105),-1,1);step(r,1/hz,{gas:1,steer},track);}assert.equal(r.reason,'finish');report['lap'+hz]={time:r.t,contacts:r.contacts,s:r.s};}
 assert(Math.abs(report.lap60.time-report.lap120.time)<.15);report.checks.push('full-course finish and frame-rate independence');
