@@ -2,6 +2,15 @@
 import json,pathlib
 R=pathlib.Path(__file__).resolve().parents[1]
 LAWS={'憲法':('日本国憲法','321CONSTITUTION'),'行政法':('行政事件訴訟法','337AC0000000139'),'民法':('民法','129AC0000000089'),'商法':('会社法','417AC0000000086'),'民事訴訟法':('民事訴訟法','408AC0000000109'),'刑法':('刑法','140AC0000000045'),'刑事訴訟法':('刑事訴訟法','323AC0000000131')}
+DEFAULT_LESSON={'憲法':'const-01','行政法':'admin-08','民法':'civil-01','商法':'company-01','民事訴訟法':'civpro-01','刑法':'crime-01','刑事訴訟法':'crimpro-01'}
+LESSONS={
+'憲法|人権総論':'const-02','憲法|平等':'const-03','憲法|思想・信教':'const-06','憲法|表現の自由':'const-04','憲法|経済的自由':'const-07','憲法|社会権':'const-09','憲法|選挙':'const-09','憲法|国会':'const-10','憲法|内閣・行政':'const-10','憲法|裁判所':'const-10','憲法|財政・地方自治':'const-10','憲法|憲法改正':'const-10',
+'行政法|行政作用':'admin-04','行政法|行政手続':'admin-05','行政法|行政不服審査':'admin-08','行政法|取消訴訟':'admin-01','行政法|行政事件訴訟':'admin-06','行政法|国家賠償・補償':'admin-07','行政法|地方自治・情報公開':'admin-08',
+'民法|総則・意思表示':'civil-02','民法|代理':'civil-03','民法|時効':'civil-04','民法|物権・登記':'civil-05','民法|担保物権':'civil-06','民法|債権総論':'civil-09','民法|契約':'civil-08','民法|不法行為等':'civil-11','民法|親族':'civil-12','民法|相続':'civil-12',
+'商法|会社設立':'company-01','商法|株式':'company-05','商法|機関':'company-01','商法|株主総会':'company-02','商法|資金調達':'company-06','商法|計算・剰余金':'company-03','商法|組織再編':'company-08','商法|持分会社':'company-08','商法|商行為・手形':'company-08',
+'民事訴訟法|訴訟要件・管轄':'civpro-02','民事訴訟法|訴え・当事者':'civpro-07','民事訴訟法|審理原則':'civpro-03','民事訴訟法|証拠':'civpro-05','民事訴訟法|判決・既判力':'civpro-06','民事訴訟法|上訴・再審':'civpro-08','民事訴訟法|特別手続':'civpro-08',
+'刑法|構成要件・因果関係':'crime-02','刑法|違法性':'crime-04','刑法|責任・錯誤':'crime-03','刑法|未遂・共犯':'crime-07','刑法|生命・身体':'crime-10','刑法|自由・名誉':'crime-10','刑法|財産犯':'crime-08','刑法|社会・国家法益':'crime-10','刑法|刑罰・罪数':'crime-10',
+'刑事訴訟法|捜査・逮捕勾留':'crimpro-02','刑事訴訟法|捜索差押え':'crimpro-03','刑事訴訟法|公訴':'crimpro-08','刑事訴訟法|被告人・弁護人':'crimpro-04','刑事訴訟法|証拠能力':'crimpro-07','刑事訴訟法|伝聞法則':'crimpro-05','刑事訴訟法|公判手続':'crimpro-08','刑事訴訟法|裁判・上訴':'crimpro-08'}
 rows='''憲法|人権総論|誰の、どの権利かを先に特定し、保障の範囲と制約の正当化を分けて読む。外国人・法人・公務員など主体が変わったときの判例の射程を確認する。
 憲法|平等|比較する二つの集団、区別の目的、区別の合理性を整理する。「区別がある」ことと「違憲である」ことを区別し、判例の結論と理由をセットで復習する。
 憲法|思想・信教|内心そのものへの介入と外部の行為への制約を区別する。政教分離は、問題となった行為、目的・効果、総合判断で考慮された事情を判例ごとに整理する。
@@ -66,6 +75,6 @@ rows='''憲法|人権総論|誰の、どの権利かを先に特定し、保障�
 刑事訴訟法|裁判・上訴|有罪・無罪・免訴・公訴棄却など裁判の種類を整理する。控訴・上告・再審の理由と審理範囲、不利益変更の禁止、一事不再理を確認する。'''
 guide={}
 for line in rows.splitlines():
- sub,topic,text=line.split('|');label,lid=LAWS[sub];guide[sub+'|'+topic]={'title':topic,'text':text,'links':[{'label':label+'を確認','url':'https://laws.e-gov.go.jp/law/'+lid}]}
-for sub,(label,lid) in LAWS.items():guide[sub+'|総合']={'title':'要件と効果を確認','text':'問題文の主語、要件、効果、例外を分けて確認し、正答の根拠と誤った肢の訂正をメモする。','links':[{'label':label,'url':'https://laws.e-gov.go.jp/law/'+lid}]}
+ sub,topic,text=line.split('|');label,lid=LAWS[sub];guide[sub+'|'+topic]={'title':topic,'text':text,'ronbunLesson':LESSONS.get(sub+'|'+topic,DEFAULT_LESSON[sub]),'links':[{'label':label+'を確認','url':'https://laws.e-gov.go.jp/law/'+lid}]}
+for sub,(label,lid) in LAWS.items():guide[sub+'|総合']={'title':'要件と効果を確認','text':'問題文の主語、要件、効果、例外を分けて確認し、正答の根拠と誤った肢の訂正をメモする。','ronbunLesson':DEFAULT_LESSON[sub],'links':[{'label':label,'url':'https://laws.e-gov.go.jp/law/'+lid}]}
 (R/'assets/tanto/guide.json').write_text(json.dumps(guide,ensure_ascii=False,indent=2));print('study topics',len(guide))

@@ -16,6 +16,7 @@ for(const p of papers){
  assert(!p.text.includes('(cid:')&&!p.purpose.includes('(cid:'),'unreadable text '+p.id);
  const row=sources.audit.find(a=>a.id===p.id);assert(row,'missing source audit '+p.id);assert.equal(row.questionChars,[...p.text].length);assert.equal(row.purposeChars,[...p.purpose].length);
  assert(sources.documents.some(d=>d.year===p.year&&d.url===p.pdf),'wrong year/source '+p.id);
+ const points=E.purposePoints(p.purpose);assert(points.length>=1&&points.length<=8,'purpose checklist '+p.id);const normalized=p.purpose.replace(/\s+/g,' ').trim();for(const point of points)assert(normalized.includes(point),'purpose text altered '+p.id);
 }
 for(const d of sources.documents)assert.match(d.sha256,/^[a-f0-9]{64}$/);
 for(const l of lessons){
@@ -64,4 +65,10 @@ for(const mutate of [x=>x.attempts.push(x.attempts[0]),x=>x.attempts[0].paperId=
 const badSession=JSON.parse(JSON.stringify(checkpoint));badSession.session.paperIds.push(ids[0]);assert.throws(()=>E.validateBackup(badSession,paperIds,lessonIds));
 checkpoint.session.index=0.8;assert.equal(E.validateBackup(checkpoint,paperIds,lessonIds).session.index,0);
 assert.deepEqual(E.BLOCKS.map(b=>b.minutes),[140,210,140,180]);
+assert(!E.readiness(E.fresh(),papers,lessons,time).passed,'empty notebook must not pass readiness');
+const complete=E.fresh();for(const l of lessons)complete.lessons[l.id]={stage:3,confidence:'sure'};
+let serial=0;const add=(paper,sessionId,mode,answer,outline='構成',rewrite='',status='retained')=>complete.attempts.push({id:'ready-'+serial++,paperId:paper.id,sessionId,mode,answer,outline,rewrite,pauses:0,status,due:time+30*E.DAY});
+for(const block of E.BLOCKS)for(let run=0;run<2;run++)for(const subject of block.subjects)add(papers.filter(p=>p.subject===subject).sort((a,b)=>b.year-a.year)[run],block.id+'-'+run,'exam','あ'.repeat(1200),'構成','あ'.repeat(200));
+for(const subject of E.SUBJECTS){const ps=papers.filter(p=>p.subject===subject).sort((a,b)=>b.year-a.year);add(ps[2],subject+'-single','essay','あ'.repeat(1200),'構成','あ'.repeat(200));add(ps[3],subject+'-outline-1','outline','','構成');add(ps[4],subject+'-outline-2','outline','','構成');}
+const ready=E.readiness(complete,papers,lessons,time);assert(ready.passed,JSON.stringify(ready));assert.equal(ready.subjects.filter(x=>x.passed).length,9);assert.equal(ready.blocks.filter(x=>x.passes>=2).length,4);
 console.log(JSON.stringify({ok:true,essayPapers:papers.length,lessons:lessons.length,articles:Object.keys(articles.articles).length,subjects:9,years:15,timer:'pause, resume, reload, expiry',answers:'all subjects preserved; original and rewrite distinct',backup:'valid restore and invalid-input rejection',review:'separate-day repetition verified'}));
