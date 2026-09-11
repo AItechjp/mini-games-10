@@ -2,7 +2,13 @@
   'use strict';
 
   const canvas = document.getElementById('game');
-  const ctx = canvas.getContext('2d');
+  let ctx = canvas.getContext('2d');
+  const graphics=new AitechFrameBudget({coarse:matchMedia('(pointer:coarse)').matches});
+  let graphicsCpu=0,graphicsRatio=1;
+  const renderLayers=new Map();
+  function clearLayers(){for(const c of renderLayers.values())c.width=c.height=1;renderLayers.clear();}
+  function layer(key,w,h,paint){key+=':'+graphicsRatio;let c=renderLayers.get(key);if(!c){if(renderLayers.size>24)clearLayers();c=document.createElement('canvas');c.width=Math.max(1,Math.ceil(w*graphicsRatio));c.height=Math.max(1,Math.ceil(h*graphicsRatio));const previous=ctx;ctx=c.getContext('2d');ctx.setTransform(graphicsRatio,0,0,graphicsRatio,0,0);try{paint();}finally{ctx=previous;}renderLayers.set(key,c);}return c;}
+  Object.defineProperty(window,'skybreakGraphics',{get:()=>({...graphics.stats,width:canvas.width,height:canvas.height,layers:renderLayers.size})});
   const $ = id => document.getElementById(id);
   const screens = {
     start: $('start-screen'),
@@ -64,7 +70,9 @@
   let onlineRemote = {};
   let countdownTimer = null;
   let winnerSlot = null;
-  const arenaIllustration=new Image();arenaIllustration.src='arcade100/assets/worlds.webp';
+  const arenaIllustration=new Image();arenaIllustration.decoding='async';arenaIllustration.onload=clearLayers;arenaIllustration.src='arcade100/assets/worlds.webp';
+  let arenaHD=null,arenaTheme=-1;
+  function loadArena(){const index=stageKey==='ruins'?0:stageKey==='final'?14:13;if(arenaTheme===index)return;arenaTheme=index;arenaHD=null;clearLayers();const image=new Image();image.decoding='async';image.onload=()=>{if(arenaTheme===index){arenaHD=image;clearLayers();}};image.src='arcade100/assets/worlds-hd/'+String(index).padStart(2,'0')+'.webp';}
   const fighterIllustration=new Image();fighterIllustration.src='arcade100/assets/fighters.webp';
   const FIGHTER_FRAMES=[[[31,36,262,255],[325,48,252,237],[633,66,390,216],[1019,53,214,238]],[[38,331,241,285],[350,343,292,259],[633,354,349,257],[1009,354,223,238]],[[39,646,235,273],[324,665,286,244],[635,687,367,228],[1011,664,226,229]],[[32,950,243,275],[340,960,268,248],[645,933,326,289],[1026,951,195,260]]];
   function fighterPortraitStyle(index){const [x,y,w,h]=FIGHTER_FRAMES[index][0];return `background-image:url('arcade100/assets/fighters.webp');background-size:${1254/w*100}% ${1254/h*100}%;background-position:${x/(1254-w)*100}% ${y/(1254-h)*100}%;aspect-ratio:${w}/${h}`;}
@@ -128,8 +136,9 @@
     else $('shell').requestFullscreen?.();
   });
 
+  const quality=document.createElement('select');quality.setAttribute('aria-label','グラフィック品質');quality.className='graphics-quality';quality.innerHTML='<option value="auto">画質：自動</option><option value="high">高画質</option><option value="balanced">標準</option><option value="low">軽量</option>';try{graphics.setMode(localStorage.getItem('skybreak.graphics')||'auto');}catch{}quality.value=graphics.mode;document.querySelector('.topbar').append(quality);quality.onchange=()=>{graphics.setMode(quality.value);try{localStorage.setItem('skybreak.graphics',graphics.mode);}catch{}resize();};
   function resize() {
-    const ratio = Math.min(devicePixelRatio || 1, 2);
+    const ratio=graphics.scale(innerWidth,innerHeight,devicePixelRatio||1);graphicsRatio=ratio;clearLayers();
     canvas.width = Math.round(innerWidth * ratio);
     canvas.height = Math.round(innerHeight * ratio);
     canvas.style.width = `${innerWidth}px`;
@@ -1025,11 +1034,13 @@
     for (let i=0;i<count;i++) {
       const angle = Math.random()*Math.PI*2;
       const velocity = speed*(.35+Math.random()*.75);
+      if(particles.length>=(graphics.effects===2?220:graphics.effects===1?100:36))break;
       particles.push({x,y,vx:Math.cos(angle)*velocity,vy:Math.sin(angle)*velocity,color,life:.25+Math.random()*.42,max:.67,size:2+Math.random()*5,gravity:.10});
     }
   }
 
   function streak(x,y,color,vx,vy) {
+    if(particles.length>=(graphics.effects===2?220:graphics.effects===1?100:36))return;
     particles.push({x,y,vx,vy,color,life:.26,max:.26,size:3,gravity:0,streak:true});
   }
 
@@ -1080,7 +1091,6 @@
     ctx.save();
     if (screenShake > 0) ctx.translate((Math.random()-.5)*screenShake,(Math.random()-.5)*screenShake);
     drawBackground(width,height);
-    if(arenaIllustration.complete&&arenaIllustration.naturalWidth){const sw=arenaIllustration.width/4,sh=arenaIllustration.height/4,index=stageKey==='ruins'?0:stageKey==='final'?14:13;ctx.save();ctx.globalAlpha=.77;ctx.drawImage(arenaIllustration,(index%4)*sw,Math.floor(index/4)*sh,sw,sh,0,-height*.3,width,height*1.3);ctx.restore();}
     const spread = players.length > 1 ? Math.hypot(players[0].x-players[1].x,(players[0].y-players[1].y)*.7) : 0;
     const targetZoom = clamp(1-(spread-Math.min(340,width*.34))/Math.max(900,width*1.25),.86,1);
     cameraZoom += (targetZoom-cameraZoom)*.055;
@@ -1098,35 +1108,20 @@
   }
 
   function drawBackground(width,height) {
-    const stage = STAGES[stageKey];
-    const gradient = ctx.createLinearGradient(0,0,0,height);
-    gradient.addColorStop(0,stage.sky[0]);
-    gradient.addColorStop(.52,stage.sky[1]);
-    gradient.addColorStop(1,stage.sky[2]);
-    ctx.fillStyle = gradient;
-    ctx.fillRect(-30,-30,width+60,height+60);
-    ctx.fillStyle = '#ffffff14';
-    for (let i=0;i<82;i++) {
-      const sx = (i*109 + performance.now()*.008*(i%3))%width;
-      const sy = (i*i*31)%(height*.62);
-      const size = i%7===0 ? 2 : 1;
-      ctx.fillRect(sx,sy,size,size);
-    }
-    const moonX = width*.78;
-    const moonY = height*.23;
-    const radius = Math.min(width,height)*.17;
-    const glow = ctx.createRadialGradient(moonX,moonY,0,moonX,moonY,radius*1.5);
-    glow.addColorStop(0,'#ffffff50');
-    glow.addColorStop(.45,stage.glow+'32');
-    glow.addColorStop(1,'#ffffff00');
-    ctx.fillStyle=glow;ctx.beginPath();ctx.arc(moonX,moonY,radius*1.5,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='#ffffff13';ctx.beginPath();ctx.arc(moonX,moonY,radius,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='#100b355e';ctx.beginPath();ctx.moveTo(0,height*.69);
-    for(let px=0;px<=width;px+=70)ctx.lineTo(px,height*(.47+((px/70)%4)*.045));
-    ctx.lineTo(width,height);ctx.lineTo(0,height);ctx.fill();
+    loadArena();
+    const image=layer('background:'+stageKey+':'+width+':'+height,width+60,height+60,()=>{
+      const stage=STAGES[stageKey],g=ctx.createLinearGradient(0,0,0,height);stage.sky.forEach((v,i)=>g.addColorStop(i/2,v));ctx.fillStyle=g;ctx.fillRect(0,0,width+60,height+60);
+      if(arenaHD){const k=Math.max((width+60)/arenaHD.width,(height+60)/arenaHD.height),w=arenaHD.width*k,h=arenaHD.height*k;ctx.drawImage(arenaHD,(width+60-w)/2,(height+60-h)/2,w,h);}
+      else if(arenaIllustration.complete&&arenaIllustration.naturalWidth){const sw=arenaIllustration.width/4,sh=arenaIllustration.height/4;ctx.drawImage(arenaIllustration,arenaTheme%4*sw,Math.floor(arenaTheme/4)*sh,sw,sh,0,0,width+60,height+60);}
+      const shade=ctx.createLinearGradient(0,0,0,height);shade.addColorStop(0,'#070f2820');shade.addColorStop(.5,'#08102716');shade.addColorStop(1,'#0206178a');ctx.fillStyle=shade;ctx.fillRect(0,0,width+60,height+60);
+      const glow=ctx.createRadialGradient(width*.73,height*.2,0,width*.73,height*.2,width*.6);glow.addColorStop(0,stage.glow+'28');glow.addColorStop(1,'#00000000');ctx.fillStyle=glow;ctx.fillRect(0,0,width+60,height+60);
+    });
+    ctx.drawImage(image,-30,-30,width+60,height+60);
+    if(graphics.effects>0&&!document.hidden){const t=performance.now()*.008;ctx.fillStyle='#cfe7ff60';for(let i=0;i<(graphics.effects===2?24:9);i++)ctx.fillRect((i*109+t*(1+i%3))%width,(i*i*31)%(height*.72),i%5===0?2:1,1);}
   }
 
-  function drawStage(width,height) {
+  function drawStage(width,height){const margin=32;const image=layer('stage:'+stageKey+':'+width+':'+height,width+margin*2,height+margin*2,()=>{ctx.translate(margin,margin);drawStageRaw(width,height);});ctx.drawImage(image,-margin,-margin,width+margin*2,height+margin*2);}
+  function drawStageRaw(width,height) {
     const stage = STAGES[stageKey];
     stage.platforms.forEach((platform,index) => {
       const px=platform.x*width, py=platform.y*height, pw=platform.w*width, ph=platform.h*height;
@@ -1167,9 +1162,9 @@
     if(fighterIllustration.complete&&fighterIllustration.naturalWidth){
       const index=Math.max(0,ROSTER.findIndex(v=>v.id===f.id)),pose=player.hitstun>0?3:attacking?2:!player.grounded||Math.abs(player.vx)>1?1:0;
       const [sx,sy,sw,sh]=FIGHTER_FRAMES[index][pose],scale=(index===1?100:92)/FIGHTER_FRAMES[index][0][3];
-      ctx.save();ctx.shadowColor=f.color+'80';ctx.shadowBlur=7;
-      const anchor=pose===2?.37:pose===1?.55:.5;
-      ctx.drawImage(fighterIllustration,sx,sy,sw,sh,-sw*scale*anchor,player.height/2-sh*scale,sw*scale,sh*scale);ctx.restore();return;
+      const dw=sw*scale,dh=sh*scale,pad=12,anchor=pose===2?.37:pose===1?.55:.5;
+      const image=layer('fighter:'+index+':'+pose,dw+pad*2,dh+pad*2,()=>{ctx.shadowColor=f.color+'90';ctx.shadowBlur=7;ctx.drawImage(fighterIllustration,sx,sy,sw,sh,pad,pad,dw,dh);});
+      ctx.drawImage(image,-dw*anchor-pad,player.height/2-dh-pad,dw+pad*2,dh+pad*2);return;
     }
     ctx.shadowBlur=17;ctx.shadowColor=f.color;
     ctx.fillStyle=f.dark;roundedRect(-player.width*.46,-17,player.width*.92,39,9);ctx.fill();
@@ -1249,11 +1244,12 @@
   function whoosh(power=1){tone(170+power*45,.045,'sawtooth',.012+power*.006)}
 
   function frame(now) {
-    const dt=Math.min(.033,Math.max(0,(now-lastTime)/1000));
+    const rawFrame=now-lastTime,dt=Math.min(.033,Math.max(0,rawFrame/1000));
     lastTime=now;
     if(onlineSession?.side===1){if(players[1]){window.dispatchEvent(new CustomEvent('skybreak-control',{detail:controlFor(players[1])}));pressed.clear();released.clear();touchPressed.clear();touchReleased.clear();}}else {if(hitFreeze>0)hitFreeze-=dt;else update(dt);}
     if(onlineSession?.side===0)window.dispatchEvent(new CustomEvent('skybreak-frame'));
-    draw();
+    graphics.sample(rawFrame,graphicsCpu,now,!document.hidden&&gameState==='playing');
+    if(graphics.shouldDraw(now,!document.hidden,gameState==='menu'||gameState==='paused')){const t=performance.now(),ratio=graphics.scale(innerWidth,innerHeight,devicePixelRatio||1);if(Math.abs(ratio-graphicsRatio)>.025)resize();draw();graphicsCpu=performance.now()-t;}
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);

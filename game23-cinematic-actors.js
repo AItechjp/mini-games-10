@@ -27,7 +27,7 @@ const cineArmorMat=CM.metal;
 const cineHordeSpec={body:[CA.body,CM.cloth],head:[CA.head,CM.skin],lArm:[CA.arm,CM.skin],rArm:[CA.arm,CM.skin],lLeg:[CA.leg,CM.pants],rLeg:[CA.leg,CM.pants],eyes:[CA.eyes,CM.eye],mouth:[CA.sockets,CM.cavity],bone:[CA.teeth,CM.bone],neck:[CA.neck,CM.skin],shoulders:[CA.shoulders,CM.cloth],lBoot:[CA.boot,CM.leather],rBoot:[CA.boot,CM.leather],v5Armor:[CA.armor,cineArmorMat],helmet:[CA.helmet,cineArmorMat],v5Sac:[CA.sac,cineSacMat],v5Spike:[CA.spine,CM.bone],muzzle:[CA.houndMuzzle,CM.skin]};
 const cineHordeKeys=Object.keys(cineHordeSpec);
 makeHorde=function(capacity){
-  horde={capacity};
+  cineVisibility.clear();horde={capacity};
   for(const [key,[geo,material]] of Object.entries(cineHordeSpec)){const mesh=new THREE.InstancedMesh(geo,material,capacity);mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);mesh.frustumCulled=false;mesh.userData.hordePart=true;mesh.userData.weakpoint=key==='head';mesh.castShadow=!['eyes','mouth','bone'].includes(key);mesh.receiveShadow=true;scene.add(mesh);horde[key]=mesh;for(let i=0;i<capacity;i++)hideInst(mesh,i);}
 };
 const cineSkinColors={walker:0xd4d1bf,runner:0xd3b7a9,crawler:0xb4beb8,hound:0xad9b8a,stalker:0xc2a6ac,brute:0xd3c6b4,spitter:0xbbc79c,leaper:0xb6b7be,armored:0xc0c3b7,bloater:0xccbf9e};
@@ -35,15 +35,17 @@ v5TintEnemies=function(){
   if(!horde)return;for(const e of state.enemies.values()){if(e.boss||e.index<0||e.index>=horde.capacity)continue;const skin=new THREE.Color(cineSkinColors[e.type]||0xc4c6b8),cloth=new THREE.Color().setHSL(.10+(e.index%5)*.018,.12+(e.index%3)*.055,.42+(e.index%4)*.05);for(const k of ['head','neck','lArm','rArm','muzzle'])horde[k].setColorAt(e.index,skin);for(const k of ['body','shoulders'])horde[k].setColorAt(e.index,cloth);}
   for(const k of cineHordeKeys)if(horde[k].instanceColor)horde[k].instanceColor.needsUpdate=true;
 };
-let cineVisualAt=0;
+let cineVisualAt=0;const cineVisibility=new Map();
 const cinePose={x:0,z:0,visualYaw:0};
 updateHordeVisuals=function(now){
-  animateBoss(now);if(!horde)return;const interval=cineQuality==='low'?42:cineMobile?30:20;if(now-cineVisualAt<interval)return;cineVisualAt=now;
+  animateBoss(now);if(!horde)return;const interval=cineBudget.effects===0?42:cineBudget.effects===1?30:16;if(now-cineVisualAt<interval)return;cineVisualAt=now;
   const t=now*.001,range=cineQuality==='low'?58:cineMobile?90:125;
   for(const e of state.enemies.values()){
     if(e.boss||e.index<0||e.index>=horde.capacity)continue;const i=e.index,dist=Math.hypot(e.x-local.x,e.z-local.z);
     if(e.dead&&!e.cineDeathAt)e.cineDeathAt=now;
-    if(dist>range||(e.dead&&now-e.cineDeathAt>1250)){for(const k of cineHordeKeys)hideInst(horde[k],i);continue;}
+    const visual=cineVisibility.get(e)||{shown:false,at:0};cineVisibility.set(e,visual);
+    if(dist>range||(e.dead&&now-e.cineDeathAt>1250)){if(visual.shown)for(const k of cineHordeKeys)hideInst(horde[k],i);visual.shown=false;continue;}
+    if(visual.shown&&dist>38&&now-visual.at<67&&!e.dead)continue;visual.shown=true;visual.at=now;
     if(e.cineHp!==undefined&&e.hp<e.cineHp)e.cineHitAt=now;e.cineHp=e.hp;
     const type=e.type||'walker',quad=['crawler','hound','stalker'].includes(type),heavy=['brute','bloater'].includes(type),s=heavy?1.32:type==='hound'?.80:1;
     const speed=e.runner?1.45:.85,phase=t*(3.4+e.speed*.58)*speed+(e.phase||0),gait=Math.sin(phase),stride=e.runner?.48:.30,bob=Math.abs(Math.sin(phase))*.035;
@@ -79,7 +81,7 @@ updateHordeVisuals=function(now){
       if(type==='bloater')put('v5Sac',0,1.20,.11,0,0,0,1.12,1.20,.84);
     }
     const tilt=(e.headTilt||0)*.35+Math.sin(t*1.1+(e.phase||0))*.045;
-    for(const k of ['head','eyes','mouth','bone'])put(k,0,headY,headZ,headPitch,Math.sin(t*.8+(e.phase||0))*.06,tilt,headScale,headScale,headScale);
+    for(const k of ['head','eyes','mouth','bone']){if(k!=='head'&&dist>38)hideInst(horde[k],i);else put(k,0,headY,headZ,headPitch,Math.sin(t*.8+(e.phase||0))*.06,tilt,headScale,headScale,headScale);}
   }
   for(const k of cineHordeKeys){horde[k].instanceMatrix.needsUpdate=true;horde[k].boundingSphere=null;}
 };

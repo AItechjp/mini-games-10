@@ -31,14 +31,14 @@ export class Graphics {
   return v;
  }
  burst(x,y,color,count=9){
-  if(this.quality==='low'||this.reduced)return;
+  if(this.r.budget.effects===0||this.reduced)return;
   for(let i=0;i<count&&this.sparks.length<100;i++){const a=i*2.39996,v=35+(i%4)*23;this.sparks.push({x,y,color,vx:Math.cos(a)*v,vy:Math.sin(a)*v,born:this.last});}
  }
  ambient(s){
-  if(this.quality==='low'||this.reduced)return;
+  if(this.r.budget.effects===0||this.reduced)return;
   const r=this.r,c=r.ctx,t=this.last/1000,theme=s.theme;
   c.save();c.globalCompositeOperation='screen';
-  const count=theme===12?32:19;
+  const count=this.r.budget.effects===1?9:theme===12?32:19;
   for(let i=0;i<count;i++){
    const x=(i*173.19+t*(theme===12?14:3+i%4))%1040-20;
    const y=((i*i*57.83+(theme===12?t*24:-t*(7+i%5)))%660+660)%660-30;
@@ -49,7 +49,8 @@ export class Graphics {
   }
   c.restore();
  }
- frame(x,y,w,h,radius=18){
+ frame(x,y,w,h,radius=18){return this.r.cached('frame:'+this.palette.join('')+':'+w+':'+h+':'+radius,x,y,w,h,32,()=>this.frameRaw(x,y,w,h,radius));}
+ frameRaw(x,y,w,h,radius=18){
   const r=this.r,c=r.ctx,[accent,light,dark]=this.palette;
   c.save();c.shadowColor='#00000090';c.shadowBlur=22;c.shadowOffsetY=12;
   const g=c.createLinearGradient(x,y,x,y+h);g.addColorStop(0,light);g.addColorStop(.18,dark);g.addColorStop(1,'#101b2b');
@@ -64,7 +65,8 @@ export class Graphics {
   r.line(x+6,y+3,x+size-6,y+3,'#ffffff17',1);
   if(selected){c.save();c.shadowColor=this.palette[0];c.shadowBlur=this.quality==='low'?0:9;r.rect(x+2,y+1,size-4,size-5,'#ffffff10',6,this.palette[0]);c.restore();}
  }
- gem(x,y,radius,color){
+ gem(x,y,radius,color){return this.r.cached('gem:'+radius+':'+color,x-radius,y-radius,radius*2,radius*2,10,()=>this.gemRaw(x,y,radius,color));}
+ gemRaw(x,y,radius,color){
   const r=this.r,c=r.ctx;c.save();c.shadowColor='#030912b0';c.shadowBlur=5;c.shadowOffsetY=4;
   const g=c.createRadialGradient(x-radius*.3,y-radius*.4,1,x,y,radius);
   g.addColorStop(0,'#fffdf4');g.addColorStop(.22,color);g.addColorStop(1,'#183543');
@@ -73,8 +75,6 @@ export class Graphics {
  finish(s){
   const r=this.r,c=r.ctx,t=this.last;
   for(const p of this.sparks){const age=(t-p.born)/1000;c.save();c.globalAlpha=Math.max(0,1-age/.65);r.line(p.x+p.vx*age*.75,p.y+p.vy*age*.75,p.x+p.vx*age,p.y+p.vy*age+age*age*24,p.color,2);c.restore();}
-  if(!s.board&&s.family!=='social'&&s.family!=='cards'){
-   const g=c.createRadialGradient(500,280,210,500,300,570);g.addColorStop(0,'#03081700');g.addColorStop(1,'#0308176b');c.fillStyle=g;c.fillRect(0,0,1000,600);
-  }
+
  }
 }

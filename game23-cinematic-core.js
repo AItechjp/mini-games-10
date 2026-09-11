@@ -1,5 +1,5 @@
 /* BLACK SITE / cinematic renderer. Original models and materials, shared by all six areas. */
-const CINE_VERSION='cinematic-20260911';
+const CINE_VERSION='cinematic-premium-20260912';
 const cineMobile=matchMedia('(pointer:coarse)').matches||navigator.maxTouchPoints>0;
 const cineAssets=new URL('assets/game23/cinematic/',document.baseURI).href;
 const cineTextures={},cineShared=new Set(),cineTransient=new Set();
@@ -7,13 +7,14 @@ let cineQuality='auto';
 try{cineQuality=localStorage.getItem('blacksite.graphics')||'auto';}catch{}
 if(!['auto','high','balanced','low'].includes(cineQuality))cineQuality='auto';
 if(new URLSearchParams(location.search).get('quality')==='high')cineQuality='high';
-const cineLimits={auto:[cineMobile?1.25:1.6,.8],high:[2,1],balanced:[1.1,.8],low:[.8,.65]};
-let cineRatio=Math.min(devicePixelRatio||1,cineLimits[cineQuality][0]);
+const cineBudget=new AitechFrameBudget({mode:cineQuality,coarse:cineMobile,maxPixels:cineMobile?1500000:2600000});
+let cineRatio=cineBudget.scale(frame.clientWidth||innerWidth,frame.clientHeight||innerHeight,devicePixelRatio||1);
 renderer.setPixelRatio(cineRatio);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure=1.12;
 renderer.shadowMap.enabled=cineQuality!=='low';
 renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.shadowMap.autoUpdate=false;renderer.shadowMap.needsUpdate=true;
 camera.far=420;camera.updateProjectionMatrix();
 resize();
 
@@ -45,17 +46,24 @@ function cineSurface(color,roughness=.8,metalness=0,kind='stone',scale=.28){
         vCineWorld=(modelMatrix*cpos).xyz; vCineNormal=normalize(mat3(modelMatrix)*cn);`);
       shader.fragmentShader='varying vec3 vCineWorld; varying vec3 vCineNormal;\n'+shader.fragmentShader;
       shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`
+        float cineHeight=0.5;
         #ifdef USE_MAP
           vec3 weights=pow(abs(normalize(vCineNormal)),vec3(5.0));weights/=max(dot(weights,vec3(1.0)),0.001);
           vec3 wp=vCineWorld*${scale.toFixed(4)};
           vec4 texel=texture2D(map,wp.yz)*weights.x+texture2D(map,wp.xz)*weights.y+texture2D(map,wp.xy)*weights.z;
-          diffuseColor*=texel;
+          diffuseColor*=texel;cineHeight=dot(texel.rgb,vec3(.299,.587,.114));
         #endif`);
+      // Screen derivatives reuse the existing triplanar sample for fine stone relief.
+      shader.fragmentShader=shader.fragmentShader.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
+        vec3 cq0=dFdx(-vViewPosition),cq1=dFdy(-vViewPosition);
+        vec3 cr1=cross(cq1,normal),cr2=cross(normal,cq0);float cd=dot(cq0,cr1);
+        vec3 cg=sign(cd)*(dFdx(cineHeight)*cr1+dFdy(cineHeight)*cr2);
+        if(abs(cd)>0.000001)normal=normalize(abs(cd)*normal-cg*0.018);`);
       shader.fragmentShader=shader.fragmentShader.replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
         float damp=sin(vCineWorld.x*.77+sin(vCineWorld.z*.36))*sin(vCineWorld.z*.63);
         roughnessFactor=clamp(roughnessFactor-damp*.13,.18,1.0);`);
     };
-    m.customProgramCacheKey=()=>`cine-triplanar-${scale}`;
+    m.customProgramCacheKey=()=>`cine-triplanar-relief-${scale}`;
   }
   return m;
 }
@@ -87,7 +95,7 @@ const cineTextureReady=Promise.all(['stone','skin','fabric'].map(async kind=>{
 const cineSelect=document.createElement('select');cineSelect.id='game23-quality';cineSelect.setAttribute('aria-label','グラフィック品質');
 for(const [value,label] of [['auto','画質：自動'],['high','画質：高画質'],['balanced','画質：標準'],['low','画質：軽量']]){const o=document.createElement('option');o.value=value;o.textContent=label;cineSelect.append(o);}
 cineSelect.value=cineQuality;document.querySelector('.outbreak-toolbar')?.append(cineSelect);
-cineSelect.addEventListener('change',()=>{cineQuality=cineSelect.value;try{localStorage.setItem('blacksite.graphics',cineQuality);}catch{}cineRatio=Math.min(devicePixelRatio||1,cineLimits[cineQuality][0]);renderer.setPixelRatio(cineRatio);renderer.shadowMap.enabled=cineQuality!=='low';scene.traverse(o=>{if(o.material){for(const m of Array.isArray(o.material)?o.material:[o.material])m.needsUpdate=true;}});resize();toast(cineSelect.selectedOptions[0].textContent,900);});
+cineSelect.addEventListener('change',()=>{cineQuality=cineSelect.value;try{localStorage.setItem('blacksite.graphics',cineQuality);}catch{}cineBudget.setMode(cineQuality);cineRatio=cineBudget.scale(frame.clientWidth||innerWidth,frame.clientHeight||innerHeight,devicePixelRatio||1);renderer.setPixelRatio(cineRatio);renderer.shadowMap.enabled=cineQuality!=='low';renderer.shadowMap.needsUpdate=true;scene.traverse(o=>{if(o.material){for(const m of Array.isArray(o.material)?o.material:[o.material])m.needsUpdate=true;}});resize();toast(cineSelect.selectedOptions[0].textContent,900);});
 frame.dataset.graphics=CINE_VERSION;
 
 /* Dispose area-only GPU resources; shared geometry/textures remain reusable. */

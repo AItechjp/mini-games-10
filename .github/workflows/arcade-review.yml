@@ -22,7 +22,9 @@ jobs:
       - name: Verify room security and concurrency
         run: node tests/arcade-online.mjs
       - name: Verify SKYBREAK multiplayer snapshots
-        run: node tests/smash-online-state.mjs
+        run: |
+          node tests/smash-online-state.mjs
+          node tests/graphics-performance.mjs
       - name: Syntax and static bundle
         run: |
           node --check arcade100/app.mjs
