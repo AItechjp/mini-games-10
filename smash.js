@@ -1125,12 +1125,16 @@
     const stage = STAGES[stageKey];
     stage.platforms.forEach((platform,index) => {
       const px=platform.x*width, py=platform.y*height, pw=platform.w*width, ph=platform.h*height;
-      const bodyHeight=ph+(platform.main?38:15);
-      const gradient=ctx.createLinearGradient(px,py,px,py+bodyHeight);
-      gradient.addColorStop(0,'#f6f3ff');gradient.addColorStop(.13,'#8b77c9');gradient.addColorStop(1,'#19103d');
-      ctx.shadowBlur=20;ctx.shadowColor=stage.glow;ctx.fillStyle=gradient;roundedRect(px,py,pw,bodyHeight,platform.main?13:9);ctx.fill();ctx.shadowBlur=0;
-      ctx.fillStyle='#ffffffdf';ctx.fillRect(px+10,py+3,pw-20,2);
-      if(platform.main){ctx.fillStyle='#ffffff0d';for(let n=0;n<8;n++)ctx.fillRect(px+pw*(n/8),py+12,2,bodyHeight-16)}
+      const bodyHeight=ph+(platform.main?38:15),dark=stageKey==='final',edge=dark?'#83d7e1':'#dacba0';
+      const gradient=ctx.createLinearGradient(px,py,px,py+bodyHeight);gradient.addColorStop(0,dark?'#6d8799':'#c9c5b5');gradient.addColorStop(.13,dark?'#354958':'#777f7d');gradient.addColorStop(.24,dark?'#20323e':'#525f66');gradient.addColorStop(1,'#131e2a');
+      ctx.shadowBlur=16;ctx.shadowColor=stage.glow+'85';ctx.fillStyle=gradient;roundedRect(px,py,pw,bodyHeight,4);ctx.fill();ctx.shadowBlur=0;
+      // Carved slab detail is rasterized once with the platform, not every frame.
+      ctx.save();roundedRect(px+1,py+2,pw-2,bodyHeight-3,3);ctx.clip();
+      for(let n=0;n<Math.ceil(pw/5);n++){const xx=px+n*5,hash=Math.sin(n*93.7+index*19.3)*43758.54,fract=hash-Math.floor(hash);ctx.fillStyle=n%3?'#e8dfc00c':'#07111c32';ctx.fillRect(xx,py+9+fract*(bodyHeight-13),1+n%4,1+fract*2);}
+      const blocks=Math.max(2,Math.floor(pw/72));ctx.strokeStyle='#060e1b88';ctx.lineWidth=1;for(let n=1;n<blocks;n++){const xx=px+pw*n/blocks;ctx.beginPath();ctx.moveTo(xx,py+9);ctx.lineTo(xx+3,py+bodyHeight*.6);ctx.lineTo(xx,py+bodyHeight);ctx.stroke();}
+      ctx.restore();ctx.fillStyle=edge;ctx.fillRect(px+4,py+2,pw-8,2);ctx.fillStyle='#f9f4db7a';ctx.fillRect(px+7,py+5,pw-14,1);ctx.fillStyle='#09131d8a';ctx.fillRect(px+4,py+10,pw-8,2);ctx.fillStyle=edge+'70';ctx.fillRect(px+6,py+bodyHeight-6,pw-12,1);
+      ctx.strokeStyle=edge+'ae';ctx.lineWidth=1.3;for(const n of [.08,.5,.92]){const x=px+pw*n,y=py+bodyHeight*.55;ctx.beginPath();ctx.moveTo(x,y-4);ctx.lineTo(x+5,y);ctx.lineTo(x,y+4);ctx.lineTo(x-5,y);ctx.closePath();ctx.stroke();}
+
     });
   }
 
