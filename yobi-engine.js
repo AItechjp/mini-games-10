@@ -116,6 +116,20 @@
     out.settings={goal:Math.max(5,Math.min(100,Number(raw.settings?.goal)||20)),large:raw.settings?.large===true};
     if(raw.daily&&typeof raw.daily==='object')for(const [key,d]of Object.entries(raw.daily)){if(/^\d{4}-\d{2}-\d{2}$/.test(key)&&Number.isFinite(d?.attempts)&&Number.isFinite(d?.correct)&&d.attempts>=0&&d.correct>=0&&d.correct<=d.attempts)out.daily[key]={attempts:d.attempts,correct:d.correct};}
     if(Array.isArray(raw.history))out.history=raw.history.filter(h=>h&&typeof h.title==='string'&&Number.isFinite(h.at)&&Number.isFinite(h.correct)&&Number.isFinite(h.total)).slice(-100).map(h=>({id:String(h.id||''),title:h.title.slice(0,200),at:h.at,correct:h.correct,total:h.total,points:Number(h.points)||0,max:Number(h.max)||0,mode:h.mode==='exam'?'exam':'practice',pauses:Number(h.pauses)||0,block:['public','civil','criminal','general'].includes(h.block)?h.block:'',exam:['preliminary','bar'].includes(h.exam)?h.exam:'',year:Number.isInteger(h.year)&&h.year>=2011&&h.year<=2100?h.year:0,wrong:Array.isArray(h.wrong)?h.wrong.filter(id=>valid.has(id)):[]}));
+    if(raw.legacy&&typeof raw.legacy==='object'&&!Array.isArray(raw.legacy)&&JSON.stringify(raw.legacy).length<2000000)out.legacy=JSON.parse(JSON.stringify(raw.legacy));
+    if(raw.session!==null&&raw.session!==undefined){
+      const s=raw.session,obj=v=>v&&typeof v==='object'&&!Array.isArray(v),finite=v=>typeof v==='number'&&Number.isFinite(v)&&v>=0;
+      if(!obj(s)||typeof s.id!=='string'||s.id.length>100||typeof s.title!=='string'||s.title.length>200||!['practice','exam'].includes(s.mode)||!Array.isArray(s.ids)||!s.ids.length||s.ids.length>bank.length||new Set(s.ids).size!==s.ids.length||s.ids.some(id=>!valid.has(id))||!Number.isInteger(s.index)||s.index<0||s.index>=s.ids.length||!obj(s.answers)||!obj(s.confidence)||!obj(s.graded)||!obj(s.flags)||!finite(s.started)||!finite(s.duration)||s.duration>86400000||!finite(s.deadline)||!finite(s.remainingMs)||s.remainingMs>s.duration||typeof s.paused!=='boolean')throw Error('中断中の演習を読み取れません。元データを保管し、バックアップを確認してください。');
+      const restored={id:s.id,title:s.title,mode:s.mode,ids:[...s.ids],index:s.index,answers:{},confidence:{},graded:{},flags:{},started:s.started,duration:s.duration,deadline:s.deadline,remainingMs:s.remainingMs,paused:s.paused,pauses:Number.isSafeInteger(s.pauses)&&s.pauses>=0?s.pauses:0,block:typeof s.block==='string'?s.block.slice(0,40):''};
+      const byId=new Map(bank.map(q=>[q.id,q]));
+      for(const id of s.ids){
+        if(s.answers[id]!==undefined){const a=s.answers[id];if(!Array.isArray(a)||a.length>10||a.some(v=>!['string','number'].includes(typeof v)||String(v).length>40))throw Error('中断中の回答の形式が不正です。');restored.answers[id]=answers(a);}
+        if(['sure','unsure','guess'].includes(s.confidence[id]))restored.confidence[id]=s.confidence[id];
+        if(s.graded[id]===true){if(!grade(byId.get(id),restored.answers[id]||[]).complete)throw Error('採点済みの回答を確認できません。');restored.graded[id]=true;}
+        if(s.flags[id]===true)restored.flags[id]=true;
+      }
+      out.session=restored;
+    }
     return out;
   }
   root.YobiEngine={DAY,SUBJECTS,BLOCKS,dayKey,normalize,answers,grade,emptyStore,recordAttempt,stats,filterBank,shuffle,dailyQueue,readiness,remaining,pause,resume,validateBackup};

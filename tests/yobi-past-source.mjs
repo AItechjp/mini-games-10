@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import './ronbun-source.mjs';
+import './study-storage.mjs';
 const html=fs.readFileSync('yobi-quiz.html','utf8');
 for(const required of ['yobi-past.js','yobi-engine.js','practiceView','sessionView'])assert(html.includes(required),required+' missing');
 for(const forbidden of ['yobi-complete.js','yobi-complete-data.js','yobi-quiz.js','yobi-quiz-randomize.js','ads-bootstrap','admax','adsbygoogle'])assert(!html.includes(forbidden),'generated bank or advertising must not be connected: '+forbidden);
