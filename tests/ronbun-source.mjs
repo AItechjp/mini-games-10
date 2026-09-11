@@ -29,7 +29,8 @@ for(const subject of E.SUBJECTS)assert(lessons.filter(l=>l.subject===subject).le
 const html=fs.readFileSync('yobi-ronbun.html','utf8'),ui=fs.readFileSync('ronbun.js','utf8');
 for(const asset of ['ronbun.js','ronbun-engine.js','ronbun.css'])assert(html.includes(asset));
 assert(!/ads-bootstrap|adsbygoogle|admax|analytics|supabase/.test(html+ui));
-assert(fs.readFileSync('index.html','utf8').includes('yobi-ronbun.html'));
+// The game home now lists only the five selected games; learning keeps its own entrypoints.
+assert(!fs.readFileSync('index.html','utf8').includes('yobi-ronbun.html'));
 assert(fs.readFileSync('yobi-quiz.html','utf8').includes('yobi-ronbun.html'));
 // The page estimate includes explicit newlines and Unicode, without truncating the saved answer.
 assert.deepEqual(E.measure(''),{characters:0,rows:0,pages:0,limit:2760,over:false});
