@@ -65,7 +65,7 @@ export function player(id){return{id,x:-310+id*3,z:430-id*3,yaw:PI,hp:100,ammo:3
 export function newGame(saved){
  const s={v:VERSION,time:0,elapsed:0,chapter:0,stage:0,active:false,complete:false,stageTime:0,progress:0,started:false,wave:0,checkpoint:0,cash:1200,engine:0,armor:0,wanted:0,heatAt:-50,kills:0,caches:[],jobsDone:[],players:[player(0)],cars:[],enemies:[],events:[],eid:0,message:'BAYLINEへようこそ。Jで仕事を選択。',messageId:0,side:null};
  s.cars.push({id:0,x:-315,z:430,yaw:PI,speed:0,hp:100,driver:-1,passenger:-1,type:0,paint:0,traffic:false,police:false,route:[],wp:0});
- s.cars.push({id:1,x:-315,z:413,yaw:PI,speed:0,hp:100,driver:-1,passenger:-1,type:2,paint:1,traffic:false,police:false,route:[],wp:0});
+ s.cars.push({id:1,x:-325,z:438,yaw:PI,speed:0,hp:100,driver:-1,passenger:-1,type:2,paint:1,traffic:false,police:false,route:[],wp:0});
  const random=rng(2315);
  for(let i=0;i<20;i++){
   const ix=Math.floor(random()*6),iz=Math.floor(random()*6),x=-480+160*ix,z=-480+160*iz;
@@ -196,9 +196,12 @@ export function snapshot(s){return{v:1,t:round(s.time),elapsed:round(s.elapsed),
 export function readSnapshot(d){
  if(!d||d.v!==1||!Array.isArray(d.players)||d.players.length<1||d.players.length>2||!Array.isArray(d.cars)||d.cars.length!==25||!Array.isArray(d.enemies)||d.enemies.length>20)return null;
  if(![d.t,d.elapsed,d.ch,d.st,d.tm,d.p,d.cash,d.en,d.ar,d.w].every(Number.isFinite)||d.ch<0||d.ch>12||d.st<0||d.st>8)return null;
+ if(d.w<0||d.w>5||!Number.isInteger(d.ch)||!Number.isInteger(d.st)||!Number.isInteger(d.cp)||d.cp<0||d.cp>12||d.en<0||d.en>3||d.ar<0||d.ar>3||d.cash<0||d.cash>1e8)return null;
  const valid=(a,n)=>Array.isArray(a)&&a.length>=n&&a.slice(0,n).every(Number.isFinite);
  if(d.players.some(a=>!valid(a,11))||d.cars.some(a=>!valid(a,11))||d.enemies.some(a=>typeof a?.[0]!=='string'||!valid(a.slice(1),5)))return null;
  if(d.players.some(a=>Math.abs(a[1])>540||Math.abs(a[2])>540||a[7]<-1||a[7]>24))return null;
+ if(d.players.some((a,i)=>a[0]!==i||a[4]<0||a[4]>160||!Number.isInteger(a[7]))||d.cars.some((a,i)=>a[0]!==i||Math.abs(a[1])>600||Math.abs(a[2])>600||!Number.isInteger(a[8])||a[8]<0||a[8]>4))return null;
+ if(d.side?.kind==='race'&&d.side.index>=CIRCUITS.length)return null;
  if(d.side&&(!['race','delivery'].includes(d.side.kind)||!Number.isInteger(d.side.index)||d.side.index<0||d.side.index>5))return null;
- return{v:1,time:d.t,elapsed:d.elapsed,chapter:d.ch,stage:d.st,active:!!d.a,complete:!!d.done,stageTime:d.tm,progress:d.p,started:!!d.started,checkpoint:d.cp,cash:d.cash,engine:d.en,armor:d.ar,wanted:d.w,kills:d.k,caches:Array.isArray(d.ca)?d.ca:[],jobsDone:Array.isArray(d.jobs)?d.jobs:[],side:d.side||null,message:String(d.msg||'').slice(0,260),messageId:d.mi,players:d.players.map(a=>({id:a[0],x:a[1],z:a[2],yaw:a[3],hp:a[4],ammo:a[5],reload:a[6],car:a[7],seat:a[8],moving:a[9],revive:a[10]})),cars:d.cars.map(a=>({id:a[0],x:a[1],z:a[2],yaw:a[3],speed:a[4],hp:a[5],driver:a[6],passenger:a[7],type:a[8],paint:a[9],police:!!a[10]})),enemies:d.enemies.map(a=>({id:a[0],x:a[1],z:a[2],yaw:a[3],hp:a[4],moving:a[5]})),events:Array.isArray(d.events)?d.events.slice(-8):[]};
+ return{v:1,time:d.t,elapsed:d.elapsed,chapter:d.ch,stage:d.st,active:!!d.a,complete:!!d.done,stageTime:d.tm,progress:d.p,started:!!d.started,checkpoint:d.cp,cash:d.cash,engine:d.en,armor:d.ar,wanted:d.w,kills:d.k,caches:Array.isArray(d.ca)?d.ca:[],jobsDone:Array.isArray(d.jobs)?d.jobs:[],side:d.side||null,message:String(d.msg||'').slice(0,260),messageId:d.mi,players:d.players.map(a=>({id:a[0],x:a[1],z:a[2],yaw:a[3],hp:a[4],ammo:a[5],reload:a[6],car:a[7],seat:a[8],moving:a[9],revive:a[10]})),cars:d.cars.map(a=>({id:a[0],x:a[1],z:a[2],yaw:a[3],speed:a[4],hp:a[5],driver:a[6],passenger:a[7],type:a[8],paint:a[9],police:!!a[10]})),enemies:d.enemies.map(a=>({id:a[0],x:a[1],z:a[2],yaw:a[3],hp:a[4],moving:a[5]})),events:Array.isArray(d.events)?d.events.slice(-8).filter(e=>e&&Number.isFinite(e.id)&&Number.isFinite(e.x)&&Number.isFinite(e.z)&&Number.isFinite(e.t)&&['shot','enemyshot','crash','down','success','checkpoint','hurt'].includes(e.type)&&(!['shot','enemyshot'].includes(e.type)||Number.isFinite(e.yaw))):[]};
 }
