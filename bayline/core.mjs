@@ -87,7 +87,7 @@ export function target(s){const q=currentStep(s);if(!q)return null;if(q.type==='
 export function resetStage(s){s.enemies=[];s.stageTime=0;s.progress=0;s.started=false;s.wave=0;s.checkpoint=0;}
 export function startMission(s){if(s.complete){notify(s,'メインストーリーは完結。街の仕事と探索を続けられます。');return;}s.side=null;s.active=true;resetStage(s);notify(s,CHAPTERS[s.chapter].intro);}
 function completeStep(s){
- if(s.side){if(s.side.kind==='delivery'&&s.side.phase===0){s.side.phase=1;resetStage(s);notify(s,'荷物を受け取った。目的地へ急ごう。');return;}const reward=s.side.kind==='race'?900:JOBS[s.side.index].reward;s.cash+=reward;if(s.side.kind==='delivery'&&!s.jobsDone.includes(s.side.index))s.jobsDone.push(s.side.index);s.side=null;s.active=false;resetStage(s);notify(s,`依頼達成  +$${reward.toLocaleString()}。Jから次の仕事を選択。`);event(s,'success',s.players[0].x,s.players[0].z);return;}
+ if(s.side){if(s.side.kind==='delivery'&&s.side.phase===0){s.side.phase=1;resetStage(s);s.started=true;notify(s,'荷物を受け取った。目的地へ急ごう。');return;}const reward=s.side.kind==='race'?900:JOBS[s.side.index].reward;s.cash+=reward;if(s.side.kind==='delivery'&&!s.jobsDone.includes(s.side.index))s.jobsDone.push(s.side.index);s.side=null;s.active=false;resetStage(s);notify(s,`依頼達成  +$${reward.toLocaleString()}。Jから次の仕事を選択。`);event(s,'success',s.players[0].x,s.players[0].z);return;}
  const ch=CHAPTERS[s.chapter];if(!ch)return;s.stage++;resetStage(s);event(s,'success',s.players[0].x,s.players[0].z);
  if(s.stage>=ch.steps.length){s.cash+=ch.reward;s.chapter++;s.stage=0;s.active=false;s.wanted=Math.min(s.wanted,.8);for(const p of s.players){p.hp=100+s.armor*20;p.ammo=30;}s.complete=s.chapter>=CHAPTERS.length;notify(s,s.complete?'AFTERLIGHT — 証拠は届いた。この街の続きは、あなたたちのもの。':`CHAPTER COMPLETE  +$${ch.reward.toLocaleString()}。Jで次の章へ。`);}else notify(s,currentStep(s).text);
 }
@@ -139,11 +139,12 @@ function aiCar(s,c,dt){
  if(distance(c,p)<14&&s.time-p.lastHurt>1.2&&sight(c,p))hurt(s,p,5);return;}
  if(!c.traffic){c.speed*=Math.exp(-3*dt);if(Math.abs(c.speed)>.05){const x=c.x+Math.sin(c.yaw)*c.speed*dt,z=c.z+Math.cos(c.yaw)*c.speed*dt;if(!blocked(x,z,1.45)){c.x=x;c.z=z;}}return;}
  const q=c.route[c.wp];if(distance(c,q)<7)c.wp=(c.wp+1)%c.route.length;
- const t=c.route[c.wp],aim=Math.atan2(t.x-c.x,t.z-c.z),err=angle(aim-c.yaw);c.yaw=angle(c.yaw+clamp(err,-2.7*dt,2.7*dt));c.speed+=(Math.abs(err)>.8?5:11+((c.id*3)%5)-c.speed)*0;const desired=Math.abs(err)>.6?6:11+c.id%4;c.speed+=(desired-c.speed)*Math.min(1,dt*2);
+ const t=c.route[c.wp],aim=Math.atan2(t.x-c.x,t.z-c.z),err=angle(aim-c.yaw);c.yaw=angle(c.yaw+clamp(err,-2.7*dt,2.7*dt));const desired=Math.abs(err)>.6?6:11+c.id%4;c.speed+=(desired-c.speed)*Math.min(1,dt*2);
  const x=c.x+Math.sin(c.yaw)*c.speed*dt,z=c.z+Math.cos(c.yaw)*c.speed*dt;if(!blocked(x,z,1.4)){c.x=x;c.z=z;}else{c.speed=0;const n=nearestRoad(c);c.x+=(n.x-c.x)*dt;c.z+=(n.z-c.z)*dt;c.yaw=aim;}
 }
 function stageUpdate(s,inputs,dt){
  const q=currentStep(s),t=target(s);if(!q||!t)return;const near=s.players.filter(p=>p.hp>0&&distance(p,t)<(q.type==='combat'||q.type==='defend'?70:18));
+ if(q.type==='escape'&&!s.started){s.started=true;s.stageTime=0;s.wanted=Math.max(s.wanted,2);s.heatAt=s.time;}
  if(!s.started){if(!near.length)return;if(q.type==='race'&&!near.some(p=>p.car>=0))return;s.started=true;s.stageTime=0;if(q.type==='combat'||q.type==='defend')spawnEnemies(s,t,q.count||4);if(q.type==='escape'){s.wanted=Math.max(s.wanted,2);s.heatAt=s.time;}if(q.heat){s.wanted=Math.max(s.wanted,q.heat);s.heatAt=s.time;}}
  s.stageTime+=dt;
  if(q.type==='drive'){if(near.some(p=>p.car>=0)){completeStep(s);return;}}
@@ -173,7 +174,7 @@ export function tick(s,rawInputs,delta){
  const dt=clamp(finite(delta),0,.05);if(!dt)return;const inputs=s.players.map((_,i)=>cleanInput(rawInputs[i]));s.time+=dt;s.elapsed+=dt;
  for(const p of s.players){const i=inputs[p.id];p.shot=Math.max(0,p.shot-dt);if(p.reload>0){p.reload=Math.max(0,p.reload-dt);if(p.reload===0)p.ammo=30;}
   if(p.hp<=0){p.down+=dt;const helper=s.players.find(u=>u.id!==p.id&&u.hp>0&&u.car<0&&distance(u,p)<4&&inputs[u.id]?.interact);if(helper){p.revive+=dt;if(p.revive>=3){p.hp=60;p.down=0;p.revive=0;notify(s,'相棒を救助した。');}}else p.revive=0;continue;}
-  perform(s,p,i);if(p.car<0){const speed=i.run?8:4.6,dx=(Math.sin(i.yaw)*i.y+Math.cos(i.yaw)*i.x)*speed*dt,dz=(Math.cos(i.yaw)*i.y-Math.sin(i.yaw)*i.x)*speed*dt;movePerson(p,dx,dz);p.moving=Math.hypot(dx,dz)/dt;if(p.moving>.1)p.yaw=Math.atan2(dx,dz);if(i.fire)p.yaw=i.yaw;}else p.moving=Math.abs(s.cars[p.car]?.speed||0);
+  perform(s,p,i);if(p.car<0){const speed=i.run?8:4.6,dx=(Math.sin(i.yaw)*i.y-Math.cos(i.yaw)*i.x)*speed*dt,dz=(Math.cos(i.yaw)*i.y+Math.sin(i.yaw)*i.x)*speed*dt;movePerson(p,dx,dz);p.moving=Math.hypot(dx,dz)/dt;if(p.moving>.1)p.yaw=Math.atan2(dx,dz);if(i.fire)p.yaw=i.yaw;}else p.moving=Math.abs(s.cars[p.car]?.speed||0);
   if(i.fire)shoot(s,p,i);
   if(s.time-p.lastHurt>12)p.hp=Math.min(100+s.armor*20,p.hp+dt*4);
  }
