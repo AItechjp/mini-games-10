@@ -4,19 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b1020">
-  <meta name="description" content="大富豪、ババ抜き、UNO風カードゲーム、オセロ、マルバツをCPU戦またはログイン不要の2人オンライン対戦で遊べます。">
-  <title>クラシック対戦ゲーム - 20秒ミニゲームズ</title>
+  <meta name="description" content="大富豪・五目並べをCPU対戦、または部屋コードを使ったオンライン2人対戦で楽しめます。">
+  <title>大富豪・五目並べ | AITECH GAMES</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mode-switch.css">
   <link rel="stylesheet" href="classic.css">
   <link rel="stylesheet" href="classic-scroll-fix.css">
+  <link rel="stylesheet" href="gomoku.css?v=1">
 </head>
 <body>
-<header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">20秒ミニゲームズ</a><nav><a href="solo.html">1人用</a><a href="online.html">オンライン</a><a href="whiteboard.html">ホワイトボード</a></nav></div></header>
+<header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">AITECH GAMES</a><nav aria-label="メイン"><a href="index.html#games">5本のゲーム一覧</a></nav></div></header>
 <main class="wrap classic-shell">
   <section class="classic-hero">
     <div><p id="game-kicker" class="eyebrow">CLASSIC GAME</p><h1 id="game-title">クラシックゲーム</h1><p id="game-summary">読み込み中…</p></div>
-    <div class="classic-actions"><a class="ghost-link" href="solo.html">← ゲーム一覧</a><button id="rules-btn" class="ghost-btn" type="button">ルール</button><button id="fullscreen-btn" class="ghost-btn" type="button">全画面</button></div>
+    <div class="classic-actions"><a class="ghost-link" href="index.html#games">← ゲーム一覧</a><button id="rules-btn" class="ghost-btn" type="button">ルール</button><button id="fullscreen-btn" class="ghost-btn" type="button">全画面</button></div>
   </section>
 
   <div class="mode-switch-bar classic-mode-bar" aria-label="プレイモード切替">
@@ -50,7 +51,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script>
 <script src="supabase-config.js"></script>
 <script src="peer-supabase-shim.js"></script>
-<script src="classic-advanced.js" defer></script>
+<script src="gomoku-engine.js?v=1" defer></script>
+<script src="classic-advanced.js?v=five-games-1" defer></script>
 <script src="classic-hand-scroll.js" defer></script>
 </body>
 </html>

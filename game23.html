@@ -6,7 +6,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="description" content="蛇行する広域ルート、濃密な障害物、感染体10種、巨大ボスを突破する協力対応3DサバイバルFPS。洋館、雪山、峡谷、港湾、終末都市、悪魔城の6区域を探索。">
-  <title>GAME 23 - OUTBREAK: BLACK SITE ULTIMATE</title>
+  <title>OUTBREAK: BLACK SITE ULTIMATE</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mode-switch.css">
   <link rel="stylesheet" href="game23.css">
@@ -16,10 +16,9 @@
   <link rel="stylesheet" href="game23-systems.css?v=operations-1">
 </head>
 <body class="outbreak-page">
-<header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">20秒ミニゲームズ</a><nav><a href="#mission">MISSION</a><a href="online.html">ゲーム一覧</a></nav></div></header>
+<header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">AITECH GAMES</a><nav><a href="#mission">MISSION</a><a href="index.html#games">ゲーム一覧</a></nav></div></header>
 <main class="wrap outbreak-wrap">
-  <div class="mode-switch-bar" aria-label="サイトモード"><button class="mode-switch-btn" data-mode-href="solo.html">1人用</button><button class="mode-switch-btn" data-mode-href="online.html">オンライン対戦</button><button class="mode-switch-btn" data-mode-href="chat.html">チャット</button></div>
-  <section class="hero outbreak-hero"><p class="eyebrow">GAME 23 / HORROR OPEN-WORLD FPS</p><h1>OUTBREAK:<br>BLACK SITE</h1><p>6章・24の主目標、18の記録、12の補給拠点。通常敵は1発、デブ系とボスは高耐久。キャンペーンも無限サバイバルも、2人で協力して生還せよ。</p></section>
+  <section class="hero outbreak-hero"><p class="eyebrow">ZOMBIE SURVIVAL / HORROR OPEN-WORLD FPS</p><h1>OUTBREAK:<br>BLACK SITE</h1><p>6章・24の主目標、18の記録、12の補給拠点。通常敵は1発、デブ系とボスは高耐久。キャンペーンも無限サバイバルも、2人で協力して生還せよ。</p></section>
   <section id="mission" class="outbreak-panel">
     <div class="outbreak-toolbar"><div class="outbreak-switch" aria-label="プレイ人数"><button id="mode-solo" class="outbreak-choice active" type="button">SOLO</button><button id="mode-coop" class="outbreak-choice" type="button">CO-OP</button></div><div class="difficulty-switch" aria-label="難易度"><button class="difficulty-btn" data-difficulty="easy" type="button">EASY</button><button class="difficulty-btn active" data-difficulty="normal" type="button">NORMAL</button><button class="difficulty-btn danger" data-difficulty="nightmare" type="button">NIGHTMARE</button></div><button id="outbreak-fullscreen" class="outbreak-choice" type="button">横向き全画面</button></div>
     <div id="coop-lobby" class="coop-lobby hidden"><div class="coop-card"><span>HOST</span><h3>部屋を作る</h3><p>6桁コードを相手に送信。ホストが難易度と開始を管理します。</p><button id="coop-create" type="button">部屋を作る</button><div id="coop-created" class="hidden"><strong id="coop-room-code">------</strong><button id="coop-copy" type="button">コピー</button></div></div><div class="coop-card"><span>GUEST</span><h3>部屋に参加</h3><p>相手の6桁コードを入力して同じ感染区域へ。</p><input id="coop-join-code" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="ABC123"><button id="coop-join" type="button">参加する</button></div><div class="coop-status"><strong id="coop-status">未接続</strong><span id="coop-detail">Supabase Realtime / 2 players</span></div></div>
@@ -41,6 +40,6 @@
     </div>
   </section>
 </main>
-<footer><div class="wrap">© 2026 20秒ミニゲームズ</div></footer>
+<footer><div class="wrap">© 2026 AITECH GAMES</div></footer>
 <script src="mode-switch.js?v=noads-1"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script><script src="supabase-config.js"></script><script src="game-backend.js"></script><script src="graphics-performance.js?v=physical2"></script><script type="module" src="game23-v3-loader.js?v=physical2"></script>
 </body></html>
