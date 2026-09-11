@@ -66,15 +66,21 @@ for(const id of ids){
 
 errors.length = 0;
 await page.goto(root + 'index.html', {waitUntil:'domcontentloaded'});
-let megaLinks = await page.locator('a[href="mega-arcade.html"], [data-mode-href="mega-arcade.html"]').count();
-if(megaLinks < 1) {
-  const archive = page.locator('a[href="archive.html"]').first();
-  if(await archive.count() !== 1) throw new Error('The home page has no link to the game archive');
-  await archive.click();
-  await page.waitForURL('**/archive.html');
-  megaLinks = await page.locator('a[href="mega-arcade.html"], [data-mode-href="mega-arcade.html"]').count();
-}
-if(megaLinks < 1) throw new Error('MEGA ARCADE is not accessible from the home page or its archive');
+// Legacy game URLs remain usable, but the public home lists exactly the five selected titles.
+const listed = await page.locator('article[data-game]').evaluateAll(nodes => nodes.map(n => n.dataset.game));
+if(JSON.stringify(listed) !== JSON.stringify(['zombie','smash','aether','daifugo','gomoku'])) throw new Error('The home must list only the five selected games');
+if(await page.locator('a[href="mega-arcade.html"], a[href="archive.html"], a[href="arcade100/"], a[href="yobi-ronbun.html"]').count()) throw new Error('An unlisted collection is linked from the home');
+await page.locator('[data-game="gomoku"] .play').click();
+await page.waitForSelector('.gomoku-cell');
+if(await page.locator('.gomoku-cell').count() !== 225) throw new Error('Gomoku must open a full 15x15 board');
+await page.locator('[data-gomoku="112"]').click();
+await page.waitForFunction(() => document.querySelectorAll('.gomoku-stone').length === 2);
+await page.locator('#new-game-btn').click();
+await page.waitForFunction(() => document.querySelectorAll('.gomoku-stone').length === 0);
+await failIfErrors('Gomoku CPU move and replay');
+await page.locator('.classic-actions a').click();
+await page.waitForSelector('article[data-game]');
+if(await page.locator('article[data-game]').count() !== 5) throw new Error('Back navigation must return to the five-game home');
 
 console.log(`MEGA ARCADE smoke OK: ${full ? ids.length : 'representative'} modes; catalog=320; profiles=320`);
 await browser.close();
