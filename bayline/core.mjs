@@ -145,6 +145,7 @@ function aiCar(s,c,dt){
 function stageUpdate(s,inputs,dt){
  const q=currentStep(s),t=target(s);if(!q||!t)return;const near=s.players.filter(p=>p.hp>0&&distance(p,t)<(q.type==='combat'||q.type==='defend'?70:18));
  if(q.type==='escape'&&!s.started){s.started=true;s.stageTime=0;s.wanted=Math.max(s.wanted,2);s.heatAt=s.time;}
+ if(q.type==='escape'&&!s.started){s.started=true;s.stageTime=0;s.wanted=Math.max(s.wanted,2);s.heatAt=s.time;}
  if(!s.started){if(!near.length)return;if(q.type==='race'&&!near.some(p=>p.car>=0))return;s.started=true;s.stageTime=0;if(q.type==='combat'||q.type==='defend')spawnEnemies(s,t,q.count||4);if(q.type==='escape'){s.wanted=Math.max(s.wanted,2);s.heatAt=s.time;}if(q.heat){s.wanted=Math.max(s.wanted,q.heat);s.heatAt=s.time;}}
  s.stageTime+=dt;
  if(q.type==='drive'){if(near.some(p=>p.car>=0)){completeStep(s);return;}}
