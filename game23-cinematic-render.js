@@ -4,6 +4,19 @@ const cineSize=new THREE.Vector2();
 const cineTarget=new THREE.WebGLRenderTarget(1,1,{type:renderer.extensions.has('EXT_color_buffer_float')?THREE.HalfFloatType:THREE.UnsignedByteType,depthBuffer:true});
 cineTarget.depthTexture=new THREE.DepthTexture(1,1,THREE.UnsignedIntType);
 const cinePostScene=new THREE.Scene(),cinePostCamera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+const cineGpu=new AitechGpuBudget(renderer.getContext());
+const cineBloomA=new THREE.WebGLRenderTarget(1,1,{type:cineTarget.texture.type,depthBuffer:false});
+const cineBloomB=new THREE.WebGLRenderTarget(1,1,{type:cineTarget.texture.type,depthBuffer:false});
+const cineBloomScene=new THREE.Scene();
+const cineBloomMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,toneMapped:false,uniforms:{tSource:{value:cineTarget.texture},uStep:{value:new THREE.Vector2()},uExtract:{value:1}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}',fragmentShader:`
+  varying vec2 vUv;uniform sampler2D tSource;uniform vec2 uStep;uniform float uExtract;
+  vec3 sampleLight(vec2 uv){vec3 c=texture2D(tSource,uv).rgb;float peak=max(c.r,max(c.g,c.b));float knee=clamp((peak-.65)/.7,0.0,1.0);return mix(c,c*max(peak-.95,0.0)/max(peak,.001)*knee,uExtract);}
+  void main(){vec3 c=sampleLight(vUv)*.227027;
+    c+=(sampleLight(vUv+uStep*1.384615)+sampleLight(vUv-uStep*1.384615))*.316216;
+    c+=(sampleLight(vUv+uStep*3.230769)+sampleLight(vUv-uStep*3.230769))*.070270;
+    gl_FragColor=vec4(c,1.0);
+  }`});
+cineBloomScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),cineBloomMat));
 const cinePostMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,toneMapped:true,uniforms:{tColor:{value:cineTarget.texture},tDepth:{value:cineTarget.depthTexture},uResolution:{value:new THREE.Vector2(1,1)},uTime:{value:0},uNear:{value:camera.near},uFar:{value:camera.far},uContact:{value:1},uDetail:{value:.12}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}',fragmentShader:`
   varying vec2 vUv;uniform sampler2D tColor;uniform sampler2D tDepth;uniform vec2 uResolution;uniform float uTime;uniform float uNear;uniform float uFar;uniform float uContact;uniform float uDetail;
   float depthAt(vec2 uv){float z=texture2D(tDepth,uv).x*2.0-1.0;return 2.0*uNear*uFar/(uFar+uNear-z*(uFar-uNear));}
@@ -23,8 +36,17 @@ const cinePostMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,ton
     #include <colorspace_fragment>
   }`});
 cinePostScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),cinePostMat));
+cinePostMat.uniforms.tBloom={value:cineBloomB.texture};
+cinePostMat.uniforms.uBloom={value:0};
+cinePostMat.uniforms.uQuality={value:1};
+cinePostMat.fragmentShader=cinePostMat.fragmentShader
+  .replace('varying vec2 vUv;uniform sampler2D tColor;', 'varying vec2 vUv;uniform sampler2D tBloom;uniform float uBloom;uniform float uQuality;uniform sampler2D tColor;')
+  .replace('float radius=clamp(17.0/max(2.0,z),1.4,5.0);','float radius=clamp(42.0/max(2.0,z),2.0,12.0);float bias=max(.025,min(.15,length(vec2(dFdx(z),dFdy(z)))*1.6));')
+  .replace('for(int i=0;i<6;i++){float a=float(i)*1.0472;vec2 d=vec2(cos(a),sin(a));float other=depthAt(clamp(vUv+d*px*radius,vec2(.001),vec2(.999)));float dz=z-other;occ+=step(.10,dz)*(1.0-smoothstep(.35,2.8,dz));vec3 b=texture2D(tColor,vUv+d*px*4.0).rgb;bloom+=max(b-vec3(1.1),vec3(0.0));}',
+  'float taps=uQuality>1.5?12.0:6.0;for(int i=0;i<12;i++){if(float(i)>=taps)break;float a=float(i)*2.399963;vec2 d=vec2(cos(a),sin(a));float r=radius*sqrt((float(i)+.5)/taps);float other=depthAt(clamp(vUv+d*px*r,vec2(.001),vec2(.999)));float dz=z-other;occ+=smoothstep(bias,bias+.15,dz)*(1.0-smoothstep(.35,2.0,dz));}')
+  .replace('c*=1.0-min(occ/6.0*.25*uContact,.20);c+=bloom*.035;', 'c*=1.0-min(occ/taps*.38*uContact,.28);if(uBloom>.001)c+=texture2D(tBloom,vUv).rgb*uBloom;');
 const cineResizeBase=resize;
-resize=function(){cineRatio=cineBudget.scale(frame.clientWidth||innerWidth,frame.clientHeight||innerHeight,devicePixelRatio||1);renderer.setPixelRatio(cineRatio);renderer.shadowMap.needsUpdate=true;cineResizeBase();renderer.getDrawingBufferSize(cineSize);cineTarget.setSize(cineSize.x,cineSize.y);cinePostMat.uniforms.uResolution.value.copy(cineSize);};
+resize=function(){cineRatio=cineBudget.scale(frame.clientWidth||innerWidth,frame.clientHeight||innerHeight,devicePixelRatio||1);renderer.setPixelRatio(cineRatio);renderer.shadowMap.needsUpdate=true;cineResizeBase();renderer.getDrawingBufferSize(cineSize);cineTarget.setSize(cineSize.x,cineSize.y);cinePostMat.uniforms.uResolution.value.copy(cineSize);const down=cineMobile?4:2;cineBloomA.setSize(Math.max(1,Math.ceil(cineSize.x/down)),Math.max(1,Math.ceil(cineSize.y/down)));cineBloomB.setSize(cineBloomA.width,cineBloomA.height);};
 resize();
 let cinePrevFrame=performance.now(),cineLastDraw=0,cineCpuMs=0,cineShadowAt=0,cineSizeAt=0,cineLampAt=0,cineFlashOn=true,cineReloadAt=0,cineWasReloading=false,cineDrawCalls=0;
 const cineFlashButton=document.createElement('button');cineFlashButton.type='button';cineFlashButton.className='cine-flash-button';cineFlashButton.setAttribute('aria-label','ライトを切り替え');cineFlashButton.setAttribute('aria-pressed','true');cineFlashButton.textContent='LIGHT';frame.append(cineFlashButton);
@@ -35,7 +57,7 @@ addEventListener('keydown',e=>{if(e.code==='KeyF'&&!e.repeat)cineToggleLight();}
 renderer.render=function(s,c){
   if(s!==scene||c!==camera)return cineRender(s,c);
   const now=performance.now(),t=now*.001,frameMs=now-cinePrevFrame;cinePrevFrame=now;
-  const changed=cineBudget.sample(frameMs,cineCpuMs,now,state.running&&!document.hidden);
+  const changed=cineBudget.sample(frameMs,Math.max(cineCpuMs,cineGpu.poll()),now,state.running&&!document.hidden);
   if(!cineBudget.shouldDraw(now,!document.hidden,!state.running))return;
   const dt=Math.min(.08,(now-(cineLastDraw||now))/1000);cineLastDraw=now;
   if(changed||now-cineSizeAt>1000){cineSizeAt=now;const ratio=cineBudget.scale(frame.clientWidth||innerWidth,frame.clientHeight||innerHeight,devicePixelRatio||1);if(Math.abs(ratio-cineRatio)>.025)resize();}
@@ -54,9 +76,20 @@ renderer.render=function(s,c){
     if(cineMuzzle){cineMuzzle.visible=now-cineLastShot<48&&state.running;cineMuzzle.rotation.z=t*47;}
   }
   for(const [id,g] of remoteMeshes){const p=state.players.get(id);if(!p)continue;const old=g.userData.cineLastPosition;const moving=old&&Math.hypot(p.x-old.x,p.z-old.z)>.008;g.userData.cineLastPosition={x:p.x,z:p.z};for(const o of g.children){if(o.name==='lLeg')o.rotation.x=moving?Math.sin(t*7)*.3:0;if(o.name==='rLeg')o.rotation.x=moving?-Math.sin(t*7)*.3:0;}}
-  if(cineQuality==='low'){renderer.setRenderTarget(null);cineRender(scene,camera);cineDrawCalls=renderer.info.render.calls;cineCpuMs=performance.now()-now;return;}
+  cineGpu.begin();
+  if(cineQuality==='low'){renderer.setRenderTarget(null);cineRender(scene,camera);cineDrawCalls=renderer.info.render.calls;cineGpu.end();cineCpuMs=performance.now()-now;return;}
   cinePostMat.uniforms.uDetail.value=cineQuality==='high'?.18:cineBudget.effects<2?.08:.12;cinePostMat.uniforms.uTime.value=t;cinePostMat.uniforms.uContact.value=cineBudget.effects<2?.6:1;
-  renderer.setRenderTarget(cineTarget);cineRender(scene,camera);cineDrawCalls=renderer.info.render.calls;renderer.setRenderTarget(null);cineRender(cinePostScene,cinePostCamera);cineDrawCalls+=renderer.info.render.calls;cineCpuMs=performance.now()-now;
+  cinePostMat.uniforms.uQuality.value=cineBudget.effects;
+  renderer.setRenderTarget(cineTarget);cineRender(scene,camera);cineDrawCalls=renderer.info.render.calls;
+  const bloom=cineBudget.effects===2&&(!cineMobile||cineQuality==='high');
+  cinePostMat.uniforms.uBloom.value=bloom?.24:0;
+  if(bloom){
+    cineBloomMat.uniforms.tSource.value=cineTarget.texture;cineBloomMat.uniforms.uExtract.value=1;cineBloomMat.uniforms.uStep.value.set(1/cineBloomA.width,0);
+    renderer.setRenderTarget(cineBloomA);cineRender(cineBloomScene,cinePostCamera);cineDrawCalls+=renderer.info.render.calls;
+    cineBloomMat.uniforms.tSource.value=cineBloomA.texture;cineBloomMat.uniforms.uExtract.value=0;cineBloomMat.uniforms.uStep.value.set(0,1/cineBloomA.height);
+    renderer.setRenderTarget(cineBloomB);cineRender(cineBloomScene,cinePostCamera);cineDrawCalls+=renderer.info.render.calls;
+  }
+  renderer.setRenderTarget(null);cineRender(cinePostScene,cinePostCamera);cineDrawCalls+=renderer.info.render.calls;cineGpu.end();cineCpuMs=performance.now()-now;
 };
 
 /* A real scene behind the game menu; no separate promotional artwork. */
@@ -67,4 +100,6 @@ const cinePreviewArena=buildEnvironment();spawnHostWorld(cinePreviewArena);cineM
 syncModeUI();syncDifficultyUI();uxLabels();
 if(owNote)owNote.textContent=currentStage().jp;
 /* Keep diagnostics read-only; the existing automated startup gate uses these facts. */
-Object.defineProperty(window,'blacksiteGraphics',{configurable:true,get:()=>({version:CINE_VERSION,worldBuildMs:Math.round(cineWorldBuildMs),cachedEnvironments:cineEnvironmentCache.size,budget:cineBudget.stats,quality:cineQuality,resolutionScale:cineRatio,textures:Object.keys(cineTextures),area:state.area,infected:state.enemies.size,shadowMap:renderer.shadowMap.enabled,drawCalls:cineDrawCalls})});
+Object.defineProperty(window,'blacksiteGraphics',{configurable:true,get:()=>({version:CINE_VERSION,worldBuildMs:Math.round(cineWorldBuildMs),cachedEnvironments:cineEnvironmentCache.size,budget:cineBudget.stats,gpu:cineGpu.stats,bloom:cinePostMat.uniforms.uBloom.value>0,quality:cineQuality,resolutionScale:cineRatio,textures:Object.keys(cineTextures),area:state.area,infected:state.enemies.size,shadowMap:renderer.shadowMap.enabled,drawCalls:cineDrawCalls})});
+renderer.domElement.addEventListener('webglcontextlost',()=>cineGpu.clear());
+addEventListener('pagehide',()=>cineGpu.clear());

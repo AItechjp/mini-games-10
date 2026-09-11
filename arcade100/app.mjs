@@ -1,6 +1,6 @@
 import {GAMES,GAME_BY_ID,createGame,action,tick,view,isRealtime} from './engine.mjs';
 import {OnlineRoom} from './network.mjs';
-import {Renderer,COLORS} from './render.mjs?v=premium1';
+import {Renderer,COLORS} from './render.mjs?v=physical2';
 const $=id=>document.getElementById(id),stage=$('stage'),renderer=new Renderer(stage);
 let spec=null,net=null,hostState=null,state=null,side=0,preview=true,filter='all',choice=0,selectedCard=-1,selectedCell=-1,lastUI='',sound=false,audio=null,lastInput=0,lastCheckpoint=0,lastFrame=performance.now(),elapsed=0,roomStatus='',busy=false,focused=true;
 const inputs={},input={x:0,y:0,aimX:500,aimY:300,primary:false},keys=new Set(),pending=new Map(),accepted=new Map(),sendTimes=new Map(),inputTimes={},rates={};

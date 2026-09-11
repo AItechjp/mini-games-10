@@ -39,4 +39,33 @@
     get stats(){return {mode:this.mode,fps:this.fps,targetFps:this.targetFps,scaleFactor:this.factor,effects:this.effects,cpuMs:Math.round(this.cpuMs*100)/100,frames:this.frames};}
   }
   globalThis.AitechFrameBudget=FrameBudget;
+  /* Asynchronous GPU timings. Never wait for a query or force a GPU readback. */
+  class GpuBudget {
+    constructor(gl){
+      this.gl=gl;this.ext=gl?.createQuery?gl.getExtension('EXT_disjoint_timer_query_webgl2'):null;
+      this.pending=[];this.pool=[];this.active=null;this.ms=0;this.samples=0;this.frame=0;
+    }
+    poll(){
+      const g=this.gl,e=this.ext;if(!e||g.isContextLost())return 0;
+      if(g.getParameter(e.GPU_DISJOINT_EXT)){this.clear();this.ms=0;this.samples=0;return 0;}
+      while(this.pending.length&&g.getQueryParameter(this.pending[0],g.QUERY_RESULT_AVAILABLE)){
+        const q=this.pending.shift(),ms=g.getQueryParameter(q,g.QUERY_RESULT)/1e6;
+        if(Number.isFinite(ms)&&ms>0&&ms<1000){this.ms=this.samples?this.ms*.75+ms*.25:ms;this.samples++;}
+        this.pool.push(q);
+      }
+      return this.ms;
+    }
+    begin(){
+      const g=this.gl,e=this.ext;this.poll();
+      if(!e||g.isContextLost()||this.active||this.pending.length>=3||++this.frame%6)return false;
+      // Another renderer or profiling tool may already own the timer target.
+      if(g.getQuery(e.TIME_ELAPSED_EXT,g.CURRENT_QUERY))return false;
+      const q=this.pool.pop()||g.createQuery();if(!q)return false;
+      g.beginQuery(e.TIME_ELAPSED_EXT,q);this.active=q;return true;
+    }
+    end(){if(!this.active)return;this.gl.endQuery(this.ext.TIME_ELAPSED_EXT);this.pending.push(this.active);this.active=null;}
+    clear(){if(this.active){if(!this.gl.isContextLost())this.gl.endQuery(this.ext.TIME_ELAPSED_EXT);this.gl.deleteQuery(this.active);this.active=null;}for(const q of [...this.pending,...this.pool])this.gl.deleteQuery(q);this.pending=[];this.pool=[];}
+    get stats(){return {supported:!!this.ext,gpuMs:this.samples?Math.round(this.ms*100)/100:null,samples:this.samples,pending:this.pending.length};}
+  }
+  globalThis.AitechGpuBudget=GpuBudget;
 })();

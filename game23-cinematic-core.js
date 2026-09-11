@@ -1,5 +1,5 @@
 /* BLACK SITE / cinematic renderer. Original models and materials, shared by all six areas. */
-const CINE_VERSION='cinematic-premium-20260912';
+const CINE_VERSION='cinematic-physical-20260913';
 const cineMobile=matchMedia('(pointer:coarse)').matches||navigator.maxTouchPoints>0;
 const cineAssets=new URL('assets/game23/cinematic/',document.baseURI).href;
 const cineTextures={},cineShared=new Set(),cineTransient=new Set();

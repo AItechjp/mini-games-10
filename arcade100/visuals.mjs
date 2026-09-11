@@ -52,16 +52,16 @@ export class Graphics {
  frame(x,y,w,h,radius=18){return this.r.cached('frame:'+this.palette.join('')+':'+w+':'+h+':'+radius,x,y,w,h,32,()=>this.frameRaw(x,y,w,h,radius));}
  frameRaw(x,y,w,h,radius=18){
   const r=this.r,c=r.ctx,[accent,light,dark]=this.palette;
+  r.materials.surface(x,y,w,h,light,radius,10);
   c.save();c.shadowColor='#00000090';c.shadowBlur=22;c.shadowOffsetY=12;
   const g=c.createLinearGradient(x,y,x,y+h);g.addColorStop(0,light);g.addColorStop(.18,dark);g.addColorStop(1,'#101b2b');
-  r.rect(x,y,w,h,g,radius,accent+'88');c.shadowBlur=0;c.shadowOffsetY=0;
+  r.rect(x,y,w,h,'#06101b16',radius,accent+'88');c.shadowBlur=0;c.shadowOffsetY=0;
   r.rect(x+6,y+6,w-12,h-12,'#030a111f',Math.max(2,radius-5),accent+'36');
   r.line(x+radius,y+2,x+w-radius,y+2,accent+'75',2);c.restore();
  }
  cell(x,y,size,fill,selected=false){
   const r=this.r,c=r.ctx;
-  r.rect(x+2,y+3,size-4,size-4,'#03060d8f',Math.min(7,size*.1));
-  r.rect(x+2,y+1,size-4,size-5,fill,Math.min(7,size*.1),'#ffffff13');
+  r.materials.surface(x+2,y+1,size-4,size-7,fill,Math.min(5,size*.08),3);
   r.line(x+6,y+3,x+size-6,y+3,'#ffffff17',1);
   if(selected){c.save();c.shadowColor=this.palette[0];c.shadowBlur=this.quality==='low'?0:9;r.rect(x+2,y+1,size-4,size-5,'#ffffff10',6,this.palette[0]);c.restore();}
  }

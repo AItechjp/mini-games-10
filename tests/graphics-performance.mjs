@@ -11,3 +11,22 @@ for(const mode of ['auto','high','balanced','low']){const v=new Budget({mode,coa
 let closed=0;globalThis.OffscreenCanvas=class {constructor(w,h){this.width=w;this.height=h;}getContext(){return {};}transferToImageBitmap(){return {width:this.width,height:this.height,close(){closed++;}};}};
 const cache=new SurfaceCache(10000);cache.get('a',70,70,()=>{});cache.get('b',70,70,()=>{});assert.equal(cache.pixels,9800);assert.ok(cache.get('a',70,70,()=>assert.fail('should hit')));cache.get('c',70,70,()=>{});assert.equal(cache.entries.has('b'),false);assert.ok(closed>0);cache.get('parent',90,90,()=>cache.get('child',40,40,()=>{}));assert.ok(cache.pixels<=10000);assert.equal(cache.get('huge',101,101,()=>assert.fail()),null);cache.clear();assert.equal(cache.pixels,0);
 console.log('PASS: 60 FPS pacing on 60–240 Hz, still scenes at 30, adaptive hysteresis, hidden-tab handling, pixel caps, immutable bitmap cache eviction');
+// Timer results are read only after availability; slow GPUs must not stall JS.
+{
+  let active=null,disjoint=false,lost=false,reads=0,deletes=0;const all=[];
+  const ext={TIME_ELAPSED_EXT:10,GPU_DISJOINT_EXT:11};
+  const gl={QUERY_RESULT_AVAILABLE:1,QUERY_RESULT:2,CURRENT_QUERY:3,
+    createQuery:()=>{const q={ready:false,ms:18000000};all.push(q);return q;},
+    getExtension:()=>ext,isContextLost:()=>lost,getParameter:()=>disjoint,
+    getQuery:()=>active,beginQuery:(_,q)=>{active=q;},endQuery:()=>{active=null;},
+    deleteQuery:()=>{deletes++;},getQueryParameter:(q,p)=>{if(p===1)return q.ready;assert.ok(q.ready,'never synchronously read unfinished GPU timer');reads++;return q.ms;}};
+  const meter=new globalThis.AitechGpuBudget(gl);
+  for(let i=0;i<60;i++){meter.begin();meter.end();}
+  assert.equal(meter.pending.length,3);assert.equal(reads,0);assert.equal(all.length,3);
+  all.forEach(q=>q.ready=true);assert.equal(meter.poll(),18);assert.equal(reads,3);
+  for(let i=0;i<6;i++){meter.begin();meter.end();}assert.equal(all.length,3,'reuse completed queries');
+  disjoint=true;assert.equal(meter.poll(),0);assert.equal(meter.pending.length,0);assert.ok(deletes>=3);
+  lost=true;assert.equal(meter.begin(),false);assert.equal(meter.poll(),0);
+  const unsupported=new globalThis.AitechGpuBudget({});assert.equal(unsupported.begin(),false);assert.equal(unsupported.stats.gpuMs,null);
+  console.log('PASS: GPU timings remain asynchronous, bounded, reusable and optional');
+}
