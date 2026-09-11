@@ -43,10 +43,11 @@ function opsSaveCheckpoint(){
   ops.checkpoint={version:OPS.VERSION,area:state.area,seed:state.seed,difficulty:state.difficulty,playlist:ops.playlist,perks:{...ops.perks},stats:{...ops.stats},elapsed:ops.elapsed};
   try{localStorage.setItem('blacksite-checkpoint',JSON.stringify(ops.checkpoint));}catch{ops.netMessage='この端末では途中再開を保存できません';}
 }
-function opsWeapon(p){return OPS.WEAPONS[p?.weapon]||OPS.WEAPONS.rifle;}
+function opsKnownWeapon(id){return typeof id==='string'&&Object.hasOwn(OPS.WEAPONS,id);}
+function opsWeapon(p){return opsKnownWeapon(p?.weapon)?OPS.WEAPONS[p.weapon]:OPS.WEAPONS.rifle;}
 function opsCapacity(p){return opsWeapon(p).magazine+ops.perks.ammo*10;}
 function opsPlayer(id,weapon='rifle'){
-  return {id,x:local.x,z:local.z,yaw:0,pitch:0,lives:3,shield:false,adr:0,weapon:OPS.WEAPONS[weapon]?weapon:'rifle',ammo:0,reloadAt:0,fireAt:-1000,invUntil:0,infUntil:0,rpgUntil:0,rpgShots:0,guardUntil:0,downUntil:0,revive:0,interact:false,lastMoveAt:0,lastInput:0,stats:opsEmptyStats()};
+  return {id,x:local.x,z:local.z,yaw:0,pitch:0,lives:3,shield:false,adr:0,weapon:opsKnownWeapon(weapon)?weapon:'rifle',ammo:0,reloadAt:0,fireAt:-1000,invUntil:0,infUntil:0,rpgUntil:0,rpgShots:0,guardUntil:0,downUntil:0,revive:0,interact:false,lastMoveAt:0,lastInput:0,stats:opsEmptyStats()};
 }
 function opsSafePoint(x,z,r=.85){
   if(!blocked(x,z,r))return {x,z};
@@ -547,7 +548,7 @@ function opsAdmitGuest(m){
   if(ops.peerId&&ops.peerId!==m.from){send('reject',{target:m.from,text:'この部屋は2人で満員です'});return;}
   ops.peerId=m.from;ops.peerReady=!!m.ready;state.partnerReady=true;ops.lastPeerAt=performance.now();
   if(!state.players.has(m.from)){const p=opsPlayer(m.from,m.weapon);p.ammo=opsCapacity(p);state.players.set(m.from,p);}
-  else if(!state.running)state.players.get(m.from).weapon=OPS.WEAPONS[m.weapon]?m.weapon:'rifle';
+  else if(!state.running)state.players.get(m.from).weapon=opsKnownWeapon(m.weapon)?m.weapon:'rifle';
   state.players.get(m.from).incarnation=m.inc;
   opsSendSettings();send('welcome',{target:m.from,ready:ops.ready});
   if(ops.run){ops.lost=false;opsShowState();ops.lastWorld=0;sendWorld(true);}updateLobby();
@@ -564,7 +565,7 @@ onNetwork=function(m){
   if(fromPeer&&state.players.get(m.from)?.incarnation&&state.players.get(m.from).incarnation!==m.inc)return;
   ops.lastPeerAt=performance.now();
   if(m.kind==='heartbeat'){state.partnerReady=true;if(fromPeer&&state.running&&ops.lost){ops.lost=false;opsShowState();}return;}
-  if(m.kind==='ready'){ops.peerReady=!!m.ready;if(!state.running&&state.players.has(m.from)&&OPS.WEAPONS[m.weapon])state.players.get(m.from).weapon=m.weapon;updateLobby();return;}
+  if(m.kind==='ready'){ops.peerReady=!!m.ready;if(!state.running&&state.players.has(m.from)&&opsKnownWeapon(m.weapon))state.players.get(m.from).weapon=m.weapon;updateLobby();return;}
   if(m.kind==='settings'&&fromHost){if(DIFF[m.difficulty])state.difficulty=m.difficulty;if(['campaign','survival'].includes(m.playlist)){ops.playlist=m.playlist;opsPlaylist.value=m.playlist;}syncDifficultyUI();updateLobby();return;}
   if(m.kind==='welcome'&&fromHost&&m.target===state.playerId){ops.peerReady=!!m.ready;state.partnerReady=true;updateLobby();return;}
   if(m.kind==='reject'&&fromHost&&m.target===state.playerId){ops.rejected=true;opsDisconnect().then(()=>{ops.netMessage=m.text;updateLobby();});return;}

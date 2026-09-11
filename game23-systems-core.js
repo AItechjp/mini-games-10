@@ -43,7 +43,7 @@
   function damage(enemy, weapon = 'rifle', weak = false, blast = false) {
     if (!enemy || enemy.dead) return 0;
     if (!enemy.boss && !FAT_TYPES.includes(enemy.type)) return Math.max(1, finite(enemy.hp, 1));
-    const w = WEAPONS[weapon] || WEAPONS.rifle;
+    const w = typeof weapon==='string'&&Object.hasOwn(WEAPONS,weapon) ? WEAPONS[weapon] : WEAPONS.rifle;
     return blast ? 6 : enemy.boss ? (weak ? w.weak : w.damage) : w.damage * (weak ? 2 : 1);
   }
   function raySphere(o, d, center, radius, range = 125) {
@@ -86,7 +86,7 @@
   function validSnapshot(m) {
     if(!m||!Number.isInteger(m.area)||m.area<0||m.area>5||!Number.isSafeInteger(m.seed)||!['easy','normal','nightmare'].includes(m.difficulty)||!['campaign','survival'].includes(m.playlist)||!Number.isFinite(m.time)||!Number.isFinite(m.elapsed)||m.time<0||m.elapsed<0||!Number.isInteger(m.wave)||m.wave<1)return false;
     if(!m.stats||!['kills','shots','hits','objectives','intel','bosses','revives','downs'].every(k=>Number.isFinite(m.stats[k])&&m.stats[k]>=0)||!m.perks||!['ammo','mobility','armor'].every(k=>Number.isInteger(m.perks[k])&&m.perks[k]>=0&&m.perks[k]<=3))return false;
-    if(!Array.isArray(m.players)||m.players.length>2||m.players.length<1||!m.players.every(p=>p&&typeof p.id==='string'&&Object.hasOwn(WEAPONS,p.weapon)&&['x','z','yaw','pitch','lives','ammo','reloadAt','invUntil','infUntil','rpgUntil','rpgShots','guardUntil','downUntil','revive'].every(k=>Number.isFinite(p[k]))&&p.lives>=0&&p.lives<=3))return false;
+    if(!Array.isArray(m.players)||m.players.length>2||m.players.length<1||!m.players.every(p=>p&&typeof p.id==='string'&&typeof p.weapon==='string'&&Object.hasOwn(WEAPONS,p.weapon)&&['x','z','yaw','pitch','lives','ammo','reloadAt','invUntil','infUntil','rpgUntil','rpgShots','guardUntil','downUntil','revive'].every(k=>Number.isFinite(p[k]))&&p.lives>=0&&p.lives<=3))return false;
     if(!Array.isArray(m.enemies)||m.enemies.length>113||!m.enemies.every(a=>Array.isArray(a)&&typeof a[0]==='string'&&Number.isInteger(a[1])&&a[1]>=-1&&a[1]<112&&[2,3,4,7,8,11,12,13,14,15].every(i=>Number.isFinite(a[i]))))return false;
     if(!Array.isArray(m.objectives)||m.objectives.length>3||!Array.isArray(m.discoveries)||m.discoveries.length>5)return false;
     if(![...m.objectives,...m.discoveries].every(o=>o&&typeof o.id==='string'&&typeof o.label==='string'&&o.label.length<120&&['activate','collect','defend','escort','purge','intel','cache'].includes(o.kind)&&Number.isFinite(o.x)&&Number.isFinite(o.z)))return false;
