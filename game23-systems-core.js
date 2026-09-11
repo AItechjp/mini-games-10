@@ -113,7 +113,7 @@
   function score(stats, difficulty = 'normal') {
     const accuracy = stats.shots ? Math.round(stats.hits / stats.shots * 100) : 0;
     const points = Math.max(0, Math.round((stats.kills*100 + stats.objectives*1500 + stats.intel*500 + stats.bosses*3000 + stats.revives*800) * ({easy:.8,normal:1,nightmare:1.5}[difficulty]||1) - stats.downs*250));
-    const rank = stats.bosses >= 6 && stats.downs === 0 && accuracy >= 55 ? 'S' : stats.bosses >= 6 ? 'A' : points >= 20000 ? 'B' : 'C';
+    const rank = stats.bosses >= CHAPTERS.length && stats.downs === 0 && accuracy >= 55 ? 'S' : stats.bosses >= CHAPTERS.length ? 'A' : points >= 20000 ? 'B' : 'C';
     return { points, accuracy, rank };
   }
   function validCheckpoint(value) {
