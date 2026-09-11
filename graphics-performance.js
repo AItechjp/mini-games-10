@@ -10,12 +10,13 @@
     }
     setMode(mode){this.mode=['auto','high','balanced','low'].includes(mode)?mode:'auto';this.factor=1;this.samples=this.slow=this.fast=0;this.nextDraw=0;}
     sample(frameMs,cpuMs,now,active=true){
-      if(!active||frameMs<=0||frameMs>120||!Number.isFinite(cpuMs))return false;
+      if(!active||frameMs<=0||frameMs>1000||!Number.isFinite(frameMs)||!Number.isFinite(cpuMs))return false;
+      frameMs=Math.min(frameMs,120);
       const weight=this.samples<12?.2:.06;this.samples++;
       this.frameMs+=(frameMs-this.frameMs)*weight;this.cpuMs+=(Math.max(0,cpuMs)-this.cpuMs)*weight;
-      if(this.mode!=='auto'||this.samples<45)return false;
+      if(this.mode!=='auto'||this.samples<(this.frameMs>45?8:45))return false;
       const overloaded=this.frameMs>21||this.cpuMs>12;
-      this.slow=overloaded?this.slow+1:Math.max(0,this.slow-2);
+      this.slow=overloaded?this.slow+(this.frameMs>45?4:1):Math.max(0,this.slow-2);
       this.fast=!overloaded&&this.frameMs<18&&this.cpuMs<7?this.fast+1:0;
       if(this.slow>=24&&now-this.changedAt>1600&&this.factor>.56){this.factor=Math.max(.55,Math.round((this.factor-.15)*100)/100);this.changedAt=now;this.slow=this.fast=0;return true;}
       if(this.fast>=300&&now-this.changedAt>9000&&this.factor<1){this.factor=Math.min(1,this.factor+.05);this.changedAt=now;this.fast=0;return true;}

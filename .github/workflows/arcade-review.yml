@@ -1,10 +1,10 @@
 name: Arcade 100 gameplay and online review
 on:
   pull_request:
-    paths: ['arcade100/**', 'smash*', 'tests/arcade*', 'tests/smash-online-state.mjs', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
+    paths: ['graphics-performance.js', 'tests/graphics-performance.mjs', 'arcade100/**', 'smash*', 'tests/arcade*', 'tests/smash-online-state.mjs', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
   push:
     branches: ['main']
-    paths: ['arcade100/**', 'smash*', 'tests/arcade*', 'tests/smash-online-state.mjs', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
+    paths: ['graphics-performance.js', 'tests/graphics-performance.mjs', 'arcade100/**', 'smash*', 'tests/arcade*', 'tests/smash-online-state.mjs', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
   workflow_dispatch:
 permissions:
   contents: read
