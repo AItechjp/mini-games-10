@@ -36,7 +36,7 @@
 31. Player health system.
 32. Armor absorption system.
 33. Damage invulnerability window.
-34. Second-wind recovery instead of abrupt run termination.
+34. One protected second wind followed by a real defeat / retry state.
 35. Flashlight toggle with F.
 36. Flashlight cone lighting.
 37. Health pickups.
@@ -51,7 +51,7 @@
 44. Tank zombie type.
 45. Spitter zombie type.
 46. Brute zombie type.
-47. Per-type HP tuning.
+47. Strict one-shot rule for walkers, runners, crawlers, and spitters; only fat-class enemies and the boss have armor HP.
 48. Per-type speed tuning.
 49. Per-type body size / hit radius.
 50. Per-type melee damage.
@@ -113,3 +113,17 @@
 100. Film grain, vignette, damage tint, low-health emphasis, and chromatic-edge post effects.
 
 All changes are implemented in `fps-game.js` while preserving the existing `window.ARCADE_GAME` interface used by `fps-controller.js` and the existing solo / Supabase online modes.
+
+## System polish pass
+
+- Centralized, regression-tested damage rules prevent ordinary zombies from ever surviving a valid hit.
+- Tank and brute variants are explicitly classified as fat zombies with visible health bars.
+- Critical hits deal double damage only where durability matters.
+- Hitscan now resolves the nearest intersected enemy or prop, so targets cannot be shot through.
+- Enemy spawns prefer off-screen, uncrowded cells and fat zombies spawn farther away.
+- Melee attacks have visible wind-up time instead of applying unavoidable instant damage.
+- Wall steering checks enemy body radius, and spitters preserve their ranged role by kiting.
+- A nearest-threat compass, persistent minimap target, directional damage arc, kill confirm, reload progress, and global boss bar improve combat readability.
+- Touch input supports simultaneous left-stick movement, right-side aiming, and FIRE input, including strafe movement and an on-screen stick.
+- Solo play auto-pauses when the page is hidden, and mobile players have a dedicated pause control.
+- Results now distinguish escape from defeat and report score, accuracy, and best combo.

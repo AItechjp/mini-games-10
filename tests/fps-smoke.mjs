@@ -21,11 +21,17 @@ const initial=await page.evaluate(()=>({
   canvasW:document.querySelector('#arcade-canvas')?.width||0,
   canvasH:document.querySelector('#arcade-canvas')?.height||0,
   start:document.querySelector('#arcade-start')?.textContent||'',
-  utilButtons:document.querySelectorAll('#mobile-controls [data-fps="sprint"],#mobile-controls [data-fps="reload"],#mobile-controls [data-fps="flash"]').length
+  utilButtons:document.querySelectorAll('#mobile-controls [data-fps="sprint"],#mobile-controls [data-fps="reload"],#mobile-controls [data-fps="flash"]').length,
+  pauseButtons:document.querySelectorAll('#mobile-controls [data-fps="pause"]').length,
+  oneShotTypes:[...(window.ARCADE_GAME?.balance?.oneShotTypes||[])],
+  fatTypes:[...(window.ARCADE_GAME?.balance?.fatTypes||[])]
 }));
 if(!initial.title.includes('REBORN'))throw new Error(`unexpected title ${initial.title}`);
 if(initial.canvasW<100||initial.canvasH<100)throw new Error(`canvas invalid ${JSON.stringify(initial)}`);
 if(initial.utilButtons!==3)throw new Error(`mobile utility controls ${initial.utilButtons}, expected 3`);
+if(initial.pauseButtons!==1)throw new Error(`mobile pause controls ${initial.pauseButtons}, expected 1`);
+if(initial.oneShotTypes.sort().join(',')!=='crawler,runner,spitter,walker')throw new Error(`one-shot balance invalid ${JSON.stringify(initial.oneShotTypes)}`);
+if(initial.fatTypes.sort().join(',')!=='brute,tank')throw new Error(`fat balance invalid ${JSON.stringify(initial.fatTypes)}`);
 if(errors.length)throw new Error(`initial load\n${errors.join('\n')}`);
 
 await page.locator('#arcade-start').tap({timeout:10000});

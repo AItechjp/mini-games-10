@@ -65,7 +65,7 @@
   function handleEngineComplete(detail){
     if (!running) return;
     finalStats = detail || {};
-    if (mode === 'solo') { finishRound('solo-clear'); return; }
+    if (mode === 'solo') { finishRound(detail?.type==='solo-defeat'?'solo-defeat':'solo-clear'); return; }
     localFinishedAt = adjustedNow();
     send('finish', { score: 20, at: localFinishedAt, stats: detail || {} });
     clearTimeout(finishJudgeTimer);
@@ -83,9 +83,15 @@
     finalStats = { ...stopped, ...finalStats };
     if(mode==='solo'){
       const ms=Math.round(finalStats.elapsedMs || (performance.now()-roundStartedAt));
+      const accuracy=Math.round((Number(finalStats.accuracy)||0)*100),runScore=Math.max(0,Math.round(Number(finalStats.score)||0)),runKills=Math.max(0,Math.round(Number(finalStats.kills)||0));
+      if(result==='solo-defeat'){
+        bestEl.textContent = getBestMs() ? formatClock(getBestMs()) : '--';
+        setOverlay('YOU DIED', `<div class="arcade-result-score">${runKills} / 20</div><p>スコア <strong>${runScore.toLocaleString()}</strong> • 命中率 <strong>${accuracy}%</strong><br>最大チェイン <strong>${Math.max(0,Math.round(Number(finalStats.bestCombo)||0))}</strong></p>`, 'もう一回', true);
+        overlay.dataset.result='1';return;
+      }
       const prev=getBestMs(); if(!prev || ms<prev) storageSet(bestKey,String(ms));
       bestEl.textContent = getBestMs() ? formatClock(getBestMs()) : '--';
-      setOverlay('ESCAPED!', `<div class="arcade-result-score">20 / 20</div><p>大型ボス撃破<br>クリアタイム <strong>${formatClock(ms)}</strong>${getBestMs()===ms?'<br>NEW BEST!':''}</p>`, 'もう一回', true);
+      setOverlay('ESCAPED!', `<div class="arcade-result-score">20 / 20</div><p>大型ボス撃破 • スコア <strong>${runScore.toLocaleString()}</strong><br>クリアタイム <strong>${formatClock(ms)}</strong> • 命中率 <strong>${accuracy}%</strong>${getBestMs()===ms?'<br>NEW BEST!':''}</p>`, 'もう一回', true);
     } else {
       const title = result === 'win' ? 'YOU WIN!' : result === 'lose' ? 'YOU LOSE' : 'DRAW';
       setOverlay(title, `<div class="arcade-result-vs"><span>YOU<strong>${localScore}</strong></span><b>HIT</b><span>RIVAL<strong>${rivalScore}</strong></span></div><p>${result==='win'?'20HIT先取！':'相手が先に20HITしました。'}</p>`, role==='host'?'再戦する':'ホストの再戦待ち', role==='host'&&connected);
@@ -159,7 +165,7 @@
     bestEl.textContent = mode==='solo' && getBestMs() ? formatClock(getBestMs()) : '--';
     lobby.classList.toggle('hidden',mode!=='online');rivalHud.classList.toggle('hidden-hud',mode!=='online');modeButtons.forEach(b=>b.classList.toggle('active',b.dataset.arcadeMode===mode));
     const url=new URL(location.href);url.searchParams.set('mode',mode);history.replaceState(null,'',url);
-    if(mode==='solo') setOverlay(gameDef.title,'ゾンビを19体倒すと最後に大型ボスゾンビが出現。ボスを倒して20体目に到達すればクリア。時間制限はありません。','スタート',true);
+    if(mode==='solo') setOverlay(gameDef.title,'通常ゾンビは命中すれば1発。デブゾンビとボスだけが複数発に耐えます。19体倒すと悪魔城に大型ボスが出現。セカンドウィンドは1回だけです。','スタート',true);
     else if(!hasSupabase){setOverlay(gameDef.title,'Supabaseを読み込めませんでした。','対戦を利用できません',false);setNetworkState('error','Supabaseを読み込めません');}
     else{setOverlay(gameDef.title,'部屋を作るか参加してください。先に20発HITしたプレイヤーの勝ちです。時間制限はありません。','接続待ち',false);setNetworkState('idle','部屋を作るか参加してください。','ログイン不要・20HIT先取。');}
     createEngine();

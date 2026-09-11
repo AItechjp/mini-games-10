@@ -33,7 +33,9 @@ jobs:
           done < <(find . -maxdepth 2 -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
 
       - name: Validate past-question-only learning source
-        run: node tests/yobi-past-source.mjs
+        run: |
+          node tests/yobi-past-source.mjs
+          node tests/fps-systems.mjs
 
       - name: Build static bundle
         shell: bash
