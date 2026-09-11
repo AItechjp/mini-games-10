@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c1820"><meta name="referrer" content="no-referrer"><meta name="description" content="BAYLINE — 海沿いの架空都市を舞台にしたオリジナル3Dオープンワールド。徒歩、ドライブ、12章のミッション。ログイン不要、招待リンクで2人協力。"><title>BAYLINE — AFTER HOURS | 2人協力オープンワールド</title><link rel="stylesheet" href="./style.css"><script type="importmap">{"imports":{"three":"../touge/vendor/build/three.module.js","three/addons/":"../touge/vendor/examples/jsm/"}}</script><script src="../supabase-config.js"></script></head>
+<body>
+<canvas id="scene" aria-label="BAYLINE 3Dゲーム画面"></canvas><div class="vignette" aria-hidden="true"></div><div id="damage" aria-hidden="true"></div>
+<div id="loading"><div class="brand">BAYLINE<span>AFTER HOURS</span></div><div class="loading-line"><i></i></div><p id="loadText">海沿いの街を構築しています…</p><small>3D描画には WebGL 2 対応のブラウザが必要です。</small></div>
+<section id="front" class="hidden">
+ <header class="front-top"><a class="brand" href="../">BAYLINE<span>AFTER HOURS</span></a><div class="edition">ORIGINAL CITY ACTION <i></i> BUILD 01</div></header>
+ <div class="hero"><div class="eyebrow">ONE CITY. TWO OUTSIDERS.</div><h1>この街を、<br><em>二人で駆けろ。</em></h1><p class="lead">海風、ネオン、眠らないストリート。<br>ハンドルを握り、相棒と街の裏側へ。</p><div class="features"><span>OPEN WORLD</span><span>1–2 PLAYERS</span><span>NO LOGIN</span></div>
+ <div class="start-grid"><button id="continue" class="primary">街へ入る <b>↗</b></button><button id="host" class="secondary">2人協力の部屋を作る <b>＋</b></button><button id="new" class="quiet">新しいゲーム</button><span class="save-note" id="saveNote">12章 / 約60分を想定 / 自由探索</span></div>
+ <form id="joinForm" class="join-form"><label for="joinCode">友だちの招待リンクから参加</label><div><input id="joinCode" autocomplete="off" spellcheck="false" placeholder="招待リンクを貼り付け"><button type="submit">参加 →</button></div></form>
+ <p id="frontStatus" role="status"></p>
+ </div>
+ <aside class="front-location"><span>BLUE HOUR / SOUTH COAST</span><b>Bayline City</b><p>灯りがともる頃、物語は始まる。</p></aside>
+ <footer class="front-bottom"><span>架空の街・人物によるオリジナル作品。GTAの公式作品ではありません。</span><div><label>画質 <select id="frontQuality"><option value="high">高画質</option><option value="medium">標準</option><option value="low">軽量</option></select></label><button id="frontHelp" class="quiet">操作方法</button></div></footer>
+</section>
+<div id="hud" class="hidden">
+ <section class="mission-hud"><div class="eyebrow" id="missionTag">FREE ROAM</div><h2 id="missionTitle">BAYLINE CITY</h2><p id="objective">J を押して仕事を選ぶ</p><div class="objective-bottom"><span id="objectiveDistance"></span><span id="objectiveProgress"></span></div><div class="thinbar"><i id="missionBar"></i></div></section>
+ <section class="player-hud"><div class="cash" id="cash">$1,200</div><div id="wanted" aria-label="追跡レベル">☆☆☆☆☆</div><div class="health-line"><span>HP</span><div class="bar"><i id="healthBar"></i></div><b id="healthText">100</b></div><div class="health-line partner hidden" id="partnerHealth"><span>P2</span><div class="bar"><i id="partnerBar"></i></div><b id="partnerText">100</b></div><div id="onlineStatus">SOLO / ログイン不要</div></section>
+ <nav class="hud-nav"><button data-panel="map" title="マップ M">MAP</button><button data-panel="jobs" title="仕事 J">仕事</button><button data-panel="coop">協力</button><button data-panel="settings" title="設定 Esc">設定</button></nav>
+ <section class="minimap-wrap"><canvas id="minimap" width="360" height="360" aria-label="ミニマップ"></canvas><div class="map-compass">N</div><div class="district" id="district">SOUTHSIDE</div></section>
+ <section class="telemetry"><div><strong id="speed">0</strong><span id="speedUnit">KM/H</span></div><p id="vehicleLabel">ON FOOT</p><div id="ammo">30 <small>/ ∞</small></div><div id="vehicleHealth"></div></section>
+ <div id="reticle" aria-hidden="true"><i></i></div><div id="prompt"></div><div id="toast" role="status"></div><div class="keyboard-hint">WASD 移動・運転　F 乗降　E 操作　マウス右ドラッグ 視点　左クリック 射撃</div><div id="rotateHint">横画面でのプレイを推奨</div>
+</div>
+<div id="touch" class="hidden"><div id="stick"><div id="stickKnob"></div></div><div class="touch-actions"><button id="touchEnter">乗降</button><button id="touchInteract">操作<br><small>長押し</small></button><button id="touchReload">装填</button><button id="touchBrake">加速</button><button id="touchFire" class="fire">射撃</button></div></div>
+<dialog id="panel"><header><div><span id="panelEyebrow">BAYLINE / CITY SYSTEM</span><h2 id="panelTitle">メニュー</h2></div><button id="closePanel" aria-label="閉じる">×</button></header><div id="panelBody"></div></dialog>
+<div id="saveStatus" aria-live="polite"></div>
+<script type="module" src="./game.mjs"></script>
+<script>window.addEventListener('error',function(e){if(document.getElementById('loading').classList.contains('hidden'))return;document.getElementById('loadText').textContent='読み込みに失敗しました。再読み込み、または最新のChrome / Edge / Safariでお試しください。';});</script>
+</body></html>
