@@ -1,5 +1,6 @@
 import * as C from './core.mjs';
 import {CityView} from './world.mjs';
+import {enrichCity} from './atmosphere.mjs';
 import {Room,invitation} from './net.mjs';
 const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const touch=matchMedia('(pointer:coarse)').matches||navigator.maxTouchPoints>0;
@@ -94,7 +95,7 @@ function updateHUD(){const s=state,p=s.players[localId]||s.players[0],ch=C.CHAPT
  let prompt='';if(p.hp<=0)prompt=buddy?'ダウン中：相棒が近づいて「操作」長押しで救助':'ガレージへ復帰します…';else if(buddy&&buddy.hp<=0&&C.distance(p,buddy)<4&&p.car<0)prompt=`E / 操作 長押しで相棒を救助 ${Math.round((buddy.revive||0)/3*100)}%`;else if(q&&['interact','hack'].includes(q.type)&&goal&&C.distance(p,goal)<15)prompt=p.car>=0?'F / 乗降：車を降りて端末へ':'E / 操作 を長押し';else if(q?.type==='escape'&&goal&&C.distance(p,goal)<18)prompt=p.car>=0?'車を降りて隠れよう':'ここで静止して追跡を外す';else if(p.car<0&&s.cars.some(c=>c.hp>0&&C.distance(p,c)<9&&Math.abs(c.speed)<12))prompt='F / 乗降：近くの車へ乗る';else if(p.car>=0&&Math.abs(car.speed)<8)prompt=p.seat===1?'助手席：射撃で相棒を援護 / F で降車':'F / 乗降：車を降りる';else if(C.distance(p,C.POI.garage)<28)prompt='「仕事」→ ガレージで修理・アップグレード';$('prompt').textContent=prompt;
  if(s.messageId!==lastMessage){lastMessage=s.messageId;showToast(s.message,9);persist();}if(performance.now()>toastUntil)$('toast').classList.remove('show');if(p.hp<lastHP){$('damage').style.opacity='.7';setTimeout(()=>{$('damage').style.opacity='0';},180);}lastHP=p.hp;drawMap($('minimap'));if(currentPanel==='map')drawMap($('fullMap'),true);
 }
-function loop(now){const dt=Math.min(.1,(now-(lastTime||now))/1000);lastTime=now;
+function loop(now){const wallDt=(now-(lastTime||now))/1000,dt=Math.min(.12,wallDt);lastTime=now;if(running&&!$('panel').open&&settings.quality!=='low'){if(wallDt>.052)slowTime+=Math.min(wallDt,.2);else slowTime=Math.max(0,slowTime-dt);if(slowTime>7){setQuality(settings.quality==='high'?'medium':'low');showToast('動作を優先して画質を調整しました。設定から変更できます。');}}
  if(running){const input=readInput();if(mode!=='guest'&&!(mode==='solo'&&$('panel').open)){
    accumulator=Math.min(.2,accumulator+dt);let steps=0;while(accumulator>=1/60&&steps++<8){const remote=performance.now()-peerAt<1200?peerInput:{seq:state.players[1]?._seq||0};C.tick(state,[input,remote],1/60);accumulator-=1/60;}
   }else accumulator=0;
@@ -117,7 +118,7 @@ $('stick').addEventListener('pointerdown',e=>{e.preventDefault();stickPointer=e.
 function holdButton(id,key){const b=$(id);b.addEventListener('pointerdown',e=>{e.preventDefault();b.setPointerCapture(e.pointerId);held[key]=true;audio.start();});for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,()=>held[key]=false);}
 holdButton('touchFire','fire');holdButton('touchInteract','interact');holdButton('touchBrake','boost');$('touchEnter').onclick=()=>action('enter');$('touchReload').onclick=()=>action('reload');window.addEventListener('resize',()=>view?.resize());
 try{
- await new Promise(resolve=>requestAnimationFrame(resolve));view=new CityView($('scene'),settings.quality);view.setWeather(settings.rain);view.draw(state,0,0,cam,true);$('loading').classList.add('hidden');$('front').classList.remove('hidden');$('continue').firstChild.textContent=saved?'続きから街へ入る ':'街へ入る ';$('saveNote').textContent=saved?`保存あり / ${Math.min(12,saved.chapter||0)}章 完了`:'12章 / 約60分を想定 / 自由探索';const inv=invitation(location.hash);if(inv){$('joinCode').value=`${inv.code}.${inv.host}`;$('frontStatus').textContent='招待リンクを受け取りました。「参加」を押すと合流できます。';}
+ await new Promise(resolve=>requestAnimationFrame(resolve));view=new CityView($('scene'),settings.quality);enrichCity(view);view.setWeather(settings.rain);view.draw(state,0,0,cam,true);$('loading').classList.add('hidden');$('front').classList.remove('hidden');$('continue').firstChild.textContent=saved?'続きから街へ入る ':'街へ入る ';$('saveNote').textContent=saved?`保存あり / ${Math.min(12,saved.chapter||0)}章 完了`:'12章 / 約60分を想定 / 自由探索';const inv=invitation(location.hash);if(inv){$('joinCode').value=`${inv.code}.${inv.host}`;$('frontStatus').textContent='招待リンクを受け取りました。「参加」を押すと合流できます。';}
  window.__BAYLINE_READY__=true;
  if(['127.0.0.1','localhost'].includes(location.hostname)&&new URLSearchParams(location.search).has('test'))window.__BAYLINE_TEST__={C,view,room,action,solo,host,join,openPanel,closePanel,get state(){return state;},set state(v){state=v;},get mode(){return mode;},get running(){return running;},get localId(){return localId;},get invite(){return inviteText;},keys,held,cam};
  requestAnimationFrame(loop);
