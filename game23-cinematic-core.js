@@ -54,7 +54,7 @@ function cineSurface(color,roughness=.8,metalness=0,kind='stone',scale=.28){
           diffuseColor*=texel;cineHeight=dot(texel.rgb,vec3(.299,.587,.114));
         #endif`);
       // Screen derivatives reuse the existing triplanar sample for fine stone relief.
-      shader.fragmentShader=shader.fragmentShader.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
+      if(cineQuality==='high'||!cineMobile&&cineQuality==='auto')shader.fragmentShader=shader.fragmentShader.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
         vec3 cq0=dFdx(-vViewPosition),cq1=dFdy(-vViewPosition);
         vec3 cr1=cross(cq1,normal),cr2=cross(normal,cq0);float cd=dot(cq0,cr1);
         vec3 cg=sign(cd)*(dFdx(cineHeight)*cr1+dFdy(cineHeight)*cr2);
@@ -63,7 +63,7 @@ function cineSurface(color,roughness=.8,metalness=0,kind='stone',scale=.28){
         float damp=sin(vCineWorld.x*.77+sin(vCineWorld.z*.36))*sin(vCineWorld.z*.63);
         roughnessFactor=clamp(roughnessFactor-damp*.13,.18,1.0);`);
     };
-    m.customProgramCacheKey=()=>`cine-triplanar-relief-${scale}`;
+    m.customProgramCacheKey=()=>`cine-triplanar-relief-${scale}-${cineQuality}`;
   }
   return m;
 }

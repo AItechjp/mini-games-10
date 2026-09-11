@@ -67,4 +67,4 @@ const cinePreviewArena=buildEnvironment();spawnHostWorld(cinePreviewArena);cineM
 syncModeUI();syncDifficultyUI();uxLabels();
 if(owNote)owNote.textContent=currentStage().jp;
 /* Keep diagnostics read-only; the existing automated startup gate uses these facts. */
-Object.defineProperty(window,'blacksiteGraphics',{configurable:true,get:()=>({version:CINE_VERSION,budget:cineBudget.stats,quality:cineQuality,resolutionScale:cineRatio,textures:Object.keys(cineTextures),area:state.area,infected:state.enemies.size,shadowMap:renderer.shadowMap.enabled,drawCalls:cineDrawCalls})});
+Object.defineProperty(window,'blacksiteGraphics',{configurable:true,get:()=>({version:CINE_VERSION,worldBuildMs:Math.round(cineWorldBuildMs),cachedEnvironments:cineEnvironmentCache.size,budget:cineBudget.stats,quality:cineQuality,resolutionScale:cineRatio,textures:Object.keys(cineTextures),area:state.area,infected:state.enemies.size,shadowMap:renderer.shadowMap.enabled,drawCalls:cineDrawCalls})});

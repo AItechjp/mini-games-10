@@ -10,7 +10,7 @@ const CG={box:cineKeep(new THREE.BoxGeometry(1,1,1)),cylinder:cineKeep(new THREE
   const t=new THREE.Shape();t.moveTo(-.4,0);t.lineTo(-.4,1);t.absarc(0,1,.4,Math.PI,0,true);t.lineTo(.4,0);t.closePath();CG.tomb=cineKeep(new THREE.ExtrudeGeometry(t,{depth:.18,bevelEnabled:true,bevelSize:.04,bevelThickness:.025,bevelSegments:2}).translate(0,0,-.09));
 }
 let cineBatches=new Map(),cineChunks=[],cineLamps=[],cineLampLights=[],cineMoonLight=null,cineSky=null,cineWater=[],cineWeather=null,cineEnvironment=null,cineFlashlight=null;
-const cineMtx=new THREE.Object3D();
+const cineMtx=new THREE.Object3D(),cineEnvironmentCache=new Map();let cineWorldBuildMs=0;
 function cinePlace(geometry,material,x,y,z,sx=1,sy=1,sz=1,ry=0,rx=0,rz=0){
   const chunk=Math.floor(z/48),key=geometry.uuid+material.uuid+chunk;
   if(!cineBatches.has(key))cineBatches.set(key,{geometry,material,matrices:[],chunk});
@@ -113,7 +113,10 @@ function cineAtmosphere(stage,rand){
   const skyMat=new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,uniforms:{uTime:{value:0},uTint:{value:new THREE.Color(stage.key==='castle'?0x1d182e:stage.key==='mountain'?0x485f78:0x172b40)}},vertexShader:cineSkyVertex,fragmentShader:`varying vec3 vDirection; uniform float uTime;uniform vec3 uTint;${cineNoise}
     void main(){vec3 d=normalize(vDirection);float height=max(d.y,0.0);vec2 uv=d.xz/max(.18,d.y+.27);float cloud=fbm(uv*.85+vec2(uTime*.003,0.0));float thin=smoothstep(.35,.72,cloud);vec3 color=mix(uTint*1.9,uTint*.42,pow(height,.5));color=mix(color,vec3(.24,.28,.32),thin*.62);float stars=pow(hash(floor(d.xz*1400.0)),180.0)*smoothstep(.24,.7,d.y)*(1.0-thin);vec3 moonDir=normalize(vec3(-.48,.58,-.65));float moon=dot(d,moonDir);float disc=smoothstep(.9984,.9992,moon);color+=vec3(.88,.85,.71)*(disc*.9+pow(max(moon,0.0),35.0)*.16)+stars*.22;gl_FragColor=vec4(color,1.0);#include <colorspace_fragment>}`.replace(';#include',';\n#include')});
   cineSky=new THREE.Mesh(new THREE.SphereGeometry(360,32,16),skyMat);cineSky.frustumCulled=false;scene.add(cineSky);
-  const envScene=new THREE.Scene(),envSky=cineSky.clone();envScene.add(envSky);const gen=new THREE.PMREMGenerator(renderer);cineEnvironment=gen.fromScene(envScene,.08,.1,450);gen.dispose();scene.environment=cineEnvironment.texture;scene.environmentIntensity=.5;cineTransient.add(cineEnvironment);
+  // A restart uses the same sky lighting. Keep two reflection probes on the GPU.
+  cineEnvironment=cineEnvironmentCache.get(stage.key);
+  if(!cineEnvironment){const envScene=new THREE.Scene(),envSky=cineSky.clone();envScene.add(envSky);const gen=new THREE.PMREMGenerator(renderer);cineEnvironment=gen.fromScene(envScene,.08,.1,450);gen.dispose();cineEnvironmentCache.set(stage.key,cineEnvironment);while(cineEnvironmentCache.size>2){const first=cineEnvironmentCache.keys().next().value;cineEnvironmentCache.get(first).dispose();cineEnvironmentCache.delete(first);}}
+  scene.environment=cineEnvironment.texture;scene.environmentIntensity=.5;
   scene.add(new THREE.HemisphereLight(stage.key==='mountain'?0xb9d5e8:0x9db2c5,0x36312b,1.4));
   cineMoonLight=new THREE.DirectionalLight(stage.key==='castle'?0x9e95d2:0xc0d5e8,2.25);cineMoonLight.position.set(-35,52,-35);cineMoonLight.castShadow=true;cineMoonLight.shadow.mapSize.set(cineMobile?1024:2048,cineMobile?1024:2048);Object.assign(cineMoonLight.shadow.camera,{left:-35,right:35,top:35,bottom:-35,near:1,far:140});cineMoonLight.shadow.bias=-.00018;cineMoonLight.shadow.normalBias=.05;scene.add(cineMoonLight,cineMoonLight.target);
   cineLampLights=[];for(let i=0;i<3;i++){const l=new THREE.PointLight(0xffc17b,18,15,2);scene.add(l);cineLampLights.push(l);}
@@ -173,4 +176,4 @@ buildBossArena=function(stage){const before=new Set(scene.children),z=cineArenaB
   cinePlace(CG.arch,CM.stone,0,0,z-12,6,5,5);cineFlush();return z;};
 
 const cineEnvironmentBase=buildEnvironment;
-buildEnvironment=function(){const z=cineEnvironmentBase();scene.traverse(o=>{if(o.isMesh&&!o.isInstancedMesh&&!o.material?.transparent&&o!==cineSky){o.receiveShadow=true;o.castShadow=true;}});return z;};
+buildEnvironment=function(){const started=performance.now(),z=cineEnvironmentBase();scene.traverse(o=>{if(o.isMesh&&!o.isInstancedMesh&&!o.material?.transparent&&o!==cineSky){o.receiveShadow=true;o.castShadow=true;}});cineWorldBuildMs=performance.now()-started;return z;};
