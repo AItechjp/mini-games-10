@@ -21,11 +21,11 @@ jobs:
       - name: Apply reviewed source corrections
         run: |
           node scripts/bayline-source-fixes.mjs
-          if [ "${GITHUB_REF}" = "refs/heads/feat/bayline-city" ] && ! git diff --quiet -- bayline/core.mjs bayline/world.mjs; then
+          if [ "${GITHUB_REF}" = "refs/heads/feat/bayline-city" ] && ! git diff --quiet -- bayline/core.mjs bayline/world.mjs bayline/game.mjs; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add bayline/core.mjs bayline/world.mjs
-            git commit -m 'fix(bayline): normalize mesh UVs, controls and objective timing'
+            git add bayline/core.mjs bayline/world.mjs bayline/game.mjs
+            git commit -m 'fix(bayline): apply reviewed simulation and rendering corrections'
             git push origin HEAD:feat/bayline-city
           fi
       - name: Install pinned rendering and browser runtime
@@ -72,4 +72,7 @@ jobs:
         env:
           CORE: ${{ steps.core.outcome }}
           BROWSER: ${{ steps.browser.outcome }}
-        run: test "$CORE" = success && test "$BROWSER" = success
+        run: |
+          echo "Simulation outcome: $CORE"
+          echo "Browser outcome: $BROWSER"
+          test "$CORE" = success && test "$BROWSER" = success
