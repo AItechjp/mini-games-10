@@ -16,3 +16,6 @@
 @media(prefers-reduced-motion:reduce){.fighter-card,.fighter-illustration{transition:none!important}}
 
 .graphics-quality{pointer-events:auto;max-width:105px;min-height:36px;border:1px solid #8aace252;background:#121832dd;color:#e4eeff;border-radius:8px;padding:5px;font:12px system-ui}.topbar .logo{margin-right:auto}@media(max-width:500px){.graphics-quality{pointer-events:auto;max-width:88px;font-size:11px}.topbar{gap:6px}}@media(prefers-reduced-motion:reduce){.fighter-card,.primary{transition:none}}
+
+/* Deluxe arena selection and readable controller-scale menus. */
+.start-card{background:linear-gradient(130deg,#101d32f5,#15152af0);border:1px solid #b4c9ea55;box-shadow:0 32px 110px #000b,inset 0 1px #fff2}.deluxe-options{align-items:end}.deluxe-options select{max-width:100%}#arcade-record{font-size:14px;color:#b8c8dc}.fighter-card{box-shadow:inset 0 1px #fff2,0 8px 20px #0006}.fighter-card.active{box-shadow:0 0 28px color-mix(in srgb,var(--fighter) 25%,transparent),inset 0 1px #fff7}.start-card h2{font-size:16px}.deluxe-options label{min-width:0}.match-options select{font-size:14px}@media(max-width:650px){.deluxe-options{display:grid;grid-template-columns:1fr}.deluxe-options select{width:100%}.start-card{padding:22px 16px}}

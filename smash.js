@@ -19,6 +19,7 @@
   }
   const fighterPresentation=new Map();let cameraAt=0,cameraCenterX=640,cameraCenterY=360;
   const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
+  Object.defineProperty(window,'skybreakContent',{get:()=>({fighters:4,stages:Object.keys(STAGES).length,rules:Object.keys(RULES).length,arcadeRound,matchRule})});
   Object.defineProperty(window,'skybreakGraphics',{get:()=>({...graphics.stats,width:canvas.width,height:canvas.height,layers:renderLayers.size,cachePixels:layerPixels,maxCachePixels:maxLayerPixels,version:'physical2'})});
   const $ = id => document.getElementById(id);
   const screens = {
@@ -58,6 +59,24 @@
     }
   };
 
+  Object.assign(STAGES,{
+    citadel:{name:'黄昏の天空城',theme:16,sky:['#1c2542','#7e6382','#f7b26e'],glow:'#f5ce82',platforms:[{x:.12,y:.76,w:.76,h:.055,main:true},{x:.13,y:.46,w:.20,h:.032},{x:.67,y:.46,w:.20,h:.032},{x:.40,y:.59,w:.20,h:.032}]},
+    glacier:{name:'氷河の回廊',theme:3,sky:['#061e34','#246184','#97e7ee'],glow:'#9dfaff',platforms:[{x:.10,y:.74,w:.8,h:.05,main:true},{x:.24,y:.53,w:.16,h:.032},{x:.55,y:.34,w:.19,h:.032}]},
+    forge:{name:'紅蓮の鍛冶場',theme:6,sky:['#190c20','#812d40','#e97a40'],glow:'#ff9460',platforms:[{x:.25,y:.72,w:.50,h:.06,main:true},{x:.08,y:.49,w:.19,h:.032},{x:.73,y:.49,w:.19,h:.032}]},
+    moon:{name:'月影の庭園',theme:8,sky:['#0a142b','#304a68','#9ccdb0'],glow:'#a5efcc',platforms:[{x:.09,y:.73,w:.82,h:.05,main:true},{x:.18,y:.39,w:.27,h:.032},{x:.55,y:.54,w:.27,h:.032}]},
+    spire:{name:'星詠みの尖塔',theme:12,sky:['#151238','#4b4494','#dcaaed'],glow:'#d9afff',platforms:[{x:.20,y:.78,w:.60,h:.05,main:true},{x:.13,y:.58,w:.18,h:.032},{x:.41,y:.42,w:.18,h:.032},{x:.69,y:.58,w:.18,h:.032}]},
+    crossing:{name:'双翼の交差路',theme:14,sky:['#061725','#25627b','#7dc8db'],glow:'#7de5ff',platforms:[{x:.12,y:.75,w:.76,h:.055,main:true},{x:.09,y:.48,w:.32,h:.032},{x:.59,y:.48,w:.32,h:.032}]}
+  });
+  const RULES={stock:{name:'ストック / 3機・7分',seconds:420},time:{name:'タイム / 3分・得点勝負',seconds:180},stamina:{name:'体力 / 150HP・1機',seconds:300}};
+  let matchRule='stock',arcade=false,arcadeRound=0;
+  const arenaOrder=Object.keys(STAGES);
+  const stageSelect=$('stage-select');stageSelect.innerHTML=Object.entries(STAGES).map(([id,s])=>`<option value="${id}">${s.name}</option>`).join('');
+  const deluxeOptions=document.createElement('div');deluxeOptions.className='match-options deluxe-options';
+  deluxeOptions.innerHTML='<label>対戦ルール<select id="rule-select">'+Object.entries(RULES).map(([id,r])=>`<option value="${id}">${r.name}</option>`).join('')+'</select></label><label>CPUコース<select id="course-select"><option value="free">フリー対戦</option><option value="arcade">全9ステージ / CPU 3→9</option></select></label><span id="arcade-record"></span>';
+  document.querySelector('.opponent-picker').before(deluxeOptions);
+  $('rule-select').onchange=e=>matchRule=e.target.value;
+  $('course-select').onchange=e=>{arcade=e.target.value==='arcade';arcadeRound=0;};
+  try{$('arcade-record').textContent='勝ち抜き最高記録 '+(localStorage.getItem('skybreak.arcade.best')||0)+' / 9';}catch{}
   let selected = 0;
   let opponent = -1;
   let mode = 'cpu';
@@ -83,7 +102,7 @@
   let winnerSlot = null;
   const arenaIllustration=new Image();arenaIllustration.decoding='async';arenaIllustration.onload=clearLayers;arenaIllustration.src='arcade100/assets/worlds.webp';
   let arenaHD=null,arenaTheme=-1;
-  function loadArena(){const index=stageKey==='ruins'?0:stageKey==='final'?14:13;if(arenaTheme===index)return;arenaTheme=index;arenaHD=null;clearLayers();const image=new Image();image.decoding='async';image.onload=()=>{if(arenaTheme===index){arenaHD=image;clearLayers();}};image.src='arcade100/assets/worlds-hd/'+String(index).padStart(2,'0')+'.webp';}
+  function loadArena(){const index=STAGES[stageKey].theme??(stageKey==='ruins'?0:stageKey==='final'?14:13);if(arenaTheme===index)return;arenaTheme=index;arenaHD=null;clearLayers();const image=new Image();image.decoding='async';image.onload=()=>{if(arenaTheme===index){arenaHD=image;clearLayers();}};image.src=index===16?'assets/deluxe/sky-citadel.webp':'arcade100/assets/worlds-hd/'+String(index).padStart(2,'0')+'.webp';}
   const fighterIllustration=new Image();fighterIllustration.src='arcade100/assets/fighters.webp';
   const FIGHTER_FRAMES=[[[31,36,262,255],[325,48,252,237],[633,66,390,216],[1019,53,214,238]],[[38,331,241,285],[350,343,292,259],[633,354,349,257],[1009,354,223,238]],[[39,646,235,273],[324,665,286,244],[635,687,367,228],[1011,664,226,229]],[[32,950,243,275],[340,960,268,248],[645,933,326,289],[1026,951,195,260]]];
   function fighterPortraitStyle(index){const [x,y,w,h]=FIGHTER_FRAMES[index][0];return `background-image:url('arcade100/assets/fighters.webp');background-size:${1254/w*100}% ${1254/h*100}%;background-position:${x/(1254-w)*100}% ${y/(1254-h)*100}%;aspect-ratio:${w}/${h}`;}
@@ -186,14 +205,17 @@
     clearInterval(countdownTimer);winnerSlot=null;
     initAudio();
     const choices = [0,1,2,3].filter(index => index !== selected);
-    const rival = opponent < 0 ? choices[Math.floor(Math.random() * choices.length)] : opponent;
+    if(arcade&&mode==='cpu'){stageKey=arenaOrder[arcadeRound];cpuLevel=Math.min(9,3+arcadeRound);}
+    const rival = arcade&&mode==='cpu'?(selected+1+arcadeRound%3)%4:opponent < 0 ? choices[Math.floor(Math.random() * choices.length)] : opponent;
     players = [createPlayer(selected, 0, false), createPlayer(rival, 1, mode === 'cpu')];
     projectiles = [];
     particles = [];
     items = [];
     effects = [];
     itemClock = 8 + Math.random() * 4;
-    matchTime = 420;
+    matchTime = RULES[matchRule].seconds;
+    if(matchRule==='stamina')players.forEach(p=>p.stocks=1);
+    $('rematch-btn').textContent='REMATCH';
     gameState = 'countdown';
     screenShake = 0;
     hitFreeze = 0;
@@ -220,6 +242,7 @@
   }
 
   function returnToMenu() {
+    arcadeRound=0;cpuLevel=Number($('cpu-level').value)||6;stageKey=$('stage-select').value||'battlefield';
     clearInterval(countdownTimer);
     if(onlineSession){window.dispatchEvent(new CustomEvent('skybreak-leave-request'));onlineSession=null;mode='cpu';resize();}
     gameState = 'menu';
@@ -337,11 +360,12 @@
     if (gameState !== 'playing') return;
     matchTime = Math.max(0, matchTime - dt);
     if (matchTime <= 0) {
-      const value = player => player.stocks * 1000 - player.damage;
+      const value = player => matchRule==='time'?(player.kos-player.falls)*100000+player.damageGiven:player.stocks*1000-player.damage;
       finishMatch(value(players[0]) >= value(players[1]) ? 0 : 1);
       return;
     }
 
+    if(matchRule==='stamina')players.forEach((p,i)=>{if(p.damage>=150&&!p.dead)knockOut(p,i);});
     if (itemsEnabled) {
       itemClock -= dt;
       if (itemClock <= 0) {
@@ -786,7 +810,7 @@
     const damage = hitbox.damage * attacker.fighter.power * staleMultiplier;
     victim.damage += damage;
     attacker.damageGiven += damage;
-    const knockback = (hitbox.base + victim.damage * hitbox.growth * 10 + damage * .16) / victim.fighter.weight;
+    const knockback = (hitbox.base + (matchRule==='stamina'?Math.min(60,victim.damage):victim.damage) * hitbox.growth * 10 + damage * .16) / victim.fighter.weight;
     const radians = hitbox.angle * Math.PI / 180;
     victim.vx = Math.cos(radians) * knockback * direction;
     victim.vy = -Math.sin(radians) * knockback;
@@ -942,7 +966,7 @@
   function knockOut(player, playerIndex) {
     if (player.dead) return;
     player.dead = true;
-    player.stocks -= 1;
+    if(matchRule!=='time')player.stocks -= 1;
     player.falls += 1;
     const scorer = players[1 - playerIndex];
     scorer.kos += 1;
@@ -956,7 +980,7 @@
     burst(clamp(player.x,0,canvas.viewWidth), clamp(player.y,0,canvas.viewHeight), '#ffffff', 42, 9);
     announce('K.O.!');
     tone(62, .40, 'sawtooth', .065);
-    if (player.stocks <= 0) {
+    if (matchRule!=='time' && player.stocks <= 0) {
       setTimeout(() => finishMatch(1 - playerIndex), 620);
     } else {
       player.damage = 0;
@@ -987,6 +1011,12 @@
     $('result-title').textContent = localTitle;
     $('result-copy').innerHTML = `${winner.fighter.name} WIN<br>K.O. ${winner.kos}　与ダメージ ${Math.round(winner.damageGiven)}%<br>${loser.fighter.name} 残り ${loser.stocks} STOCK`;
     $('winner-art').style.cssText=fighterPortraitStyle(ROSTER.findIndex(f=>f.id===winner.fighter.id));$('winner-art').style.setProperty('--winner',winner.fighter.color);
+    if(arcade&&mode==='cpu'){
+      if(winnerIndex===0){arcadeRound++;try{localStorage.setItem('skybreak.arcade.best',Math.max(arcadeRound,Number(localStorage.getItem('skybreak.arcade.best')||0)));}catch{}}
+      $('result-copy').append(document.createTextNode(` · 勝ち抜き ${arcadeRound} / 9`));
+      if(arcadeRound===9){$('result-title').textContent='CHAMPION';arcadeRound=0;}
+      $('rematch-btn').textContent=winnerIndex===0&&arcadeRound?'次のステージへ':'もう一度挑戦';
+    }
     screens.result.classList.remove('hidden');
     $('touch-controls').classList.add('hidden');
     tone(523, .14, 'triangle', .04);
@@ -1079,9 +1109,9 @@
     players.forEach((player,index) => {
       const prefix = `p${index+1}`;
       $(`${prefix}-name`).textContent = `${player.cpu ? 'CPU' : `P${index+1}`} · ${player.fighter.name}`;
-      $(`${prefix}-damage`).innerHTML = `${Math.round(player.damage)}<em>%</em>`;
+      $(`${prefix}-damage`).innerHTML = `${Math.round(matchRule==='stamina'?Math.max(0,150-player.damage):player.damage)}<em>${matchRule==='stamina'?'HP':'%'}</em>`;
       $(`${prefix}-damage`).style.color = damageColor(player.damage);
-      $(`${prefix}-stocks`).textContent = Array(Math.max(0,player.stocks)).fill('●').join(' ');
+      $(`${prefix}-stocks`).textContent = matchRule==='time'?`得点 ${player.kos-player.falls}`:Array(Math.max(0,player.stocks)).fill('●').join(' ');
       $(`${prefix}-portrait`).style.cssText=fighterPortraitStyle(ROSTER.findIndex(f=>f.id===player.fighter.id));$(`${prefix}-portrait`).style.setProperty('--fighter',player.fighter.color);
     });
     const minutes = Math.floor(matchTime / 60);
@@ -1310,11 +1340,11 @@
   });
   document.addEventListener('visibilitychange',()=>{if(document.hidden){held.clear();pressed.clear();touchHeld.clear();}if(document.hidden&&gameState==='playing'&&!onlineSession)togglePause()});
   window.SKYBREAK_BRIDGE={
-    getConfig(){return {fighter:selected,stage:stageKey,items:itemsEnabled};},
-    start(config,side){onlineSession={side,starting:true};mode='online';selected=config.fighters[0];opponent=config.fighters[1];stageKey=STAGES[config.stage]?config.stage:'battlefield';itemsEnabled=!!config.items;onlineRemote={};resize();startMatch();},
+    getConfig(){return {fighter:selected,stage:stageKey,items:itemsEnabled,rule:matchRule};},
+    start(config,side){onlineSession={side,starting:true};mode='online';selected=config.fighters[0];opponent=config.fighters[1];stageKey=STAGES[config.stage]?config.stage:'battlefield';itemsEnabled=!!config.items;matchRule=RULES[config.rule]?config.rule:'stock';onlineRemote={};resize();startMatch();},
     controls(control){for(const key of ['left','right','down','up','jumpPress','jumpRelease','attack','attackPress','attackRelease','specialPress','shield','shieldPress','grabPress','anyPress']){if(key.endsWith('Press')||key.endsWith('Release'))onlineRemote[key]=onlineRemote[key]||!!control[key];else onlineRemote[key]=!!control[key];}},
-    snapshot(){return JSON.parse(JSON.stringify({id:'skybreak',phase:gameState==='result'?'over':'playing',gameState,players,projectiles,particles:particles.slice(-100),items,effects,itemClock,matchTime,stageKey,itemsEnabled,screenShake,winnerSlot},(key,value)=>['owner','grabbing','grabbedBy'].includes(key)&&value&&Number.isInteger(value.slot)?{$player:value.slot}:value));},
-    apply(snapshot){if(snapshot.id!=='skybreak'||!Array.isArray(snapshot.players)||snapshot.players.length!==2)return;clearInterval(countdownTimer);players=snapshot.players;const visited=new WeakSet();const restore=value=>{if(!value||typeof value!=='object')return value;if(Number.isInteger(value.$player))return players[value.$player]||null;if(visited.has(value))return value;visited.add(value);for(const key of Object.keys(value))value[key]=restore(value[key]);return value;};players.forEach(restore);projectiles=restore(snapshot.projectiles||[]);particles=snapshot.particles||[];items=snapshot.items||[];effects=restore(snapshot.effects||[]);itemClock=snapshot.itemClock;matchTime=snapshot.matchTime;stageKey=snapshot.stageKey;itemsEnabled=snapshot.itemsEnabled;screenShake=snapshot.screenShake||0;const previous=gameState;gameState=snapshot.gameState;Object.values(screens).forEach(screen=>screen.classList.add('hidden'));$('hud').classList.remove('hidden');$('touch-controls').classList.remove('hidden');updateHud();if(gameState==='result'){if(previous!=='result'){gameState='playing';finishMatch(snapshot.winnerSlot??0);}else {screens.result.classList.remove('hidden');$('touch-controls').classList.add('hidden');}}},
+    snapshot(){return JSON.parse(JSON.stringify({id:'skybreak',phase:gameState==='result'?'over':'playing',gameState,players,projectiles,particles:particles.slice(-100),items,effects,itemClock,matchTime,stageKey,matchRule,itemsEnabled,screenShake,winnerSlot},(key,value)=>['owner','grabbing','grabbedBy'].includes(key)&&value&&Number.isInteger(value.slot)?{$player:value.slot}:value));},
+    apply(snapshot){if(snapshot.id!=='skybreak'||!Array.isArray(snapshot.players)||snapshot.players.length!==2)return;clearInterval(countdownTimer);players=snapshot.players;const visited=new WeakSet();const restore=value=>{if(!value||typeof value!=='object')return value;if(Number.isInteger(value.$player))return players[value.$player]||null;if(visited.has(value))return value;visited.add(value);for(const key of Object.keys(value))value[key]=restore(value[key]);return value;};players.forEach(restore);projectiles=restore(snapshot.projectiles||[]);particles=snapshot.particles||[];items=snapshot.items||[];effects=restore(snapshot.effects||[]);itemClock=snapshot.itemClock;matchTime=snapshot.matchTime;stageKey=STAGES[snapshot.stageKey]?snapshot.stageKey:'battlefield';matchRule=RULES[snapshot.matchRule]?snapshot.matchRule:'stock';itemsEnabled=snapshot.itemsEnabled;screenShake=snapshot.screenShake||0;const previous=gameState;gameState=snapshot.gameState;Object.values(screens).forEach(screen=>screen.classList.add('hidden'));$('hud').classList.remove('hidden');$('touch-controls').classList.remove('hidden');updateHud();if(gameState==='result'){if(previous!=='result'){gameState='playing';finishMatch(snapshot.winnerSlot??0);}else {screens.result.classList.remove('hidden');$('touch-controls').classList.add('hidden');}}},
     restore(snapshot,side){onlineSession={side,starting:false};mode='online';resize();this.apply(snapshot);},
     message:announce,
     stop(){onlineSession=null;mode='cpu';returnToMenu();resize();}

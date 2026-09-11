@@ -47,6 +47,8 @@ jobs:
           node tests/graphics-performance.mjs
           node tests/fps-systems.mjs
           node tests/game23-systems.mjs
+          node tests/gomoku.mjs
+          node tests/classic-deluxe.mjs
       - name: Install browser smoke-test runtime and self-hosted 3D engine
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0 three@0.180.0

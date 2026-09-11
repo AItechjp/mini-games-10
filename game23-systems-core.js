@@ -7,7 +7,13 @@
   const WEAPONS = Object.freeze({
     rifle: Object.freeze({ name: 'アサルトライフル', magazine: 40, interval: 125, reload: 1100, damage: 1, weak: 5 }),
     smg: Object.freeze({ name: 'サブマシンガン', magazine: 60, interval: 90, reload: 1450, damage: 1, weak: 3 }),
-    marksman: Object.freeze({ name: 'マークスマンライフル', magazine: 15, interval: 340, reload: 1550, damage: 3, weak: 9 })
+    marksman: Object.freeze({ name: 'マークスマンライフル', magazine: 15, interval: 340, reload: 1550, damage: 3, weak: 9 }),
+    carbine: Object.freeze({ name: 'カービン / 素早い再装填', magazine: 24, interval: 150, reload: 650, damage: 2, weak: 5 }),
+    machinegun: Object.freeze({ name: '軽機関銃 / 制圧', magazine: 100, interval: 115, reload: 2700, damage: 1, weak: 4 }),
+    interceptor: Object.freeze({ name: 'インターセプター / 超連射', magazine: 35, interval: 65, reload: 1700, damage: 1, weak: 2 }),
+    revolver: Object.freeze({ name: 'マグナム / 一撃重視', magazine: 6, interval: 510, reload: 1450, damage: 7, weak: 18 }),
+    scout: Object.freeze({ name: 'スカウト / 精密射撃', magazine: 10, interval: 650, reload: 1850, damage: 5, weak: 25 }),
+    vanguard: Object.freeze({ name: 'ヴァンガード / 対大型', magazine: 18, interval: 235, reload: 1950, damage: 4, weak: 8 })
   });
   const STORIES = [
     ['封鎖命令', '洋館の隔離病棟から連絡が途絶えた。配電を復旧し、研究記録を回収する。', ['配電盤を復旧', '隔離病棟の記録を回収', '救難通信を維持'], ['activate', 'collect', 'defend']],
@@ -25,11 +31,41 @@
     ['避難放送原稿：感染源の記録を城まで届けろ。', '整備員の伝言：電源を戻せば避難経路はつながる。', '監視記録：処刑者は弱点を隠して突進する。'],
     ['封印文書：核は三段階で防衛反応を強める。', '研究者の告白：封鎖だけでは止められなかった。', '最終通信：記録を持ち帰れ。次の犠牲を出さないために。']
   ];
+  STORIES.push(
+    ['地下病棟', '封鎖の裏で第二の実験が続いていた。地下病棟から証人を連れ出す。', ['地下通路の電源を復旧', '生存研究員を護送', '収容棟の感染群を制圧'], ['activate','escort','purge']],
+    ['雪原の追跡者', '救難隊の信号が移動している。吹雪の先で仲間を探す。', ['追跡装置を回収', '救難隊の合流点を防衛', '山小屋の隊員を護送'], ['collect','defend','escort']],
+    ['決壊前夜', '濁流が避難所に迫る。二つの水門をつないで排水路を開く。', ['上流水門を再起動', '排水路の感染群を制圧', '下流の制御盤を復旧'], ['activate','purge','activate']],
+    ['沈没船の証言', '沖合の輸送船から原株の所在が判明した。記録を守って持ち帰る。', ['船内の検疫記録を回収', '岸壁の受信機を防衛', '操舵員を護送'], ['collect','defend','escort']],
+    ['赤い地下鉄', '地下鉄を避難列車として動かす。電力復旧中は線路を守れ。', ['駅構内を制圧', '車両用電源を復旧', '出発信号を防衛'], ['purge','activate','defend']],
+    ['偽りの王座', '城の核は囮だった。玉座の通信機から真の施設を探す。', ['玉座前を制圧', '暗号通信を解析', '研究主任の記録を回収'], ['purge','activate','collect']],
+    ['最終封鎖', '感染を断つため洋館を閉鎖する。退路を確保して起爆系を動かせ。', ['残された避難者を護送', '封鎖装置を復旧', '最後の退路を防衛'], ['escort','activate','defend']],
+    ['黎明の峰', '山頂アンテナから全域へ警告を送る。送信完了まで撤退はできない。', ['増幅器を回収', '山頂回線を復旧', '広域放送を防衛'], ['collect','activate','defend']],
+    ['浄化作戦', '浄化剤を川に流す前に汚染源を取り除く。作業員と設備を守る。', ['浄化作業員を護送', '取水口の感染群を制圧', '浄化装置を起動'], ['escort','purge','activate']],
+    ['水平線の救難', '最後の避難船が入港する。灯台を復旧し桟橋を奪還する。', ['灯台電源を復旧', '桟橋を制圧', '避難船の信号を防衛'], ['activate','purge','defend']],
+    ['街に灯を', '街の記録を未来へ残す。生存者を救出し避難放送を再開する。', ['市民の記録を回収', '避難誘導員を護送', '中央放送局を防衛'], ['collect','escort','defend']],
+    ['最後の夜明け', 'すべての記録がそろった。中枢を停止し、感染源を完全に断つ。', ['中枢施設の防衛群を制圧', '原株の研究記録を回収', '中枢停止装置を起動'], ['purge','collect','activate']]
+  );
+  const NEW_INTEL = [
+    ['地下への搬送は夜間だけ行われていた。','証人は核の輸送先を知っている。','研究室には同じ記号が六つ刻まれていた。'],
+    ['足跡は山小屋で途切れている。','隊員は発信機を二つに分けて運んだ。','風が弱まる瞬間に遠くの声が聞こえる。'],
+    ['水門を閉じる順番が逆に書き換えられていた。','汚染源は沈殿槽の底に残っている。','排水先には誰もいないことを確認した。'],
+    ['原株の貨物番号は城の記録と一致した。','船長は貨物を海に投棄する命令を拒んだ。','操舵員は帰港するため灯台を探していた。'],
+    ['車庫にはまだ動かせる列車がある。','地下の非常電源は地上の変電所につながる。','列車には医薬品と飲料水が積まれている。'],
+    ['玉座の下から同じ通信が繰り返されていた。','封印は感染を止める装置ではなかった。','本当の停止コードは各施設の記録にある。'],
+    ['封鎖時刻まで全員の退避を待つ。','起爆系の誤作動を防ぐため電源を分離した。','病棟に残る生存者はこれで最後だ。'],
+    ['六つの施設から受信確認が届いた。','雲の向こうに救難機が見える。','広域警告は山を越えて届いている。'],
+    ['浄化剤は低温でも作用を続ける。','作業員は流量を最後まで確認した。','下流の水から反応が消え始めた。'],
+    ['入港船は港外で一晩待っていた。','灯台が点くまで航路を確保する。','最後の便は救難隊を迎えに戻る。'],
+    ['避難者の名簿は市庁舎に残す。','中央放送はまだ電池で動いていた。','街の灯が一つずつ戻っている。'],
+    ['停止コードの照合が完了した。','研究記録は今後の治療に使える。','最終報告：救難隊、生還。夜明けを確認。']
+  ];
+  INTEL.push(...NEW_INTEL);
   const CHAPTERS = Object.freeze(STORIES.map((s, area) => Object.freeze({
+    act: Math.floor(area / 6) + 1,
     title: s[0], brief: s[1], intel: Object.freeze(INTEL[area]),
     objectives: Object.freeze(s[2].map((label, index) => Object.freeze({
       id: `a${area}-o${index}`, label, kind: s[3][index], t: [.2, .46, .72][index],
-      target: s[3][index] === 'defend' ? 45 + area * 5 : s[3][index] === 'purge' ? 14 + area * 2 : s[3][index] === 'escort' ? 46 : s[3][index] === 'activate' ? 5 : 2
+      target: s[3][index] === 'defend' ? 45 + (area % 6) * 5 : s[3][index] === 'purge' ? 14 + (area % 6) * 2 : s[3][index] === 'escort' ? 46 : s[3][index] === 'activate' ? 5 : 2
     })))
   })));
   const finite = (n, fallback = 0) => Number.isFinite(n) ? n : fallback;
@@ -81,10 +117,10 @@
     return { points, accuracy, rank };
   }
   function validCheckpoint(value) {
-    return !!value && value.version === VERSION && Number.isInteger(value.area) && value.area >= 0 && value.area < 6 && Number.isSafeInteger(value.seed) && value.seed >= 0 && ['easy','normal','nightmare'].includes(value.difficulty) && ['campaign','survival'].includes(value.playlist);
+    return !!value && value.version === VERSION && Number.isInteger(value.area) && value.area >= 0 && value.area < CHAPTERS.length && Number.isSafeInteger(value.seed) && value.seed >= 0 && ['easy','normal','nightmare'].includes(value.difficulty) && ['campaign','survival'].includes(value.playlist);
   }
   function validSnapshot(m) {
-    if(!m||!Number.isInteger(m.area)||m.area<0||m.area>5||!Number.isSafeInteger(m.seed)||!['easy','normal','nightmare'].includes(m.difficulty)||!['campaign','survival'].includes(m.playlist)||!Number.isFinite(m.time)||!Number.isFinite(m.elapsed)||m.time<0||m.elapsed<0||!Number.isInteger(m.wave)||m.wave<1)return false;
+    if(!m||!Number.isInteger(m.area)||m.area<0||m.area>=CHAPTERS.length||!Number.isSafeInteger(m.seed)||!['easy','normal','nightmare'].includes(m.difficulty)||!['campaign','survival'].includes(m.playlist)||!Number.isFinite(m.time)||!Number.isFinite(m.elapsed)||m.time<0||m.elapsed<0||!Number.isInteger(m.wave)||m.wave<1)return false;
     if(!m.stats||!['kills','shots','hits','objectives','intel','bosses','revives','downs'].every(k=>Number.isFinite(m.stats[k])&&m.stats[k]>=0)||!m.perks||!['ammo','mobility','armor'].every(k=>Number.isInteger(m.perks[k])&&m.perks[k]>=0&&m.perks[k]<=3))return false;
     if(!Array.isArray(m.players)||m.players.length>2||m.players.length<1||!m.players.every(p=>p&&typeof p.id==='string'&&typeof p.weapon==='string'&&Object.hasOwn(WEAPONS,p.weapon)&&['x','z','yaw','pitch','lives','ammo','reloadAt','invUntil','infUntil','rpgUntil','rpgShots','guardUntil','downUntil','revive'].every(k=>Number.isFinite(p[k]))&&p.lives>=0&&p.lives<=3))return false;
     if(!Array.isArray(m.enemies)||m.enemies.length>113||!m.enemies.every(a=>Array.isArray(a)&&typeof a[0]==='string'&&Number.isInteger(a[1])&&a[1]>=-1&&a[1]<112&&[2,3,4,7,8,11,12,13,14,15].every(i=>Number.isFinite(a[i]))))return false;

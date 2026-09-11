@@ -63,7 +63,7 @@
     }
     return score;
   }
-  function chooseMove(state, player = state.turn) {
+  function chooseMove(state, player = state.turn, level = 'normal') {
     if (state.winner !== null || state.turn !== player) return -1;
     const board = state.board, options = candidates(board);
     for (const color of [player + 1, 2 - player]) {
@@ -75,10 +75,28 @@
       }
     }
     let best = -1, bestScore = -Infinity;
+    const ranked=[];
     for (const index of options) {
       const center = 14 - Math.abs(Math.floor(index / SIZE) - 7) - Math.abs(index % SIZE - 7);
       const score = potential(board, index, player + 1) + potential(board, index, 2 - player) * 1.15 + center;
+      ranked.push({index,score});
       if (score > bestScore) { best = index; bestScore = score; }
+    }
+    ranked.sort((a,b)=>b.score-a.score);
+    if(level==='easy')return ranked[Math.min(2,ranked.length-1)]?.index??best;
+    if(level==='expert'){
+      bestScore=-Infinity;
+      for(const item of ranked.slice(0,10)){
+        board[item.index]=player+1;
+        let threat=0,attacks=0;
+        for(const j of candidates(board)){
+          threat=Math.max(threat,potential(board,j,2-player));
+          if(potential(board,j,player+1)>=1000000)attacks++;
+        }
+        board[item.index]=0;
+        const value=item.score-threat*1.2+(attacks>=2?2000000:attacks*25000);
+        if(value>bestScore){bestScore=value;best=item.index;}
+      }
     }
     return best;
   }

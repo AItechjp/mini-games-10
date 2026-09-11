@@ -19,8 +19,8 @@ assert.equal(R.health('brute','normal'),8);assert.equal(R.health('bloater','norm
 assert.equal(R.damage({type:'armored',hp:6},'smg'),6);
 assert.equal(R.damage({boss:true,hp:100},'rifle',true),5);
 assert.equal(R.damage({type:'brute',hp:8},'marksman',true),6);
-assert.equal(R.CHAPTERS.length,6);assert.equal(R.CHAPTERS.flatMap(c=>c.objectives).length+6,24);
-assert.equal(R.CHAPTERS.flatMap(c=>c.intel).length,18);
+assert.equal(R.CHAPTERS.length,18);assert.equal(R.CHAPTERS.flatMap(c=>c.objectives).length+18,72);
+assert.equal(R.CHAPTERS.flatMap(c=>c.intel).length,54);
 assert.equal(new Set(R.CHAPTERS.flatMap(c=>c.objectives.map(o=>o.kind))).size,5);
 const gate=R.sequenceGate();assert.ok(gate.accept('a',1));assert.ok(!gate.accept('a',1));assert.ok(!gate.accept('a',0));assert.ok(gate.accept('a',3));assert.ok(!gate.accept('a',2));
 assert.equal(R.rayBox({x:0,y:1,z:0},{x:0,y:0,z:-1},{minX:-1,maxX:1,minZ:-5,maxZ:-4}),4);
@@ -29,7 +29,7 @@ let objective={kind:'defend',progress:0,target:2};
 for(let i=0;i<20;i++)objective=R.objectiveStep(objective,.1,{near:true,contested:true});assert.equal(objective.progress,0);
 for(let i=0;i<21;i++)objective=R.objectiveStep(objective,.1,{near:true});assert.ok(objective.done);
 assert.equal(R.objectiveStep({kind:'purge',progress:0,target:4,killStart:10},.1,{kills:14}).done,true);
-assert.equal(R.validCheckpoint({version:R.VERSION,area:6,seed:1,difficulty:'normal',playlist:'campaign'}),false);
+assert.equal(R.validCheckpoint({version:R.VERSION,area:18,seed:1,difficulty:'normal',playlist:'campaign'}),false);
 assert.equal(R.validSnapshot({enemies:[],players:[]}),false);
 
 // Execute the production runtime twice with a renderer facade and a deterministic Realtime bus.
@@ -62,7 +62,7 @@ function makeContext(name){
   }
   function get(key){if(!nodes.has(key))nodes.set(key,element(key));return nodes.get(key);}
   class Mesh{constructor(geometry={},material={}){this.geometry=geometry;this.material=material;this.position={x:0,y:0,z:0,set(x,y,z){Object.assign(this,{x,y,z});}};this.rotation={x:0,y:0,z:0};this.userData={};this.children=[];this.visible=true;}add(o){this.children.push(o);}dispose(){}}
-  const stages=['mansion','mountain','river','sea','city','castle'].map(key=>({key,jp:key,name:key,boss:key,bossScale:3.5}));
+  const stages=Array.from({length:18},(_,i)=>['mansion','mountain','river','sea','city','castle'][i%6]).map(key=>({key,jp:key,name:key,boss:key,bossScale:3.5}));
   const state={playerId:name,mode:'solo',role:'host',area:0,seed:2,running:false,players:new Map(),enemies:new Map(),items:new Map(),walls:[],stageVisuals:[],localLives:3,fields:new Map(),difficulty:'normal',connected:false,partnerReady:false,lastPlayerSend:0};
   const scope={console,URL,URLSearchParams,crypto:webcrypto,performance:{now:()=>now},setTimeout:()=>1,clearTimeout(){},setInterval:()=>1,clearInterval(){},localStorage:{getItem:()=>null,setItem(){}},sessionStorage:{getItem:()=>null,setItem(){}},navigator:{clipboard:{writeText:async()=>{}}},location:{href:'https://example.test/game23.html',search:''},
     document:{hidden:false,createElement:()=>element(),querySelector:get,querySelectorAll:()=>[],addEventListener(){}},window:{},addEventListener(){},state,STAGES:stages,DIFF:Object.fromEntries(['easy','normal','nightmare'].map(k=>[k,{speed:9.6,zombieSpeed:2,runnerSpeed:4,count:[3,3,3,3,3,3],bossHp:[80,90,100,120,140,180],touchCd:1.3}])),
@@ -136,5 +136,5 @@ guest.run("send('resync',{})");await drain();guest.run("send('heartbeat',{})");a
 
 host.run("ops.paused=false;ops.lost=false;for(const p of state.players.values()){p.guardUntil=0;p.invUntil=0;p.lives=1;}damagePlayer('host-123');damagePlayer('guest-456');");assert.equal(host.facts.running,false);now+=3100;host.run('networkTick(performance.now())');await drain();assert.ok(host.facts.running);assert.equal(host.facts.area,1,'team wipe retries current chapter');
 assert.ok(host.facts.players.every(p=>p.lives===3));
-console.log('GAME23 systems PASS: full loader syntax, 1-shot rules, 24 objectives, 18 intel, authoritative guest fire, cover, duplicate rejection, pause, revival, area transition, stale snapshots, reconnect, team retry');
+console.log('GAME23 systems PASS: full loader syntax, 1-shot rules, 72 objectives, 54 intel, authoritative guest fire, cover, duplicate rejection, pause, revival, area transition, stale snapshots, reconnect, team retry');
 export {makeContext};

@@ -2,8 +2,8 @@
 'use strict';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
 const META={
-  gomoku:{title:'五目並べ',kicker:'GOMOKU / 15 × 15',summary:'黒が先手。縦・横・斜めに5つ以上並べたら勝ち。禁じ手なしの五目並べです。',rules:'<ul><li>15×15の盤に黒と白を交互に置きます。黒が先手です。</li><li>縦・横・斜めのいずれかに5つ以上並べると勝ちです。</li><li>三三・四四・長連などの禁じ手はありません。</li><li>石がある場所には置けません。盤が埋まったら引き分けです。</li><li>CPU戦はあなたが黒。オンライン対戦は部屋を作った人が黒です。</li><li>キーボードは矢印キーで移動、EnterまたはSpaceで着手します。</li></ul>'},
-  daifugo:{title:'大富豪',kicker:'DAIFUGO / CARD GAME',summary:'特殊効果全部入り。ジョーカー、スペ3返し、階段、縛り、5飛び、7渡し、8切り、9リバース、10捨て、11バック、革命を実装。',rules:'<ul><li>通常の強さは 3→4→…→K→A→2。革命中は逆転します。</li><li><b>ジョーカー</b>：単体では最強。同じ数字の組ではワイルドとして使えます。単体ジョーカーは♠3で返せます。</li><li><b>階段</b>：同じスートの連番を3枚以上まとめて出せます。同じ枚数のより強い階段で返します。</li><li><b>スート縛り</b>：同じスート構成が2回続くと縛りが発生し、場が流れるまで同じスート構成だけ出せます。</li><li><b>5飛び</b>：次の人を飛ばします。2人戦では自分が続けて出します。</li><li><b>7渡し</b>：7を出した枚数ぶん、自分の手札からカードを選んで相手に渡します。</li><li><b>8切り</b>：場を即座に流し、出した人が続けて出します。</li><li><b>9リバース</b>：進行方向を反転します。2人戦では手番順自体は変わりません。</li><li><b>10捨て</b>：10を出した枚数ぶん、自分の手札から好きなカードを捨てます。</li><li><b>11バック</b>：場が流れるまで一時的にカードの強弱を反転します。</li><li><b>革命</b>：4枚組、または5枚以上の階段で革命。もう一度革命条件が成立すると元に戻ります。</li><li>出せない時はパス。2人戦ではパスすると場が流れます。</li></ul>'},
+  gomoku:{title:'五目並べ',kicker:'GOMOKU / 15 × 15',summary:'黒が先手。縦・横・斜めに5つ以上並べたら勝ち。禁じ手なしの五目並べです。',rules:'<ul><li>15×15の盤に黒と白を交互に置きます。黒が先手です。</li><li>縦・横・斜めのいずれかに5つ以上並べると勝ちです。</li><li>三三・四四・長連などの禁じ手はありません。</li><li>石がある場所には置けません。盤が埋まったら引き分けです。</li><li>CPU戦はあなたが黒。通常対局・三番勝負・36問の練習を選べます。オンライン対戦は部屋を作った人が黒です。</li><li>キーボードは矢印キーで移動、EnterまたはSpaceで着手します。</li></ul>'},
+  daifugo:{title:'大富豪',kicker:'DAIFUGO / CARD GAME',summary:'特殊効果全部入り。ジョーカー、スペ3返し、階段、縛り、5飛び、7渡し、8切り、9リバース、10捨て、11バック、革命を実装。',rules:'<ul><li>通常の強さは 3→4→…→K→A→2。革命中は逆転します。</li><li><b>ジョーカー</b>：単体では最強。同じ数字の組ではワイルドとして使えます。単体ジョーカーは♠3で返せます。</li><li><b>階段</b>：同じスートの連番を3枚以上まとめて出せます。同じ枚数のより強い階段で返します。</li><li><b>スート縛り</b>：同じスート構成が2回続くと縛りが発生し、場が流れるまで同じスート構成だけ出せます。</li><li><b>5飛び</b>：次の人を飛ばします。2人戦では自分が続けて出します。</li><li><b>7渡し</b>：7を出した枚数ぶん、自分の手札からカードを選んで相手に渡します。</li><li><b>8切り</b>：場を即座に流し、出した人が続けて出します。</li><li><b>9リバース</b>：進行方向を反転します。2人戦では手番順自体は変わりません。</li><li><b>10捨て</b>：10を出した枚数ぶん、自分の手札から好きなカードを捨てます。</li><li><b>11バック</b>：場が流れるまで一時的にカードの強弱を反転します。</li><li><b>革命</b>：4枚組、または5枚以上の階段で革命。もう一度革命条件が成立すると元に戻ります。</li><li>出せない時はパス。パスした人は場が流れるまで参加できません。全員がパスすると最後に出した人から再開。CPU卓は2〜4人を選択でき、3局リーグは順位点の合計を競います。</li></ul>'},
   oldmaid:{title:'ババ抜き',kicker:'GAME 19 / OLD MAID',summary:'相手の裏向きカードから1枚選び、同じ数字のペアを捨てます。最後にジョーカーを持った側が負け。',rules:'<ul><li>ジョーカー1枚入りの53枚を配り、同じ数字のペアは自動で捨てます。</li><li>自分の番に相手の裏向きカードを1枚選びます。</li><li>引いたカードでペアができたら自動で場から消えます。</li><li>先に手札が0枚になった人が勝ち。最後のジョーカーを持った人が負けです。</li></ul>'},
   uno:{title:'COLOR UNO',kicker:'GAME 20 / UNO',summary:'色か数字・記号を合わせてカードを出すUNOルールの対戦。独自デザインの108枚デッキ。',rules:'<ul><li>同じ色、同じ数字・記号、またはワイルドを出せます。</li><li>SKIP / REVERSE は2人戦では相手を1回休ませます。</li><li>+2 は相手が2枚、W+4 は相手が4枚引いて休みます。</li><li>ワイルドを出した時は次の色を選びます。</li><li>出せない時は山札から1枚引いてターン終了。先に手札0枚で勝ちです。</li></ul>'},
   othello:{title:'オセロ',kicker:'GAME 21 / OTHELLO',summary:'8×8の定番リバーシ。挟んだ石を返し、最後に多く残した方が勝ち。',rules:'<ul><li>黒が先手です。相手の石を自分の石で挟めるマスに置きます。</li><li>縦・横・斜めで挟んだ石はすべて自分の色になります。</li><li>置ける場所がない時は自動でパスします。</li><li>両者とも置けない、または盤面が埋まると終了。石が多い方が勝ちです。</li></ul>'},
@@ -29,9 +29,15 @@ function handleNet(d){if(!d||d.game&&d.game!==game)return;if(d.type==='state'&&r
 el.create.onclick=createRoom; el.join.addEventListener('submit',e=>{e.preventDefault();joinRoom(el.roomInput.value)}); el.roomInput.addEventListener('input',()=>el.roomInput.value=normalizeCode(el.roomInput.value)); el.copy.onclick=async()=>{try{await navigator.clipboard.writeText(roomCode);el.copy.textContent='コピー済み';setTimeout(()=>el.copy.textContent='コピー',1200)}catch(_){}};
 function sendState(){if(mode==='online'&&role==='host')safeSend({type:'state',game,state})}
 function submit(action){if(mode==='online'){if(!connected){el.msg.textContent='先に部屋へ接続してください。';return}if(role==='guest'){safeSend({type:'action',game,action});return}}applyAction(action,0)}
-function startGame(){selected.clear();pendingWild='';state=game==='gomoku'?GomokuRules.create():game==='daifugo'?initDaifugo():game==='oldmaid'?initOldMaid():game==='uno'?initUno():game==='othello'?initOthello():initTtt();commit('ゲーム開始！')}
-function commit(message=''){selected.clear();pendingWild='';if(message)el.msg.textContent=message;render();sendState();scheduleCpu()}
-function scheduleCpu(){clearTimeout(cpuTimer);if(mode!=='solo'||!state||state.winner!=null||state.turn!==1)return;cpuTimer=setTimeout(cpuMove,480)}
+function startGame(){
+  const previous=state;
+  if(mode==='solo'&&deluxe.course==='series'&&previous?.winner!=null&&seriesRound<3&&Math.max(...seriesScores)<(game==='gomoku'?2:Infinity))seriesRound++;
+  else{seriesRound=1;seriesScores=[0,0,0,0];}
+  selected.clear();pendingWild='';history=[];hint=-1;state=game==='gomoku'?GomokuRules.create():game==='daifugo'?initDaifugo():game==='oldmaid'?initOldMaid():game==='uno'?initUno():game==='othello'?initOthello():initTtt();if(game==='gomoku'&&mode==='solo'&&deluxe.course==='puzzle'){const p=ClassicDeluxe.puzzles[deluxe.puzzle];state.board=[...p.board];state.puzzle=p.id;}commit('ゲーム開始！')}
+function commit(message=''){
+  if(state?.winner!=null&&!state.deluxeRecorded){state.deluxeRecorded=true;if(game==='daifugo')(state.finished||[state.winner,1-state.winner]).forEach((p,i)=>seriesScores[p]+=(state.hands.length-i));else if(Number.isInteger(state.winner))seriesScores[state.winner]++;}
+selected.clear();pendingWild='';if(message)el.msg.textContent=message;render();sendState();scheduleCpu()}
+function scheduleCpu(){clearTimeout(cpuTimer);if(mode!=='solo'||!state||state.winner!=null||state.turn===0||deluxe.course==='puzzle')return;cpuTimer=setTimeout(cpuMove,480)}
 el.newGame.onclick=()=>{if(mode==='online'&&role==='guest'){safeSend({type:'reset-request',game});el.msg.textContent='再戦をリクエストしました。'}else startGame()};
 const SUITS=[['♠','black'],['♥','red'],['♦','red'],['♣','black']], RL={11:'J',12:'Q',13:'K',14:'A',15:'2'}; function rankLabel(r){return RL[r]||String(r)} function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function standardDeck(joker=false){const d=[];for(const[suit,color]of SUITS)for(let r=3;r<=15;r++)d.push({id:`${suit}${r}`,suit,color,rank:r,label:rankLabel(r)});if(joker)d.push({id:'JOKER',suit:'★',color:'red',rank:99,label:'JOKER',joker:true});return shuffle(d)}
@@ -39,9 +45,13 @@ function sortHand(h){h.sort((a,b)=>(a.joker?1:0)-(b.joker?1:0)||a.rank-b.rank||a
 function cardHtml(c,opts={}){if(opts.back)return'<div class="playing-card back" aria-label="裏向きカード"></div>';const tag=opts.static?'div':'button',attrs=opts.static?'':`type="button" data-card="${c.id}"`;return`<${tag} class="playing-card ${c.color||''} ${c.joker?'joker':''} ${opts.selected?'selected':''} ${opts.playable?'playable':''}" ${attrs}><span class="rank">${c.joker?'JK':c.label}</span><span class="suit">${c.suit}</span></${tag}>`}
 
 // DAIFUGO — advanced special-rule set
-function initDaifugo(){const d=standardDeck(true),h=[[],[]];d.forEach((c,i)=>h[i%2].push(c));h.forEach(sortHand);return{kind:'daifugo',hands:h,turn:0,pile:null,revolution:false,elevenBack:false,suitLock:null,direction:1,pending:null,pendingQueue:[],afterTurn:0,lastEffect:'',winner:null}}
+function initDaifugo(){const d=standardDeck(true),n=mode==='online'?2:deluxe.players,h=Array.from({length:n},()=>[]);d.forEach((c,i)=>h[i%n].push(c));h.forEach(sortHand);return{kind:'daifugo',hands:h,turn:0,pile:null,revolution:false,elevenBack:false,suitLock:null,direction:1,pending:null,pendingQueue:[],afterTurn:0,lastEffect:'',winner:null,finished:[],passed:[],rules:deluxe.rules}}
+function daiRule(key){return state.rules==='full'||(state.rules==='standard'&&['revolution','cut','lock','sequence'].includes(key));}
+function daiNext(p,skip=0,includePassed=false){const n=state.hands.length;for(let i=1;i<=n*(skip+1);i++){const q=(p+i*state.direction%n+n)%n;if(!state.finished.includes(q)&&(includePassed||!state.passed.includes(q))){if(skip){skip--;continue;}return q;}}return -1;}
+function daiAdvance(p,cut=false,skip=false){if(cut){daiClearTrick();return state.finished.includes(p)?daiNext(p,0,true):p;}const next=daiNext(p,skip?1:0);if(next===p||next<0){daiClearTrick();return state.finished.includes(p)?daiNext(p,0,true):p;}return next;}
+
 function daiReverse(){return !!(state.revolution!==state.elevenBack)}
-function daiClearTrick(){state.pile=null;state.elevenBack=false;state.suitLock=null}
+function daiClearTrick(){state.pile=null;state.elevenBack=false;state.suitLock=null;state.passed=[];}
 function daiAnalyze(cards){
   if(!cards.length)return null;
   const jokers=cards.filter(c=>c.joker), non=cards.filter(c=>!c.joker), count=cards.length;
@@ -49,7 +59,7 @@ function daiAnalyze(cards){
   if(jokers.length===1&&non.length===0)return{type:'group',count:1,rank:99,jokerOnly:true,jokerCount:1,suits:[],suitKey:'',cards};
   const sameRank=non.length&&non.every(c=>c.rank===non[0].rank);
   if(sameRank&&count<=4){const suits=non.map(c=>c.suit).sort();return{type:'group',count,rank:non[0].rank,jokerOnly:false,jokerCount:jokers.length,suits,suitKey:suits.join('|'),cards};}
-  if(count>=3&&jokers.length===0&&non.every(c=>c.suit===non[0].suit)){
+  if(daiRule('sequence')&&count>=3&&jokers.length===0&&non.every(c=>c.suit===non[0].suit)){
     const ranks=non.map(c=>c.rank).sort((a,b)=>a-b); if(new Set(ranks).size!==ranks.length)return null;
     if(ranks.every((r,i)=>i===0||r===ranks[i-1]+1))return{type:'sequence',count,low:ranks[0],high:ranks[ranks.length-1],rank:ranks[ranks.length-1],jokerOnly:false,jokerCount:0,suits:[non[0].suit],suitKey:non[0].suit,cards};
   }
@@ -69,6 +79,7 @@ function daiCanPlay(cards,p){
   if(!state.pile)return{ok:true,a};
   const pile=state.pile;
   if(pile.jokerOnly&&a.type==='group'&&a.count===1&&!a.jokerOnly&&a.rank===3&&a.suits[0]==='♠')return{ok:true,a,spade3:true};
+  if(pile.jokerOnly)return{ok:false,reason:'単体ジョーカーにはスペード3だけを出せます。'};
   if(a.jokerOnly){if(pile.count!==1)return{ok:false,reason:'単体ジョーカーは1枚出しにだけ使えます。'};return{ok:true,a};}
   if(a.type!==pile.type||a.count!==pile.count)return{ok:false,reason:`場と同じ種類・${pile.count}枚で出してください。`};
   if(!daiSuitAllowed(a))return{ok:false,reason:`スート縛り中：${state.suitLock.replaceAll('|','・')}だけ出せます。`};
@@ -76,7 +87,12 @@ function daiCanPlay(cards,p){
   const stronger=daiReverse()?av<pv:av>pv;
   return stronger?{ok:true,a}:{ok:false,reason:daiReverse()?'今はより小さい数字が強い状態です。':'場より強いカードを出してください。'};
 }
-function daiWinner(p,msg){state.winner=p;state.pending=null;state.pendingQueue=[];commit(msg|| (p===localIndex()?'あなたの勝ち！':'相手の勝ち。'))}
+function daiWinner(p,msg){
+  if(!state.finished.includes(p))state.finished.push(p);state.pending=null;state.pendingQueue=[];
+  const remaining=state.hands.map((_,i)=>i).filter(i=>!state.finished.includes(i));
+  if(remaining.length<=1){state.finished.push(...remaining);state.winner=state.finished[0];commit((state.winner===localIndex()?'あなたが大富豪！':'対局終了。')+' '+state.finished.map((q,i)=>`${i+1}位 ${q===localIndex()?'あなた':'CPU '+q}`).join(' / '));}
+  else{state.turn=daiAdvance(p,!state.pile);commit(`${p===0?'あなた':'CPU '+p}が${state.finished.length}位で上がり。`);}
+}
 function daiStartPending(p,queue,afterTurn,message){
   state.pendingQueue=queue.filter(x=>x.count>0); state.afterTurn=afterTurn;
   if(!state.pendingQueue.length){state.turn=afterTurn;return commit(message)}
@@ -88,7 +104,7 @@ function daiResolveSpecial(p,ids){
   if(unique.length!==need||unique.some(id=>!hand.some(c=>c.id===id)))return commit(`${need}枚選んでください。`);
   const chosen=unique.map(id=>hand.find(c=>c.id===id)); state.hands[p]=hand.filter(c=>!unique.includes(c.id));
   let msg='';
-  if(state.pending.type==='give'){state.hands[1-p].push(...chosen);sortHand(state.hands[1-p]);msg=`7渡し！ ${chosen.length}枚を相手へ渡しました。`;}
+  if(state.pending.type==='give'){const receiver=daiNext(p,0,true);state.hands[receiver].push(...chosen);sortHand(state.hands[receiver]);msg=`7渡し！ ${chosen.length}枚を相手へ渡しました。`;}
   else{msg=`10捨て！ ${chosen.length}枚を捨てました。`;}
   sortHand(state.hands[p]);
   if(state.hands[p].length===0)return daiWinner(p,msg+' 手札0枚で上がり！');
@@ -96,34 +112,38 @@ function daiResolveSpecial(p,ids){
   state.pending=null;state.turn=state.afterTurn;commit(msg);
 }
 function daiPlay(p,ids){
+  if(!Array.isArray(ids)||new Set(ids).size!==ids.length||ids.some(id=>!state.hands[p].some(c=>c.id===id)))return;
   const hand=state.hands[p], cards=ids.map(id=>hand.find(c=>c.id===id)).filter(Boolean), check=daiCanPlay(cards,p);
   if(!check.ok)return commit(check.reason); const a=check.a, prev=state.pile;
   state.hands[p]=hand.filter(c=>!ids.includes(c.id)); sortHand(state.hands[p]);
   const ranks=cards.filter(c=>!c.joker).map(c=>c.rank), effects=[];
   if(check.spade3)effects.push('スペ3返し');
   const revolution=(a.type==='group'&&a.count===4)||(a.type==='sequence'&&a.count>=5);
-  if(revolution){state.revolution=!state.revolution;effects.push(state.revolution?'革命':'革命返し');}
-  if(ranks.includes(11)){state.elevenBack=true;effects.push('11バック');}
-  if(!state.suitLock&&prev&&prev.type===a.type&&prev.count===a.count&&!prev.jokerCount&&!a.jokerCount&&prev.suitKey&&prev.suitKey===a.suitKey){state.suitLock=a.suitKey;effects.push('スート縛り');}
-  if(ranks.includes(9)){state.direction*=-1;effects.push('9リバース');}
-  const cut8=ranks.includes(8), skip5=ranks.includes(5);
+  if(revolution&&daiRule('revolution')){state.revolution=!state.revolution;effects.push(state.revolution?'革命':'革命返し');}
+  if(daiRule('back')&&ranks.includes(11)){state.elevenBack=true;effects.push('11バック');}
+  if(daiRule('lock')&&!state.suitLock&&prev&&prev.type===a.type&&prev.count===a.count&&!prev.jokerCount&&!a.jokerCount&&prev.suitKey&&prev.suitKey===a.suitKey){state.suitLock=a.suitKey;effects.push('スート縛り');}
+  if(daiRule('reverse')&&ranks.includes(9)){state.direction*=-1;effects.push('9リバース');}
+  const cut8=daiRule('cut')&&ranks.includes(8), skip5=daiRule('skip')&&ranks.includes(5);
   if(skip5)effects.push('5飛び'); if(cut8)effects.push('8切り'); if(a.jokerOnly)effects.push('ジョーカー');
   if(check.spade3)effects.push('JOKER撃破');
-  let afterTurn=(cut8||skip5)?p:1-p;
-  if(cut8)daiClearTrick(); else state.pile={...a,cards,lastPlayer:p};
+  state.pile={...a,cards,lastPlayer:p};
+  let afterTurn=daiAdvance(p,cut8||check.spade3,skip5);
   const q=[]; const sevens=ranks.filter(r=>r===7).length, tens=ranks.filter(r=>r===10).length;
-  if(sevens&&state.hands[p].length){q.push({type:'give',count:Math.min(sevens,state.hands[p].length)});effects.push('7渡し');}
-  if(tens&&state.hands[p].length){q.push({type:'discard',count:Math.min(tens,state.hands[p].length)});effects.push('10捨て');}
+  if(daiRule('give')&&sevens&&state.hands[p].length){q.push({type:'give',count:Math.min(sevens,state.hands[p].length)});effects.push('7渡し');}
+  if(daiRule('discard')&&tens&&state.hands[p].length){q.push({type:'discard',count:Math.min(tens,state.hands[p].length)});effects.push('10捨て');}
   state.lastEffect=effects.join(' / ')||'通常';
   if(state.hands[p].length===0)return daiWinner(p,(effects.length?effects.join('！ ')+'！ ':'')+(p===localIndex()?'あなたの勝ち！':'相手の勝ち。'));
   const msg=effects.length?effects.join('！ ')+'！':'カードを出しました。';
   if(q.length)return daiStartPending(p,q,afterTurn,msg);
   state.turn=afterTurn;commit(msg);
 }
-function daiPass(p){if(state.kind!=='daifugo'||state.turn!==p||state.pending||!state.pile)return;const lead=state.pile.lastPlayer;daiClearTrick();state.turn=lead;state.lastEffect='場流れ';commit('パス。場が流れ、11バック・縛りも解除されました。')}
+function daiPass(p){if(state.kind!=='daifugo'||state.turn!==p||state.pending||!state.pile)return;const lead=state.pile.lastPlayer;state.passed.push(p);const next=daiNext(p);if(next<0||next===lead){daiClearTrick();state.turn=state.finished.includes(lead)?daiNext(lead,0,true):lead;state.lastEffect='場流れ';commit('場が流れ、11バック・縛りも解除。')}else{state.turn=next;commit(`${p===0?'あなた':'CPU '+p}がパス。`);}}
 function daiCandidateSets(hand){
   const out=[], joker=hand.find(c=>c.joker), pile=state.pile;
-  if(!pile){for(const c of hand.filter(c=>!c.joker))out.push([c]);if(joker)out.push([joker]);return out;}
+  if(!pile){for(const c of hand.filter(c=>!c.joker))out.push([c]);if(joker)out.push([joker]);
+    for(let rank=3;rank<=15;rank++){const group=hand.filter(c=>c.rank===rank);for(let n=2;n<=group.length;n++)out.push(group.slice(0,n));if(joker&&group.length&&group.length<4)out.push([...group,joker]);}
+    if(daiRule('sequence'))for(const [suit] of SUITS){const run=hand.filter(c=>c.suit===suit);for(let i=0;i<run.length;i++)for(let n=3;n<=run.length-i;n++){const cs=run.slice(i,i+n);if(cs.every((c,j)=>j===0||c.rank===cs[j-1].rank+1))out.push(cs);}}
+    return out;}
   const k=pile.count;
   if(pile.type==='group'){
     const groups={};hand.filter(c=>!c.joker).forEach(c=>(groups[c.rank]??=[]).push(c));
@@ -135,11 +155,11 @@ function daiCandidateSets(hand){
   return out;
 }
 function daiCpu(){
-  const p=1,h=state.hands[p];
+  const p=state.turn,h=state.hands[p];
   if(state.pending){const n=Math.min(state.pending.count,h.length),pick=[...h].sort((a,b)=>(a.joker?1:0)-(b.joker?1:0)||a.rank-b.rank).slice(0,n);return daiResolveSpecial(p,pick.map(c=>c.id));}
   let choices=daiCandidateSets(h).filter(cs=>daiCanPlay(cs,p).ok);
   if(!choices.length)return state.pile?daiPass(p):undefined;
-  const rev=daiReverse();choices.sort((x,y)=>{const a=daiAnalyze(x),b=daiAnalyze(y),av=a.jokerOnly?999:(a.type==='sequence'?a.high:a.rank),bv=b.jokerOnly?999:(b.type==='sequence'?b.high:b.rank);if(a.jokerOnly!==b.jokerOnly)return a.jokerOnly?1:-1;return rev?bv-av:av-bv});
+  const rev=daiReverse();choices.sort((x,y)=>{if(x.length!==y.length)return y.length-x.length;const a=daiAnalyze(x),b=daiAnalyze(y),av=a.jokerOnly?999:(a.type==='sequence'?a.high:a.rank),bv=b.jokerOnly?999:(b.type==='sequence'?b.high:b.rank);if(a.jokerOnly!==b.jokerOnly)return a.jokerOnly?1:-1;return rev?bv-av:av-bv});
   daiPlay(p,choices[0].map(c=>c.id));
 }
 function daiChips(){const c=[];if(state.revolution)c.push('革命');if(state.elevenBack)c.push('11バック');if(state.suitLock)c.push(`縛り ${state.suitLock.replaceAll('|','・')}`);if(state.direction<0)c.push('9リバース');if(state.lastEffect&&state.lastEffect!=='通常')c.push(state.lastEffect);return c}
@@ -179,14 +199,14 @@ function tttScore(b,depth){const r=tttResult(b);if(r===1)return 10-depth;if(r===
 function tttCpu(){let best=-999,idx=-1;for(let i=0;i<9;i++)if(!state.board[i]){state.board[i]=2;const s=tttScore(state.board,0);state.board[i]=0;if(s>best){best=s;idx=i}}if(idx>=0)tttMove(1,idx)}
 
 function applyAction(a,p){if(!state||state.winner!=null||state.turn!==p||!a)return;if(game==='gomoku'&&a.type==='move'){gomokuMove(p,a.index)}else if(game==='daifugo'){if(a.type==='play')daiPlay(p,a.ids||[]);else if(a.type==='pass')daiPass(p);else if(a.type==='special')daiResolveSpecial(p,a.ids||[])}else if(game==='oldmaid'&&a.type==='draw')oldDraw(p,Number(a.index));else if(game==='uno'){if(a.type==='play')unoPlay(p,a.id,a.color);else if(a.type==='draw')unoDrawOne(p)}else if(game==='othello'&&a.type==='move')othMove(p,Number(a.index));else if(game==='ttt'&&a.type==='move')tttMove(p,Number(a.index))}
-function cpuMove(){if(!state||state.winner!=null||state.turn!==1)return;if(game==='gomoku')gomokuMove(1,GomokuRules.chooseMove(state,1));else if(game==='daifugo')daiCpu();else if(game==='oldmaid')oldCpu();else if(game==='uno')unoCpu();else if(game==='othello')othCpu();else tttCpu()}
+function cpuMove(){if(!state||state.winner!=null||state.turn===0)return;if(game==='gomoku')gomokuMove(1,GomokuRules.chooseMove(state,1,deluxe.level));else if(game==='daifugo')daiCpu();else if(game==='oldmaid')oldCpu();else if(game==='uno')unoCpu();else if(game==='othello')othCpu();else tttCpu()}
 function commonLabels(){const li=localIndex(),ri=1-li;el.you.textContent=mode==='solo'?'YOU':role==='guest'?'PLAYER 2':'PLAYER 1';el.rival.textContent=mode==='solo'?'CPU':role==='guest'?'PLAYER 1':'PLAYER 2';if(!state){el.youSub.textContent='準備中';el.rivalSub.textContent='準備中';return}if(state.hands){el.youSub.textContent=`手札 ${state.hands[li].length}枚`;el.rivalSub.textContent=`手札 ${state.hands[ri].length}枚`}else if(state.board&&game==='othello'){el.youSub.textContent=`${li===0?'黒':'白'} ${state.board.filter(x=>x===othColor(li)).length}石`;el.rivalSub.textContent=`${ri===0?'黒':'白'} ${state.board.filter(x=>x===othColor(ri)).length}石`}else if(game==='gomoku'){el.youSub.textContent=li===0?'黒・先手':'白・後手';el.rivalSub.textContent=ri===0?'黒・先手':'白・後手'}else if(game==='ttt'){el.youSub.textContent=li===0?'×':'○';el.rivalSub.textContent=ri===0?'×':'○'}}
-function render(){commonLabels();el.pass.classList.add('hidden');el.draw.classList.add('hidden');el.newGame.textContent=mode==='online'&&role==='guest'?'再戦リクエスト':'新しいゲーム';if(mode==='online'&&!connected){el.stage.innerHTML='<div class="board-wrap"><div class="pile-note">部屋を作るか、相手の部屋に参加するとゲームが始まります。</div></div>';el.status.textContent='接続待ち';return}if(!state){el.stage.innerHTML='<div class="board-wrap"><div class="pile-note">対戦相手からゲーム状態を受信しています…</div></div>';el.status.textContent='同期中';return}const li=localIndex();el.turn.textContent=state.winner!=null?'RESULT':'TURN';el.status.textContent=state.winner!=null?(state.winner==='draw'?'DRAW':state.winner===li?'YOU WIN':'RIVAL WIN'):(state.turn===li?'あなたの番':'相手の番');if(game==='gomoku')renderGomoku();else if(game==='daifugo')renderDai();else if(game==='oldmaid')renderOld();else if(game==='uno')renderUno();else if(game==='othello')renderOth();else renderTtt()}
+function render(){commonLabels();el.pass.classList.add('hidden');el.draw.classList.add('hidden');el.newGame.textContent=mode==='online'&&role==='guest'?'再戦リクエスト':'新しいゲーム';if(mode==='online'&&!connected){el.stage.innerHTML='<div class="board-wrap"><div class="pile-note">部屋を作るか、相手の部屋に参加するとゲームが始まります。</div></div>';el.status.textContent='接続待ち';return}if(!state){el.stage.innerHTML='<div class="board-wrap"><div class="pile-note">対戦相手からゲーム状態を受信しています…</div></div>';el.status.textContent='同期中';return}const li=localIndex();el.turn.textContent=state.winner!=null?'RESULT':'TURN';el.status.textContent=state.winner!=null?(state.winner==='draw'?'DRAW':state.winner===li?'YOU WIN':'RIVAL WIN'):(state.turn===li?'あなたの番':'相手の番');if(game==='gomoku')renderGomoku();else if(game==='daifugo')renderDai();else if(game==='oldmaid')renderOld();else if(game==='uno')renderUno();else if(game==='othello')renderOth();else renderTtt();renderDeluxeStatus()}
 function renderDai(){
   const li=localIndex(),ri=1-li,hand=state.hands[li],active=canAct(),special=active&&state.pending;
-  const rival=state.hands[ri].map(()=>cardHtml(null,{back:true})).join(''); const pile=state.pile?state.pile.cards.map(c=>cardHtml(c,{static:true})).join(''):'<span class="pile-note">場は空です。好きな組・階段を出せます。</span>';
+  const rival=state.hands[ri].map(()=>cardHtml(null,{back:true})).join('');const rivals=state.hands.map((h,p)=>p===li?'':`<div class="table-seat ${state.turn===p?'seat-active':''}"><strong>${mode==='online'?'相手':'CPU '+p}</strong><span>${state.finished?.includes(p)?(state.finished.indexOf(p)+1)+'位':h.length+'枚'}</span><div class="seat-cards">${h.slice(0,7).map(()=>cardHtml(null,{back:true})).join('')}</div></div>`).join(''); const pile=state.pile?state.pile.cards.map(c=>cardHtml(c,{static:true})).join(''):'<span class="pile-note">場は空です。好きな組・階段を出せます。</span>';
   const chips=daiChips(), need=special?Math.min(state.pending.count,hand.length):0, specialLabel=special?(state.pending.type==='give'?`7渡し：${need}枚を相手に渡す`:`10捨て：${need}枚を捨てる`):'';
-  el.stage.innerHTML=`<div class="table-zone daifugo-zone">${chips.length?`<div class="dai-effects">${chips.map(x=>`<span class="dai-chip">${x}</span>`).join('')}</div>`:''}<section class="rival-area"><div class="area-head"><h3>RIVAL HAND</h3><span>${state.hands[ri].length}枚</span></div><div class="hand">${rival}</div></section><section class="center-area"><div class="area-head"><h3>FIELD</h3><span>${daiReverse()?'強さ反転中':'通常の強さ'}</span></div><div class="pile">${pile}</div>${special?`<div class="dai-special-banner">${specialLabel}</div>`:''}<div class="action-row"><button id="play-selected" class="choice-btn primary" type="button" ${active?'':'disabled'}>${special?specialLabel:'選択したカードを出す'}</button></div></section><section class="you-area"><div class="area-head"><h3>YOUR HAND</h3><span>${special?`${need}枚選択`:'組 / 階段 / ジョーカー対応'}</span></div><div class="hand">${hand.map(c=>cardHtml(c,{selected:selected.has(c.id),playable:active})).join('')}</div></section></div>`;
+  el.stage.innerHTML=`<div class="table-zone daifugo-zone">${chips.length?`<div class="dai-effects">${chips.map(x=>`<span class="dai-chip">${x}</span>`).join('')}</div>`:''}<section class="rival-area"><div class="area-head"><h3>${state.hands.length}人卓</h3><span>${{simple:'シンプル',standard:'標準',full:'全部入り'}[state.rules]||'全部入り'}</span></div><div class="table-seats">${rivals}</div></section><section class="center-area"><div class="area-head"><h3>FIELD</h3><span>${daiReverse()?'強さ反転中':'通常の強さ'}</span></div><div class="pile">${pile}</div>${special?`<div class="dai-special-banner">${specialLabel}</div>`:''}<div class="action-row"><button id="play-selected" class="choice-btn primary" type="button" ${active?'':'disabled'}>${special?specialLabel:'選択したカードを出す'}</button></div></section><section class="you-area"><div class="area-head"><h3>YOUR HAND</h3><span>${special?`${need}枚選択`:'組 / 階段 / ジョーカー対応'}</span></div><div class="hand">${hand.map(c=>cardHtml(c,{selected:selected.has(c.id),playable:active})).join('')}</div></section></div>`;
   $$('[data-card]',el.stage).forEach(b=>b.onclick=()=>{if(!active)return;const id=b.dataset.card;if(selected.has(id))selected.delete(id);else{if(special&&selected.size>=need)return;selected.add(id)}renderDai()});
   $('#play-selected',el.stage).onclick=()=>{if(!active)return;if(special){if(selected.size===need)submit({type:'special',ids:[...selected]});else el.msg.textContent=`${need}枚選んでください。`}else if(selected.size)submit({type:'play',ids:[...selected]})};
   if(active&&state.pile&&!state.pending){el.pass.classList.remove('hidden');el.pass.onclick=()=>submit({type:'pass'})}
@@ -196,7 +216,16 @@ function renderUno(){const li=localIndex(),ri=1-li,active=canAct(),top=unoTop();
 function renderOth(){const li=localIndex(),active=canAct(),valid=new Set(active?othMoves(state.board,li).map(x=>x[0]):[]);el.stage.innerHTML=`<div class="board-wrap"><div class="othello-board">${state.board.map((v,i)=>`<button class="othello-cell ${valid.has(i)?'valid':''}" type="button" data-oth="${i}" ${valid.has(i)?'':'disabled'}>${v?`<span class="disc ${v===1?'black':'white'}"></span>`:''}</button>`).join('')}</div></div>`;$$('[data-oth]',el.stage).forEach(b=>b.onclick=()=>submit({type:'move',index:Number(b.dataset.oth)}))}
 function renderTtt(){const li=localIndex(),active=canAct();el.stage.innerHTML=`<div class="board-wrap"><div class="ttt-board">${state.board.map((v,i)=>`<button class="ttt-cell ${v===1?'x':v===2?'o':''}" type="button" data-ttt="${i}" ${active&&!v?'':'disabled'}>${v===1?'×':v===2?'○':''}</button>`).join('')}</div></div>`;$$('[data-ttt]',el.stage).forEach(b=>b.onclick=()=>submit({type:'move',index:Number(b.dataset.ttt)}))}
 function gomokuMove(player,index){
+  const before=structuredClone(state);
   if(!GomokuRules.move(state,index,player))return;
+  if(player===0){history.push(before);hint=-1;}
+  playStoneSound();
+  if(mode==='solo'&&deluxe.course==='puzzle'){
+    const problem=ClassicDeluxe.puzzles[deluxe.puzzle],ok=ClassicDeluxe.solved(problem,state,index);
+    state.winner=ok?0:1;
+    if(ok){puzzleCleared.add(problem.id);try{localStorage.setItem('gomoku.puzzles',JSON.stringify([...puzzleCleared]));}catch{}}
+    return commit(ok?'正解！ 次の問題に進めます。':'この手では課題を解けません。やり直してみましょう。');
+  }
   const coordinate=String.fromCharCode(65+index%15)+(Math.floor(index/15)+1);
   commit(state.winner==='draw'?'引き分けです。':state.winner!==null?(state.winner===localIndex()?'あなたの勝ち！':'相手の勝ち。'):`${player===0?'黒':'白'}：${coordinate} に置きました。`);
 }
@@ -206,7 +235,7 @@ function renderGomoku(){
   const winning=new Set(state.winningLine||[]),moves=state.board.filter(Boolean).length;
   el.stage.innerHTML=`<div class="gomoku-wrap"><figure class="gomoku-figure"><div class="gomoku-board" role="group" aria-label="五目並べ 15路盤。矢印キーで移動、Enterで石を置く。">${state.board.map((v,i)=>{
     const coord=String.fromCharCode(65+i%15)+(Math.floor(i/15)+1);
-    return `<button class="gomoku-cell ${i===state.lastMove?'last':''} ${winning.has(i)?'won':''}" type="button" data-gomoku="${i}" tabindex="${i===selectedCell?0:-1}" aria-label="${coord} ${v===1?'黒':v===2?'白':'空き'}${i===state.lastMove?'・直前の手':''}" aria-disabled="${!active||!!v}">${v?`<span class="gomoku-stone ${v===1?'black':'white'}" aria-hidden="true"></span>`:''}</button>`;
+    return `<button class="gomoku-cell ${i===state.lastMove?'last':''} ${winning.has(i)?'won':''} ${hint===i?'hint':''}" type="button" data-gomoku="${i}" tabindex="${i===selectedCell?0:-1}" aria-label="${coord} ${v===1?'黒':v===2?'白':'空き'}${i===state.lastMove?'・直前の手':''}" aria-disabled="${!active||!!v}">${v?`<span class="gomoku-stone ${v===1?'black':'white'}" aria-hidden="true"></span>`:''}</button>`;
   }).join('')}</div><figcaption class="gomoku-caption">${moves}手 / あなたは${localIndex()===0?'黒':'白'}</figcaption></figure><p class="gomoku-note">5つ以上並べたら勝ち・禁じ手なし<br>橙の印は直前の手。矢印キーで移動、Enterで着手。</p></div>`;
   const board=el.stage.querySelector('.gomoku-board');
   board.addEventListener('click',e=>{const cell=e.target.closest('[data-gomoku]');if(cell&&canAct())submit({type:'move',index:Number(cell.dataset.gomoku)})});
@@ -218,6 +247,29 @@ function renderGomoku(){
     const target=board.querySelector(`[data-gomoku="${next}"]`);target.tabIndex=0;target.focus();
   });
   if(focus!==undefined)board.querySelector(`[data-gomoku="${selectedCell}"]`).focus({preventScroll:true});
+}
+const deluxe={players:2,rules:'full',course:'free',level:'normal',puzzle:0};
+let seriesScores=[0,0,0,0],seriesRound=1,history=[],hint=-1,stoneAudio=null,soundEnabled=false;
+const puzzleCleared=new Set();try{for(const id of JSON.parse(localStorage.getItem('gomoku.puzzles')||'[]'))puzzleCleared.add(id);}catch{}
+function playStoneSound(){if(!soundEnabled)return;try{stoneAudio??=new (window.AudioContext||window.webkitAudioContext)();stoneAudio.resume();const o=stoneAudio.createOscillator(),g=stoneAudio.createGain(),t=stoneAudio.currentTime;o.type='triangle';o.frequency.setValueAtTime(420,t);o.frequency.exponentialRampToValueAtTime(140,t+.055);g.gain.setValueAtTime(.09,t);g.gain.exponentialRampToValueAtTime(.001,t+.08);o.connect(g).connect(stoneAudio.destination);o.start(t);o.stop(t+.09);o.onended=()=>{o.disconnect();g.disconnect();};}catch{}}
+const deluxeBar=document.createElement('section');deluxeBar.className='classic-deluxe-bar';
+if(['gomoku','daifugo'].includes(game)){
+  document.body.classList.add('classic-deluxe',game+'-deluxe');
+  deluxeBar.innerHTML=game==='daifugo'?'<label>卓の人数<select id="deluxe-players"><option value="2">2人</option><option value="3">3人 / CPU 2人</option><option value="4">4人 / CPU 3人</option></select></label><label>ルール<select id="deluxe-rules"><option value="full">全部入り</option><option value="standard">標準 / 革命・8切り・縛り・階段</option><option value="simple">シンプル / 同じ数字とジョーカー</option></select></label><label>対局<select id="deluxe-course"><option value="free">一局勝負</option><option value="series">3局リーグ / 順位点</option></select></label>':'<label>遊び方<select id="deluxe-course"><option value="free">通常対局</option><option value="series">三番勝負 / 2勝先取</option><option value="puzzle">練習問題 / 全36問</option></select></label><label>CPU<select id="deluxe-level"><option value="easy">やさしい</option><option value="normal" selected>標準</option><option value="expert">手強い</option></select></label><label id="puzzle-picker" hidden>問題<select id="deluxe-puzzle">'+ClassicDeluxe.puzzles.map((p,i)=>`<option value="${i}">${i+1}. ${p.title}</option>`).join('')+'</select></label><button id="gomoku-hint" type="button">ヒント</button><button id="gomoku-undo" type="button">一手戻す</button><label><input id="stone-sound" type="checkbox">着手音</label>';
+  el.stage.before(deluxeBar);const status=document.createElement('p');status.id='deluxe-status';status.setAttribute('role','status');deluxeBar.after(status);
+  for(const select of $$('select',deluxeBar))select.onchange=()=>{deluxe[select.id.replace('deluxe-','')]=['players','puzzle'].includes(select.id.replace('deluxe-',''))?Number(select.value):select.value;state=null;seriesScores=[0,0,0,0];seriesRound=1;if($('#puzzle-picker'))$('#puzzle-picker').hidden=deluxe.course!=='puzzle';startGame();};
+  if(mode==='online'){for(const select of $$('select',deluxeBar))select.disabled=true;deluxeBar.title='オンラインは2人・全部入り／通常対局です';}
+  if(game==='gomoku'){
+    $('#stone-sound').onchange=e=>{soundEnabled=e.target.checked;playStoneSound();};
+    $('#gomoku-hint').onclick=()=>{if(mode!=='solo'||!canAct())return;hint=deluxe.course==='puzzle'?ClassicDeluxe.solution(ClassicDeluxe.puzzles[deluxe.puzzle]):GomokuRules.chooseMove(state,0,'expert');render();};
+    $('#gomoku-undo').onclick=()=>{if(mode!=='solo'||!history.length||state.winner!=null)return;clearTimeout(cpuTimer);state=history.pop();hint=-1;render();};
+  }
+  Object.defineProperty(window,'classicContent',{get:()=>({game,players:state?.hands?.length||2,course:deluxe.course,puzzles:36,cleared:puzzleCleared.size,round:seriesRound})});
+}
+function renderDeluxeStatus(){const status=$('#deluxe-status');if(!status)return;status.textContent=mode==='online'?'オンライン / 2人対戦':deluxe.course==='puzzle'?`${ClassicDeluxe.puzzles[deluxe.puzzle].instruction} · クリア ${puzzleCleared.size} / 36`:deluxe.course==='series'?`第${seriesRound}局 / 3 · ${seriesScores.slice(0,game==='daifugo'?deluxe.players:2).map((s,i)=>`${i===0?'あなた':'CPU '+i} ${s}${game==='daifugo'?'点':'勝'}`).join(' / ')}`:game==='daifugo'?'手札を先になくした順に順位が決まります。':'15路盤 / 五連以上で勝ち / 禁じ手なし';
+  if(game==='gomoku'){$('#gomoku-hint').disabled=mode==='online'||!canAct();$('#gomoku-undo').disabled=mode==='online'||!history.length||state?.winner!=null;}
+  if(state?.winner!=null&&deluxe.course==='puzzle')el.newGame.textContent='問題をやり直す';
+  else if(state?.winner!=null&&deluxe.course==='series')el.newGame.textContent=seriesRound<3&&Math.max(...seriesScores)<(game==='gomoku'?2:Infinity)?'次の一局へ':'新しいシリーズ';
 }
 window.addEventListener('beforeunload',destroyPeer); if(mode==='solo')startGame(); else render();
 })();

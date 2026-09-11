@@ -54,8 +54,8 @@ const started=await page.evaluate(()=>({
 }));
 if(!started.overlayHidden)throw new Error(`start overlay still visible: ${JSON.stringify(started)}`);
 if(started.canvasW<10||started.canvasH<10)throw new Error(`canvas not rendering: ${JSON.stringify(started)}`);
-if(!/^1\s*\/\s*6/.test(started.area))throw new Error(`AREA 1 did not start: ${JSON.stringify(started)}`);
-if(!started.systems||started.systems.content.mainObjectives!==24||started.systems.objectives!==3||!started.systems.normalHpValid)throw new Error(`Operations rules did not initialize: ${JSON.stringify(started.systems)}`);
+if(!/^1\s*\/\s*18/.test(started.area))throw new Error(`AREA 1 did not start: ${JSON.stringify(started)}`);
+if(!started.systems||started.systems.content.mainObjectives!==72||started.systems.objectives!==3||!started.systems.normalHpValid)throw new Error(`Operations rules did not initialize: ${JSON.stringify(started.systems)}`);
 fail('after start');
 console.log('GAME23 smoke OK',JSON.stringify({loadState,started}));
 await browser.close();

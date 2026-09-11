@@ -18,13 +18,18 @@ try {
   const saved=JSON.parse(localStorage.getItem('blacksite-checkpoint')||'null');
   if(OPS.validCheckpoint(saved))ops.checkpoint=saved;
   const profile=JSON.parse(localStorage.getItem('blacksite-profile')||'null');
-  if(profile)ops.profile={unlocked:OPS.clamp(profile.unlocked,0,5),intel:Array.isArray(profile.intel)?profile.intel.filter(x=>/^a[0-5]-intel[0-2]$/.test(x)):[],best:OPS.clamp(profile.best,0,1e9)};
+  if(profile)ops.profile={unlocked:OPS.clamp(profile.unlocked,0,OPS.CHAPTERS.length-1),intel:Array.isArray(profile.intel)?profile.intel.filter(x=>/^a(?:[0-9]|1[0-7])-intel[0-2]$/.test(x)):[],best:OPS.clamp(profile.best,0,1e9)};
 } catch {}
 
 // Same gameplay population at every visual quality; reinforce gradually and reuse dead slots.
 DIFF.easy.count=[32,36,40,44,48,52];
 DIFF.normal.count=[42,48,54,60,66,72];
 DIFF.nightmare.count=[48,54,60,66,72,80];
+for(const d of Object.values(DIFF)){
+  const counts=d.count.slice(0,6),hp=d.bossHp.slice(0,6);
+  d.count=Array.from({length:18},(_,i)=>Math.min(100,counts[i%6]+Math.floor(i/6)*8));
+  d.bossHp=Array.from({length:18},(_,i)=>Math.round(hp[i%6]*(1+Math.floor(i/6)*.35)));
+}
 const OPS_CAPACITY=112;
 const OPS_PACKET_KINDS=new Set(['hello','heartbeat','ready','settings','welcome','reject','resync','snapshot','leave','away','pause_request','ping','notice','intel','hurt','hit_ack','hazard','blast','player','shot','reload']);
 const opsBaseSpawn=spawnHostWorld;
@@ -65,7 +70,7 @@ function opsNowPlayer(){return state.players.get(state.playerId);}
 
 // Compact, game-native controls and mission information.
 const opsMenu=document.createElement('div');opsMenu.className='ops-menu';
-opsMenu.innerHTML='<label>作戦<select id="ops-playlist"><option value="campaign">キャンペーン / 6章</option><option value="survival">サバイバル / 無限ウェーブ</option></select></label><label>装備<select id="ops-weapon"><option value="rifle">アサルト / バランス</option><option value="smg">SMG / 連射</option><option value="marksman">マークスマン / 高威力</option></select></label><label>開始章<select id="ops-chapter"></select></label><label class="ops-upgrade hidden">チーム強化<select id="ops-upgrade"><option value="ammo">拡張マガジン +10</option><option value="mobility">移動速度 +6%</option><option value="armor">被弾後の無敵時間 +0.25秒</option></select></label><button id="ops-resume" type="button">前回の章から再開</button>';
+opsMenu.innerHTML='<label>作戦<select id="ops-playlist"><option value="campaign">キャンペーン / 3部・18章</option><option value="survival">サバイバル / 無限ウェーブ</option></select></label><label>装備<select id="ops-weapon"><option value="rifle">アサルト / バランス</option><option value="smg">SMG / 連射</option><option value="marksman">マークスマン / 高威力</option></select></label><label>開始章<select id="ops-chapter"></select></label><label class="ops-upgrade hidden">チーム強化<select id="ops-upgrade"><option value="ammo">拡張マガジン +10</option><option value="mobility">移動速度 +6%</option><option value="armor">被弾後の無敵時間 +0.25秒</option></select></label><button id="ops-resume" type="button">前回の章から再開</button>';
 overlay.querySelector('.overlay-card').insertBefore(opsMenu,startBtn);
 const opsExitActions=document.createElement('div');opsExitActions.className='ops-exit-actions';
 opsExitActions.innerHTML='<button type="button" id="ops-return">ロビーへ戻る</button><button type="button" id="ops-continue-solo" hidden>一人で続行</button>';
@@ -96,12 +101,13 @@ const opsJournal=document.createElement('details');opsJournal.className='ops-jou
 opsJournal.innerHTML='<summary>作戦記録・収集した情報</summary><div id="ops-records"></div>';
 frame.closest('.outbreak-shell').append(opsJournal);
 const opsChooseChapter=$('#ops-chapter'),opsPlaylist=$('#ops-playlist'),opsChooseWeapon=$('#ops-weapon');
+opsChooseWeapon.innerHTML=Object.entries(OPS.WEAPONS).map(([id,w])=>`<option value="${id}">${w.name} · ${w.magazine}発</option>`).join('');
 function opsMenuUpdate(){
   opsChooseChapter.replaceChildren(...STAGES.map((s,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=`${i+1} / ${s.jp}${i>ops.profile.unlocked?' — 未解除':''}`;o.disabled=i>ops.profile.unlocked;return o;}));
   opsChooseChapter.disabled=state.role==='guest'||opsPlaylist.value==='survival';
   $('#ops-resume').hidden=!ops.checkpoint||state.role==='guest';
   const records=$('#ops-records');records.replaceChildren();
-  const head=document.createElement('p');head.textContent=`記録 ${ops.profile.intel.length} / 18　最高スコア ${ops.profile.best.toLocaleString()}`;records.append(head);
+  const head=document.createElement('p');head.textContent=`記録 ${ops.profile.intel.length} / 54　最高スコア ${ops.profile.best.toLocaleString()}`;records.append(head);
   OPS.CHAPTERS.forEach((c,i)=>{const title=document.createElement('h3');title.textContent=`${i+1}. ${STAGES[i].jp} — ${c.title}`;records.append(title);const text=document.createElement('p');text.textContent=c.brief;records.append(text);c.intel.forEach((s,j)=>{const p=document.createElement('p');p.textContent=ops.profile.intel.includes(`a${i}-intel${j}`)?s:'未回収の記録';records.append(p);});});
 }
 opsMenuUpdate();
@@ -206,7 +212,7 @@ resetMission=function(){
 clearArea=function(){
   if(!state.running||!isHost())return;
   state.running=false;opsClearInputs();
-  if(state.area===5){completeMission();return;}
+  if(state.area===STAGES.length-1){completeMission();return;}
   ops.action='next';ops.profile.unlocked=Math.max(ops.profile.unlocked,state.area+1);opsSaveProfile();opsAreaResult();sendWorld(true);
 };
 function opsAreaResult(){
@@ -478,7 +484,7 @@ updateLobby=function(){
 syncModeUI=function(){
   $('#mode-solo').classList.toggle('active',state.mode==='solo');$('#mode-coop').classList.toggle('active',state.mode==='coop');$('#coop-lobby').classList.toggle('hidden',state.mode!=='coop');
   opsMenu.classList.remove('hidden','ops-between');$('.ops-upgrade').classList.add('hidden');
-  if(state.mode==='solo'){state.role='host';setOverlay('BLACK SITE / OPERATIONS','6章・24の主目標。通常敵は1発、デブ系とボスだけ高耐久。左移動・右照準・FIRE、操作長押しで任務・蘇生。','ミッション開始',true);startBtn.disabled=false;}
+  if(state.mode==='solo'){state.role='host';setOverlay('BLACK SITE / OPERATIONS','3部18章・72の主目標・9装備。通常敵は1発、デブ系とボスだけ高耐久。左移動・右照準・FIRE、操作長押しで任務・蘇生。','ミッション開始',true);startBtn.disabled=false;}
   else{setOverlay('2 PLAYER CO-OP','部屋コードで合流し、2人とも準備完了を押してください。敵・目標・補給を共有。ダウンした相方は近くで蘇生できます。','パートナー待ち',true);updateLobby();}
   opsMenuUpdate();
 };
@@ -508,7 +514,7 @@ sendWorld=function(force=false){
 };
 function opsApplySnapshot(m){
   if(!OPS.validSnapshot(m))return;
-  if(!Number.isInteger(m.area)||m.area<0||m.area>=6||!Number.isSafeInteger(m.seed)||!Array.isArray(m.enemies)||m.enemies.length>OPS_CAPACITY+1||!Array.isArray(m.players)||m.players.length>2||!OPS.CHAPTERS[m.area]||!DIFF[m.difficulty]||!['campaign','survival'].includes(m.playlist))return;
+  if(!Number.isInteger(m.area)||m.area<0||m.area>=STAGES.length||!Number.isSafeInteger(m.seed)||!Array.isArray(m.enemies)||m.enemies.length>OPS_CAPACITY+1||!Array.isArray(m.players)||m.players.length>2||!OPS.CHAPTERS[m.area]||!DIFF[m.difficulty]||!['campaign','survival'].includes(m.playlist))return;
   if(typeof m.run!=='string'||!m.run||!Number.isSafeInteger(m.epoch)||m.epoch<1)return;
   if(ops.run===m.run&&m.epoch<ops.epoch)return;
   const rebuild=ops.run!==m.run||ops.epoch!==m.epoch||state.area!==m.area||state.seed!==m.seed;
@@ -576,7 +582,7 @@ onNetwork=function(m){
   if(m.kind==='pause_request'&&fromPeer){opsSetPause(m.paused!==false);return;}
   if(m.kind==='ping'&&Number.isFinite(m.x)&&Number.isFinite(m.z)){ops.ping={x:m.x,z:m.z,from:m.from,until:performance.now()+8000};toast('仲間が集合地点を指定しました',1200);return;}
   if(m.kind==='notice'&&fromHost&&typeof m.text==='string'){toast(m.text.slice(0,180),2200);return;}
-  if(m.kind==='intel'&&fromHost&&/^a[0-5]-intel[0-2]$/.test(m.id)){opsRecordIntel(m);return;}
+  if(m.kind==='intel'&&fromHost&&/^a(?:[0-9]|1[0-7])-intel[0-2]$/.test(m.id)){opsRecordIntel(m);return;}
   if(m.kind==='hurt'&&fromHost&&m.target===state.playerId){flashDamage(m.reason);return;}
   if(m.kind==='hit_ack'&&fromHost&&m.target===state.playerId){opsConfirmHit(m.hit,m.killed,m.weak,m.hp);return;}
   if(m.kind==='hazard'&&fromHost&&[m.x,m.z,m.radius,m.at].every(Number.isFinite)){opsHazardVisual(m);return;}
@@ -642,8 +648,8 @@ updateBossHud=function(){const boss=state.enemies.get('boss');$('#hud-boss').tex
 for(const e of state.enemies.values())if(!e.boss)e.hp=e.maxHp=OPS.health(e.type,state.difficulty);
 {const preview=opsNowPlayer();state.players.set(state.playerId,{...opsPlayer(state.playerId),x:preview?.x||local.x,z:preview?.z||local.z,ammo:OPS.WEAPONS.rifle.magazine});}
 if(v5Roster)v5Roster.textContent='通常敵8種は1発 / デブ系2種・ボスは高耐久';
-if(owNote)owNote.textContent='6章 / 24主目標 / 2人協力';
+if(owNote)owNote.textContent='18章 / 72主目標 / 2人協力';
 syncModeUI();opsHud();
 const opsInvite=new URLSearchParams(location.search).get('room');
 if(state.mode==='coop'&&opsInvite&&/^[A-Z0-9]{6}$/i.test(opsInvite)){$('#coop-join-code').value=opsInvite.toUpperCase();toast('参加を押すと招待された部屋へ入れます',3500);}
-Object.defineProperty(window,'blacksiteSystems',{configurable:true,get:()=>({version:OPS.VERSION,mode:state.mode,role:state.role,connected:state.connected,partnerReady:state.partnerReady,ready:ops.ready,peerReady:ops.peerReady,running:state.running,paused:ops.paused,lost:ops.lost,area:state.area,epoch:ops.epoch,run:ops.run,time:Math.round(ops.time),playlist:ops.playlist,wave:ops.wave,objectives:ops.objectives.map(o=>({id:o.id,kind:o.kind,progress:o.progress,target:o.target,done:o.done,x:o.x,z:o.z})),stats:{...ops.stats},players:[...state.players.values()].map(p=>({id:p.id,x:p.x,z:p.z,lives:p.lives,ammo:p.ammo,weapon:p.weapon})),enemies:[...state.enemies.values()].map(e=>({id:e.id,type:e.type,boss:e.boss,hp:e.hp,maxHp:e.maxHp,dead:e.dead})),content:{chapters:6,mainObjectives:24,intel:18,caches:12,weapons:3},normalTypes:OPS.NORMAL_TYPES,fatTypes:OPS.FAT_TYPES})});
+Object.defineProperty(window,'blacksiteSystems',{configurable:true,get:()=>({version:OPS.VERSION,mode:state.mode,role:state.role,connected:state.connected,partnerReady:state.partnerReady,ready:ops.ready,peerReady:ops.peerReady,running:state.running,paused:ops.paused,lost:ops.lost,area:state.area,epoch:ops.epoch,run:ops.run,time:Math.round(ops.time),playlist:ops.playlist,wave:ops.wave,objectives:ops.objectives.map(o=>({id:o.id,kind:o.kind,progress:o.progress,target:o.target,done:o.done,x:o.x,z:o.z})),stats:{...ops.stats},players:[...state.players.values()].map(p=>({id:p.id,x:p.x,z:p.z,lives:p.lives,ammo:p.ammo,weapon:p.weapon})),enemies:[...state.enemies.values()].map(e=>({id:e.id,type:e.type,boss:e.boss,hp:e.hp,maxHp:e.maxHp,dead:e.dead})),content:{chapters:OPS.CHAPTERS.length,mainObjectives:OPS.CHAPTERS.length*4,intel:OPS.CHAPTERS.length*3,caches:OPS.CHAPTERS.length*2,weapons:Object.keys(OPS.WEAPONS).length},normalTypes:OPS.NORMAL_TYPES,fatTypes:OPS.FAT_TYPES})});
