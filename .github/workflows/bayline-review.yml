@@ -28,6 +28,23 @@ jobs:
             git commit -m 'fix(bayline): apply reviewed simulation and rendering corrections'
             git push origin HEAD:feat/bayline-city
           fi
+      - name: Verify simulation and campaign progression
+        id: core
+        continue-on-error: true
+        run: node tests/bayline-core.mjs
+      - name: Verify real two-player network protocol
+        id: network
+        continue-on-error: true
+        run: node tests/bayline-network.mjs
+      - name: Retain network and campaign results immediately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bayline-network-check
+          retention-days: 7
+          path: |
+            test-output/bayline/core-results.json
+            test-output/bayline/network-results.json
       - name: Install pinned rendering and browser runtime
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0 three@0.180.0
@@ -37,13 +54,7 @@ jobs:
           cp node_modules/three/LICENSE touge/vendor/LICENSE
       - name: Syntax validation
         run: |
-          for f in bayline/*.mjs; do node --check "$f"; done
-          node --check tests/bayline-core.mjs
-          node --check tests/bayline-smoke.mjs
-      - name: Verify simulation and campaign progression
-        id: core
-        continue-on-error: true
-        run: node tests/bayline-core.mjs
+          for f in bayline/*.mjs tests/bayline-*.mjs; do node --check "$f"; done
       - name: Verify desktop, mobile and real two-browser cooperation
         id: browser
         continue-on-error: true
@@ -67,12 +78,12 @@ jobs:
             touge/vendor/examples/jsm/
             touge/vendor/LICENSE
             test-output/bayline/
-      - name: Require both verification suites
+      - name: Require all verification suites
         if: always()
         env:
           CORE: ${{ steps.core.outcome }}
+          NETWORK: ${{ steps.network.outcome }}
           BROWSER: ${{ steps.browser.outcome }}
         run: |
-          echo "Simulation outcome: $CORE"
-          echo "Browser outcome: $BROWSER"
-          test "$CORE" = success && test "$BROWSER" = success
+          echo "Simulation: $CORE / Real network: $NETWORK / Browsers: $BROWSER"
+          test "$CORE" = success && test "$NETWORK" = success && test "$BROWSER" = success
