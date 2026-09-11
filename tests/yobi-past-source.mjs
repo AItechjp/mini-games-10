@@ -33,9 +33,13 @@ E.recordAttempt(store,civil,civil.answer,'sure',now+E.DAY+60000);assert.equal(st
 E.recordAttempt(store,civil,civil.answer,'sure',now+2*E.DAY);E.recordAttempt(store,civil,civil.answer,'sure',now+5*E.DAY);assert.equal(E.stats([civil],store).mastered,1);
 const wrong=[String(Number(civil.answer[0])%civil.maxChoice+1)];E.recordAttempt(store,civil,wrong,'sure',now+6*E.DAY);assert.equal(store.records[civil.id].stage,0);assert(E.filterBank([civil],store,{status:'wrong'}).length===1);
 assert(E.filterBank(bank,store,{subject:'民法',year:'2025',exam:'preliminary'}).every(q=>q.subject==='民法'&&q.year===2025));
+const officialOnly=E.filterBank(bank,store,{source:'official'});assert.equal(officialOnly.length,meta.officialAnswerVerified);assert(officialOnly.every(q=>q.answerSource));
+assert(E.filterBank(bank,store,{source:'dataset'}).every(q=>!q.answerSource));
+store.records[civil.id].choiceReviewed=true;assert.deepEqual(E.filterBank([civil],store,{status:'choiceReviewed'}),[civil]);
 const queue=E.dailyQueue(bank.filter(q=>!q.pdfOnly&&q.exam==='preliminary'),E.emptyStore(),20);assert.equal(new Set(queue.map(q=>q.id)).size,20);assert.equal(new Set(queue.map(q=>q.subject)).size,7);
 const s={duration:60000,deadline:now+60000,paused:false};assert.equal(E.remaining(s,now+30000),30);E.pause(s,now+30000);assert.equal(E.remaining(s,now+90000),30);E.resume(s,now+120000);assert.equal(E.remaining(s,now+130000),20);assert.equal(E.remaining(s,now+160000),0);
 const restored=E.validateBackup(JSON.parse(JSON.stringify(store)),bank);assert.equal(restored.records[civil.id].attempts,store.records[civil.id].attempts);assert.throws(()=>E.validateBackup({schema:0},bank));assert.throws(()=>E.validateBackup({schema:3,records:null},bank));
+assert(restored.records[civil.id].choiceReviewed,'full-choice self-check must survive backup restore');
 const readinessStore=E.emptyStore(),legal=bank.filter(q=>q.exam==='preliminary'&&q.subject!=='一般教養'&&!q.pdfOnly);
 for(const q of legal)readinessStore.records[q.id]={attempts:3,correct:3,firstCorrect:true,lastCorrect:true,confidence:'sure',stage:3,due:now+30*E.DAY,lastAt:now,lastDay:E.dayKey(now)};
 for(const block of ['public','civil','criminal'])for(let i=0;i<2;i++)readinessStore.history.push({id:block+i,title:block,at:now,correct:1,total:1,points:80,max:100,mode:'exam',pauses:0,block,exam:'preliminary',year:2024+i});

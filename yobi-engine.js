@@ -45,12 +45,15 @@
       if (f.year==='recent'&&q.year<2020)return false;
       if (f.year&&f.year!=='all'&&f.year!=='recent'&&q.year!==Number(f.year))return false;
       if (f.topic&&f.topic!=='all'&&!q.topics.includes(f.topic))return false;
+      if (f.source==='official'&&!q.answerSource)return false;
+      if (f.source==='dataset'&&q.answerSource)return false;
       if (f.status==='new'&&r.attempts)return false;
       if (f.status==='wrong'&&(!r.attempts||r.lastCorrect))return false;
       if (f.status==='due'&&(!r.attempts||r.due>now))return false;
       if (f.status==='unsure'&&(!r.attempts||r.confidence==='sure'))return false;
       if (f.status==='bookmark'&&!r.bookmark)return false;
       if (f.status==='mastered'&&!(r.stage>=3&&r.lastCorrect&&r.confidence==='sure'))return false;
+      if (f.status==='choiceReviewed'&&!r.choiceReviewed)return false;
       const hay=normalize(q.text+' '+q.subject+' '+q.topics.join(' ')+' '+(r.note||'')+' '+q.year).toLowerCase();
       return query.every(term=>hay.includes(term));
     });
@@ -106,7 +109,7 @@
       const item={};
       for(const k of ['attempts','correct','stage','due','lastAt'])if(Number.isFinite(r[k])&&r[k]>=0)item[k]=Math.min(r[k],1e15);
       item.stage=Math.min(item.stage||0,5);
-      for(const k of ['lastCorrect','firstCorrect','bookmark'])item[k]=r[k]===true;
+      for(const k of ['lastCorrect','firstCorrect','bookmark','choiceReviewed'])item[k]=r[k]===true;
       for(const k of ['note','reason','lastDay'])if(typeof r[k]==='string')item[k]=r[k].slice(0,12000);
       item.confidence=['sure','unsure','guess'].includes(r.confidence)?r.confidence:'unsure';item.lastAnswer=answers(r.lastAnswer||[]).slice(0,10);out.records[id]=item;
     }
