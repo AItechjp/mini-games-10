@@ -108,6 +108,7 @@ function v5TuneEnemy(e,type,d,seed){
   if(type==='leaper'){e.runner=true;e.hp=e.maxHp=2;e.v5BaseSpeed=d.runnerSpeed*1.02;e.speed=e.v5BaseSpeed;e.v5LeapAt=performance.now()+900+r()*2200;e.v5LeapUntil=0;}
   if(type==='armored'){e.hp=e.maxHp=6;e.v5BaseSpeed=d.zombieSpeed*.76;e.speed=e.v5BaseSpeed;e.headScale=.93;}
   if(type==='bloater'){e.hp=e.maxHp=5;e.v5BaseSpeed=d.zombieSpeed*.66;e.speed=e.v5BaseSpeed;e.headScale=1.05;}
+  e.hp=e.maxHp=BlacksiteRules.health(type,state.difficulty);
 }
 function v5RepositionEnemies(){
   if(!v5Route.length)return;const d=difficulty(),arr=[...state.enemies.values()].filter(e=>!e.boss).sort((a,b)=>(a.index??0)-(b.index??0));
@@ -162,7 +163,7 @@ const v5BaseStage=updateStageVisuals;
 updateStageVisuals=function(now){v5BaseStage(now);const next=[];for(const v of state.stageVisuals){if(v.type==='v5Acid'){const p=(now-v.born)/v.life;if(p<1){v.mesh.position.lerpVectors(v.start,v.target,p);v.mesh.position.y+=Math.sin(p*Math.PI)*1.7;next.push(v);}else scene.remove(v.mesh);}else next.push(v);}state.stageVisuals=next;};
 
 const v5BaseHostHit=hostHit;
-hostHit=function(id,playerId,weak=false){const e=state.enemies.get(id);if(e?.type==='armored'&&!weak&&Math.random()<.58){toast('装甲に弾かれた — 頭部を狙え',360);return;}const wasAlive=!!e&&!e.dead;v5BaseHostHit(id,playerId,weak);if(wasAlive&&e?.dead&&e.type==='bloater'){const ring=new THREE.Mesh(new THREE.RingGeometry(.4,.72,24),new THREE.MeshBasicMaterial({color:0x9ed35b,transparent:true,opacity:.65,side:THREE.DoubleSide,depthWrite:false}));ring.rotation.x=-Math.PI/2;ring.position.set(e.x,.16,e.z);scene.add(ring);state.stageVisuals.push({type:'shockwave',mesh:ring,born:performance.now(),life:650,max:5.5});for(const p of state.players.values())if((p.lives??0)>0&&Math.hypot(p.x-e.x,p.z-e.z)<4.1)damagePlayer(p.id,'BLOATER BURST');}};
+hostHit=function(id,playerId,weak=false){const e=state.enemies.get(id);const wasAlive=!!e&&!e.dead;v5BaseHostHit(id,playerId,weak);if(wasAlive&&e?.dead&&e.type==='bloater'){const ring=new THREE.Mesh(new THREE.RingGeometry(.4,.72,24),new THREE.MeshBasicMaterial({color:0x9ed35b,transparent:true,opacity:.65,side:THREE.DoubleSide,depthWrite:false}));ring.rotation.x=-Math.PI/2;ring.position.set(e.x,.16,e.z);scene.add(ring);state.stageVisuals.push({type:'shockwave',mesh:ring,born:performance.now(),life:650,max:5.5});for(const p of state.players.values())if((p.lives??0)>0&&Math.hypot(p.x-e.x,p.z-e.z)<4.1)damagePlayer(p.id,'BLOATER BURST');}};
 
 /* Tiny OBJ loader for original local models. Failure never blocks gameplay. */
 const v5ObjCache=new Map();

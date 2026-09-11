@@ -231,4 +231,4 @@ function expansionPowerHud(){
   if(!inf&&expansionInfiniteUntil&&now>=expansionInfiniteUntil){expansionInfiniteUntil=0;toast('∞ AMMO ENDED',500);}if(!inv&&expansionInvincibleUntil&&now>=expansionInvincibleUntil){expansionInvincibleUntil=0;toast('INVINCIBLE ENDED',500);}if(!lan&&expansionLauncherUntil&&now>=expansionLauncherUntil){expansionLauncherUntil=0;expansionLauncherShots=0;toast('LAUNCHER ENDED',500);}
   const powerText=active.length?active.join(' / '):'NO POWER';itemStatus.textContent=powerText;
 }
-setInterval(expansionPowerHud,140);expansionPowerHud();
+setInterval(()=>expansionPowerHud(),140);expansionPowerHud();

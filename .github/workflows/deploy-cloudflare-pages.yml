@@ -36,6 +36,7 @@ jobs:
         run: |
           node tests/yobi-past-source.mjs
           node tests/fps-systems.mjs
+          node tests/game23-systems.mjs
 
       - name: Build static bundle
         shell: bash

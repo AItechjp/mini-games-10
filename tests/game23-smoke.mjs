@@ -49,11 +49,13 @@ const started=await page.evaluate(()=>({
   canvasW:document.querySelector('#game23-canvas')?.width||0,
   canvasH:document.querySelector('#game23-canvas')?.height||0,
   frameW:document.querySelector('#game23-frame')?.getBoundingClientRect().width||0,
-  frameH:document.querySelector('#game23-frame')?.getBoundingClientRect().height||0
+  frameH:document.querySelector('#game23-frame')?.getBoundingClientRect().height||0,
+  systems:window.blacksiteSystems?{version:window.blacksiteSystems.version,content:window.blacksiteSystems.content,objectives:window.blacksiteSystems.objectives.length,normalHpValid:window.blacksiteSystems.enemies.filter(e=>!e.boss&&!window.blacksiteSystems.fatTypes.includes(e.type)).every(e=>e.maxHp===1)}:null
 }));
 if(!started.overlayHidden)throw new Error(`start overlay still visible: ${JSON.stringify(started)}`);
 if(started.canvasW<10||started.canvasH<10)throw new Error(`canvas not rendering: ${JSON.stringify(started)}`);
 if(!/^1\s*\/\s*6/.test(started.area))throw new Error(`AREA 1 did not start: ${JSON.stringify(started)}`);
+if(!started.systems||started.systems.content.mainObjectives!==24||started.systems.objectives!==3||!started.systems.normalHpValid)throw new Error(`Operations rules did not initialize: ${JSON.stringify(started.systems)}`);
 fail('after start');
 console.log('GAME23 smoke OK',JSON.stringify({loadState,started}));
 await browser.close();
