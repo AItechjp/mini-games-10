@@ -67,6 +67,8 @@ function uxRestoreScroll(){
   requestAnimationFrame(()=>{try{window.scrollBy(0,0);}catch{}setTimeout(resize,30);});
 }
 function uxEnter(nativeFullscreen=false){
+  // Starting or resuming keeps the page scrollable. Immersion is an explicit choice.
+  if(!nativeFullscreen&&!document.fullscreenElement){uxRestoreScroll();return;}
   document.body.classList.add('game23-focus-mode');uxFallback=true;uxNativeRequested=!!nativeFullscreen;uxOrientationHint();
   /* Touch devices default to CSS immersive mode. This avoids Chrome's persistent
      Fullscreen API notice. Native fullscreen is only requested by the explicit button. */
@@ -81,17 +83,18 @@ function uxEnter(nativeFullscreen=false){
   setTimeout(resize,50);
 }
 async function uxLeave(){
+  if(document.pointerLockElement)document.exitPointerLock?.();
   try{if(document.fullscreenElement)await document.exitFullscreen();}catch{}
   try{screen.orientation?.unlock?.();}catch{}
   uxNativeRequested=false;uxRestoreScroll();
 }
 function uxLabels(){
   uxFullscreen.textContent=uxTouch?'Chrome全画面':'全画面';
-  if(uxTouch&&!state.running&&state.mode==='solo'&&!startBtn.disabled)startBtn.textContent='横向きで開始';
+  if(!state.running&&state.mode==='solo'&&!startBtn.disabled)startBtn.textContent='ミッション開始';
 }
 uxLabels();
 startBtn.addEventListener('click',()=>{uxEnter(false);setTimeout(uxLabels,0);},{capture:true});
-uxFullscreen.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();if(document.fullscreenElement)uxLeave();else uxEnter(true);},{capture:true});
+uxFullscreen.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();if(uxActive())uxLeave();else uxEnter(true);},{capture:true});
 uxExit.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();uxLeave();});
 $('#mode-solo').addEventListener('click',()=>setTimeout(uxLabels,0),{capture:true});
 $('#mode-coop').addEventListener('click',()=>setTimeout(uxLabels,0),{capture:true});

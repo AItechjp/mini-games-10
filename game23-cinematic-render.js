@@ -70,11 +70,7 @@ renderer.render=function(s,c){
   if(cineFlashlight)cineFlashlight.visible=cineFlashOn;
   cineKick*=Math.exp(-dt*15);
   if(uxReloading&&!cineWasReloading)cineReloadAt=now;cineWasReloading=uxReloading;
-  if(cineGun){const moving=state.running&&(touchMove.x||touchMove.y||keys.has('KeyW')||keys.has('KeyA')||keys.has('KeyS')||keys.has('KeyD')),walk=moving?1:.15,reload=uxReloading?Math.sin(clamp((now-cineReloadAt)/900,0,1)*Math.PI):0;
-    cineGun.position.set(.30+Math.sin(t*6)*.008*walk,-.27+Math.cos(t*12)*.006*walk-reload*.14,-.45+cineKick);
-    cineGun.rotation.set(cineKick*.6+reload*.48,-.035,Math.sin(t*6)*.006*walk+reload*.4);cineGun.visible=state.localLives>0;
-    if(cineMuzzle){cineMuzzle.visible=now-cineLastShot<48&&state.running;cineMuzzle.rotation.z=t*47;}
-  }
+  cineAnimateWeapon(now,dt,t,cineReloadAt);
   for(const [id,g] of remoteMeshes){const p=state.players.get(id);if(!p)continue;const old=g.userData.cineLastPosition;const moving=old&&Math.hypot(p.x-old.x,p.z-old.z)>.008;g.userData.cineLastPosition={x:p.x,z:p.z};for(const o of g.children){if(o.name==='lLeg')o.rotation.x=moving?Math.sin(t*7)*.3:0;if(o.name==='rLeg')o.rotation.x=moving?-Math.sin(t*7)*.3:0;}}
   cineGpu.begin();
   if(cineQuality==='low'){renderer.setRenderTarget(null);cineRender(scene,camera);cineDrawCalls=renderer.info.render.calls;cineGpu.end();cineCpuMs=performance.now()-now;return;}

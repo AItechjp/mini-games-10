@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="game23-cinematic.css?v=cinematic-physical-20260913">
   <link rel="stylesheet" href="game23-systems.css?v=operations-1">
   <link rel="stylesheet" href="game23-dark-fantasy.css?v=ashen-1">
+  <link rel="stylesheet" href="game23-playability.css?v=armory-1">
 </head>
 <body class="outbreak-page">
 <header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html">AITECH GAMES</a><nav><a href="#mission">MISSION</a><a href="index.html#games">ゲーム一覧</a></nav></div></header>
@@ -26,7 +27,7 @@
     <div class="outbreak-shell">
       <div class="outbreak-hud"><div><span>AREA</span><strong id="hud-area">1 / 18</strong></div><div><span>LIFE</span><strong id="hud-life">♥♥♥</strong></div><div><span>TIME</span><strong id="hud-time">0:00</strong></div><div><span>BOSS</span><strong id="hud-boss">---</strong></div><div><span>GOAL</span><strong id="hud-goal">SEALED</strong></div><div id="mate-hud" class="hidden"><span>PARTNER</span><strong id="hud-mate">---</strong></div></div>
       <div id="game23-frame" class="game23-frame" data-theme="mansion">
-        <canvas id="game23-canvas" aria-label="OUTBREAK BLACK SITE ULTIMATE 3Dゲーム画面"></canvas>
+        <canvas id="game23-canvas" tabindex="0" aria-label="OUTBREAK BLACK SITE ULTIMATE 3Dゲーム画面"></canvas>
         <div class="stage-ident"><strong id="stage-title">AREA 1 / 18 — 灰鐘の聖堂</strong><span id="stage-subtitle">ASHEN BELFRY</span></div>
         <div class="goal-guide" aria-label="ゴール方向"><div id="goal-arrow" class="goal-arrow">▲</div><strong id="goal-direction">BOSS → EXIT</strong></div>
         <aside class="minimap-panel" aria-label="ミニマップ"><span>PILGRIM MAP</span><canvas id="minimap" width="210" height="210"></canvas><small>白=自分 / 黄=相方 / 緑=GOAL<br>感染体10種 + 巨大ボス / 障害物は遮蔽に利用可能</small></aside>
@@ -35,12 +36,13 @@
         <div id="touch-left" class="touch-zone touch-left" aria-hidden="true"><div id="touch-stick" class="touch-stick"></div></div><div id="touch-right" class="touch-zone touch-right" aria-hidden="true"></div><button id="touch-fire" class="touch-fire" type="button" aria-label="射撃">FIRE</button>
         <div id="game23-overlay" class="game23-overlay"><div class="overlay-card"><p class="eyebrow">ASHEN PILGRIMAGE</p><h2 id="overlay-title">BLACK SITE / 灰の巡礼</h2><p id="overlay-text">消えかけた火をたどり、灰鐘の聖堂へ。亡者の群れを越え、王国を蝕む堕王を討て。</p><button id="game23-start" type="button">横向き全画面で開始</button></div></div>
       </div>
-      <div class="item-legend"><div><b class="item-dot life"></b><strong>救急スプレー</strong><span>ライフ+1</span></div><div><b class="item-dot infinite"></b><strong>無限弾薬</strong><span>30秒 弾数無限</span></div><div><b class="item-dot invincible"></b><strong>完全防護薬</strong><span>30秒 完全無敵</span></div><div><b class="item-dot launcher"></b><strong>ロケットランチャー</strong><span>30秒 / 10発 / 広範囲×3</span></div></div>
+      <nav class="game23-page-nav" aria-label="ゲーム画面と操作説明"><span>ページを上下にスクロールできます</span><a href="#game23-guide">操作説明へ ↓</a></nav>
+      <div id="game23-guide" class="item-legend" tabindex="-1"><div><b class="item-dot life"></b><strong>救急スプレー</strong><span>ライフ+1</span></div><div><b class="item-dot infinite"></b><strong>無限弾薬</strong><span>30秒 弾数無限</span></div><div><b class="item-dot invincible"></b><strong>完全防護薬</strong><span>30秒 完全無敵</span></div><div><b class="item-dot launcher"></b><strong>ロケットランチャー</strong><span>30秒 / 10発 / 広範囲×3</span></div></div>
       <div class="mission-strip"><div><span>01</span><strong>ASHEN BELFRY</strong><small>聖堂の獣侯</small></div><div><span>02</span><strong>FROZEN PILGRIMAGE</strong><small>霜冠の巨人</small></div><div><span>03</span><strong>AQUEDUCT OF OBLIVION</strong><small>溺れた竜司祭</small></div><div><span>04</span><strong>MOURNING HARBOR</strong><small>深淵の葬送者</small></div><div><span>05</span><strong>FORSAKEN CAPITAL</strong><small>王都の処刑騎士</small></div><div><span>06</span><strong>ECLIPSED CITADEL</strong><small>灰翼の堕王</small></div></div>
-      <p class="outbreak-note">左で移動、右で視点、FIREで射撃。PCはWASD・マウス・Space、Rでリロード、Fでライト。画質は自動・高画質・標準・軽量から選べます。</p>
+      <p class="outbreak-note">左で移動、右で視点、FIREで射撃。画面右端の「↕」をなぞるとページをスクロールできます。PCはWASD・マウス・Space、Rでリロード、Fでライト。Escで一時停止し、マウス操作を解除。全画面は上のボタンで切り替えます。敵の頭上に残りHPを常時表示します。</p>
     </div>
   </section>
 </main>
 <footer><div class="wrap">© 2026 AITECH GAMES</div></footer>
-<script src="mode-switch.js?v=noads-1"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script><script src="supabase-config.js"></script><script src="game-backend.js"></script><script src="graphics-performance.js?v=physical2"></script><script type="module" src="game23-v3-loader.js?v=ashen-1"></script>
+<script src="mode-switch.js?v=noads-1"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.115.0"></script><script src="supabase-config.js"></script><script src="game-backend.js"></script><script src="graphics-performance.js?v=physical2"></script><script type="module" src="game23-v3-loader.js?v=armory-1"></script>
 </body></html>

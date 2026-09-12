@@ -8,7 +8,7 @@ $('#coop-copy').addEventListener('click',async()=>{try{await navigator.clipboard
 $('#coop-join').addEventListener('click',async()=>{const c=$('#coop-join-code').value.trim().toUpperCase();if(!/^[A-Z0-9]{6}$/.test(c)){toast('6桁コードを入力');return;}await connect('guest',c);});
 $('#coop-join-code').addEventListener('input',e=>e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,6));
 $('#outbreak-fullscreen').addEventListener('click',()=>{if(!document.fullscreenElement)frame.requestFullscreen?.();else document.exitFullscreen?.();});
-addEventListener('keydown',e=>{keys.add(e.code);if(e.code==='Space'){e.preventDefault();shoot();}});addEventListener('keyup',e=>keys.delete(e.code));
+addEventListener('keydown',e=>{if(e.target?.matches?.('input,select,textarea,button,[contenteditable="true"]'))return;if(!state.running||(!pointerLocked&&!frame.contains(document.activeElement)))return;keys.add(e.code);if(e.code==='Space'){e.preventDefault();shoot();}});addEventListener('keyup',e=>keys.delete(e.code));
 canvas.addEventListener('click',()=>{if(matchMedia('(pointer:fine)').matches){if(document.pointerLockElement!==canvas)canvas.requestPointerLock?.();else shoot();}});
 document.addEventListener('pointerlockchange',()=>pointerLocked=document.pointerLockElement===canvas);
 document.addEventListener('mousemove',e=>{if(!pointerLocked||!state.running)return;local.yaw-=e.movementX*.00225;local.pitch=clamp(local.pitch-e.movementY*.0018,-1.08,1.04);});

@@ -18,19 +18,3 @@ buildEnvironment=function(){
   stageSubtitle.textContent=`ACT ${act+1} / ${BlacksiteRules.CHAPTERS[state.area].title} · ${currentStage().boss}`;
   return arena;
 };
-// Reuse one detailed receiver and shared attachment geometry across nine loadouts.
-// Materials and geometry remain in the renderer's bounded shared-resource pool.
-const deluxeWeaponBase=cineMakeWeapon;
-const deluxeScopeGeometry=cineKeep(new THREE.CylinderGeometry(.049,.049,.28,20));
-const deluxeDrumGeometry=cineKeep(new THREE.CylinderGeometry(.095,.095,.15,20));
-const deluxeRailGeometry=cineKeep(new THREE.BoxGeometry(.025,.018,.30));
-cineMakeWeapon=function(){
-  deluxeWeaponBase();
-  const id=document.querySelector('#ops-weapon')?.value||'rifle';
-  const profile={rifle:[1,0,0],smg:[.82,0,0],marksman:[1.14,1,0],carbine:[.9,0,0],machinegun:[1.10,0,1],interceptor:[.76,0,1],revolver:[.64,0,1],scout:[1.25,1,0],vanguard:[1.02,1,1]}[id]||[1,0,0];
-  for(const part of cineGun.children)if(part.isMesh&&part.material!==CM.cloth&&part.material!==CM.leather)part.scale.z=profile[0];
-  cineMuzzle.position.z=-.8*profile[0];
-  if(profile[1]){const scope=new THREE.Mesh(deluxeScopeGeometry,CM.blackMetal);scope.rotation.x=Math.PI/2;scope.position.set(0,.23,-.12);cineGun.add(scope);}
-  if(profile[2]){const drum=new THREE.Mesh(deluxeDrumGeometry,CM.metal);drum.rotation.z=Math.PI/2;drum.position.set(0,-.20,-.06);cineGun.add(drum);}
-  const rail=new THREE.Mesh(deluxeRailGeometry,id==='scout'?CM.window:CM.metal);rail.position.set(.08,.055,-.28);cineGun.add(rail);
-};
