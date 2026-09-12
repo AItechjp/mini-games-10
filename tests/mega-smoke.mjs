@@ -73,7 +73,7 @@ if(await page.locator('article[data-game]').count()) throw new Error('Games belo
 await page.locator('[data-destination=games]').click();
 await page.waitForSelector('article[data-game]');
 const listed = await page.locator('article[data-game]').evaluateAll(nodes => nodes.map(n => n.dataset.game));
-if(JSON.stringify(listed) !== JSON.stringify(['zombie','smash','aether','daifugo','gomoku'])) throw new Error('The game collection must list only the five selected games');
+if(JSON.stringify(listed) !== JSON.stringify(['zombie','smash','aether','daifugo','gomoku','babanuki'])) throw new Error('The game collection must include the six selected games');
 if(await page.locator('a[href="mega-arcade.html"], a[href="archive.html"], a[href="arcade100/"], a[href="yobi-ronbun.html"]').count()) throw new Error('An unlisted collection is linked from the game collection');
 await page.locator('[data-game="gomoku"] .play').click();
 await page.waitForSelector('.gomoku-cell');
@@ -85,7 +85,25 @@ await page.waitForFunction(() => document.querySelectorAll('.gomoku-stone').leng
 await failIfErrors('Gomoku CPU move and replay');
 await page.locator('.classic-actions a').click();
 await page.waitForSelector('article[data-game]');
-if(await page.locator('article[data-game]').count() !== 5) throw new Error('Back navigation must return to the game collection');
+if(await page.locator('article[data-game]').count() !== 6) throw new Error('Back navigation must return to the game collection');
+
+// Reproducible opening hand for the new card-table interaction checks.
+await page.addInitScript(() => {
+  let seed = 123;
+  Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
+});
+await page.locator('[data-game="babanuki"] .play').click();
+await page.waitForSelector('#draw-cards button:not(:disabled)');
+await page.locator('#draw-cards button:not(:disabled)').first().click();
+await page.waitForFunction(() => Number(document.querySelector('#move-count').textContent) >= 1);
+await page.locator('#pause').click();
+if(await page.locator('#draw-cards button:not(:disabled)').count()) throw new Error('Paused Old Maid must not allow draws');
+await page.locator('#restart').click();
+await page.locator('#confirm-restart').click();
+await page.waitForFunction(() => document.querySelector('#move-count').textContent === '0');
+const cardOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+if(cardOverflow > 4) throw new Error(`Old Maid mobile horizontal overflow ${cardOverflow}px`);
+await failIfErrors('Old Maid draw, pause and replay');
 
 console.log(`MEGA ARCADE smoke OK: ${full ? ids.length : 'representative'} modes; catalog=320; profiles=320`);
 await browser.close();
