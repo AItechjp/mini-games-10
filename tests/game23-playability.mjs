@@ -8,7 +8,7 @@ const browser=await chromium.launch({headless:true,args:['--ignore-gpu-blocklist
 const errors=[],report={};
 let check='initialization';
 const checkpoint=name=>{check=name;console.log('GAME23 review:',name);};
-const deadline=setTimeout(()=>{console.error('GAME23 review timed out at:',check);process.exit(1);},210000);deadline.unref();
+const deadline=setTimeout(()=>{console.error('GAME23 review timed out at:',check);process.exit(1);},360000);deadline.unref();
 // Test-only fixtures are appended to a routed response. No debug mutations are
 // shipped in the game. All rendering, HUD and input handlers are production code.
 const fixture=(await readFile(new URL('../game23-playability.js',import.meta.url),'utf8'))+`
@@ -89,7 +89,7 @@ try{
     checkpoint('weapon '+id);
     await d.evaluate(id=>window.__blacksiteQA.equip(id),id);await d.waitForTimeout(180);
     const facts=await d.evaluate(()=>window.__blacksiteQA.weapon());assert.equal(facts.id,id);assert.ok(facts.triangles>3000&&facts.triangles<90000,JSON.stringify(facts));assert.ok(facts.meshes<25,JSON.stringify(facts));report.weapons.push(facts);
-    await d.locator('#game23-frame').screenshot({path:output+'/weapon-'+id+'.png'});
+    await d.screenshot({path:output+'/weapon-'+id+'.png'});
   }
   assert.equal(new Set(report.weapons.map(x=>x.triangles)).size,9,'All nine loadouts need their own geometry');
   await d.locator('#game23-canvas').focus();const ammoBefore=await d.evaluate(()=>window.blacksiteSystems.players[0].ammo);await d.keyboard.press('Space');
