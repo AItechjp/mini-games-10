@@ -2,6 +2,8 @@
    and one cached template per loadout keep the additional GPU work bounded. */
 let cineGun=null,cineMuzzle=null,cineKick=0,cineLastShot=0;
 const armoryTemplates=new Map();
+const armoryWidePose={x:.245,y:-.25,z:-.43},armoryPortraitPose={x:.055,y:-.13,z:-.61};
+function armoryPlacement(){return camera.aspect<1.1?armoryPortraitPose:armoryWidePose;}
 function armoryTexture(kind){
   const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d'),r=mulberry32(kind==='metal'?713:891);
   x.fillStyle=kind==='metal'?'#b3b7b9':'#9b9d99';x.fillRect(0,0,256,256);
@@ -157,10 +159,11 @@ function armoryTemplate(id){
 function cineMakeWeapon(){
   const selected=document.querySelector('#ops-weapon')?.value||'rifle',id=Object.hasOwn(ARMORY,selected)?selected:'rifle';
   if(cineGun?.parent)cineGun.removeFromParent();
-  cineGun=armoryTemplate(id).clone(true);cineGun.position.set(.245,-.25,-.43);cineGun.rotation.y=-.045;camera.add(cineGun);
+  const pose=armoryPlacement();
+  cineGun=armoryTemplate(id).clone(true);cineGun.position.set(pose.x,pose.y,pose.z);cineGun.rotation.y=-.045;camera.add(cineGun);
   cineMuzzle=cineGun.getObjectByName('muzzle-flash');cineGun.userData.parts={magazine:cineGun.getObjectByName('magazine'),cylinder:cineGun.getObjectByName('cylinder'),bolt:cineGun.getObjectByName('bolt'),support:cineGun.getObjectByName('support-hand')};
   cineGun.userData.seenShot=0;cineGun.userData.cylinderTurn=0;
-  if(muzzleLight)muzzleLight.position.set(.245,-.22,-.43-ARMORY[id].length);
+  if(muzzleLight)muzzleLight.position.set(pose.x,pose.y+.026,pose.z-ARMORY[id].length);
 }
 const armoryBeginArea=beginArea;
 beginArea=function(fromStart=true){const result=armoryBeginArea(fromStart);cineMakeWeapon();return result;};
@@ -169,7 +172,8 @@ function cineAnimateWeapon(now,dt,t,reloadStart){
   const moving=state.running&&(touchMove.x||touchMove.y||keys.has('KeyW')||keys.has('KeyA')||keys.has('KeyS')||keys.has('KeyD')),walk=moving?1:.14;
   const duration=BlacksiteRules.WEAPONS[id].reload,phase=uxReloading?clamp((now-reloadStart)/duration,0,1):0;
   const lower=uxReloading?Math.sin(Math.PI*phase):0,recoil=cineKick*p.kick;
-  cineGun.position.set(.245+Math.sin(t*6)*.006*walk,-.25+Math.cos(t*12)*.005*walk-lower*.10,-.43+recoil);
+  const pose=armoryPlacement();
+  cineGun.position.set(pose.x+Math.sin(t*6)*.006*walk,pose.y+Math.cos(t*12)*.005*walk-lower*.10,pose.z+recoil);
   cineGun.rotation.set(recoil*.72+lower*.35,-.045-lower*.13,Math.sin(t*6)*.004*walk+lower*(id==='revolver'?-.40:.36));cineGun.visible=state.localLives>0;
   const elapsed=now-cineLastShot,cycling=state.running&&elapsed>=0&&elapsed<100;
   if(parts.bolt)parts.bolt.position.z=cycling?Math.sin(elapsed/100*Math.PI)*.043:0;

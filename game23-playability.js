@@ -33,6 +33,7 @@ function drawEnemyLives(){
 const lifeRender=renderer.render;
 renderer.render=function(s,c){const before=cineLastDraw,result=lifeRender.call(this,s,c);if(s===scene&&c===camera&&cineLastDraw!==before)drawEnemyLives();return result;};
 const scrollRail=document.createElement('div');scrollRail.className='game23-scroll-rail';scrollRail.textContent='↕';scrollRail.setAttribute('aria-label','上下になぞってページをスクロール');frame.append(scrollRail);
+const combatFooter=document.createElement('div');combatFooter.className='game23-combat-footer';combatFooter.append(uxAmmoPanel,cineFlashButton);frame.append(combatFooter);
 uxExit.textContent='ページへ';uxExit.setAttribute('aria-label','全画面を終了してページへ戻る');
 document.querySelector('.game23-page-nav a').addEventListener('click',()=>{if(state.running&&!ops.paused)opsSetPause(true);});
 opsChooseWeapon.addEventListener('change',()=>{if(!state.running)cineMakeWeapon();});

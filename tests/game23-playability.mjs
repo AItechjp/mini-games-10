@@ -89,7 +89,7 @@ try{
     checkpoint('weapon '+id);
     await d.evaluate(id=>window.__blacksiteQA.equip(id),id);await d.waitForTimeout(180);
     const facts=await d.evaluate(()=>window.__blacksiteQA.weapon());assert.equal(facts.id,id);assert.ok(facts.triangles>3000&&facts.triangles<90000,JSON.stringify(facts));assert.ok(facts.meshes<25,JSON.stringify(facts));report.weapons.push(facts);
-    await d.screenshot({path:output+'/weapon-'+id+'.png'});
+    await d.locator('#game23-frame').screenshot({path:output+'/weapon-'+id+'.png'});
   }
   assert.equal(new Set(report.weapons.map(x=>x.triangles)).size,9,'All nine loadouts need their own geometry');
   await d.locator('#game23-canvas').focus();const ammoBefore=await d.evaluate(()=>window.blacksiteSystems.players[0].ammo);await d.keyboard.press('Space');
