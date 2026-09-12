@@ -86,7 +86,12 @@ export class StreetArt{
   for(const material of this.view.hdMaterials?.facade||[]){
    material.onBeforeCompile=shader=>{
     shader.vertexShader='varying vec3 livingPos;varying vec3 livingNormal;\n'+shader.vertexShader;
-    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nlivingPos=(modelMatrix*vec4(position,1.)).xyz;livingNormal=normalize(mat3(modelMatrix)*normal);');
+    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
+vec4 livingVertex=vec4(position,1.);vec3 livingN=normal;
+#ifdef USE_INSTANCING
+ livingVertex=instanceMatrix*livingVertex;livingN=mat3(instanceMatrix)*livingN;
+#endif
+livingPos=(modelMatrix*livingVertex).xyz;livingNormal=normalize(mat3(modelMatrix)*livingN);`);
     shader.fragmentShader='varying vec3 livingPos;varying vec3 livingNormal;\n'+shader.fragmentShader;
     shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
      #ifdef USE_MAP
@@ -98,7 +103,7 @@ export class StreetArt{
       vec3 roomTint=mix(vec3(.40,.47,.49),vec3(.9,.72,.49),back)*(1.-furniture*.56);
       diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*roomTint,windowMask*.48);
      #endif`);
-   };material.customProgramCacheKey=()=> 'bayline-window-parallax-v3';material.needsUpdate=true;
+   };material.customProgramCacheKey=()=> 'bayline-window-parallax-v3.1';material.needsUpdate=true;
   }
  }
  installWind(){
