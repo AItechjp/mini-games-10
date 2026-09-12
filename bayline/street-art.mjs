@@ -117,7 +117,7 @@ livingPos=(modelMatrix*livingVertex).xyz;livingNormal=normalize(mat3(modelMatrix
   shader.fragmentShader=`uniform sampler2D tDiffuse;uniform float wetness;varying vec4 vUv;varying vec3 roadPosition;
    float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
    float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
-   void main(){vec2 uv=vUv.xy/vUv.w;float patch=noise(roadPosition.xz*.22);float puddle=smoothstep(.46,.77,patch);float fresnel=pow(1.-abs(normalize(cameraPosition-roadPosition).y),2.);
+   void main(){vec2 uv=vUv.xy/vUv.w;float puddleNoise=noise(roadPosition.xz*.22);float puddle=smoothstep(.46,.77,puddleNoise);float fresnel=pow(1.-abs(normalize(cameraPosition-roadPosition).y),2.);
     vec2 j=vec2(noise(roadPosition.xz*2.),noise(roadPosition.zx*2.+8.))-.5;uv+=j*.0015;vec3 c=texture2D(tDiffuse,uv).rgb*.5;c+=texture2D(tDiffuse,uv+vec2(.0012,.0012)).rgb*.25;c+=texture2D(tDiffuse,uv-vec2(.0012,.0012)).rgb*.25;
     gl_FragColor=vec4(c,wetness*puddle*(.1+fresnel*.36));}`;
   this.reflection=new Reflector(new T.PlaneGeometry(1050,1050),{textureWidth:768,textureHeight:768,multisample:0,clipBias:.002,shader});this.reflection.rotation.x=-Math.PI/2;this.reflection.position.y=.009;this.reflection.material.transparent=true;this.reflection.material.depthWrite=false;this.reflection.visible=false;v.scene.add(this.reflection);

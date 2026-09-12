@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const out='test-output/bayline-living';fs.mkdirSync(out,{recursive:true});
 const results={tests:[],errors:[],screenshots:[],renderer:'Chromium WebGL2 / SwiftShader software renderer; not a device FPS benchmark'};
-const browser=await chromium.launch({headless:true,args:['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const browser=await chromium.launch({headless:true,args:['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-background-timer-throttling','--disable-renderer-backgrounding','--disable-backgrounding-occluded-windows']});
 async function context(mobile=false){const c=await browser.newContext(mobile?{viewport:{width:412,height:915},deviceScaleFactor:1,isMobile:true,hasTouch:true}:{viewport:{width:960,height:540},deviceScaleFactor:1});await c.addInitScript(()=>localStorage.setItem('bayline.settings.v1',JSON.stringify({quality:'low',visualBuild:2,autoQuality:false,sound:false,rain:false})));return c;}
 async function start(ctx){const p=await ctx.newPage();p.on('pageerror',e=>results.errors.push(e.message));p.on('console',m=>{if(m.type()==='error'&&!m.text().includes('404'))results.errors.push(m.text());});await p.goto('http://127.0.0.1:4173/bayline/?test=1',{waitUntil:'domcontentloaded'});await p.waitForFunction(()=>window.__BAYLINE_BUILD__==='03-LIVING-CITY-20260912',{},{timeout:120000});return p;}
 async function capture(p,name){
@@ -18,10 +18,8 @@ try{
  await p.screenshot({path:out+'/title.png'});results.screenshots.push('title.png');
  await p.click('#continue');await p.waitForTimeout(1600);
  await check('Original solo entry and real articulated crowd render',async()=>{assert.ok(await p.evaluate(()=>window.__BAYLINE_TEST__.running));assert.ok(await p.evaluate(()=>window.__BAYLINE_TEST__.view.living.people.count>0));assert.ok(await p.evaluate(()=>[...window.__BAYLINE_TEST__.view.actors.values()].some(m=>m.userData.livingRig)));});
- await check('High-quality scene compiles with window parallax',async()=>{await p.evaluate(()=>window.__BAYLINE_TEST__.setQuality('high'));await p.waitForTimeout(2500);assert.equal(await p.evaluate(()=>window.__BAYLINE_TEST__.view.quality),'high');});
- await capture(p,'street-high.png');
- await check('Ultra rain reflection and ambient occlusion compile',async()=>{await p.evaluate(()=>{const t=window.__BAYLINE_TEST__;t.setQuality('ultra');t.view.setWeather(true);});await p.waitForTimeout(2500);assert.equal(await p.evaluate(()=>window.__BAYLINE_TEST__.view.living.art.reflection.visible),true);});
- await capture(p,'rain-ultra.png');
+ await check('High-quality scene compiles with window parallax',async()=>{await p.evaluate(()=>window.__BAYLINE_TEST__.setQuality('high'));await p.waitForTimeout(2500);assert.equal(await p.evaluate(()=>window.__BAYLINE_TEST__.view.quality),'high');await capture(p,'street-high.png');});
+ await check('Ultra rain reflection and ambient occlusion compile',async()=>{await p.evaluate(()=>{const t=window.__BAYLINE_TEST__;t.setQuality('ultra');t.view.setWeather(true);});await p.waitForTimeout(2500);assert.equal(await p.evaluate(()=>window.__BAYLINE_TEST__.view.living.art.reflection.visible),true);await capture(p,'rain-ultra.png');});
  await p.evaluate(()=>{window.__BAYLINE_TEST__.setQuality('low');window.__BAYLINE_TEST__.view.setWeather(false);});
  await check('Sprint changes player position without collision penetration',async()=>{const before=await p.evaluate(()=>{const t=window.__BAYLINE_TEST__;Object.assign(t.state.players[0],{x:0,z:0,car:-1});t.cam.yaw=0;return t.state.players[0].z;});await p.keyboard.down('Shift');await p.keyboard.down('w');await p.waitForFunction(z=>window.__BAYLINE_TEST__.state.players[0].z>z+1,before,{timeout:15000});await p.keyboard.up('w');await p.keyboard.up('Shift');assert.ok(await p.evaluate(z=>window.__BAYLINE_TEST__.state.players[0].z>z+1,before));});
  await check('Real Supabase two-browser co-op includes civilian snapshots',async()=>{
