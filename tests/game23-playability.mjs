@@ -43,10 +43,13 @@ try{
   assert.equal(await p.evaluate(()=>document.body.classList.contains('game23-focus-mode')),false,'Starting must keep the page scrollable');
   await p.locator('#game23-frame').scrollIntoViewIfNeeded();
   const frame=await p.locator('#game23-frame').boundingBox();
+  await p.screenshot({path:output+'/mobile-before-input.png'});
   const stick=await p.locator('#touch-stick').boundingBox(),before=await p.evaluate(()=>window.__blacksiteQA.pose());
   await swipe(cdp,stick.x+stick.width/2,stick.y+stick.height/2,-35,350);
   const moved=await p.evaluate(()=>window.__blacksiteQA.pose());assert.ok(Math.hypot(moved.x-before.x,moved.z-before.z)>.15,'Inline joystick must move the player');
-  const lookBefore=moved.pitch;await swipe(cdp,frame.x+frame.width*.65,frame.y+frame.height*.58,-35,100);
+  const lookPoint=await p.evaluate(()=>{const look=document.querySelector('#touch-right'),r=look.getBoundingClientRect();for(let y=r.top+160;y<Math.min(innerHeight-50,r.bottom-40);y+=30)for(let x=r.left+20;x<r.right-30;x+=25)if(document.elementFromPoint(x,y)===look)return{x,y};return null;});
+  assert.ok(lookPoint,'An unobstructed look area must be available');
+  const lookBefore=moved.pitch;await swipe(cdp,lookPoint.x,lookPoint.y,-35,100);
   assert.notEqual((await p.evaluate(()=>window.__blacksiteQA.pose())).pitch,lookBefore,'Inline look input must turn the camera');
   const ids=await p.evaluate(()=>window.__blacksiteQA.arrange());
   await p.waitForFunction(()=>window.blacksitePlayability.enemyLife.full===3&&window.blacksitePlayability.enemyLife.damaged===1,null,{timeout:10000});

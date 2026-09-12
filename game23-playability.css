@@ -18,9 +18,9 @@ body.game23-focus-mode .game23-page-nav{display:none}
  body:not(.game23-focus-mode) .touch-fire{right:40px!important}
  body:not(.game23-focus-mode) .ops-controls{right:34px}
  body:not(.game23-focus-mode) .ux-ammo-panel{right:34px}
- body:not(.game23-focus-mode) .game23-frame{min-height:520px}
+ body:not(.game23-focus-mode) .game23-frame{min-height:520px!important}
  .game23-overlay .overlay-card{padding:18px!important}
  .game23-page-nav{padding:8px 12px;font-size:12px}
 }
-@media(pointer:coarse) and (orientation:landscape){body:not(.game23-focus-mode) .game23-frame{min-height:380px}}
+@media(pointer:coarse) and (orientation:landscape){body:not(.game23-focus-mode) .game23-frame{min-height:380px!important}}
 @media(max-width:500px){.outbreak-hud{grid-template-columns:repeat(3,minmax(0,1fr))}.outbreak-hero{padding:25px}.game23-page-nav{flex-wrap:wrap;gap:0 12px}}
