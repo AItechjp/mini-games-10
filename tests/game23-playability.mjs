@@ -12,7 +12,10 @@ const deadline=setTimeout(()=>{console.error('GAME23 review timed out at:',check
 // Test-only fixtures are appended to a routed response. No debug mutations are
 // shipped in the game. All rendering, HUD and input handlers are production code.
 const fixture=(await readFile(new URL('../game23-playability.js',import.meta.url),'utf8'))+`
+let qaReloadFrame=false;const qaAnimate=cineAnimateWeapon;
+cineAnimateWeapon=function(now,dt,t,at){return qaAnimate(now,dt,t,qaReloadFrame&&uxReloading?now-BlacksiteRules.WEAPONS[cineGun.userData.weaponId].reload*.45:at);};
 window.__blacksiteQA={
+  holdReload:hold=>{qaReloadFrame=hold;},
   pose:()=>({x:local.x,z:local.z,yaw:local.yaw,pitch:local.pitch}),
   arrange:()=>{
     hostWorldStep=()=>{};local.pitch=0;updateCamera();
@@ -63,10 +66,14 @@ try{
   await p.screenshot({path:output+'/mobile-inline-hp.png'});
   const ammo=await p.evaluate(()=>window.blacksiteSystems.players[0].ammo);
   await p.locator('#touch-fire').tap();await p.waitForFunction(a=>window.blacksiteSystems.players[0].ammo<a,ammo);
-  await p.locator('.ux-reload').tap();await p.waitForFunction(()=>window.blacksitePlayability.weapon.magazineOffset<-.03,null,{timeout:3000});
+  // Freeze the middle of the actual reload animation for a deterministic image
+  // on software-rendered CI, while the real touch button still starts the reload.
+  await p.evaluate(()=>window.__blacksiteQA.holdReload(true));
+  await p.locator('.ux-reload').tap();await p.waitForFunction(()=>window.blacksitePlayability.weapon.magazineOffset<-.03,null,{timeout:5000});
   report.mobileReload=await p.evaluate(()=>window.blacksitePlayability.weapon);
   checkpoint('mobile fire and reload');
   await p.screenshot({path:output+'/mobile-reload.png'});
+  await p.evaluate(()=>window.__blacksiteQA.holdReload(false));
   await p.evaluate(id=>window.__blacksiteQA.kill(id),ids[0]);
   await p.waitForFunction(()=>window.blacksitePlayability.enemyLife.visible===3,null,{timeout:5000});
   const scrollBefore=await p.evaluate(()=>scrollY),rail=await p.locator('.game23-scroll-rail').boundingBox();

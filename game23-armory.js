@@ -2,7 +2,7 @@
    and one cached template per loadout keep the additional GPU work bounded. */
 let cineGun=null,cineMuzzle=null,cineKick=0,cineLastShot=0;
 const armoryTemplates=new Map();
-const armoryWidePose={x:.245,y:-.25,z:-.43},armoryPortraitPose={x:.055,y:-.13,z:-.61};
+const armoryWidePose={x:.245,y:-.25,z:-.43},armoryPortraitPose={x:.02,y:-.24,z:-.57};
 function armoryPlacement(){return camera.aspect<1.1?armoryPortraitPose:armoryWidePose;}
 function armoryTexture(kind){
   const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d'),r=mulberry32(kind==='metal'?713:891);
@@ -118,15 +118,18 @@ function armoryLongGun(id,p){
   for(const z of [.078,-.10])for(const side of [-1,1]){tube(.009,.009,width+.004,ARM.steel,0,-.039,z,0,0,Math.PI/2);box(.001,.003,.011,ARM.cavity,side*(width/2+.003),-.039,z);}
   tube(.013,.013,.008,ARM.steel,-width/2-.004,-.04,.09,0,0,Math.PI/2);box(.004,.031,.01,ARM.receiver,-width/2-.009,-.047,.099,0,0,.35);
   const rear=p.stock==='compact'?.30:.43;
-  if(p.stock==='wire')for(const side of [-1,1])tube(.009,.009,.28,ARM.steel,side*.05,.022,.285);
+  // The stock rests at the shoulder, outside the first-person camera. Keeping it
+  // in its own hidden group avoids a near-plane slab covering the receiver.
+  const stock=new THREE.Group();stock.name='shoulder-stock';stock.visible=false;g.add(stock);const sb=armoryBatch(stock);
+  if(p.stock==='wire')for(const side of [-1,1])sb.tube(.009,.009,.28,ARM.steel,side*.05,.022,.285);
   else{
-    tube(.027,.027,rear-.09,ARM.barrel,0,.005,.15+(rear-.09)/2);
-    box(.115,.113,rear-.16,ARM.polymer,0,-.013,.22+(rear-.16)/2);
-    box(.092,.028,.18,p.stock==='precision'?ARM.tan:ARM.polymer,0,.06,.29);
-    for(let i=0;i<4;i++)box(.008,.047,.007,ARM.receiver,.061,-.008,.24+i*.027);
+    sb.tube(.027,.027,rear-.09,ARM.barrel,0,.005,.15+(rear-.09)/2);
+    sb.box(.115,.113,rear-.16,ARM.polymer,0,-.013,.22+(rear-.16)/2);
+    sb.box(.092,.028,.18,p.stock==='precision'?ARM.tan:ARM.polymer,0,.06,.29);
+    for(let i=0;i<4;i++)sb.box(.008,.047,.007,ARM.receiver,.061,-.008,.24+i*.027);
   }
-  box(.13,.185,.028,ARM.rubber,0,-.035,rear+.064);
-  if(p.stock==='precision')tube(.019,.019,.018,ARM.steel,.063,-.005,.34,0,0,Math.PI/2);
+  sb.box(.13,.185,.028,ARM.rubber,0,-.035,rear+.064);
+  if(p.stock==='precision')sb.tube(.019,.019,.018,ARM.steel,.063,-.005,.34,0,0,Math.PI/2);sb.finish();
   if(p.bipod)for(const side of [-1,1]){tube(.009,.009,.28,ARM.barrel,side*.065,-.075,front+.08,1.24,0,side*.12);box(.027,.024,.045,ARM.rubber,side*.078,-.124,front-.045);}
   if(id==='scout'){tube(.013,.013,.092,ARM.steel,.104,.015,.01,0,0,Math.PI/2);add(new THREE.SphereGeometry(.023,12,8),ARM.barrel,.151,.015,.01);}
   armoryOptic(b,p);b.finish();armoryMagazine(g,p);
@@ -153,14 +156,14 @@ function armoryTemplate(id){
   const flash=new THREE.Group();flash.name='muzzle-flash';flash.position.set(0,.026,id==='revolver'?-.48:-p.length-.034);
   for(let i=0;i<3;i++){const f=new THREE.Mesh(cineKeep(new THREE.ConeGeometry(.028,.13,5)),ARM.flash);f.rotation.x=-Math.PI/2;f.rotation.z=i*2.1;f.position.z=-.04;flash.add(f);}flash.visible=false;g.add(flash);
   // A small weapon-only fill preserves the blued steel highlights in moonlit areas.
-  const fill=new THREE.PointLight(0xc5d2df,.5,1.4,2);fill.position.set(-.12,.30,.16);g.add(fill);
+  const fill=new THREE.PointLight(0xc5d2df,.045,1.4,2);fill.position.set(-.18,.40,.08);g.add(fill);
   armoryTemplates.set(id,g);return g;
 }
 function cineMakeWeapon(){
   const selected=document.querySelector('#ops-weapon')?.value||'rifle',id=Object.hasOwn(ARMORY,selected)?selected:'rifle';
   if(cineGun?.parent)cineGun.removeFromParent();
   const pose=armoryPlacement();
-  cineGun=armoryTemplate(id).clone(true);cineGun.position.set(pose.x,pose.y,pose.z);cineGun.rotation.y=-.045;camera.add(cineGun);
+  cineGun=armoryTemplate(id).clone(true);cineGun.scale.set(.78,.92,1);cineGun.position.set(pose.x,pose.y,pose.z);cineGun.rotation.y=-.045;camera.add(cineGun);
   cineMuzzle=cineGun.getObjectByName('muzzle-flash');cineGun.userData.parts={magazine:cineGun.getObjectByName('magazine'),cylinder:cineGun.getObjectByName('cylinder'),bolt:cineGun.getObjectByName('bolt'),support:cineGun.getObjectByName('support-hand')};
   cineGun.userData.seenShot=0;cineGun.userData.cylinderTurn=0;
   if(muzzleLight)muzzleLight.position.set(pose.x,pose.y+.026,pose.z-ARMORY[id].length);
