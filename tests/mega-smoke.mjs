@@ -72,11 +72,18 @@ const destinations=await page.locator('[data-destination]').evaluateAll(nodes=>n
 if(JSON.stringify(destinations)!==JSON.stringify(['commons','games'])) throw new Error('AITECH must offer Commons and Games');
 if(await page.locator('article[data-game]').count()) throw new Error('Games belong in the dedicated collection');
 await page.locator('[data-destination=games]').click();
+await page.waitForSelector('.category-grid');
+if(await page.locator('article[data-game]').count()) throw new Error('The collection entrance must show categories only');
+await page.locator('.category-3d').click();
+const threeD = await page.locator('article[data-game]').evaluateAll(nodes => nodes.map(n => n.dataset.game));
+if(JSON.stringify(threeD)!==JSON.stringify(['zombie','smash','aether'])) throw new Error('3D must contain games 01–03');
+await page.locator('.category-nav a[href="games-2d.html"]').click();
 await page.waitForSelector('article[data-game]');
 const listed = await page.locator('article[data-game]').evaluateAll(nodes => nodes.map(n => n.dataset.game));
-const requiredGames=['zombie','smash','aether','daifugo','gomoku','babanuki','quick-hop'];
+const requiredGames=['daifugo','gomoku','babanuki','quick-hop','startrail',...Array.from({length:10},(_,i)=>`paper-arcade-${i+1}`)];
 if(!requiredGames.every(id=>listed.includes(id)) || new Set(listed).size!==listed.length) throw new Error('The game collection must preserve existing games and include Quick Hop without duplicate entries');
-if(Number(await page.locator('.game-count').textContent())!==listed.length) throw new Error('The collection count must match the listed games');
+if(JSON.stringify(listed)!==JSON.stringify(requiredGames)) throw new Error('2D must contain games 04–18 in order');
+if(Number(await page.locator('.game-count').textContent())!==listed.length+threeD.length) throw new Error('The collection count must match both categories');
 if(await page.locator('a[href="mega-arcade.html"], a[href="archive.html"], a[href="arcade100/"], a[href="yobi-ronbun.html"]').count()) throw new Error('An unlisted collection is linked from the game collection');
 await page.locator('[data-game="gomoku"] .play').click();
 await page.waitForSelector('.gomoku-cell');
@@ -87,6 +94,8 @@ await page.locator('#new-game-btn').click();
 await page.waitForFunction(() => document.querySelectorAll('.gomoku-stone').length === 0);
 await failIfErrors('Gomoku CPU move and replay');
 await page.locator('.classic-actions a').click();
+await page.waitForSelector('.category-grid');
+await page.locator('.category-2d').click();
 await page.waitForSelector('article[data-game]');
 if(await page.locator('article[data-game]').count() !== listed.length) throw new Error('Back navigation must return to the game collection');
 
@@ -109,7 +118,7 @@ if(cardOverflow > 4) throw new Error(`Old Maid mobile horizontal overflow ${card
 await failIfErrors('Old Maid draw, pause and replay');
 
 
-await page.goto(root + 'games.html', {waitUntil:'domcontentloaded'});
+await page.goto(root + 'games-2d.html', {waitUntil:'domcontentloaded'});
 await page.locator('[data-game="quick-hop"] .play').click();
 await page.waitForSelector('#start');
 await page.locator('#start').click();
