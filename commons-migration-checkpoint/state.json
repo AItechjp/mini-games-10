@@ -1,0 +1,42 @@
+{
+  "canonical": "https://aitechd.com/commons/",
+  "state": "awaiting_explicit_data_transfer_approval",
+  "frontend": "14 local routes built and type-checked; source checkout is currently disconnected before GitHub publication",
+  "sourceCheckout": "/workspace/scratch/64adbfce4a22/aitech-domain-migration",
+  "sourceRealPath": "/dev/shm/aitech-domain-migration",
+  "originalSiteState": "Original saved version restored; existing database remains intact",
+  "destinationRowsCopied": 0,
+  "destinationSchema": "commons",
+  "databaseProject": "dcvtubivtextycifngtk",
+  "existingCounts": {
+    "rooms": 9,
+    "members": 9,
+    "items": 47,
+    "votes": 0,
+    "canvas_resets": 2,
+    "opening_cache": 1
+  },
+  "verification": {
+    "apiChecks": 23,
+    "disposableTestRoomsRemoved": true,
+    "typeCheck": true,
+    "localRoutes": 14
+  },
+  "approvalBlock": "Automatic approval review rejected exporting private Commons records to Supabase because the user had not explicitly authorized that destination. Do not retry the data transfer without explicit approval.",
+  "routes": [
+    "/commons/",
+    "/commons/study/",
+    "/commons/tools/whiteboard/",
+    "/commons/tools/chat/",
+    "/commons/r/?id=<preserved-room-id>",
+    "/commons/ramen/",
+    "/commons/sauna/",
+    "/commons/camera/",
+    "/commons/weather/",
+    "/commons/bitcoin/",
+    "/commons/onion/",
+    "/commons/openings/ramen/",
+    "/commons/openings/restaurants/",
+    "/commons/openings/sauna/"
+  ]
+}
