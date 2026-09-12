@@ -9,110 +9,17 @@
 :root{--bg:#06111c;--panel:#0b1825;--panel2:#0f2030;--line:#20394f;--text:#f5fbff;--muted:#91a8bb;--blue:#59c8ff;--green:#55e6a5;--warn:#ffcc66;--red:#ff7189}
 *{box-sizing:border-box}html,body{margin:0;background:radial-gradient(circle at 75% 0,#113653 0,#06111c 42%,#03070b 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 button,input,select{font:inherit}.wrap{max-width:1480px;margin:auto;padding:18px}.top{display:flex;gap:14px;align-items:center;justify-content:space-between;margin-bottom:18px}.brand{font-weight:900;letter-spacing:.08em}.back{color:var(--muted);text-decoration:none}.hero{background:linear-gradient(180deg,#0d1b29,#091521);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 22px 70px #0006}.hero h1{font-size:clamp(28px,5vw,52px);line-height:1;margin:6px 0 10px}.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--blue);font-weight:800}.hero p{max-width:850px;color:var(--muted);line-height:1.7}.searchbar{display:grid;grid-template-columns:150px minmax(220px,1fr) 120px 150px;gap:10px;margin-top:18px}.input,.select,.btn{border:1px solid var(--line);background:#07131f;color:white;border-radius:13px;padding:12px 13px;outline:none}.input:focus,.select:focus{border-color:var(--blue)}.btn{cursor:pointer;font-weight:800}.btn.primary{background:linear-gradient(135deg,#149ddd,#46e1c4);border:0;color:#03111a}.btn.ghost{background:#0b1a27}.progress{height:8px;background:#091521;border-radius:999px;overflow:hidden;margin-top:14px}.progress b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--green));transition:.2s}.status{font-size:12px;color:var(--muted);margin-top:8px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}.metric{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px}.metric span{display:block;font-size:11px;color:var(--muted);letter-spacing:.08em}.metric strong{display:block;margin-top:7px;font-size:21px}.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:14px}.panel{background:linear-gradient(180deg,#0b1825,#08131e);border:1px solid var(--line);border-radius:20px;overflow:hidden}.panel-head{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:15px 16px;border-bottom:1px solid var(--line)}.panel-head h2{font-size:17px;margin:0}.tools{display:flex;gap:8px;flex-wrap:wrap}.table-wrap{overflow:auto;max-height:690px}.table{width:100%;border-collapse:collapse;min-width:980px}.table th,.table td{padding:11px 12px;border-bottom:1px solid #152a3d;text-align:left;font-size:12px;vertical-align:top}.table th{position:sticky;top:0;background:#0e1d2a;z-index:2;color:#9cb4c7}.addr{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;max-width:210px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.money{font-variant-numeric:tabular-nums}.out{color:var(--warn)}.in{color:var(--green)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:3px 7px;color:var(--muted)}.side{padding:15px}.side h3{margin:0 0 8px;font-size:14px}.side p{font-size:12px;color:var(--muted);line-height:1.7}.history{display:grid;gap:8px}.hist{border:1px solid var(--line);background:#091722;color:white;border-radius:12px;padding:10px;text-align:left;cursor:pointer}.hist small{color:var(--muted)}.empty{padding:50px 20px;text-align:center;color:var(--muted)}.note{margin-top:14px;border:1px solid #57492b;background:#1b180f;color:#ecdca8;border-radius:14px;padding:12px;font-size:12px;line-height:1.7}.toast{position:fixed;right:18px;bottom:18px;background:#102438;border:1px solid var(--line);padding:12px 15px;border-radius:12px;opacity:0;transform:translateY(8px);transition:.2s}.toast.show{opacity:1;transform:none}
-@media(max-width:950px){.searchbar{grid-template-columns:1fr 1fr}.searchbar .input{grid-column:1/-1}.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
-@media(max-width:560px){.wrap{padding:12px}.hero{padding:16px}.searchbar{grid-template-columns:1fr}.searchbar .input{grid-column:auto}.cards{grid-template-columns:1fr 1fr}.metric strong{font-size:17px}}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header class="top"><div class="brand">CHAIN TRACE</div><a class="back" href="apps.html">← アプリ一覧</a></header>
-<section class="hero">
-<div class="eyebrow">PUBLIC BLOCKCHAIN FLOW ANALYZER</div>
-<h1>送金先を、一覧で追う。</h1>
-<p>Bitcoin と Ethereum の公開ブロックチェーンデータを取得し、指定アドレスから外向きに流れた送金先を最大3ホップまで追跡します。個人の特定や非公開情報の推測は行わず、公開台帳上の事実だけを表示します。</p>
-<div class="searchbar">
-<select id="chain" class="select"><option value="auto">自動判定</option><option value="btc">Bitcoin</option><option value="eth">Ethereum</option></select>
-<input id="address" class="input" placeholder="BTC または 0x... のアドレス">
-<select id="depth" class="select"><option value="1">1 hop</option><option value="2" selected>2 hops</option><option value="3">3 hops</option></select>
-<button id="trace" class="btn primary">追跡開始</button>
-</div>
-<div class="progress"><b id="bar"></b></div><div id="status" class="status">待機中</div>
-</section>
-
-<section class="cards">
-<div class="metric"><span>ORIGIN</span><strong id="mOrigin">-</strong></div>
-<div class="metric"><span>DESTINATIONS</span><strong id="mDest">0</strong></div>
-<div class="metric"><span>TRANSFERS</span><strong id="mTx">0</strong></div>
-<div class="metric"><span>MAX HOP</span><strong id="mHop">0</strong></div>
-</section>
-
-<section class="grid2">
-<article class="panel">
-<div class="panel-head"><h2>送金先追跡一覧</h2><div class="tools"><button id="csv" class="btn ghost">CSV</button><button id="json" class="btn ghost">JSON</button><button id="cancel" class="btn ghost">停止</button></div></div>
-<div class="table-wrap">
-<table class="table">
-<thead><tr><th>Hop</th><th>From</th><th>To</th><th>方向</th><th>数量</th><th>Tx</th><th>時刻</th><th>状態</th></tr></thead>
-<tbody id="rows"><tr><td colspan="8"><div class="empty">アドレスを入力して「追跡開始」を押してください。</div></td></tr></tbody>
-</table>
-</div>
-</article>
-<aside class="panel side">
-<h3>最近の検索</h3><div id="history" class="history"></div>
-<div class="note">APIキー不要の公開エンドポイントを使います。Bitcoin は mempool.space、Ethereum は Blockscout の公開REST APIを利用します。大量アクセスを避けるため、同時取得数・ノード数・ホップ数に上限を設けています。</div>
-<h3 style="margin-top:18px">追跡ロジック</h3>
-<p>各アドレスの最近のトランザクションから「外向き」の宛先を抽出し、次のホップへ幅優先で展開します。BTCのchange（お釣り）判定は公開データだけでは確定できないため、宛先候補としてそのまま表示します。ETHは通常送金を対象とし、内部トランザクションや全トークン移動は別扱いです。</p>
-</aside>
-</section>
-</div>
-<div id="toast" class="toast"></div>
-
-<script>
-(()=>{'use strict';
-const $=s=>document.querySelector(s), rows=$('#rows'), statusEl=$('#status'), bar=$('#bar'), toast=$('#toast');
-const HIST='chain-trace-history-v1', MAX_NODES=80, CONCURRENCY=4;
-let data=[], controller=null, cache=new Map(), working=false;
-let hist=[];try{hist=JSON.parse(localStorage.getItem(HIST)||'[]')}catch(_){}
-const short=s=>s?`${s.slice(0,8)}…${s.slice(-6)}`:'-';
-const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-const fmt=(n,d=8)=>Number(n||0).toLocaleString(undefined,{maximumFractionDigits:d});
-function note(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(note.t);note.t=setTimeout(()=>toast.classList.remove('show'),1700)}
-function detect(a){if(/^0x[a-fA-F0-9]{40}$/.test(a))return'eth';if(/^(bc1|[13])[a-zA-HJ-NP-Z0-9]{20,}$/i.test(a))return'btc';return null}
-function apiType(){const picked=$('#chain').value;return picked==='auto'?detect($('#address').value.trim()):picked}
-function iso(v){if(!v)return'-';const d=typeof v==='number'?new Date(v*1000):new Date(v);return Number.isNaN(d.getTime())?'-':d.toLocaleString()}
-function persistHistory(a,c){hist=[{a,c,t:Date.now()},...hist.filter(x=>x.a!==a)].slice(0,10);localStorage.setItem(HIST,JSON.stringify(hist));renderHistory()}
-function renderHistory(){const box=$('#history');box.innerHTML=hist.map(x=>`<button class="hist" data-a="${esc(x.a)}" data-c="${esc(x.c)}"><b>${esc(short(x.a))}</b><br><small>${x.c.toUpperCase()} · ${new Date(x.t).toLocaleString()}</small></button>`).join('')||'<p>まだありません。</p>';box.querySelectorAll('button').forEach(b=>b.onclick=()=>{$('#address').value=b.dataset.a;$('#chain').value=b.dataset.c})}
-async function getJSON(url,signal){const key=url;if(cache.has(key))return cache.get(key);const r=await fetch(url,{signal,headers:{accept:'application/json'}});if(!r.ok)throw new Error(`HTTP ${r.status}`);const j=await r.json();cache.set(key,j);return j}
-function sat(n){return Number(n||0)/1e8}function wei(n){try{return Number(BigInt(n||0))/1e18}catch(_){return Number(n||0)/1e18}}
-async function btcTransfers(address,hop,signal){
- const txs=await getJSON(`https://mempool.space/api/address/${encodeURIComponent(address)}/txs`,signal);const out=[];
- for(const tx of txs.slice(0,25)){const vinMine=tx.vin.some(v=>v.prevout&&v.prevout.scriptpubkey_address===address);const voutMine=tx.vout.some(v=>v.scriptpubkey_address===address);
-   if(vinMine){for(const o of tx.vout){if(o.scriptpubkey_address&&o.scriptpubkey_address!==address)out.push({chain:'btc',hop,from:address,to:o.scriptpubkey_address,direction:'OUT',amount:sat(o.value),unit:'BTC',txid:tx.txid,time:tx.status&&tx.status.block_time,state:tx.status&&tx.status.confirmed?'confirmed':'mempool'})}}
-   else if(voutMine){for(const o of tx.vout){if(o.scriptpubkey_address===address)out.push({chain:'btc',hop,from:(tx.vin[0]&&tx.vin[0].prevout&&tx.vin[0].prevout.scriptpubkey_address)||'multiple',to:address,direction:'IN',amount:sat(o.value),unit:'BTC',txid:tx.txid,time:tx.status&&tx.status.block_time,state:tx.status&&tx.status.confirmed?'confirmed':'mempool'})}}
- }
- return out;
-}
-async function ethTransfers(address,hop,signal){
- const j=await getJSON(`https://eth.blockscout.com/api/v2/addresses/${encodeURIComponent(address)}/transactions`,signal);const list=Array.isArray(j.items)?j.items:[];const out=[];
- for(const tx of list.slice(0,50)){const from=(tx.from&&tx.from.hash)||tx.from_hash||'',to=(tx.to&&tx.to.hash)||tx.to_hash||'';if(!to)continue;const dir=from.toLowerCase()===address.toLowerCase()?'OUT':to.toLowerCase()===address.toLowerCase()?'IN':null;if(!dir)continue;out.push({chain:'eth',hop,from:from||address,to:to||address,direction:dir,amount:wei(tx.value),unit:'ETH',txid:tx.hash,time:tx.timestamp,state:tx.status||'ok',contract:!!(tx.to&&tx.to.is_contract)})}
- return out;
-}
-async function mapLimit(items,limit,fn){const ret=[];let i=0;async function worker(){while(i<items.length){const idx=i++;ret[idx]=await fn(items[idx],idx)}}await Promise.all(Array.from({length:Math.min(limit,items.length)},worker));return ret}
-function render(){
- $('#mDest').textContent=String(new Set(data.filter(x=>x.direction==='OUT').map(x=>x.to)).size);
- $('#mTx').textContent=String(new Set(data.map(x=>x.txid)).size);
- $('#mHop').textContent=String(data.reduce((m,x)=>Math.max(m,x.hop),0));
- rows.innerHTML=data.length?data.map(x=>`<tr><td><span class="tag">${x.hop}</span></td><td class="addr" title="${esc(x.from)}">${esc(short(x.from))}</td><td class="addr" title="${esc(x.to)}">${esc(short(x.to))}${x.contract?' · contract':''}</td><td class="${x.direction==='OUT'?'out':'in'}">${x.direction}</td><td class="money">${fmt(x.amount)} ${x.unit}</td><td class="addr" title="${esc(x.txid)}">${esc(short(x.txid))}</td><td>${esc(iso(x.time))}</td><td>${esc(x.state)}</td></tr>`).join(''):'<tr><td colspan="8"><div class="empty">該当する送金が見つかりませんでした。</div></td></tr>';
-}
-async function trace(){
- if(working)return;const origin=$('#address').value.trim();const chain=apiType();if(!chain)return note('アドレス形式を確認してください');
- const maxDepth=Number($('#depth').value);working=true;controller=new AbortController();data=[];cache.clear();render();$('#mOrigin').textContent=short(origin);statusEl.textContent='開始しています…';bar.style.width='4%';persistHistory(origin,chain);
- let frontier=[origin],visited=new Set(),nodes=0;
- try{
-   for(let hop=1;hop<=maxDepth&&frontier.length;hop++){
-     frontier=[...new Set(frontier)].filter(a=>!visited.has(a)).slice(0,Math.max(0,MAX_NODES-nodes));if(!frontier.length)break;
-     frontier.forEach(a=>visited.add(a));nodes+=frontier.length;statusEl.textContent=`Hop ${hop}/${maxDepth} · ${frontier.length}アドレス取得中`;bar.style.width=`${Math.min(92,8+hop/maxDepth*80)}%`;
-     const chunks=await mapLimit(frontier,CONCURRENCY,async a=>{try{return chain==='btc'?await btcTransfers(a,hop,controller.signal):await ethTransfers(a,hop,controller.signal)}catch(e){if(e.name==='AbortError')throw e;return[{error:true,hop,from:a,to:'-',direction:'-',amount:0,unit:chain.toUpperCase(),txid:'-',time:null,state:e.message,chain}]}});
-     const flat=chunks.flat();data.push(...flat.filter(x=>!x.error));render();
-     frontier=flat.filter(x=>!x.error&&x.direction==='OUT'&&x.to&&x.to!=='multiple').sort((a,b)=>b.amount-a.amount).map(x=>x.to).slice(0,MAX_NODES-nodes);
-   }
-   bar.style.width='100%';statusEl.textContent=`完了 · ${nodes}アドレスを調査 · ${data.length}行`;note('追跡が完了しました');
- }catch(e){if(e.name==='AbortError'){statusEl.textContent='停止しました';note('追跡を停止しました')}else{statusEl.textContent='エラー: '+e.message;note('API取得に失敗しました')}}
- finally{working=false}
-}
-function exportFile(type){if(!data.length)return note('出力するデータがありません');let blob,name;if(type==='json'){blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});name='chain-trace.json'}else{const head=['hop','chain','from','to','direction','amount','unit','txid','time','state'];const csv=[head.join(','),...data.map(x=>head.map(k=>`"${String(x[k]??'').replaceAll('"','""')}"`).join(','))].join('\n');blob=new Blob(['\ufeff'+csv],{type:'text/csv'});name='chain-trace.csv'}const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-$('#trace').onclick=trace;$('#cancel').onclick=()=>controller&&controller.abort();$('#csv').onclick=()=>exportFile('csv');$('#json').onclick=()=>exportFile('json');$('#address').addEventListener('keydown',e=>{if(e.key==='Enter')trace()});renderHistory();render();
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}.metric{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px}.metric span{display:block;font-size:11px;color:var(--muted);letter-spacing:.08em}.metric strong{display:block;margin-top:7px;font-size:21px}.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:14px}.panel{background:linear-gradient(180deg,#0b1825,#08131e);border:1px solid var(--line);border-radius:20px;overflow:hidden}.panel-head{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:15px 16px;border-bottom:1px solid var(--line)}.panel-head h2{font-size:17px;margin:0}.tools{display:flex;gap:8px;flex-wrap:wrap}.tassList.remove('aitech-expanded');
+      status.textContent = '';
+      sync();
+      window.dispatchEvent(new Event('resize'));
+    }
+  }, true);
+  document.addEventListener('fullscreenchange', sync);
+  document.addEventListener('webkitfullscreenchange', sync);
+  const style = document.createElement('style');
+  style.textContent = 'html.aitech-expanded,html:fullscreen{min-height:100%;overflow:auto}html.aitech-expanded body{min-height:100dvh}html.aitech-expanded main{max-width:none!important;width:100%!important;box-sizing:border-box}';
+  document.head.append(style);
+  document.body.append(host);
+  sync();
 })();
-</script>
-</body>
-</html>

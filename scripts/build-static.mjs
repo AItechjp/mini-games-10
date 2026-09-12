@@ -1,4 +1,5 @@
-import { readdir, readFile, mkdir, copyFile, rm, stat } from 'node:fs/promises';
+import { readdir, readFile, writeFile, mkdir, copyFile, rm, stat } from 'node:fs/promises';
+import { addFullscreen } from './fullscreen-html.mjs';
 import { resolve, join, extname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -24,7 +25,8 @@ async function copyPublic(dir) {
     if (!publicFiles.has(item.name) && (item.name.startsWith('.') || !extensions.has(extname(item.name)))) continue;
     const target = join(output, relative(root, src));
     await mkdir(resolve(target, '..'), { recursive: true });
-    await copyFile(src, target);
+    if (extname(item.name) === '.html') await writeFile(target, addFullscreen(await readFile(src, 'utf8'), src, root));
+    else await copyFile(src, target);
     bytes += (await stat(src)).size;
     count++;
   }
