@@ -98,7 +98,7 @@ const opsLeave=document.createElement('button');opsLeave.id='ops-leave';opsLeave
 const opsShare=document.createElement('button');opsShare.id='ops-share';opsShare.type='button';opsShare.textContent='招待リンクをコピー';
 $('#coop-lobby').append(opsReady,opsShare,opsLeave);
 const opsJournal=document.createElement('details');opsJournal.className='ops-journal';
-opsJournal.innerHTML='<summary>作戦記録・収集した情報</summary><div id="ops-records"></div>';
+opsJournal.innerHTML='<summary>巡礼の記録・拾い集めた手記</summary><div id="ops-records"></div>';
 frame.closest('.outbreak-shell').append(opsJournal);
 const opsChooseChapter=$('#ops-chapter'),opsPlaylist=$('#ops-playlist'),opsChooseWeapon=$('#ops-weapon');
 opsChooseWeapon.innerHTML=Object.entries(OPS.WEAPONS).map(([id,w])=>`<option value="${id}">${w.name} · ${w.magazine}発</option>`).join('');
@@ -152,7 +152,7 @@ function opsRenderMarkers(){
   for(const o of [...ops.objectives,...ops.discoveries]){
     let g=ops.markers.get(o.id);
     if(!g){
-      const color=o.kind==='intel'?0x82dfff:o.kind==='cache'?0x89ffa7:0xffcd70;
+      const color=o.kind==='intel'?0xbbcbd3:o.kind==='cache'?0xbdc79d:0xddb671;
       g=new THREE.Group();const ring=new THREE.Mesh(new THREE.RingGeometry(1.8,2,32),new THREE.MeshBasicMaterial({color,side:THREE.DoubleSide,transparent:true,opacity:.65,depthWrite:false}));ring.rotation.x=-Math.PI/2;ring.position.y=.09;g.add(ring);
       g.add(expansionTextSprite(o.label,color));
       if(o.kind==='escort'){const npc=humanoid(CM.amber);g.add(npc);}
@@ -222,7 +222,7 @@ function opsAreaResult(){
 completeMission=function(){
   state.running=false;state.completed=true;ops.action='new';opsClearInputs();const r=OPS.score(ops.stats,state.difficulty);
   ops.profile.best=Math.max(ops.profile.best,r.points);opsSaveProfile();opsMenu.classList.remove('hidden','ops-between');$('.ops-upgrade').classList.add('hidden');opsMenuUpdate();
-  setOverlay(ops.playlist==='survival'?`SURVIVAL / WAVE ${ops.wave}`:'BLACK SITE — 夜明けの帰還',`RANK ${r.rank} / ${r.points.toLocaleString()}点 / 撃破 ${ops.stats.kills} / 命中率 ${r.accuracy}% / 記録 ${ops.stats.intel} / 蘇生 ${ops.stats.revives} / ${fmt(ops.elapsed/1000)}。`,isHost()?'もう一度出撃':'ホストの再出撃を待つ',true);startBtn.disabled=!isHost();
+  setOverlay(ops.playlist==='survival'?`SURVIVAL / WAVE ${ops.wave}`:'BLACK SITE — 灰の向こうへ',`RANK ${r.rank} / ${r.points.toLocaleString()}点 / 撃破 ${ops.stats.kills} / 命中率 ${r.accuracy}% / 記録 ${ops.stats.intel} / 蘇生 ${ops.stats.revives} / ${fmt(ops.elapsed/1000)}。`,isHost()?'もう一度出撃':'ホストの再出撃を待つ',true);startBtn.disabled=!isHost();
   if(isHost()){
     sendWorld(true);
     if(ops.recordedRun!==ops.run&&window.GameBackend?.ready){ops.recordedRun=ops.run;window.GameBackend.recordScore({gameId:'outbreak23',mode:state.mode==='coop'?'online':'solo',score:r.points,durationMs:Math.round(ops.elapsed),roomCode:state.room||null,extra:{version:OPS.VERSION,difficulty:state.difficulty,playlist:ops.playlist,wave:ops.wave,area:state.area+1,rank:r.rank,stats:ops.stats}}).catch(()=>toast('成績はこの端末に保存済みです。オンライン記録は送信できませんでした。',3000));}
@@ -484,7 +484,7 @@ updateLobby=function(){
 syncModeUI=function(){
   $('#mode-solo').classList.toggle('active',state.mode==='solo');$('#mode-coop').classList.toggle('active',state.mode==='coop');$('#coop-lobby').classList.toggle('hidden',state.mode!=='coop');
   opsMenu.classList.remove('hidden','ops-between');$('.ops-upgrade').classList.add('hidden');
-  if(state.mode==='solo'){state.role='host';setOverlay('BLACK SITE / OPERATIONS','3部18章・72の主目標・9装備。通常敵は1発、デブ系とボスだけ高耐久。左移動・右照準・FIRE、操作長押しで任務・蘇生。','ミッション開始',true);startBtn.disabled=false;}
+  if(state.mode==='solo'){state.role='host';setOverlay('BLACK SITE / 灰の巡礼','死者の鐘が鳴る王国を、銃と灯火で進む。3部18章・9装備・2人協力。通常の亡者は1発、大型とボスは高耐久。操作長押しで任務・蘇生。','巡礼を始める',true);startBtn.disabled=false;}
   else{setOverlay('2 PLAYER CO-OP','部屋コードで合流し、2人とも準備完了を押してください。敵・目標・補給を共有。ダウンした相方は近くで蘇生できます。','パートナー待ち',true);updateLobby();}
   opsMenuUpdate();
 };

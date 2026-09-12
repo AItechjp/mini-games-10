@@ -114,8 +114,9 @@ createBossMesh=function(e){
   }else if(kind==='city'){
     for(const side of [-1,1])cineBossPart(g,CA.armor,CM.blackMetal,side*.47,1.73,.31,1.38,1.65,2.1);
     cineBossPart(g,CA.helmet,CM.metal,0,2.67,.08,1.73,1.5,1.62);
-    const cannon=cineBossPart(g,CG.cylinder,CM.metal,.88,.76,.31,.48,1.6,.48);cannon.rotation.x=Math.PI/2;
-    for(let i=0;i<5;i++)cineBossPart(g,CG.torus,CM.blackMetal,.88,.76,-.18+i*.23,.27,.27,.27);
+    cineBossPart(g,CG.cylinder,CM.blackMetal,.88,1.20,.31,.10,1.8,.10);
+    cineBossPart(g,CG.rock,CM.metal,.88,2.10,.31,.42,.46,.42);
+    for(let i=0;i<6;i++){const a=i*Math.PI/3;cineBossPart(g,CG.cone,CM.bone,.88+Math.cos(a)*.35,2.1,.31+Math.sin(a)*.35,.16,.44,.16).rotation.z=-a;}
   }else{
     for(const side of [-1,1]){
       const s=new THREE.Shape();s.moveTo(0,0);s.bezierCurveTo(side*.7,1.0,side*1.7,1.8,side*2.45,1.55);s.lineTo(side*2.1,.4);s.quadraticCurveTo(side*1.55,.73,side*1.4,-.35);s.quadraticCurveTo(side*.9,.12,side*.55,-.9);s.closePath();

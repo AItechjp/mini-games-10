@@ -1,5 +1,5 @@
 /* BLACK SITE / cinematic renderer. Original models and materials, shared by all six areas. */
-const CINE_VERSION='cinematic-physical-20260913';
+const CINE_VERSION='ashen-pilgrimage-1';
 const cineMobile=matchMedia('(pointer:coarse)').matches||navigator.maxTouchPoints>0;
 const cineAssets=new URL('assets/game23/cinematic/',document.baseURI).href;
 const cineTextures={},cineShared=new Set(),cineTransient=new Set();
@@ -84,7 +84,7 @@ const CM={
 
 const cineTextureReady=Promise.all(['stone','skin','fabric'].map(async kind=>{
   try{
-    const t=await new THREE.TextureLoader().loadAsync(cineAssets+kind+'.webp');
+    const t=await new THREE.TextureLoader().loadAsync(kind==='stone'?new URL('assets/game23/ashen/cathedral-stone.webp',document.baseURI).href:kind==='fabric'?new URL('assets/game23/ashen/burial-cloth.webp',document.baseURI).href:cineAssets+kind+'.webp');
     t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());cineKeep(t);cineTextures[kind]=t;
     for(const m of cineShared)if(m.isMaterial&&m.userData.cineKind===kind){m.map=t;if(kind!=='stone'){m.bumpMap=t;m.bumpScale=kind==='skin'?.022:.012;}m.needsUpdate=true;}
     return true;

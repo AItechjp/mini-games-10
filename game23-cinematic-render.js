@@ -28,7 +28,7 @@ const cinePostMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,ton
     float z=depthAt(vUv),occ=0.0;vec3 bloom=vec3(0.0);float radius=clamp(17.0/max(2.0,z),1.4,5.0);
     for(int i=0;i<6;i++){float a=float(i)*1.0472;vec2 d=vec2(cos(a),sin(a));float other=depthAt(clamp(vUv+d*px*radius,vec2(.001),vec2(.999)));float dz=z-other;occ+=step(.10,dz)*(1.0-smoothstep(.35,2.8,dz));vec3 b=texture2D(tColor,vUv+d*px*4.0).rgb;bloom+=max(b-vec3(1.1),vec3(0.0));}
     c*=1.0-min(occ/6.0*.25*uContact,.20);c+=bloom*.035;
-    float lum=luma(c);c=mix(vec3(lum),c,.96);c*=vec3(.99,1.015,1.025);c+=vec3(.016,.024,.029)*(1.0-smoothstep(.0,.3,lum));
+    float lum=luma(c);c=mix(vec3(lum),c,.82);c*=vec3(1.015,1.01,1.02);c+=vec3(.014,.020,.024)*(1.0-smoothstep(.0,.3,lum));
     vec2 centered=vUv-.5;float vignette=1.0-.22*smoothstep(.17,.50,dot(centered,centered));c*=vignette;
     float grain=fract(sin(dot(vUv*uResolution,vec2(12.9898,78.233))+floor(uTime*24.0))*43758.5453)-.5;c+=grain*.0035;
     gl_FragColor=vec4(max(c,vec3(0.0)),1.0);
@@ -92,7 +92,7 @@ renderer.render=function(s,c){
   renderer.setRenderTarget(null);cineRender(cinePostScene,cinePostCamera);cineDrawCalls+=renderer.info.render.calls;cineGpu.end();cineCpuMs=performance.now()-now;
 };
 
-/* A real scene behind the game menu; no separate promotional artwork. */
+/* Warm the actual playable scene before enabling the illustrated start menu. */
 startBtn.disabled=true;
 await cineTextureReady;
 state.seed=state.seed||917263;
@@ -100,6 +100,6 @@ const cinePreviewArena=buildEnvironment();spawnHostWorld(cinePreviewArena);cineM
 syncModeUI();syncDifficultyUI();uxLabels();
 if(owNote)owNote.textContent=currentStage().jp;
 /* Keep diagnostics read-only; the existing automated startup gate uses these facts. */
-Object.defineProperty(window,'blacksiteGraphics',{configurable:true,get:()=>({version:CINE_VERSION,worldBuildMs:Math.round(cineWorldBuildMs),cachedEnvironments:cineEnvironmentCache.size,budget:cineBudget.stats,gpu:cineGpu.stats,bloom:cinePostMat.uniforms.uBloom.value>0,quality:cineQuality,resolutionScale:cineRatio,textures:Object.keys(cineTextures),area:state.area,infected:state.enemies.size,shadowMap:renderer.shadowMap.enabled,drawCalls:cineDrawCalls})});
+Object.defineProperty(window,'blacksiteGraphics',{configurable:true,get:()=>({version:CINE_VERSION,world:frame.dataset.world,region:currentStage().jp,worldBuildMs:Math.round(cineWorldBuildMs),cachedEnvironments:cineEnvironmentCache.size,budget:cineBudget.stats,gpu:cineGpu.stats,bloom:cinePostMat.uniforms.uBloom.value>0,quality:cineQuality,resolutionScale:cineRatio,textures:Object.keys(cineTextures),area:state.area,infected:state.enemies.size,shadowMap:renderer.shadowMap.enabled,drawCalls:cineDrawCalls})});
 renderer.domElement.addEventListener('webglcontextlost',()=>cineGpu.clear());
 addEventListener('pagehide',()=>cineGpu.clear());

@@ -15,17 +15,18 @@ if (game23Crypto && typeof game23Crypto.randomUUID !== 'function') {
 }
 
 const PARTS = [
-  'game23-systems-core.js?v=three-acts-1',
+  'game23-systems-core.js?v=ashen-1',
   ...[1,2,3,4,5,6,7,8,9,10].map(n => `game23-v3-part${n}.js?v=horror-world-2`),
   'game23-v3-part11-lite.js?v=horror-world-2',
   'game23-v3-part12-world.js?v=horror-world-2',
   'game23-v3-part13-perf.js?v=horror-world-2',
-  'game23-cinematic-core.js?v=cinematic-physical-20260913',
+  'game23-cinematic-core.js?v=ashen-1',
   'game23-cinematic-world.js?v=cinematic-physical-20260913',
-  'game23-cinematic-actors.js?v=cinematic-physical-20260913',
-  'game23-cinematic-render.js?v=cinematic-physical-20260913',
+  'game23-cinematic-actors.js?v=ashen-1',
   'game23-deluxe.js?v=three-acts-1',
-  'game23-systems.js?v=three-acts-1'
+  'game23-dark-fantasy.js?v=ashen-1',
+  'game23-cinematic-render.js?v=ashen-1',
+  'game23-systems.js?v=ashen-1'
 ];
 const THREE_IMPORT = "import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';";
 const THREE_SOURCES = [
@@ -49,8 +50,8 @@ async function reachable(url, ms = 10000) {
 
 try {
   if (start) start.disabled = true;
-  if (overlayTitle) overlayTitle.textContent = 'ULTIMATE BLACK SITE LOADING';
-  if (overlayText) overlayText.textContent = '蛇行する探索路・障害物・感染体10種・巨大ボスを構築中…';
+  if (overlayTitle) overlayTitle.textContent = 'BLACK SITE / ASHEN PILGRIMAGE';
+  if (overlayText) overlayText.textContent = '灰に沈む聖堂、亡者の巡礼路、18章の探索を準備中…';
 
   const partTexts = await Promise.all(PARTS.map(async path => {
     const res = await fetch(path, { cache: 'no-store' });

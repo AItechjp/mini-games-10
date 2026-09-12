@@ -1,0 +1,56 @@
+[
+  {
+    "filename": "blacksite-ashen-cathedral.png",
+    "prompt": "Use case: stylized-concept\nAsset type: original dark-fantasy zombie game title-screen backdrop, final PNG landscape 2048x1152 pixels, 16:9.\nPrimary request: cinematic concept illustration of an immense ruined gothic cathedral and collapsed bridge above fog-shrouded graves. Two tiny cloaked plague hunters stand amid the ruins, dwarfed by the architecture. Ornate weathered stone, oppressive dark-fantasy melancholy. Cold blue moonlight and distant dying amber braziers.\nComposition/framing: cathedral focal point right of center, dark quiet readable negative space across left third for a game menu to be added separately; deep layered distance, epic monumental scale.\nStyle/medium: highly detailed painterly realistic cinematic fantasy environment, strong deliberate composition, sophisticated subdued values, physical weathered surfaces.\nConstraints: wholly original architecture, setting and characters; no copied recognizable game locations, no words, lettering, logos, UI, watermarks, or borders. Deliver one full-frame image.",
+    "generation_mode": "built-in image_gen",
+    "generated_source": "/workspace/scratch/617def45f7a2/generated_images/exec-467a8335-7f2c-4171-b798-399816a6290a.png",
+    "requested_dimensions": [
+      2048,
+      1152
+    ],
+    "saved_path": "/workspace/scratch/617def45f7a2/dark-world-art/blacksite-ashen-cathedral.png",
+    "actual_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "inspection": "Inspected rendered output for subject, composition, texture scale, and lack of text. Native generated PNG copied without image edits."
+  },
+  {
+    "filename": "cathedral-stone.png",
+    "prompt": "Use case: stylized-concept\nAsset type: seamless tiling base-color material texture for actual 3D gothic ruins, final PNG square 2048x2048 pixels.\nPrimary request: ancient dark gothic stone masonry. Orthographic flat perfectly front-facing continuous wall surface composed of chipped charcoal-gray irregular small stone blocks and thin faded mortar. Subtle muted moss only in some seams and restrained mineral stains. Fine realistic detailed physical surface, ancient weathering.\nComposition/framing: entire frame is uniform-scale wall texture; small to medium irregular masonry blocks across the whole tile. Edge-to-edge seamless tile: matching structures and color at both left/right and top/bottom borders for endless repetition.\nLighting/mood: flat neutral ambient illumination, base-color albedo only. Dark but legible material.\nConstraints: no perspective, directional lighting, cast shadows, highlights, ambient occlusion, vignetting, gradient lighting, text, ornaments, large objects, or discrete focal points. No border. Deliver one full-frame material image.",
+    "generation_mode": "built-in image_gen",
+    "generated_source": "/workspace/scratch/617def45f7a2/generated_images/exec-e631dfe9-2720-46eb-ab8f-ad424c737c79.png",
+    "requested_dimensions": [
+      2048,
+      2048
+    ],
+    "saved_path": "/workspace/scratch/617def45f7a2/dark-world-art/cathedral-stone.png",
+    "actual_dimensions": [
+      1254,
+      1254
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "inspection": "Inspected rendered output for subject, composition, texture scale, and lack of text. Native generated PNG copied without image edits."
+  },
+  {
+    "filename": "burial-cloth.png",
+    "prompt": "Use case: stylized-concept\nAsset type: seamless tiling base-color material texture for worn burial linen in a 3D dark-fantasy game, final PNG square 2048x2048 pixels.\nPrimary request: coarse worn medieval gray-brown burial linen with faint ash deposits and subtle frayed fibers. Small unobtrusive woven pattern, realistic detailed physical fabric surface. Natural irregularities in aged fibers, muted ash gray and gray-brown, restrained contrast.\nComposition/framing: entire frame is uniform-scale close-up flat cloth surface, orthographic and perfectly front-facing. Edge-to-edge seamless tile with matching fibers and color across left/right and top/bottom borders for endless repetition.\nLighting/mood: flat neutral ambient illumination, base-color albedo only.\nConstraints: no giant holes, no objects, no folds or wrinkles, no perspective, no directional shadows, no highlights or vignetting, no text, UI, watermark, or border. No decorative designs or conspicuous blotches. Deliver one full-frame material image.",
+    "generation_mode": "built-in image_gen",
+    "generated_source": "/workspace/scratch/617def45f7a2/generated_images/exec-548b5916-2abf-4295-bd82-f6b921c26926.png",
+    "requested_dimensions": [
+      2048,
+      2048
+    ],
+    "saved_path": "/workspace/scratch/617def45f7a2/dark-world-art/burial-cloth.png",
+    "actual_dimensions": [
+      1254,
+      1254
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "inspection": "Inspected rendered output for subject, composition, texture scale, and lack of text. Native generated PNG copied without image edits."
+  }
+]
