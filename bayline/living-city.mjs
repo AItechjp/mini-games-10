@@ -2,6 +2,7 @@ import * as T from 'three';
 import {CityView} from './world-hd.mjs';
 import {CivilianView,makeHumanRig} from './humans.mjs';
 import {StreetArt} from './street-art.mjs';
+import {pavementHeight,groundCrowd} from './street-ground.mjs';
 const drawBase=CityView.prototype.draw,weatherBase=CityView.prototype.setWeather,statsBase=CityView.prototype.stats;
 CityView.prototype.setWeather=function(rain){this.livingRain=!!rain;return weatherBase.call(this,rain);};
 function replaceActors(view){
@@ -14,7 +15,8 @@ function replaceActors(view){
   g.position.copy(old.position);g.rotation.copy(old.rotation);g.visible=old.visible;
   g.userData={arms:rig.arms,legs:rig.legs,weapon,livingRig:rig};view.scene.remove(old);view.scene.add(g);view.actors.set(id,g);
   // The legacy actor allocated materials per mesh. Dispose once per resource.
-  const geos=new Set(),mats=new Set();old.traverse(o=>{if(o.geometry)geos.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material])if(m)mats.add(m);});geos.forEach(g=>g.dispose());mats.forEach(m=>m.dispose());
+  const retained=new Set();weapon?.traverse(o=>{for(const m of Array.isArray(o.material)?o.material:[o.material])if(m)retained.add(m);});
+  const geos=new Set(),mats=new Set();old.traverse(o=>{if(o.geometry)geos.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material])if(m)mats.add(m);});geos.forEach(g=>g.dispose());mats.forEach(m=>{if(!retained.has(m))m.dispose();});
  }
 }
 CityView.prototype.draw=function(state,id,dt,cam,menu){
@@ -26,9 +28,10 @@ CityView.prototype.draw=function(state,id,dt,cam,menu){
  }
  const player=state.players[id]||state.players[0];
  const focus=menu?{x:430,z:480}:player;
- this.living.people.update(state,focus,dt,this.quality);this.living.art.update(state,this.quality,this.livingRain);
+ this.living.people.update(state,focus,dt,this.quality);groundCrowd(this.living.people,state,focus,this.quality);this.living.art.update(state,this.quality,this.livingRain);
  // Knees and elbows articulate separately from hips and shoulders.
  for(const[key,g]of this.actors){const rig=g.userData.livingRig;if(!rig)continue;const a=key[0]==='e'?state.enemies.find(e=>'e'+e.id===key):state.players.find(p=>'p'+p.id===key);if(!a)continue;
+  rig.pelvis.position.y=.736+pavementHeight(a.x,a.z);
   const moving=a.moving||0,phase=state.time*(moving>9?17:moving>5?12:8)+a.x*.01,walk=Math.min(1,moving/3);
   for(let i=0;i<2;i++){rig.knees[i].rotation.x=Math.max(0,-Math.sin(phase+i*Math.PI))*(moving>5?1.1:.66)*walk;rig.forearms[i].rotation.x=moving>5?-.85:-.2;}
   rig.chest.rotation.x=moving>5?.075:0;rig.head.rotation.y=Math.sin(state.time*.5)*.025;

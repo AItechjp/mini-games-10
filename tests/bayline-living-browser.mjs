@@ -16,7 +16,7 @@ try{
  const desktop=await context(),p=await start(desktop);
  await check('Real WebGL2 renderer starts Build 03',async()=>{assert.ok(await p.evaluate(()=>{const t=window.__BAYLINE_TEST__;return t.view.renderer.getContext()&&t.view.living&&t.state.civilians.length===288;}));});
  await p.screenshot({path:out+'/title.png'});results.screenshots.push('title.png');
- await p.click('#continue');await p.waitForTimeout(1600);
+ await p.click('#continue');await p.click('#closePanel');await p.waitForTimeout(1600);
  await check('Original solo entry and real articulated crowd render',async()=>{assert.ok(await p.evaluate(()=>window.__BAYLINE_TEST__.running));assert.ok(await p.evaluate(()=>window.__BAYLINE_TEST__.view.living.people.count>0));assert.ok(await p.evaluate(()=>[...window.__BAYLINE_TEST__.view.actors.values()].some(m=>m.userData.livingRig)));});
  await check('High-quality scene compiles with window parallax',async()=>{await p.evaluate(()=>window.__BAYLINE_TEST__.setQuality('high'));await p.waitForTimeout(2500);assert.equal(await p.evaluate(()=>window.__BAYLINE_TEST__.view.quality),'high');await capture(p,'street-high.png');});
  await check('Ultra rain reflection and ambient occlusion compile',async()=>{await p.evaluate(()=>{const t=window.__BAYLINE_TEST__;t.setQuality('ultra');t.view.setWeather(true);});await p.waitForTimeout(2500);assert.equal(await p.evaluate(()=>window.__BAYLINE_TEST__.view.living.art.reflection.visible),true);await capture(p,'rain-ultra.png');});
@@ -31,7 +31,7 @@ try{
  });
  await p.evaluate(()=>{const t=window.__BAYLINE_TEST__,p=t.state.civilians.reduce((a,b)=>Math.hypot(a.x+310,a.z-430)<Math.hypot(b.x+310,b.z-430)?a:b);Object.assign(t.state.players[0],{x:p.x+2.5,z:p.z-1.5,car:-1});t.cam.yaw=-.55;t.cam.pitch=.08;});await capture(p,'pedestrians-close.png');
  await desktop.close();
- const mobile=await context(true),m=await start(mobile);await m.click('#continue');
+ const mobile=await context(true),m=await start(mobile);await m.click('#continue');await m.click('#closePanel');
  await check('Portrait/landscape UI and touch controls remain usable',async()=>{await m.locator('#hud [data-orientation="toggle"]').click();await m.waitForTimeout(1000);assert.ok(await m.locator('#stick').isVisible());assert.ok(await m.locator('#touchEnter').isVisible());await m.locator('#hud [data-orientation="toggle"]').click();await m.waitForTimeout(800);assert.ok(await m.locator('#touchEnter').isVisible());});
  await m.screenshot({path:out+'/phone-portrait.png'});results.screenshots.push('phone-portrait.png');await mobile.close();
  assert.equal(results.errors.length,0,results.errors.join('\n'));
