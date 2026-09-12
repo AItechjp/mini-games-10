@@ -14,7 +14,17 @@ const deadline=setTimeout(()=>{console.error('GAME23 review timed out at:',check
 const fixture=(await readFile(new URL('../game23-playability.js',import.meta.url),'utf8'))+`
 let qaReloadFrame=false;const qaAnimate=cineAnimateWeapon;
 cineAnimateWeapon=function(now,dt,t,at){return qaAnimate(now,dt,t,qaReloadFrame&&uxReloading?now-BlacksiteRules.WEAPONS[cineGun.userData.weaponId].reload*.45:at);};
+let qaCaptureFrame=null,qaDrawFrozen=false;const qaRender=renderer.render.bind(renderer);
+renderer.render=function(s,c){
+  if(s!==scene||c!==camera)return qaRender(s,c);
+  if(qaDrawFrozen)return;
+  const before=cineLastDraw,result=qaRender(s,c);
+  if(qaCaptureFrame&&cineLastDraw!==before){qaDrawFrozen=true;const done=qaCaptureFrame;qaCaptureFrame=null;done();}
+  return result;
+};
 window.__blacksiteQA={
+  capture:()=>new Promise(resolve=>{qaCaptureFrame=resolve;}),
+  unfreeze:()=>{qaDrawFrozen=false;},
   holdReload:hold=>{qaReloadFrame=hold;},
   pose:()=>({x:local.x,z:local.z,yaw:local.yaw,pitch:local.pitch}),
   arrange:()=>{
@@ -96,9 +106,11 @@ try{
     checkpoint('weapon '+id);
     await d.evaluate(id=>window.__blacksiteQA.equip(id),id);await d.waitForTimeout(180);
     const facts=await d.evaluate(()=>window.__blacksiteQA.weapon());assert.equal(facts.id,id);assert.ok(facts.triangles>3000&&facts.triangles<90000,JSON.stringify(facts));assert.ok(facts.meshes<25,JSON.stringify(facts));report.weapons.push(facts);
-    // Capture the already visible viewport without waiting for an animated
-    // WebGL element to settle between software-rendered animation frames.
-    await d.screenshot({path:output+'/weapon-'+id+'.png'});
+    // Preserve one completed production frame for capture, letting software
+    // rendering drain its GPU queue instead of continually submitting frames.
+    await d.evaluate(()=>window.__blacksiteQA.capture());
+    try{await d.screenshot({path:output+'/weapon-'+id+'.png',timeout:30000});}
+    finally{await d.evaluate(()=>window.__blacksiteQA.unfreeze());}
   }
   assert.equal(new Set(report.weapons.map(x=>x.triangles)).size,9,'All nine loadouts need their own geometry');
   await d.locator('#game23-canvas').focus();const ammoBefore=await d.evaluate(()=>window.blacksiteSystems.players[0].ammo);await d.keyboard.press('Space');
