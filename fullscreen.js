@@ -1,6 +1,7 @@
 (() => {
   'use strict';
-  if (document.getElementById('aitech-fullscreen')) return;
+  // Games with a built-in fullscreen control keep their existing toolbar.
+  if (document.getElementById('aitech-fullscreen') || document.getElementById('fullscreen-btn')) return;
   const root = document.documentElement;
   const host = document.createElement('div');
   host.id = 'aitech-fullscreen';
