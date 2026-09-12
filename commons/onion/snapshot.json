@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "importedAt": "2026-09-12T03:32:51.801Z",
-  "sourceUpdatedAt": "2026-09-11T03:43:05Z",
+  "importedAt": "2026-09-12T15:03:43.452Z",
+  "sourceUpdatedAt": "2026-09-12T03:56:27Z",
   "source": {
     "name": "Real-World Onion Sites",
     "url": "https://github.com/alecmuffett/real-world-onion-sites",
-    "blobSha": "2a4c6784d22f6c2915557fd4ade98b1674237781",
+    "blobSha": "28060d038195190f57193845b9d7040cdc02f98d",
     "author": "Alec Muffett",
     "license": "CC BY-SA",
     "licenseUrl": "https://github.com/alecmuffett/real-world-onion-sites/blob/master/01-preamble.md"
@@ -27,10 +27,17 @@
       "proofUrl": "https://www.facebook.com/onion-service",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "error",
-      "checkedAt": "2026-09-11T03:21:35Z",
+      "checkedAt": "2026-09-12T03:19:12Z",
       "httpStatus": 500,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:19:12Z",
+          "status": "error",
+          "httpStatus": 500,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:21:35Z",
           "status": "error",
@@ -121,13 +128,6 @@
           "httpStatus": 500,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:20:33Z",
-          "status": "error",
-          "httpStatus": 500,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -141,10 +141,17 @@
       "proofUrl": "https://www.facebook.com/onion-service",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "error",
-      "checkedAt": "2026-09-11T03:21:37Z",
+      "checkedAt": "2026-09-12T03:19:14Z",
       "httpStatus": 500,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:19:14Z",
+          "status": "error",
+          "httpStatus": 500,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:21:37Z",
           "status": "error",
@@ -235,13 +242,6 @@
           "httpStatus": 500,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:20:35Z",
-          "status": "error",
-          "httpStatus": 500,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -255,10 +255,17 @@
       "proofUrl": "https://www.reddit.com/r/redditsecurity/comments/yd6hqg/reddit_onion_service_launch/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:13:15Z",
+      "checkedAt": "2026-09-12T03:14:32Z",
       "httpStatus": 302,
-      "lastSuccessAt": "2026-09-11T03:13:15Z",
+      "lastSuccessAt": "2026-09-12T03:14:32Z",
       "history": [
+        {
+          "at": "2026-09-12T03:14:32Z",
+          "status": "redirect",
+          "httpStatus": 302,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:13:15Z",
           "status": "redirect",
@@ -349,13 +356,6 @@
           "httpStatus": 302,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:12:40Z",
-          "status": "redirect",
-          "httpStatus": 302,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -369,10 +369,17 @@
       "proofUrl": "https://help.twitter.com/en/using-twitter/twitter-supported-browsers",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:18:54Z",
+      "checkedAt": "2026-09-12T03:20:52Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:20:52Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:18:54Z",
           "status": "unreachable",
@@ -463,13 +470,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:18:41Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -483,10 +483,17 @@
       "proofUrl": "https://blog.archive.today/post/659192060146024448/will-archivecaslytoskonion-be-upgraded-to-onion",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:21:50Z",
+      "checkedAt": "2026-09-12T03:23:22Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:21:50Z",
+      "lastSuccessAt": "2026-09-12T03:23:22Z",
       "history": [
+        {
+          "at": "2026-09-12T03:23:22Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:21:50Z",
           "status": "online",
@@ -577,13 +584,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:28Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -597,10 +597,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:21:55Z",
+      "checkedAt": "2026-09-12T03:23:28Z",
       "httpStatus": 302,
-      "lastSuccessAt": "2026-09-11T03:21:55Z",
+      "lastSuccessAt": "2026-09-12T03:23:28Z",
       "history": [
+        {
+          "at": "2026-09-12T03:23:28Z",
+          "status": "redirect",
+          "httpStatus": 302,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:21:55Z",
           "status": "redirect",
@@ -691,13 +698,6 @@
           "httpStatus": 302,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:32Z",
-          "status": "redirect",
-          "httpStatus": 302,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -711,10 +711,17 @@
       "proofUrl": "https://www.harica.gr/en/Products/ServerCertificate",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:21:58Z",
+      "checkedAt": "2026-09-12T03:23:39Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:21:58Z",
+      "lastSuccessAt": "2026-09-12T03:23:39Z",
       "history": [
+        {
+          "at": "2026-09-12T03:23:39Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:21:58Z",
           "status": "online",
@@ -805,13 +812,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:42Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -825,10 +825,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:22:02Z",
+      "checkedAt": "2026-09-12T03:23:50Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:22:02Z",
+      "lastSuccessAt": "2026-09-12T03:23:50Z",
       "history": [
+        {
+          "at": "2026-09-12T03:23:50Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:22:02Z",
           "status": "online",
@@ -919,13 +926,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:45Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -939,10 +939,17 @@
       "proofUrl": "https://www.bbc.co.uk/news/technology-50150981",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:07:10Z",
+      "checkedAt": "2026-09-12T03:05:31Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:07:10Z",
+      "lastSuccessAt": "2026-09-12T03:05:31Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:31Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:07:10Z",
           "status": "online",
@@ -1033,13 +1040,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:43Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -1053,10 +1053,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:13:02Z",
+      "checkedAt": "2026-09-12T03:20:25Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:13:02Z",
+      "lastSuccessAt": "2026-09-12T03:20:25Z",
       "history": [
+        {
+          "at": "2026-09-12T03:20:25Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:13:02Z",
           "status": "online",
@@ -1147,13 +1154,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:12:35Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -1167,10 +1167,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:13:05Z",
+      "checkedAt": "2026-09-12T03:20:28Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:13:05Z",
+      "lastSuccessAt": "2026-09-12T03:20:28Z",
       "history": [
+        {
+          "at": "2026-09-12T03:20:28Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:13:05Z",
           "status": "online",
@@ -1261,13 +1268,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:12:37Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -1281,10 +1281,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:13:07Z",
+      "checkedAt": "2026-09-12T03:20:30Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:13:07Z",
+      "lastSuccessAt": "2026-09-12T03:20:30Z",
       "history": [
+        {
+          "at": "2026-09-12T03:20:30Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:13:07Z",
           "status": "online",
@@ -1375,13 +1382,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:12:39Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -1395,10 +1395,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:17Z",
+      "checkedAt": "2026-09-12T03:05:20Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:17Z",
+      "lastSuccessAt": "2026-09-12T03:05:20Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:20Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:17Z",
           "status": "online",
@@ -1489,13 +1496,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:32Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -1509,10 +1509,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:20Z",
+      "checkedAt": "2026-09-12T03:05:22Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:20Z",
+      "lastSuccessAt": "2026-09-12T03:05:22Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:22Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:20Z",
           "status": "online",
@@ -1603,13 +1610,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:34Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -1623,10 +1623,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:22Z",
+      "checkedAt": "2026-09-12T03:05:24Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:22Z",
+      "lastSuccessAt": "2026-09-12T03:05:24Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:24Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:22Z",
           "status": "online",
@@ -1717,13 +1724,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:36Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -1737,10 +1737,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:24Z",
+      "checkedAt": "2026-09-12T03:05:27Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:24Z",
+      "lastSuccessAt": "2026-09-12T03:05:27Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:27Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:24Z",
           "status": "online",
@@ -1831,13 +1838,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:38Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -1851,10 +1851,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:26Z",
+      "checkedAt": "2026-09-12T03:05:29Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:26Z",
+      "lastSuccessAt": "2026-09-12T03:05:29Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:29Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:26Z",
           "status": "online",
@@ -1945,13 +1952,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:40Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -1965,10 +1965,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:17Z",
+      "checkedAt": "2026-09-12T03:05:20Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:17Z",
+      "lastSuccessAt": "2026-09-12T03:05:20Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:20Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:17Z",
           "status": "online",
@@ -2059,13 +2066,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:32Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -2079,10 +2079,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:20Z",
+      "checkedAt": "2026-09-12T03:05:22Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:20Z",
+      "lastSuccessAt": "2026-09-12T03:05:22Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:22Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:20Z",
           "status": "online",
@@ -2173,13 +2180,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:34Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -2193,10 +2193,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:22Z",
+      "checkedAt": "2026-09-12T03:05:24Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:22Z",
+      "lastSuccessAt": "2026-09-12T03:05:24Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:24Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:22Z",
           "status": "online",
@@ -2287,13 +2294,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:36Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -2307,10 +2307,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:24Z",
+      "checkedAt": "2026-09-12T03:05:27Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:24Z",
+      "lastSuccessAt": "2026-09-12T03:05:27Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:27Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:24Z",
           "status": "online",
@@ -2401,13 +2408,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:38Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -2421,10 +2421,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:26Z",
+      "checkedAt": "2026-09-12T03:05:30Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:26Z",
+      "lastSuccessAt": "2026-09-12T03:05:30Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:30Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:26Z",
           "status": "online",
@@ -2515,13 +2522,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:40Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -2535,10 +2535,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:18Z",
+      "checkedAt": "2026-09-12T03:05:20Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:18Z",
+      "lastSuccessAt": "2026-09-12T03:05:20Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:20Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:18Z",
           "status": "online",
@@ -2629,13 +2636,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:32Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -2649,10 +2649,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:20Z",
+      "checkedAt": "2026-09-12T03:05:22Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:20Z",
+      "lastSuccessAt": "2026-09-12T03:05:22Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:22Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:20Z",
           "status": "online",
@@ -2743,13 +2750,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:34Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -2763,10 +2763,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:22Z",
+      "checkedAt": "2026-09-12T03:05:24Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:22Z",
+      "lastSuccessAt": "2026-09-12T03:05:24Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:24Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:22Z",
           "status": "online",
@@ -2857,13 +2864,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:36Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -2877,10 +2877,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:24Z",
+      "checkedAt": "2026-09-12T03:05:27Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:24Z",
+      "lastSuccessAt": "2026-09-12T03:05:27Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:27Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:24Z",
           "status": "online",
@@ -2971,13 +2978,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:38Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -2991,10 +2991,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:26Z",
+      "checkedAt": "2026-09-12T03:05:29Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:26Z",
+      "lastSuccessAt": "2026-09-12T03:05:29Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:29Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:26Z",
           "status": "online",
@@ -3085,13 +3092,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:40Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -3105,10 +3105,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:27Z",
+      "checkedAt": "2026-09-12T03:05:31Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:27Z",
+      "lastSuccessAt": "2026-09-12T03:05:31Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:31Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:27Z",
           "status": "online",
@@ -3199,13 +3206,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:42Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -3219,10 +3219,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:29Z",
+      "checkedAt": "2026-09-12T03:05:33Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:29Z",
+      "lastSuccessAt": "2026-09-12T03:05:33Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:33Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:29Z",
           "status": "online",
@@ -3313,13 +3320,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:43Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -3333,10 +3333,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:31Z",
+      "checkedAt": "2026-09-12T03:05:35Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:31Z",
+      "lastSuccessAt": "2026-09-12T03:05:35Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:35Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:31Z",
           "status": "online",
@@ -3427,13 +3434,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:45Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -3447,10 +3447,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:33Z",
+      "checkedAt": "2026-09-12T03:05:37Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:33Z",
+      "lastSuccessAt": "2026-09-12T03:05:37Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:37Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:33Z",
           "status": "online",
@@ -3541,13 +3548,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:47Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -3561,10 +3561,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:35Z",
+      "checkedAt": "2026-09-12T03:05:39Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:35Z",
+      "lastSuccessAt": "2026-09-12T03:05:39Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:39Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:35Z",
           "status": "online",
@@ -3655,13 +3662,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:49Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -3675,10 +3675,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:28Z",
+      "checkedAt": "2026-09-12T03:05:31Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:28Z",
+      "lastSuccessAt": "2026-09-12T03:05:31Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:31Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:28Z",
           "status": "online",
@@ -3769,13 +3776,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:42Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -3789,10 +3789,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:30Z",
+      "checkedAt": "2026-09-12T03:05:33Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:30Z",
+      "lastSuccessAt": "2026-09-12T03:05:33Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:33Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:30Z",
           "status": "online",
@@ -3883,13 +3890,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:44Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -3903,10 +3903,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:32Z",
+      "checkedAt": "2026-09-12T03:05:35Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:32Z",
+      "lastSuccessAt": "2026-09-12T03:05:35Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:35Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:32Z",
           "status": "online",
@@ -3997,13 +4004,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:46Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -4017,10 +4017,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:34Z",
+      "checkedAt": "2026-09-12T03:05:37Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:34Z",
+      "lastSuccessAt": "2026-09-12T03:05:37Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:37Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:34Z",
           "status": "online",
@@ -4111,13 +4118,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:48Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -4131,10 +4131,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:36Z",
+      "checkedAt": "2026-09-12T03:05:39Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:36Z",
+      "lastSuccessAt": "2026-09-12T03:05:39Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:39Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:36Z",
           "status": "online",
@@ -4225,13 +4232,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:50Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -4245,10 +4245,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:28Z",
+      "checkedAt": "2026-09-12T03:05:32Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:28Z",
+      "lastSuccessAt": "2026-09-12T03:05:32Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:32Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:28Z",
           "status": "online",
@@ -4339,13 +4346,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:42Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -4359,10 +4359,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:31Z",
+      "checkedAt": "2026-09-12T03:05:34Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:31Z",
+      "lastSuccessAt": "2026-09-12T03:05:34Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:34Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:31Z",
           "status": "online",
@@ -4453,13 +4460,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:44Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -4473,10 +4473,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:33Z",
+      "checkedAt": "2026-09-12T03:05:36Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:33Z",
+      "lastSuccessAt": "2026-09-12T03:05:36Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:36Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:33Z",
           "status": "online",
@@ -4567,13 +4574,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:46Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -4587,10 +4587,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:35Z",
+      "checkedAt": "2026-09-12T03:05:38Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:35Z",
+      "lastSuccessAt": "2026-09-12T03:05:38Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:38Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:35Z",
           "status": "online",
@@ -4681,13 +4688,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:48Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -4701,10 +4701,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:37Z",
+      "checkedAt": "2026-09-12T03:05:40Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:37Z",
+      "lastSuccessAt": "2026-09-12T03:05:40Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:40Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:37Z",
           "status": "online",
@@ -4795,13 +4802,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:50Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -4815,10 +4815,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:37Z",
+      "checkedAt": "2026-09-12T03:05:41Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:37Z",
+      "lastSuccessAt": "2026-09-12T03:05:41Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:41Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:37Z",
           "status": "online",
@@ -4909,13 +4916,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:51Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -4929,10 +4929,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:39Z",
+      "checkedAt": "2026-09-12T03:05:44Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:39Z",
+      "lastSuccessAt": "2026-09-12T03:05:44Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:44Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:39Z",
           "status": "online",
@@ -5023,13 +5030,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:53Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -5043,10 +5043,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:41Z",
+      "checkedAt": "2026-09-12T03:05:45Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:41Z",
+      "lastSuccessAt": "2026-09-12T03:05:45Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:45Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:41Z",
           "status": "online",
@@ -5137,13 +5144,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:55Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -5157,10 +5157,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:42Z",
+      "checkedAt": "2026-09-12T03:05:47Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:42Z",
+      "lastSuccessAt": "2026-09-12T03:05:47Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:47Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:42Z",
           "status": "redirect",
@@ -5251,13 +5258,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:56Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -5271,10 +5271,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:44Z",
+      "checkedAt": "2026-09-12T03:05:49Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:44Z",
+      "lastSuccessAt": "2026-09-12T03:05:49Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:49Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:44Z",
           "status": "online",
@@ -5365,13 +5372,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:58Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -5385,10 +5385,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:38Z",
+      "checkedAt": "2026-09-12T03:05:42Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:38Z",
+      "lastSuccessAt": "2026-09-12T03:05:42Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:42Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:38Z",
           "status": "online",
@@ -5479,13 +5486,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:52Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -5499,10 +5499,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:40Z",
+      "checkedAt": "2026-09-12T03:05:44Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:40Z",
+      "lastSuccessAt": "2026-09-12T03:05:44Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:44Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:40Z",
           "status": "online",
@@ -5593,13 +5600,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:53Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -5613,10 +5613,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:42Z",
+      "checkedAt": "2026-09-12T03:05:46Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:42Z",
+      "lastSuccessAt": "2026-09-12T03:05:46Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:46Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:42Z",
           "status": "online",
@@ -5707,13 +5714,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:55Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -5727,10 +5727,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:44Z",
+      "checkedAt": "2026-09-12T03:05:47Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:44Z",
+      "lastSuccessAt": "2026-09-12T03:05:47Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:47Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:44Z",
           "status": "online",
@@ -5821,13 +5828,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:57Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -5841,10 +5841,17 @@
       "proofUrl": "https://www.bellingcat.com/resources/2022/04/22/how-to-beat-russias-block-on-bellingcat/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:12:50Z",
+      "checkedAt": "2026-09-12T03:10:54Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:10:54Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:12:50Z",
           "status": "unreachable",
@@ -5935,13 +5942,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:11:36Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -5955,10 +5955,17 @@
       "proofUrl": "https://www.bellingcat.com/resources/2022/04/22/how-to-beat-russias-block-on-bellingcat/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:11:01Z",
+      "checkedAt": "2026-09-12T03:10:36Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:10:36Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:11:01Z",
           "status": "unreachable",
@@ -6049,13 +6056,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:11:36Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -6069,10 +6069,17 @@
       "proofUrl": "https://www.bellingcat.com/resources/2022/04/22/how-to-beat-russias-block-on-bellingcat/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:17:43Z",
+      "checkedAt": "2026-09-12T03:16:59Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:16:59Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:17:43Z",
           "status": "unreachable",
@@ -6163,13 +6170,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:18:07Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -6183,10 +6183,17 @@
       "proofUrl": "https://www.bellingcat.com/resources/2022/04/22/how-to-beat-russias-block-on-bellingcat/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:24:11Z",
+      "checkedAt": "2026-09-12T03:23:24Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:23:24Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:24:11Z",
           "status": "unreachable",
@@ -6277,13 +6284,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:24:43Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -6297,10 +6297,17 @@
       "proofUrl": "https://www.bellingcat.com/resources/2022/04/22/how-to-beat-russias-block-on-bellingcat/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:30:47Z",
+      "checkedAt": "2026-09-12T03:29:50Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:29:50Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:30:47Z",
           "status": "unreachable",
@@ -6391,13 +6398,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:31:08Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -6411,10 +6411,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:31:51Z",
+      "checkedAt": "2026-09-12T03:30:53Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:31:51Z",
+      "lastSuccessAt": "2026-09-12T03:30:53Z",
       "history": [
+        {
+          "at": "2026-09-12T03:30:53Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:31:51Z",
           "status": "online",
@@ -6505,13 +6512,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:32:53Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -6525,10 +6525,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:46Z",
+      "checkedAt": "2026-09-12T03:05:50Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:46Z",
+      "lastSuccessAt": "2026-09-12T03:05:50Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:50Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:46Z",
           "status": "redirect",
@@ -6619,13 +6626,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:59Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -6639,10 +6639,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:40Z",
+      "checkedAt": "2026-09-12T03:05:44Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:40Z",
+      "lastSuccessAt": "2026-09-12T03:05:44Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:44Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:40Z",
           "status": "redirect",
@@ -6733,13 +6740,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:54Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -6753,10 +6753,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:42Z",
+      "checkedAt": "2026-09-12T03:05:47Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:42Z",
+      "lastSuccessAt": "2026-09-12T03:05:47Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:47Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:42Z",
           "status": "redirect",
@@ -6847,13 +6854,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:56Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -6867,10 +6867,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:44Z",
+      "checkedAt": "2026-09-12T03:05:49Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:44Z",
+      "lastSuccessAt": "2026-09-12T03:05:49Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:49Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:44Z",
           "status": "redirect",
@@ -6961,13 +6968,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:57Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -6981,10 +6981,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:47Z",
+      "checkedAt": "2026-09-12T03:05:52Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:47Z",
+      "lastSuccessAt": "2026-09-12T03:05:52Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:52Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:47Z",
           "status": "redirect",
@@ -7075,13 +7082,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:59Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -7095,10 +7095,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:49Z",
+      "checkedAt": "2026-09-12T03:05:54Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:49Z",
+      "lastSuccessAt": "2026-09-12T03:05:54Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:54Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:49Z",
           "status": "redirect",
@@ -7189,13 +7196,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:01Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -7209,10 +7209,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:48Z",
+      "checkedAt": "2026-09-12T03:05:52Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:48Z",
+      "lastSuccessAt": "2026-09-12T03:05:52Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:52Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:48Z",
           "status": "redirect",
@@ -7303,13 +7310,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:00Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -7323,10 +7323,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:51Z",
+      "checkedAt": "2026-09-12T03:05:55Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:51Z",
+      "lastSuccessAt": "2026-09-12T03:05:55Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:55Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:51Z",
           "status": "redirect",
@@ -7417,13 +7424,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:02Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -7437,10 +7437,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:52Z",
+      "checkedAt": "2026-09-12T03:05:57Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:52Z",
+      "lastSuccessAt": "2026-09-12T03:05:57Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:57Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:52Z",
           "status": "redirect",
@@ -7531,13 +7538,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:04Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -7551,10 +7551,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:54Z",
+      "checkedAt": "2026-09-12T03:06:00Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:54Z",
+      "lastSuccessAt": "2026-09-12T03:06:00Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:00Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:54Z",
           "status": "redirect",
@@ -7645,13 +7652,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:06Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -7665,10 +7665,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:56Z",
+      "checkedAt": "2026-09-12T03:06:03Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:56Z",
+      "lastSuccessAt": "2026-09-12T03:06:03Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:03Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:56Z",
           "status": "redirect",
@@ -7759,13 +7766,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:08Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -7779,10 +7779,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:48Z",
+      "checkedAt": "2026-09-12T03:05:53Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:48Z",
+      "lastSuccessAt": "2026-09-12T03:05:53Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:53Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:48Z",
           "status": "redirect",
@@ -7873,13 +7880,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:01Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -7893,10 +7893,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:50Z",
+      "checkedAt": "2026-09-12T03:05:55Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:50Z",
+      "lastSuccessAt": "2026-09-12T03:05:55Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:55Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:50Z",
           "status": "redirect",
@@ -7987,13 +7994,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:03Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -8007,10 +8007,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:52Z",
+      "checkedAt": "2026-09-12T03:05:58Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:52Z",
+      "lastSuccessAt": "2026-09-12T03:05:58Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:58Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:52Z",
           "status": "redirect",
@@ -8101,13 +8108,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:05Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -8121,10 +8121,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:54Z",
+      "checkedAt": "2026-09-12T03:06:01Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:54Z",
+      "lastSuccessAt": "2026-09-12T03:06:01Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:01Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:54Z",
           "status": "redirect",
@@ -8215,13 +8222,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:06Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -8235,10 +8235,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:56Z",
+      "checkedAt": "2026-09-12T03:06:04Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:56Z",
+      "lastSuccessAt": "2026-09-12T03:06:04Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:04Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:56Z",
           "status": "redirect",
@@ -8329,13 +8336,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:08Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -8349,10 +8349,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:51Z",
+      "checkedAt": "2026-09-12T03:05:57Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:51Z",
+      "lastSuccessAt": "2026-09-12T03:05:57Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:57Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:51Z",
           "status": "redirect",
@@ -8443,13 +8450,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:03Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -8463,10 +8463,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:53Z",
+      "checkedAt": "2026-09-12T03:06:00Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:53Z",
+      "lastSuccessAt": "2026-09-12T03:06:00Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:00Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:53Z",
           "status": "redirect",
@@ -8557,13 +8564,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:05Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -8577,10 +8577,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:55Z",
+      "checkedAt": "2026-09-12T03:06:03Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:55Z",
+      "lastSuccessAt": "2026-09-12T03:06:03Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:03Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:55Z",
           "status": "redirect",
@@ -8671,13 +8678,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:07Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -8691,10 +8691,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:57Z",
+      "checkedAt": "2026-09-12T03:06:06Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:57Z",
+      "lastSuccessAt": "2026-09-12T03:06:06Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:06Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:57Z",
           "status": "redirect",
@@ -8785,13 +8792,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:09Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -8805,10 +8805,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:59Z",
+      "checkedAt": "2026-09-12T03:06:08Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:59Z",
+      "lastSuccessAt": "2026-09-12T03:06:08Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:08Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:59Z",
           "status": "redirect",
@@ -8899,13 +8906,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:11Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -8919,10 +8919,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:58Z",
+      "checkedAt": "2026-09-12T03:06:06Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:58Z",
+      "lastSuccessAt": "2026-09-12T03:06:06Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:06Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:58Z",
           "status": "redirect",
@@ -9013,13 +9020,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:10Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -9033,10 +9033,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:06:00Z",
+      "checkedAt": "2026-09-12T03:06:08Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:06:00Z",
+      "lastSuccessAt": "2026-09-12T03:06:08Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:08Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:06:00Z",
           "status": "redirect",
@@ -9127,13 +9134,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:12Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -9147,10 +9147,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:06:03Z",
+      "checkedAt": "2026-09-12T03:06:11Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:06:03Z",
+      "lastSuccessAt": "2026-09-12T03:06:11Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:11Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:06:03Z",
           "status": "online",
@@ -9241,13 +9248,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:14Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -9261,10 +9261,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:06:05Z",
+      "checkedAt": "2026-09-12T03:06:13Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:06:05Z",
+      "lastSuccessAt": "2026-09-12T03:06:13Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:13Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:06:05Z",
           "status": "redirect",
@@ -9355,13 +9362,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:15Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -9375,10 +9375,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:06:07Z",
+      "checkedAt": "2026-09-12T03:06:16Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:06:07Z",
+      "lastSuccessAt": "2026-09-12T03:06:16Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:16Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:06:07Z",
           "status": "redirect",
@@ -9469,13 +9476,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:17Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -9489,10 +9489,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:05:58Z",
+      "checkedAt": "2026-09-12T03:06:07Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:05:58Z",
+      "lastSuccessAt": "2026-09-12T03:06:07Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:07Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:58Z",
           "status": "redirect",
@@ -9583,13 +9590,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:10Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -9603,10 +9603,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:06:00Z",
+      "checkedAt": "2026-09-12T03:06:09Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:06:00Z",
+      "lastSuccessAt": "2026-09-12T03:06:09Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:09Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:06:00Z",
           "status": "redirect",
@@ -9697,13 +9704,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:12Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -9717,10 +9717,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:06:03Z",
+      "checkedAt": "2026-09-12T03:06:12Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:06:03Z",
+      "lastSuccessAt": "2026-09-12T03:06:12Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:12Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:06:03Z",
           "status": "redirect",
@@ -9811,13 +9818,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:14Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -9831,10 +9831,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:06:05Z",
+      "checkedAt": "2026-09-12T03:06:14Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:06:05Z",
+      "lastSuccessAt": "2026-09-12T03:06:14Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:14Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:06:05Z",
           "status": "redirect",
@@ -9925,13 +9932,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:16Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -9945,10 +9945,17 @@
       "proofUrl": "https://www.dw.com/de/schutz-vor-hackern-darum-wird-tor-noch-sicherer/a-57953191",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:06:07Z",
+      "checkedAt": "2026-09-12T03:06:17Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:06:07Z",
+      "lastSuccessAt": "2026-09-12T03:06:17Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:17Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:06:07Z",
           "status": "redirect",
@@ -10039,13 +10046,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:18Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -10059,10 +10059,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:10:45Z",
+      "checkedAt": "2026-09-12T03:19:23Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:19:23Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:10:45Z",
           "status": "unreachable",
@@ -10153,13 +10160,6 @@
           "httpStatus": null,
           "exitCode": 910,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:10:58Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -10173,10 +10173,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:12:55Z",
+      "checkedAt": "2026-09-12T03:20:26Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:12:55Z",
+      "lastSuccessAt": "2026-09-12T03:20:26Z",
       "history": [
+        {
+          "at": "2026-09-12T03:20:26Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:12:55Z",
           "status": "online",
@@ -10267,13 +10274,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:12:01Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -10287,10 +10287,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:21:09Z",
+      "checkedAt": "2026-09-12T03:12:13Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:12:13Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:21:09Z",
           "status": "unreachable",
@@ -10381,13 +10388,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:12:20Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -10401,10 +10401,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:22:13Z",
+      "checkedAt": "2026-09-12T03:13:59Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:22:13Z",
+      "lastSuccessAt": "2026-09-12T03:13:59Z",
       "history": [
+        {
+          "at": "2026-09-12T03:13:59Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:22:13Z",
           "status": "online",
@@ -10495,13 +10502,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:13:23Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -10515,10 +10515,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:27:44Z",
+      "checkedAt": "2026-09-12T03:19:33Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:19:33Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:27:44Z",
           "status": "unreachable",
@@ -10609,13 +10616,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:18:54Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -10629,10 +10629,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:34:12Z",
+      "checkedAt": "2026-09-12T03:26:06Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:26:06Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:34:12Z",
           "status": "unreachable",
@@ -10723,13 +10730,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:25:30Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -10743,10 +10743,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:35:16Z",
+      "checkedAt": "2026-09-12T03:27:09Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:35:16Z",
+      "lastSuccessAt": "2026-09-12T03:27:09Z",
       "history": [
+        {
+          "at": "2026-09-12T03:27:09Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:35:16Z",
           "status": "online",
@@ -10837,13 +10844,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:26:33Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -10857,10 +10857,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:06:12Z",
+      "checkedAt": "2026-09-12T03:06:19Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:06:12Z",
+      "lastSuccessAt": "2026-09-12T03:06:19Z",
       "history": [
+        {
+          "at": "2026-09-12T03:06:19Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:06:12Z",
           "status": "redirect",
@@ -10951,13 +10958,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:06:21Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -10971,10 +10971,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:11:58Z",
+      "checkedAt": "2026-09-12T03:13:07Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:13:07Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:11:58Z",
           "status": "unreachable",
@@ -11065,13 +11072,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:11:50Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -11085,10 +11085,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:13:04Z",
+      "checkedAt": "2026-09-12T03:14:20Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:13:04Z",
+      "lastSuccessAt": "2026-09-12T03:14:20Z",
       "history": [
+        {
+          "at": "2026-09-12T03:14:20Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:13:04Z",
           "status": "online",
@@ -11179,13 +11186,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:12:55Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -11199,10 +11199,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:13:06Z",
+      "checkedAt": "2026-09-12T03:14:22Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:13:06Z",
+      "lastSuccessAt": "2026-09-12T03:14:22Z",
       "history": [
+        {
+          "at": "2026-09-12T03:14:22Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:13:06Z",
           "status": "online",
@@ -11293,13 +11300,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:12:56Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -11313,10 +11313,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:13:07Z",
+      "checkedAt": "2026-09-12T03:14:25Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:13:07Z",
+      "lastSuccessAt": "2026-09-12T03:14:25Z",
       "history": [
+        {
+          "at": "2026-09-12T03:14:25Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:13:07Z",
           "status": "online",
@@ -11407,13 +11414,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:12:58Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -11427,10 +11427,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:11:57Z",
+      "checkedAt": "2026-09-12T03:22:35Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:22:35Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:11:57Z",
           "status": "unreachable",
@@ -11521,13 +11528,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:14:53Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -11541,10 +11541,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:13:01Z",
+      "checkedAt": "2026-09-12T03:23:41Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:13:01Z",
+      "lastSuccessAt": "2026-09-12T03:23:41Z",
       "history": [
+        {
+          "at": "2026-09-12T03:23:41Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:13:01Z",
           "status": "redirect",
@@ -11635,13 +11642,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:15:56Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -11655,10 +11655,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:13:05Z",
+      "checkedAt": "2026-09-12T03:23:49Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:13:05Z",
+      "lastSuccessAt": "2026-09-12T03:23:49Z",
       "history": [
+        {
+          "at": "2026-09-12T03:23:49Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:13:05Z",
           "status": "redirect",
@@ -11749,13 +11756,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:16:00Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -11769,10 +11769,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:18:53Z",
+      "checkedAt": "2026-09-12T03:29:31Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:29:31Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:18:53Z",
           "status": "unreachable",
@@ -11863,13 +11870,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:21:50Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -11882,11 +11882,18 @@
       "host": "www.guardian2zotagl6tmjucg3lrhxdk4dw3lhbqnkvvkywawy3oqfoprid.onion",
       "proofUrl": "https://www.theguardian.com/help/insideguardian/2022/may/30/guardian-launches-tor-onion-service",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
-      "status": "unreachable",
-      "checkedAt": "2026-09-11T03:18:38Z",
-      "httpStatus": null,
-      "lastSuccessAt": "2026-09-05T03:11:55Z",
+      "status": "redirect",
+      "checkedAt": "2026-09-12T03:26:31Z",
+      "httpStatus": 302,
+      "lastSuccessAt": "2026-09-12T03:26:31Z",
       "history": [
+        {
+          "at": "2026-09-12T03:26:31Z",
+          "status": "redirect",
+          "httpStatus": 302,
+          "exitCode": 0,
+          "attempts": 3
+        },
         {
           "at": "2026-09-11T03:18:38Z",
           "status": "unreachable",
@@ -11977,13 +11984,6 @@
           "httpStatus": 302,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:12:03Z",
-          "status": "redirect",
-          "httpStatus": 302,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -11997,10 +11997,17 @@
       "proofUrl": "https://theintercept.com/2021/04/28/tor-browser-onion/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:25:05Z",
+      "checkedAt": "2026-09-12T03:39:15Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:39:15Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:25:05Z",
           "status": "unreachable",
@@ -12091,13 +12098,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:17:29Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -12111,10 +12111,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:40:45Z",
+      "checkedAt": "2026-09-12T03:56:27Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:56:27Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:40:45Z",
           "status": "unreachable",
@@ -12205,13 +12212,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:24:01Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -12225,10 +12225,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:25:26Z",
+      "checkedAt": "2026-09-12T03:43:58Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:43:58Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:25:26Z",
           "status": "unreachable",
@@ -12319,13 +12326,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:28:58Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -12339,10 +12339,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:20:10Z",
+      "checkedAt": "2026-09-12T03:18:01Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:18:01Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:20:10Z",
           "status": "unreachable",
@@ -12433,13 +12440,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:18:21Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -12453,10 +12453,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:06:21Z",
+      "checkedAt": "2026-09-12T03:05:16Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:06:21Z",
+      "lastSuccessAt": "2026-09-12T03:05:16Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:16Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:06:21Z",
           "status": "online",
@@ -12547,13 +12554,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:29Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -12567,10 +12567,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:12:00Z",
+      "checkedAt": "2026-09-12T03:19:22Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:19:22Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:12:00Z",
           "status": "unreachable",
@@ -12661,13 +12668,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:11:33Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -12681,10 +12681,17 @@
       "proofUrl": "https://ahf.me",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:10:22Z",
+      "checkedAt": "2026-09-12T03:10:59Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:10:59Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:10:22Z",
           "status": "unreachable",
@@ -12775,13 +12782,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:10:36Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -12795,10 +12795,17 @@
       "proofUrl": "https://www.ctrl.blog/entry/ctrlblog-onion-mirror.html",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:17:10Z",
+      "checkedAt": "2026-09-12T03:22:32Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:22:32Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:17:10Z",
           "status": "unreachable",
@@ -12889,13 +12896,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:17:07Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -12909,10 +12909,17 @@
       "proofUrl": "https://alecmuffett.com/blog",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:34:57Z",
+      "checkedAt": "2026-09-12T03:29:53Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:29:53Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:34:57Z",
           "status": "unreachable",
@@ -13003,13 +13010,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:24:04Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -13023,10 +13023,17 @@
       "proofUrl": "https://kushaldas.in/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:42:01Z",
+      "checkedAt": "2026-09-12T03:36:17Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:36:17Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:42:01Z",
           "status": "unreachable",
@@ -13117,13 +13124,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:30:35Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -13137,10 +13137,17 @@
       "proofUrl": "https://tech.michaelaltfield.net/2021/01/15/onion/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:43:05Z",
+      "checkedAt": "2026-09-12T03:37:20Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:43:05Z",
+      "lastSuccessAt": "2026-09-12T03:37:20Z",
       "history": [
+        {
+          "at": "2026-09-12T03:37:20Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:43:05Z",
           "status": "online",
@@ -13231,13 +13238,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 2
-        },
-        {
-          "at": "2026-08-28T03:31:39Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -13251,10 +13251,17 @@
       "proofUrl": "https://mdleom.com",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:21Z",
+      "checkedAt": "2026-09-12T03:08:15Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:21Z",
+      "lastSuccessAt": "2026-09-12T03:08:15Z",
       "history": [
+        {
+          "at": "2026-09-12T03:08:15Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 2
+        },
         {
           "at": "2026-09-11T03:05:21Z",
           "status": "online",
@@ -13345,13 +13352,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:36Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -13365,10 +13365,17 @@
       "proofUrl": "https://frichetten.com",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:10:42Z",
+      "checkedAt": "2026-09-12T03:13:24Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:13:24Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:10:42Z",
           "status": "unreachable",
@@ -13459,13 +13466,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:11:51Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -13479,10 +13479,17 @@
       "proofUrl": "https://shen.hong.io/security/#tor-onion-service",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:18:57Z",
+      "checkedAt": "2026-09-12T03:28:22Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:28:22Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:18:57Z",
           "status": "unreachable",
@@ -13573,13 +13580,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:18:20Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -13593,10 +13593,17 @@
       "proofUrl": "https://www.cia.gov/stories/story/cias-latest-layer-an-onion-site/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:07:07Z",
+      "checkedAt": "2026-09-12T03:05:27Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:07:07Z",
+      "lastSuccessAt": "2026-09-12T03:05:27Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:27Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:07:07Z",
           "status": "online",
@@ -13687,13 +13694,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:40Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -13707,10 +13707,17 @@
       "proofUrl": "https://solicitors.lawsociety.org.uk/office/593348/decoded-legal-limited",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:25:07Z",
+      "checkedAt": "2026-09-12T03:34:33Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:34:33Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:25:07Z",
           "status": "unreachable",
@@ -13801,13 +13808,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:24:30Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -13821,10 +13821,17 @@
       "proofUrl": "https://www.reddit.com/r/onions/comments/nhe04a/privacy_international_migrate_to_a_v3_onion/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:31:38Z",
+      "checkedAt": "2026-09-12T03:40:58Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:40:58Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:31:38Z",
           "status": "unreachable",
@@ -13915,13 +13922,6 @@
           "httpStatus": null,
           "exitCode": 910,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:30:54Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -13935,10 +13935,17 @@
       "proofUrl": "https://riseup.net/en/security/network-security/tor#riseups-tor-onion-services",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:17Z",
+      "checkedAt": "2026-09-12T03:05:17Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:17Z",
+      "lastSuccessAt": "2026-09-12T03:05:17Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:17Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:17Z",
           "status": "online",
@@ -14029,13 +14036,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:30Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -14049,10 +14049,17 @@
       "proofUrl": "https://riseup.net/en/security/network-security/tor#riseups-tor-onion-services",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:20Z",
+      "checkedAt": "2026-09-12T03:05:19Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:20Z",
+      "lastSuccessAt": "2026-09-12T03:05:19Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:19Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:20Z",
           "status": "online",
@@ -14143,13 +14150,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:32Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -14163,10 +14163,17 @@
       "proofUrl": "https://www.systemli.org/en/service/onion.html",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:08:23Z",
+      "checkedAt": "2026-09-12T03:07:04Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:08:23Z",
+      "lastSuccessAt": "2026-09-12T03:07:04Z",
       "history": [
+        {
+          "at": "2026-09-12T03:07:04Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:08:23Z",
           "status": "online",
@@ -14257,13 +14264,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:44Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -14277,10 +14277,17 @@
       "proofUrl": "https://www.systemli.org/en/service/onion.html",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:08:25Z",
+      "checkedAt": "2026-09-12T03:07:05Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:08:25Z",
+      "lastSuccessAt": "2026-09-12T03:07:05Z",
       "history": [
+        {
+          "at": "2026-09-12T03:07:05Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:08:25Z",
           "status": "online",
@@ -14371,13 +14378,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:45Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -14391,10 +14391,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:23:35Z",
+      "checkedAt": "2026-09-12T03:22:16Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:22:16Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:23:35Z",
           "status": "unreachable",
@@ -14485,13 +14492,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:11:22Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -14505,10 +14505,17 @@
       "proofUrl": "https://www.aftenposten.no/securedrop",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:24:04Z",
+      "checkedAt": "2026-09-12T03:25:22Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:24:04Z",
+      "lastSuccessAt": "2026-09-12T03:25:22Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:22Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:24:04Z",
           "status": "online",
@@ -14599,13 +14606,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:20:47Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -14619,10 +14619,17 @@
       "proofUrl": "https://www.aftonbladet.se/securedrop/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:25:26Z",
+      "checkedAt": "2026-09-12T03:26:26Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:25:26Z",
+      "lastSuccessAt": "2026-09-12T03:26:26Z",
       "history": [
+        {
+          "at": "2026-09-12T03:26:26Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:26Z",
           "status": "online",
@@ -14713,13 +14720,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 2
-        },
-        {
-          "at": "2026-08-28T03:21:24Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -14733,10 +14733,17 @@
       "proofUrl": "https://news.bloomberglaw.com/tips",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:25:27Z",
+      "checkedAt": "2026-09-12T03:26:18Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:25:27Z",
+      "lastSuccessAt": "2026-09-12T03:26:18Z",
       "history": [
+        {
+          "at": "2026-09-12T03:26:18Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:27Z",
           "status": "online",
@@ -14827,13 +14834,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 2
-        },
-        {
-          "at": "2026-08-28T03:22:09Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -14847,10 +14847,17 @@
       "proofUrl": "https://www.bloomberg.com/tips/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:24:50Z",
+      "checkedAt": "2026-09-12T03:25:26Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:24:50Z",
+      "lastSuccessAt": "2026-09-12T03:25:26Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:26Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:24:50Z",
           "status": "online",
@@ -14941,13 +14948,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:20:53Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -14961,10 +14961,17 @@
       "proofUrl": "https://www.cbc.ca/securedrop",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:28:46Z",
+      "checkedAt": "2026-09-12T03:46:13Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:28:46Z",
+      "lastSuccessAt": "2026-09-12T03:46:13Z",
       "history": [
+        {
+          "at": "2026-09-12T03:46:13Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:28:46Z",
           "status": "online",
@@ -15055,13 +15062,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:55Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -15075,10 +15075,17 @@
       "proofUrl": "https://www.dagbladet.no/securedrop/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:25:03Z",
+      "checkedAt": "2026-09-12T03:25:54Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:25:03Z",
+      "lastSuccessAt": "2026-09-12T03:25:54Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:54Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:03Z",
           "status": "online",
@@ -15169,13 +15176,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:59Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -15189,10 +15189,17 @@
       "proofUrl": "https://www.spiegel.de/extra/so-nehmen-informanten-sicheren-kontakt-zum-spiegel-auf-a-1030502.html",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:28:50Z",
+      "checkedAt": "2026-09-12T03:46:16Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:28:50Z",
+      "lastSuccessAt": "2026-09-12T03:46:16Z",
       "history": [
+        {
+          "at": "2026-09-12T03:46:16Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:28:50Z",
           "status": "online",
@@ -15283,13 +15290,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:58Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -15303,10 +15303,17 @@
       "proofUrl": "https://www.ft.com/news-tips/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:25:12Z",
+      "checkedAt": "2026-09-12T03:26:06Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:25:12Z",
+      "lastSuccessAt": "2026-09-12T03:26:06Z",
       "history": [
+        {
+          "at": "2026-09-12T03:26:06Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:12Z",
           "status": "online",
@@ -15397,13 +15404,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:22:06Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -15417,10 +15417,17 @@
       "proofUrl": "https://www.forbes.com/fdc/securedrop.html",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:25:22Z",
+      "checkedAt": "2026-09-12T03:26:13Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:25:22Z",
+      "lastSuccessAt": "2026-09-12T03:26:13Z",
       "history": [
+        {
+          "at": "2026-09-12T03:26:13Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:22Z",
           "status": "online",
@@ -15511,13 +15518,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:22:06Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -15531,10 +15531,17 @@
       "proofUrl": "https://forbiddenstories.org/safebox-network-tutorial/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:24:38Z",
+      "checkedAt": "2026-09-12T03:25:29Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:24:38Z",
+      "lastSuccessAt": "2026-09-12T03:25:29Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:29Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:24:38Z",
           "status": "online",
@@ -15625,13 +15632,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:01Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -15645,10 +15645,17 @@
       "proofUrl": "https://reportersunited.gr/greekleaks/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:28:43Z",
+      "checkedAt": "2026-09-12T03:46:03Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:28:43Z",
+      "lastSuccessAt": "2026-09-12T03:46:03Z",
       "history": [
+        {
+          "at": "2026-09-12T03:46:03Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 2
+        },
         {
           "at": "2026-09-11T03:28:43Z",
           "status": "online",
@@ -15739,13 +15746,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:52Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -15759,10 +15759,17 @@
       "proofUrl": "https://kennethrrosen.com/securedrop/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:27:40Z",
+      "checkedAt": "2026-09-12T03:41:00Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:41:00Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 910,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:27:40Z",
           "status": "unreachable",
@@ -15853,13 +15860,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:20:38Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -15873,10 +15873,17 @@
       "proofUrl": "https://www.nytimes.com/tips",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:25:17Z",
+      "checkedAt": "2026-09-12T03:25:58Z",
       "httpStatus": 302,
-      "lastSuccessAt": "2026-09-11T03:25:17Z",
+      "lastSuccessAt": "2026-09-12T03:25:58Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:58Z",
+          "status": "redirect",
+          "httpStatus": 302,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:17Z",
           "status": "redirect",
@@ -15967,13 +15974,6 @@
           "httpStatus": 302,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:11Z",
-          "status": "redirect",
-          "httpStatus": 302,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -15987,10 +15987,17 @@
       "proofUrl": "https://www.news24.com/tips",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:24:01Z",
+      "checkedAt": "2026-09-12T03:25:18Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:24:01Z",
+      "lastSuccessAt": "2026-09-12T03:25:18Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:18Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:24:01Z",
           "status": "online",
@@ -16081,13 +16088,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:20:42Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -16101,10 +16101,17 @@
       "proofUrl": "https://www.nrk.no/varsle/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:24:53Z",
+      "checkedAt": "2026-09-12T03:25:38Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:24:53Z",
+      "lastSuccessAt": "2026-09-12T03:25:38Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:38Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:24:53Z",
           "status": "online",
@@ -16195,13 +16202,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:44Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -16215,10 +16215,17 @@
       "proofUrl": "https://propublica.org/tips",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:24:56Z",
+      "checkedAt": "2026-09-12T03:25:44Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:24:56Z",
+      "lastSuccessAt": "2026-09-12T03:25:44Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:44Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:24:56Z",
           "status": "online",
@@ -16309,13 +16316,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:52Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -16329,10 +16329,17 @@
       "proofUrl": "https://stefaniamaurizi.it/en-contactme.html",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:25:16Z",
+      "checkedAt": "2026-09-12T03:26:09Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:25:16Z",
+      "lastSuccessAt": "2026-09-12T03:26:09Z",
       "history": [
+        {
+          "at": "2026-09-12T03:26:09Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:16Z",
           "status": "online",
@@ -16423,13 +16430,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:22:01Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -16443,10 +16443,17 @@
       "proofUrl": "https://www.sueddeutsche.de/projekte/kontakt/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:25:07Z",
+      "checkedAt": "2026-09-12T03:26:01Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:25:07Z",
+      "lastSuccessAt": "2026-09-12T03:26:01Z",
       "history": [
+        {
+          "at": "2026-09-12T03:26:01Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:07Z",
           "status": "online",
@@ -16537,13 +16544,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:22:02Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -16557,10 +16557,17 @@
       "proofUrl": "https://www.economist.com/securedrop/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:23:50Z",
+      "checkedAt": "2026-09-12T03:25:10Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:23:50Z",
+      "lastSuccessAt": "2026-09-12T03:25:10Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:10Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:23:50Z",
           "status": "online",
@@ -16651,13 +16658,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:20:38Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -16671,10 +16671,17 @@
       "proofUrl": "https://sec.theglobeandmail.com/securedrop/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:22:06Z",
+      "checkedAt": "2026-09-12T03:23:54Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:22:06Z",
+      "lastSuccessAt": "2026-09-12T03:23:54Z",
       "history": [
+        {
+          "at": "2026-09-12T03:23:54Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:22:06Z",
           "status": "online",
@@ -16765,13 +16772,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:52Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -16785,10 +16785,17 @@
       "proofUrl": "https://www.theguardian.com/securedrop",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:25:22Z",
+      "checkedAt": "2026-09-12T03:26:03Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:25:22Z",
+      "lastSuccessAt": "2026-09-12T03:26:03Z",
       "history": [
+        {
+          "at": "2026-09-12T03:26:03Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:22Z",
           "status": "online",
@@ -16879,13 +16886,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:15Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -16899,10 +16899,17 @@
       "proofUrl": "https://www.washingtonpost.com/securedrop",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:25:00Z",
+      "checkedAt": "2026-09-12T03:25:47Z",
       "httpStatus": 302,
-      "lastSuccessAt": "2026-09-11T03:25:00Z",
+      "lastSuccessAt": "2026-09-12T03:25:47Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:47Z",
+          "status": "redirect",
+          "httpStatus": 302,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:00Z",
           "status": "redirect",
@@ -16993,13 +17000,6 @@
           "httpStatus": 302,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:55Z",
-          "status": "redirect",
-          "httpStatus": 302,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -17013,10 +17013,17 @@
       "proofUrl": "https://www.whistleblow.co/whistleblowco-securedrop/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:23:57Z",
+      "checkedAt": "2026-09-12T03:25:14Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:23:57Z",
+      "lastSuccessAt": "2026-09-12T03:25:14Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:14Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:23:57Z",
           "status": "online",
@@ -17043,10 +17050,17 @@
       "proofUrl": "https://whistlebloweraid.org/become-a-whistleblower/securedrop/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:25:11Z",
+      "checkedAt": "2026-09-12T03:25:36Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:25:11Z",
+      "lastSuccessAt": "2026-09-12T03:25:36Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:36Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:11Z",
           "status": "online",
@@ -17137,13 +17151,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:21:05Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -17157,10 +17164,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:19:59Z",
+      "checkedAt": "2026-09-12T03:24:56Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:19:59Z",
+      "lastSuccessAt": "2026-09-12T03:24:56Z",
       "history": [
+        {
+          "at": "2026-09-12T03:24:56Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 2
+        },
         {
           "at": "2026-09-11T03:19:59Z",
           "status": "online",
@@ -17251,13 +17265,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:19:46Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -17271,10 +17278,17 @@
       "proofUrl": "https://onion.debian.org/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:20:13Z",
+      "checkedAt": "2026-09-12T03:25:03Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:20:13Z",
+      "lastSuccessAt": "2026-09-12T03:25:03Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:03Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:20:13Z",
           "status": "online",
@@ -17365,13 +17379,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:26:09Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -17385,10 +17392,17 @@
       "proofUrl": "https://www.facebook.com/defcon/posts/i-am-proud-to-announce-the-v3-onion-address-for-def-condefconorg-main-web-siteht/10155438526096656/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:20:17Z",
+      "checkedAt": "2026-09-12T03:25:07Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:20:17Z",
+      "lastSuccessAt": "2026-09-12T03:25:07Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:07Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:20:17Z",
           "status": "redirect",
@@ -17479,13 +17493,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:27:17Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -17499,10 +17506,17 @@
       "proofUrl": "https://www.facebook.com/defcon/posts/i-am-proud-to-announce-the-v3-onion-address-for-def-condefconorg-main-web-siteht/10155438526096656/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:14:55Z",
+      "checkedAt": "2026-09-12T03:19:17Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:14:55Z",
+      "lastSuccessAt": "2026-09-12T03:19:17Z",
       "history": [
+        {
+          "at": "2026-09-12T03:19:17Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:14:55Z",
           "status": "online",
@@ -17593,13 +17607,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:23Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -17613,10 +17620,17 @@
       "proofUrl": "https://www.facebook.com/defcon/posts/i-am-proud-to-announce-the-v3-onion-address-for-def-condefconorg-main-web-siteht/10155438526096656/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:15:01Z",
+      "checkedAt": "2026-09-12T03:19:21Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:15:01Z",
+      "lastSuccessAt": "2026-09-12T03:19:21Z",
       "history": [
+        {
+          "at": "2026-09-12T03:19:21Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:15:01Z",
           "status": "online",
@@ -17707,13 +17721,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:29Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -17727,10 +17734,17 @@
       "proofUrl": "https://hardenedbsd.org/article/shawn-webb/2020-01-30/hardenedbsd-tor-onion-service-v3-nodes",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "error",
-      "checkedAt": "2026-09-11T03:15:47Z",
+      "checkedAt": "2026-09-12T03:19:24Z",
       "httpStatus": 502,
       "lastSuccessAt": "2026-09-05T03:14:03Z",
       "history": [
+        {
+          "at": "2026-09-12T03:19:24Z",
+          "status": "error",
+          "httpStatus": 502,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:15:47Z",
           "status": "error",
@@ -17821,13 +17835,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:40Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -17841,10 +17848,17 @@
       "proofUrl": "https://impreza.host/ordering-a-onion-certificate-from-impreza-host/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:15:51Z",
+      "checkedAt": "2026-09-12T03:19:29Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:15:51Z",
+      "lastSuccessAt": "2026-09-12T03:19:29Z",
       "history": [
+        {
+          "at": "2026-09-12T03:19:29Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:15:51Z",
           "status": "redirect",
@@ -17935,13 +17949,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:43Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -17955,10 +17962,17 @@
       "proofUrl": "https://keybase.io/docs/command_line/tor",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "unreachable",
-      "checkedAt": "2026-09-11T03:22:46Z",
+      "checkedAt": "2026-09-12T03:33:29Z",
       "httpStatus": null,
       "lastSuccessAt": null,
       "history": [
+        {
+          "at": "2026-09-12T03:33:29Z",
+          "status": "unreachable",
+          "httpStatus": null,
+          "exitCode": 97,
+          "attempts": 6
+        },
         {
           "at": "2026-09-11T03:22:46Z",
           "status": "unreachable",
@@ -18049,13 +18063,6 @@
           "httpStatus": null,
           "exitCode": 97,
           "attempts": 6
-        },
-        {
-          "at": "2026-08-28T03:21:40Z",
-          "status": "unreachable",
-          "httpStatus": null,
-          "exitCode": 97,
-          "attempts": 6
         }
       ]
     },
@@ -18069,10 +18076,17 @@
       "proofUrl": "https://onionshare.org/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:20:21Z",
+      "checkedAt": "2026-09-12T03:22:19Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:20:21Z",
+      "lastSuccessAt": "2026-09-12T03:22:19Z",
       "history": [
+        {
+          "at": "2026-09-12T03:22:19Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:20:21Z",
           "status": "online",
@@ -18163,13 +18177,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:13:02Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -18182,11 +18189,18 @@
       "host": "www.qubesosfasa4zl44o4tws22di6kepyzfeqv3tg4e3ztknltfxqrymdad.onion",
       "proofUrl": "https://www.qubes-os.org/news/2019/04/17/tor-onion-services-available-again/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
-      "status": "unreachable",
-      "checkedAt": "2026-09-11T03:25:54Z",
-      "httpStatus": null,
-      "lastSuccessAt": "2026-09-10T03:23:04Z",
+      "status": "online",
+      "checkedAt": "2026-09-12T03:22:23Z",
+      "httpStatus": 200,
+      "lastSuccessAt": "2026-09-12T03:22:23Z",
       "history": [
+        {
+          "at": "2026-09-12T03:22:23Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:25:54Z",
           "status": "unreachable",
@@ -18277,13 +18291,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:13:23Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -18297,10 +18304,17 @@
       "proofUrl": "https://onion.torproject.org",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:26:58Z",
+      "checkedAt": "2026-09-12T03:22:27Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:26:58Z",
+      "lastSuccessAt": "2026-09-12T03:22:27Z",
       "history": [
+        {
+          "at": "2026-09-12T03:22:27Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:26:58Z",
           "status": "online",
@@ -18391,13 +18405,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:13:41Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -18411,10 +18418,17 @@
       "proofUrl": "https://onion.torproject.org/",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:27:01Z",
+      "checkedAt": "2026-09-12T03:25:32Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:27:01Z",
+      "lastSuccessAt": "2026-09-12T03:25:32Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:32Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 2
+        },
         {
           "at": "2026-09-11T03:27:01Z",
           "status": "online",
@@ -18505,13 +18519,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:13:49Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -18525,10 +18532,17 @@
       "proofUrl": "https://www.whonix.org/wiki/Forcing_.onion_on_Project",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:27:03Z",
+      "checkedAt": "2026-09-12T03:25:34Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:27:03Z",
+      "lastSuccessAt": "2026-09-12T03:25:34Z",
       "history": [
+        {
+          "at": "2026-09-12T03:25:34Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:27:03Z",
           "status": "online",
@@ -18619,13 +18633,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:22Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -18639,10 +18646,17 @@
       "proofUrl": "https://www.whonix.org/wiki/Forcing_.onion_on_Project",
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "redirect",
-      "checkedAt": "2026-09-11T03:21:46Z",
+      "checkedAt": "2026-09-12T03:23:18Z",
       "httpStatus": 301,
-      "lastSuccessAt": "2026-09-11T03:21:46Z",
+      "lastSuccessAt": "2026-09-12T03:23:18Z",
       "history": [
+        {
+          "at": "2026-09-12T03:23:18Z",
+          "status": "redirect",
+          "httpStatus": 301,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:21:46Z",
           "status": "redirect",
@@ -18733,13 +18747,6 @@
           "httpStatus": 301,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:14:24Z",
-          "status": "redirect",
-          "httpStatus": 301,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -18753,10 +18760,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:18Z",
+      "checkedAt": "2026-09-12T03:05:20Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:18Z",
+      "lastSuccessAt": "2026-09-12T03:05:20Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:20Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:18Z",
           "status": "online",
@@ -18847,13 +18861,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:32Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -18867,10 +18874,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:05:21Z",
+      "checkedAt": "2026-09-12T03:05:22Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:05:21Z",
+      "lastSuccessAt": "2026-09-12T03:05:22Z",
       "history": [
+        {
+          "at": "2026-09-12T03:05:22Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:05:21Z",
           "status": "online",
@@ -18961,13 +18975,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:05:35Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -18981,10 +18988,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:21:25Z",
+      "checkedAt": "2026-09-12T03:19:04Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:21:25Z",
+      "lastSuccessAt": "2026-09-12T03:19:04Z",
       "history": [
+        {
+          "at": "2026-09-12T03:19:04Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:21:25Z",
           "status": "online",
@@ -19075,13 +19089,6 @@
           "httpStatus": 200,
           "exitCode": 0,
           "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:19:25Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
         }
       ]
     },
@@ -19095,10 +19102,17 @@
       "proofUrl": null,
       "sourceUrl": "https://github.com/alecmuffett/real-world-onion-sites",
       "status": "online",
-      "checkedAt": "2026-09-11T03:21:30Z",
+      "checkedAt": "2026-09-12T03:19:08Z",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-09-11T03:21:30Z",
+      "lastSuccessAt": "2026-09-12T03:19:08Z",
       "history": [
+        {
+          "at": "2026-09-12T03:19:08Z",
+          "status": "online",
+          "httpStatus": 200,
+          "exitCode": 0,
+          "attempts": 1
+        },
         {
           "at": "2026-09-11T03:21:30Z",
           "status": "online",
@@ -19185,13 +19199,6 @@
         },
         {
           "at": "2026-08-29T03:18:28Z",
-          "status": "online",
-          "httpStatus": 200,
-          "exitCode": 0,
-          "attempts": 1
-        },
-        {
-          "at": "2026-08-28T03:19:28Z",
           "status": "online",
           "httpStatus": 200,
           "exitCode": 0,
