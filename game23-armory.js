@@ -2,6 +2,11 @@
    and one cached template per loadout keep the additional GPU work bounded. */
 let cineGun=null,cineMuzzle=null,cineKick=0,cineLastShot=0;
 const armoryTemplates=new Map();
+// A separate viewmodel scene gives the held weapon natural, stable lighting.
+// The world flashlight starts behind it and must not bleach its nearby surfaces.
+const armoryScene=new THREE.Scene(),armoryCamera=new THREE.PerspectiveCamera();
+armoryScene.add(new THREE.HemisphereLight(0xbdcbd6,0x25231e,1.15));
+const armoryKey=new THREE.DirectionalLight(0xd3deea,2.1);armoryKey.position.set(-2,4,2);armoryScene.add(armoryKey);
 const armoryWidePose={x:.245,y:-.25,z:-.43},armoryPortraitPose={x:.02,y:-.24,z:-.57};
 function armoryPlacement(){return camera.aspect<1.1?armoryPortraitPose:armoryWidePose;}
 function armoryTexture(kind){
@@ -15,14 +20,14 @@ function armoryTexture(kind){
   const t=cineKeep(new THREE.CanvasTexture(c));t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());t.colorSpace=THREE.SRGBColorSpace;return t;
 }
 const armorySteelMap=armoryTexture('metal'),armoryGripMap=armoryTexture('polymer');
-function armorySurface(color,roughness,metalness,map){return cineKeep(new THREE.MeshStandardMaterial({color,roughness,metalness,map,bumpMap:map,bumpScale:map===armorySteelMap?.00055:.0012,envMapIntensity:1.35}));}
+function armorySurface(color,roughness,metalness,map){return cineKeep(new THREE.MeshStandardMaterial({color,roughness,metalness,map,bumpMap:map,bumpScale:map===armorySteelMap?.00055:.0012,envMapIntensity:.65}));}
 const ARM={
-  receiver:armorySurface(0x48525b,.35,.85,armorySteelMap),steel:armorySurface(0x88949a,.27,.94,armorySteelMap),
+  receiver:armorySurface(0x48525b,.44,.72,armorySteelMap),steel:armorySurface(0x88949a,.36,.86,armorySteelMap),
   barrel:armorySurface(0x2d343a,.32,.86,armorySteelMap),polymer:armorySurface(0x292d2b,.78,.02,armoryGripMap),
   tan:armorySurface(0x777360,.76,.01,armoryGripMap),rubber:armorySurface(0x171c1b,.91,0,armoryGripMap),
   glove:armorySurface(0x44483e,.94,0,armoryGripMap),brass:armorySurface(0xb49b58,.34,.78,armorySteelMap),
   cavity:cineKeep(new THREE.MeshBasicMaterial({color:0x080b0c})),
-  glass:cineKeep(new THREE.MeshPhysicalMaterial({color:0x538b95,roughness:.08,metalness:.45,clearcoat:1,clearcoatRoughness:.08,envMapIntensity:1.8})),
+  glass:cineKeep(new THREE.MeshPhysicalMaterial({color:0x12343c,roughness:.22,metalness:.06,clearcoat:.6,clearcoatRoughness:.18,envMapIntensity:.35})),
   dot:cineKeep(new THREE.MeshBasicMaterial({color:0xff7453,toneMapped:false})),
   flash:cineKeep(new THREE.MeshBasicMaterial({color:0xffdd9d,transparent:true,opacity:.85,depthWrite:false,toneMapped:false}))
 };
@@ -155,15 +160,13 @@ function armoryTemplate(id){
   const p=ARMORY[id],g=id==='revolver'?armoryRevolver(p):armoryLongGun(id,p);g.name=`weapon-${id}`;g.userData.weaponId=id;g.userData.profile=p;
   const flash=new THREE.Group();flash.name='muzzle-flash';flash.position.set(0,.026,id==='revolver'?-.48:-p.length-.034);
   for(let i=0;i<3;i++){const f=new THREE.Mesh(cineKeep(new THREE.ConeGeometry(.028,.13,5)),ARM.flash);f.rotation.x=-Math.PI/2;f.rotation.z=i*2.1;f.position.z=-.04;flash.add(f);}flash.visible=false;g.add(flash);
-  // A small weapon-only fill preserves the blued steel highlights in moonlit areas.
-  const fill=new THREE.PointLight(0xc5d2df,.045,1.4,2);fill.position.set(-.18,.40,.08);g.add(fill);
   armoryTemplates.set(id,g);return g;
 }
 function cineMakeWeapon(){
   const selected=document.querySelector('#ops-weapon')?.value||'rifle',id=Object.hasOwn(ARMORY,selected)?selected:'rifle';
   if(cineGun?.parent)cineGun.removeFromParent();
   const pose=armoryPlacement();
-  cineGun=armoryTemplate(id).clone(true);cineGun.scale.set(.78,.92,1);cineGun.position.set(pose.x,pose.y,pose.z);cineGun.rotation.y=-.045;camera.add(cineGun);
+  cineGun=armoryTemplate(id).clone(true);cineGun.scale.set(.78,.92,1);cineGun.position.set(pose.x,pose.y,pose.z);cineGun.rotation.y=.12;armoryScene.add(cineGun);
   cineMuzzle=cineGun.getObjectByName('muzzle-flash');cineGun.userData.parts={magazine:cineGun.getObjectByName('magazine'),cylinder:cineGun.getObjectByName('cylinder'),bolt:cineGun.getObjectByName('bolt'),support:cineGun.getObjectByName('support-hand')};
   cineGun.userData.seenShot=0;cineGun.userData.cylinderTurn=0;
   if(muzzleLight)muzzleLight.position.set(pose.x,pose.y+.026,pose.z-ARMORY[id].length);
@@ -177,11 +180,19 @@ function cineAnimateWeapon(now,dt,t,reloadStart){
   const lower=uxReloading?Math.sin(Math.PI*phase):0,recoil=cineKick*p.kick;
   const pose=armoryPlacement();
   cineGun.position.set(pose.x+Math.sin(t*6)*.006*walk,pose.y+Math.cos(t*12)*.005*walk-lower*.10,pose.z+recoil);
-  cineGun.rotation.set(recoil*.72+lower*.35,-.045-lower*.13,Math.sin(t*6)*.004*walk+lower*(id==='revolver'?-.40:.36));cineGun.visible=state.localLives>0;
+  cineGun.rotation.set(recoil*.72+lower*.35,.12-lower*.13,Math.sin(t*6)*.004*walk+lower*(id==='revolver'?-.40:.36));cineGun.visible=state.localLives>0;
   const elapsed=now-cineLastShot,cycling=state.running&&elapsed>=0&&elapsed<100;
   if(parts.bolt)parts.bolt.position.z=cycling?Math.sin(elapsed/100*Math.PI)*.043:0;
   if(parts.magazine){const out=uxReloading?Math.sin(clamp((phase-.12)/.70,0,1)*Math.PI):0;parts.magazine.position.set(-.025*out,-.26*out,.07*out);parts.magazine.rotation.x=out*.20;}
   if(parts.support){const reach=uxReloading?Math.sin(clamp((phase-.06)/.88,0,1)*Math.PI):0;parts.support.position.set(-.025*reach,-.11*reach,.18*reach);}
   if(parts.cylinder){if(cineLastShot!==cineGun.userData.seenShot&&state.running){cineGun.userData.seenShot=cineLastShot;cineGun.userData.cylinderTurn-=Math.PI/3;}parts.cylinder.rotation.z=cineGun.userData.cylinderTurn;parts.cylinder.position.x=-.105*lower;}
   if(cineMuzzle){cineMuzzle.visible=elapsed>=0&&elapsed<38&&state.running;cineMuzzle.rotation.z=t*47;cineMuzzle.scale.setScalar(.8+p.kick*.18);}
+}
+function cineRenderWeapon(){
+  if(!cineGun?.visible)return 0;
+  armoryCamera.projectionMatrix.copy(camera.projectionMatrix);
+  armoryCamera.projectionMatrixInverse.copy(camera.projectionMatrixInverse);
+  armoryScene.environment=scene.environment;armoryScene.environmentIntensity=.55;
+  const autoClear=renderer.autoClear;renderer.autoClear=false;renderer.clearDepth();
+  try{cineRender(armoryScene,armoryCamera);return renderer.info.render.calls;}finally{renderer.autoClear=autoClear;}
 }

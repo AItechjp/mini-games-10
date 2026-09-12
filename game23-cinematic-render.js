@@ -73,7 +73,7 @@ renderer.render=function(s,c){
   cineAnimateWeapon(now,dt,t,cineReloadAt);
   for(const [id,g] of remoteMeshes){const p=state.players.get(id);if(!p)continue;const old=g.userData.cineLastPosition;const moving=old&&Math.hypot(p.x-old.x,p.z-old.z)>.008;g.userData.cineLastPosition={x:p.x,z:p.z};for(const o of g.children){if(o.name==='lLeg')o.rotation.x=moving?Math.sin(t*7)*.3:0;if(o.name==='rLeg')o.rotation.x=moving?-Math.sin(t*7)*.3:0;}}
   cineGpu.begin();
-  if(cineQuality==='low'){renderer.setRenderTarget(null);cineRender(scene,camera);cineDrawCalls=renderer.info.render.calls;cineGpu.end();cineCpuMs=performance.now()-now;return;}
+  if(cineQuality==='low'){renderer.setRenderTarget(null);cineRender(scene,camera);cineDrawCalls=renderer.info.render.calls;cineDrawCalls+=cineRenderWeapon();cineGpu.end();cineCpuMs=performance.now()-now;return;}
   cinePostMat.uniforms.uDetail.value=cineQuality==='high'?.18:cineBudget.effects<2?.08:.12;cinePostMat.uniforms.uTime.value=t;cinePostMat.uniforms.uContact.value=cineBudget.effects<2?.6:1;
   cinePostMat.uniforms.uQuality.value=cineBudget.effects;
   renderer.setRenderTarget(cineTarget);cineRender(scene,camera);cineDrawCalls=renderer.info.render.calls;
@@ -85,7 +85,7 @@ renderer.render=function(s,c){
     cineBloomMat.uniforms.tSource.value=cineBloomA.texture;cineBloomMat.uniforms.uExtract.value=0;cineBloomMat.uniforms.uStep.value.set(0,1/cineBloomA.height);
     renderer.setRenderTarget(cineBloomB);cineRender(cineBloomScene,cinePostCamera);cineDrawCalls+=renderer.info.render.calls;
   }
-  renderer.setRenderTarget(null);cineRender(cinePostScene,cinePostCamera);cineDrawCalls+=renderer.info.render.calls;cineGpu.end();cineCpuMs=performance.now()-now;
+  renderer.setRenderTarget(null);cineRender(cinePostScene,cinePostCamera);cineDrawCalls+=renderer.info.render.calls;cineDrawCalls+=cineRenderWeapon();cineGpu.end();cineCpuMs=performance.now()-now;
 };
 
 /* Warm the actual playable scene before enabling the illustrated start menu. */
