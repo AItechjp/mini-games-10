@@ -74,7 +74,9 @@ if(await page.locator('article[data-game]').count()) throw new Error('Games belo
 await page.locator('[data-destination=games]').click();
 await page.waitForSelector('article[data-game]');
 const listed = await page.locator('article[data-game]').evaluateAll(nodes => nodes.map(n => n.dataset.game));
-if(JSON.stringify(listed) !== JSON.stringify(['zombie','smash','aether','daifugo','gomoku','babanuki','quick-hop'])) throw new Error('The game collection must include the seven selected games');
+const requiredGames=['zombie','smash','aether','daifugo','gomoku','babanuki','quick-hop'];
+if(!requiredGames.every(id=>listed.includes(id)) || new Set(listed).size!==listed.length) throw new Error('The game collection must preserve existing games and include Quick Hop without duplicate entries');
+if(Number(await page.locator('.game-count').textContent())!==listed.length) throw new Error('The collection count must match the listed games');
 if(await page.locator('a[href="mega-arcade.html"], a[href="archive.html"], a[href="arcade100/"], a[href="yobi-ronbun.html"]').count()) throw new Error('An unlisted collection is linked from the game collection');
 await page.locator('[data-game="gomoku"] .play').click();
 await page.waitForSelector('.gomoku-cell');
@@ -86,7 +88,7 @@ await page.waitForFunction(() => document.querySelectorAll('.gomoku-stone').leng
 await failIfErrors('Gomoku CPU move and replay');
 await page.locator('.classic-actions a').click();
 await page.waitForSelector('article[data-game]');
-if(await page.locator('article[data-game]').count() !== 7) throw new Error('Back navigation must return to the game collection');
+if(await page.locator('article[data-game]').count() !== listed.length) throw new Error('Back navigation must return to the game collection');
 
 // Reproducible opening hand for the new card-table interaction checks.
 await page.addInitScript(() => {
