@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#172a2c">
+<meta name="description" content="STARTRAIL：5つの景色を旅する、制限時間5分の横スクロールアクション。コインを集め、敵を踏み、星明かりの門へ。PC・スマホで無料プレイ。">
+<link rel="canonical" href="https://aitechd.com/startrail/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23172a2c'/%3E%3Cpath d='m32 8 6 17 18 7-18 6-6 18-7-18-17-6 17-7Z' fill='%239be6c1'/%3E%3C/svg%3E">
+<title>STARTRAIL — 5分間の小さな冒険 | AITECH GAMES</title>
+<link rel="stylesheet" href="styles.css?v=1">
+<script type="module" src="game.mjs?v=1"></script>
+</head>
+<body>
+<a class="skip" href="#playfield">ゲームへ移動</a>
+<header class="page-header"><a class="back" href="../games.html">← ゲーム集</a><a class="brand" href="../">AITECH <span>GAMES</span></a><span class="edition">BROWSER EDITION</span></header>
+<main>
+<div class="heading"><div><p class="eyebrow">A LITTLE LIGHT. A LONG WAY HOME.</p><h1>STARTRAIL<span>スター・トレイル</span></h1></div><p class="summary">5つの景色を越えて、<br>星明かりの門へ。</p></div>
+<section class="game-shell" aria-label="STARTRAIL 横スクロールゲーム">
+  <div class="hud"><div class="health" id="health" aria-label="体力3">♥ ♥ ♥</div><span class="stat">COINS <b id="score">000</b></span><span class="stat clock" aria-label="残り時間"><b id="timer">05:00</b></span><span id="zone" class="zone">01 / ミントの草原</span><div class="tools"><button id="sound" type="button" aria-pressed="false" aria-label="音をミュート">音 ON</button><button id="pause" type="button" disabled>一時停止</button></div></div>
+  <div id="progress" class="progress" role="progressbar" aria-label="ゴールまでの進み具合" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div></div></div>
+  <div class="playfield" id="playfield" tabindex="0" aria-label="ゲーム画面。左右キーで移動、Spaceでジャンプ、Shiftでダッシュ。">
+    <canvas id="game" width="1280" height="640" aria-label="キャラクター、コイン、足場と敵が表示されるゲーム画面">Canvas対応ブラウザが必要です。</canvas>
+    <p class="banner" id="banner" role="status"></p>
+    <section class="overlay" id="overlay" aria-labelledby="overlay-title">
+      <p class="eyebrow" id="overlay-label">5分間の、小さな冒険。</p>
+      <h2 id="overlay-title">STARTRAIL</h2>
+      <p id="overlay-copy">コインを集め、穴を跳び越え、敵を上から踏もう。<br>小さな光を、5つの景色の向こうへ。</p>
+      <p class="result" id="result" hidden></p>
+      <button class="primary" id="start" type="button" disabled>素材を準備しています…</button>
+      <p class="start-hint" id="start-hint">登録・インストール不要 ／ 1人プレイ</p>
+    </section>
+  </div>
+  <div class="touch-controls" aria-label="タッチ操作"><div class="direction"><button data-action="left" type="button" aria-label="左に移動">←</button><button data-action="right" type="button" aria-label="右に移動">→</button></div><button id="auto-run" class="run" type="button" aria-pressed="true">ダッシュ ON</button><button data-action="jump" class="jump" type="button" aria-label="ジャンプ。長押しで高くジャンプ">ジャンプ <span>↑</span></button></div>
+  <div class="keyboard-hints"><span><kbd>A</kbd><kbd>D</kbd> / <kbd>←</kbd><kbd>→</kbd> 移動</span><span><kbd>Space</kbd> ジャンプ</span><span><kbd>Shift</kbd> ダッシュ</span><span><kbd>P</kbd> 一時停止</span><button id="restart" type="button" disabled>最初から</button></div>
+</section>
+<div class="below"><p>短く押すと小さく、長く押すと高くジャンプ。新しい区間に着くと体力が回復します。</p><p class="mobile-tip">スマホは横向きでも遊べます。</p><details><summary>遊び方・このゲームについて</summary><p>右端にある星明かりの門へ向かう横スクロールアクションです。敵は上から踏むと倒せます。トゲと穴を避け、コインを集めましょう。コインを全部集めなくてもクリアできます。</p><p>落下すると中間地点へ戻ります。体力がなくなると残り時間を10秒失って復帰します。制限時間は5分。慣れるとダッシュで約2分、探索しながら約3〜5分の長さです。タブを離れると自動で一時停止します。</p><p>Paper2Dで制作したSTARTRAILの素材とゲームルールを、ブラウザ向けに移植した版です。ブラウザ版ではUnreal Engineのインストールは不要です。記録はこの端末のブラウザ内に保存されます。</p></details></div>
+<noscript><p>このゲームを遊ぶにはJavaScriptを有効にしてください。</p></noscript>
+</main>
+<footer><span>© 2026 AITECH GAMES</span><a href="../legal.html#privacy">プライバシー</a><a href="../games.html">ほかのゲームで遊ぶ ↗</a></footer>
+</body>
+</html>
