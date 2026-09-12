@@ -1,4 +1,4 @@
-import {apiFetch} from '@/aitech/auth';
+import {apiFetch} from '@/aitech/api';
 'use client';
 import {useEffect,useRef,useState,type CSSProperties} from 'react';
 import {ArrowLeft,ArrowUpRight,CloudSun,CloudMoon,Cloud,CloudFog,CloudDrizzle,CloudRain,CloudSnow,CloudLightning,Sun,Moon,MapPin,RefreshCw,Droplets,Wind,Thermometer,Sunrise,Sunset,CalendarDays,Clock3,CloudOff} from 'lucide-react';

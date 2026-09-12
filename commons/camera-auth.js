@@ -1,1 +1,0 @@
-import{n as e,s as t,t as n}from"./assets/auth-gate-otvJ5Q8e.js";var r=t(),i=e(),a=document.getElementById(`camera-site`);(0,r.createRoot)(document.getElementById(`camera-auth`)).render((0,i.jsx)(n,{onReady:()=>{a.hidden=!1,document.getElementById(`camera-auth`).classList.add(`camera-auth-ready`)}}));

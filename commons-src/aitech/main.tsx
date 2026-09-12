@@ -1,6 +1,5 @@
 import {createRoot} from 'react-dom/client';
 import {lazy,Suspense} from 'react';
-import AuthGate from './auth-gate';
 import Hub from '@/app/ui/hub';
 import Start from '@/app/ui/start';
 import Study from '@/app/study/page';
@@ -31,6 +30,6 @@ function Router(){
  if(path==='sauna')return <Sauna/>;
  if(/^local\/(supermarkets|saunas|sento|fishmongers)$/.test(path))return <LocalDirectory kind={path.split('/')[1] as import('@/lib/local-hours').LocalKind}/>;
  if(path==='openings/restaurants'||path==='openings/ramen'||path==='openings/sauna')return <Openings kind={path.endsWith('sauna')?'sauna':'ramen'} initial={{records:openingSeeds,sources:[],updatedAt:null}} serverNow={new Date().toISOString()}/>;
- return <main className="auth-page"><a href="/commons/" className="auth-back">コモンズに戻る</a><h1>ページが見つかりません</h1></main>;
+ return <main className="commons-loading"><h1>ページが見つかりません</h1><a href="/commons/">コモンズに戻る</a></main>;
 }
-createRoot(document.getElementById('root')!).render(<AuthGate><Suspense fallback={<main className="auth-loading">ページを開いています…</main>}><Router/></Suspense></AuthGate>);
+createRoot(document.getElementById('root')!).render(<Suspense fallback={<main className="commons-loading" role="status">ページを開いています…</main>}><Router/></Suspense>);

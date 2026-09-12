@@ -13,7 +13,6 @@ Hotel and rental pages live in `../commons/hotels`, `../commons/rentals`, and
 Run `npm run build:aitech` here after frontend changes, then run
 `node tests/commons-domain.mjs` from the repository root and commit the generated
 `commons/` files together with the source. API-only changes require the existing
-backend release process as well. Keep authentication and saved room data intact.
+backend release process as well. Keep saved room data intact. Every tool is public and works without login; anonymous browser keys retain per-guest posts and recent rooms.
 
-The former Sites project is retained only for authenticated account handover and
-old-link redirects. Its default build must remain the migration Worker.
+The former Sites project is retained only for public old-link redirects. Its default build must remain the migration Worker.

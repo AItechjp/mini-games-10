@@ -3,7 +3,7 @@ import {findTool} from './catalog';
 import {canvasTextLayout} from './canvas-geometry';
 export class ApiError extends Error{constructor(public status:number,message:string){super(message)}}
 export const clean=(v:unknown,max=10000)=>typeof v==='string'?v.trim().slice(0,max):'';
-export async function session(request:Request){const actor=request.headers.get('X-Commons-Verified-Actor');if(!actor||!/^[a-f0-9]{64}$/.test(actor))throw new ApiError(401,'サインインしてください。');return {actor,cookie:''}}
+export async function session(request:Request){const actor=request.headers.get('X-Commons-Verified-Actor');if(!actor||!/^[a-f0-9]{64}$/.test(actor))throw new ApiError(400,'ブラウザの参加情報を確認できませんでした。ページを再読み込みしてください。');return {actor,cookie:''}}
 export function reply(data:unknown,status=200,cookie=''){const headers:Record<string,string>={'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...(status===429?{'Retry-After':'60'}:{})};if(cookie)headers['Set-Cookie']=cookie;return Response.json(data,{status,headers});}
 export function failure(e:unknown){if(e instanceof ApiError)return reply({error:e.message},e.status);console.error('COMMONS API',e);return reply({error:'接続できませんでした。入力を残したまま、少し待って再試行してください。'},503);}
 export async function body(request:Request){

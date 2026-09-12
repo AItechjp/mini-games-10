@@ -1,4 +1,4 @@
-import {apiFetch} from '@/aitech/auth';
+import {apiFetch} from '@/aitech/api';
 'use client';
 
 import {useEffect,useRef,useState} from 'react';

@@ -18,6 +18,13 @@ for(const path of ['index.html','games.html','yobi-quiz.html','yobi-ronbun.html'
 const assets=await readdir('commons/assets');
 assert(assets.some(p=>p.startsWith('room-')&&p.endsWith('.js')));
 assert(assets.some(p=>p.startsWith('sauna-')&&p.endsWith('.js')));
+assert(!assets.some(p=>p.startsWith('auth-gate-')),'The public bundle must not contain the account gate');
+for(const asset of assets.filter(p=>p.endsWith('.js'))){
+  const code=await readFile('commons/assets/'+asset,'utf8');
+  assert.doesNotMatch(code,/コモンズにサインイン|signin-with-chatgpt|\/auth\/v1\//,'A Commons page must not start a sign-in flow');
+}
+const camera=await readFile('commons/camera/index.html','utf8');
+assert.doesNotMatch(camera,/camera-auth|id="camera-site" hidden|type="password"/,'Camera must open without an account gate');
 const staticBuilder=await readFile('scripts/build-static.mjs','utf8');
 assert.match(staticBuilder,/'commons-src'/);
 // Catalog entries and room history must point to real pages on the new host.

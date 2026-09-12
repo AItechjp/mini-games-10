@@ -10,7 +10,7 @@ export async function GET(request:Request){
     if(tool&&!findTool(tool))throw new ApiError(400,'ツールを確認してください。');
     const selected=tool?[tool]:params.get('listed')==='1'?[...listedToolIds]:[];
     const filter=selected.length?' AND r.tool IN ('+selected.map(()=>'?').join(',')+')':'';
-    const result=await database().prepare('SELECT DISTINCT r.id, r.tool, r.title, r.updated FROM rooms r JOIN members m ON m.room = r.id WHERE (m.actor = ? OR m.actor IN (SELECT actor FROM account_actors WHERE user_id = ?::uuid))'+filter+' ORDER BY r.updated DESC LIMIT 30').bind(s.actor,request.headers.get('X-Commons-Verified-Account'),...selected).all();
+    const result=await database().prepare('SELECT DISTINCT r.id, r.tool, r.title, r.updated FROM rooms r JOIN members m ON m.room = r.id WHERE m.actor = ?'+filter+' ORDER BY r.updated DESC LIMIT 30').bind(s.actor,...selected).all();
     return reply({rooms:result.results},200,s.cookie);
   }catch(e){return failure(e)}
 }

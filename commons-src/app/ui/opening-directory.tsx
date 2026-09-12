@@ -1,4 +1,4 @@
-import {apiFetch} from '@/aitech/auth';
+import {apiFetch} from '@/aitech/api';
 'use client';
 import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {ArrowLeft,ArrowUpRight,CalendarDays,MapPin,RefreshCw,Search,Soup,Flame,Info,Clock,ChevronDown} from 'lucide-react';

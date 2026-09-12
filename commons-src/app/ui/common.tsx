@@ -1,4 +1,4 @@
-import {apiFetch} from '@/aitech/auth';
+import {apiFetch} from '@/aitech/api';
 'use client';
 import {MessagesSquare,PenTool,FileText,KanbanSquare,Presentation,Vote,CalendarDays,RefreshCw,Library,Users,ArrowUpRight,Layers,Clock,Hand,Link as LinkIcon} from 'lucide-react';
 import type {Tool} from '@/lib/catalog';
