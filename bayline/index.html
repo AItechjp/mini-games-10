@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c1820"><meta name="referrer" content="no-referrer"><meta name="description" content="BAYLINE — 海沿いの架空都市を舞台にしたオリジナル3Dオープンワールド。徒歩、ドライブ、12章のミッション。ログイン不要、招待リンクで2人協力。"><title>BAYLINE — AFTER HOURS | 2人協力オープンワールド</title><link rel="stylesheet" href="./style-hd.css?v=20260912"><script type="importmap">{"imports":{"three":"../touge/vendor/build/three.module.js","three/addons/":"../touge/vendor/examples/jsm/"}}</script><script src="../supabase-config.js"></script></head>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c1820"><meta name="referrer" content="no-referrer"><meta name="description" content="BAYLINE — 海沿いの架空都市を舞台にしたオリジナル3Dオープンワールド。徒歩、ドライブ、12章のミッション。ログイン不要、招待リンクで2人協力。"><title>BAYLINE — AFTER HOURS | 2人協力オープンワールド</title><link rel="stylesheet" href="./style-hd.css?v=20260912"><script type="importmap">{"imports":{"three":"../touge/vendor/build/three.module.js","three/addons/":"../touge/vendor/examples/jsm/","./core-hd.mjs":"./core-living.mjs"}}</script><script src="../supabase-config.js"></script></head>
 <body>
 <div id="gameViewport">
 <canvas id="scene" aria-label="BAYLINE 3Dゲーム画面"></canvas><div class="vignette" aria-hidden="true"></div><div id="damage" aria-hidden="true"></div>
 <div id="loading"><div class="brand">BAYLINE<span>AFTER HOURS</span></div><div class="loading-line"><i></i></div><p id="loadText">海沿いの街を構築しています…</p><small>3D描画には WebGL 2 対応のブラウザが必要です。</small></div>
 <section id="front" class="hidden">
- <header class="front-top"><a class="brand" href="../games.html">BAYLINE<span>AFTER HOURS</span></a><div class="edition">ORIGINAL CITY ACTION <i></i> BUILD 02 / HD</div></header>
- <div class="hero"><div class="eyebrow">ONE CITY. TWO OUTSIDERS.</div><h1>この街を、<br><em>二人で駆けろ。</em></h1><p class="lead">海風、ネオン、眠らないストリート。<br>ハンドルを握り、相棒と街の裏側へ。</p><div class="features"><span>OPEN WORLD</span><span>1–2 PLAYERS</span><span>NO LOGIN</span></div>
+ <header class="front-top"><a class="brand" href="../games.html">BAYLINE<span>AFTER HOURS</span></a><div class="edition">ORIGINAL CITY ACTION <i></i> BUILD 03 / LIVING CITY</div></header>
+ <div class="hero"><div class="eyebrow">ONE CITY. TWO OUTSIDERS.</div><h1>この街を、<br><em>二人で駆けろ。</em></h1><p class="lead">行き交う人々、海風、眠らないストリート。<br>ハンドルを握り、相棒と街の裏側へ。</p><div class="features"><span>OPEN WORLD</span><span>1–2 PLAYERS</span><span>NO LOGIN</span></div>
  <div class="start-grid"><button id="continue" class="primary">街へ入る <b>↗</b></button><button id="host" class="secondary">2人協力の部屋を作る <b>＋</b></button><button id="new" class="quiet">新しいゲーム</button><span class="save-note" id="saveNote">12章 / 約60分を想定 / 自由探索</span></div>
  <form id="joinForm" class="join-form"><label for="joinCode">友だちの招待リンクから参加</label><div><input id="joinCode" autocomplete="off" spellcheck="false" placeholder="招待リンクを貼り付け"><button type="submit">参加 →</button></div></form>
  <p id="frontStatus" role="status"></p>
@@ -26,6 +26,6 @@
 <dialog id="panel"><header><div><span id="panelEyebrow">BAYLINE / CITY SYSTEM</span><h2 id="panelTitle">メニュー</h2></div><button id="closePanel" aria-label="閉じる">×</button></header><div id="panelBody"></div></dialog>
 <div id="saveStatus" aria-live="polite"></div>
 </div>
-<script type="module" src="./game-hd.mjs?v=20260912"></script>
+<script type="module" src="./living-city.mjs?v=20260912-3"></script>
 <script>window.addEventListener('error',function(e){if(document.getElementById('loading').classList.contains('hidden'))return;document.getElementById('loadText').textContent='読み込みに失敗しました。再読み込み、または最新のChrome / Edge / Safariでお試しください。';});</script>
 </body></html>

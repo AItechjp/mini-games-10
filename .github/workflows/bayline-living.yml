@@ -1,0 +1,42 @@
+name: Bayline Living City verification
+on:
+  push:
+    branches: [main, feat/bayline-living-city]
+    paths: ['bayline/**', 'tests/bayline-living-*', '.github/workflows/bayline-living.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bayline-living-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Simulation, navigation, signals, save and network validation
+        run: node tests/bayline-living-core.mjs
+      - name: Install pinned browser runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0 three@0.180.0
+          npx playwright install --with-deps chromium
+          mkdir -p touge/vendor
+          cp -r node_modules/three/build node_modules/three/examples touge/vendor/
+          cp node_modules/three/LICENSE touge/vendor/LICENSE
+      - name: Actual WebGL, touch, high-quality shaders and real co-op
+        run: |
+          python3 -m http.server 4173 >/tmp/bayline-living-http.log 2>&1 &
+          pid=$!
+          trap 'kill $pid || true' EXIT
+          node tests/bayline-living-browser.mjs
+      - name: Retain actual screenshots and verification data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bayline-living-verification
+          retention-days: 7
+          path: test-output/bayline-living/
