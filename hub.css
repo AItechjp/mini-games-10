@@ -8,3 +8,6 @@
 .games{grid-template-columns:repeat(6,minmax(0,1fr));padding-bottom:38px}.game{grid-column:span 2}.daifugo{--color:#86e1b5;grid-column:span 3;min-height:325px;background:linear-gradient(150deg,#15312d,#121a2e 70%)}.gomoku{--color:#a8cefa;grid-column:span 3;min-height:325px;background:linear-gradient(150deg,#1c2d48,#121a2e 70%)}.game.daifugo:before,.game.gomoku:before{display:none}.game-count{display:inline-grid;place-items:center;margin-left:8px;width:26px;height:26px;border:1px solid var(--line);border-radius:5px;font-family:ui-monospace,monospace}.game h2{line-height:1.15;letter-spacing:-.02em}.intro{padding-top:32px}.wrap.header{flex-direction:row;align-items:center;flex-wrap:wrap}footer.wrap{border-top:1px solid var(--line);padding-top:22px;font-size:.875rem}
 @media(min-width:701px) and (max-width:1000px){.game{grid-column:span 3;min-height:0}.game:last-child{grid-column:1/-1}}
 @media(max-width:700px){.games{grid-template-columns:1fr}.game{grid-column:auto;min-height:0}}
+
+/* Collection-level navigation remains touch-friendly on narrow screens. */
+.wrap.header nav{gap:6px 20px}.wrap.header nav a,.wrap.header>.brand{display:inline-flex;align-items:center;min-height:44px}.wrap.header nav a{padding:4px 0}

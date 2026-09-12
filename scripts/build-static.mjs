@@ -32,7 +32,7 @@ async function copyPublic(dir) {
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await copyPublic(root);
-for (const path of ['index.html','hub.css','archive.html','game23.html','smash.html','legal.html','supabase-config.js']) await stat(join(output, path));
+for (const path of ['index.html','games.html','aitech-home.css','collection-nav.css','hub.css','archive.html','game23.html','smash.html','legal.html','supabase-config.js']) await stat(join(output, path));
 const index = await readFile(join(output, 'index.html'), 'utf8');
 if (/src=["'][^"']*(?:supabase|game-backend|game23|smash\.js)/i.test(index)) throw new Error('The hub must not initialize a game engine or an online connection.');
 console.log(JSON.stringify({ output, files: count, bytes }, null, 2));

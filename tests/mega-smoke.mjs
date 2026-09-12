@@ -66,10 +66,15 @@ for(const id of ids){
 
 errors.length = 0;
 await page.goto(root + 'index.html', {waitUntil:'domcontentloaded'});
-// Legacy game URLs remain usable, but the public home lists exactly the five selected titles.
+// The AITECH home branches into Commons and the dedicated game collection.
+const destinations=await page.locator('[data-destination]').evaluateAll(nodes=>nodes.map(n=>n.dataset.destination));
+if(JSON.stringify(destinations)!==JSON.stringify(['commons','games'])) throw new Error('AITECH must offer Commons and Games');
+if(await page.locator('article[data-game]').count()) throw new Error('Games belong in the dedicated collection');
+await page.locator('[data-destination=games]').click();
+await page.waitForSelector('article[data-game]');
 const listed = await page.locator('article[data-game]').evaluateAll(nodes => nodes.map(n => n.dataset.game));
-if(JSON.stringify(listed) !== JSON.stringify(['zombie','smash','aether','daifugo','gomoku'])) throw new Error('The home must list only the five selected games');
-if(await page.locator('a[href="mega-arcade.html"], a[href="archive.html"], a[href="arcade100/"], a[href="yobi-ronbun.html"]').count()) throw new Error('An unlisted collection is linked from the home');
+if(JSON.stringify(listed) !== JSON.stringify(['zombie','smash','aether','daifugo','gomoku'])) throw new Error('The game collection must list only the five selected games');
+if(await page.locator('a[href="mega-arcade.html"], a[href="archive.html"], a[href="arcade100/"], a[href="yobi-ronbun.html"]').count()) throw new Error('An unlisted collection is linked from the game collection');
 await page.locator('[data-game="gomoku"] .play').click();
 await page.waitForSelector('.gomoku-cell');
 if(await page.locator('.gomoku-cell').count() !== 225) throw new Error('Gomoku must open a full 15x15 board');
@@ -80,7 +85,7 @@ await page.waitForFunction(() => document.querySelectorAll('.gomoku-stone').leng
 await failIfErrors('Gomoku CPU move and replay');
 await page.locator('.classic-actions a').click();
 await page.waitForSelector('article[data-game]');
-if(await page.locator('article[data-game]').count() !== 5) throw new Error('Back navigation must return to the five-game home');
+if(await page.locator('article[data-game]').count() !== 5) throw new Error('Back navigation must return to the game collection');
 
 console.log(`MEGA ARCADE smoke OK: ${full ? ids.length : 'representative'} modes; catalog=320; profiles=320`);
 await browser.close();
