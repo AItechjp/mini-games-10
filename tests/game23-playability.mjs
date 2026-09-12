@@ -27,7 +27,7 @@ window.__blacksiteQA={
   },
   kill:id=>{const e=state.enemies.get(id);e.hp=0;e.dead=true;},
   equip:id=>{opsChooseWeapon.value=id;ops.weapon=id;const p=opsNowPlayer();p.weapon=id;p.ammo=BlacksiteRules.WEAPONS[id].magazine;cineMakeWeapon();uxUpdateAmmo();},
-  weapon:()=>{let triangles=0,meshes=0;cineGun.traverse(o=>{if(o.isMesh){meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;}});return{id:cineGun.userData.weaponId,triangles,meshes,magazine:cineGun.userData.parts.magazine?.position.y||0};}
+  weapon:()=>{let triangles=0,meshes=0;cineGun.traverseVisible(o=>{if(o.isMesh){meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;}});return{id:cineGun.userData.weaponId,triangles,meshes,magazine:cineGun.userData.parts.magazine?.position.y||0};}
 };`;
 function captureErrors(page){page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'&&!/Failed to load resource|Report Only/.test(m.text()))errors.push(m.text());});}
 async function open(context){
