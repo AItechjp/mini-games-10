@@ -8,6 +8,7 @@ on:
       - 'game23*.css'
       - 'assets/game23/**'
       - 'tests/game23-smoke.mjs'
+      - 'tests/game23-playability.mjs'
       - '.github/workflows/game23-smoke.yml'
   push:
     branches: ["main"]
@@ -17,6 +18,7 @@ on:
       - 'game23*.css'
       - 'assets/game23/**'
       - 'tests/game23-smoke.mjs'
+      - 'tests/game23-playability.mjs'
       - '.github/workflows/game23-smoke.yml'
   workflow_dispatch:
 
@@ -26,6 +28,7 @@ permissions:
 jobs:
   smoke:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
@@ -44,3 +47,11 @@ jobs:
           trap 'kill $pid || true' EXIT
           for i in {1..20}; do curl -fsS http://127.0.0.1:4173/game23.html >/dev/null && break || sleep 1; done
           GAME23_BASE_URL=http://127.0.0.1:4173/ node tests/game23-smoke.mjs
+          GAME23_BASE_URL=http://127.0.0.1:4173/ node tests/game23-playability.mjs
+      - name: Retain scroll, enemy life and weapon visual checks
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game23-playability-review
+          path: test-output/game23-playability/
+          retention-days: 7

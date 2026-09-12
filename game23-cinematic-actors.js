@@ -131,37 +131,4 @@ createBossMesh=function(e){
 const cineBossAnimation=animateBoss;
 animateBoss=function(now){cineBossAnimation(now);if(!bossMesh?.visible)return;const t=now*.001;for(const o of bossMesh.children){if(o.userData.wing)o.rotation.y=Math.sin(t*1.2)*.13*o.userData.wing;if(o.userData.tentacle!==undefined)o.rotation.y=Math.sin(t*1.8+o.userData.tentacle)*.08;if(o.name==='lLeg')o.rotation.x=Math.sin(t*3)*.17;if(o.name==='rLeg')o.rotation.x=-Math.sin(t*3)*.17;}};
 
-/* Physically lit first-person carbine with gloves, rails, lens and reload motion. */
-let cineGun=null,cineMuzzle=null,cineKick=0,cineLastShot=0,cineWeaponTemplate=null;
-function cineMakeWeapon(){
-  if(cineWeaponTemplate){cineGun=cineWeaponTemplate.clone(true);cineMuzzle=cineGun.getObjectByName('muzzle-flash');camera.add(cineGun);muzzleLight.position.set(.28,-.24,-1.2);return;}
-  const g=new THREE.Group(),sets=new Map();
-  const part=(geo,ma,x,y,z,rx=0,ry=0,rz=0)=>{geo.rotateX(rx).rotateY(ry).rotateZ(rz).translate(x,y,z);if(!sets.has(ma))sets.set(ma,[]);sets.get(ma).push(geo);};
-  part(new THREE.BoxGeometry(.135,.12,.33),CM.blackMetal,0,0,0);part(new THREE.BoxGeometry(.13,.08,.30),CM.metal,0,.035,-.15);
-  part(new THREE.CylinderGeometry(.025,.029,.40,16),CM.metal,0,.025,-.48,Math.PI/2);
-  part(new THREE.CylinderGeometry(.033,.036,.13,16),CM.blackMetal,0,.025,-.72,Math.PI/2);
-  part(new THREE.BoxGeometry(.11,.115,.31),CM.blackMetal,0,-.005,-.32);
-  for(let i=0;i<11;i++){part(new THREE.BoxGeometry(.14,.017,.011),CM.metal,0,.106,-.36+i*.04);for(const side of [-1,1])part(new THREE.BoxGeometry(.009,.018,.021),CM.cavity,side*.058,.01,-.42+i*.024);}
-  part(new THREE.BoxGeometry(.09,.19,.10),CM.blackMetal,0,-.155,.005,.22);part(new THREE.BoxGeometry(.075,.19,.07),CM.blackMetal,0,-.14,.13,-.28);
-  part(new THREE.BoxGeometry(.13,.15,.25),CM.leather,0,-.025,.30);part(new THREE.BoxGeometry(.145,.18,.045),CM.blackMetal,0,-.025,.445);
-  part(new THREE.TorusGeometry(.038,.007,8,24),CM.blackMetal,0,-.095,.075,0,Math.PI/2);
-  part(new THREE.CylinderGeometry(.039,.039,.16,18),CM.blackMetal,0,.16,-.085,Math.PI/2);
-  part(new THREE.CylinderGeometry(.029,.029,.005,18),CM.glass,0,.16,-.005,Math.PI/2);
-  for(const z of [-.14,-.04])part(new THREE.TorusGeometry(.04,.006,8,20),CM.metal,0,.16,z);
-  part(new THREE.BoxGeometry(.04,.07,.12),CM.blackMetal,0,.11,-.085);
-  part(new THREE.BoxGeometry(.075,.025,.025),CM.metal,.093,.025,.08);
-  /* Sleeves, palms, knuckles and individual supporting fingers. */
-  part(new THREE.CapsuleGeometry(.055,.28,5,12),CM.cloth,.02,-.34,.22,-.25,0,-.10);
-  part(new THREE.CapsuleGeometry(.053,.28,5,12),CM.cloth,-.18,-.24,-.24,0,0,-.60);
-  part(cineEllipsoid(0,0,0,.063,.10,.059,12),CM.leather,.015,-.16,.115);
-  part(cineEllipsoid(0,0,0,.081,.054,.081,12),CM.leather,-.042,-.082,-.31);
-  for(let i=0;i<4;i++){part(new THREE.CapsuleGeometry(.013,.045,3,8),CM.leather,.045,-.117-i*.031,.12,0,0,Math.PI/2);part(new THREE.CapsuleGeometry(.012,.071,3,8),CM.leather,-.027+i*.026,-.046,-.335,0,0,.3);}
-  for(const [ma,geos] of sets){const o=new THREE.Mesh(cineMerge(geos),ma);o.frustumCulled=false;g.add(o);}
-  cineMuzzle=new THREE.Group();cineMuzzle.name='muzzle-flash';const flashMa=cineKeep(new THREE.MeshBasicMaterial({color:0xffdc82,transparent:true,opacity:.9,depthWrite:false,toneMapped:false}));
-  for(let i=0;i<3;i++){const f=new THREE.Mesh(cineKeep(new THREE.ConeGeometry(.045,.24,5)),flashMa);f.rotation.x=-Math.PI/2;f.rotation.z=i*2.1;f.position.z=-.1;cineMuzzle.add(f);}cineMuzzle.position.set(0,.025,-.80);cineMuzzle.visible=false;g.add(cineMuzzle);
-  g.position.set(.30,-.27,-.45);g.rotation.y=-.035;camera.add(g);cineGun=g;cineWeaponTemplate=g.clone(true);muzzleLight.position.set(.28,-.24,-1.2);
-}
-const cineBeginArea=beginArea;
-beginArea=function(fromStart=true){const r=cineBeginArea(fromStart);cineMakeWeapon();return r;};
-const cineShoot=shoot;
-shoot=function(){const before=uxAmmo,launcherBefore=expansionLauncherShots;cineShoot();if(uxAmmo<before||expansionLauncherShots<launcherBefore||(state.running&&!uxReloading&&performance.now()<expansionInfiniteUntil)){cineKick=Math.min(.085,cineKick+.047);cineLastShot=performance.now();}};
+/* First-person weapons are built in game23-armory.js. */
