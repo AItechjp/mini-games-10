@@ -31,6 +31,8 @@ export const sites:SiteEntry[] = [
     keywords:'学習 法律 司法試験 予備試験 過去問 短答 論文',
   },
   roomSite('chat'),
+  {id:'hotel-search',name:'全国ホテル検索',description:'宿泊日・人数を指定し、取得した宿泊プランを料金順に比較。',href:'/commons/hotels/',label:'全国・宿泊日',color:'#926227',keywords:'ホテル 旅館 宿泊 旅行 全国 料金 安い 日付',actionLabel:'ホテルを探す'},
+  {id:'rental-search',name:'岐阜・愛知の賃貸検索',description:'駅・徒歩分数・間取りを指定して、募集中の物件を検索。',href:'/commons/rentals/',label:'岐阜・愛知',color:'#146b60',keywords:'賃貸 不動産 マンション アパート 間取り 駅 徒歩 岐阜 愛知 新鵜沼',actionLabel:'賃貸を探す'},
   ...[
     {id:'supermarkets',name:'スーパー',color:'#287451'},
     {id:'saunas',name:'サウナ',color:'#b35729'},
@@ -51,11 +53,11 @@ export const sites:SiteEntry[] = [
   },
   {
     id:'restaurant-openings',name:'ラーメン屋オープン予定',description:'今日から15日間にオープンするラーメン店を確認。',
-    href:'/commons/openings/ramen',label:'これから15日',color:'#b34618',keywords:'ラーメン らーめん 中華そば つけ麺 新店 オープン 開店予定 岐阜 愛知 全国',actionLabel:'開店予定を見る',
+    href:'/commons/openings/ramen/',label:'これから15日',color:'#b34618',keywords:'ラーメン らーめん 中華そば つけ麺 新店 オープン 開店予定 岐阜 愛知 全国',actionLabel:'開店予定を見る',
   },
   {
     id:'sauna-openings',name:'サウナ開業情報',description:'2か月前から2か月後までのサウナ開業・新設情報。',
-    href:'/commons/openings/sauna',label:'前後2か月',color:'#107368',keywords:'サウナ 新設 開業 オープン予定 温浴 岐阜 愛知 全国',actionLabel:'開業情報を見る',
+    href:'/commons/openings/sauna/',label:'前後2か月',color:'#107368',keywords:'サウナ 新設 開業 オープン予定 温浴 岐阜 愛知 全国',actionLabel:'開業情報を見る',
   },
   {
     id:'camera', name:'カメラ', description:'iPhone・Androidで撮影。撮影音を付けず、写真を端末に保存。',
