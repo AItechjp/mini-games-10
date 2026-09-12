@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10272b">
+<meta name="description" content="猫と跳ぶ、ひと口サイズの冒険。22枚のコインを集めて旗を目指す横スクロールゲーム Quick Hop。PC・スマホで無料プレイ。">
+<title>Quick Hop | AITECH GAMES</title>
+<link rel="canonical" href="https://aitechd.com/quick-hop/">
+<link rel="stylesheet" href="style.css">
+<script src="rules.js" defer></script>
+<script src="game.js" defer></script>
+</head>
+<body>
+<header class="top"><a href="../games.html">← ゲーム集</a><span>AITECH GAMES <b>/</b> 07</span><button id="sound" aria-pressed="false">音：オフ</button></header>
+<main>
+<div class="heading"><div><p class="eyebrow">A LITTLE LEAP. A LITTLE ADVENTURE.</p><h1>QUICK HOP<span>クイックホップ</span></h1></div><p>猫と跳ぶ、ひと口サイズの冒険。</p></div>
+<section class="game-shell" aria-label="Quick Hop ゲーム">
+<div class="hud"><span class="stat"><i aria-hidden="true">●</i> <b id="coins">00</b><small>/ 22</small></span><span class="stat"><b id="time">0.0</b><small>秒</small></span><span class="stat camp" id="camp">スタート地点</span><button id="pause" disabled>一時停止</button><button id="restart">やり直す</button></div>
+<div class="stage">
+<canvas id="game" width="960" height="540" tabindex="0" aria-label="左右移動とジャンプでコインを集め、右端の旗を目指すゲーム"></canvas>
+<div class="overlay" id="overlay"><div class="panel"><p class="eyebrow" id="tag">22 COINS / 11 PLATFORMS / ONE CAT</p><h2 id="title">ちょっと、<br>跳んでいこう。</h2><p id="message">足場を渡り、コインを集めてオレンジの旗へ。<br>落ちても大丈夫。何度でも挑戦できます。</p><button class="primary" id="start">冒険をはじめる <span aria-hidden="true">→</span></button><p class="best" id="best"></p></div></div>
+<div id="notice" class="notice" role="status" aria-live="polite"></div>
+</div>
+<div class="bottom"><span><b>← → / A D</b> 移動 <em>·</em> <b>SPACE</b> ジャンプ <em>·</em> 長押しで高く</span><span id="falls">落下 0 回</span></div>
+</section>
+<div class="touch" aria-label="タッチ操作"><div><button data-control="left" aria-label="左へ移動">←</button><button data-control="right" aria-label="右へ移動">→</button></div><button class="jump" data-control="jump" aria-label="ジャンプ">JUMP ↑</button></div>
+<p class="note">緑の旗は中間地点。<kbd>P</kbd> / <kbd>Esc</kbd> で一時停止、<kbd>R</kbd> でやり直し。<br class="mobile">スマホは下のボタンで操作できます。</p>
+</main>
+<footer><span>© 2026 AITECH GAMES</span><a href="../legal.html#privacy">プライバシー</a></footer>
+<noscript>このゲームを遊ぶにはJavaScriptを有効にしてください。</noscript>
+</body></html>
