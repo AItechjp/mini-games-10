@@ -6,6 +6,9 @@ const base=(process.env.GAME23_BASE_URL||'http://127.0.0.1:4173/').replace(/\/?$
 const output='test-output/game23-playability';await mkdir(output,{recursive:true});
 const browser=await chromium.launch({headless:true,args:['--ignore-gpu-blocklist','--enable-webgl','--use-angle=swiftshader']});
 const errors=[],report={};
+let check='initialization';
+const checkpoint=name=>{check=name;console.log('GAME23 review:',name);};
+const deadline=setTimeout(()=>{console.error('GAME23 review timed out at:',check);process.exit(1);},210000);deadline.unref();
 // Test-only fixtures are appended to a routed response. No debug mutations are
 // shipped in the game. All rendering, HUD and input handlers are production code.
 const fixture=(await readFile(new URL('../game23-playability.js',import.meta.url),'utf8'))+`
@@ -25,6 +28,7 @@ window.__blacksiteQA={
 };`;
 function captureErrors(page){page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'&&!/Failed to load resource|Report Only/.test(m.text()))errors.push(m.text());});}
 async function open(context){
+  context.setDefaultTimeout(15000);
   const page=await context.newPage();captureErrors(page);
   await page.route('**/game23-playability.js*',r=>r.fulfill({contentType:'text/javascript',body:fixture}));
   await page.goto(base+'game23.html?mode=solo',{waitUntil:'domcontentloaded',timeout:30000});
@@ -39,6 +43,7 @@ async function swipe(cdp,x,y,dy,hold=0){
 try{
   const mobile=await browser.newContext({viewport:{width:412,height:915},isMobile:true,hasTouch:true,deviceScaleFactor:1,userAgent:'Mozilla/5.0 (Linux; Android 16; Pixel 10) AppleWebKit/537.36 Chrome/140 Mobile Safari/537.36'});
   const p=await open(mobile),cdp=await mobile.newCDPSession(p);
+  checkpoint('mobile startup');
   await p.locator('#game23-start').tap();await p.waitForFunction(()=>window.blacksiteSystems.running);
   assert.equal(await p.evaluate(()=>document.body.classList.contains('game23-focus-mode')),false,'Starting must keep the page scrollable');
   await p.locator('#game23-frame').scrollIntoViewIfNeeded();
@@ -51,24 +56,29 @@ try{
   assert.ok(lookPoint,'An unobstructed look area must be available');
   const lookBefore=moved.pitch;await swipe(cdp,lookPoint.x,lookPoint.y,-35,100);
   assert.notEqual((await p.evaluate(()=>window.__blacksiteQA.pose())).pitch,lookBefore,'Inline look input must turn the camera');
+  checkpoint('mobile movement and look');
   const ids=await p.evaluate(()=>window.__blacksiteQA.arrange());
   await p.waitForFunction(()=>window.blacksitePlayability.enemyLife.full===3&&window.blacksitePlayability.enemyLife.damaged===1,null,{timeout:10000});
+  checkpoint('full and damaged enemy life bars');
   await p.screenshot({path:output+'/mobile-inline-hp.png'});
   const ammo=await p.evaluate(()=>window.blacksiteSystems.players[0].ammo);
   await p.locator('#touch-fire').tap();await p.waitForFunction(a=>window.blacksiteSystems.players[0].ammo<a,ammo);
   await p.locator('.ux-reload').tap();await p.waitForFunction(()=>window.blacksitePlayability.weapon.magazineOffset<-.03,null,{timeout:3000});
   report.mobileReload=await p.evaluate(()=>window.blacksitePlayability.weapon);
+  checkpoint('mobile fire and reload');
   await p.screenshot({path:output+'/mobile-reload.png'});
   await p.evaluate(id=>window.__blacksiteQA.kill(id),ids[0]);
   await p.waitForFunction(()=>window.blacksitePlayability.enemyLife.visible===3,null,{timeout:5000});
   const scrollBefore=await p.evaluate(()=>scrollY),rail=await p.locator('.game23-scroll-rail').boundingBox();
   await swipe(cdp,rail.x+rail.width/2,Math.min(rail.y+rail.height-15,850),-270);
   await p.waitForFunction(y=>scrollY>y+80,scrollBefore,{timeout:5000});
+  checkpoint('native touch page scrolling');
   report.mobileScroll=await p.evaluate(()=>({scrollY,width:innerWidth,documentWidth:document.documentElement.scrollWidth,life:window.blacksitePlayability.enemyLife}));
   assert.ok(report.mobileScroll.documentWidth<=report.mobileScroll.width,'Portrait page must not overflow horizontally');
   await p.locator('.game23-page-nav a').tap();await p.waitForFunction(()=>window.blacksiteSystems.paused);
   await p.screenshot({path:output+'/mobile-page-guide.png'});
   await mobile.close();
+  checkpoint('desktop startup');
 
   const desktop=await browser.newContext({viewport:{width:1440,height:1080},deviceScaleFactor:1});
   const d=await open(desktop);await d.locator('#game23-start').click();await d.waitForFunction(()=>window.blacksiteSystems.running);await d.locator('#game23-frame').scrollIntoViewIfNeeded();
@@ -76,6 +86,7 @@ try{
   await d.waitForFunction(()=>window.blacksitePlayability.enemyLife.visible===4);
   report.weapons=[];
   for(const id of ['rifle','smg','marksman','carbine','machinegun','interceptor','revolver','scout','vanguard']){
+    checkpoint('weapon '+id);
     await d.evaluate(id=>window.__blacksiteQA.equip(id),id);await d.waitForTimeout(180);
     const facts=await d.evaluate(()=>window.__blacksiteQA.weapon());assert.equal(facts.id,id);assert.ok(facts.triangles>3000&&facts.triangles<90000,JSON.stringify(facts));assert.ok(facts.meshes<25,JSON.stringify(facts));report.weapons.push(facts);
     await d.locator('#game23-frame').screenshot({path:output+'/weapon-'+id+'.png'});
@@ -88,4 +99,4 @@ try{
   const y=await d.evaluate(()=>scrollY);await d.mouse.wheel(0,600);await d.waitForFunction(before=>scrollY>before+50,y);
   await d.screenshot({path:output+'/desktop-page-scroll.png'});report.desktopScroll=await d.evaluate(()=>scrollY);
   assert.deepEqual(errors,[]);report.errors=errors;console.log('GAME23 playability PASS',JSON.stringify(report));
-}finally{await writeFile(output+'/report.json',JSON.stringify({...report,errors},null,2));await browser.close();}
+}finally{await writeFile(output+'/report.json',JSON.stringify({...report,check,errors},null,2));await browser.close();clearTimeout(deadline);}
