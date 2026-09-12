@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101314">
+  <meta name="description" content="iPhoneとAndroidのブラウザで使う、撮影音を付けないカメラ。撮影した写真をJPEGで端末に保存できます。">
+  <meta name="color-scheme" content="dark">
+  <title>SHIZUKA — カメラ | COMMONS</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23101314'/%3E%3Crect x='5' y='10' width='22' height='15' rx='4' fill='none' stroke='%23d5efaa' stroke-width='2'/%3E%3Cpath d='M11 10l2-4h6l2 4' fill='none' stroke='%23d5efaa' stroke-width='2'/%3E%3Ccircle cx='16' cy='17.5' r='4' fill='none' stroke='%23d5efaa' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/commons/camera/styles.css">
+  <script src="/commons/camera/camera.js" defer></script>
+<link rel="stylesheet" href="/commons/auth.css"><style>[hidden]{display:none!important}.camera-auth-ready{display:contents}</style></head>
+<body><div id="camera-auth"></div><div id="camera-site" hidden>
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M14.5 4h-5L7.5 7H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2.5z"/><circle cx="12" cy="13.5" r="4"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="m11 5-6 4H2v6h3l6 4zM16 9l6 6m0-6-6 6"/></symbol>
+    <symbol id="i-switch" viewBox="0 0 24 24"><path d="M20 8a8.5 8.5 0 0 0-14-3L3 8m0-5v5h5M4 16a8.5 8.5 0 0 0 14 3l3-3m0 5v-5h-5"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><path d="M12 3v9m-5.7-7a9 9 0 1 0 11.4 0"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-6-6L3 21"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </svg>
+
+  <main class="camera-app">
+    <a href="/commons/" class="commons-back"><svg class="icon small" aria-hidden="true"><use href="#i-chevron"/></svg>COMMONS に戻る</a>
+    <header class="app-header">
+      <div class="brand"><svg class="icon brand-icon" aria-hidden="true"><use href="#i-camera"/></svg><div><h1>SHIZUKA<span class="brand-period">.</span></h1><p>カメラ</p></div></div>
+      <button id="help-button" class="icon-button" aria-label="保存方法と使い方"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></button>
+    </header>
+
+    <section class="camera-body" aria-label="カメラ">
+      <div class="mode-bar"><span class="mode-label"><svg class="icon small" aria-hidden="true"><use href="#i-mute"/></svg>撮影音なし</span><button id="stop-button" class="quiet-button" disabled><svg class="icon small" aria-hidden="true"><use href="#i-stop"/></svg><span id="stop-label">停止</span></button></div>
+
+      <div class="viewfinder" id="viewfinder" data-phase="idle">
+        <video id="camera-video" autoplay muted playsinline disablepictureinpicture aria-label="カメラのライブ映像"></video>
+        <div class="finder-corners" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="live-meta" id="live-meta" hidden><span id="camera-label">背面カメラ</span><span class="live-badge">LIVE</span></div>
+        <div class="start-panel" id="start-panel">
+          <div class="camera-emblem" aria-hidden="true"><svg class="icon"><use href="#i-camera"/></svg></div>
+          <h2 id="start-title">カメラを起動</h2>
+          <p id="start-description">カメラの使用を許可すると、<br>ここに映像が表示されます。</p>
+          <button id="start-button" class="button primary"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><span id="start-label">カメラを起動する</span></button>
+          <span class="local-note">画像は端末内で処理します</span>
+        </div>
+        <div id="processing-indicator" class="processing-indicator" hidden>写真を作成中…</div>
+        <div class="finder-footer" id="finder-footer" hidden><span id="resolution">—</span><span>JPEG</span></div>
+        <div class="capture-flash" id="capture-flash" aria-hidden="true"></div>
+      </div>
+
+      <div class="capture-area">
+        <div class="capture-status" id="capture-status" role="status" aria-live="polite">カメラを起動して撮影できます</div>
+        <div class="capture-controls">
+          <div class="secondary-control"><button id="last-photo-button" class="thumbnail-button" disabled aria-label="直前の写真を確認する"><svg class="icon" id="thumbnail-placeholder" aria-hidden="true"><use href="#i-photo"/></svg><img id="thumbnail" hidden alt="直前に撮影した写真"></button><span>直前の写真</span></div>
+          <button id="capture-button" class="shutter-button" disabled aria-label="写真を撮影して保存する"><span></span></button>
+          <div class="secondary-control"><button id="switch-button" class="round-button" disabled aria-label="前面と背面のカメラを切り替える"><svg class="icon" aria-hidden="true"><use href="#i-switch"/></svg></button><span>切り替え</span></div>
+        </div>
+        <div class="auto-save-label"><svg class="icon small" aria-hidden="true"><use href="#i-download"/></svg><span id="save-mode-text">撮影すると自動でダウンロード</span></div>
+      </div>
+    </section>
+
+    <button id="save-guide-button" class="save-guide-button"><span class="save-guide-icon"><svg class="icon" aria-hidden="true"><use href="#i-photo"/></svg></span><span><strong>撮った写真はどこ？</strong><span>保存先とフォトへの追加方法</span></span><svg class="icon small chevron" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+    <footer class="app-footer"><span>iPhone Safari / Android Chrome</span><span>シャッター音・振動なし</span></footer>
+    <noscript><p class="noscript">カメラを使うには、ブラウザのJavaScriptを有効にしてください。</p></noscript>
+  </main>
+
+  <dialog id="photo-dialog" class="photo-dialog" aria-labelledby="photo-title">
+    <div class="dialog-heading"><div><p class="eyebrow">LAST PHOTO</p><h2 id="photo-title">直前の写真</h2></div><button id="close-photo" class="icon-button" aria-label="写真を閉じる"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div class="photo-preview"><img id="photo-preview-image" alt="直前に撮影した写真のプレビュー"></div>
+    <div class="photo-details"><span id="photo-time"></span><span id="photo-dimensions"></span></div>
+    <p id="photo-filename" class="filename"></p>
+    <p id="photo-feedback" class="photo-feedback" role="status" aria-live="polite">保存できていない場合は、もう一度保存してください。</p>
+    <div class="photo-actions"><button id="download-button" class="button primary"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span id="download-label">もう一度保存</span></button><button id="share-button" class="button secondary" hidden><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg><span id="share-label">フォトなどに送る</span></button></div>
+    <p id="photo-save-note" class="dialog-footnote">ブラウザの保存確認が表示されたら「ダウンロード」を選んでください。</p>
+  </dialog>
+
+  <dialog id="help-dialog" class="help-dialog" aria-labelledby="help-title">
+    <div class="dialog-heading"><div><p class="eyebrow">SAVE YOUR PHOTO</p><h2 id="help-title">写真の保存について</h2></div><button id="close-help" class="icon-button" aria-label="使い方を閉じる"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <ol class="save-steps" id="iphone-save-steps" hidden>
+      <li><span class="step-number">01</span><div><h3>Safariでカメラを許可</h3><p>このサイトをSafariで開いてカメラを起動します。シャッターボタンを押すと、撮影した写真の保存画面が開きます。</p></div></li>
+      <li><span class="step-number">02</span><div><h3>「写真に保存」をタップ</h3><p>共有画面で「画像を保存」を選んでください。項目が見えないときは、共有画面を下にスクロールしてください。表示名はiOSのバージョンにより異なります。</p></div></li>
+      <li><span class="step-number">03</span><div><h3>「写真」アプリで確認</h3><p>保存した画像は「写真」アプリで確認できます。共有できない場合は、表示中の写真を長押しして保存してください。「ファイルに保存」は「ファイル」アプリへのダウンロードです。</p></div></li>
+    </ol>
+    <ol class="save-steps" id="android-save-steps">
+      <li><span class="step-number">01</span><div><h3>撮影するとJPEGを保存</h3><p>シャッターボタンで写真を作り、自動でダウンロードを開始します。保存の確認が出たら許可してください。</p></div></li>
+      <li><span class="step-number">02</span><div><h3>「Download」を確認</h3><p>通常は端末の「Download（ダウンロード）」に保存されます。FilesアプリやChromeの「ダウンロード」から開けます。</p></div></li>
+      <li><span class="step-number">03</span><div><h3>フォトで見る・フォトへ送る</h3><p>Google フォトの「コレクション」→「このデバイス内」でDownloadを確認してください。表示されないときは、直前の写真を開いて「フォトなどに送る」から対応アプリを選べます。</p></div></li>
+    </ol>
+    <div class="help-note"><h3>知っておいてほしいこと</h3><ul><li>iPhoneの「写真」への保存には、共有画面や長押しメニューでの操作が必要です。ブラウザから写真ライブラリに自動追加することはできません。</li><li>Androidは通常Downloadに保存されます。「DCIM／Camera」への直接保存はできません。続けて撮ると、Chromeが複数ファイルのダウンロード許可を求める場合があります。</li><li>このサイトは音や振動を出しません。端末・ブラウザ側の音までは制御できないため、最初に1枚試してください。</li><li>写真の画質はカメラ映像の解像度によります。標準カメラアプリの最大画素数・HDRとは異なります。</li><li>カメラはこのページを表示している間だけ動作します。撮影画像をこのサイトのサーバーへ送信しません。共有画面でアプリを選ぶと、そのアプリに画像が渡ります。</li></ul></div>
+    <button id="help-done" class="button primary full-width">閉じる</button>
+  </dialog>
+</div><script type="module" src="/commons/camera-auth.js"></script></body>
+</html>

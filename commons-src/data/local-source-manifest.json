@@ -1,0 +1,1236 @@
+{
+  "releaseDate": "2026-09-12",
+  "note": "These are the capture URLs behind this release, not an exhaustive list of all businesses. Re-enumerate source indexes before each future release; an unchanged manifest cannot discover newly added result pages or municipal snapshots. Reviewed official facts require manual rechecking.",
+  "files": [
+    {
+      "name": "aichi-bbox-baths.html",
+      "url": "https://overpass.kumi.systems/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A180%5D%3B%28nwr%5B%22amenity%22~%22%5E%28public_bath%7Cbathhouse%29%24%22%5D%2834.5%2C136.65%2C35.5%2C137.9%29%3Bnwr%5B%22leisure%22%3D%22sauna%22%5D%2834.5%2C136.65%2C35.5%2C137.9%29%3Bnwr%5B%22sauna%22%3D%22yes%22%5D%2834.5%2C136.65%2C35.5%2C137.9%29%3B%29%3Bout%20center%20tags%3B",
+      "sha256": "003e2546ea266cf9a51a49036ecacf5fe7a65313b0fb3a4db8f85e8b1e4e4497"
+    },
+    {
+      "name": "aichi-bbox-fish.html",
+      "url": "https://overpass.kumi.systems/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A180%5D%3Bnwr%5B%22shop%22~%22%5E%28seafood%7Cfish%7Cfishmonger%29%24%22%5D%2834.5%2C136.65%2C35.5%2C137.9%29%3Bout%20center%20tags%3B",
+      "sha256": "dccf7bd4a712d2877596f15557bd48ab3913df3c721c064cb6dc10426724e1a7"
+    },
+    {
+      "name": "aichi-super-west.html",
+      "url": "https://overpass.kumi.systems/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A180%5D%3Bnwr%5B%22shop%22%3D%22supermarket%22%5D%2834.5%2C136.65%2C35.5%2C137.9%29%3Bout%20center%20tags%3B",
+      "sha256": "ca3ed10441b1a18e177b19105df277eb8c87166abf8fa87bce996073b5ce20a5"
+    },
+    {
+      "name": "aoki-10.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=10",
+      "sha256": "2adf18080524cd589653584c18681c3b8725e2a0d289424465b036b2c828044f"
+    },
+    {
+      "name": "aoki-11.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=11",
+      "sha256": "59ca5ed706e285e16f15906923664dbdf69d49d3e2da42c55d2f66d2ae05c252"
+    },
+    {
+      "name": "aoki-12.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=12",
+      "sha256": "9f38d6ee6f79c95f88c8c06018bf5acd32be5b20586f2245fe794b5834ddf0bf"
+    },
+    {
+      "name": "aoki-13.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=13",
+      "sha256": "0c0ecbe7593d1e7aa9acc9e0575276e77417ee0c34b482d2382134e6ee167014"
+    },
+    {
+      "name": "aoki-14.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=14",
+      "sha256": "e4d03af8ffd5de557405a29161a639a3dbefe05712a0d10c63835f1c23d08561"
+    },
+    {
+      "name": "aoki-15.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=15",
+      "sha256": "4dd8e7c61f9393a53a729eae6fb9ce515abf1553385014992557d1f97b7ff214"
+    },
+    {
+      "name": "aoki-16.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=16",
+      "sha256": "64a8b0589b41c832628af310b63c6fcfdfdd3334faf8d05bbf96c92bee55b0e0"
+    },
+    {
+      "name": "aoki-17.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=17",
+      "sha256": "2812d4ed0aee46cacb4d7dd8153297eaf81b1d9dc47d149607feda9d4ff8e2d8"
+    },
+    {
+      "name": "aoki-18.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=18",
+      "sha256": "397e004d5719d55388c92bff719be184cfa33ff9fec873df762c4508d0344283"
+    },
+    {
+      "name": "aoki-19.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=19",
+      "sha256": "490320707be76cba423947960bdb50ff72829157b6fe4e892ffb2f8381bee6c8"
+    },
+    {
+      "name": "aoki-20.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=20",
+      "sha256": "ba3460bc27f59a4f8559db12715e7f404284442a392636ff0e00afcbb0c9831e"
+    },
+    {
+      "name": "aoki-21.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=21",
+      "sha256": "f70bae2d0c78de56001912bdf0157cab116da29d71d8cff392e36f418d857311"
+    },
+    {
+      "name": "aoki-22.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=22",
+      "sha256": "8bc88e993323855edd0707d7346219d0e41e2192fd1e9c19838e4e23d59a4988"
+    },
+    {
+      "name": "aoki-23.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=23",
+      "sha256": "813b538312bc43736347b5982639808485c1c0fce392b7e84852d1d6e1d3d11a"
+    },
+    {
+      "name": "aoki-24.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=24",
+      "sha256": "c062d70660af838623b61d9c14f37a8e1a35641ca25e6dfa336e9d673b509cee"
+    },
+    {
+      "name": "aoki-25.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=25",
+      "sha256": "b6e1d3a3cdab00d639e418c4c471fd7910b4648f63cf24b80f3c2d3edb3c0e13"
+    },
+    {
+      "name": "aoki-26.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=26",
+      "sha256": "7c9021d93f7bcd703ca0a4785095f7964c17c5276f9d6e522ade0ba1eba79b33"
+    },
+    {
+      "name": "aoki-27.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=27",
+      "sha256": "a66022b8dfeb925096c68c03b8089d6d62854cb6c5c5b06f1856da4d595fa2ba"
+    },
+    {
+      "name": "aoki-28.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=28",
+      "sha256": "bc4232477977097e801c37e2b44af5ae90a35c730e2288af63a065375c75695f"
+    },
+    {
+      "name": "aoki-29.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=29",
+      "sha256": "b076383a2dd15c5a52eae17040a20e4625c10c09a11ec6fb032373927ccc18b2"
+    },
+    {
+      "name": "aoki-30.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=30",
+      "sha256": "e3c06a547eb5adccad0ff149af19a0a8d4781e495948e8f3ab03e4b263ae435f"
+    },
+    {
+      "name": "aoki-31.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=31",
+      "sha256": "dd0f2b32cafdde0ad65c12e732dc3d7496e2382e1f6ea78fa63ebcddf379b6f6"
+    },
+    {
+      "name": "aoki-32.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=32",
+      "sha256": "ce60d6654fdc31a1cc37232283ebeb86a7637ad564f6f04f74b20af5137d9e93"
+    },
+    {
+      "name": "aoki-33.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=33",
+      "sha256": "2b502c2d2d0b8356a27fe99d47ef83526c8b485db9a9f04d65cd49726dff106b"
+    },
+    {
+      "name": "aoki-34.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=34",
+      "sha256": "1988c9a107b3a64a272735f6f814dd7a663b9ce31597896e519dd07bea6eec59"
+    },
+    {
+      "name": "aoki-35.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=35",
+      "sha256": "51a7439c6a68e181ed774bbbd36c6de0a719b44299014d1be4a81339db137f43"
+    },
+    {
+      "name": "aoki-36.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=36",
+      "sha256": "3f9eeb48c92387b4606f7164281d1b0f4a8f758e38ef91219229e01a72f3dd6c"
+    },
+    {
+      "name": "aoki-37.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=37",
+      "sha256": "e9ce8eeb46f23647a830d23a1965900631d0615ecfe88201f4ad6d8b132d8759"
+    },
+    {
+      "name": "aoki-38.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=38",
+      "sha256": "e1d6081154a6f5a3d5c056f1554288b09d7a0fa71115d1270ffde693a9afc795"
+    },
+    {
+      "name": "aoki-39.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=39",
+      "sha256": "b3a181059da666eb36606eda6e8b1aea15c1d17e5afa822f66cdd49dca8b5be4"
+    },
+    {
+      "name": "aoki-40.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=40",
+      "sha256": "e12f899d55c93bea393c719da102bdd1241117a6f80348cbe91f47040ecdf388"
+    },
+    {
+      "name": "aoki-41.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=41",
+      "sha256": "531491b995fd72f2e9f46aa536af9f8e530280935fc551986f50e8ad2a243623"
+    },
+    {
+      "name": "aoki-42.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=42",
+      "sha256": "a3196d3a8c41844fa5230f5c0a6dfea30910b5c4d1b12f727766827926c67857"
+    },
+    {
+      "name": "aoki-43.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=43",
+      "sha256": "e140682a9e56aa57532f9fc8436628455d56e23794ebf02366f7c3814d84cc86"
+    },
+    {
+      "name": "aoki-44.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=44",
+      "sha256": "23f449572855d9c5c307b72bc917eced75f9f8e6a0eb22c98d69a2cf550b757b"
+    },
+    {
+      "name": "aoki-45.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=45",
+      "sha256": "ed6dc32edb3975ce468db517a33698aa2d87a68eae037a52bddcb558aa01eb12"
+    },
+    {
+      "name": "aoki-46.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=46",
+      "sha256": "db9e1a61da5d88376eea79742e865499618d1f345c3aea54d92d19417c15c2d6"
+    },
+    {
+      "name": "aoki-47.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=47",
+      "sha256": "0811047092827943d4bc63ec8cf1d690b2346deb22df34b952c8e3d2615be225"
+    },
+    {
+      "name": "aoki-48.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=48",
+      "sha256": "ae04a31126360b731711cad175bb15d619c750cae559f451fc5db9d908e9aa4e"
+    },
+    {
+      "name": "aoki-49.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=49",
+      "sha256": "e315b529bb1bc780a2ef3c051cbe1bee5eb493df5ab012bc5592b3ba0d385bd7"
+    },
+    {
+      "name": "aoki-50.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=50",
+      "sha256": "f3e787b2688d358a99e2a2718ee8ca064bcbebfb75c8ea98e42752b32fe8388b"
+    },
+    {
+      "name": "aoki-51.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=51",
+      "sha256": "0f8982081479b54d94536db70e4ed45424334066772f686eb6e1b026e91ec376"
+    },
+    {
+      "name": "aoki-52.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=52",
+      "sha256": "40ab4b442c6045732dfe21b34cf1a705590f49958058d27c11ff95a777e3ad8f"
+    },
+    {
+      "name": "aoki-53.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=53",
+      "sha256": "5650ce5f8ead8030e0af48f6a13f1774218b0856fb626098fd8284024051967e"
+    },
+    {
+      "name": "aoki-54.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=54",
+      "sha256": "f9fe370ded6339abd66ec67c39f7e3b4c300879ca7bc823b4b591f72c6c3e4fe"
+    },
+    {
+      "name": "aoki-55.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=55",
+      "sha256": "1c5b472928c7d6fb3f922b6d7244053f5251f4f4fbc7464ce959d3867c71be9b"
+    },
+    {
+      "name": "aoki-56.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=56",
+      "sha256": "1ac4a389a17964c848bafcd3197781b15527fb4736564e2580ece4aac26f72ad"
+    },
+    {
+      "name": "aoki-59.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=59",
+      "sha256": "2c394344e7123e8d7605cb94209b7ef04e7b9018a781e2f65a0ddc5301c77af9"
+    },
+    {
+      "name": "aoki-65.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=65",
+      "sha256": "cd24eccd260937bb94c536c56da6309fbf85336290deafa608054e8fb7b2fadc"
+    },
+    {
+      "name": "aoki-66.html",
+      "url": "https://www.aokisuper.co.jp/shop/detail/?id=66",
+      "sha256": "618d9a6709a2907a104884de6769acc53408e48ba821a5d4453419f2e7461f01"
+    },
+    {
+      "name": "boundaries.html",
+      "url": "https://raw.githubusercontent.com/dataofjapan/land/master/japan.geojson",
+      "sha256": "b2fa31a9ce37c006904a06b8afcaeaf5ceeff40ae365eca167e09fbfff052f00"
+    },
+    {
+      "name": "feel-1219.html",
+      "url": "https://feel-corp.jp/store/chita/tokai/store-1219.html",
+      "sha256": "6db651a965982c76aee35a5facb27cb239e5c6d471307d2592640af69c5bff04"
+    },
+    {
+      "name": "feel-1590.html",
+      "url": "https://feel-corp.jp/store/chita/tokai/store-1590.html",
+      "sha256": "0e81c3559604a2891b7f4a01d4c0d6af7fb669bdf40ad0f463964510d2eb5c33"
+    },
+    {
+      "name": "feel-1591.html",
+      "url": "https://feel-corp.jp/store/higashimikawa/toyohashi/store-1591.html",
+      "sha256": "068c70a93fd3e31c15375737025c1cf130244237e865b13cf4de1d4fdcc16060"
+    },
+    {
+      "name": "feel-560.html",
+      "url": "https://feel-corp.jp/store/nagoya/syouwa/store-560.html",
+      "sha256": "fee40cb0da9f7cf40fafbec8f09fdaf69911736456a52f573449097fa17d0c6d"
+    },
+    {
+      "name": "feel-561.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/nishio/store-561.html",
+      "sha256": "7815162ce9dbffd5dd3c83fa66d15c6ad551fdae40b37eaba31474a7c3efffb2"
+    },
+    {
+      "name": "feel-562.html",
+      "url": "https://feel-corp.jp/store/nagoya/nakamura/store-562.html",
+      "sha256": "e8cd63477c7967c23051faa69c1506dda27293b22ff0f67c77831c14f23d6e06"
+    },
+    {
+      "name": "feel-563.html",
+      "url": "https://feel-corp.jp/store/nagoya/nakamura/store-563.html",
+      "sha256": "67ba0c4f7446048e20d7ce05a0dc92d22963ef32b0778149e110435d33fed4bc"
+    },
+    {
+      "name": "feel-564.html",
+      "url": "https://feel-corp.jp/store/nagoya/mizuho/store-564.html",
+      "sha256": "5df54294af9e72d150c619bfb3b4c87623fc35ce6fc9926a6a38ca5df55d479b"
+    },
+    {
+      "name": "feel-565.html",
+      "url": "https://feel-corp.jp/store/chita/handa/store-565.html",
+      "sha256": "cdaf1d1fc109c93f7e30d1efa859758b0ae1e7da5b34ef9ed11f629d3c34d995"
+    },
+    {
+      "name": "feel-566.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/miyoshi/store-566.html",
+      "sha256": "dd97f807b35ef29d060afcba1cd226029617e87d3842a952e28e24ca12cfc44d"
+    },
+    {
+      "name": "feel-567.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-567.html",
+      "sha256": "0717c71cd0e483a90535c82284dbc6b3b1fe1afbb7b561a904dd744c9cde8e35"
+    },
+    {
+      "name": "feel-568.html",
+      "url": "https://feel-corp.jp/store/owari/kasugai/store-568.html",
+      "sha256": "384df8043249b9abe451ea5dc763e5597be07e48c03f0b8bc665b3b4ff0f6702"
+    },
+    {
+      "name": "feel-569.html",
+      "url": "https://feel-corp.jp/store/nagoya/mizuho/store-569.html",
+      "sha256": "be658a66790d39247a8a17de7f7368b134d9990c0c9ce2a1bf312c9d6be8639e"
+    },
+    {
+      "name": "feel-570.html",
+      "url": "https://feel-corp.jp/store/nagoya/nishi/store-570.html",
+      "sha256": "a8d9d8e415be9593d42b2ffa5693812c11f8f6111f10240f2a6813107bb0e56b"
+    },
+    {
+      "name": "feel-571.html",
+      "url": "https://feel-corp.jp/store/nagoya/nakagawa/store-571.html",
+      "sha256": "c691d0d9aa31322dd6e2f495247a6ae0ba187e41124b068da5c2a23d0d3848ef"
+    },
+    {
+      "name": "feel-572.html",
+      "url": "https://feel-corp.jp/store/owari/inazawa/store-572.html",
+      "sha256": "a65bad6908354406ef8aa4e0a4415013dab124a601c9e73f3ca9bf9b5edfd839"
+    },
+    {
+      "name": "feel-573.html",
+      "url": "https://feel-corp.jp/store/owari/owariasahi/store-573.html",
+      "sha256": "6dcf7599b2b08ac8f7f2fc9b4157a6f626f506789d52292024081b6c3ebe3d74"
+    },
+    {
+      "name": "feel-574.html",
+      "url": "https://feel-corp.jp/store/higashimikawa/toyohashi/store-574.html",
+      "sha256": "79c6fd4f821d854bc8b241bcbbca78016f60b8dfa015dc454e9109ae22186c1c"
+    },
+    {
+      "name": "feel-575.html",
+      "url": "https://feel-corp.jp/store/nagoya/nakagawa/store-575.html",
+      "sha256": "cdcff56e1a63017d928221811b644a5ee71103ca3f2cf96e9368c84ddb3f2495"
+    },
+    {
+      "name": "feel-576.html",
+      "url": "https://feel-corp.jp/store/nagoya/minato/store-576.html",
+      "sha256": "4662ee98a658a6d45ad5c9d6bf9483d67df52d418bcd2d957bbb813fde69897c"
+    },
+    {
+      "name": "feel-577.html",
+      "url": "https://feel-corp.jp/store/nagoya/minato/store-577.html",
+      "sha256": "107109ec61393157d8bc9ed47ce0326906dc56d30472194832d96c1a67ca8933"
+    },
+    {
+      "name": "feel-578.html",
+      "url": "https://feel-corp.jp/store/nagoya/minami/store-578.html",
+      "sha256": "cd5a37463e06367697de6c5409fc7fa6126733d400dd8410ec330ec38a8bd828"
+    },
+    {
+      "name": "feel-579.html",
+      "url": "https://feel-corp.jp/store/nagoya/tenpaku/store-579.html",
+      "sha256": "232421463e576fc0cfae7abf6a8705e75959b2facc9e38761e80a0a5322f8028"
+    },
+    {
+      "name": "feel-580.html",
+      "url": "https://feel-corp.jp/store/nagoya/kita/store-580.html",
+      "sha256": "daebf041c92e8b27218d2b375cc81e3db0165ca3076050e47a6d5bed1764504e"
+    },
+    {
+      "name": "feel-581.html",
+      "url": "https://feel-corp.jp/store/nagoya/kita/store-581.html",
+      "sha256": "16613289eac9438a8f6e4dde0bbb4e1c65d8c337cc2030565f3cf4c1cc5166e7"
+    },
+    {
+      "name": "feel-583.html",
+      "url": "https://feel-corp.jp/store/nagoya/midori/store-583.html",
+      "sha256": "bc6285eff20f648ab64b3beb10efecf507e6178bc34e727f04b54292eeef8ddb"
+    },
+    {
+      "name": "feel-584.html",
+      "url": "https://feel-corp.jp/store/nagoya/midori/store-584.html",
+      "sha256": "831248205b46f5844e818c5d2825b0f3acb50fdec5cc7523e42030e6f0365731"
+    },
+    {
+      "name": "feel-585.html",
+      "url": "https://feel-corp.jp/store/owari/inazawa/store-585.html",
+      "sha256": "35ac1a1b60e2f65555558d8cca458e08b34d14d1f882600c62fd28f69d4d6f85"
+    },
+    {
+      "name": "feel-587.html",
+      "url": "https://feel-corp.jp/store/owari/seto/store-587.html",
+      "sha256": "46555a26d2e43039c47b8916b876b1ea3cbb9c0409210af6c196e7781f2121da"
+    },
+    {
+      "name": "feel-588.html",
+      "url": "https://feel-corp.jp/store/owari/kasugai/store-588.html",
+      "sha256": "ac223dc682c86ed06afb4a75f7a53dff55bacb3f0354a7ed81da90e93ec7be19"
+    },
+    {
+      "name": "feel-589.html",
+      "url": "https://feel-corp.jp/store/owari/kasugai/store-589.html",
+      "sha256": "1d1d70bcf76627d21e1535521161687d30d65c80be1bc0110361268fdd8b3a23"
+    },
+    {
+      "name": "feel-590.html",
+      "url": "https://feel-corp.jp/store/owari/toyoake/store-590.html",
+      "sha256": "0e3b8329a19c7b920f8332c864c0248877ad88a88f3538269448a9929d9b978e"
+    },
+    {
+      "name": "feel-591.html",
+      "url": "https://feel-corp.jp/store/owari/tsushima/store-591.html",
+      "sha256": "49e62ef5408f42944cfde916f2d7646ab37ce87c29115ff3f304baecc6763c7d"
+    },
+    {
+      "name": "feel-592.html",
+      "url": "https://feel-corp.jp/store/owari/kiyosu/store-592.html",
+      "sha256": "644a6a7f994a602ef6a1e84bb330bc7a4c8f8db02684517630c0e820c9c27d3a"
+    },
+    {
+      "name": "feel-593.html",
+      "url": "https://feel-corp.jp/store/owari/komaki/store-593.html",
+      "sha256": "a4b5885a964dd296321842244f655d6f8f145f9acfcfb7864326be355d411c30"
+    },
+    {
+      "name": "feel-594.html",
+      "url": "https://feel-corp.jp/store/chita/tokai/store-594.html",
+      "sha256": "c1b66cdddf18ed6481804b3e8eeeb8021750685a46527d4873054732ee319c43"
+    },
+    {
+      "name": "feel-595.html",
+      "url": "https://feel-corp.jp/store/chita/chita/store-595.html",
+      "sha256": "10c3d61e9160672edf8bf196a4ee068b3fe795f6842593f51efcd81c42a98d29"
+    },
+    {
+      "name": "feel-596.html",
+      "url": "https://feel-corp.jp/store/chita/handa/store-596.html",
+      "sha256": "579ddf0d41bf3b0d6a4a7274fa78ca3228fb987b4855badc25887b272d2372b5"
+    },
+    {
+      "name": "feel-597.html",
+      "url": "https://feel-corp.jp/store/chita/handa/store-597.html",
+      "sha256": "eaa16c3b381310fec184efec276671bb0d65d4131bc6b1eee1b5f922be250141"
+    },
+    {
+      "name": "feel-598.html",
+      "url": "https://feel-corp.jp/store/chita/obu/store-598.html",
+      "sha256": "215d3dc9864d47e098cda72dc67ffa28ace7e8274e5c3760ae92edfdc0003758"
+    },
+    {
+      "name": "feel-599.html",
+      "url": "https://feel-corp.jp/store/chita/mihama/store-599.html",
+      "sha256": "6c97a613a05f83ff533003f960a07c332417e52b955e47b35b6b1669f7702229"
+    },
+    {
+      "name": "feel-600.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/toyota/store-600.html",
+      "sha256": "325f351719d5e56d15e00cda079539aaa35d930ae362ca70701d00355ead7909"
+    },
+    {
+      "name": "feel-601.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/toyota/store-601.html",
+      "sha256": "6e7fe972beabbfbaab3e54a8d4799ecc6b019e07232ef793dabdd22f152f3072"
+    },
+    {
+      "name": "feel-602.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/toyota/store-602.html",
+      "sha256": "4ca4072736336e949d1c1bc45d69459cc5c02228c6d45db21745be226f677b90"
+    },
+    {
+      "name": "feel-603.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/anjo/store-603.html",
+      "sha256": "46b8b0e02b4e223559d3ee4a8213dc066c53daa8c00f644f947f8237e8885c08"
+    },
+    {
+      "name": "feel-604.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-604.html",
+      "sha256": "97f2ba0955cea63f92ce9d6b1063e61e134a4f80e55a7545c67156d1874e28a6"
+    },
+    {
+      "name": "feel-605.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-605.html",
+      "sha256": "854488fec8bfdd331cac57b944dd55b15505bec0cfc888bc37a2585a53e826f6"
+    },
+    {
+      "name": "feel-606.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-606.html",
+      "sha256": "ef4d38985a3e9b38a633e5bed1022ac90d4c215453fe4f8d709e1dd614c4e558"
+    },
+    {
+      "name": "feel-607.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-607.html",
+      "sha256": "74c2c64a795a04ec2a1bb2918196215f4889c4310bf6431428807cf8dc89bccb"
+    },
+    {
+      "name": "feel-608.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-608.html",
+      "sha256": "6d4c0196cb9bf93a0c5e5b05f9705c6d0496ba22b8f0ba6bfe3aaf6302890334"
+    },
+    {
+      "name": "feel-609.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/nishio/store-609.html",
+      "sha256": "a10587e41c7a8aeb46f676b02e26276f657b2b52637a7ae54bd8d58961f0c20a"
+    },
+    {
+      "name": "feel-610.html",
+      "url": "https://feel-corp.jp/store/higashimikawa/toyokawa/store-610.html",
+      "sha256": "4a5d339b261db5e186f505f6c470e7d406f25a7ff412c926a4bde4f5966c6e8f"
+    },
+    {
+      "name": "feel-611.html",
+      "url": "https://feel-corp.jp/store/higashimikawa/gamagori/store-611.html",
+      "sha256": "a3e0e5fad92e071762f90fc278cabc0cc7efd1411ff4d572b545ddd4a3e7449e"
+    },
+    {
+      "name": "feel-612.html",
+      "url": "https://feel-corp.jp/store/higashimikawa/toyohashi/store-612.html",
+      "sha256": "fdea064541468b224c64130752a74cacaa40266aec3d71c849fa71fd5b1c47b6"
+    },
+    {
+      "name": "feel-613.html",
+      "url": "https://feel-corp.jp/store/higashimikawa/toyohashi/store-613.html",
+      "sha256": "7739a0c4521b2ee662f532e7e624139bdcd620815c46b14e1c42d54053e53dd2"
+    },
+    {
+      "name": "feel-614.html",
+      "url": "https://feel-corp.jp/store/chita/obu/store-614.html",
+      "sha256": "50b47784f3e50eef3d349d8601d314f3e56aa4ce6c409e733550119d0c0a5494"
+    },
+    {
+      "name": "feel-615.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/anjo/store-615.html",
+      "sha256": "56c04d856f0e71de60265a94f7b2ad3824d8365f29c41afc7fce32020a5779f6"
+    },
+    {
+      "name": "feel-616.html",
+      "url": "https://feel-corp.jp/store/nagoya/nishi/store-616.html",
+      "sha256": "fd7704acff451d00af614ee67742cf028fe62a79bb63ecb4458b81d6e6c53724"
+    },
+    {
+      "name": "feel-617.html",
+      "url": "https://feel-corp.jp/store/nagoya/nakagawa/store-617.html",
+      "sha256": "eb271bfbe853366c971d71cdd2a0297060dbcef09537031b75f296772e870118"
+    },
+    {
+      "name": "feel-618.html",
+      "url": "https://feel-corp.jp/store/nagoya/tenpaku/store-618.html",
+      "sha256": "3ff1e4c3ece99631256ab7a351dc1654ff1b8fed0cf6b3e578557e42b7cc4419"
+    },
+    {
+      "name": "feel-619.html",
+      "url": "https://feel-corp.jp/store/nagoya/tenpaku/store-619.html",
+      "sha256": "0a84943aa9a3fade4aa1dec10892475e17a91f10429cfad047b61e9e31ade481"
+    },
+    {
+      "name": "feel-621.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/kariya/store-621.html",
+      "sha256": "0f61bb4487dc02c45a75c874670ed2417ebfe8d6552496b7b07d8b75343dc9f4"
+    },
+    {
+      "name": "feel-623.html",
+      "url": "https://feel-corp.jp/store/higashimikawa/toyokawa/store-623.html",
+      "sha256": "f6be8b6e79633e83cedacf5a4ed545d734a691724a1677393328b400373dc5b1"
+    },
+    {
+      "name": "feel-624.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/kota/store-624.html",
+      "sha256": "96674bc4779b57c4e77a976d9d9b4cb28cdb53b9fbadab84559e74726f785185"
+    },
+    {
+      "name": "feel-625.html",
+      "url": "https://feel-corp.jp/store/owari/nisshin/store-625.html",
+      "sha256": "41c02641d64041173e1e4624b426f7d6035a29e342581a3e211e332a55448822"
+    },
+    {
+      "name": "feel-626.html",
+      "url": "https://feel-corp.jp/store/nagoya/store-626.html",
+      "sha256": "2b96ba7266cbeea5f65bc74c55340a93bd637d7d2a08b8ebae5d6174d7e79e1d"
+    },
+    {
+      "name": "feel-627.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-627.html",
+      "sha256": "7f4a3e047de077aabdb9ac5275f13a3551a6f1974624d56c338ef38d808fb00f"
+    },
+    {
+      "name": "feel-628.html",
+      "url": "https://feel-corp.jp/store/nagoya/meito/store-628.html",
+      "sha256": "f9c3dfb58a0fb5b54d2a6cb730d3c80bdbc02f13ba7cb58ffb541bc5957e4dcd"
+    },
+    {
+      "name": "feel-630.html",
+      "url": "https://feel-corp.jp/store/owari/store-630.html",
+      "sha256": "bde24d6119ecaafbdb95a03fab2c9817fd22061b284149a3ecf6c419b5db3cdd"
+    },
+    {
+      "name": "feel-631.html",
+      "url": "https://feel-corp.jp/store/nagoya/store-631.html",
+      "sha256": "683602edf43f2babadcfa3799bc8c215118fe9f9f09e0818d9aba3e95053ecd1"
+    },
+    {
+      "name": "feel-633.html",
+      "url": "https://feel-corp.jp/store/nagoya/syouwa/store-633.html",
+      "sha256": "5233a5930568a4627ed171f95ee2bdb796bb6b3cf5025cb4fc0f6091b4fcd37d"
+    },
+    {
+      "name": "feel-636.html",
+      "url": "https://feel-corp.jp/store/higashimikawa/cat91/store-636.html",
+      "sha256": "aa732cef4df357b622fbeb13197385e0bac27bb888649c788d301ecfe5f3c002"
+    },
+    {
+      "name": "feel-637.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/toyota/store-637.html",
+      "sha256": "b4f87a212c354a23407b40dcbd9de0d361f8ae8e41b3b147aa7d6f6543051bb3"
+    },
+    {
+      "name": "feel-638.html",
+      "url": "https://feel-corp.jp/store/nagoya/kita/store-638.html",
+      "sha256": "563fd7f191b05ae0a5a481ceb9cace6baaf0d2694e8917dfe1dfabad47c9a9b6"
+    },
+    {
+      "name": "feel-639.html",
+      "url": "https://feel-corp.jp/store/chita/store-639.html",
+      "sha256": "33e53941b833161d88638c7d58333131be92bcfb68650b271daf4a87dc4231b3"
+    },
+    {
+      "name": "feel-640.html",
+      "url": "https://feel-corp.jp/store/nishimikawa/nishio/store-640.html",
+      "sha256": "e6a6e15674bdcfa4811ddba32a7c498d3bce32dc5db96804afe624b87b8db818"
+    },
+    {
+      "name": "gifu-csv-0.html",
+      "url": "https://gifu-opendata.pref.gifu.lg.jp/dataset/dbf5185a-29a2-49e3-b095-6d86d0bfde5c/resource/69a3d4c8-e09b-43d8-980d-3420535b9daa/download/20260331syokuhin.csv",
+      "sha256": "4fd1bbc695715edac0347b70d6b79bade0e266e0104119c067c31ca0326b8cea"
+    },
+    {
+      "name": "gifu-csv-1.html",
+      "url": "https://gifu-opendata.pref.gifu.lg.jp/dataset/dbf5185a-29a2-49e3-b095-6d86d0bfde5c/resource/76fc4a8b-2c3d-4f99-b106-8d721a78c890/download/202604shokuhin.csv",
+      "sha256": "e74542799fe4379fd5013831358513ee8348d9f0cbec2298634a6c88c2650df7"
+    },
+    {
+      "name": "gifu-csv-2.html",
+      "url": "https://gifu-opendata.pref.gifu.lg.jp/dataset/dbf5185a-29a2-49e3-b095-6d86d0bfde5c/resource/03f05b6e-7abb-4829-8af7-9c9032b7713e/download/202605syokuhin.csv",
+      "sha256": "ab0277e7f250ad2bd125de37453f36cbacf93a50e06fe41ce3e4115c9f5ff815"
+    },
+    {
+      "name": "gifu-csv-3.html",
+      "url": "https://gifu-opendata.pref.gifu.lg.jp/dataset/dbf5185a-29a2-49e3-b095-6d86d0bfde5c/resource/5fd8a93e-5fc1-426e-8b93-685a0281bcbd/download/202606syokuhin.csv",
+      "sha256": "ab33fa7759887cea2c15fcec3cef34578e280cb67d5f635b08cd0a8260650809"
+    },
+    {
+      "name": "gifu-csv-4.html",
+      "url": "https://gifu-opendata.pref.gifu.lg.jp/dataset/dbf5185a-29a2-49e3-b095-6d86d0bfde5c/resource/8964dec1-41ac-4e5b-b96b-ef0af0bec507/download/202607syokuhin.csv",
+      "sha256": "a728f46fd230bfb8d4d9bd63dba9588ffac2a4d30369867113325c0b3b52d161"
+    },
+    {
+      "name": "gyomu-1062.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1062",
+      "sha256": "576efff686e23bb0c4b33362e4bdb55fd64787c7252f8bc19d0765425048c584"
+    },
+    {
+      "name": "gyomu-1100.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1100",
+      "sha256": "e4afd44f2b81a88a23d7593c5d92ad2afba07e4c87238776acbf7f0276bbdd31"
+    },
+    {
+      "name": "gyomu-1126.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1126",
+      "sha256": "50379044ff14cb0a4d46ed29c510ec25af1b66d863b4afb8c0025f30663e8da5"
+    },
+    {
+      "name": "gyomu-1132.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1132",
+      "sha256": "e54f76997eea3443d2994c8cb2b2a44c4b140b21b9628d6c8c92560e2bfba965"
+    },
+    {
+      "name": "gyomu-1137.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1137",
+      "sha256": "d695879477a1956a2a7c66de09d5caa9455ac09606771cd1f5e9b2d362446b37"
+    },
+    {
+      "name": "gyomu-1139.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1139",
+      "sha256": "43c172d505371be16d8adb6b3ef271979c09f5a1e210ef315795b808f2f728c9"
+    },
+    {
+      "name": "gyomu-1141.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1141",
+      "sha256": "376a5e7ed0e5ee315c3fba1eb0a937c5d300fe66280d0b7de70e4fdb4514768c"
+    },
+    {
+      "name": "gyomu-1153.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1153",
+      "sha256": "f284e6a8198151f13b3e7a2078ebc56ae7674da42fb80273b4f72fdb62197e23"
+    },
+    {
+      "name": "gyomu-1299.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1299",
+      "sha256": "aca8d39ff77d862f46fedb4d5e287bcee15fecca4dbdb1d525af33b5e4c64046"
+    },
+    {
+      "name": "gyomu-1320.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1320",
+      "sha256": "6907036482993068360015fe8e799b69c1233d9ecf6b54afa2ba25afb48e09fd"
+    },
+    {
+      "name": "gyomu-1370.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1370",
+      "sha256": "590bded51574be707a8fa9f5fd40d6fd5951f766aacc246d2fcb315048adaf6a"
+    },
+    {
+      "name": "gyomu-1500.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1500",
+      "sha256": "89debd6864e2c19af20adc44b8289f4e8daac6e5b82b1ab05e6b24e31985e1c4"
+    },
+    {
+      "name": "gyomu-1502.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1502",
+      "sha256": "e32c6ca9678a770890c3449d4b9bba791b5dcb2c1420b9f34459b958e18f4661"
+    },
+    {
+      "name": "gyomu-1526.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1526",
+      "sha256": "97a72433c6fd624b42fea465e5c98761d2b8f22511ebad2f8938396421717fc9"
+    },
+    {
+      "name": "gyomu-1557.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1557",
+      "sha256": "b04c6eff083d4e719687e0e29938a26e46732550ae8d743f86ae20a066761fde"
+    },
+    {
+      "name": "gyomu-1621.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1621",
+      "sha256": "25a0f44a18b0cdf8e82286e74ed94210424c67cf582e559e62f23fd32978f83f"
+    },
+    {
+      "name": "gyomu-1666.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1666",
+      "sha256": "befaa781f299788a9d434d447f2445ad6047559d22b30334a03396852ded3690"
+    },
+    {
+      "name": "gyomu-1865.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1865",
+      "sha256": "e9040e7e2b085abdf6233d84a6b531a4d354e2c47120357d44d12dab0adf4bda"
+    },
+    {
+      "name": "gyomu-1912.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1912",
+      "sha256": "877d8e232815ddcd1a6efac7d9ae29f321dd18297cb69c60416c98cbf0524315"
+    },
+    {
+      "name": "gyomu-1961.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1961",
+      "sha256": "b494e7c64217f84357135ade266f100357a546bd4b1364865caaffe65e61a862"
+    },
+    {
+      "name": "gyomu-1978.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1978",
+      "sha256": "340da37d7338879713990b5652d5c6f702553fbd1d5a4bdfa6918605ac2039e7"
+    },
+    {
+      "name": "gyomu-1986.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1986",
+      "sha256": "f21ac95eed5670943c606a254246264116562b2211101d65dd1cb7404d14967f"
+    },
+    {
+      "name": "gyomu-1992.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1992",
+      "sha256": "99b6c91aba3e3e57935e0f2f781701efeae9a46aa3cf07975505c7bd3f510123"
+    },
+    {
+      "name": "gyomu-2002.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2002",
+      "sha256": "af6d1dd0f8821a332420442b5c212068c58610c23d7a28c0c8ed84adce168af3"
+    },
+    {
+      "name": "gyomu-2015.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2015",
+      "sha256": "64520dff17422a3be93a5fd1b4743f752f023ade253c8662dbe63fb927e2b79c"
+    },
+    {
+      "name": "gyomu-2021.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2021",
+      "sha256": "7cc6aec0bdf24a8b3aa8289f996149de69b619e992e439f14edf8c454c86e5b0"
+    },
+    {
+      "name": "gyomu-2026.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2026",
+      "sha256": "440ec16f6a514c9ca10468d45d769d3671bec359424fbb53769c515ff49e29d3"
+    },
+    {
+      "name": "gyomu-2036.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2036",
+      "sha256": "62d8c2185065398bbe92bc68e235e1947bd6b99b95bbdae45b08522bb5bbdb9e"
+    },
+    {
+      "name": "gyomu-2045.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2045",
+      "sha256": "406abddff21e5949179102d863018887d992cd92d03e8f5be8690b458a04dee1"
+    },
+    {
+      "name": "gyomu-690.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=690",
+      "sha256": "6bcf4206c896764ee9b6d5c7a6081a00738ff396438ba4558595bba86d8952c9"
+    },
+    {
+      "name": "gyomu-691.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=691",
+      "sha256": "2f2093e3251a21c4eb95579840b58de5316128c7151f7742e6d146cf1ecf2590"
+    },
+    {
+      "name": "gyomu-692.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=692",
+      "sha256": "f41afd93553f61a8b6f9a4fb340234556c70cce7efb3fd6765e9d76d5988455d"
+    },
+    {
+      "name": "gyomu-694.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=694",
+      "sha256": "4bcf034132efbf69df8ed63a1b142c554213a906ba5dfc04a4bc28bc2fb27852"
+    },
+    {
+      "name": "gyomu-695.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=695",
+      "sha256": "99976109018c3c33a4c4967175d47526eed60d255fcc5c3386baaddc1e9819ed"
+    },
+    {
+      "name": "gyomu-696.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=696",
+      "sha256": "495b2003c53a9a30ec092a4dfbbc328f9e9ba1ea31a3129ba2446a6ea01beab3"
+    },
+    {
+      "name": "gyomu-697.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=697",
+      "sha256": "0a32fd71c69fd37d04f7a4392509df3ee9b2645e708d1433c03f04d6d337e557"
+    },
+    {
+      "name": "gyomu-698.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=698",
+      "sha256": "23e218e6a65efb2b074eea92b1bf491692eee03832d15d55b3cb9d3c37e32f7a"
+    },
+    {
+      "name": "gyomu-700.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=700",
+      "sha256": "f483feac9e08615e344d9a8e9832a688b161a13cf4c0c5f2d33dde6cf399654d"
+    },
+    {
+      "name": "gyomu-701.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=701",
+      "sha256": "306be052bc98cfb05294f84b7cadf3553aced2c00bbb6a8b3ae6d3266034fa22"
+    },
+    {
+      "name": "gyomu-702.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=702",
+      "sha256": "d32a6ca2fdf95b0f11b08c6d714693aea1751c4dee72147d288ebba42fb56ce2"
+    },
+    {
+      "name": "gyomu-703.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=703",
+      "sha256": "11b3ecc056f9bb2a12b164c769cad694183359dcbf9caf97254b28614a15e12a"
+    },
+    {
+      "name": "gyomu-704.html",
+      "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=704",
+      "sha256": "66d278ff54c879dd917dbe43deefae8c5c197a8fae42b03b36f1ad81c609a557"
+    },
+    {
+      "name": "kanesue-page-felna-aichi-1.html",
+      "url": "https://kanesue.co.jp/store/page/1?brand=felna&pref=aichi",
+      "sha256": "86fdbbba8f7f09eabf2a3d3c6312c03ff07af10f4110eb5fd9e7dc1e19f52a27"
+    },
+    {
+      "name": "kanesue-page-felna-aichi-2.html",
+      "url": "https://kanesue.co.jp/store/page/2?brand=felna&pref=aichi",
+      "sha256": "7ee548523c5e927ccfe9e565ffe953db051faadc2794dc2c652757cdcfc1b643"
+    },
+    {
+      "name": "kanesue-page-felna-aichi-3.html",
+      "url": "https://kanesue.co.jp/store/page/3?brand=felna&pref=aichi",
+      "sha256": "c8057f96d86cb6c9cebdcb36fe12874a86d06e515adff70245d1628c4fc5dbb6"
+    },
+    {
+      "name": "kanesue-page-felna-aichi-4.html",
+      "url": "https://kanesue.co.jp/store/page/4?brand=felna&pref=aichi",
+      "sha256": "5d79eeac2aa150f08dc2940c677f2f0373114adbe46ae14cfa975a8123bf20af"
+    },
+    {
+      "name": "kanesue-page-kanesue-aichi-1.html",
+      "url": "https://kanesue.co.jp/store/page/1?brand=kanesue&pref=aichi",
+      "sha256": "fa9b6cfae5b4c296bf696e4b3221c13bd09452e8fa5ca7c6e6a0382cf366e1a3"
+    },
+    {
+      "name": "kanesue-page-kanesue-aichi-2.html",
+      "url": "https://kanesue.co.jp/store/page/2?brand=kanesue&pref=aichi",
+      "sha256": "a846bf7a7347857bf1d7e6633c026ec9fa8bd57703084772747e88a77d5d85f8"
+    },
+    {
+      "name": "kanesue-page-kanesue-aichi-3.html",
+      "url": "https://kanesue.co.jp/store/page/3?brand=kanesue&pref=aichi",
+      "sha256": "e6999c4c8d0b398769bd6cbfee200280a813c8100c75c68a31cde17fb4ee9383"
+    },
+    {
+      "name": "kanesue-page-kanesue-aichi-4.html",
+      "url": "https://kanesue.co.jp/store/page/4?brand=kanesue&pref=aichi",
+      "sha256": "71f042f6e5795d8cd312188752df74c47e6dd7cb9c2c9e56626123aaa4c14f26"
+    },
+    {
+      "name": "kanesue-page-kanesue-gifu-1.html",
+      "url": "https://kanesue.co.jp/store/page/1?brand=kanesue&pref=gifu",
+      "sha256": "1c7c4e92c96501bc47bc73f5d9aa45e343583ae581320ba4cee77a08564ddb89"
+    },
+    {
+      "name": "kanesue-page-kanesue-gifu-2.html",
+      "url": "https://kanesue.co.jp/store/page/2?brand=kanesue&pref=gifu",
+      "sha256": "0ab83b80f41c5456ce3b1b9a5afe25ce70369f8abc001c493ff040cd217a78e5"
+    },
+    {
+      "name": "nagoya-licenses.json",
+      "url": "https://data.bodik.jp/api/3/action/package_show?id=231002_1304020000_01",
+      "sha256": "465329a449c05ec91e805419da054648eb7e333d1bc2f7cea2228d244fccfc15"
+    },
+    {
+      "name": "nagoya-registry-0.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/f5011225-fb72-436a-9b9b-aab4d2528bf9/download/r7.8_shinki.csv",
+      "sha256": "5862ed3a2a6c3e9a93799643d6914884ca5f1cdf0d3fc869fbbfa6fe95e08ab6"
+    },
+    {
+      "name": "nagoya-registry-1.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/58ede064-8b55-473e-9f21-2613f08c02f7/download/r7.9_shinki.csv",
+      "sha256": "9a3fbfe1c970d5840566da0926648a8b68c0b5092b6e53d364aba846e5062d79"
+    },
+    {
+      "name": "nagoya-registry-11.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/2c1f729f-daa3-4bd0-87b5-d7c4edcfbf94/download/r8.2_shinki.csv",
+      "sha256": "780b40c882515aa1be9f6cb9bfad7cf495712c01693528aac8bf7011bec92073"
+    },
+    {
+      "name": "nagoya-registry-13.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/9e8ff9cd-1129-4295-89e7-125939a07838/download/r8.3_shinki.csv",
+      "sha256": "b4bd6303528b28b8f85619f97ff60cbe39dd720a4c730b6b041da69120acafe6"
+    },
+    {
+      "name": "nagoya-registry-15.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/9a66e602-acb7-4295-b32b-2ed073188e41/download/r8.4_shinki.csv",
+      "sha256": "6ca3d66e89432853f905320fd2fe619394d1e1c510c7668c98333bdd73346850"
+    },
+    {
+      "name": "nagoya-registry-17.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/2fbf6468-0215-4f07-8f0b-e78b0c066d84/download/r8.5_shinki.csv",
+      "sha256": "db19cd3c6019e1d1a612b4b60957929507317293f367077eaaa8fc9f501da6b1"
+    },
+    {
+      "name": "nagoya-registry-19.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/1675ae6f-e83a-45dc-8ffc-c395950fb4bc/download/r8.6_shinki.csv",
+      "sha256": "c18add27838a2f8c596cad45bec3f270f487e1e0e8ac5be7d62116c6a4bdb939"
+    },
+    {
+      "name": "nagoya-registry-21.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/afb17878-61ed-4bd9-9239-594d5e51d608/download/r8.7_shinki.csv",
+      "sha256": "9881dee0b1785ea8c0d25a5a3f7f28557c76a8aa361a4c1a8c1999a4c1345522"
+    },
+    {
+      "name": "nagoya-registry-3.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/eba5d139-694e-4f2b-8f8d-a1056468676e/download/r7.10_shinki.csv",
+      "sha256": "e6552488f28aedffe1d9c2aafbe15c2c6aed1a9a8e05dc501ade0b73599e305e"
+    },
+    {
+      "name": "nagoya-registry-5.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/9327973e-0c2c-4c40-a59d-bf6031540d13/download/r7.11_shinki.csv",
+      "sha256": "eacca60dc1949d75fcd2146e62c0296fc6dda60a69db7a7a82a07168f8eab7f3"
+    },
+    {
+      "name": "nagoya-registry-7.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/bf778044-0a9c-4925-9656-8d45d416ae44/download/r7.12_shinki.csv",
+      "sha256": "09c6c2c6e0c25070b9dcc56d3fa422986a346b36423784bd82483b3e77e04c5e"
+    },
+    {
+      "name": "nagoya-registry-9.csv",
+      "url": "https://data.bodik.jp/dataset/979f325a-1b27-45d0-8eb5-dd4aeb85b1f5/resource/2644233f-018a-4238-abb1-dd83f4e848ac/download/r8.1_shinki.csv",
+      "sha256": "815e9853ec86b28f40d52f327c6585a7ced6952f11046badc8708266335c62ef"
+    },
+    {
+      "name": "okazaki-licenses.json",
+      "url": "https://data.bodik.jp/api/3/action/package_show?id=232025_food_business_all",
+      "sha256": "fec90f1b72ebf915db8a45f20e570c91cc05f5f5b65f914fc9f8bb1c7735d031"
+    },
+    {
+      "name": "okazaki-registry-0.csv",
+      "url": "https://data.bodik.jp/dataset/aabced9d-d86e-422d-8ad0-2781d0f30671/resource/a893c7d6-5c10-4fb4-b9fa-cb48edd81565/download/232025_food_business_al.csv",
+      "sha256": "1c31a0e695c885237b79072fab2716207ed19eb5ac1f07b68a13cf5b88488379"
+    },
+    {
+      "name": "overpass-gifu.html",
+      "url": "https://overpass.kumi.systems/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A180%5D%3Barea%5B%22ISO3166-2%22%3D%22JP-21%22%5D-%3E.a%3B%28nwr%5B%22shop%22%3D%22supermarket%22%5D%28area.a%29%3Bnwr%5B%22shop%22~%22%5E%28seafood%7Cfish%7Cfishmonger%29%24%22%5D%28area.a%29%3Bnwr%5B%22amenity%22~%22%5E%28public_bath%7Cbathhouse%29%24%22%5D%28area.a%29%3Bnwr%5B%22leisure%22%3D%22sauna%22%5D%28area.a%29%3Bnwr%5B%22sauna%22%3D%22yes%22%5D%28area.a%29%3B%29%3Bout%20center%20tags%3B",
+      "sha256": "e67aae390a03c60ded14e2dc8885c2e913278c07a8ba54149eb83b6330f58f01"
+    },
+    {
+      "name": "sauna-aichi-10.html",
+      "url": "https://sauna-ikitai.com/aichi?page=10",
+      "sha256": "87347b81a82daf5011b302a8c650fa721011970def5830e547322e4a45f759ed"
+    },
+    {
+      "name": "sauna-aichi-11.html",
+      "url": "https://sauna-ikitai.com/aichi?page=11",
+      "sha256": "aef2389f58167fdc52f127390a8018da01add8da186ca18ee7320322a85ae367"
+    },
+    {
+      "name": "sauna-aichi-12.html",
+      "url": "https://sauna-ikitai.com/aichi?page=12",
+      "sha256": "d2f5a29327a40939370a4a0126f209a68ac29905890aadf9f756ad8d51878f48"
+    },
+    {
+      "name": "sauna-aichi-13.html",
+      "url": "https://sauna-ikitai.com/aichi?page=13",
+      "sha256": "40085debf9d937044459a2bc4a5934c33a2de2bb300ff58fe1573dbd83e52e79"
+    },
+    {
+      "name": "sauna-aichi-14.html",
+      "url": "https://sauna-ikitai.com/aichi?page=14",
+      "sha256": "0f467cd3010c3e198170ea37c8dc120918e88a1682099bb748ad2fffacfbcba3"
+    },
+    {
+      "name": "sauna-aichi-15.html",
+      "url": "https://sauna-ikitai.com/aichi?page=15",
+      "sha256": "139a019e8b0499cfd9b08870ae32bebd8c738ee29c6bd6ee4a495878fb92c60e"
+    },
+    {
+      "name": "sauna-aichi-16.html",
+      "url": "https://sauna-ikitai.com/aichi?page=16",
+      "sha256": "f5ef74df0aa46bd49035579f34abd495cd5a7239187226407c636cef4f6dcc63"
+    },
+    {
+      "name": "sauna-aichi-17.html",
+      "url": "https://sauna-ikitai.com/aichi?page=17",
+      "sha256": "5dba48b7b0d1587ff30d85566d47d3c78bcac18d4bbadf99032a5939e58b6fe0"
+    },
+    {
+      "name": "sauna-aichi-18.html",
+      "url": "https://sauna-ikitai.com/aichi?page=18",
+      "sha256": "1ce55b31f1e5b84db4b311b79861da5343d5742bc75a3e23ea4cc65e57de028e"
+    },
+    {
+      "name": "sauna-aichi-19.html",
+      "url": "https://sauna-ikitai.com/aichi?page=19",
+      "sha256": "1f9601931928369179472bc029e6b35259ab50518c48ad7774c4222dfd8f4199"
+    },
+    {
+      "name": "sauna-aichi-2.html",
+      "url": "https://sauna-ikitai.com/aichi?page=2",
+      "sha256": "17cd49a5ecaa8236612e7d58d946b4c7d34efd6e513f2a894a4c18a671e9e826"
+    },
+    {
+      "name": "sauna-aichi-20.html",
+      "url": "https://sauna-ikitai.com/aichi?page=20",
+      "sha256": "8caa9ccef37f5efd7ef33546e3d123706897fb9500b77d320833dfe7b56133c7"
+    },
+    {
+      "name": "sauna-aichi-21.html",
+      "url": "https://sauna-ikitai.com/aichi?page=21",
+      "sha256": "29aeb00ac8ee7abf3193949fdce9b8c49b050fc7f42cbcdc020891e51bdb593f"
+    },
+    {
+      "name": "sauna-aichi-22.html",
+      "url": "https://sauna-ikitai.com/aichi?page=22",
+      "sha256": "f3e775401beec760ccef399feb7a486e2327ddf72a5899183146122051d8d3fa"
+    },
+    {
+      "name": "sauna-aichi-23.html",
+      "url": "https://sauna-ikitai.com/aichi?page=23",
+      "sha256": "f55ef4c2f6ebd85634a6066c41a834682608bdd8008f46f2d731ff7bd661eb34"
+    },
+    {
+      "name": "sauna-aichi-3.html",
+      "url": "https://sauna-ikitai.com/aichi?page=3",
+      "sha256": "3897a12436f86e0bf009edf5c0f0da749429e6dc078e8d577e53159be08aeee3"
+    },
+    {
+      "name": "sauna-aichi-4.html",
+      "url": "https://sauna-ikitai.com/aichi?page=4",
+      "sha256": "2adbe6df15c02a5493cd6a51d5a2676bb83b88bddf2b87924e4c8bb10ec547c0"
+    },
+    {
+      "name": "sauna-aichi-5.html",
+      "url": "https://sauna-ikitai.com/aichi?page=5",
+      "sha256": "f77d8ccc5934b3166dad137f3b17664126bc068969c14b179b659ab9c5a946ac"
+    },
+    {
+      "name": "sauna-aichi-6.html",
+      "url": "https://sauna-ikitai.com/aichi?page=6",
+      "sha256": "cded4abd712851c151ec7e4a6c605d708e6ed9fdd972b131d25a5401ca06a3eb"
+    },
+    {
+      "name": "sauna-aichi-7.html",
+      "url": "https://sauna-ikitai.com/aichi?page=7",
+      "sha256": "9420de864dc7b674d8e9141e720ced84422e576a91f78d1634c98486fae86b4f"
+    },
+    {
+      "name": "sauna-aichi-8.html",
+      "url": "https://sauna-ikitai.com/aichi?page=8",
+      "sha256": "200d3aab458290b096c564cc8467acd89ce9b39087537afe77ad5c49e196773b"
+    },
+    {
+      "name": "sauna-aichi-9.html",
+      "url": "https://sauna-ikitai.com/aichi?page=9",
+      "sha256": "d1e50057a22b9f0a8379758ec276b5dc6da5db82797a4adcfa02bca44f8ac999"
+    },
+    {
+      "name": "sauna-aichi.html",
+      "url": "https://sauna-ikitai.com/aichi",
+      "sha256": "7020f009538889464d5dbc9e12797a358d87b4319ed6e96fa4424fc9de757b05"
+    },
+    {
+      "name": "sauna-gifu-10.html",
+      "url": "https://sauna-ikitai.com/gifu?page=10",
+      "sha256": "598d07ad8441265003b374f5cb0e0c47031dfab3bc5e7e1665a3699dc3ffa92b"
+    },
+    {
+      "name": "sauna-gifu-11.html",
+      "url": "https://sauna-ikitai.com/gifu?page=11",
+      "sha256": "421fd8c9313c93e3559f321581b57955235ff22d221b6303516692cc59123ea0"
+    },
+    {
+      "name": "sauna-gifu-12.html",
+      "url": "https://sauna-ikitai.com/gifu?page=12",
+      "sha256": "29a7ff5ca4f52ea3d4a38e655d99ad1de5330155e796c13b3900d44c2ac65f9a"
+    },
+    {
+      "name": "sauna-gifu-13.html",
+      "url": "https://sauna-ikitai.com/gifu?page=13",
+      "sha256": "a1d025cbc26ddb055deb40aabbc9e27d1cdcf2f913138011803caefc4741f7c1"
+    },
+    {
+      "name": "sauna-gifu-14.html",
+      "url": "https://sauna-ikitai.com/gifu?page=14",
+      "sha256": "c3f62a97682a4b1d983a8a9765695681bb4c2fcfa2197503b67346adcf54490b"
+    },
+    {
+      "name": "sauna-gifu-15.html",
+      "url": "https://sauna-ikitai.com/gifu?page=15",
+      "sha256": "acd7586edabba1f26c855a26c02e61fa592007d17933d276a9f2fcb914f03a8c"
+    },
+    {
+      "name": "sauna-gifu-2.html",
+      "url": "https://sauna-ikitai.com/gifu?page=2",
+      "sha256": "3bbf2ca57bb18974ef1aaaf21d1990d4ef3b73d61bd1ac4636a2301c36412edd"
+    },
+    {
+      "name": "sauna-gifu-3.html",
+      "url": "https://sauna-ikitai.com/gifu?page=3",
+      "sha256": "1549be855f83720b5c9c5e02a88a979581a37de32e997cc4fb5485fd0b4353a1"
+    },
+    {
+      "name": "sauna-gifu-4.html",
+      "url": "https://sauna-ikitai.com/gifu?page=4",
+      "sha256": "c6071b7cf5c25ebb39ccaeba82b72efe7026c985bf541ec0daf0bc2edf93a334"
+    },
+    {
+      "name": "sauna-gifu-5.html",
+      "url": "https://sauna-ikitai.com/gifu?page=5",
+      "sha256": "ec757f0e288c5474b59a5591be7ea2bf63b196cf4616a9c03ad0a04e48809de9"
+    },
+    {
+      "name": "sauna-gifu-6.html",
+      "url": "https://sauna-ikitai.com/gifu?page=6",
+      "sha256": "21d218f7d1f6528b01b76669aaf9d316b802b411dab5f1206d97684c29325e60"
+    },
+    {
+      "name": "sauna-gifu-7.html",
+      "url": "https://sauna-ikitai.com/gifu?page=7",
+      "sha256": "f20b83f554f6384c1f7db01b064fa29d0f17dc1e1e9c718ec3431acf60739ee2"
+    },
+    {
+      "name": "sauna-gifu-8.html",
+      "url": "https://sauna-ikitai.com/gifu?page=8",
+      "sha256": "6fc55b4987ed7e2f97d9b2d9b8a42a5bf53818e58a7c1d2d4eba0f7a5a1d1b04"
+    },
+    {
+      "name": "sauna-gifu-9.html",
+      "url": "https://sauna-ikitai.com/gifu?page=9",
+      "sha256": "88860db1207ac3738491c66c12e1f8877785e40f14bd951651199809fcfe6dc2"
+    },
+    {
+      "name": "sauna-gifu.html",
+      "url": "https://sauna-ikitai.com/gifu",
+      "sha256": "598cc638290569d25c62c093c2f4375d9d5553528af39ec1a0f0a5016633bf7b"
+    },
+    {
+      "name": "tachiya.html",
+      "url": "https://tachiya.co.jp/store/",
+      "sha256": "4a920679d8a0b7ac64f2dd160792bf8f5295b31012f404bf88e08d875478717d"
+    },
+    {
+      "name": "toyota-licenses.json",
+      "url": "https://data.bodik.jp/api/3/action/package_show?id=232114_permit_food_facility",
+      "sha256": "966124383cd9de62a4fdc1d578c12135b3bc0d0d6f64c923fad1ea84277be5c0"
+    },
+    {
+      "name": "toyota-registry-0.xlsx",
+      "url": "https://data.bodik.jp/dataset/385d18b1-7493-4a82-8b0d-b00d2996da69/resource/91fe2bf3-0a1a-4daa-acf4-5737ca31ab83/download/20260907_0800.xlsx",
+      "sha256": "9bb3e7f010df7bd9c7a9ee1e346b62885693e56f59f5f9ebf3f36d1389141e95"
+    },
+    {
+      "name": "valor-all.json",
+      "url": "https://g9ey9rioe.api.hp.can-ly.com/v2/companies/1245/shops/search?sort=area:asc",
+      "sha256": "ff05be2c83525e0ebca1100c2c0a094ec2721c946710090bc761d3f4dd5b0f59"
+    },
+    {
+      "name": "yamanaka.html",
+      "url": "https://www.super-yamanaka.co.jp/shop/",
+      "sha256": "714fa4982c6fa29a5943a2c373cbdb6e999dfe0e4b1e9404615d0cbeea6330ad"
+    }
+  ]
+}

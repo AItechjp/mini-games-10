@@ -1,0 +1,43 @@
+name: Update Commons public URL status
+on:
+  schedule:
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: commons-onion-update
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - name: Fetch the attributed public dataset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/alecmuffett/real-world-onion-sites/contents/README.md > /tmp/commons-onion-source.json
+          python3 - <<'PY'
+          import base64,json,subprocess
+          from pathlib import Path
+          source=json.loads(Path('/tmp/commons-onion-source.json').read_text())
+          if source.get('encoding')!='base64': raise SystemExit('Unexpected source encoding')
+          Path('/tmp/commons-onion-source.md').write_bytes(base64.b64decode(source['content'],validate=False))
+          subprocess.run(['python3','commons-src/scripts/import-onion-status.py','/tmp/commons-onion-source.md','--sha',source['sha']],check=True)
+          PY
+          cp commons-src/data/onion-snapshot.json commons/onion/snapshot.json
+      - name: Preserve and publish the updated snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add commons-src/data/onion-snapshot.json commons/onion/snapshot.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Refresh Commons public URL status snapshot"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          gh workflow run deploy-pages.yml --ref main

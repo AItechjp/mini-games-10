@@ -1,0 +1,45 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import ts from 'typescript';
+
+// Production is Cloudflare Workers (UTC); client clocks and timezones are unused.
+process.env.TZ='UTC';
+const code=ts.transpileModule(await fs.readFile(new URL('../lib/sauna-status.ts',import.meta.url),'utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText.replace("'opening_hours'",JSON.stringify(import.meta.resolve('opening_hours')));
+const {saunaStatus,saunaStatuses}=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));
+const sample={id:'test',name:'営業時間検証用',prefecture:'岐阜県',lat:35.4,lon:136.7,access:'',hours:'Mo-Su 10:00-26:00'};
+const status=(time,hours=sample.hours,extra={})=>saunaStatus({...sample,hours,...extra},Date.parse(time+'+09:00'));
+assert.equal(status('2026-09-12T09:59:59').state,'closed');
+assert.equal(status('2026-09-12T10:00:00').state,'open');
+assert.equal(status('2026-09-13T01:59:59').state,'open');
+assert.equal(status('2026-09-13T02:00:00').state,'closed');
+assert.equal(status('2026-09-12T13:00:00','10:00-12:00,15:00-23:00').state,'closed');
+assert.equal(status('2026-09-12T15:00:00','10:00-12:00,15:00-23:00').state,'open');
+assert.equal(status('2026-09-15T12:00:00','Mo-Su 09:00-23:00; Tu off').state,'closed');
+assert.equal(status('2026-09-21T12:00:00','09:00-23:00; PH off').state,'closed');
+assert.equal(status('2026-09-22T12:00:00','09:00-23:00; PH off').state,'closed');
+assert.equal(status('2026-05-06T12:00:00','09:00-23:00; PH off').state,'closed');
+assert.equal(status('2027-03-22T12:00:00','09:00-23:00; PH off').state,'closed');
+assert.equal(status('2026-09-22T08:00:00','Mo-Fr 06:00-23:00; PH 10:00-21:00').state,'closed');
+assert.equal(status('2026-09-22T11:00:00','Mo-Fr 06:00-23:00; PH 10:00-21:00').state,'open');
+assert.equal(status('2028-09-22T11:00:00','Mo-Fr,PH 06:00-23:00').state,'unknown');
+assert.equal(status('2026-09-12T12:00:00','09:00-23:00; Sep 12 off').state,'closed');
+assert.equal(status('2026-09-12T12:00:00','24/7').state,'open');
+assert.equal(status('2026-09-12T12:00:00','').state,'unknown');
+assert.equal(status('2026-09-12T12:00:00','by appointment').state,'unknown');
+assert.equal(status('2026-09-12T12:00:00','24/7',{access:'private'}).state,'unknown');
+assert.equal(status('2026-09-12T12:00:00','sunrise-sunset').state,'unknown');
+assert.equal(status('2026-09-13T01:00:00').nextChange,Date.parse('2026-09-13T02:00:00+09:00'));
+const snapshot=JSON.parse(await fs.readFile(new URL('../data/sauna-snapshot.json',import.meta.url),'utf8'));
+const download=JSON.parse(await fs.readFile(new URL('../public/sauna-data.json',import.meta.url),'utf8'));
+assert.deepEqual(download,snapshot);
+assert.equal(snapshot.queryComplete,true);
+assert.equal(snapshot.facilities.length+snapshot.excludedOutsideJapan+snapshot.excludedInactive,snapshot.rawCount);
+assert.equal(new Set(snapshot.facilities.map(f=>f.id)).size,snapshot.facilities.length);
+for(const f of snapshot.facilities){assert.ok(f.sourceUrl.startsWith('https://www.openstreetmap.org/'));assert.ok(f.prefecture);assert.ok(f.lat>=20&&f.lat<=46&&f.lon>=122&&f.lon<=154);}
+const states=saunaStatuses(snapshot.facilities,Date.parse('2026-09-12T14:00:00+09:00'));
+assert.equal(states.length,snapshot.facilities.length);
+assert.ok(states.some(s=>s.state==='open'));
+assert.ok(states.some(s=>s.state==='closed'));
+assert.ok(states.some(s=>s.state==='unknown'));
+const counts=Object.fromEntries(['open','closed','unknown'].map(state=>[state,states.filter(s=>s.state===state).length]));
+console.log('PASS: full dataset, source accounting, Japan boundaries, nightly/holiday/break/unknown hours, exact opening/closing boundaries.',{total:states.length,...counts});
