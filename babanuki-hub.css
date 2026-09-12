@@ -1,0 +1,5 @@
+/* Sixth game: extend the existing classic-game row. */
+.game.babanuki{--color:#f4cf80;background:linear-gradient(150deg,#283329,#121a2e 70%);min-height:325px}
+.game.babanuki:before{display:none}
+@media(min-width:1001px){.game.daifugo,.game.gomoku,.game.babanuki{grid-column:span 2}}
+@media(min-width:701px) and (max-width:1000px){.game:last-child{grid-column:span 3}}
