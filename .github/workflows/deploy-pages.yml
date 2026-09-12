@@ -43,6 +43,7 @@ jobs:
         run: node tests/yobi-past-source.mjs
       - name: Verify arcade game rules and room security
         run: |
+          node tests/paper-arcade.mjs
           node tests/arcade-games.mjs
           node tests/arcade-online.mjs
           node tests/smash-online-state.mjs
