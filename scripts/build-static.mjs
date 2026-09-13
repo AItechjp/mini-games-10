@@ -10,7 +10,7 @@ const output = join(root, 'dist');
 const excludedDirs = new Set(['dist','commons-src','node_modules','supabase','backend','cloudflare','scripts','tests','docs','roadmap','coverage','test-results','test-output','_site','playwright-report']);
 const excludedFiles = new Set(['https-hardening.mjs','supabase-config.example.js','package.json','package-lock.json','pnpm-lock.yaml','yarn.lock','tsconfig.json','jsconfig.json']);
 const publicFiles = new Set(['CNAME','.nojekyll','_headers','_redirects']);
-const extensions = new Set(['.html','.css','.js','.mjs','.json','.txt','.xml','.svg','.png','.jpg','.jpeg','.webp','.avif','.gif','.ico','.woff','.woff2','.ttf','.otf','.mp3','.ogg','.wav','.m4a','.mp4','.webm','.glb','.gltf','.bin','.obj','.mtl','.ktx2','.basis','.wasm','.webmanifest']);
+const extensions = new Set(['.html','.css','.js','.mjs','.json','.txt','.xml','.svg','.png','.jpg','.jpeg','.webp','.avif','.gif','.ico','.woff','.woff2','.ttf','.otf','.mp3','.ogg','.wav','.m4a','.mp4','.webm','.glb','.gltf','.bin','.obj','.mtl','.ktx2','.basis','.wasm','.data','.unityweb','.webmanifest']);
 let count = 0, bytes = 0;
 async function copyPublic(dir) {
   for (const item of await readdir(dir, { withFileTypes: true })) {
