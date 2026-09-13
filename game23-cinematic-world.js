@@ -18,7 +18,7 @@ function cinePlace(geometry,material,x,y,z,sx=1,sy=1,sz=1,ry=0,rx=0,rz=0){
 }
 function cineBox(material,x,y,z,w,h,d,ry=0,rx=0,rz=0){cinePlace(CG.box,material,x,y,z,w,h,d,ry,rx,rz);}
 function cineRod(material,a,b,r=.06){const mid=new THREE.Vector3().addVectors(a,b).multiplyScalar(.5),dir=new THREE.Vector3().subVectors(b,a);cineMtx.position.copy(mid);cineMtx.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),dir.clone().normalize());cineMtx.scale.set(r*2,dir.length(),r*2);cineMtx.updateMatrix();const chunk=Math.floor(mid.z/48),key=CG.cylinder.uuid+material.uuid+chunk;if(!cineBatches.has(key))cineBatches.set(key,{geometry:CG.cylinder,material,matrices:[],chunk});cineBatches.get(key).matrices.push(cineMtx.matrix.clone());}
-function cineFlush(){for(const b of cineBatches.values()){const m=new THREE.InstancedMesh(b.geometry,b.material,b.matrices.length);b.matrices.forEach((mat,i)=>m.setMatrixAt(i,mat));m.instanceMatrix.needsUpdate=true;m.castShadow=b.material!==CM.window&&b.material!==CM.amber;m.receiveShadow=true;m.computeBoundingSphere();m.userData.cineScenery=true;scene.add(m);cineChunks.push(m);}cineBatches.clear();}
+function cineFlush(){for(const b of cineBatches.values()){const m=new THREE.InstancedMesh(b.geometry,b.material,b.matrices.length);b.matrices.forEach((mat,i)=>m.setMatrixAt(i,mat));m.instanceMatrix.needsUpdate=true;m.castShadow=b.material!==CM.window&&b.material!==CM.amber&&!b.material.userData.ashNoShadow;m.receiveShadow=true;m.computeBoundingSphere();m.userData.cineScenery=true;scene.add(m);cineChunks.push(m);}cineBatches.clear();}
 function cineSolid(x,z,w,d){state.walls.push({minX:x-w/2,maxX:x+w/2,minZ:z-d/2,maxZ:z+d/2,mesh:null,cine:true});}
 
 function cineLantern(x,z,y=3.6){
@@ -111,7 +111,13 @@ const cineNoise=`float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*4
 function cineAtmosphere(stage,rand){
   scene.background=new THREE.Color(0x101921);scene.fog=new THREE.FogExp2(stage.key==='castle'?0x242030:stage.key==='mountain'?0x8092a1:0x28343c,stage.key==='mountain'?.0045:.006);
   const skyMat=new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,uniforms:{uTime:{value:0},uTint:{value:new THREE.Color(stage.key==='castle'?0x1d182e:stage.key==='mountain'?0x485f78:0x172b40)}},vertexShader:cineSkyVertex,fragmentShader:`varying vec3 vDirection; uniform float uTime;uniform vec3 uTint;${cineNoise}
-    void main(){vec3 d=normalize(vDirection);float height=max(d.y,0.0);vec2 uv=d.xz/max(.18,d.y+.27);float cloud=fbm(uv*.85+vec2(uTime*.003,0.0));float thin=smoothstep(.35,.72,cloud);vec3 color=mix(uTint*1.9,uTint*.42,pow(height,.5));color=mix(color,vec3(.24,.28,.32),thin*.62);float stars=pow(hash(floor(d.xz*1400.0)),180.0)*smoothstep(.24,.7,d.y)*(1.0-thin);vec3 moonDir=normalize(vec3(-.48,.58,-.65));float moon=dot(d,moonDir);float disc=smoothstep(.9984,.9992,moon);color+=vec3(.88,.85,.71)*(disc*.9+pow(max(moon,0.0),35.0)*.16)+stars*.22;gl_FragColor=vec4(color,1.0);#include <colorspace_fragment>}`.replace(';#include',';\n#include')});
+    void main(){vec3 d=normalize(vDirection);float height=max(d.y,0.0);vec2 uv=d.xz/max(.18,d.y+.27);
+      float cloud=fbm(uv*.85+vec2(uTime*.003,0.0));float thin=smoothstep(.32,.72,cloud);
+      vec3 color=mix(uTint*1.25,uTint*.20,pow(height,.5));color=mix(color,vec3(.035,.046,.061),thin*.56);
+      float stars=pow(hash(floor(d.xz*1400.0)),180.0)*smoothstep(.24,.7,d.y)*(1.0-thin);
+      vec3 moonDir=normalize(vec3(-.36,.28,-.90));float moon=dot(d,moonDir);float disc=smoothstep(.9977,.9985,moon);
+      color+=vec3(.72,.80,.86)*(disc*(1.0-thin*.52)+pow(max(moon,0.0),44.0)*.095)+stars*.15;
+      gl_FragColor=vec4(color,1.0);#include <colorspace_fragment>}`.replace(';#include',';\n#include')});
   cineSky=new THREE.Mesh(new THREE.SphereGeometry(360,32,16),skyMat);cineSky.frustumCulled=false;scene.add(cineSky);
   // A restart uses the same sky lighting. Keep two reflection probes on the GPU.
   cineEnvironment=cineEnvironmentCache.get(stage.key);

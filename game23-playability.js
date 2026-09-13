@@ -1,7 +1,7 @@
 /* Small, always-on bars stay above the rendered heads. Only the enemy under the
    crosshair gets HP text; authoritative HP still drives both solo and co-op. */
 const lifeCanvas=document.createElement('canvas');lifeCanvas.className='game23-enemy-health';lifeCanvas.setAttribute('aria-label','敵の残りライフ');frame.append(lifeCanvas);
-const lifeContext=lifeCanvas.getContext('2d'),lifePoint=new THREE.Vector3(),lifeMatrix=new THREE.Matrix4();
+const lifeContext=lifeCanvas.getContext('2d'),lifePoint=new THREE.Vector3(),lifeCoverPoint=new THREE.Vector3(),lifeMatrix=new THREE.Matrix4();
 const lifeStats={visible:0,full:0,damaged:0,bosses:0,labels:0};
 let lifeWidth=0,lifeHeight=0,lifeScale=0;
 function lifeHeadRadius(e){
@@ -12,8 +12,18 @@ function lifeHeadRadius(e){
   if(!head.geometry.boundingSphere)head.geometry.computeBoundingSphere();
   const sphere=head.geometry.boundingSphere;
   lifePoint.copy(sphere.center).applyMatrix4(lifeMatrix).applyMatrix4(camera.matrixWorldInverse);
-  // Include the bosses' horns and crowns above the head mesh.
-  return sphere.radius*lifeMatrix.getMaxScaleOnAxis()+(e.boss?currentStage().bossScale*.7:0);
+  // Include helmets and cowls as well as the bosses' horns and crowns.
+  let radius=sphere.radius*lifeMatrix.getMaxScaleOnAxis()+(e.boss?currentStage().bossScale*.7:0);
+  if(!e.boss)for(const key of ['helmet','cowl']){
+    const cover=horde[key];if(!cover?.visible)continue;
+    cover.getMatrixAt(e.index,lifeMatrix);lifeMatrix.premultiply(cover.matrixWorld);
+    const scale=lifeMatrix.getMaxScaleOnAxis();if(scale<.01)continue;
+    if(!cover.geometry.boundingSphere)cover.geometry.computeBoundingSphere();
+    const bounds=cover.geometry.boundingSphere;
+    lifeCoverPoint.copy(bounds.center).applyMatrix4(lifeMatrix).applyMatrix4(camera.matrixWorldInverse);
+    radius=Math.max(radius,lifeCoverPoint.distanceTo(lifePoint)+bounds.radius*scale);
+  }
+  return radius;
 }
 function drawEnemyLives(){
   const w=frame.clientWidth,h=frame.clientHeight,dpr=Math.min(devicePixelRatio||1,2);
@@ -59,4 +69,4 @@ document.querySelector('.game23-page-nav a').addEventListener('click',()=>{if(st
 opsChooseWeapon.addEventListener('change',()=>{if(!state.running)cineMakeWeapon();});
 // Reading below the game must release held input and pause an unattended battle.
 const gameVisibility=new IntersectionObserver(entries=>{if(entries[0].intersectionRatio<.12&&!uxActive()&&state.running&&!ops.paused){opsClearInputs();opsSetPause(true);document.exitPointerLock?.();}},{threshold:[0,.12]});gameVisibility.observe(frame);
-Object.defineProperty(window,'blacksitePlayability',{configurable:true,get:()=>({version:'health-visibility-1',scrollable:!uxActive(),enemyLife:{...lifeStats},weapon:{id:cineGun?.userData.weaponId,templates:armoryTemplates.size,meshes:cineGun?.children.filter(o=>o.isMesh).length||0,magazineOffset:cineGun?.userData.parts?.magazine?.position.y||0,cycling:!!cineGun?.userData.parts?.bolt&&cineGun.userData.parts.bolt.position.z>0}})});
+Object.defineProperty(window,'blacksitePlayability',{configurable:true,get:()=>({version:'health-visibility-2',scrollable:!uxActive(),enemyLife:{...lifeStats},weapon:{id:cineGun?.userData.weaponId,templates:armoryTemplates.size,meshes:cineGun?.children.filter(o=>o.isMesh).length||0,magazineOffset:cineGun?.userData.parts?.magazine?.position.y||0,cycling:!!cineGun?.userData.parts?.bolt&&cineGun.userData.parts.bolt.position.z>0}})});

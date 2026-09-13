@@ -1,5 +1,5 @@
 /* BLACK SITE / cinematic renderer. Original models and materials, shared by all six areas. */
-const CINE_VERSION='ashen-pilgrimage-1';
+const CINE_VERSION='moonlit-cloisters-2';
 const cineMobile=matchMedia('(pointer:coarse)').matches||navigator.maxTouchPoints>0;
 const cineAssets=new URL('assets/game23/cinematic/',document.baseURI).href;
 const cineTextures={},cineShared=new Set(),cineTransient=new Set();
