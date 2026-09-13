@@ -3,7 +3,7 @@ import './quick-hop.mjs';
 
 const root = (process.env.MEGA_BASE_URL || 'http://127.0.0.1:4173/').replace(/\/?$/, '/');
 const full = process.env.MEGA_FULL !== '0';
-const browser = await chromium.launch({headless:true});
+const browser = await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:{})});
 const page = await browser.newPage({viewport:{width:390,height:844}, isMobile:true, hasTouch:true});
 const errors = [];
 page.on('pageerror', err => errors.push(`pageerror: ${err.message}`));
@@ -80,8 +80,17 @@ if(JSON.stringify(threeD)!==JSON.stringify(['zombie','smash','aether'])) throw n
 await page.locator('.category-nav a[href="games-2d.html"]').click();
 await page.waitForSelector('article[data-game]');
 const listed = await page.locator('article[data-game]').evaluateAll(nodes => nodes.map(n => n.dataset.game));
-const requiredGames=['daifugo','babanuki','quick-hop','startrail'];
+const requiredGames=['quick-hop','startrail'];
 if(!requiredGames.every(id=>listed.includes(id)) || new Set(listed).size!==listed.length) throw new Error('The game collection must preserve existing games and include Quick Hop without duplicate entries');
+if(listed.includes('daifugo')||listed.includes('babanuki')) throw new Error('Trump games belong under the Trump category');
+await page.locator('a[href="games-trump.html"]').click();
+const trumpGames=await page.locator('article[data-game]').evaluateAll(nodes=>nodes.map(n=>n.dataset.game));
+if(JSON.stringify(trumpGames)!==JSON.stringify(['daifugo','babanuki','memory','speed'])) throw new Error('Trump must contain 04, 06, Memory and Speed exactly once');
+for(const id of ['babanuki','memory','speed']){
+  if(await page.locator(`[data-game="${id}"] a[href="trump-unity/?game=${id}"]`).count()!==1) throw new Error(`Missing Unity entry for ${id}`);
+}
+if(await page.locator('[data-game="daifugo"] .number').textContent()!=='04'||await page.locator('[data-game="babanuki"] .number').textContent()!=='06') throw new Error('Existing Trump game numbers must be retained');
+await page.locator('.back-categories[href="games-2d.html"]').click();
 if(await page.locator('a[href="mega-arcade.html"], a[href="archive.html"], a[href="arcade100/"], a[href="yobi-ronbun.html"]').count()) throw new Error('An unlisted collection is linked from the game collection');
 // Gomoku now belongs to the Board Games branch. Follow the actual navigation
 // and verify all seven board games, then retain the legacy CPU gameplay check.
@@ -121,7 +130,8 @@ await page.addInitScript(() => {
   let seed = 123;
   Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
 });
-await page.locator('[data-game="babanuki"] .play').click();
+// The catalog now launches Unity Old Maid. Keep checking the legacy URL too.
+await page.goto(root+'babanuki.html',{waitUntil:'domcontentloaded'});
 await page.waitForSelector('#draw-cards button:not(:disabled)');
 await page.locator('#draw-cards button:not(:disabled)').first().click();
 await page.waitForFunction(() => Number(document.querySelector('#move-count').textContent) >= 1);
