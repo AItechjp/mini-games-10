@@ -28,7 +28,7 @@ function accessText(facility:SaunaFacility) {
   return known[facility.access]??(facility.access?'利用条件を確認':'');
 }
 function Facility({facility,status,now}:{facility:SaunaFacility;status:SaunaStatus;now:number}) {
-  const map=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(facility.name==='名称未登録'?facility.lat+','+facility.lon:facility.name+' '+(facility.address||facility.prefecture))}`;
+  const map=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(facility.name==='名称未登録'||!facility.address?facility.lat+','+facility.lon:facility.name+' '+(facility.address||facility.prefecture))}`;
   const phoneValue=facility.phone.split(/[;,]/)[0].replace(/[^+\d]/g,'');
   const phone=/^\+?\d{6,15}$/.test(phoneValue)?phoneValue:'';
   const website=safeUrl(facility.website);
@@ -37,7 +37,7 @@ function Facility({facility,status,now}:{facility:SaunaFacility;status:SaunaStat
   const sameDay=next&&fullFormat.format(next)===fullFormat.format(now);
   return <article className={s.facility} data-facility-id={facility.id}>
     <div className={s.facilityName}><span className={s.pref}>{facility.prefecture||'都道府県未確定'}{facility.kind&&` · ${facility.kind}`}</span><h3>{facility.name}</h3><p>{facility.address||`所在地の詳細は地図で確認（${facility.lat.toFixed(4)}, ${facility.lon.toFixed(4)}）`}</p>{access&&<span className={s.restriction}>{access}</span>}</div>
-    <div className={s.facilityHours}><span className={`${s.badge} ${s[status.state]}`}>{status.state==='open'?<Check size={15}/>:<Clock size={15}/>} {labels[status.state]}</span><p>{hoursText(facility.hours)}</p>{next&&<span className={s.next}>{sameDay?'':dateFormat.format(next)+' '}{clockFormat.format(next)}{status.state==='open'?'まで（登録時間）':'から（登録時間）'}</span>}{status.reason&&<span className={s.next}>{status.reason}</span>}</div>
+    <div className={s.facilityHours}><span className={`${s.badge} ${s[status.state]}`}>{status.state==='open'?<Check size={15}/>:<Clock size={15}/>} {facility.permanentlyClosed?'閉店済み':labels[status.state]}</span><p>{facility.permanentlyClosed?'営業を終了しています':hoursText(facility.hours)}</p>{next&&<span className={s.next}>{sameDay?'':dateFormat.format(next)+' '}{clockFormat.format(next)}{status.state==='open'?'まで（登録時間）':'から（登録時間）'}</span>}{status.reason&&<span className={s.next}>{status.reason}</span>}</div>
     <div className={s.facilityActions}><a href={map} target="_blank" rel="noopener noreferrer" className={s.mapLink}><MapPin size={16}/>地図</a>{website&&<a href={website} target="_blank" rel="noopener noreferrer">施設サイト<ArrowUpRight size={15}/></a>}{phone&&<a href={`tel:${phone}`} aria-label={`${facility.name}に電話`}><Phone size={15}/>電話</a>}<details className={s.details}><summary>情報の出典</summary><p>{facility.hoursScope==='sauna'?'サウナの登録営業時間です。':'施設の登録営業時間です。サウナ室の稼働時間・最終受付は異なる場合があります。'}</p>{facility.note&&<p>{facility.note}</p>}{facility.checkedOn&&<p>登録情報の確認日：{facility.checkedOn}</p>}{facility.officialSourceUrl&&<><p>公式情報の確認日：{facility.officialCheckedOn}</p><a href={safeUrl(facility.officialSourceUrl)} target="_blank" rel="noopener noreferrer">公式の営業時間・営業状況<ArrowUpRight size={14}/></a></>}<a href={facility.sourceUrl} target="_blank" rel="noopener noreferrer">OpenStreetMapの登録情報<ArrowUpRight size={14}/></a></details></div>
   </article>;
 }
@@ -90,7 +90,7 @@ export default function Directory({snapshot,initialNow,initialStatuses}:{snapsho
   },[]);
   const evaluated=useMemo(()=>{
     const byId=new Map(statuses.map(status=>[status.id,status]));
-    return snapshot.facilities.map(facility=>({facility,status:stale?{id:facility.id,state:'unknown' as const,reason:'最新の営業判定を確認できません'}:byId.get(facility.id)||{id:facility.id,state:'unknown' as const}}));
+    return snapshot.facilities.map(facility=>({facility,status:facility.permanentlyClosed?{id:facility.id,state:'closed' as const,reason:'公式発表により閉店済み'}:stale?{id:facility.id,state:'unknown' as const,reason:'最新の営業判定を確認できません'}:byId.get(facility.id)||{id:facility.id,state:'unknown' as const}}));
   },[snapshot,statuses,stale]);
   const matches=useMemo(()=>{
     const terms=normalize(query).split(' ').filter(Boolean);
