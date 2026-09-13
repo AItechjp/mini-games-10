@@ -73,6 +73,8 @@ try{
   const ids=await p.evaluate(()=>window.__blacksiteQA.arrange());
   await p.waitForFunction(()=>window.blacksitePlayability.enemyLife.full===3&&window.blacksitePlayability.enemyLife.damaged===1,null,{timeout:10000});
   checkpoint('full and damaged enemy life bars');
+  report.graphics=await p.evaluate(()=>window.blacksiteGraphics);
+  report.art=await p.locator('#game23-frame').getAttribute('data-art');
   await p.screenshot({path:output+'/mobile-inline-hp.png'});
   const ammo=await p.evaluate(()=>window.blacksiteSystems.players[0].ammo);
   await p.locator('#touch-fire').tap();await p.waitForFunction(a=>window.blacksiteSystems.players[0].ammo<a,ammo);
