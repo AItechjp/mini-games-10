@@ -71,3 +71,4 @@
   .outbreak-page .game23-frame .boss-banner{width:48%;max-width:48%;padding:7px}
   .outbreak-page .game23-frame .boss-banner em{display:none}
 }
+.outbreak-page .outbreak-panel .game23-frame #touch-fire{background:radial-gradient(circle at 36% 27%,#775337,#38281ee8 62%,#1d1714f0)!important;border:2px solid #d9b36e!important;box-shadow:inset 0 0 0 4px #15161488,inset 0 1px 18px #e6b45a33,0 4px 20px #0007!important;color:#fff1d1!important}

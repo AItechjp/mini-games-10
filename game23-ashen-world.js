@@ -1,6 +1,6 @@
 /* Moonlit cloisters and the remnants of an extinguished order. All art is
    original geometry; scenery shares instanced batches and three local lights. */
-const ASH_VERSION='moonlit-cloisters-1';
+const ASH_VERSION='moonlit-cloisters-2';
 const ashReducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
 const ASH_PALETTES=[
   {sky:0x182c42,fog:0x243544,moon:0xb7d5f1,cloth:0x786660},
@@ -197,6 +197,7 @@ updateHordeVisuals=function(now){
   }
   for(const key of ['helmet','cowl','v5Armor'])horde[key].instanceMatrix.needsUpdate=true;
 };
+let ashScenery=[],ashCullAt=0;
 const ashEnvironmentBase=buildEnvironment;
 buildEnvironment=function(){
   const arena=ashEnvironmentBase(),palette=ASH_PALETTES[state.area%6],act=Math.floor(state.area/6);
@@ -209,9 +210,24 @@ buildEnvironment=function(){
   if(cineWeather)cineWeather.material.uniforms.uSnow.value=currentStage().key==='castle'?2:1;
   AM.banner.color.setHex(act===2?0x58342f:state.area%6===1?0x68737f:0x743d34);
   renderer.toneMappingExposure=1.08;
+  // Cache static bounds now, before enemies, pickups and mission markers spawn.
+  // Small objects beyond the fog do not need a color or shadow draw call.
+  ashScenery=[];ashCullAt=-Infinity;
+  for(const mesh of scene.children)if(mesh.isMesh&&mesh!==cineSky&&mesh.visible){
+    mesh.updateWorldMatrix(true,false);
+    if(mesh.isInstancedMesh&&!mesh.boundingSphere)mesh.computeBoundingSphere();
+    if(!mesh.isInstancedMesh&&!mesh.geometry.boundingSphere)mesh.geometry.computeBoundingSphere();
+    const sphere=(mesh.isInstancedMesh?mesh.boundingSphere:mesh.geometry.boundingSphere).clone().applyMatrix4(mesh.matrixWorld);
+    sphere.radius+=1;ashScenery.push({mesh,sphere});
+  }
   return arena;
 };
 function ashAnimate(now){
+  if(now-ashCullAt>250){
+    ashCullAt=now;
+    const range=cineQuality==='high'?260:cineQuality==='low'?125:cineMobile?150:195;
+    for(const {mesh,sphere} of ashScenery)mesh.visible=Math.hypot(local.x-sphere.center.x,local.z-sphere.center.z)<range+sphere.radius;
+  }
   const t=now*.001;AM.flame.uniforms.uTime.value=t;ashWind.value=ashReducedMotion.matches?0:t;
   for(let i=0;i<cineLampLights.length;i++){
     const light=cineLampLights[i];if(!light.intensity)continue;
