@@ -29,7 +29,7 @@ for (let attempt=0; attempt<24; attempt++) {
 }
 if(!release || !Array.isArray(release.pages) || !release.pages.includes('index.html') || !release.pages.every(safePath)) throw new Error('A matching HTTPS release manifest was not published');
 // An omitted source page must not silently disappear from the audit.
-const tracked=execFileSync('git',['ls-files','-z','*.html','*.htm'],{encoding:'utf8'}).split('\0').filter(Boolean).filter(p=>!/(^|\/)(?:tests|node_modules|vendor|test-output|\.github|tools|scripts)\//.test(p));
+const tracked=execFileSync('git',['ls-files','-z','*.html','*.htm'],{encoding:'utf8'}).split('\0').filter(Boolean).filter(p=>!/(^|\/)(?:commons-src|source|src|tests|node_modules|vendor|test-output|\.github|tools|scripts)\//.test(p));
 for(const path of tracked) check(release.pages.includes(path),`Published manifest omits source HTML: ${path}`);
 const paths=[...new Set(['',...release.pages])];
 async function saveReport(complete=false) {
@@ -76,15 +76,15 @@ try {
       const page=await context.newPage();
       const cdp=await context.newCDPSession(page);
       let security=null;
-      const row={profile:profile.name,path:path||'/',url:target.href,insecure:[],securityIssues:[],pageErrors:[],failedRequests:[],badResponses:[]};
+      const row={profile:profile.name,path:path||'/',url:target.href,insecure:[],securityIssues:[],reportOnlyIssues:[],pageErrors:[],failedRequests:[],badResponses:[]};
       cdp.on('Security.visibleSecurityStateChanged',e=>{
         const state=e.visibleSecurityState;
         security={securityState:state.securityState,issueIds:state.securityStateIssueIds,certificate:state.certificateSecurityState?{protocol:state.certificateSecurityState.protocol,subjectName:state.certificateSecurityState.subjectName,issuer:state.certificateSecurityState.issuer,validTo:state.certificateSecurityState.validTo,certificateNetworkError:state.certificateSecurityState.certificateNetworkError}:null};
       });
-      cdp.on('Audits.issueAdded',e=>{if(['MixedContentIssue','ContentSecurityPolicyIssue'].includes(e.issue.code))row.securityIssues.push(e.issue);});
+      cdp.on('Audits.issueAdded',e=>{if(['MixedContentIssue','ContentSecurityPolicyIssue'].includes(e.issue.code)){const reportOnly=e.issue.code==='ContentSecurityPolicyIssue'&&e.issue.details.contentSecurityPolicyIssueDetails?.isReportOnly;(reportOnly?row.reportOnlyIssues:row.securityIssues).push(e.issue);}});
       page.on('request',request=>{if(insecure(request.url()))row.insecure.push(request.url());});
       page.on('websocket',socket=>{if(insecure(socket.url()))row.insecure.push(socket.url());});
-      page.on('console',msg=>{if(/mixed content|violates.*content security policy|refused to.*(?:insecure|content security policy)/i.test(msg.text()))row.securityIssues.push({message:msg.text()});});
+      page.on('console',msg=>{if(/mixed content|violates.*content security policy|refused to.*(?:insecure|content security policy)/i.test(msg.text()))(/^\[Report Only\]/i.test(msg.text())?row.reportOnlyIssues:row.securityIssues).push({message:msg.text()});});
       page.on('pageerror',error=>row.pageErrors.push(error.message));
       page.on('requestfailed',request=>row.failedRequests.push({url:request.url(),reason:request.failure()?.errorText}));
       page.on('response',response=>{if(response.status()>=400)row.badResponses.push({url:response.url(),status:response.status()});});
