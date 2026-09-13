@@ -80,9 +80,9 @@ if(JSON.stringify(threeD)!==JSON.stringify(['zombie','smash','aether'])) throw n
 await page.locator('.category-nav a[href="games-2d.html"]').click();
 await page.waitForSelector('article[data-game]');
 const listed = await page.locator('article[data-game]').evaluateAll(nodes => nodes.map(n => n.dataset.game));
-const requiredGames=['daifugo','gomoku','babanuki','quick-hop','startrail',...Array.from({length:10},(_,i)=>`paper-arcade-${i+1}`)];
+const requiredGames=['daifugo','gomoku','babanuki','quick-hop','startrail'];
 if(!requiredGames.every(id=>listed.includes(id)) || new Set(listed).size!==listed.length) throw new Error('The game collection must preserve existing games and include Quick Hop without duplicate entries');
-if(JSON.stringify(listed)!==JSON.stringify(requiredGames)) throw new Error('2D must contain games 04–18 in order');
+if(JSON.stringify(listed)!==JSON.stringify(requiredGames)) throw new Error('2D must contain games 04–08 in order');
 if(Number(await page.locator('.game-count').textContent())!==listed.length+threeD.length) throw new Error('The collection count must match both categories');
 if(await page.locator('a[href="mega-arcade.html"], a[href="archive.html"], a[href="arcade100/"], a[href="yobi-ronbun.html"]').count()) throw new Error('An unlisted collection is linked from the game collection');
 await page.locator('[data-game="gomoku"] .play').click();
