@@ -1,4 +1,4 @@
-import {prefectures,layouts,walks,todayJST,addDays,nightsBetween,validateHotel,validateRental,hotelSearches,rentalSearches} from './search-core.mjs';
+import {prefectures,layouts,walks,ages,ageConditionLabel,todayJST,addDays,nightsBetween,validateHotel,validateRental,hotelSearches,rentalSearches} from './search-core.mjs';
 import {createLiveResults} from './live-results.mjs';
 const $=s=>document.querySelector(s);
 const hotel=document.body.dataset.kind==='hotel';
@@ -15,7 +15,7 @@ function renderProviders(items){
 }
 function saveQuery(values){const q=new URLSearchParams();for(const [k,v] of Object.entries(values)){if(Array.isArray(v)){for(const x of v)q.append(k,x);}else if(v)q.set(k,v);}try{history.replaceState(null,'',location.pathname+'?'+q)}catch{}}
 function hotelValues(){const area={...initialArea,...live.getArea($('#prefecture').value)};initialArea={};return {...area,prefecture:$('#prefecture').value,destination:'',checkin:$('#checkin').value,checkout:$('#checkout').value,adults:Number($('#adults').value),rooms:Number($('#rooms').value),sort:$('#sort').value};}
-function rentalValues(){return {prefecture:$('#prefecture').value,station:$('#station').value,walk:$('#walk').value,layouts:[...form.querySelectorAll('[name=layouts]:checked')].map(x=>x.value)};}
+function rentalValues(){return {prefecture:$('#prefecture').value,station:$('#station').value,walk:$('#walk').value,age:$('#age').value,layouts:[...form.querySelectorAll('[name=layouts]:checked')].map(x=>x.value)};}
 function submit(move=false){
   const values=hotel?hotelValues():rentalValues();
   const message=hotel?validateHotel(values):validateRental(values,stations);
@@ -28,7 +28,7 @@ function submit(move=false){
   }else{
     const s=stations.find(x=>x.id===values.station);
     $('#summary-title').textContent=(values.prefecture==='gifu'?'岐阜県':'愛知県')+' / '+s.name+'駅';
-    $('#summary-text').textContent=(values.walk?'徒歩'+values.walk+'分以内':'徒歩指定なし')+' · '+(values.layouts.length?values.layouts.join(' / '):'間取り指定なし');
+    $('#summary-text').textContent=(values.walk?'徒歩'+values.walk+'分以内':'徒歩指定なし')+' · '+(values.layouts.length?values.layouts.join(' / '):'間取り指定なし')+' · '+ageConditionLabel(values.age);
   }
   $('#summary').hidden=false;saveQuery(values);
   live.search(values,providers[hotel?1:0].url);
@@ -50,7 +50,7 @@ if(hotel){
   if(!submit()){$('#providers').innerHTML='<div class="empty"><h3>日程を確認してください</h3><p>宿泊日と地域を選ぶと、条件を引き継げる検索サイトを表示します。</p></div>';$('#result-count').textContent='検索条件の確認待ち';}
 }else{
   $('#layout-options').innerHTML=layouts.map((s,i)=>`<label class="layout-choice"><input type="checkbox" name="layouts" value="${s}" ${params.getAll('layouts').includes(s)?'checked':''}><span>${s}</span></label>`).join('');
-  setValue('prefecture',params.get('prefecture')==='aichi'?'aichi':'gifu');setValue('walk',walks.includes(params.get('walk'))?params.get('walk'):'');
+  setValue('prefecture',params.get('prefecture')==='aichi'?'aichi':'gifu');setValue('walk',walks.includes(params.get('walk'))?params.get('walk'):'');setValue('age',ages.includes(params.get('age'))?params.get('age'):'');
   function fillStations(preferred){
     const q=$('#station-query').value.normalize('NFKC').trim().toLocaleLowerCase('ja').replace(/駅$/,'');
     const options=stations.filter(s=>s.prefecture===$('#prefecture').value && [s.name,...Object.keys(s.lines)].join(' ').normalize('NFKC').toLocaleLowerCase('ja').includes(q));
@@ -60,9 +60,9 @@ if(hotel){
     $('#station-state').textContent=options.length?'選べる駅 '+options.length+'駅':'一致する駅がありません。駅名の一部や路線名で検索できます。';
     $('#station').disabled=!options.length;
   }
-  $('#prefecture').addEventListener('change',()=>{live.clear();setValue('station-query','');fillStations();$('#summary').hidden=true;$('#providers').innerHTML='<div class="empty"><h3>駅を選んでください</h3><p>選んだ県の駅に切り替えました。駅・徒歩・間取りを指定して検索できます。</p></div>';$('#result-count').textContent='駅の選択待ち'});
+  $('#prefecture').addEventListener('change',()=>{live.clear();setValue('station-query','');fillStations();$('#summary').hidden=true;$('#providers').innerHTML='<div class="empty"><h3>駅を選んでください</h3><p>選んだ県の駅に切り替えました。駅・徒歩・間取り・築年数を指定して検索できます。</p></div>';$('#result-count').textContent='駅の選択待ち'});
   $('#station-query').addEventListener('input',()=>fillStations());
-  $('#reset').addEventListener('click',()=>{setValue('prefecture','gifu');setValue('station-query','');setValue('walk','');form.querySelectorAll('[name=layouts]').forEach(x=>x.checked=false);const s=stations.find(x=>x.prefecture==='gifu'&&x.name==='新鵜沼');fillStations(s?.id);submit(false)});
+  $('#reset').addEventListener('click',()=>{setValue('prefecture','gifu');setValue('station-query','');setValue('walk','');setValue('age','');form.querySelectorAll('[name=layouts]').forEach(x=>x.checked=false);const s=stations.find(x=>x.prefecture==='gifu'&&x.name==='新鵜沼');fillStations(s?.id);submit(false)});
   async function loadStations(){
     $('#submit').disabled=true;$('#station').disabled=true;
     try{

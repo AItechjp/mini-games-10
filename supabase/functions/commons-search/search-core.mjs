@@ -3,6 +3,8 @@ export const romanized = 'Hokkaido Aomori Iwate Miyagi Akita Yamagata Fukushima 
 // Official prefecture values from https://travel.rakuten.co.jp/ (2026-09-12).
 export const rakutenPrefectures = {"北海道":"hokkaido","青森県":"aomori","岩手県":"iwate","宮城県":"miyagi","秋田県":"akita","山形県":"yamagata","福島県":"hukushima","茨城県":"ibaragi","栃木県":"tochigi","群馬県":"gunma","埼玉県":"saitama","千葉県":"tiba","東京都":"tokyo","神奈川県":"kanagawa","静岡県":"shizuoka","新潟県":"niigata","山梨県":"yamanasi","長野県":"nagano","富山県":"toyama","石川県":"ishikawa","福井県":"hukui","岐阜県":"gihu","愛知県":"aichi","三重県":"mie","滋賀県":"shiga","大阪府":"osaka","京都府":"kyoto","兵庫県":"hyogo","奈良県":"nara","和歌山県":"wakayama","鳥取県":"tottori","島根県":"simane","岡山県":"okayama","広島県":"hiroshima","山口県":"yamaguchi","徳島県":"tokushima","香川県":"kagawa","愛媛県":"ehime","高知県":"kouchi","福岡県":"hukuoka","佐賀県":"saga","長崎県":"nagasaki","熊本県":"kumamoto","大分県":"ooita","宮崎県":"miyazaki","鹿児島県":"kagoshima","沖縄県":"okinawa"};
 export const layouts = ['ワンルーム','1K','1DK','1LDK','2K','2DK','2LDK','3K','3DK','3LDK','4K','4DK','4LDK','5K以上'];
+export const ages = ['0','1','3','5','7','10','15','20','25','30'];
+export const ageConditionLabel = age => age === '0' ? '新築のみ' : age ? '築'+age+'年以内' : '築年数指定なし';
 export const walks = ['1','5','7','10','15','20'];
 export const todayJST = (now = new Date()) => new Date(now.getTime()+9*3600000).toISOString().slice(0,10);
 export function addDays(date, count) { return new Date(Date.parse(date+'T00:00:00Z') + count*86400000).toISOString().slice(0,10); }
@@ -36,6 +38,7 @@ export function hotelSearches(s) {
 export function validateRental(s, stations) {
   if(!['gifu','aichi'].includes(s.prefecture)) return '岐阜県または愛知県を選んでください。';
   if(!stations.some(x=>x.id===s.station&&x.prefecture===s.prefecture)) return '一覧から駅を選んでください。';
+  if(s.age && !ages.includes(s.age)) return '築年数を選び直してください。';
   if(s.walk && !walks.includes(s.walk)) return '徒歩分数を選び直してください。';
   if(!Array.isArray(s.layouts)||s.layouts.some(x=>!layouts.includes(x))) return '間取りを選び直してください。';
   return '';
@@ -44,15 +47,15 @@ export function rentalSearches(s, stations) {
   const station=stations.find(x=>x.id===s.station&&x.prefecture===s.prefecture);
   if(!station) throw new Error('駅を選んでください。');
   const ek=Object.values(station.lines)[0];
-  const params=new URLSearchParams({rn:ek.slice(0,-station.code.length),et:s.walk||'9999999'});
+  const params=new URLSearchParams({rn:ek.slice(0,-station.code.length),et:s.walk||'9999999',cn:s.age||'9999999'});
   for(const layout of s.layouts) params.append('md',String(layouts.indexOf(layout)+1).padStart(2,'0'));
   const pref=s.prefecture==='gifu'?'岐阜県':'愛知県';
-  const query = [pref,station.name+'駅','賃貸',s.walk?'徒歩'+s.walk+'分以内':'',...s.layouts].filter(Boolean).join(' ');
+  const query = [pref,station.name+'駅','賃貸',s.age?ageConditionLabel(s.age):'',s.walk?'徒歩'+s.walk+'分以内':'',...s.layouts].filter(Boolean).join(' ');
   const keyword=(domain)=>link('https://www.google.com/search',{q:'site:'+domain+' '+query});
   return [
-    {id:'suumo',name:'SUUMO',mark:'S',type:'絞り込み条件を引き継ぐ',note:'駅・徒歩分数・間取りを指定してSUUMOの募集物件を表示。複数の間取りは「いずれかに一致」で検索します。',capabilities:['駅',s.walk?'徒歩'+s.walk+'分以内':'徒歩指定なし',s.layouts.length?s.layouts.join(' / '):'間取り指定なし'],url:'https://suumo.jp/chintai/'+s.prefecture+'/ek_'+station.code+'/?'+params},
-    {id:'homes',name:"LIFULL HOME’S",mark:'H',type:'掲載ページをキーワード検索',note:'Googleで掲載ページを探します。徒歩・間取りの厳密な絞り込みと現在の募集状況は、掲載サイトで確認してください。',capabilities:['駅名・条件を検索語に使用'],url:keyword('homes.co.jp/chintai/')},
-    {id:'athome',name:'アットホーム',mark:'at',type:'掲載ページをキーワード検索',note:'Googleで掲載ページを探します。徒歩・間取りの厳密な絞り込みは、掲載サイトで指定してください。',capabilities:['駅名・条件を検索語に使用'],url:keyword('athome.co.jp/chintai/')},
+    {id:'suumo',name:'SUUMO',mark:'S',type:'絞り込み条件を引き継ぐ',note:'駅・徒歩分数・間取り・築年数を指定してSUUMOの募集物件を表示。複数の間取りは「いずれかに一致」で検索します。',capabilities:['駅',ageConditionLabel(s.age),s.walk?'徒歩'+s.walk+'分以内':'徒歩指定なし',s.layouts.length?s.layouts.join(' / '):'間取り指定なし'],url:'https://suumo.jp/chintai/'+s.prefecture+'/ek_'+station.code+'/?'+params},
+    {id:'homes',name:"LIFULL HOME’S",mark:'H',type:'掲載ページをキーワード検索',note:'Googleで掲載ページを探します。徒歩・間取り・築年数の厳密な絞り込みと現在の募集状況は、掲載サイトで確認してください。',capabilities:['駅名・条件を検索語に使用'],url:keyword('homes.co.jp/chintai/')},
+    {id:'athome',name:'アットホーム',mark:'at',type:'掲載ページをキーワード検索',note:'Googleで掲載ページを探します。徒歩・間取り・築年数の厳密な絞り込みは、掲載サイトで指定してください。',capabilities:['駅名・条件を検索語に使用'],url:keyword('athome.co.jp/chintai/')},
     {id:'nifty',name:'ニフティ不動産',mark:'n',type:'掲載ページをキーワード検索',note:'Googleで賃貸の掲載ページを探します。検索結果には募集が終了した物件が含まれる場合があります。',capabilities:['駅名・条件を検索語に使用'],url:keyword('myhome.nifty.com/rent/')},
     {id:'chintai',name:'CHINTAI',mark:'C',type:'掲載ページをキーワード検索',note:'Googleで掲載ページを探します。指定条件に一致するか、掲載サイトで確認してください。',capabilities:['駅名・条件を検索語に使用'],url:keyword('chintai.net/')},
     {id:'apaman',name:'アパマンショップ',mark:'A',type:'掲載ページをキーワード検索',note:'Googleで掲載ページを探します。店舗独自の募集も、掲載元で確認してください。',capabilities:['駅名・条件を検索語に使用'],url:keyword('apamanshop.com/')},

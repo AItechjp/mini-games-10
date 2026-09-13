@@ -41,7 +41,7 @@ export default {async fetch(request:Request){
   const url=new URL(request.url),kind=url.searchParams.get('kind');
   if(!['hotel','rental'].includes(kind||''))return json({error:'検索種別を選んでください。'},origin,400);
   const page=Number(url.searchParams.get('page')||1);if(!Number.isInteger(page)||page<1||page>1000)return json({error:'ページ番号が不正です。'},origin,400);
-  const query:any=kind==='hotel'?{prefecture:url.searchParams.get('prefecture')||'',area:url.searchParams.get('area')||'',subarea:url.searchParams.get('subarea')||'',destination:'',checkin:url.searchParams.get('checkin')||'',checkout:url.searchParams.get('checkout')||'',adults:Number(url.searchParams.get('adults')),rooms:Number(url.searchParams.get('rooms')),sort:url.searchParams.get('sort')||'price'}:{prefecture:url.searchParams.get('prefecture')||'',station:url.searchParams.get('station')||'',walk:url.searchParams.get('walk')||'',layouts:url.searchParams.getAll('layouts')};
+  const query:any=kind==='hotel'?{prefecture:url.searchParams.get('prefecture')||'',area:url.searchParams.get('area')||'',subarea:url.searchParams.get('subarea')||'',destination:'',checkin:url.searchParams.get('checkin')||'',checkout:url.searchParams.get('checkout')||'',adults:Number(url.searchParams.get('adults')),rooms:Number(url.searchParams.get('rooms')),sort:url.searchParams.get('sort')||'price'}:{prefecture:url.searchParams.get('prefecture')||'',station:url.searchParams.get('station')||'',walk:url.searchParams.get('walk')||'',age:url.searchParams.get('age')||'',layouts:url.searchParams.getAll('layouts')};
   const invalid=kind==='hotel'?validateHotel(query):validateRental(query,stations);if(invalid)return json({error:invalid},origin,400);
   const upstream=new URL(kind==='hotel'?hotelSearches(query)[1].url:rentalSearches(query,stations)[0].url);
   upstream.searchParams.set(kind==='hotel'?'f_page':'page',String(page));
@@ -62,7 +62,7 @@ export default {async fetch(request:Request){
         const parsed=areas.length?{items:[],omitted:0,areas}:kind==='hotel'?parseHotels(html):parseRentals(html,query,station);
         const next=page+1;
         const hasMore=kind==='hotel'?new RegExp('f_page='+next+'(?:&|["\\s])').test(html):new RegExp('(?:[?&]|&amp;)page='+next+'(?:&|["\\s])').test(html);
-        const data={...parsed,kind,page,nextPage:hasMore?next:null,source:kind==='hotel'?'楽天トラベル':'SUUMO',sourceUrl:upstream.href,fetchedAt:new Date().toISOString(),scope:kind==='hotel'?'指定した県の楽天トラベル掲載結果。読み込んだ施設内の比較です。':'SUUMO掲載のうち、選択した駅・徒歩・間取りに合う取得結果です。',coverage:'partial',query};
+        const data={...parsed,kind,page,nextPage:hasMore?next:null,source:kind==='hotel'?'楽天トラベル':'SUUMO',sourceUrl:upstream.href,fetchedAt:new Date().toISOString(),scope:kind==='hotel'?'指定した県の楽天トラベル掲載結果。読み込んだ施設内の比較です。':'SUUMO掲載のうち、選択した駅・徒歩・間取り・築年数に合う取得結果です。',coverage:'partial',query};
         if(cache.size>=80)cache.delete(cache.keys().next().value!);cache.set(key,{at:Date.now(),data});return data;
       }finally{inFlight--;}
     })());

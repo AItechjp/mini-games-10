@@ -16,12 +16,22 @@ export function parseHotelAreas(html,prefectureCode){
   }
   return [...new Map(areas.map(x=>[x.area+'/'+x.subarea,x])).values()];
 }
+export function parseRentalAge(value='') {
+  const text=clean(value).normalize('NFKC');
+  if(/(?:^|\s)新築(?:$|\s)/.test(text))return {ageYears:0,ageLabel:'新築',isNew:true};
+  if(/築\s*1\s*年未満/.test(text))return {ageYears:0,ageLabel:'築1年未満',isNew:false};
+  const match=text.match(/築\s*(\d+)\s*年(?:\s*(\d+)\s*(?:か|ヶ|ケ)?月)?/);
+  if(match)return {ageYears:Number(match[1])+Number(match[2]||0)/12,ageLabel:'築'+Number(match[1])+'年'+(match[2]?Number(match[2])+'か月':''),isNew:false};
+  return {ageYears:null,ageLabel:'築年数不明',isNew:false};
+}
 export function parseRentals(html,query,station){
   if(!html.includes('cassetteitem')&&!/該当する物件がありません|条件に一致する物件がありません/.test(clean(html)))throw new Error('掲載元の結果を読み取れませんでした。掲載元で確認してください。');
   const rows=[];let omitted=0;
   for(const block of blocks(html,/<div\s+class="cassetteitem"[^>]*>/g)){
     const name=field(block.html,'cassetteitem_content-title');const address=field(block.html,'cassetteitem_detail-col1');
     if(!address.startsWith(query.prefecture==='gifu'?'岐阜県':'愛知県'))continue;
+    const age=parseRentalAge(field(block.html,'cassetteitem_detail-col3','li'));
+    if(query.age && (query.age==='0'?!age.isNew:age.ageYears==null||age.ageYears>Number(query.age))){omitted++;continue;}
     const transports=[...block.html.matchAll(/<div\b[^>]*class="[^"]*cassetteitem_detail-text[^"]*"[^>]*>([\s\S]*?)<\/div>/g)].map(m=>clean(m[1]));
     const route=transports.find(t=>t.normalize('NFKC').match(new RegExp('(?:/|\\s)'+escapeRE(station.name.normalize('NFKC'))+'駅\\s*(?:歩|徒歩)\\d+分')));
     const walk=route?Number(route.match(/(?:歩|徒歩)(\d+)分/)?.[1]):null;
@@ -34,7 +44,7 @@ export function parseRentals(html,query,station){
       const price=amount(field(row,'cassetteitem_other-emphasis'));
       if(!id||!href||price==null||!name){omitted++;continue;}
       const management=field(row,'cassetteitem_price--administration');
-      rows.push({id,name,address,price,management:amount(management)??(['-','なし'].includes(management)?0:null),layout,area:field(row,'cassetteitem_menseki').replace(/m\s*2/,'㎡'),walk,transport:route||transports[0]||'',url:new URL(clean(href),'https://suumo.jp').href});
+      rows.push({id,name,address,...age,price,management:amount(management)??(['-','なし'].includes(management)?0:null),layout,area:field(row,'cassetteitem_menseki').replace(/m\s*2/,'㎡'),walk,transport:route||transports[0]||'',url:new URL(clean(href),'https://suumo.jp').href});
     }
   }
   return {items:[...new Map(rows.map(x=>[x.id,x])).values()],omitted};
