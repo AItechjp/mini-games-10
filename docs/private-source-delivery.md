@@ -41,4 +41,8 @@ The repository is still public. GitHub's browser sign-in returned an unexpected
 browser error, and fresh verification remained signed out. The Cloudflare
 dashboard stopped at human verification; the existing Actions Cloudflare token
 also failed validation. No DNS, repository visibility or audience changes have
-been made. Finish authenticated cutover before claiming this task complete.
+been made. The compiled public distribution has been deployed through the existing
+GitHub Pages host. Its root and Commons return HTTP 200, removed development-source
+URLs return 404, the compiled zombie module matches the local verified artifact,
+and a live Shogi player move plus CPU reply were confirmed. Finish authenticated
+cutover before claiming repository privacy or this task complete.

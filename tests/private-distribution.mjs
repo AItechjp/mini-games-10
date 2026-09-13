@@ -13,6 +13,8 @@ async function walk(dir) {
   }
 }
 await walk(dist);
+const release=JSON.parse(await readFile(join(dist,'https-release.json'),'utf8'));
+assert.ok(!release.pages.some(p=>p.startsWith('dist/')),'A rebuild must not treat the previous distribution as source');
 for(const file of files) {
   const name=relative(dist,file);
   assert.ok(!/(^|\/)(?:\.git|\.env[^/]*|commons-src|src|source|scripts|tests|supabase|backend|node_modules)(\/|$)/.test(name),`Private file in distribution: ${name}`);

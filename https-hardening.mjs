@@ -4,8 +4,8 @@ import path from 'node:path';
 // Run against the publish directory (or the working tree for existing callers).
 const root = path.resolve(process.argv[2] || process.cwd());
 const VERSION = '20260911-https-v2';
-const skipDirs = new Set(['.git', '.github', 'node_modules', 'tests', 'supabase', 'tools', 'scripts', 'test-output', 'test-results', 'playwright-report', '_site', 'vendor', 'commons-src']);
-const skipFiles = new Set(['https-hardening.mjs']);
+const skipDirs = new Set(['.git', '.github', 'node_modules', 'tests', 'supabase', 'tools', 'scripts', 'test-output', 'test-results', 'playwright-report', '_site', 'vendor', 'commons-src', 'dist', 'src', 'source', 'backend', 'cloudflare', 'docs', 'roadmap']);
+const skipFiles = new Set(['https-hardening.mjs', 'shogi-adapter.mjs']);
 const webExts = new Set(['.html', '.htm', '.css', '.js', '.mjs']);
 const namespaces = [
   'http://www.w3.org/2000/svg', 'http://www.w3.org/1999/xhtml',
