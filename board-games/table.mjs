@@ -1,4 +1,5 @@
-// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (c) 2026 AItechjp. All rights reserved.
+// Third-party libraries retain their own licenses.
 import * as E from './engines.mjs';
 import * as R from './royal.mjs';
 import {makeSfen} from './vendor/rules.mjs';

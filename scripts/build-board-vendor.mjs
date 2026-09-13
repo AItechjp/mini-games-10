@@ -1,5 +1,7 @@
 // Reproduce the checked-in board game browser libraries from pinned npm packages.
-// npm install --no-save --no-package-lock chess.js@1.4.0 shogiops@0.21.0 three@0.180.0 esbuild@0.25.10
+// npm ci && npm run build:board
 import {build} from 'esbuild';
+import {copyFile} from 'node:fs/promises';
 await build({entryPoints:['scripts/board-rules-entry.mjs'],bundle:true,format:'esm',minify:true,outfile:'board-games/vendor/rules.mjs',legalComments:'eof'});
 await build({entryPoints:['scripts/board-three-entry.mjs'],bundle:true,format:'esm',minify:true,outfile:'board-games/vendor/three.mjs',legalComments:'eof'});
+await copyFile('node_modules/tsshogi/LICENSE','board-games/vendor/tsshogi-LICENSE.txt');

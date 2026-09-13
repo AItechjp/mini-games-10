@@ -1,4 +1,5 @@
-// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (c) 2026 AItechjp. All rights reserved.
+// Third-party libraries retain their own licenses.
 // Rules for the AITECH board table. All state transitions are independent of UI.
 export const other = p => 3 - p;
 export const clone = s => structuredClone(s);

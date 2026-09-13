@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
-import * as E from '../board-games/engines.mjs';
-import * as R from '../board-games/royal.mjs';
-import {parseSfen,makeSfen} from '../board-games/vendor/rules.mjs';
-import '../gomoku-engine.js';
+const root = new URL(process.env.BOARD_TEST_DIST === '1' ? '../dist/' : '../', import.meta.url);
+const E = await import(new URL('board-games/engines.mjs', root));
+const R = await import(new URL('board-games/royal.mjs', root));
+const {parseSfen,makeSfen} = await import(new URL('board-games/vendor/rules.mjs', root));
+await import(new URL('gomoku-engine.js', root));
 let s=E.createOthello();assert.deepEqual(E.othelloMoves(s),[19,26,37,44]);assert.equal(E.othelloMove(s,0),false);assert.equal(E.othelloMove(s,19),true);assert.equal(s.board.filter(x=>x===1).length,4);assert.equal(s.turn,2);
 let turns=0;while(s.winner===null&&turns++<65)assert.ok(E.othelloMove(s,E.othelloAI(s)));assert.notEqual(s.winner,null);assert.equal(E.othelloMove(s,0),false);
 // Go: capture, self-capture, positional superko, scoring and agreements.

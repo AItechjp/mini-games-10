@@ -31,7 +31,7 @@ const PARTS = [
   'game23-systems.js?v=ashen-1',
   'game23-playability.js?v=health-visibility-2'
 ];
-const THREE_IMPORT = "import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';";
+const THREE_IMPORT = /(import\s*\*\s*as\s+[\w$]+\s*from\s*)['"]https:\/\/cdn\.jsdelivr\.net\/npm\/three@0\.180\.0\/build\/three\.module\.js['"]\s*;/;
 const THREE_SOURCES = [
   'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js',
   'https://unpkg.com/three@0.180.0/build/three.module.js'
@@ -71,8 +71,8 @@ try {
   if (!threeSource) throw lastThreeError || new Error('Three.js could not be loaded');
 
   let source = partTexts.join('\n');
-  if (!source.includes(THREE_IMPORT)) throw new Error('Three.js import marker not found');
-  source = source.replace(THREE_IMPORT, `import * as THREE from '${threeSource}';`);
+  if (!THREE_IMPORT.test(source)) throw new Error('Three.js import marker not found');
+  source = source.replace(THREE_IMPORT, (_, prefix) => `${prefix}'${threeSource}';`);
   const gameUrl = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
   try { await import(gameUrl); }
   finally { URL.revokeObjectURL(gameUrl); }

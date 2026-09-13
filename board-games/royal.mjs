@@ -1,4 +1,5 @@
-// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (c) 2026 AItechjp. All rights reserved.
+// Third-party libraries retain their own licenses.
 import {Chess,parseSfen,initialSfen,makeSfen,parseSquareName,makeSquareName,makeUsi} from './vendor/rules.mjs';
 export const SHOGI_LABEL={pawn:'歩',lance:'香',knight:'桂',silver:'銀',gold:'金',bishop:'角',rook:'飛',king:'王',tokin:'と',promotedpawn:'と',promotedlance:'杏',promotedknight:'圭',promotedsilver:'全',horse:'馬',dragon:'龍'};
 export const chessSquare=i=>String.fromCharCode(97+i%8)+(8-(i/8|0));

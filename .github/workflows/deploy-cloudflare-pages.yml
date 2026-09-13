@@ -23,6 +23,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Setup Node and pinned build dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install build dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
       - name: Validate JavaScript
         shell: bash
         run: |
@@ -42,7 +51,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          node scripts/build-static.mjs
+          npm run build
+          node tests/private-distribution.mjs
           test -f dist/index.html
           test -f dist/mega-arcade.html
           test -f dist/mega-final.js

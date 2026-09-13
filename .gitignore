@@ -1,0 +1,12 @@
+node_modules/
+dist/
+test-output/
+test-results/
+playwright-report/
+coverage/
+touge/vendor/
+https-release.json
+.env
+.env.*
+!.env.example
+__pycache__/
