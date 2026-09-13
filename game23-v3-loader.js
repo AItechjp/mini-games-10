@@ -28,7 +28,7 @@ const PARTS = [
   'game23-armory.js?v=armory-1',
   'game23-cinematic-render.js?v=armory-1',
   'game23-systems.js?v=ashen-1',
-  'game23-playability.js?v=armory-1'
+  'game23-playability.js?v=health-visibility-1'
 ];
 const THREE_IMPORT = "import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';";
 const THREE_SOURCES = [
