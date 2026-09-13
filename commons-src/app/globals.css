@@ -122,3 +122,6 @@ textarea.canvas-type-input{min-height:140px;font-size:1.125rem!important;line-he
 @media(max-width:550px){.topbar:has(.commons-top-tools){padding-inline:20px}.commons-top-tools{flex-basis:100%;flex-direction:row-reverse}.topbar .commons-top-tools .search-box{width:auto;flex:1}}
 
 .commons-loading{min-height:55vh;display:grid;place-content:center;gap:1rem;padding:2rem;text-align:center;font-size:1rem}
+
+.commons-group{scroll-margin-top:90px;margin:28px 0 38px}.commons-group>h2{display:flex;gap:14px;align-items:center;font-size:21px;margin-bottom:16px}.commons-group>h2 span{font-size:13px;color:#64748b;font-weight:400}.commons-group-jumps{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}.commons-group-jumps a{display:flex;gap:14px;padding:11px 15px;border:1px solid #d6dce5;border-radius:12px;background:#fff}.commons-group-jumps span{color:#64748b}.commons-side-group summary{cursor:pointer;padding:12px 7px;font-weight:600;font-size:13px}.commons-side-group summary span{float:right;color:#64748b}.commons-nav-number{min-width:20px;color:#64748b;font-variant-numeric:tabular-nums}.commons-side-group ul{padding-left:9px;border-left:1px solid #d6dce5}
+.commons-side-group .nav-button .commons-nav-number{flex:0 0 22px;width:22px;min-width:22px;margin-right:0}.commons-side-group .nav-button span:last-child{flex:1;min-width:0}

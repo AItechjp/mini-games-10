@@ -8,6 +8,8 @@ import {Empty,EmptyDescription,EmptyHeader,EmptyTitle} from '@/components/ui/emp
 import {checkedOn,holidaySource,holidays,holidayYears,ramenShops,regions} from '@/lib/ramen-data';
 import {addDays,clockText,hoursText,japanDate,shopStatus,type RamenShop,type ShopStatus} from '@/lib/ramen-hours';
 import s from './ramen.module.css';
+import CoverageExplorer from '@/app/ui/coverage-explorer';
+import {matchesSearch,municipalities} from '@/lib/municipalities';
 
 const labels={open:'営業中（時間上）','last-order':'ラストオーダー終了',closed:'営業時間外',unknown:'要確認'};
 const weekdays=['日','月','火','水','木','金','土'];
@@ -79,7 +81,7 @@ export default function RamenDirectory({initialNow}:{initialNow:number}) {
   },[]);
   const minute=Math.floor(now/60000);
   const entries=useMemo(()=>ramenShops.map(shop=>({shop,status:shopStatus(shop,minute*60000,holidays,holidayYears)})),[minute]);
-  const selected=entries.filter(({shop})=>(area==='all'||shop.region===area||shop.city===area)&&normalize([shop.name,shop.city,shop.address,shop.kind].join(' ')).includes(normalize(query)));
+  const selected=entries.filter(({shop})=>(area==='all'||shop.region===area||shop.city===area)&&matchesSearch([shop.name,shop.city,shop.address,shop.kind].join(' '),query));
   const openCount=selected.filter(({status})=>status.state==='open').length;
   const visible=selected.filter(({status})=>!openOnly||status.state==='open').sort((a,b)=>{
     const order={open:0,'last-order':1,closed:2,unknown:3};
@@ -102,7 +104,7 @@ export default function RamenDirectory({initialNow}:{initialNow:number}) {
         <div className={s.livebar}><div className={s.liveClock}><Clock size={19}/><span>{ready?dateFormatter.format(now):'日本時間を確認中'}</span><time dateTime={new Date(now).toISOString()}>{timeFormatter.format(now)}</time><span className={s.jst}>日本時間</span></div><button className={s.refresh} onClick={()=>void syncClock()} disabled={syncing}><RefreshCw size={16} className={syncing?s.spin:''}/><span>{syncing?'確認中':'時刻を更新'}</span></button></div>
         <div className={s.controls}>
           <div className={s.search}><Search size={19}/><input aria-label="店名・市町村を検索" placeholder="店名・市町村で検索" value={query} onChange={e=>setQuery(e.target.value)}/></div>
-          <Select value={area} onValueChange={setArea}><SelectTrigger className={s.select} aria-label="エリアを選択"><MapPin size={17}/><SelectValue/></SelectTrigger><SelectContent position="popper"><SelectItem value="all">岐阜県すべて</SelectItem>{regions.map(region=><SelectItem key={region} value={region}>{region}エリア</SelectItem>)}{[...new Set(ramenShops.map(shop=>shop.city))].sort((a,b)=>a.localeCompare(b,'ja')).map(city=><SelectItem key={city} value={city}>{city}</SelectItem>)}</SelectContent></Select>
+          <Select value={area} onValueChange={setArea}><SelectTrigger className={s.select} aria-label="エリアを選択"><MapPin size={17}/><SelectValue/></SelectTrigger><SelectContent position="popper"><SelectItem value="all">岐阜県すべて</SelectItem>{regions.map(region=><SelectItem key={region} value={region}>{region}エリア</SelectItem>)}{[...new Set([...municipalities['岐阜県'],...ramenShops.map(shop=>shop.city)])].sort((a,b)=>a.localeCompare(b,'ja')).map(city=><SelectItem key={city} value={city}>{city}</SelectItem>)}</SelectContent></Select>
           <label className={s.toggle}><Switch checked={openOnly} onCheckedChange={setOpenOnly} aria-label="営業中のみ表示"/>営業中のみ</label>
         </div>
         <div className={s.explanation}><Info size={17}/><p><strong>通常営業時間からの目安です。</strong>臨時休業・売り切れ・当日の変更は反映しきれません。来店前に公式情報や電話でご確認ください。</p></div>
@@ -112,6 +114,7 @@ export default function RamenDirectory({initialNow}:{initialNow:number}) {
 
       <div className={s.resultHeader}><h2>{openOnly?'営業中の店舗':'掲載店舗'}<span>{visible.length}<small>件</small></span></h2><p role="status">{area==='all'?'岐阜県':area} · {openCount}件が営業時間内</p></div>
       {(query||area!=='all')&&<div className={s.filterSummary}><span>{area!=='all'?area+' / ':''}{query?`「${query}」`:''}</span><button onClick={clear}>絞り込みを解除</button></div>}
+      {openOnly&&selected.some(({status})=>status.state==='unknown')&&<button className={s.mapButton} onClick={()=>setOpenOnly(false)}>営業時間が要確認の店舗も表示（{selected.filter(({status})=>status.state==='unknown').length}件）</button>}
       <section id="ramen-results" className={s.grid} aria-label="ラーメン店一覧" tabIndex={-1}>
         {visible.map(({shop,status})=><ShopCard key={shop.id} shop={shop} status={status} today={today}/>)}
       </section>
@@ -125,6 +128,6 @@ export default function RamenDirectory({initialNow}:{initialNow:number}) {
         <p className={s.credit}>写真：<a href="https://commons.wikimedia.org/wiki/File:Ramen_(3233422299).jpg" target="_blank" rel="noopener noreferrer">David Pursehouse / Wikimedia Commons</a> · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a>（トリミング・イメージ写真）</p>
         <a className={s.footerBack} href="/commons/"><ArrowLeft size={16}/>COMMONSのサイト一覧へ</a>
       </footer>
-    </main>
+    <CoverageExplorer entries={ramenShops.map(shop=>({...shop,prefecture:'岐阜県'}))} term="ラーメン" prefs={['岐阜県']}/></main>
   </div>;
 }

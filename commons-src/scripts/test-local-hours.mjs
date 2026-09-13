@@ -3,12 +3,13 @@ import {createRequire} from 'node:module';
 import {mkdtemp,realpath,rm,writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 
 const temp=await mkdtemp(join(tmpdir(),'commons-hours-'));
 try {
  const require=createRequire(await realpath(new URL('../node_modules/vite/package.json',import.meta.url)));
- await require('esbuild').build({entryPoints:[new URL('../lib/local-hours.ts',import.meta.url).pathname],outfile:join(temp,'hours.cjs'),bundle:true,platform:'node',format:'cjs'});
+ await require('esbuild').build({entryPoints:[fileURLToPath(new URL('../lib/local-hours.ts',import.meta.url))],outfile:join(temp,'hours.cjs'),bundle:true,platform:'node',format:'cjs'});
  const cases=[
   ['before opening','09:00-21:00','2026-09-12T08:59:59+09:00','closed'],
   ['opening boundary','09:00-21:00','2026-09-12T09:00:00+09:00','open'],
@@ -36,3 +37,4 @@ try {
  }
  console.log(`${cases.length} schedule cases passed in four device time zones.`);
 } finally {await rm(temp,{recursive:true,force:true})}
+

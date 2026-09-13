@@ -2,7 +2,7 @@
 import {useEffect,useMemo,useState} from 'react';
 import {ArrowRight,ArrowUpRight,Grid2X2,Search,Star,Clock,GraduationCap,Camera,CloudSun,Bitcoin,Globe2,Soup,Flame} from 'lucide-react';
 import {findTool} from '@/lib/catalog';
-import {sites,listedToolIds,type SiteEntry} from '@/lib/site-catalog';
+import {sites,siteGroups,listedToolIds,type SiteEntry} from '@/lib/site-catalog';
 import {Sidebar,SidebarContent,SidebarFooter,SidebarHeader,SidebarMenu,SidebarMenuItem,SidebarMenuButton,SidebarProvider,SidebarTrigger} from '@/components/ui/sidebar';
 import {Tabs,TabsList,TabsTrigger} from '@/components/ui/tabs';
 import {Brand,ToolIcon,Blank,api,engineIcons,dateTime} from './common';
@@ -18,8 +18,8 @@ function Side() {
     <SidebarHeader className="side-brand"><Brand/></SidebarHeader>
     <SidebarContent className="px-3">
       <SidebarMenu><SidebarMenuItem><SidebarMenuButton className="nav-button" isActive asChild><a href="/commons/"><Grid2X2/><span>サイト一覧</span><span className="nav-count">{sites.length}</span></a></SidebarMenuButton></SidebarMenuItem></SidebarMenu>
-      <div className="side-caption">掲載サイト</div>
-      <SidebarMenu>{sites.map(site=><SidebarMenuItem key={site.id}><SidebarMenuButton className="nav-button" asChild><a href={site.href}><SiteSymbol site={site}/><span>{site.name}</span></a></SidebarMenuButton></SidebarMenuItem>)}</SidebarMenu>
+      <div className="side-caption">カテゴリから探す</div>
+      {siteGroups.map(group=><details className="commons-side-group" key={group.id} open><summary>{group.name}<span>{group.sites.length}</span></summary><SidebarMenu>{group.sites.map(site=><SidebarMenuItem key={site.id}><SidebarMenuButton className="nav-button" asChild><a href={site.href}><span className="commons-nav-number">{sites.indexOf(site)+1}</span><span>{site.name}</span></a></SidebarMenuButton></SidebarMenuItem>)}</SidebarMenu></details>)}
     </SidebarContent>
     <SidebarFooter className="side-foot"><nav className="commons-parent-links" aria-label="AITECHのサイト"><a href="/">AITECHトップ</a><a href="/games.html">ゲーム集</a></nav></SidebarFooter>
   </Sidebar>;
@@ -40,7 +40,7 @@ export default function Hub() {
     api('/api/rooms?listed=1').then(data=>setRecent(data.rooms)).catch(e=>setError(e.message)).finally(()=>setLoaded(true));
   },[]);
   const search=query.trim().toLocaleLowerCase('ja');
-  const filtered=useMemo(()=>sites.filter(site=>(tab!=='favorites'||favorites.includes(site.id))&&[site.name,site.description,site.label,site.keywords].join(' ').toLocaleLowerCase('ja').includes(search)),[search,tab,favorites]);
+  const filtered=useMemo(()=>sites.filter(site=>(tab!=='favorites'||favorites.includes(site.id))&&[String(sites.indexOf(site)+1),siteGroups.find(g=>g.sites.includes(site))?.name,site.name,site.description,site.label,site.keywords].join(' ').toLocaleLowerCase('ja').includes(search)),[search,tab,favorites]);
   const visibleRooms=useMemo(()=>recent.filter(room=>listedToolIds.has(room.tool)&&[room.title,findTool(room.tool)?.name].join(' ').toLocaleLowerCase('ja').includes(search)),[recent,search]);
   function toggle(id:string) {
     const next=favorites.includes(id)?favorites.filter(value=>value!==id):[...favorites,id];
@@ -58,14 +58,15 @@ export default function Hub() {
       </header>
       <main className="content" id="site-content" tabIndex={-1}>
         <div className="intro row spread"><div><h1>コモンズ</h1><p>学習・共同作業・日常のツール。</p></div><div className="count-badge"><strong>{sites.length}</strong>サイト</div></div>
+        {tab!=='rooms'&&<nav className="commons-group-jumps" aria-label="カテゴリへ移動">{siteGroups.map(g=><a key={g.id} href={'#group-'+g.id}>{g.name}<span>{g.sites.filter(s=>filtered.includes(s)).length}</span></a>)}</nav>}
         <Tabs value={tab} onValueChange={setTab}><div className="catalog-header"><TabsList><TabsTrigger value="all">すべて</TabsTrigger><TabsTrigger value="favorites"><Star size={14}/>お気に入り</TabsTrigger><TabsTrigger value="rooms"><Clock size={14}/>最近のルーム</TabsTrigger></TabsList><span className="sort-label" role="status">{tab==='rooms'?visibleRooms.length+'ルーム':filtered.length+'サイト'}</span></div></Tabs>
         {tab==='rooms'?<>
           {error&&<p role="alert" className="notice">{error}</p>}
           {!loaded?<p className="muted">ルームを読み込み中…</p>:visibleRooms.length?<div className="room-list">{visibleRooms.map(room=><a key={room.id} className="recent-room" href={'/commons/r/?id='+encodeURIComponent(room.id)}><ToolIcon tool={findTool(room.tool)!}/><div className="grow"><h3>{room.title}</h3><p>{findTool(room.tool)!.name}</p></div><time className="room-time">{dateTime(room.updated)}</time><ArrowUpRight size={18} className="muted"/></a>)}</div>:<Blank title={search?'ルームが見つかりません':'ここから作業を再開できます'} text={search?'検索の言葉を変えてみてください。':'掲載ツールで作成・参加したルームが表示されます。'}/>}
-        </>:filtered.length?<div className="site-grid">{filtered.map(site=><article className="tool-card site-card" key={site.id} style={entryTone(site)}>
+        </>:filtered.length?<div>{siteGroups.map(group=>{const entries=group.sites.filter(site=>filtered.includes(site));return entries.length?<section className="commons-group" id={'group-'+group.id} key={group.id} aria-labelledby={'heading-'+group.id}><h2 id={'heading-'+group.id}>{group.name}<span>{entries.length}サイト</span></h2><div className="site-grid">{entries.map(site=><article className="tool-card site-card" key={site.id} style={entryTone(site)}>
           <button className={'favorite '+(favorites.includes(site.id)?'on':'')} aria-label={site.name+'をお気に入り'+(favorites.includes(site.id)?'から削除':'に追加')} aria-pressed={favorites.includes(site.id)} onClick={()=>toggle(site.id)}><Star/></button>
           <a href={site.href}><div className="site-card-heading"><span className="tool-icon"><SiteSymbol site={site}/></span><span className="site-number">{String(sites.indexOf(site)+1).padStart(2,'0')}</span></div><h2>{site.name}</h2><p>{site.description}</p><div className="site-card-footer"><span>{site.label}</span><span className="site-open">{site.actionLabel??(site.toolId?'ルームを作る':'学習を始める')}<ArrowRight size={16}/></span></div></a>
-        </article>)}</div>:<Blank title={tab==='favorites'&&!search?'お気に入りのサイトを登録':'サイトが見つかりません'} text={tab==='favorites'&&!search?'カードの星を押すと、この端末のお気に入りに追加できます。':'検索の言葉を変えるか、「すべて」を選んでください。'}/>}
+        </article>)}</div></section>:null})}</div>:<Blank title={tab==='favorites'&&!search?'お気に入りのサイトを登録':'サイトが見つかりません'} text={tab==='favorites'&&!search?'カードの星を押すと、この端末のお気に入りに追加できます。':'検索の言葉を変えるか、「すべて」を選んでください。'}/>}
         <p className="catalog-note">COMMONS · {sites.length}つのサイト</p>
       </main>
     </div>

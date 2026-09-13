@@ -4,3 +4,5 @@
 @media(prefers-reduced-motion:reduce){.opening-spin{animation:none}}
 
 .opening-days.opening-months{grid-template-columns:1fr repeat(5,minmax(72px,1fr))}.opening-months button{min-width:72px}
+
+.opening-coverage-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:6px;margin:16px 0}.opening-coverage-grid button{display:flex;justify-content:space-between;gap:8px;padding:10px;border:1px solid #d6ded8;border-radius:6px;background:white;cursor:pointer;color:inherit}.opening-coverage-grid button[aria-pressed=true]{background:#e8f3eb;border-color:#357453}.opening-coverage-grid span{color:#68766d}

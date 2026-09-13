@@ -83,6 +83,13 @@ export const sites:SiteEntry[] = [
   },
 ];
 
+export const siteGroups = [
+  {id:'web',name:'ウェブアプリ',numbers:[1,3,14]},
+  {id:'study',name:'勉強',numbers:[2]},
+  {id:'realtime',name:'リアルタイム検索',numbers:[4,5,6,7,8,9,10,11,12,13,15]},
+  {id:'security',name:'セキュリティ',numbers:[16,17]},
+].map(group=>({...group,sites:group.numbers.map(number=>sites[number-1])}));
+
 export const listedToolIds = new Set(sites.flatMap(site=>site.toolId?[site.toolId]:[]));
 export const studyPages = [
   {name:'短答ノート',description:'過去問演習、自動採点、間違えた問題の復習。',href:'/yobi-quiz.html'},

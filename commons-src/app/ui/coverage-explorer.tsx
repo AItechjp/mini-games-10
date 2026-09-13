@@ -1,0 +1,11 @@
+import {useMemo,useState} from 'react';
+import {municipalities,municipalitySources,municipalityOf} from '@/lib/municipalities';
+import './coverage-explorer.css';
+type Entry={prefecture:string;city:string;address?:string};
+export default function CoverageExplorer({entries,term,prefs=['岐阜県','愛知県']}:{entries:Entry[];term:string;prefs?:string[]}){
+ const [pref,setPref]=useState(prefs[0]),[city,setCity]=useState(''),[gaps,setGaps]=useState(false);
+ const counts=useMemo(()=>{const map=new Map<string,number>();for(const e of entries){const key=e.prefecture+municipalityOf(e.prefecture,e.city,e.address);map.set(key,(map.get(key)??0)+1)}return map},[entries]);
+ const towns=municipalities[pref]??[],missing=towns.filter(c=>!counts.get(pref+c));
+ const query=[pref,city,term].filter(Boolean).join(' ');
+ return <details className="coverage-explorer"><summary>市町村別の収録状況・追加検索</summary><div className="coverage-body"><p>件数はこのサイトに収録した店舗です。0件は「店舗なし」ではなく「未収録」です。店舗数の総数が不明なため、網羅率は算出していません。</p><div className="coverage-controls"><label>県<select value={pref} onChange={e=>{setPref(e.target.value);setCity('')}}>{prefs.map(p=><option key={p}>{p}</option>)}</select></label><label>追加検索する市町村<select value={city} onChange={e=>setCity(e.target.value)}><option value="">県全体</option>{towns.map(c=><option key={c}>{c}</option>)}</select></label><label><input type="checkbox" checked={gaps} onChange={e=>setGaps(e.target.checked)}/>未収録の地域だけ</label></div><p>{pref}：{towns.length-missing.length} / {towns.length} 市町村に収録あり · 未収録 {missing.length} 市町村</p><div className="coverage-towns">{(gaps?missing:towns).map(c=><button key={c} aria-pressed={city===c} onClick={()=>setCity(c)}>{c}<span>{counts.get(pref+c)??0}件</span></button>)}</div><div className="coverage-links"><a href={'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(query)} target="_blank" rel="noopener noreferrer">{city||pref}の{term}を地図で追加検索 ↗</a><a href={'https://www.google.com/search?q='+encodeURIComponent(query+' 公式 営業時間')} target="_blank" rel="noopener noreferrer">公式の営業案内を探す ↗</a></div><small>外部検索結果は収録件数・営業中の判定には含めません。市町村区分：<a href={municipalitySources[pref as keyof typeof municipalitySources]} target="_blank" rel="noopener noreferrer">県の公式一覧</a></small></div></details>;
+}
