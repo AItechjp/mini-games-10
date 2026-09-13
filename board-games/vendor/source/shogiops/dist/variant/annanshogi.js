@@ -1,0 +1,139 @@
+import { attacks, between, ray } from '../attacks.js';
+import { Board } from '../board.js';
+import { SquareSet } from '../square-set.js';
+import { defined, opposite, squareFile } from '../util.js';
+import { Position } from './position.js';
+import { standardSquareAttacks, standardSquareSnipers } from './shogi.js';
+import { fullSquareSet } from './util.js';
+export class Annanshogi extends Position {
+    constructor() {
+        super('annanshogi');
+        this.validation = {
+            doublePawn: false,
+            oppositeCheck: true,
+            unpromotedForcedPromotion: true,
+            maxNumberOfRoyalPieces: 1,
+        };
+    }
+    static from(setup, strict) {
+        const pos = new Annanshogi();
+        pos.fromSetup(setup);
+        return pos.validate(strict).map((_) => pos);
+    }
+    squareAttackers(square, attacker, occupied) {
+        return standardSquareAttacks(square, attacker, annanAttackBoard(this.board), occupied);
+    }
+    squareSnipers(square, attacker) {
+        return standardSquareSnipers(square, attacker, annanAttackBoard(this.board));
+    }
+    moveDests(square, ctx) {
+        ctx = ctx || this.ctx();
+        const realPiece = this.board.get(square);
+        if (!realPiece || realPiece.color !== ctx.color)
+            return SquareSet.empty();
+        const pieceBehind = this.board.get(directlyBehind(realPiece.color, square));
+        let pseudo = attacks((pieceBehind === null || pieceBehind === void 0 ? void 0 : pieceBehind.color) === realPiece.color ? pieceBehind : realPiece, square, this.board.occupied);
+        pseudo = pseudo.diff(this.board.color(ctx.color));
+        if (defined(ctx.king)) {
+            if (realPiece.role === 'king') {
+                const occ = this.board.occupied.without(square);
+                for (const to of pseudo) {
+                    const boardClone = this.board.clone();
+                    boardClone.take(to);
+                    if (standardSquareAttacks(to, opposite(ctx.color), annanAttackBoard(boardClone), occ).nonEmpty())
+                        pseudo = pseudo.without(to);
+                }
+            }
+            else {
+                const stdAttackers = standardSquareAttacks(ctx.king, opposite(ctx.color), this.board, this.board.occupied);
+                pseudo = pseudo.diff((ctx.color === 'sente' ? stdAttackers.shr256(16) : stdAttackers.shl256(16)).intersect(this.board.occupied));
+                if (ctx.checkers.nonEmpty()) {
+                    if (ctx.checkers.size() > 2)
+                        return SquareSet.empty();
+                    const singularChecker = ctx.checkers.singleSquare();
+                    const moveGivers = (ctx.color === 'sente' ? ctx.checkers.shr256(16) : ctx.checkers.shl256(16)).intersect(pseudo);
+                    if (defined(singularChecker))
+                        pseudo = pseudo.intersect(between(singularChecker, ctx.king).with(singularChecker));
+                    else
+                        pseudo = SquareSet.empty();
+                    for (const moveGiver of moveGivers) {
+                        const boardClone = this.board.clone();
+                        boardClone.take(square);
+                        boardClone.set(moveGiver, realPiece);
+                        if (standardSquareAttacks(ctx.king, opposite(ctx.color), annanAttackBoard(boardClone), boardClone.occupied).isEmpty()) {
+                            pseudo = pseudo.with(moveGiver);
+                        }
+                    }
+                }
+                if (ctx.blockers.has(square)) {
+                    let rayed = pseudo.intersect(ray(square, ctx.king));
+                    const occ = this.board.occupied.without(square);
+                    for (const to of pseudo.diff(rayed)) {
+                        if (this.board.getColor(to) !== ctx.color) {
+                            const boardClone = this.board.clone();
+                            boardClone.take(square);
+                            boardClone.set(to, realPiece);
+                            if (standardSquareAttacks(ctx.king, opposite(ctx.color), annanAttackBoard(boardClone), occ).isEmpty()) {
+                                rayed = rayed.with(to);
+                                break;
+                            }
+                        }
+                    }
+                    pseudo = rayed;
+                }
+            }
+        }
+        return pseudo.intersect(fullSquareSet(this.rules));
+    }
+    dropDests(piece, ctx) {
+        var _a;
+        ctx = ctx || this.ctx();
+        if (piece.color !== ctx.color)
+            return SquareSet.empty();
+        const role = piece.role;
+        let mask = this.board.occupied.complement();
+        if (defined(ctx.king) && ctx.checkers.nonEmpty()) {
+            const checker = ctx.checkers.singleSquare();
+            if (!defined(checker))
+                return SquareSet.empty();
+            mask = mask.intersect(between(checker, ctx.king));
+        }
+        if (role === 'pawn') {
+            // Checking for double pawns
+            const pawns = this.board.role('pawn').intersect(this.board.color(ctx.color));
+            for (const pawn of pawns) {
+                const file = SquareSet.fromFile(squareFile(pawn));
+                mask = mask.diff(file);
+            }
+            // Checking for a pawn checkmate
+            const kingSquare = this.kingsOf(opposite(ctx.color)).singleSquare();
+            const kingFront = defined(kingSquare)
+                ? ctx.color === 'sente'
+                    ? kingSquare + 16
+                    : kingSquare - 16
+                : undefined;
+            if (defined(kingFront) && mask.has(kingFront)) {
+                const child = this.clone();
+                child.play({ role: 'pawn', to: kingFront });
+                const childResult = (_a = child.outcome()) === null || _a === void 0 ? void 0 : _a.result;
+                if (childResult && ['checkmate', 'stalemate'].includes(childResult))
+                    mask = mask.without(kingFront);
+            }
+        }
+        return mask.intersect(fullSquareSet(this.rules));
+    }
+}
+export const directlyBehind = (color, square) => {
+    return color === 'sente' ? square + 16 : square - 16;
+};
+// Changes the pieces in front of other friendly piece to said pieces
+export const annanAttackBoard = (board) => {
+    const newBoard = Board.empty();
+    for (const [sq, piece] of board) {
+        const pieceBehind = board.get(directlyBehind(piece.color, sq));
+        const role = (pieceBehind === null || pieceBehind === void 0 ? void 0 : pieceBehind.color) === piece.color ? pieceBehind.role : piece.role;
+        newBoard.set(sq, { role, color: piece.color });
+    }
+    return newBoard;
+};
+//# sourceMappingURL=annanshogi.js.map

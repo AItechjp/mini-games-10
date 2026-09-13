@@ -1,0 +1,43 @@
+import { defined, isDrop, makeSquareName } from '../util.js';
+import { pieceCanPromote } from '../variant/util.js';
+import { aimingAt, roleToWestern } from './util.js';
+// P-7f
+export function makeWesternEngineMoveOrDrop(pos, md) {
+    if (isDrop(md)) {
+        return `${roleToWestern(pos.rules)(md.role)}*${makeSquareName(md.to)}`;
+    }
+    else {
+        const piece = pos.board.get(md.from);
+        if (piece) {
+            const roleStr = roleToWestern(pos.rules)(piece.role);
+            const disambStr = aimingAt(pos, pos.board.pieces(piece.color, piece.role), md.to)
+                .without(md.from)
+                .isEmpty()
+                ? ''
+                : makeSquareName(md.from);
+            const toCapture = pos.board.get(md.to);
+            const toStr = `${toCapture ? 'x' : '-'}${makeSquareName(md.to)}`;
+            if (defined(md.midStep)) {
+                const midCapture = pos.board.get(md.midStep);
+                const igui = !!midCapture && md.to === md.from;
+                if (igui)
+                    return `${roleStr}${disambStr}x!${makeSquareName(md.midStep)}`;
+                else if (md.to === md.from)
+                    return `--`;
+                else
+                    return `${roleStr}${disambStr}${midCapture ? 'x' : '-'}${makeSquareName(md.midStep)}${toStr}`;
+            }
+            else {
+                const promStr = md.promotion
+                    ? '+'
+                    : pieceCanPromote(pos.rules)(piece, md.from, md.to, toCapture)
+                        ? '='
+                        : '';
+                return `${roleStr}${disambStr}${toStr}${promStr}`;
+            }
+        }
+        else
+            return undefined;
+    }
+}
+//# sourceMappingURL=western-engine.js.map

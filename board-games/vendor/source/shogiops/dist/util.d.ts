@@ -1,0 +1,25 @@
+import type { Color, DropMove, MoveOrDrop, NormalMove, Piece, PieceName, Role, Square, SquareName } from './types.js';
+export { Result } from '@badrap/result';
+export declare function defined<A>(v: A | undefined): v is A;
+export declare function opposite(color: Color): Color;
+export declare function squareRank(square: Square): number;
+export declare function squareFile(square: Square): number;
+export declare function squareDist(a: Square, b: Square): number;
+export declare function makePieceName(piece: Piece): PieceName;
+export declare function parsePieceName(pieceName: PieceName): Piece;
+export declare function parseCoordinates(file: number, rank: number): Square | undefined;
+export declare function parseSquareName(str: SquareName): Square;
+export declare function parseSquareName(str: string): Square | undefined;
+export declare function makeSquareName(square: Square): SquareName;
+export declare function isDrop(v: MoveOrDrop): v is DropMove;
+export declare function isMove(v: MoveOrDrop): v is NormalMove;
+export declare const lionRoles: Role[];
+export declare const usiDropRegex: RegExp;
+export declare const usiMoveRegex: RegExp;
+export declare function parseUsi(str: string): MoveOrDrop | undefined;
+export declare function makeUsi(md: MoveOrDrop): string;
+export declare function toBW(color: string): 'b' | 'w';
+export declare function toBlackWhite(color: string): 'black' | 'white';
+export declare function toColor(color: string): Color;
+export declare function boolToColor(b: boolean): Color;
+//# sourceMappingURL=util.d.ts.map

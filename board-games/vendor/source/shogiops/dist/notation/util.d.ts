@@ -1,0 +1,24 @@
+import { SquareSet } from '../square-set.js';
+import type { Piece, Role, Rules, Square } from '../types.js';
+import type { Position } from '../variant/position.js';
+export declare function aimingAt(pos: Position, pieces: SquareSet, to: Square): SquareSet;
+export declare function roleToWestern(rules: Rules): (role: Role) => string;
+export declare function roleKanjiDuplicates(rules: Rules): (role: Role) => Role[];
+export declare function roleToKanji(rules: Rules): (role: Role) => string;
+export declare function roleToBoardKanji(rules: Rules): (role: Role) => string;
+export declare function roleToFullKanji(rules: Rules): (role: Role) => string;
+export declare function kanjiToRole(str: string): Role[];
+export declare function roleToCsa(role: Role): string | undefined;
+export declare function csaToRole(str: string): Role | undefined;
+export declare function filesByRules(rules: Rules): string;
+export declare function pieceToBoardKanji(rules: Rules): (piece: Piece) => string;
+export declare function makeNumberSquare(sq: Square): string;
+export declare function parseNumberSquare(str: string): Square | undefined;
+export declare function makeJapaneseSquare(sq: Square): string;
+export declare function makeJapaneseSquareHalf(sq: Square): string;
+export declare function parseJapaneseSquare(str: string): Square | undefined;
+export declare function toKanjiDigit(str: string): string;
+export declare function fromKanjiDigit(str: string): number;
+export declare function numberToKanji(n: number): string;
+export declare function kanjiToNumber(str: string): number;
+//# sourceMappingURL=util.d.ts.map
