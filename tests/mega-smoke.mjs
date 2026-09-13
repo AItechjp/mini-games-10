@@ -93,6 +93,15 @@ for(const id of boardGames){
   if(await page.locator(`[data-game="${id}"] a[href="board-games/?game=${id}&mode=solo"]`).count()!==1 || await page.locator(`[data-game="${id}"] a[href="board-games/?game=${id}&mode=local"]`).count()!==1) throw new Error(`Board game ${id} must expose solo and local two-player modes`);
 }
 if(await page.locator('[data-game="gomoku"] a[href="classic.html?game=gomoku&mode=online"]').count()!==1) throw new Error('Legacy Gomoku must remain reachable');
+await page.locator('[data-game="gomoku"] .links a').first().click();
+await page.waitForSelector('#board .cell');
+if(await page.locator('#board .cell').count()!==225) throw new Error('The 3D-player Gomoku table must have 225 intersections');
+await page.locator('#board [data-index="112"]').click();
+await page.waitForFunction(()=>document.querySelectorAll('#board .stone').length===2);
+await page.locator('#restart').click();
+await page.locator('#confirm-yes').click();
+await page.waitForFunction(()=>document.querySelectorAll('#board .stone').length===0);
+await failIfErrors('Board Table Gomoku CPU move and replay');
 await page.goto(root+'classic.html?game=gomoku&mode=solo',{waitUntil:'domcontentloaded'});
 await page.waitForSelector('.gomoku-cell');
 if(await page.locator('.gomoku-cell').count() !== 225) throw new Error('Gomoku must open a full 15x15 board');
