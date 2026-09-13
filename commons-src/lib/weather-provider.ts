@@ -15,8 +15,10 @@ const providerSchema=z.object({
   }
 });
 
-export function weatherProviderUrl(city:WeatherCity) {
-  const url=new URL('https://api.open-meteo.com/v1/forecast');
+export function weatherProviderUrl(city:WeatherCity,options:{apiKey?:string;commercial?:boolean}={}) {
+  const apiKey=options.apiKey?.trim();
+  if(options.commercial&&!apiKey)throw new Error('Commercial weather provider is not configured');
+  const url=new URL(apiKey?'https://customer-api.open-meteo.com/v1/forecast':'https://api.open-meteo.com/v1/forecast');
   url.search=new URLSearchParams({
     latitude:String(city.latitude),longitude:String(city.longitude),
     current:'temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m,wind_direction_10m',
@@ -24,6 +26,7 @@ export function weatherProviderUrl(city:WeatherCity) {
     daily:'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,sunrise,sunset',
     timezone:'Asia/Tokyo',wind_speed_unit:'ms',forecast_days:'7',
   }).toString();
+  if(apiKey)url.searchParams.set('apikey',apiKey);
   return url;
 }
 

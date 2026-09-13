@@ -39,6 +39,20 @@ jobs:
           done < <(find . -maxdepth 2 -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
       - name: Verify Commons stays on the AITECH domain
         run: node tests/commons-domain.mjs
+      - name: Setup Commons package manager
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+      - name: Verify Commons data, recovery and commercial configuration
+        working-directory: commons-src
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm typecheck
+          node scripts/test-commercial.mjs
+          node scripts/test-recovery.mjs
+          node scripts/test-sauna.mjs
+          node scripts/test-local-hours.mjs
+          node scripts/test-coverage.mjs
       - name: Validate past-question-only learning source
         run: node tests/yobi-past-source.mjs
       - name: Verify arcade game rules and room security

@@ -10,3 +10,5 @@ body[data-platform="ios"] #share-button{order:-1}
 @supports(-webkit-touch-callout:default){.photo-dialog{padding-bottom:max(24px,env(safe-area-inset-bottom))}}
 
 .commons-back{display:inline-flex;align-items:center;gap:5px;min-height:44px;margin:-10px 0 12px;color:#a5afae;font-size:.875rem;text-decoration:none}.commons-back .icon{transform:rotate(180deg)}.commons-back:hover{color:#d5efaa}.commons-back:focus-visible{outline:3px solid #d5efaa;outline-offset:4px;border-radius:6px}
+
+.app-footer{flex-wrap:wrap;gap:8px}.app-footer a{color:var(--accent);min-height:44px;display:inline-flex;align-items:center;text-underline-offset:4px}.app-footer a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}

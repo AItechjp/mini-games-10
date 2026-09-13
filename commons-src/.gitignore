@@ -3,3 +3,6 @@
 /.sites-runtime/
 *.tsbuildinfo
 .env*
+/work/
+/.test-output/
+/.coverage-check/

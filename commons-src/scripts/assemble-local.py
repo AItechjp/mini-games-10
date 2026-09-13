@@ -21,7 +21,9 @@ def clean(s):return re.sub(r'\s+',' ',norm(s)).strip()
 def soup(path):return BeautifulSoup(path.read_text(),'html.parser')
 def city_of(address):
  a=re.sub(r'^(岐阜県|愛知県)','',clean(address))
- m=re.match(r'(?:[^市町村]+郡)?([^0-9\s]+?[市町村])',a)
+ # A county prefix must be followed by a town/village name, not 市.
+ # Otherwise 蒲郡市 is mistakenly split into 蒲郡 + 市宮成町.
+ m=re.match(r'(?:[^市町村]+郡)?([^市町村0-9\s]+[市町村])',a)
  return m[1] if m else ''
 def uid(s):return hashlib.sha256(s.encode()).hexdigest()[:18]
 def store(name,address,cats,url,source,typ='official',**kw):

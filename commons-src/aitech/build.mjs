@@ -1,6 +1,8 @@
 import {build} from 'vite';
 import {createRequire} from 'node:module';
 import react from '@vitejs/plugin-react';
+import {writeHelp,guides} from './help.mjs';
+import {applySaunaReviews} from './sauna-reviews.mjs';
 import {resolve,join} from 'node:path';
 import {mkdir,readFile,writeFile,cp,rm,realpath} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
@@ -8,18 +10,20 @@ const source=resolve(fileURLToPath(new URL('..',import.meta.url)));
 const root=resolve(source,'..');
 const output=join(root,'commons');
 const input=join(source,'aitech/index.html');
+await applySaunaReviews(source);
 // Preserve independent Commons sites (for example hotels and rentals).
 // Only the routes and files generated below belong to this application.
-await writeFile(input,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#253654"><meta name="robots" content="noindex"><title>コモンズ | AITECH</title><link rel="canonical" href="https://aitechd.com/commons/"><link rel="icon" href="/commons/favicon.svg"></head><body><div id="root"></div><script type="module" src="/main.tsx"></script></body></html>');
+await writeFile(input,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#253654"><meta name="robots" content="noindex"><title>コモンズ | AITECH</title><link rel="canonical" href="https://aitechd.com/commons/"><link rel="icon" href="/commons/favicon.svg"></head><body><div id="root"><main style="max-width:640px;margin:15vh auto;padding:24px;font-family:system-ui;line-height:1.8"><h1>コモンズを開いています</h1><p>画面が切り替わらない場合は、通信状態を確認してください。</p><a href="/commons/help/">使い方・読み込めないときは</a><noscript><p>このサービスの操作にはJavaScriptが必要です。使い方ページはJavaScriptなしで読めます。</p></noscript></main></div><script type="module" src="/main.tsx"></script></body></html>');
 await rm(join(output,'assets'),{recursive:true,force:true});
 await rm(join(output,'camera-auth.js'),{force:true});
 await rm(join(output,'auth.css'),{force:true});
 await build({configFile:false,root:join(source,'aitech'),base:'/commons/',plugins:[react()],resolve:{alias:{'@':source}},css:{postcss:source},publicDir:false,build:{outDir:output,emptyOutDir:false,assetsInlineLimit:100000,rollupOptions:{input:{index:input},output:{entryFileNames:'assets/[name]-[hash].js'}}}});
 const html=await readFile(join(output,'index.html'),'utf8');
+await writeHelp(output);
 const paths=['study','tools/whiteboard','tools/chat','r','weather','bitcoin','onion','ramen','openings/restaurants','openings/ramen','openings/sauna','sauna'];
 paths.push(...['supermarkets','saunas','sento','fishmongers'].map(kind=>'local/'+kind));
 const localTitles={supermarkets:'スーパー',saunas:'サウナ',sento:'銭湯',fishmongers:'魚屋'};
-for(const path of paths){await mkdir(join(output,path),{recursive:true});let page=html.replace('href="https://aitechd.com/commons/"',`href="https://aitechd.com/commons/${path}/"`);if(path.startsWith('local/'))page=page.replace('<title>コモンズ | AITECH</title>',`<title>今開いてる${localTitles[path.split('/')[1]]}一覧｜岐阜・愛知 | AITECH</title>`);await writeFile(join(output,path,'index.html'),page)}
+for(const path of paths){await mkdir(join(output,path),{recursive:true});let page=html.replace('href="https://aitechd.com/commons/"',`href="https://aitechd.com/commons/${path}/"`);if(path.startsWith('local/'))page=page.replace('<title>コモンズ | AITECH</title>',`<title>今開いてる${localTitles[path.split('/')[1]]}一覧｜岐阜・愛知 | AITECH</title>`);const guide=guides.find(g=>g[2]===path);if(guide){const name=guide[1];page=page.replace(/<title>.*?<\/title>/,`<title>${name} | COMMONS</title>`).replace('</head>',`<meta name="description" content="${name}。${guide[3]}${guide[4]}"></head>`)}await writeFile(join(output,path,'index.html'),page)}
 // Advertise on the public catalog only, after writing the tool and room shells.
 const adsHead='<meta name="google-adsense-account" content="ca-pub-5820558629755748"><script src="/ads-config.js?v=20260913-adsense" defer></script><script src="/ads-bootstrap.js?v=20260913-adsense" defer></script>';
 const adsFooter='<footer aria-label="サイト情報" style="padding:20px;text-align:center;font-size:14px"><a href="/legal.html#privacy">プライバシー</a> · <a href="/legal.html#transmission">外部送信</a></footer>';

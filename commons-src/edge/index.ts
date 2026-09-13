@@ -6,7 +6,7 @@ import * as onion from '@/app/api/onion/route';
 import * as openings from '@/app/api/openings/route';
 import * as time from '@/app/api/ramen/time/route';
 import * as sauna from '@/app/api/sauna/status/route';
-const allowedOrigins=new Set(['https://aitechd.com','https://www.aitechd.com']);
+import {allowedOrigins} from './origins';
 async function digest(text:string){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text))),b=>b.toString(16).padStart(2,'0')).join('')}
 function response(data:unknown,status=200){return Response.json(data,{status,headers:{'Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff'}})}
 async function handle(request:Request){

@@ -2,6 +2,7 @@ import {findWeatherCity,japanDate,type WeatherForecast,type WeatherResult} from 
 import {normalizeWeather,weatherProviderUrl} from '@/lib/weather-provider';
 
 export const dynamic='force-dynamic';
+function env(name:string){return typeof Deno!=='undefined'?Deno.env.get(name):typeof process!=='undefined'?process.env[name]:undefined;}
 const FRESH=10*60*1000,STALE=2*60*60*1000;
 const memory=new Map<string,WeatherForecast>();
 const pending=new Map<string,Promise<WeatherForecast>>();
@@ -23,7 +24,7 @@ export async function GET(request:Request) {
     let job=pending.get(city.id);
     if(!job){
       job=(async()=>{
-        const upstream=await fetch(weatherProviderUrl(city),{signal:AbortSignal.timeout(12000),headers:{Accept:'application/json'}});
+        const upstream=await fetch(weatherProviderUrl(city,{apiKey:env('OPEN_METEO_API_KEY'),commercial:env('COMMONS_COMMERCIAL_MODE')==='true'}),{signal:AbortSignal.timeout(12000),headers:{Accept:'application/json'}});
         if(!upstream.ok)throw new Error('Weather provider unavailable');
         const data=normalizeWeather(await upstream.json(),city);
         memory.set(city.id,data);

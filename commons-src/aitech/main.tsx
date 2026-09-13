@@ -1,5 +1,7 @@
 import {createRoot} from 'react-dom/client';
 import {lazy,Suspense} from 'react';
+import {PageBoundary} from './error-boundary';
+import {routePath} from './route';
 import Hub from '@/app/ui/hub';
 import Start from '@/app/ui/start';
 import Study from '@/app/study/page';
@@ -18,7 +20,8 @@ const Openings=lazy(()=>import('@/app/ui/opening-directory'));
 const Sauna=lazy(()=>import('./sauna'));
 const LocalDirectory=lazy(()=>import('./local-directory'));
 function Router(){
- const path=decodeURIComponent(location.pathname.replace(/^\/commons\/?/,'').replace(/\/$/,'')),params=new URLSearchParams(location.search);
+ const path=routePath(location.pathname),params=new URLSearchParams(location.search);
+ if(path===null)return <main className="commons-loading"><h1>URLを確認してください</h1><p>リンクの形式が正しくありません。</p><a href="/commons/">サイト一覧へ</a></main>;
  if(!path||path==='index.html')return <Hub/>;
  if(path==='study')return <Study/>;
  if(path==='r'||path.startsWith('r/')){const id=params.get('id')??path.slice(2);if(/^[a-f0-9]{32}$/.test(id))return <Room id={id}/>}
@@ -32,4 +35,4 @@ function Router(){
  if(path==='openings/restaurants'||path==='openings/ramen'||path==='openings/sauna')return <Openings kind={path.endsWith('sauna')?'sauna':'ramen'} initial={{records:openingSeeds,sources:[],updatedAt:null}} serverNow={new Date().toISOString()}/>;
  return <main className="commons-loading"><h1>ページが見つかりません</h1><a href="/commons/">コモンズに戻る</a></main>;
 }
-createRoot(document.getElementById('root')!).render(<Suspense fallback={<main className="commons-loading" role="status">ページを開いています…</main>}><Router/></Suspense>);
+createRoot(document.getElementById('root')!).render(<PageBoundary><Suspense fallback={<main className="commons-loading" role="status"><p>ページを開いています…</p><a href="/commons/help/">読み込めないときは</a></main>}><Router/></Suspense><footer className="commons-support"><a href="/commons/">サイト一覧</a><a href="/commons/help/">使い方・困ったときは</a><span>COMMONS · AITECH</span></footer></PageBoundary>);

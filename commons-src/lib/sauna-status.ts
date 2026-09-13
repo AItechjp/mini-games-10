@@ -37,6 +37,8 @@ function holidayExpression(hours:string,year:number):string|null {
 export function saunaStatus(facility:SaunaFacility, now:number):SaunaStatus {
   const unknown=(reason:string):SaunaStatus=>({id:facility.id,state:'unknown',reason});
   if(!Number.isFinite(now)) return unknown('時刻を確認できません');
+  if(facility.permanentlyClosed)return {id:facility.id,state:'closed',reason:'公式発表により閉店済み'};
+  if(facility.closedDates?.includes(new Date(now+JST).toISOString().slice(0,10)))return {id:facility.id,state:'closed',reason:'公式発表の休館日'};
   if(!facility.hours) return unknown('営業時間が未登録');
   if(['private','no'].includes(facility.access)) return unknown('一般利用の可否・営業時間を要確認');
   if(/sunrise|sunset|dawn|dusk|\bSH\b/i.test(facility.hours)) return unknown('季節・学校休暇に応じた営業時間を要確認');

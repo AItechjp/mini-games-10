@@ -15,9 +15,14 @@ export type SaunaFacility = {
   note: string;
   sourceUrl: string;
   checkedOn: string;
+  officialSourceUrl?: string;
+  officialCheckedOn?: string;
+  permanentlyClosed?: boolean;
+  closedDates?: string[];
 };
 
 export type SaunaSnapshot = {
+  revision?: string;
   fetchedAt: string;
   sourceDate: string;
   source: string;

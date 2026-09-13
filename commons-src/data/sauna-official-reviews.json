@@ -1,0 +1,55 @@
+{
+  "checkedOn": "2026-09-13",
+  "status": "partial_review_not_published",
+  "records": [
+    {
+      "id": "way/696612945",
+      "name": "ドーミーインEXPRESS仙台シーサイド",
+      "verification": "official_day_use_hours",
+      "hours": "Mo-Fr 15:00-20:00; Sa,Su,PH 13:00-20:00",
+      "scope": "日帰り温泉",
+      "notes": "日帰りの最終受付は19:00。宿泊者の浴場時間とは別。サウナ単独の時間と断定しない。",
+      "sourceUrl": "https://dormy-hotels.com/dormyinn/hotels/sendai_ex/spa/"
+    },
+    {
+      "id": "way/721575992",
+      "name": "ドーミーイン前橋",
+      "verification": "official_sauna_hours",
+      "hours": "05:00-10:00,15:00-25:00",
+      "scope": "ホテル内サウナ",
+      "notes": "大浴場は15:00～翌10:00、サウナは01:00～05:00休止。日帰り客の利用可否は別途確認が必要。",
+      "sourceUrl": "https://dormy-hotels.com/dormyinn/hotels/maebashi/spa/"
+    },
+    {
+      "id": "node/6816287185",
+      "name": "極楽湯 幸手店",
+      "verification": "official_permanently_closed",
+      "closedOn": "2023-10-01",
+      "hours": null,
+      "scope": "旧施設",
+      "notes": "公式ページに最終営業日と閉店の記載あり。ページに残る旧営業時間を現行営業時間として掲載しない。",
+      "sourceUrl": "https://www.gokurakuyu.ne.jp/tempo/satte/"
+    },
+    {
+      "id": "way/1227814467",
+      "name": "極楽湯 槇尾店",
+      "verification": "official_facility_hours",
+      "hours": "Mo-Fr 09:00-24:00; Sa,Su,PH 06:00-24:00",
+      "scope": "施設営業時間",
+      "notes": "最終入浴受付23:30。サウナ単独の休止時間は未確認。",
+      "sourceUrl": "https://www.gokurakuyu.ne.jp/tempo/makio/index.html"
+    },
+    {
+      "id": "node/9136959916",
+      "name": "幕張温泉 湯楽の里",
+      "verification": "official_temporary_closure_notice",
+      "closedDates": [
+        "2026-10-27"
+      ],
+      "hours": null,
+      "scope": "休館日のお知らせ",
+      "notes": "通常営業時間は別途確認中。公式の営業時間案内は画像掲載。",
+      "sourceUrl": "https://www.yurakirari.com/makuhari/2026/09/12/7066/"
+    }
+  ]
+}

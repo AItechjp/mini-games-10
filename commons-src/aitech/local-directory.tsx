@@ -4,6 +4,7 @@ import {localStatus,readableHours,type LocalKind,type LocalSnapshot} from '@/lib
 import './local-directory.css';
 import CoverageExplorer from '@/app/ui/coverage-explorer';
 import {municipalities,municipalityOf,matchesSearch} from '@/lib/municipalities';
+import {parseLocalSnapshot} from '@/lib/local-data';
 
 export const localKinds={supermarkets:{name:'スーパー',color:'#287451',icon:ShoppingBasket},saunas:{name:'サウナ',color:'#b35729',icon:Flame},sento:{name:'銭湯',color:'#217b91',icon:Waves},fishmongers:{name:'魚屋',color:'#365b9c',icon:Fish}};
 const number=(v:number)=>v.toLocaleString('ja-JP');
@@ -12,7 +13,14 @@ export default function LocalDirectory({kind}:{kind:LocalKind}){
  const spec=localKinds[kind],Icon=spec.icon;
  const [data,setData]=useState<LocalSnapshot|null>(null),[error,setError]=useState(''),[loading,setLoading]=useState(false),[now,setNow]=useState(Date.now());
  const [pref,setPref]=useState('all'),[city,setCity]=useState('all'),[query,setQuery]=useState(''),[state,setState]=useState('open');
- async function refresh(signal?:AbortSignal){setLoading(true);setError('');try{const response=await fetch('/commons/local-data.json',{cache:'no-cache',signal});if(!response.ok)throw new Error('店舗情報を読み込めませんでした。');const value=await response.json() as LocalSnapshot;if(!Array.isArray(value.stores)||!value.updatedAt)throw new Error('店舗情報の形式を確認できません。');setData(value);setNow(Date.now());}catch(e){if((e as Error).name!=='AbortError')setError((e as Error).message);}finally{setLoading(false);}}
+ async function refresh(signal?:AbortSignal){
+  const controller=new AbortController(),cancel=()=>controller.abort();
+  if(signal?.aborted)return;signal?.addEventListener('abort',cancel,{once:true});
+  const timeout=setTimeout(()=>controller.abort(),15000);setLoading(true);setError('');
+  try{const response=await fetch('/commons/local-data.json',{cache:'no-cache',signal:controller.signal});if(!response.ok)throw new Error('店舗情報を読み込めませんでした。');const value=parseLocalSnapshot(await response.json());if(signal?.aborted)return;setData(value);setNow(Date.now());}
+  catch(e){if(!signal?.aborted)setError(controller.signal.aborted?'読み込みが時間内に完了しませんでした。通信を確認して再試行してください。':e instanceof TypeError?'通信できませんでした。接続を確認して再試行してください。':(e as Error).message);}
+  finally{clearTimeout(timeout);signal?.removeEventListener('abort',cancel);if(!signal?.aborted)setLoading(false);}
+ }
  useEffect(()=>{const controller=new AbortController();void refresh(controller.signal);const timer=setInterval(()=>{if(!document.hidden)setNow(Date.now());},30000);const visible=()=>{if(!document.hidden)setNow(Date.now());};document.addEventListener('visibilitychange',visible);return()=>{controller.abort();clearInterval(timer);document.removeEventListener('visibilitychange',visible);};},[]);
  useEffect(()=>{document.title=`今開いてる${spec.name}一覧｜岐阜・愛知 | AITECH`;},[spec.name]);
  const all=useMemo(()=>data?.stores.filter(x=>x.categories.includes(kind))??[],[data,kind]);
