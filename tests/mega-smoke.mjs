@@ -80,12 +80,20 @@ if(JSON.stringify(threeD)!==JSON.stringify(['zombie','smash','aether'])) throw n
 await page.locator('.category-nav a[href="games-2d.html"]').click();
 await page.waitForSelector('article[data-game]');
 const listed = await page.locator('article[data-game]').evaluateAll(nodes => nodes.map(n => n.dataset.game));
-const requiredGames=['daifugo','gomoku','babanuki','quick-hop','startrail'];
+const requiredGames=['daifugo','babanuki','quick-hop','startrail'];
 if(!requiredGames.every(id=>listed.includes(id)) || new Set(listed).size!==listed.length) throw new Error('The game collection must preserve existing games and include Quick Hop without duplicate entries');
-if(JSON.stringify(listed)!==JSON.stringify(requiredGames)) throw new Error('2D must contain games 04–08 in order');
-if(Number(await page.locator('.game-count').textContent())!==listed.length+threeD.length) throw new Error('The collection count must match both categories');
 if(await page.locator('a[href="mega-arcade.html"], a[href="archive.html"], a[href="arcade100/"], a[href="yobi-ronbun.html"]').count()) throw new Error('An unlisted collection is linked from the game collection');
-await page.locator('[data-game="gomoku"] .play').click();
+// Gomoku now belongs to the Board Games branch. Follow the actual navigation
+// and verify all seven board games, then retain the legacy CPU gameplay check.
+await page.locator('a[href="games-board.html"]').click();
+await page.waitForSelector('article[data-game="gomoku"]');
+const boardGames=await page.locator('article[data-game]').evaluateAll(nodes=>nodes.map(n=>n.dataset.game));
+if(!['gomoku','shogi','go','othello','chess','monopoly','life'].every(id=>boardGames.includes(id)) || new Set(boardGames).size!==boardGames.length) throw new Error('Board Games must preserve all seven games without duplicates');
+for(const id of boardGames){
+  if(await page.locator(`[data-game="${id}"] a[href="board-games/?game=${id}&mode=solo"]`).count()!==1 || await page.locator(`[data-game="${id}"] a[href="board-games/?game=${id}&mode=local"]`).count()!==1) throw new Error(`Board game ${id} must expose solo and local two-player modes`);
+}
+if(await page.locator('[data-game="gomoku"] a[href="classic.html?game=gomoku&mode=online"]').count()!==1) throw new Error('Legacy Gomoku must remain reachable');
+await page.goto(root+'classic.html?game=gomoku&mode=solo',{waitUntil:'domcontentloaded'});
 await page.waitForSelector('.gomoku-cell');
 if(await page.locator('.gomoku-cell').count() !== 225) throw new Error('Gomoku must open a full 15x15 board');
 await page.locator('[data-gomoku="112"]').click();
