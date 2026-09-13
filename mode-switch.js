@@ -1,12 +1,9 @@
 (() => {
   'use strict';
 
-  /* Ads are intentionally disabled site-wide. Remove any stale slot that may have
-     survived browser back/forward cache, and do not load AdSense/Ninja scripts. */
-  document.documentElement.dataset.ads = 'disabled';
-  document.documentElement.dataset.adsense = 'disabled';
+  // The retired Ninja placement stays disabled; AdSense manages its own slots.
   document.documentElement.dataset.ninjaAdmax = 'disabled';
-  document.querySelectorAll('#site-ninja-admax-direct, ins.adsbygoogle, [data-site-ad]').forEach(node => node.remove());
+  document.querySelectorAll('#site-ninja-admax-direct').forEach(node => node.remove());
 
   document.querySelectorAll('[data-mode-href]').forEach(button => {
     button.addEventListener('click', () => {

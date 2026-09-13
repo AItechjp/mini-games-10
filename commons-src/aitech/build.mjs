@@ -20,6 +20,10 @@ const paths=['study','tools/whiteboard','tools/chat','r','weather','bitcoin','on
 paths.push(...['supermarkets','saunas','sento','fishmongers'].map(kind=>'local/'+kind));
 const localTitles={supermarkets:'スーパー',saunas:'サウナ',sento:'銭湯',fishmongers:'魚屋'};
 for(const path of paths){await mkdir(join(output,path),{recursive:true});let page=html.replace('href="https://aitechd.com/commons/"',`href="https://aitechd.com/commons/${path}/"`);if(path.startsWith('local/'))page=page.replace('<title>コモンズ | AITECH</title>',`<title>今開いてる${localTitles[path.split('/')[1]]}一覧｜岐阜・愛知 | AITECH</title>`);await writeFile(join(output,path,'index.html'),page)}
+// Advertise on the public catalog only, after writing the tool and room shells.
+const adsHead='<meta name="google-adsense-account" content="ca-pub-5820558629755748"><script src="/ads-config.js?v=20260913-adsense" defer></script><script src="/ads-bootstrap.js?v=20260913-adsense" defer></script>';
+const adsFooter='<footer aria-label="サイト情報" style="padding:20px;text-align:center;font-size:14px"><a href="/legal.html#privacy">プライバシー</a> · <a href="/legal.html#transmission">外部送信</a></footer>';
+await writeFile(join(output,'index.html'),html.replace('</head>',adsHead+'</head>').replace('</body>',adsFooter+'</body>'));
 await cp(join(source,'public/favicon.svg'),join(output,'favicon.svg'));
 await mkdir(join(output,'camera'),{recursive:true});
 await cp(join(source,'public/camera'),join(output,'camera'),{recursive:true});
