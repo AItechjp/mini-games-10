@@ -100,9 +100,12 @@ const governmentGroup=siteGroups.find(group=>group.id==='government');
 if(governmentGroup)governmentGroup.sites.push(...officialInfoSites);
 else siteGroups.push({id:'public-information',name:'法律・行政情報',numbers:[],sites:officialInfoSites});
 
+const usageSite:SiteEntry={id:'usage-dashboard',name:'使用量と無料枠',description:'Supabase・GitHubの使用量と残り容量。実測値・更新日時・未取得項目を確認。',href:'/commons/usage/',label:'運用・無料枠',color:'#3455ee',keywords:'技術スタック ダッシュボード 使用量 残量 無料枠 容量 Supabase GitHub Cloudflare',actionLabel:'ダッシュボードを開く'};
+sites.push(usageSite);
+siteGroups.push({id:'operations',name:'サイト運用',numbers:[sites.length],sites:[usageSite]});
+
 export const listedToolIds = new Set(sites.flatMap(site=>site.toolId?[site.toolId]:[]));
 export const studyPages = [
   {name:'短答ノート',description:'過去問演習、自動採点、間違えた問題の復習。',href:'/yobi-quiz.html'},
   {name:'論文ノート',description:'科目別の学習、公式過去問、答案構成・起案。',href:'/yobi-ronbun.html'},
 ];
-

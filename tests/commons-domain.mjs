@@ -17,7 +17,7 @@ for(const path of ['index.html','games.html','yobi-quiz.html','yobi-ronbun.html'
 }
 const assets=await readdir('commons/assets');
 assert(assets.some(p=>p.startsWith('room-')&&p.endsWith('.js')));
-assert(assets.some(p=>p.startsWith('sauna-')&&p.endsWith('.js')));
+assert(assets.some(p=>(p.startsWith('sauna-')||p.startsWith('live-directory-'))&&p.endsWith('.js')),'The sauna route must include its current or legacy directory bundle');
 assert(!assets.some(p=>p.startsWith('auth-gate-')),'The public bundle must not contain the account gate');
 for(const asset of assets.filter(p=>p.endsWith('.js'))){
   const code=await readFile('commons/assets/'+asset,'utf8');
