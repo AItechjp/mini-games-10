@@ -11630,7 +11630,7 @@
         {
           "number": 41,
           "category": "用途別",
-          "title": "盤面をTab移動の一つの位置として扱う",
+          "title": "手番のプレイヤーだけが進行操作をできるようにする",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11638,7 +11638,7 @@
         {
           "number": 42,
           "category": "用途別",
-          "title": "矢印キーで隣のマスへ移動可能にする",
+          "title": "サイコロを連打しても一度だけ振る",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11646,7 +11646,7 @@
         {
           "number": 43,
           "category": "用途別",
-          "title": "左右端で隣の行へ誤移動しない",
+          "title": "選択待ちの途中に次のターンへ進めない",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11654,31 +11654,31 @@
         {
           "number": 44,
           "category": "用途別",
-          "title": "上下端で盤外へ選択を移動しない",
-          "priority": "P1",
+          "title": "終了後の進行操作を拒否する",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 45,
           "category": "用途別",
-          "title": "Homeで行頭へ移動する",
-          "priority": "P1",
+          "title": "メニュー中の操作を拒否する",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 46,
           "category": "用途別",
-          "title": "Endで行末へ移動する",
-          "priority": "P1",
+          "title": "ルール表示中の操作を拒否する",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 47,
           "category": "用途別",
-          "title": "CtrlとHomeで盤面の先頭へ移動する",
+          "title": "CPUの予約処理を重複させない",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11686,7 +11686,7 @@
         {
           "number": 48,
           "category": "用途別",
-          "title": "CtrlとEndで盤面の最後へ移動する",
+          "title": "背景タブでCPUの進行を止める",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11694,7 +11694,7 @@
         {
           "number": 49,
           "category": "用途別",
-          "title": "再描画後に同じマスへフォーカスを戻す",
+          "title": "再対局時に古いCPU処理を破棄する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11702,7 +11702,7 @@
         {
           "number": 50,
           "category": "用途別",
-          "title": "CPU思考中のフォーカス先を盤面に保つ",
+          "title": "ゲーム変更前に対局を破棄する確認を出す",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11710,23 +11710,23 @@
         {
           "number": 51,
           "category": "用途別",
-          "title": "メニュー中の盤面入力を拒否する",
-          "priority": "P0",
+          "title": "人数変更時に現在の対局の扱いを説明する",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 52,
           "category": "用途別",
-          "title": "ルール表示中の盤面入力を拒否する",
-          "priority": "P0",
+          "title": "入力キャンセルで手番を消費しない",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 53,
           "category": "用途別",
-          "title": "再開時にCPUの予約を一つだけ作る",
+          "title": "コマの位置と現在地の名称を一致させる",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11734,15 +11734,15 @@
         {
           "number": 54,
           "category": "用途別",
-          "title": "背景タブでCPUの計算を停止する",
-          "priority": "P0",
+          "title": "二人が同じマスにいる時も両方のコマを表示する",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 55,
           "category": "用途別",
-          "title": "CPUのワーカー失敗を表示して再試行可能にする",
+          "title": "出目と移動したマス数を一致させる",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11750,15 +11750,15 @@
         {
           "number": 56,
           "category": "用途別",
-          "title": "プレイヤー番号と手番表示を一致させる",
-          "priority": "P1",
+          "title": "通過による収入と停止による収入を区別する",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 57,
           "category": "用途別",
-          "title": "空きマスと駒の読み上げラベルを分ける",
+          "title": "各イベントの収支を明細として表示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11766,7 +11766,7 @@
         {
           "number": 58,
           "category": "用途別",
-          "title": "移動先候補を色以外でも示す",
+          "title": "所持金と資産を同時に更新する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11774,7 +11774,7 @@
         {
           "number": 59,
           "category": "用途別",
-          "title": "直前の一手を盤面上で示す",
+          "title": "支払い不足時の次の操作を明示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11782,7 +11782,7 @@
         {
           "number": 60,
           "category": "用途別",
-          "title": "駒選択を取消できるようにする",
+          "title": "選択肢ごとの費用と結果を表示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11790,15 +11790,15 @@
         {
           "number": 61,
           "category": "用途別",
-          "title": "終了後の盤面操作を拒否する",
-          "priority": "P0",
+          "title": "実行不能の操作に理由を表示する",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 62,
           "category": "用途別",
-          "title": "投了する側と勝者を正しく表示する",
+          "title": "取引や進路選択を二重確定しない",
           "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11806,7 +11806,7 @@
         {
           "number": 63,
           "category": "用途別",
-          "title": "再対局時に古いワーカーを破棄する",
+          "title": "取消可能な選択に戻る操作を用意する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11814,7 +11814,7 @@
         {
           "number": 64,
           "category": "用途別",
-          "title": "対局中のゲーム変更で確認を表示する",
+          "title": "乱数を固定して同じ進行を再現可能にする",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11822,7 +11822,7 @@
         {
           "number": 65,
           "category": "用途別",
-          "title": "人数変更で現在の対局の扱いを説明する",
+          "title": "短時間版のルールを明示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11830,7 +11830,7 @@
         {
           "number": 66,
           "category": "用途別",
-          "title": "ゲーム固有の合法手を検証する",
+          "title": "手番表示と操作の対象者を一致させる",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11838,7 +11838,7 @@
         {
           "number": 67,
           "category": "用途別",
-          "title": "盤面サイズをゲームに合わせる",
+          "title": "相手側の資産を誤操作しない",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11846,23 +11846,23 @@
         {
           "number": 68,
           "category": "用途別",
-          "title": "禁手・不正手で手番を消費しない",
-          "priority": "P0",
+          "title": "操作後に有効な次のボタンへフォーカスを移す",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 69,
           "category": "用途別",
-          "title": "盤面・手番・得点を同時更新する",
+          "title": "盤面読み上げに使えない矢印キー操作を案内しない",
           "priority": "P1",
-          "status": "要対応・要検証",
-          "evidence": ""
+          "status": "今回改修",
+          "evidence": "board-games/keyboard.mjs"
         },
         {
           "number": 70,
           "category": "用途別",
-          "title": "連打で同じ手を二度適用しない",
+          "title": "細いスマホでも盤面と操作領域を判別可能にする",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11870,7 +11870,7 @@
         {
           "number": 71,
           "category": "用途別",
-          "title": "ルールの版と短時間版の違いを明示する",
+          "title": "色だけで二人のコマを区別しない",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11878,7 +11878,7 @@
         {
           "number": 72,
           "category": "用途別",
-          "title": "一局の操作履歴を追えるようにする",
+          "title": "残りのラウンドまたはゴールまでの距離を表示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11886,7 +11886,7 @@
         {
           "number": 73,
           "category": "用途別",
-          "title": "引き分けを勝敗と分ける",
+          "title": "各ターンの履歴を見返せるようにする",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11894,7 +11894,7 @@
         {
           "number": 74,
           "category": "用途別",
-          "title": "3D表示失敗時にも盤面を操作可能にする",
+          "title": "勝敗の算出根拠を表示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11902,23 +11902,23 @@
         {
           "number": 75,
           "category": "用途別",
-          "title": "3D演出の停止状態をボタンに反映する",
-          "priority": "P0",
+          "title": "同点を勝敗と区別する",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 76,
           "category": "用途別",
-          "title": "盤面拡大時にスクロール可能にする",
-          "priority": "P1",
+          "title": "投了した側と勝者を一致させる",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 77,
           "category": "用途別",
-          "title": "手持ち駒と盤面を小画面で重ねない",
+          "title": "再開時に所持金と位置を同じ局面へ戻す",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -11926,23 +11926,23 @@
         {
           "number": 78,
           "category": "用途別",
-          "title": "得点確定前に結果の根拠を表示する",
-          "priority": "P1",
+          "title": "壊れた保存データの読み込みで停止しない",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 79,
           "category": "用途別",
-          "title": "自動対局で終局までの整合性を確認する",
-          "priority": "P1",
+          "title": "別タブの保存を無断で上書きしない",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 80,
           "category": "用途別",
-          "title": "対局を中断して同じ局面から再開可能にする",
+          "title": "自動対局で終局まで収支と手番の整合を検証する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12437,7 +12437,7 @@
         {
           "number": 41,
           "category": "用途別",
-          "title": "盤面をTab移動の一つの位置として扱う",
+          "title": "手番のプレイヤーだけが進行操作をできるようにする",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12445,7 +12445,7 @@
         {
           "number": 42,
           "category": "用途別",
-          "title": "矢印キーで隣のマスへ移動可能にする",
+          "title": "サイコロを連打しても一度だけ振る",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12453,7 +12453,7 @@
         {
           "number": 43,
           "category": "用途別",
-          "title": "左右端で隣の行へ誤移動しない",
+          "title": "選択待ちの途中に次のターンへ進めない",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12461,31 +12461,31 @@
         {
           "number": 44,
           "category": "用途別",
-          "title": "上下端で盤外へ選択を移動しない",
-          "priority": "P1",
+          "title": "終了後の進行操作を拒否する",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 45,
           "category": "用途別",
-          "title": "Homeで行頭へ移動する",
-          "priority": "P1",
+          "title": "メニュー中の操作を拒否する",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 46,
           "category": "用途別",
-          "title": "Endで行末へ移動する",
-          "priority": "P1",
+          "title": "ルール表示中の操作を拒否する",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 47,
           "category": "用途別",
-          "title": "CtrlとHomeで盤面の先頭へ移動する",
+          "title": "CPUの予約処理を重複させない",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12493,7 +12493,7 @@
         {
           "number": 48,
           "category": "用途別",
-          "title": "CtrlとEndで盤面の最後へ移動する",
+          "title": "背景タブでCPUの進行を止める",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12501,7 +12501,7 @@
         {
           "number": 49,
           "category": "用途別",
-          "title": "再描画後に同じマスへフォーカスを戻す",
+          "title": "再対局時に古いCPU処理を破棄する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12509,7 +12509,7 @@
         {
           "number": 50,
           "category": "用途別",
-          "title": "CPU思考中のフォーカス先を盤面に保つ",
+          "title": "ゲーム変更前に対局を破棄する確認を出す",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12517,23 +12517,23 @@
         {
           "number": 51,
           "category": "用途別",
-          "title": "メニュー中の盤面入力を拒否する",
-          "priority": "P0",
+          "title": "人数変更時に現在の対局の扱いを説明する",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 52,
           "category": "用途別",
-          "title": "ルール表示中の盤面入力を拒否する",
-          "priority": "P0",
+          "title": "入力キャンセルで手番を消費しない",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 53,
           "category": "用途別",
-          "title": "再開時にCPUの予約を一つだけ作る",
+          "title": "コマの位置と現在地の名称を一致させる",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12541,15 +12541,15 @@
         {
           "number": 54,
           "category": "用途別",
-          "title": "背景タブでCPUの計算を停止する",
-          "priority": "P0",
+          "title": "二人が同じマスにいる時も両方のコマを表示する",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 55,
           "category": "用途別",
-          "title": "CPUのワーカー失敗を表示して再試行可能にする",
+          "title": "出目と移動したマス数を一致させる",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12557,15 +12557,15 @@
         {
           "number": 56,
           "category": "用途別",
-          "title": "プレイヤー番号と手番表示を一致させる",
-          "priority": "P1",
+          "title": "通過による収入と停止による収入を区別する",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 57,
           "category": "用途別",
-          "title": "空きマスと駒の読み上げラベルを分ける",
+          "title": "各イベントの収支を明細として表示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12573,7 +12573,7 @@
         {
           "number": 58,
           "category": "用途別",
-          "title": "移動先候補を色以外でも示す",
+          "title": "所持金と資産を同時に更新する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12581,7 +12581,7 @@
         {
           "number": 59,
           "category": "用途別",
-          "title": "直前の一手を盤面上で示す",
+          "title": "支払い不足時の次の操作を明示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12589,7 +12589,7 @@
         {
           "number": 60,
           "category": "用途別",
-          "title": "駒選択を取消できるようにする",
+          "title": "選択肢ごとの費用と結果を表示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12597,15 +12597,15 @@
         {
           "number": 61,
           "category": "用途別",
-          "title": "終了後の盤面操作を拒否する",
-          "priority": "P0",
+          "title": "実行不能の操作に理由を表示する",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 62,
           "category": "用途別",
-          "title": "投了する側と勝者を正しく表示する",
+          "title": "取引や進路選択を二重確定しない",
           "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12613,7 +12613,7 @@
         {
           "number": 63,
           "category": "用途別",
-          "title": "再対局時に古いワーカーを破棄する",
+          "title": "取消可能な選択に戻る操作を用意する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12621,7 +12621,7 @@
         {
           "number": 64,
           "category": "用途別",
-          "title": "対局中のゲーム変更で確認を表示する",
+          "title": "乱数を固定して同じ進行を再現可能にする",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12629,7 +12629,7 @@
         {
           "number": 65,
           "category": "用途別",
-          "title": "人数変更で現在の対局の扱いを説明する",
+          "title": "短時間版のルールを明示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12637,7 +12637,7 @@
         {
           "number": 66,
           "category": "用途別",
-          "title": "ゲーム固有の合法手を検証する",
+          "title": "手番表示と操作の対象者を一致させる",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12645,7 +12645,7 @@
         {
           "number": 67,
           "category": "用途別",
-          "title": "盤面サイズをゲームに合わせる",
+          "title": "相手側の資産を誤操作しない",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12653,23 +12653,23 @@
         {
           "number": 68,
           "category": "用途別",
-          "title": "禁手・不正手で手番を消費しない",
-          "priority": "P0",
+          "title": "操作後に有効な次のボタンへフォーカスを移す",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 69,
           "category": "用途別",
-          "title": "盤面・手番・得点を同時更新する",
+          "title": "盤面読み上げに使えない矢印キー操作を案内しない",
           "priority": "P1",
-          "status": "要対応・要検証",
-          "evidence": ""
+          "status": "今回改修",
+          "evidence": "board-games/keyboard.mjs"
         },
         {
           "number": 70,
           "category": "用途別",
-          "title": "連打で同じ手を二度適用しない",
+          "title": "細いスマホでも盤面と操作領域を判別可能にする",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12677,7 +12677,7 @@
         {
           "number": 71,
           "category": "用途別",
-          "title": "ルールの版と短時間版の違いを明示する",
+          "title": "色だけで二人のコマを区別しない",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12685,7 +12685,7 @@
         {
           "number": 72,
           "category": "用途別",
-          "title": "一局の操作履歴を追えるようにする",
+          "title": "残りのラウンドまたはゴールまでの距離を表示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12693,7 +12693,7 @@
         {
           "number": 73,
           "category": "用途別",
-          "title": "引き分けを勝敗と分ける",
+          "title": "各ターンの履歴を見返せるようにする",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12701,7 +12701,7 @@
         {
           "number": 74,
           "category": "用途別",
-          "title": "3D表示失敗時にも盤面を操作可能にする",
+          "title": "勝敗の算出根拠を表示する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12709,23 +12709,23 @@
         {
           "number": 75,
           "category": "用途別",
-          "title": "3D演出の停止状態をボタンに反映する",
-          "priority": "P0",
+          "title": "同点を勝敗と区別する",
+          "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 76,
           "category": "用途別",
-          "title": "盤面拡大時にスクロール可能にする",
-          "priority": "P1",
+          "title": "投了した側と勝者を一致させる",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 77,
           "category": "用途別",
-          "title": "手持ち駒と盤面を小画面で重ねない",
+          "title": "再開時に所持金と位置を同じ局面へ戻す",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -12733,23 +12733,23 @@
         {
           "number": 78,
           "category": "用途別",
-          "title": "得点確定前に結果の根拠を表示する",
-          "priority": "P1",
+          "title": "壊れた保存データの読み込みで停止しない",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 79,
           "category": "用途別",
-          "title": "自動対局で終局までの整合性を確認する",
-          "priority": "P1",
+          "title": "別タブの保存を無断で上書きしない",
+          "priority": "P0",
           "status": "要対応・要検証",
           "evidence": ""
         },
         {
           "number": 80,
           "category": "用途別",
-          "title": "対局を中断して同じ局面から再開可能にする",
+          "title": "自動対局で終局まで収支と手番の整合を検証する",
           "priority": "P1",
           "status": "要対応・要検証",
           "evidence": ""
@@ -26637,5 +26637,5 @@
     }
   ],
   "total": 3300,
-  "changed": 300
+  "changed": 302
 }

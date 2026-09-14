@@ -30,6 +30,7 @@ for(const app of APPS){
  for(const item of items){
   if(item.number<=5){item.status='今回改修';item.evidence='app-guide/ui.mjs';}
   if(['gomoku','shogi','go','othello','chess'].includes(app.id)&&item.number>=41&&item.number<=52){item.status='今回改修';item.evidence='board-games/keyboard.mjs / table.mjs';}
+  if(['monopoly','life'].includes(app.id)&&item.number===69){item.status='今回改修';item.evidence='board-games/keyboard.mjs';}
   if(fixes[app.id]?.includes(item.number-80)){item.status='今回改修';item.evidence=sources[app.id]??'commons-src/aitech/local-directory.tsx';}
  }
  audit.apps.push({id:app.id,name:app.name,url:new URL(app.path,'https://aitechd.com').href,items});

@@ -4,7 +4,7 @@ import * as E from './engines.mjs';
 import * as R from './royal.mjs';
 import {makeSfen} from './vendor/rules.mjs';
 import {TITLES,RULES,EDITIONS} from './rules.mjs';
-import {installBoardKeyboard} from './keyboard.mjs';
+import {installBoardKeyboard} from './keyboard.mjs?v=20260914-commercial2';
 const $=s=>document.querySelector(s),el=id=>document.getElementById(id),G=globalThis.GomokuRules;
 const query=new URLSearchParams(location.search);let kind=Object.hasOwn(TITLES,query.get('game'))?query.get('game'):'gomoku',mode=query.get('mode')==='local'?'local':'solo';
 const boardKeyboard=installBoardKeyboard(el('board'));

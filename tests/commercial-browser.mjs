@@ -15,6 +15,8 @@ try{
  assert.equal(await page.locator('#board button[tabindex="0"]').count(),1);
  await page.keyboard.press('Control+End');assert.equal(await page.evaluate(()=>document.activeElement.dataset.index),'224');
  await page.locator('#game').selectOption('chess');await page.locator('#confirm-yes').click();await page.waitForFunction(()=>document.querySelector('#aitech-app-guide')?.dataset.app==='chess');
+ await page.goto(base+'board-games/?game=monopoly&mode=local');
+ await page.waitForFunction(()=>document.querySelector('#board')?.getAttribute('aria-label')==='盤面。進行は操作ボタンで行います。');
  await page.goto(base+'trump/?game=memory');
  await page.getByRole('button',{name:'アプリメニューを開く',exact:true}).click();
  const pane=page.locator('#aitech-app-guide');await pane.getByRole('tab',{name:'個人メモ',exact:true}).click();
