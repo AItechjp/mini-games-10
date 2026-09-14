@@ -6,3 +6,5 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
 @media(min-width:761px) and (min-height:551px){.viewer{max-height:100dvh;overflow-y:auto;scrollbar-width:thin}}
+
+body.has-expanded .viewer{z-index:201;overflow:visible}

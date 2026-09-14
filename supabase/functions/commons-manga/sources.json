@@ -1,0 +1,14 @@
+[
+  {"id":"jump-plus","name":"少年ジャンプ＋","publisher":"集英社","website":"https://shonenjumpplus.com/","feed":"https://shonenjumpplus.com/atom","color":"#ce354b"},
+  {"id":"comic-days","name":"コミックDAYS","publisher":"講談社","website":"https://comic-days.com/","feed":"https://comic-days.com/atom","color":"#b03845"},
+  {"id":"sunday","name":"サンデーうぇぶり","publisher":"小学館","website":"https://www.sunday-webry.com/","feed":"https://www.sunday-webry.com/atom","color":"#1563a2"},
+  {"id":"tonari","name":"となりのヤングジャンプ","publisher":"集英社","website":"https://tonarinoyj.jp/","feed":"https://tonarinoyj.jp/atom","color":"#926321"},
+  {"id":"kurage","name":"くらげバンチ","publisher":"新潮社","website":"https://kuragebunch.com/","feed":"https://kuragebunch.com/atom","color":"#116d89"},
+  {"id":"action","name":"webアクション","publisher":"双葉社","website":"https://comic-action.com/","feed":"https://comic-action.com/atom","color":"#b14436"},
+  {"id":"trail","name":"コミックトレイル","publisher":"芳文社","website":"https://comic-trail.com/","feed":"https://comic-trail.com/atom","color":"#606333"},
+  {"id":"gardo","name":"コミックガルド","publisher":"オーバーラップ","website":"https://comic-gardo.com/","feed":"https://comic-gardo.com/atom","color":"#5e4293"},
+  {"id":"zenon","name":"ゼノンプラス","publisher":"コアミックス","website":"https://comic-zenon.com/","feed":"https://comic-zenon.com/atom","color":"#944568"},
+  {"id":"magcomi","name":"マグコミ","publisher":"マッグガーデン","website":"https://magcomi.com/","feed":"https://magcomi.com/atom","color":"#216b53"},
+  {"id":"earthstar","name":"コミック アース・スター","publisher":"アース・スター エンターテイメント","website":"https://comic-earthstar.com/","feed":"https://comic-earthstar.com/atom","color":"#946025"},
+  {"id":"ogyaaa","name":"COMIC OGYAAA!!","publisher":"ホーム社","website":"https://comic-ogyaaa.com/","feed":"https://comic-ogyaaa.com/atom","color":"#414a9e"}
+]
