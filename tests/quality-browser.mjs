@@ -5,6 +5,10 @@ const base=process.env.QUALITY_BASE_URL||'http://127.0.0.1:4173/';
 const browser=await chromium.launch({headless:true,args:['--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream']});
 try{
   const context=await browser.newContext({viewport:{width:390,height:844},permissions:['camera'],acceptDownloads:true});
+  const realtime=await fetch('https://dcvtubivtextycifngtk.supabase.co/functions/v1/commons-realtime/directory',{signal:AbortSignal.timeout(35000)});
+  assert.ok(realtime.ok,'Verified directory data is available for comparison');
+  const directoryData=await realtime.json();assert.ok(directoryData.stores.length>0);
+  await context.route('**/functions/v1/commons-realtime/directory',route=>route.fulfill({status:200,contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify(directoryData)}));
   const page=await context.newPage();
   const open=async(target=page)=>{await target.getByRole('button',{name:'アプリメニューを開く',exact:true}).click();await target.getByRole('button',{name:'画面設定・記録・比較を開く',exact:true}).click();await target.locator('#aitech-assist-dialog').waitFor({state:'visible'});};
   await page.goto(new URL('trump/?game=memory',base).href);
