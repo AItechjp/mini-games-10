@@ -1,0 +1,331 @@
+{
+  "researchedAt": "2026-09-14",
+  "verification": "All 19 video IDs returned official YouTube oEmbed metadata and iframe HTML on 2026-09-14. Titles and artist/label channels were verified through YouTube source pages and oEmbed author fields. Actual playback and regional availability still require runtime handling. Genre labels are editorial app categories, not source metadata.",
+  "tracks": [
+    {
+      "id": "ZRtdQ81jPUQ",
+      "title": "アイドル",
+      "artist": "YOASOBI",
+      "genre": "jpop",
+      "sourceUrl": "https://www.youtube.com/watch?v=ZRtdQ81jPUQ",
+      "channel": "YOASOBI",
+      "type": "official_music_video",
+      "oembedVerification": {
+        "title": "YOASOBI「アイドル」 Official Music Video",
+        "author_name": "YOASOBI",
+        "author_url": "https://www.youtube.com/@YOASOBI_Official",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@YOASOBI_Official"
+    },
+    {
+      "id": "TcLLpZBWsck",
+      "title": "きらり",
+      "artist": "藤井 風",
+      "genre": "jpop",
+      "sourceUrl": "https://www.youtube.com/watch?v=TcLLpZBWsck",
+      "channel": "Fujii Kaze",
+      "type": "official_music_video",
+      "oembedVerification": {
+        "title": "Fujii Kaze - Kirari (Official Video)",
+        "author_name": "Fujii Kaze",
+        "author_url": "https://www.youtube.com/@FujiiKaze",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@FujiiKaze"
+    },
+    {
+      "id": "SX_ViT4Ra7k",
+      "title": "Lemon",
+      "artist": "米津玄師",
+      "genre": "jpop",
+      "sourceUrl": "https://www.youtube.com/watch?v=SX_ViT4Ra7k",
+      "channel": "Kenshi Yonezu  米津玄師",
+      "type": "official_music_video",
+      "oembedVerification": {
+        "title": "米津玄師  Kenshi Yonezu  - Lemon",
+        "author_name": "Kenshi Yonezu  米津玄師",
+        "author_url": "https://www.youtube.com/@KenshiYonezu",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@KenshiYonezu"
+    },
+    {
+      "id": "UM9XNpgrqVk",
+      "title": "怪獣の花唄",
+      "artist": "Vaundy",
+      "genre": "jpop",
+      "sourceUrl": "https://www.youtube.com/watch?v=UM9XNpgrqVk",
+      "channel": "Vaundy",
+      "type": "official_music_video",
+      "oembedVerification": {
+        "title": "怪獣の花唄 / Vaundy ： MUSIC VIDEO",
+        "author_name": "Vaundy",
+        "author_url": "https://www.youtube.com/@Vaundy",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@Vaundy"
+    },
+    {
+      "id": "fEeCb-2vuzA",
+      "title": "Velocities",
+      "artist": "Sleepy Fish",
+      "genre": "chill",
+      "sourceUrl": "https://www.youtube.com/watch?v=fEeCb-2vuzA",
+      "channel": "Chillhop Music",
+      "type": "official_label_video",
+      "corroboratingSource": "https://chillhop.com/releases/sleepy-fish-velocities/",
+      "oembedVerification": {
+        "title": "Sleepy Fish - Velocities [lofi chillhop beats]",
+        "author_name": "Chillhop Music",
+        "author_url": "https://www.youtube.com/@ChillhopMusic",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@ChillhopMusic"
+    },
+    {
+      "id": "7ZguAEoNpZw",
+      "title": "Soulful",
+      "artist": "L'indécis",
+      "genre": "chill",
+      "sourceUrl": "https://www.youtube.com/watch?v=7ZguAEoNpZw",
+      "channel": "Chillhop Music",
+      "type": "official_label_video",
+      "oembedVerification": {
+        "title": "L'indécis - Soulful",
+        "author_name": "Chillhop Music",
+        "author_url": "https://www.youtube.com/@ChillhopMusic",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@ChillhopMusic"
+    },
+    {
+      "id": "UXhSkL6yyoQ",
+      "title": "Murmuration",
+      "artist": "Blue Wednesday feat. Shopan",
+      "genre": "chill",
+      "sourceUrl": "https://www.youtube.com/watch?v=UXhSkL6yyoQ",
+      "channel": "Chillhop Music",
+      "type": "official_label_video",
+      "corroboratingSource": "https://chillhop.bandcamp.com/track/murmuration-feat-shopan",
+      "oembedVerification": {
+        "title": "Blue Wednesday feat. Shopan - Murmuration",
+        "author_name": "Chillhop Music",
+        "author_url": "https://www.youtube.com/@ChillhopMusic",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@ChillhopMusic"
+    },
+    {
+      "id": "fzQ6gRAEoy0",
+      "title": "Shelter",
+      "artist": "Porter Robinson & Madeon",
+      "genre": "electronic",
+      "sourceUrl": "https://www.youtube.com/watch?v=fzQ6gRAEoy0",
+      "channel": "Porter Robinson",
+      "type": "official_music_video",
+      "corroboratingSource": "https://sheltertheanimation.com/",
+      "oembedVerification": {
+        "title": "Porter Robinson & Madeon - Shelter (Official Video) (Short Film with A-1 Pictures & Crunchyroll)",
+        "author_name": "Porter Robinson",
+        "author_url": "https://www.youtube.com/@porterrobinson",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@porterrobinson"
+    },
+    {
+      "id": "xarC5jAiO7w",
+      "title": "A Moment Apart",
+      "artist": "ODESZA",
+      "genre": "electronic",
+      "sourceUrl": "https://www.youtube.com/watch?v=xarC5jAiO7w",
+      "channel": "ODESZA",
+      "type": "official_audio",
+      "oembedVerification": {
+        "title": "ODESZA - A Moment Apart - Official Audio",
+        "author_name": "ODESZA",
+        "author_url": "https://www.youtube.com/@odesza",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@odesza"
+    },
+    {
+      "id": "CGCnoVrgf9c",
+      "title": "You're On",
+      "artist": "Madeon feat. Kyan",
+      "genre": "electronic",
+      "sourceUrl": "https://www.youtube.com/watch?v=CGCnoVrgf9c",
+      "channel": "Madeon",
+      "type": "official_music_video",
+      "oembedVerification": {
+        "title": "Madeon - You're On ft. Kyan (Official Video)",
+        "author_name": "Madeon",
+        "author_url": "https://www.youtube.com/@itsmadeon",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@itsmadeon"
+    },
+    {
+      "id": "Hh9yZWeTmVM",
+      "title": "The Beginning",
+      "artist": "ONE OK ROCK",
+      "genre": "rock",
+      "sourceUrl": "https://www.youtube.com/watch?v=Hh9yZWeTmVM",
+      "channel": "ONE OK ROCK",
+      "type": "official_music_video",
+      "oembedVerification": {
+        "title": "ONE OK ROCK - The Beginning [Official Music Video]",
+        "author_name": "ONE OK ROCK",
+        "author_url": "https://www.youtube.com/@ONEOKROCK",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@ONEOKROCK"
+    },
+    {
+      "id": "j7CDb610Bg0",
+      "title": "天体観測",
+      "artist": "BUMP OF CHICKEN",
+      "genre": "rock",
+      "sourceUrl": "https://www.youtube.com/watch?v=j7CDb610Bg0",
+      "channel": "BUMP OF CHICKEN",
+      "type": "official_music_video",
+      "oembedVerification": {
+        "title": "BUMP OF CHICKEN「天体観測」",
+        "author_name": "BUMP OF CHICKEN",
+        "author_url": "https://www.youtube.com/@bumpofchicken",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@bumpofchicken"
+    },
+    {
+      "id": "BUX_JNixxZQ",
+      "title": "Re:Re: (Single version)",
+      "artist": "ASIAN KUNG-FU GENERATION",
+      "genre": "rock",
+      "sourceUrl": "https://www.youtube.com/watch?v=BUX_JNixxZQ",
+      "channel": "Asian Kung-Fu Generation - Topic",
+      "type": "official_label_audio",
+      "oembedVerification": {
+        "title": "Re: Re: Single version",
+        "author_name": "Asian Kung-Fu Generation - Topic",
+        "author_url": "https://www.youtube.com/channel/UCx_es_PpRD6fhpNU-vzlQ_g",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/channel/UCx_es_PpRD6fhpNU-vzlQ_g"
+    },
+    {
+      "id": "2pQKqQ9sG50",
+      "title": "Merry-Go-Round of Life",
+      "artist": "久石 譲",
+      "genre": "cinematic",
+      "sourceUrl": "https://www.youtube.com/watch?v=2pQKqQ9sG50",
+      "channel": "JoeHisaishiVEVO",
+      "type": "official_music_video",
+      "corroboratingSource": "https://www.deutschegrammophon.com/en/catalogue/products/merry-go-round-of-life-joe-hisaishi-12956",
+      "oembedVerification": {
+        "title": "Joe Hisaishi - Merry-Go-Round of Life (from “Howl’s Moving Castle”)",
+        "author_name": "JoeHisaishiVEVO",
+        "author_url": "https://www.youtube.com/@joehisaishivevo3979",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@joehisaishivevo3979"
+    },
+    {
+      "id": "c56t7upa8Bk",
+      "title": "Time",
+      "artist": "Hans Zimmer",
+      "genre": "cinematic",
+      "sourceUrl": "https://www.youtube.com/watch?v=c56t7upa8Bk",
+      "channel": "WaterTower Music",
+      "type": "official_label_audio",
+      "oembedVerification": {
+        "title": "Hans Zimmer - Time (Official Audio)",
+        "author_name": "WaterTower Music",
+        "author_url": "https://www.youtube.com/@WaterTowerWB",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@WaterTowerWB"
+    },
+    {
+      "id": "LGs_vGt0MY8",
+      "title": "Merry Christmas, Mr. Lawrence",
+      "artist": "坂本龍一",
+      "genre": "cinematic",
+      "sourceUrl": "https://www.youtube.com/watch?v=LGs_vGt0MY8",
+      "channel": "Decca Records",
+      "type": "official_music_video",
+      "oembedVerification": {
+        "title": "Ryuichi Sakamoto - Merry Christmas, Mr. Lawrence",
+        "author_name": "Decca Records",
+        "author_url": "https://www.youtube.com/@deccamusic",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@deccamusic"
+    },
+    {
+      "id": "9aED02XuLwo",
+      "title": "アンディーヴと眠って",
+      "artist": "青葉市子",
+      "genre": "acoustic",
+      "sourceUrl": "https://www.youtube.com/watch?v=9aED02XuLwo",
+      "channel": "ICHIKO AOBA",
+      "type": "official_artist_video",
+      "oembedVerification": {
+        "title": "Ichiko Aoba - Asleep Among Endives (アンディーヴと眠って)",
+        "author_name": "ICHIKO AOBA",
+        "author_url": "https://www.youtube.com/@ichikoaoba-hermine",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@ichikoaoba-hermine"
+    },
+    {
+      "id": "nzRBk50ke7o",
+      "title": "ひまわりの約束 (弾き語り Ver.)",
+      "artist": "秦 基博",
+      "genre": "acoustic",
+      "sourceUrl": "https://www.youtube.com/watch?v=nzRBk50ke7o",
+      "channel": "hatamotohiroVEVO",
+      "type": "official_music_video",
+      "oembedVerification": {
+        "title": "秦 基博 - 「ひまわりの約束 弾き語り Ver」 Music Video",
+        "author_name": "hatamotohiroVEVO",
+        "author_url": "https://www.youtube.com/@hatamotohiroVEVO",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@hatamotohiroVEVO"
+    },
+    {
+      "id": "RBumgq5yVrA",
+      "title": "Let Her Go",
+      "artist": "Passenger",
+      "genre": "acoustic",
+      "sourceUrl": "https://www.youtube.com/watch?v=RBumgq5yVrA",
+      "channel": "Passenger",
+      "type": "official_music_video",
+      "oembedVerification": {
+        "title": "Passenger | Let Her Go (Official Video)",
+        "author_name": "Passenger",
+        "author_url": "https://www.youtube.com/@passengermusic",
+        "embedReturned": true
+      },
+      "channelUrl": "https://www.youtube.com/@passengermusic"
+    }
+  ],
+  "apiSources": [
+    "https://developers.google.com/youtube/iframe_api_reference",
+    "https://developers.google.com/youtube/player_parameters",
+    "https://developers.google.com/youtube/terms/developer-policies",
+    "https://developers.google.com/youtube/terms/required-minimum-functionality",
+    "https://developers.google.com/youtube/terms/developer-policies-guide"
+  ],
+  "implementationConstraints": [
+    "Use a visible standard YouTube iframe. Viewport minimum is 200 by 200 pixels; YouTube recommends 480 by 270 or larger for 16:9. Retain all YouTube branding, links and ads; no overlays over the player.",
+    "Do not extract/isolate audio or add features playing from an invisible/background player. Pause when the page is hidden or player is out of view; do not market background listening.",
+    "Do not initiate automatic playback until more than half of the player is visible. Only one YouTube player may autoplay simultaneously.",
+    "Start first playback through an explicit user click. Handle onAutoplayBlocked and show a user-gesture retry. Use playsinline:1 and allow autoplay on the iframe.",
+    "Advance the local recommendation queue on the ENDED player state, using the same visible player. Keep consent and the continuous-play toggle explicit. Avoid calling playback merely to increase views.",
+    "Handle errors 2, 5, 100, 101, 150, 153. Errors 100/101/150 may be skipped with bounded retries and a visible message; provide an Open on YouTube link. Error 153 signals missing HTTP Referer or equivalent API client identity and is an integration issue, not a bad track.",
+    "Use the deployed origin and preserve the HTTP Referer header; do not set referrerPolicy:no-referrer. A restrictive preview iframe or network may fail independently of production.",
+    "Ordinary iframe playback can be implemented from curated video IDs without a YouTube Data API key. Live full-catalog search requires a separate Data API integration; do not imply the local catalog searches all of YouTube."
+  ]
+}

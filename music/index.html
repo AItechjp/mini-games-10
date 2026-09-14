@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta id="site-https-policy" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta name="site-security-version" content="20260911-https-v2">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101014">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta name="description" content="FLOWは、気分や好きな曲から次の音楽をおすすめするAITECHのミュージックラジオ。YouTube公式プレーヤーで連続再生。">
+<title>FLOW — おすすめ音楽ラジオ | AITECH</title>
+<link rel="canonical" href="https://aitechd.com/music/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css?v=1">
+<script type="module" src="app.mjs?v=1"></script>
+<script src="../fullscreen.js" defer data-aitech-fullscreen></script>
+</head>
+<body>
+<a class="skip-link" href="#main">音楽プレーヤーへ</a>
+<header class="topbar"><a class="brand" href="./" aria-label="FLOW ホーム"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 20V12M11 25V7M17 29V3M23 23V9M29 18V14"/></svg><strong>FLOW</strong><span>AITECH MUSIC</span></a><div class="top-actions"><a href="../games-2d.html">2Dに戻る <span aria-hidden="true">↗</span></a><div data-aitech-fullscreen-slot></div></div></header>
+<div class="shell">
+<aside class="sidebar" aria-label="音楽メニュー"><p class="eyebrow">YOUR MUSIC</p><button class="nav-item active" id="discover" aria-pressed="true"><span aria-hidden="true">◈</span> おすすめ</button><button class="nav-item" id="favorites" aria-pressed="false"><span aria-hidden="true">♡</span> 好きな曲 <span id="liked-count" class="count">0</span></button><div class="side-note"><span class="tiny-label">MADE FOR YOUR MOOD</span><p>好きな曲から、<br>次の出会いへ。</p><small>好みはこの端末に保存されます。</small></div><a class="source-help" href="#about">音源と再生について</a></aside>
+<main id="main">
+<div class="page-title"><div><p class="eyebrow">DISCOVER / RADIO</p><h1>今日の音楽を、流そう。</h1></div><span class="tag">YouTubeで再生</span></div>
+<section class="stations-section" aria-labelledby="station-heading"><div class="section-heading"><h2 id="station-heading">いま、どんな気分？</h2><span id="catalog-count"></span></div><div class="stations" id="stations"></div></section>
+<div class="workspace">
+<section class="player-panel" aria-label="ミュージックプレーヤー">
+<div class="panel-label"><span><span class="signal" aria-hidden="true"></span><span id="station-name">あなたへのミックス</span></span><span id="play-state">READY TO PLAY</span></div>
+<div class="video-shell" id="video-shell"><div id="player"></div><div class="start-screen" id="start-screen"><div class="start-art" id="start-art"></div><div class="start-content"><span class="tiny-label">YOUR NEXT FAVORITE</span><h2>まずは、1曲。</h2><button id="start" class="primary"><span aria-hidden="true">▶</span> おすすめを再生</button><p>YouTubeに接続して動画を再生します。</p></div></div></div>
+<div class="track-meta"><div><p class="eyebrow" id="track-genre">あなただけのラジオ</p><h2 id="track-title">好きな音楽に出会おう</h2><p id="track-artist">気分を選んで、再生ボタンをタップ。</p></div><button id="like" class="icon-button like" aria-label="この曲を好きに追加" aria-pressed="false" disabled>♡</button></div>
+<div class="transport"><button id="previous" class="icon-button" aria-label="前の曲" disabled>⏮</button><button id="play" class="play-button" aria-label="再生">▶</button><button id="next" class="icon-button" aria-label="次のおすすめ曲">⏭</button><div class="volume-control"><label for="volume">音量</label><input id="volume" type="range" min="0" max="100" value="70"></div></div>
+<div class="play-options"><label><input id="autoplay" type="checkbox" checked> おすすめを連続再生</label><a id="youtube-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTubeで開く ↗</a></div>
+<p id="status" class="status" role="status" aria-live="polite">最初に再生ボタンを押してください。</p>
+</section>
+<section class="queue-panel" aria-labelledby="queue-heading"><div class="queue-heading"><div><p class="eyebrow">UP NEXT</p><h2 id="queue-heading">次に流れる曲</h2></div><span class="queue-count" id="queue-count">0</span></div><p class="queue-description" id="queue-description">気分と「好き」から選ぶ、次の1曲。</p><ol class="queue" id="queue"></ol><p id="empty" class="empty" hidden>まだ「好きな曲」がありません。再生中の♡を押すと、ここから続けて聴けます。</p></section>
+</div>
+<section id="about" class="about"><h2>音楽は、アーティストの公式動画から。</h2><p>無料で視聴できるYouTube動画を、公式プレーヤーで再生します。広告や地域・年齢・埋め込み制限はYouTube側の設定に従います。音源のダウンロードや再配布は行いません。</p><p>画面を閉じたときやプレーヤーが画面外にある間は一時停止します。戻ったら再生ボタンを押してください。おすすめは収録曲とこの端末の「好き」から選びます。</p><div><a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube利用規約 ↗</a><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Googleプライバシーポリシー ↗</a><a href="../legal.html#privacy">AITECH プライバシー</a></div></section>
+</main>
+</div>
+<noscript>音楽の再生にはJavaScriptを有効にしてください。</noscript>
+</body>
+</html>
