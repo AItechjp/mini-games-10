@@ -1,0 +1,38 @@
+name: Cyber Quiz verification
+on:
+  push:
+    branches: [main]
+    paths: ['cyber-quiz/**', 'source/cyber-quiz/**', 'scripts/build-cyber-bank.mjs', 'tests/cyber-*.mjs', '.github/workflows/cyber-quiz.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate the 1000 questions and cooperative campaign
+        run: node tests/cyber-quiz.mjs
+      - name: Validate real two-player networking and reconnection
+        run: node tests/cyber-online.mjs
+      - name: Prepare the browser checks
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Test desktop, mobile and two independent online players
+        run: |
+          python3 -m http.server 4191 >/tmp/cyber-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid || true' EXIT
+          node tests/cyber-browser.mjs
+      - name: Retain verification results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cyber-quiz-verification
+          retention-days: 7
+          path: test-output/cyber-quiz/

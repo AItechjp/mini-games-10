@@ -10,3 +10,5 @@ https-release.json
 .env.*
 !.env.example
 __pycache__/
+
+/cyber-quiz/bank.json

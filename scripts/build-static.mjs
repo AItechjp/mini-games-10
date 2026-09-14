@@ -1,3 +1,5 @@
+// Build the original 1,000-question bank from the private curriculum source.
+await import('./build-cyber-bank.mjs');
 import { readdir, readFile, writeFile, mkdir, copyFile, rm, stat } from 'node:fs/promises';
 import { addFullscreen } from './fullscreen-html.mjs';
 import { addAppGuide } from './app-guide-html.mjs';
