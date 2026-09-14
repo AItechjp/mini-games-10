@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {existsSync} from 'node:fs';
-import {build} from 'esbuild';
+import {existsSync,realpathSync} from 'node:fs';
+import {createRequire} from 'node:module';
+const {build}=createRequire(realpathSync('node_modules/vite/package.json'))('esbuild');
 await build({stdin:{contents:"export * from './lib/realtime-collector';export * from './lib/realtime-evidence';export * from './lib/local-hours';export {verifiedOpeningAddress} from './lib/opening-feeds'",resolveDir:process.cwd(),loader:'ts'},outfile:'/tmp/commons-realtime-test.mjs',platform:'node',format:'esm',bundle:true});
 const {inspectTarget,inspectReviewed,validEvidence,localStatus,targets,siteName,visibleText,announcedClosures,verifiedOpeningAddress}=await import('/tmp/commons-realtime-test.mjs');
 const now=new Date('2026-09-14T12:00:00+09:00'),target={id:'test',name:'テスト店',url:'https://example.com/store',prefecture:'岐阜県',city:'各務原市',address:'岐阜県各務原市',phone:'',scope:'store',kinds:['supermarkets'],sourceName:'公式'};
