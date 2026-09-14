@@ -154,15 +154,19 @@ export class WallpaperRenderer {
     this.sprites = { glow, star, mist, rgb };
   }
 
-  _rasterFor(width, height, image) {
+  _rasterFor(width, height, image, brightness = 1) {
     const pad = Math.ceil(width * .06);
     const surface = makeCanvas(width + pad * 2, height + pad * 2);
     const context = surface.getContext('2d', { alpha: false });
     const scale = Math.max(surface.width / image.naturalWidth, surface.height / image.naturalHeight);
     context.imageSmoothingEnabled = true; context.imageSmoothingQuality = 'high';
     context.fillStyle = '#090a13'; context.fillRect(0, 0, surface.width, surface.height);
+    // Apply brightness once, before the cached illustration is split into moving ink layers.
+    // Filtering each of the 64 strip draws would repeat this work on every animation frame.
+    if (brightness !== 1) context.filter = `brightness(${brightness})`;
     context.drawImage(image, (surface.width - image.naturalWidth * scale) / 2, (surface.height - image.naturalHeight * scale) / 2, image.naturalWidth * scale, image.naturalHeight * scale);
-    return { surface, pad, width, height, image };
+    context.filter = 'none';
+    return { surface, pad, width, height, image, brightness };
   }
 
   _drawIllustration(context, width, height, state, raster) {
@@ -176,7 +180,6 @@ export class WallpaperRenderer {
     const start = water ? .60 : organic ? .32 : .64;
     const strips = 64, stripHeight = height / strips;
     context.imageSmoothingEnabled = true; context.imageSmoothingQuality = 'high';
-    context.filter = `brightness(${options.brightness})`;
     for (let i = 0; i < strips; i++) {
       const y = i * stripHeight, v = (i + .5) / strips;
       const envelope = smoothstep(start, Math.min(.93, start + .30), v);
@@ -187,7 +190,6 @@ export class WallpaperRenderer {
       const dx = amount * k * (sway * (water ? 5 : organic ? 4.4 : 1.9) + ripple * (water ? 2.3 : .9)) * envelope;
       context.drawImage(raster.surface, raster.pad + offsetX + dx, raster.pad + y + offsetY, width, Math.min(stripHeight + 1, height - y), 0, y, width, Math.min(stripHeight + 1, height - y));
     }
-    context.filter = 'none';
   }
 
   _drawHaze(context, w, h, state, strong = false) {
@@ -418,7 +420,7 @@ export class WallpaperRenderer {
   _render() {
     if (this.disposed) return;
     const width = this.canvas.width, height = this.canvas.height;
-    if (this.image && (!this.raster || this.raster.width !== width || this.raster.height !== height || this.raster.image !== this.image)) this.raster = this._rasterFor(width, height, this.image);
+    if (this.image && (!this.raster || this.raster.width !== width || this.raster.height !== height || this.raster.image !== this.image || this.raster.brightness !== this.options.brightness)) this.raster = this._rasterFor(width, height, this.image, this.options.brightness);
     this._compose(this.context, width, height, this._snapshot(), this.raster);
   }
 
@@ -428,7 +430,7 @@ export class WallpaperRenderer {
     if (width * height > 16777216) throw new Error('保存する画像のサイズが大きすぎます。');
     const state = this._snapshot(), canvas = makeCanvas(width, height), context = canvas.getContext('2d', { alpha: false });
     // Export owns its raster and canvas: it never resizes, pauses, or resets the live preview.
-    this._compose(context, width, height, state, this._rasterFor(width, height, state.image));
+    this._compose(context, width, height, state, this._rasterFor(width, height, state.image, state.options.brightness));
     return toPNG(canvas);
   }
 

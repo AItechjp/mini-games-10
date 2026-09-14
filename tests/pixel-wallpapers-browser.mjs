@@ -94,7 +94,8 @@ try{
   checks.push('100 unique designs and ten world filters');
 
   // Select every design through the real gallery and observe its displayed pixels over time.
-  const samples=[];
+  const samples=[];evidence.samples=samples;
+  const animationCheckStarted=Date.now();
   for(let theme=0;theme<10;theme++){
     await page.locator(`#filters button[data-theme="${theme}"]`).click();
     assert.equal(await page.locator('#grid .wallpaper-card').count(),10,'Each world must offer ten compositions');
@@ -108,7 +109,8 @@ try{
       samples.push({id,title,changedPixels:await moving(page,id)});
     }
   }
-  evidence.samples=samples;checks.push('All 100 illustrations across ten worlds load, select and visibly animate');
+  evidence.animationCheckMs=Date.now()-animationCheckStarted;
+  checks.push('All 100 illustrations across ten worlds load, select and visibly animate');
   await page.locator('#motion').uncheck();
   await page.waitForTimeout(200);
   const pausedFrame=await frame(page);
