@@ -6,12 +6,12 @@
 <meta name="site-security-version" content="20260911-https-v2">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b0c10">
-<meta name="description" content="6レーンを叩くドラムリズムゲーム。オリジナル10曲・3段階の難易度・横向き全画面。Chronosは手持ち音源を読み込んで練習できます。">
+<meta name="description" content="同じ画面で2人協力できるドラムリズムゲーム。オリジナル10曲・難易度3段階・共有コンボ・個人成績。Chronosは手持ち音源で協力プレイできます。">
 <title>PULSE DRUMS — ドラムリズムゲーム | AITECH 2D</title>
 <link rel="canonical" href="https://aitechd.com/pulse-drums/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c10'/%3E%3Cpath d='M6 23V9h7v5H6m13 9V9h7v14' fill='none' stroke='%2356e5c2' stroke-width='3'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=20260915-1">
-<script type="module" src="game.mjs?v=20260915-1"></script>
+<link rel="stylesheet" href="style.css?v=20260915-coop1">
+<script type="module" src="game.mjs?v=20260915-coop1"></script>
 </head>
 <body>
 <div id="app">
@@ -29,7 +29,7 @@
       <p class="library-foot">オリジナル10曲 · 全曲プレイ可能 <span>♪</span></p>
     </section>
     <section class="selection" aria-labelledby="selected-title">
-      <div class="song-heading"><span id="selected-genre" class="eyebrow"></span><span class="disc-label" id="disc-label">ORIGINAL 01 / 10</span></div>
+      <div class="song-heading"><span id="selected-genre" class="eyebrow"></span><div class="selection-tools"><span class="disc-label" id="disc-label">ORIGINAL 01 / 10</span><div class="mode-switch" role="group" aria-label="プレイ人数"><button type="button" id="solo-mode" aria-pressed="true">1人</button><button type="button" id="duo-mode" aria-pressed="false">2人協力</button></div></div></div>
       <h2 id="selected-title"></h2><p class="song-sub" id="selected-sub"></p>
       <div class="preview-wrap" id="preview-wrap"><canvas id="preview-canvas" aria-label="選択曲の譜面プレビュー"></canvas><span class="preview-label">CHART PREVIEW</span><button type="button" id="preview-button">♪ 15秒試聴</button><div class="preview-meta"><span id="selected-bpm"></span><span id="selected-duration"></span><span id="selected-notes"></span></div></div>
       <div class="local-panel" id="local-panel" hidden>
@@ -44,7 +44,7 @@
       <div id="difficulties" class="difficulties" role="group" aria-label="難易度を選ぶ"></div>
       <div class="options-row"><label>流れる速さ <select id="scroll-speed"><option value="0.75">ゆっくり</option><option value="1" selected>標準</option><option value="1.3">速い</option><option value="1.6">とても速い</option></select></label><button type="button" class="text-button" id="settings-button" aria-haspopup="dialog">音量・タイミング調整</button></div>
       <div class="start-row"><label class="demo-label"><input type="checkbox" id="autoplay">お手本</label><button type="button" id="start-button" class="primary">演奏する <span>→</span></button></div>
-      <p class="controls-hint">PC：D・F・Space・J・K・L <span>スマホ：パッドをタップ / 横画面</span></p>
+      <p class="controls-hint" id="controls-hint">PC：D・F・Space・J・K・L <span>スマホ：パッドをタップ / 横画面</span></p>
     </section>
   </main>
 
@@ -52,7 +52,7 @@
     <div class="play-toolbar"><button type="button" id="pause-button">Ⅱ 一時停止</button><div><span id="play-title"></span><small id="play-difficulty"></small></div><span id="play-clock">0:00 / 0:00</span></div>
     <div class="stage-layout">
       <aside class="left-meter"><span class="eyebrow">GROOVE</span><div class="groove-track"><div id="groove-fill"></div></div><b id="groove-number">50%</b><span id="section-name">READY</span><span id="demo-indicator" hidden>お手本</span></aside>
-      <div class="highway"><canvas id="game-canvas" aria-label="上から流れるノーツが判定線に来たら対応するパッドを叩いてください"></canvas><div id="countdown" class="countdown" aria-live="polite"></div><div id="judgment" class="judgment"><strong></strong><span></span></div><div class="combo-display"><b id="combo-number">0</b><span>COMBO</span></div></div>
+      <div class="highway"><canvas id="game-canvas" aria-label="上から流れるノーツが判定線に来たら対応するパッドを叩いてください"></canvas><div id="duo-hud" class="duo-hud" hidden><div class="player-hud p1"><strong>1P <small>D・F・Space</small></strong><span><b id="p1-accuracy">—</b><small id="p1-combo">0 COMBO</small></span></div><div class="player-hud p2"><strong>2P <small>J・K・L</small></strong><span><b id="p2-accuracy">—</b><small id="p2-combo">0 COMBO</small></span></div></div><div id="countdown" class="countdown" aria-live="polite"></div><div id="judgment" class="judgment"><strong></strong><span></span></div><div class="combo-display"><b id="combo-number">0</b><span id="combo-label">COMBO</span><small id="sync-label" hidden>SYNC 0</small></div></div>
       <aside class="score-panel"><span class="eyebrow">SCORE</span><b id="score-number">0000000</b><div class="accuracy-stat"><span>ACCURACY</span><b id="accuracy-number">—</b></div><div class="hit-counts"><span>PERFECT <b id="perfect-count">0</b></span><span>GREAT <b id="great-count">0</b></span><span>GOOD <b id="good-count">0</b></span><span>MISS <b id="miss-count">0</b></span></div><span id="timing-indicator"></span></aside>
     </div>
     <div class="pads" id="pads" aria-label="ドラムパッド"></div>
@@ -62,12 +62,13 @@
   <main id="result-screen" class="result-screen" hidden aria-labelledby="result-title">
     <div class="result-heading"><span class="eyebrow" id="result-label">STAGE RESULT</span><h1 id="result-title"></h1><p id="result-subtitle"></p></div>
     <div class="result-main"><div class="rank-card"><span>RANK</span><b id="result-rank">A</b><span id="result-clear">STAGE COMPLETE</span></div><div class="result-data"><p id="new-best" hidden>NEW BEST</p><div class="result-score"><span>SCORE</span><b id="result-score">0</b></div><div class="result-metrics"><div><span>ACCURACY</span><b id="result-accuracy"></b></div><div><span>MAX COMBO</span><b id="result-combo"></b></div><div><span>空打ち</span><b id="result-empty"></b></div></div><div id="result-counts" class="result-counts"></div></div></div>
+    <div class="duo-results" id="duo-results" aria-label="プレイヤーごとの成績" hidden></div>
     <p class="result-tip" id="result-tip"></p><div class="result-actions"><button type="button" id="back-to-list">選曲に戻る</button><button type="button" id="retry-button" class="primary">もう一度演奏する ↻</button></div>
   </main>
 
   <dialog id="pause-dialog" aria-labelledby="pause-title"><div class="dialog-body"><span class="eyebrow">TAKE A BREATH</span><h2 id="pause-title">一時停止中</h2><p>音楽と譜面は同じ位置で止まっています。</p><button type="button" id="resume-button" class="primary">演奏に戻る →</button><button type="button" id="restart-button">最初からやり直す</button><button type="button" id="quit-button">選曲に戻る</button></div></dialog>
   <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-body"><span class="eyebrow">SOUND CHECK</span><h2 id="settings-title">演奏の設定</h2><label class="range-label">音量 <output id="volume-value">70%</output><input type="range" id="volume" min="0" max="100" step="5" value="70"></label><label class="range-label">判定タイミング <output id="offset-value">0 ms</output><input type="range" id="offset" min="-250" max="250" step="5" value="0"></label><p>音より判定線が早いときは＋、遅いときは−へ。Bluetoothイヤホンは遅延が大きいことがあります。</p><button type="button" id="calibrate-button">8回タップして合わせる</button><button type="button" id="calibrate-tap" hidden>音に合わせてタップ / Space</button><p id="calibrate-status" role="status"></p><button type="button" class="primary" id="settings-close">設定を保存</button></div></dialog>
-  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-body"><span class="eyebrow">HOW TO PLAY</span><h2 id="help-title">音に合わせて、叩く。</h2><p>色の付いたノーツが下の白い判定線に重なった瞬間、同じ色のパッドをタップします。最大2つの同時押しがあります。</p><div class="help-keys" id="help-keys"></div><p>PERFECT ±45 ms / GREAT ±90 ms / GOOD ±140 ms。連続で当てるとコンボが増えます。曲の終わりまで演奏でき、GROOVE 60%以上でクリアです。</p><p>最初はBASICがおすすめ。「お手本」で譜面と音を確認できます。Esc / Pキーで一時停止。スマホは演奏中に横画面になります。</p><p class="secondary">収録10曲はこのゲーム用のオリジナル楽曲です。Chronos / TAGは端末の音源から作る練習用の自動譜面に対応。原曲・公式譜面は含まれていません。</p><button type="button" class="primary" id="help-close">選曲に戻る</button></div></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-body"><span class="eyebrow">HOW TO PLAY</span><h2 id="help-title">音に合わせて、叩く。</h2><p>色の付いたノーツが下の白い判定線に重なった瞬間、同じ色のパッドをタップします。最大2つの同時押しがあります。</p><div class="help-keys" id="help-keys"></div><p class="coop-help"><b>2人協力：同じ端末で遊べます。</b><br>左3レーンは1P（D・F・Space）、右3レーンは2P（J・K・L）。スマホは横に並んで自分の側のパッドをタップ。協力譜面は各3レーンにまとめてあり、コンボとGROOVEは共有です。同時押しを2人ともGREAT以上で合わせるとSYNCが増え、ゲージが回復します。</p><p>PERFECT ±45 ms / GREAT ±90 ms / GOOD ±140 ms。連続で当てるとコンボが増えます。曲の終わりまで演奏でき、GROOVE 60%以上でクリアです。</p><p>最初はBASICがおすすめ。「お手本」で譜面と音を確認できます。Esc / Pキーで一時停止。スマホは演奏中に横画面になります。</p><p class="secondary">収録10曲はこのゲーム用のオリジナル楽曲です。Chronos / TAGは端末の音源から作る練習用の自動譜面に対応。原曲・公式譜面は含まれていません。</p><button type="button" class="primary" id="help-close">選曲に戻る</button></div></dialog>
   <p id="notice" role="status" aria-live="polite"></p>
   <noscript>このゲームを遊ぶにはJavaScriptを有効にしてください。</noscript>
 </div>
