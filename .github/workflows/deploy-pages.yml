@@ -77,6 +77,7 @@ jobs:
           node tests/classic-deluxe.mjs
           node tests/babanuki.mjs
           node tests/board-games.mjs
+          node tests/dungeon-dice.mjs
           node tests/quiz-raid.mjs
       - name: Install browser smoke-test runtime and self-hosted 3D engine
         run: |
