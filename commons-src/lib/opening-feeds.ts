@@ -8,6 +8,12 @@ export const openingFeeds:OpeningSource[]=[
   {name:'ゆるなご',url:'https://yurunago.or.jp/feed/',region:''},
   {name:'PR TIMES',url:'https://prtimes.jp/index.rdf',region:'',official:true},
   {name:'SAUNA BROS.WEB',url:'https://saunabrosweb.jp/feed/',region:''},
+  {name:'フロサウナ',url:'https://furosauna.com/feed/',region:''},
+  {name:'開店閉店.com',url:'https://kaiten-heiten.com/feed/',region:''},
+  {name:'ナゴヤドット',url:'https://nagoyadot.jp/feed/',region:'愛知県'},
+  {name:'ナゴレコ',url:'https://nagoya-meshi.com/feed/',region:'愛知県'},
+  {name:'IDENTITY 名古屋',url:'https://nagoya.identity.city/feed/',region:'愛知県'},
+  {name:'岐阜のローカルメディア GIFU42',url:'https://gifu42.com/feed/',region:'岐阜県'},
 ];
 export const saunaArchives:OpeningSource[]=[
   {name:'SAUNA BROS.WEB 過去の開業告知',url:'https://saunabrosweb.jp/wp-json/wp/v2/posts',region:''},
@@ -79,6 +85,12 @@ async function fetchOpeningResponse(url:string){
   }finally{clearTimeout(timer)}
 }
 export async function fetchOpeningSource(url:string){return (await fetchOpeningResponse(url)).text}
+function articleBody(html:string){
+ const cleaned=html.replace(/<!--[\s\S]*?-->/g,'');
+ const start=/<(div|section)\b[^>]*class=["'][^"']*\b(?:post_content|entry-content|post-content)\b[^"']*["'][^>]*>/i.exec(cleaned);
+ if(start){const rest=cleaned.slice(start.index+start[0].length),tags=new RegExp('</?'+start[1]+'\\b[^>]*>','gi');let depth=1;for(const m of rest.matchAll(tags)){depth+=m[0].startsWith('</')?-1:1;if(depth===0)return rest.slice(0,m.index)}}
+ return cleaned.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1]||cleaned.replace(/<head\b[^>]*>[\s\S]*?<\/head>/i,'');
+}
 export async function collectOpenings(previous:OpeningSnapshot,now=new Date()):Promise<OpeningSnapshot>{
   const statuses:SourceStatus[]=[],next:Opening[]=[],checkedAt=now.toISOString();
   const byUrl=new Map(previous.records.map(r=>[r.sourceUrl,r]));
@@ -139,5 +151,22 @@ export async function collectOpenings(previous:OpeningSnapshot,now=new Date()):P
   const current=new Map(previous.records.filter(eligible).map(r=>[r.sourceUrl,r]));
   // Reviewed records win over automatically parsed mentions of the same source.
   for(const record of next.sort((a,b)=>Number(a.reviewed)-Number(b.reviewed)))current.set(record.sourceUrl,record);
-  return {records:deduplicate([...current.values()]).filter(eligible).slice(0,800),sources:statuses.sort((a,b)=>a.name.localeCompare(b.name,'ja')),updatedAt:checkedAt};
+  // A successful feed request does not verify an individual venue. Re-open each
+  // article, verify the venue name and the explicit opening date in its body.
+  const candidates=deduplicate([...current.values()]).filter(eligible).slice(0,64),verified:Opening[]=[];let index=0;
+  async function verify(){while(index<candidates.length){const record=candidates[index++];
+    try{
+      if(!allowedHosts.has(new URL(record.sourceUrl).hostname))continue;
+      const html=await fetchOpeningSource(record.sourceUrl);
+      const section=articleBody(html);
+      const body=cleanText(section),normalized=body.normalize('NFKC').replace(/\s/g,'');
+      const name=record.name.normalize('NFKC').replace(/\s/g,'');
+      if(!normalized.includes(name)||/延期|中止|見合わせ/.test(body.slice(0,5000)))continue;
+      const date=extractOpeningDate('',body,record.publishedAt);
+      if(!date||date!==record.openingDate||record.prefecture==='地域未確認'||!record.address)continue;
+      verified.push({...record,status:'scheduled',reviewed:true,checkedAt:new Date().toISOString()});
+    }catch{}
+  }}
+  await Promise.all(Array.from({length:6},verify));
+  return {records:verified,sources:statuses.sort((a,b)=>a.name.localeCompare(b.name,'ja')),updatedAt:checkedAt};
 }

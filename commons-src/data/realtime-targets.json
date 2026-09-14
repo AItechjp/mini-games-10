@@ -1,0 +1,8028 @@
+[
+  {
+    "id": "official-ef05d742c654f31a00",
+    "name": "スーパーマーケットバロー萩原店",
+    "prefecture": "岐阜県",
+    "city": "下呂市",
+    "address": "岐阜県下呂市萩原町 大字花池字川原164−1",
+    "phone": "0576-52-3811",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9079465852f85f4f41",
+    "name": "白鷺乃湯",
+    "prefecture": "岐阜県",
+    "city": "下呂市",
+    "address": "岐阜県下呂市湯之島856-1",
+    "phone": "0576-25-2462",
+    "url": "https://www.gero.jp/museum/sirasagi.html",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "白鷺乃湯 公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-64835a06b5ac32121f",
+    "name": "カネスエ 中津川店",
+    "prefecture": "岐阜県",
+    "city": "中津川市",
+    "address": "岐阜県中津川市中津川2994‐7",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%b8%ad%e6%b4%a5%e5%b7%9d%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-448dd4659e03ce5c10",
+    "name": "スーパーマーケットバロールビットタウン店",
+    "prefecture": "岐阜県",
+    "city": "中津川市",
+    "address": "岐阜県中津川市淀川町3−8",
+    "phone": "0573-62-7011",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5de6e83c33a1f80a6d",
+    "name": "スーパーマーケットバロー中津川東店",
+    "prefecture": "岐阜県",
+    "city": "中津川市",
+    "address": "岐阜県中津川市中津川字上金1155",
+    "phone": "0573-62-2511",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d8a0611e482037139e",
+    "name": "スーパーマーケットバロー中津川駒場店",
+    "prefecture": "岐阜県",
+    "city": "中津川市",
+    "address": "岐阜県中津川市手賀野132-5",
+    "phone": "0573-64-8639",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bc80ddfa46b31024bd",
+    "name": "スーパーマーケットバロー坂本店",
+    "prefecture": "岐阜県",
+    "city": "中津川市",
+    "address": "岐阜県中津川市茄子川2223−1",
+    "phone": "0573-78-0030",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-dc0e5b61f19cd385a4",
+    "name": "スーパーマーケットバロー苗木店",
+    "prefecture": "岐阜県",
+    "city": "中津川市",
+    "address": "岐阜県中津川市苗木字柳ノ木4892番地",
+    "phone": "0573-62-0633",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c2126eb0c13ace83cf",
+    "name": "スーパーマーケットバロー八百津店",
+    "prefecture": "岐阜県",
+    "city": "八百津町",
+    "address": "岐阜県加茂郡八百津町和知1032−54",
+    "phone": "0574-43-8155",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-52777da42ba9017618",
+    "name": "カネスエ 北方店",
+    "prefecture": "岐阜県",
+    "city": "北方町",
+    "address": "岐阜県本巣郡北方町高屋太子2丁目22番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%8c%97%e6%96%b9%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e60a51e083afab8f1a",
+    "name": "タチヤ北方店",
+    "prefecture": "岐阜県",
+    "city": "北方町",
+    "address": "岐阜県本巣郡北方町高屋清流3-18 (旧 高屋西部区画整理地内9街区10)",
+    "phone": "（058）260-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bb6db3d323249bfba1",
+    "name": "北方温泉",
+    "prefecture": "岐阜県",
+    "city": "北方町",
+    "address": "岐阜県本巣郡北方町北方",
+    "phone": "",
+    "url": "https://meicam.jp/gifu1010/",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "岐阜県公衆浴場組合 スタンプラリー参加施設",
+    "scope": "store"
+  },
+  {
+    "id": "official-f717a6c853f632f67a",
+    "name": "スーパーマーケットバロー下恵土店",
+    "prefecture": "岐阜県",
+    "city": "可児市",
+    "address": "岐阜県可児市下恵土3208",
+    "phone": "0574-60-6200",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-cf5c118b6999ad1a84",
+    "name": "スーパーマーケットバロー広見店",
+    "prefecture": "岐阜県",
+    "city": "可児市",
+    "address": "岐阜県可児市広見2024−3",
+    "phone": "0574-61-2333",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-120409df1a30558e3a",
+    "name": "スーパーマーケットバロー西可児店",
+    "prefecture": "岐阜県",
+    "city": "可児市",
+    "address": "岐阜県可児市帷子新町3-39",
+    "phone": "0574-65-9910",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a38c6ef5abec4a4095",
+    "name": "タチヤ可児店",
+    "prefecture": "岐阜県",
+    "city": "可児市",
+    "address": "岐阜県可児市中恵土2371-425",
+    "phone": "（0574）61-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c691e9ae0fc8236787",
+    "name": "業務スーパー可児店",
+    "prefecture": "岐阜県",
+    "city": "可児市",
+    "address": "岐阜県可児市下恵土3229-18",
+    "phone": "0574-60-3707",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1062",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e7107b8fe878d1dc88",
+    "name": "魚太郎 可児店",
+    "prefecture": "岐阜県",
+    "city": "可児市",
+    "address": "岐阜県可児市土田大脇4733-4 湯の華市場内",
+    "phone": "0574-24-7776",
+    "url": "https://www.uotaro.com/kani/",
+    "kinds": [
+      "fishmongers"
+    ],
+    "sourceName": "魚太郎公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3aa09e39e1b2276efb",
+    "name": "カネスエ 各務原鵜沼店",
+    "prefecture": "岐阜県",
+    "city": "各務原市",
+    "address": "岐阜県各務原市鵜沼三ツ池町3丁目132番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%90%84%e5%8b%99%e5%8e%9f%e9%b5%9c%e6%b2%bc%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3fc3407fe85b078e8d",
+    "name": "スーパーマーケットバロー各務原中央店",
+    "prefecture": "岐阜県",
+    "city": "各務原市",
+    "address": "岐阜県各務原市蘇原青雲町四丁目1番25",
+    "phone": "058-380-5188",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2c27b04e7a9e4511de",
+    "name": "タチヤ各務原店",
+    "prefecture": "岐阜県",
+    "city": "各務原市",
+    "address": "岐阜県各務原市蘇原東島町4-32",
+    "phone": "（058）389-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-156eba490e21600ca7",
+    "name": "スーパーマーケットバロー三起屋店",
+    "prefecture": "岐阜県",
+    "city": "土岐市",
+    "address": "岐阜県土岐市泉町久尻42−11",
+    "phone": "0572-53-3220",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1dafe99792b578aa1a",
+    "name": "スーパーマーケットバロー南土岐店",
+    "prefecture": "岐阜県",
+    "city": "土岐市",
+    "address": "岐阜県土岐市妻木町大沼1650−2",
+    "phone": "0572-57-3185",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-73d54c5459ac0fa9c6",
+    "name": "スーパーマーケットバロー土岐店",
+    "prefecture": "岐阜県",
+    "city": "土岐市",
+    "address": "岐阜県土岐市肥田浅野梅ノ木町1丁目23",
+    "phone": "0572-55-8000",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3dc5eb16eded038644",
+    "name": "スーパーマーケットバロー笠原下石店",
+    "prefecture": "岐阜県",
+    "city": "土岐市",
+    "address": "岐阜県土岐市下石町304−91",
+    "phone": "0572-58-1033",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0fb07b7c3fad04bd19",
+    "name": "スーパーマーケットバロー垂井店",
+    "prefecture": "岐阜県",
+    "city": "垂井町",
+    "address": "岐阜県不破郡垂井町綾戸468−1",
+    "phone": "0584-22-7188",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-978f6d1c66df2342ab",
+    "name": "カネスエ プラティ多治見店",
+    "prefecture": "岐阜県",
+    "city": "多治見市",
+    "address": "岐阜県多治見市本町1丁目122番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e3%83%97%e3%83%a9%e3%83%86%e3%82%a3%e5%a4%9a%e6%b2%bb%e8%a6%8b%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-87366486c73daeebd5",
+    "name": "スーパーマーケットバロー多治見南店",
+    "prefecture": "岐阜県",
+    "city": "多治見市",
+    "address": "岐阜県多治見市大畑町赤松98番地の10",
+    "phone": "0572-21-5500",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c6a094d6a929db77af",
+    "name": "スーパーマーケットバロー多治見店",
+    "prefecture": "岐阜県",
+    "city": "多治見市",
+    "address": "岐阜県多治見市若松町1丁目34",
+    "phone": "0572-23-9111",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-27594f570abc7c5bf1",
+    "name": "スーパーマーケットバロー根本店",
+    "prefecture": "岐阜県",
+    "city": "多治見市",
+    "address": "岐阜県多治見市根本町3丁目101",
+    "phone": "0572-29-1000",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6a9e9a1f6fb9af9aca",
+    "name": "タチヤ多治見店",
+    "prefecture": "岐阜県",
+    "city": "多治見市",
+    "address": "岐阜県多治見市希望ヶ丘4丁目75番3",
+    "phone": "（0572）25-5405",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-298415848484081caa",
+    "name": "ヤマナカ 多治見フランテ",
+    "prefecture": "岐阜県",
+    "city": "多治見市",
+    "address": "岐阜県多治見市本町3丁目101番地",
+    "phone": "0572-24-4311",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop063",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-99d1281b26c7d07eaf",
+    "name": "カネスエ 昼飯店",
+    "prefecture": "岐阜県",
+    "city": "大垣市",
+    "address": "岐阜県大垣市昼飯町東町田517-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%98%bc%e9%a3%af%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bc5124502983e13ff7",
+    "name": "スーパーマーケットバロー大垣南店",
+    "prefecture": "岐阜県",
+    "city": "大垣市",
+    "address": "岐阜県大垣市本今町字西ノ側1639−1",
+    "phone": "0584-87-3322",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5a4d36a3379b17705c",
+    "name": "スーパーマーケットバロー大垣店",
+    "prefecture": "岐阜県",
+    "city": "大垣市",
+    "address": "岐阜県大垣市林町8丁目101",
+    "phone": "0584-78-5900",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2cc6fed56a52bfce4e",
+    "name": "スーパーマーケットバロー大垣東店",
+    "prefecture": "岐阜県",
+    "city": "大垣市",
+    "address": "岐阜県大垣市中ノ江2丁目3-3",
+    "phone": "0584-77-7855",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a629041c32f4c760e9",
+    "name": "スーパーマーケットバロー赤坂店",
+    "prefecture": "岐阜県",
+    "city": "大垣市",
+    "address": "岐阜県大垣市赤坂町字河原1788",
+    "phone": "0584-72-1022",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9e459af1b9e6036653",
+    "name": "業務スーパー大垣墨俣店",
+    "prefecture": "岐阜県",
+    "city": "大垣市",
+    "address": "岐阜県大垣市墨俣町墨俣1098-1",
+    "phone": "0584-62-7011",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1666",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-cec0f65ace7a87cf6a",
+    "name": "カネスエ 大野店",
+    "prefecture": "岐阜県",
+    "city": "大野町",
+    "address": "岐阜県揖斐郡大野町大字黒野字相羽39番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%a4%a7%e9%87%8e%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7c7f04fd3e46db2649",
+    "name": "スーパーマーケットバロー富加店",
+    "prefecture": "岐阜県",
+    "city": "富加町",
+    "address": "岐阜県加茂郡富加町羽生2180",
+    "phone": "0574-55-1255",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7171eaa3b0875c0c4a",
+    "name": "スーパーマーケットバロー高富店",
+    "prefecture": "岐阜県",
+    "city": "山県市",
+    "address": "岐阜県山県市高富米野2310",
+    "phone": "0581-23-0120",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f1143a7d01364ef655",
+    "name": "タチヤ山県店",
+    "prefecture": "岐阜県",
+    "city": "山県市",
+    "address": "岐阜県山県市東深瀬106-2",
+    "phone": "（0581）22-5505",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1ebfc298786f4c3690",
+    "name": "カネスエ 岐南店",
+    "prefecture": "岐阜県",
+    "city": "岐南町",
+    "address": "岐阜県羽島郡岐南町上印食6丁目70番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%b2%90%e5%8d%97%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ddc0b2889e1cfce308",
+    "name": "カネスエ 三里店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市清715",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%b8%89%e9%87%8c%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5aadae0369f55245ee",
+    "name": "カネスエ 中鶉店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市中鶉7丁目52番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%b8%ad%e9%b6%89%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f5aed815cf920abf27",
+    "name": "カネスエ 岐大前店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市大字折立字北浦310番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%b2%90%e5%a4%a7%e5%89%8d%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6f8af21e221f6b1239",
+    "name": "カネスエ 芥見店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市芥見東山2‐27",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e8%8a%a5%e8%a6%8b%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e446c5157f39d58a81",
+    "name": "スーパーマーケットバロー三輪店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市春近古市場南57",
+    "phone": "058-229-7211",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1467a75f81e382d87c",
+    "name": "スーパーマーケットバロー則武店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市則武中1丁目27−7",
+    "phone": "058-296-1066",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-dbb9b01d561474feb6",
+    "name": "スーパーマーケットバロー加納店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市渋谷町37−1",
+    "phone": "058-278-2077",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-08ee1503fabded2df9",
+    "name": "スーパーマーケットバロー北一色店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市北一色10丁目6−1",
+    "phone": "058-249-5255",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-04654f6a46ac1b7e0f",
+    "name": "スーパーマーケットバロー岩田店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市岩田東3丁目180番",
+    "phone": "058-244-1066",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c22acdd63bd43327c7",
+    "name": "スーパーマーケットバロー島店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市北島4-2-4",
+    "phone": "058-297-3533",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5bfb09b1a066c1c388",
+    "name": "スーパーマーケットバロー市橋店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市市橋2-2-5",
+    "phone": "058-272-3711",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-491859691a27f65e90",
+    "name": "スーパーマーケットバロー正木店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市正木北町7−10",
+    "phone": "058-297-3520",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d6abad5ab2f94ac374",
+    "name": "スーパーマーケットバロー粟野店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市粟野東1丁目105−1",
+    "phone": "058-236-0550",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7c6f9e18a5ceeebe2b",
+    "name": "スーパーマーケットバロー芥見店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市芥見南山2丁目1−8",
+    "phone": "058-241-5160",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3f7fbefb8d74f7d668",
+    "name": "スーパーマーケットバロー茜部南店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市茜部寺屋敷1丁目84番1",
+    "phone": "058-268-7710",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7e748c4226da38ce62",
+    "name": "スーパーマーケットバロー茜部本郷店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市茜部本郷2丁目11",
+    "phone": "058-277-8622",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b10a39f02a23605ca3",
+    "name": "スーパーマーケットバロー都通店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市都通2丁目10−1",
+    "phone": "058-254-8180",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e36cd38a4fa17dc127",
+    "name": "スーパーマーケットバロー鏡島店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市西荘3丁目2−55",
+    "phone": "058-255-3310",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6ab3972ed45d044cf7",
+    "name": "スーパーマーケットバロー長良店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市長良東2丁目45",
+    "phone": "058-295-7388",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5c9c90d8322ccfc3f9",
+    "name": "スーパーマーケットバロー領下店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市領下4丁目55",
+    "phone": "058-259-7770",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-4c84d802a024bdf303",
+    "name": "タチヤ Vドラッグ岐阜県庁西店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市下奈良2-3-3",
+    "phone": "（058）215-5454",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-86a633babab63c4396",
+    "name": "ヤマナカ 忠節フランテ館",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市島栄町1丁目45番5",
+    "phone": "058-295-3060",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop062",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c576892879bdd97850",
+    "name": "松乃湯",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市加納城南通",
+    "phone": "",
+    "url": "https://meicam.jp/gifu1010/",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "岐阜県公衆浴場組合 スタンプラリー参加施設",
+    "scope": "store"
+  },
+  {
+    "id": "official-c91f1cb698a52fa929",
+    "name": "業務スーパー中鶉店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市中鶉3丁目129番1",
+    "phone": "058-278-3715",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=704",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a22e24e5db703e3649",
+    "name": "業務スーパー岩地店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市岩地2丁目2-11",
+    "phone": "058-249-7001",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1500",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6779a531f88c5077c8",
+    "name": "スーパーマーケットバロー御嵩店",
+    "prefecture": "岐阜県",
+    "city": "御嵩町",
+    "address": "岐阜県可児郡御嵩町中1031−1",
+    "phone": "0574-67-7200",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2f93d48ffd90d68171",
+    "name": "カネスエ 恵那店",
+    "prefecture": "岐阜県",
+    "city": "恵那市",
+    "address": "岐阜県恵那市長島町中野3丁目3番地5",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%81%b5%e9%82%a3%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-55178f12a7e4177a4d",
+    "name": "スーパーマーケットバロー岩村店",
+    "prefecture": "岐阜県",
+    "city": "恵那市",
+    "address": "岐阜県恵那市岩村町飯羽間字松割2294−1",
+    "phone": "0573-43-0300",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-96e44244317c1acba2",
+    "name": "スーパーマーケットバロー恵那店",
+    "prefecture": "岐阜県",
+    "city": "恵那市",
+    "address": "岐阜県恵那市大井町180-1",
+    "phone": "0573-26-5001",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5b35bdc2076c4ac991",
+    "name": "スーパーマーケットバロー明智店",
+    "prefecture": "岐阜県",
+    "city": "恵那市",
+    "address": "岐阜県恵那市明智町石坪469−2",
+    "phone": "0573-54-3111",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7aa602cdde6b603df4",
+    "name": "スーパーマーケットバロー正家店",
+    "prefecture": "岐阜県",
+    "city": "恵那市",
+    "address": "岐阜県恵那市長島町正家3丁目8−64−3",
+    "phone": "0573-20-3455",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ec418d5b4db31dffc0",
+    "name": "スーパーマーケットバロー揖斐川店",
+    "prefecture": "岐阜県",
+    "city": "揖斐川町",
+    "address": "岐阜県揖斐郡揖斐川町上南方130",
+    "phone": "0585-21-0155",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6b5be3b69360cd198e",
+    "name": "スーパーマーケットバロー本巣文殊店",
+    "prefecture": "岐阜県",
+    "city": "本巣市",
+    "address": "岐阜県本巣市文殊字天辺1041−1",
+    "phone": "0581-34-8088",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-057958530e3c7bc5ea",
+    "name": "業務スーパー北方店",
+    "prefecture": "岐阜県",
+    "city": "本巣市",
+    "address": "岐阜県本巣市上真桑字堤合2206-2",
+    "phone": "058-324-7770",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1621",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2b0170433a5716cd18",
+    "name": "スーパーマーケットバロー池田店",
+    "prefecture": "岐阜県",
+    "city": "池田町",
+    "address": "岐阜県揖斐郡池田町本郷917−1",
+    "phone": "0585-45-1166",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e3d16f4d57058bb69f",
+    "name": "業務スーパー海津店",
+    "prefecture": "岐阜県",
+    "city": "海津市",
+    "address": "岐阜県海津市海津町馬目349-2",
+    "phone": "0584-53-1771",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1986",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-477d130fb6b0ea7650",
+    "name": "カネスエ 薬師店",
+    "prefecture": "岐阜県",
+    "city": "瑞浪市",
+    "address": "岐阜県瑞浪市薬師町1丁目40",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e8%96%ac%e5%b8%ab%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-00b51efdc93a5e9222",
+    "name": "スーパーマーケットバロー瑞浪中央店",
+    "prefecture": "岐阜県",
+    "city": "瑞浪市",
+    "address": "岐阜県瑞浪市益見町3丁目11",
+    "phone": "0572-66-5550",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-dac9ace114dacbc336",
+    "name": "スーパーマーケットバロー瑞浪店",
+    "prefecture": "岐阜県",
+    "city": "瑞浪市",
+    "address": "岐阜県瑞浪市穂並1丁目3番地",
+    "phone": "0572-66-1201",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0daee8e27480965f2b",
+    "name": "スーパーマーケットバロー陶店",
+    "prefecture": "岐阜県",
+    "city": "瑞浪市",
+    "address": "岐阜県瑞浪市陶町猿爪786−1",
+    "phone": "0572-65-3030",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ab0b8530ceb93feba8",
+    "name": "スーパーマーケットバロー穂積店",
+    "prefecture": "岐阜県",
+    "city": "瑞穂市",
+    "address": "岐阜県瑞穂市馬場春雨町1丁目32",
+    "phone": "058-329-0866",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c7ce52cc1f90c83d1b",
+    "name": "スーパーマーケットバロー穂積西店",
+    "prefecture": "岐阜県",
+    "city": "瑞穂市",
+    "address": "岐阜県瑞穂市十九条字鳥居前266−1",
+    "phone": "058-329-5050",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-30d9f7c007aa003511",
+    "name": "スーパーマーケットバロー神戸店",
+    "prefecture": "岐阜県",
+    "city": "神戸町",
+    "address": "岐阜県安八郡神戸町大字神戸字西浦1753−10",
+    "phone": "0584-28-1311",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c2b0f6be3716b9fe60",
+    "name": "カネスエ 笠松店",
+    "prefecture": "岐阜県",
+    "city": "笠松町",
+    "address": "岐阜県羽島郡笠松町大池町58番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%ac%a0%e6%9d%be%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3ac1c67a279c3f9860",
+    "name": "スーパーマーケットバロー太田店",
+    "prefecture": "岐阜県",
+    "city": "美濃加茂市",
+    "address": "岐阜県美濃加茂市加茂川町3丁目8−3",
+    "phone": "0574-23-0500",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3c1c96baf45a0bc694",
+    "name": "スーパーマーケットバロー美濃加茂店",
+    "prefecture": "岐阜県",
+    "city": "美濃加茂市",
+    "address": "岐阜県美濃加茂市山手町1丁目35−1",
+    "phone": "0574-24-1211",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-09f89c8fa75df51cac",
+    "name": "カネスエ 美濃店",
+    "prefecture": "岐阜県",
+    "city": "美濃市",
+    "address": "岐阜県美濃市松森上竹下200番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%be%8e%e6%bf%83%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-48871ff9ebe2c491a3",
+    "name": "カネスエ 正木店",
+    "prefecture": "岐阜県",
+    "city": "羽島市",
+    "address": "岐阜県羽島市正木町須賀字中畑1737-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%ad%a3%e6%9c%a8%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-40ceae9cb7ea360a78",
+    "name": "カネスエ 竹鼻店",
+    "prefecture": "岐阜県",
+    "city": "羽島市",
+    "address": "岐阜県羽島市竹鼻町蜂尻宮西22-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%ab%b9%e9%bc%bb%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-416c106ee43da0b934",
+    "name": "スーパーマーケットバロー羽島インター店",
+    "prefecture": "岐阜県",
+    "city": "羽島市",
+    "address": "岐阜県羽島市江吉良町2939",
+    "phone": "058-397-1500",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0ea053e8e197ee0740",
+    "name": "業務スーパー岐阜羽島店",
+    "prefecture": "岐阜県",
+    "city": "羽島市",
+    "address": "岐阜県羽島市正木町曲利1097",
+    "phone": "058-394-0705",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1912",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-39d089df228a42519b",
+    "name": "スーパーマーケットバロー 大和ストアー",
+    "prefecture": "岐阜県",
+    "city": "郡上市",
+    "address": "岐阜県郡上市大和町徳永268",
+    "phone": "0575-88-0050",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-215982c221246e70e4",
+    "name": "スーパーマーケットバロー八幡店",
+    "prefecture": "岐阜県",
+    "city": "郡上市",
+    "address": "岐阜県郡上市八幡町小野211−1",
+    "phone": "0575-66-2201",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a3df8fe9916ab0b53c",
+    "name": "スーパーマーケットバロー白鳥店",
+    "prefecture": "岐阜県",
+    "city": "郡上市",
+    "address": "岐阜県郡上市白鳥町白鳥字向島1073",
+    "phone": "0575-83-0180",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5ae0b18f78d78ce84a",
+    "name": "カネスエ 関小瀬店",
+    "prefecture": "岐阜県",
+    "city": "関市",
+    "address": "岐阜県関市小瀬首次2837-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e9%96%a2%e5%b0%8f%e7%80%ac%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c0de51421cae8a50d1",
+    "name": "スーパーマーケットバロー武芸川店",
+    "prefecture": "岐阜県",
+    "city": "関市",
+    "address": "岐阜県関市武芸川町高野510−1",
+    "phone": "0575-45-0099",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0e62adcf6bce4e9d63",
+    "name": "スーパーマーケットバロー関ひがし店",
+    "prefecture": "岐阜県",
+    "city": "関市",
+    "address": "岐阜県関市市平賀字鹿塚88",
+    "phone": "0575-21-6710",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a186d3a7ea58035948",
+    "name": "スーパーマーケットバロー関緑ヶ丘店",
+    "prefecture": "岐阜県",
+    "city": "関市",
+    "address": "岐阜県関市緑ヶ丘1-1-55",
+    "phone": "0575-24-2111",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fcf369cd569f7cd6a6",
+    "name": "タチヤ関稲口店",
+    "prefecture": "岐阜県",
+    "city": "関市",
+    "address": "岐阜県関市稲口623",
+    "phone": "（0575）22-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8687899d8296e61792",
+    "name": "スーパーマーケットバロー神岡店",
+    "prefecture": "岐阜県",
+    "city": "飛騨市",
+    "address": "岐阜県飛騨市神岡町東町754−1",
+    "phone": "0578-83-0201",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a662645d93df2e01b1",
+    "name": "カネスエ 養老店",
+    "prefecture": "岐阜県",
+    "city": "養老町",
+    "address": "岐阜県養老郡養老町石畑字北ノ口819番1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e9%a4%8a%e8%80%81%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bbc0f1a7a5699dcf82",
+    "name": "スーパーマーケットバロー養老店",
+    "prefecture": "岐阜県",
+    "city": "養老町",
+    "address": "岐阜県養老郡養老町高田2149",
+    "phone": "0584-34-3388",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-da7509460e49b943a7",
+    "name": "スーパーマーケットバロー高山南店",
+    "prefecture": "岐阜県",
+    "city": "高山市",
+    "address": "岐阜県高山市花里町2丁目117",
+    "phone": "0577-36-6533",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d99129eb2c8e402e6b",
+    "name": "スーパーマーケットバロー高山店",
+    "prefecture": "岐阜県",
+    "city": "高山市",
+    "address": "岐阜県高山市岡本町3丁目18−2",
+    "phone": "0577-36-5111",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ee6063a5507458044d",
+    "name": "業務スーパー高山店",
+    "prefecture": "岐阜県",
+    "city": "高山市",
+    "address": "岐阜県高山市昭和町2丁目120-1",
+    "phone": "0577-32-7270",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2026",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5d3fa77d39c592b9f6",
+    "name": "アオキスーパー あま坂牧店",
+    "prefecture": "愛知県",
+    "city": "あま市",
+    "address": "愛知県あま市坂牧坂塩83番地1",
+    "phone": "052-526-8700",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=66",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8c2cc89353035e01d8",
+    "name": "アオキスーパー 甚目寺店",
+    "prefecture": "愛知県",
+    "city": "あま市",
+    "address": "愛知県あま市新居屋岩屋99番地",
+    "phone": "052-443-2511",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=19",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3b7553ecf2960e8730",
+    "name": "業務スーパー甚目寺森店",
+    "prefecture": "愛知県",
+    "city": "あま市",
+    "address": "愛知県あま市森5丁目21番28",
+    "phone": "052-445-7720",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2015",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-cc7188353b75d27f49",
+    "name": "フィール 三好店",
+    "prefecture": "愛知県",
+    "city": "みよし市",
+    "address": "愛知県みよし市三好町弁財天34 地図を見る >",
+    "phone": "0561-35-1888",
+    "url": "https://feel-corp.jp/store/nishimikawa/miyoshi/store-566.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-75e3cbe1ead345e735",
+    "name": "フェルナ 三好姥子店",
+    "prefecture": "愛知県",
+    "city": "みよし市",
+    "address": "愛知県みよし市三好町姥子12番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%b8%89%e5%a5%bd%e5%a7%a5%e5%ad%90%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-65c6aa9a634d0b5a92",
+    "name": "アオキスーパー 一宮店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市印田通2丁目2番地",
+    "phone": "0586-24-2625",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=15",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b11208bb25b4ddc9b5",
+    "name": "アオキスーパー 三条店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市三条字賀74番1",
+    "phone": "0586-63-2010",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=54",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-052c50b5c247f88af0",
+    "name": "アオキスーパー 今伊勢店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市今伊勢町本神戸字南新田1-1",
+    "phone": "0586-25-8331",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=25",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5a9faeb37884e9170f",
+    "name": "アオキスーパー 萩原店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市萩原町萩原字山越38番地",
+    "phone": "0586-69-7555",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=22",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-79e0a5a98f2f1c9b16",
+    "name": "カネスエ 一宮八幡店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市八幡5丁目1-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%b8%80%e5%ae%ae%e5%85%ab%e5%b9%a1%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5909f7cada8c48ee45",
+    "name": "カネスエ 北園通店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市北園通7丁目6番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%8c%97%e5%9c%92%e9%80%9a%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ea343c91373131b593",
+    "name": "カネスエ 宮西店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市宮西通8丁目10番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%ae%ae%e8%a5%bf%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f9a98597cb734fd17d",
+    "name": "カネスエ 新生店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市新生3丁目14番地15号",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%96%b0%e7%94%9f%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-41e982e10c6e419468",
+    "name": "カネスエ 浅井店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市浅井町尾関字上り戸66番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%b5%85%e4%ba%95%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-43902b009761a55c3c",
+    "name": "カネスエ 瀬部店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市大字瀬部字流36-20",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%80%ac%e9%83%a8%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-43c6aaf70a728b512e",
+    "name": "カネスエ 開明店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市奥町字田畑10",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e9%96%8b%e6%98%8e%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-43f4f7faaf3c1dacf1",
+    "name": "スーパーマーケットバロー一宮西店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市八幡5丁目1−16",
+    "phone": "0586-47-0088",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f9f4076c9159f74b62",
+    "name": "スーパーマーケットバロー伝法寺店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市伝法寺11丁目12−3",
+    "phone": "0586-75-7200",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-034ef78fe33fcf0469",
+    "name": "ヤマナカ 一宮フランテ館",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市大和町毛受字辻畑5-1",
+    "phone": "0586-43-5111",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop028",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-85ca8f6f880cf51bf3",
+    "name": "杉戸浴場",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市大宮3-3-20",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/5",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-a8af9915bcdfdd0e0e",
+    "name": "業務スーパー一宮店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市末広1丁目6-22",
+    "phone": "0586-48-4877",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=702",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-52a17af22c9227598f",
+    "name": "業務スーパー大山店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市大赤見東川垂1",
+    "phone": "0586-75-5377",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=701",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a4ea5fa7412cfcba07",
+    "name": "業務スーパー尾西店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市東五城字東備前5-1",
+    "phone": "0586-63-3712",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1137",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a701d68a34bddfffa5",
+    "name": "魚太郎 一宮店",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市木曽川町黒田字南ハツケ池25-1 イオンモール木曽川1F",
+    "phone": "0586-52-7400",
+    "url": "https://www.uotaro.com/ichinomiya/",
+    "kinds": [
+      "fishmongers"
+    ],
+    "sourceName": "魚太郎公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-eb22dc4620a89f2884",
+    "name": "龍美湯",
+    "prefecture": "愛知県",
+    "city": "一宮市",
+    "address": "愛知県一宮市新生1-3-2",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/5",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c9616efd6a5b6a2729",
+    "name": "アオキスーパー 刈谷店",
+    "prefecture": "愛知県",
+    "city": "刈谷市",
+    "address": "愛知県刈谷市野田町北菰神37番地の1",
+    "phone": "0566-25-5011",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=40",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d25330c3cddfea24f8",
+    "name": "スーパーマーケットバロールビットタウン刈谷店",
+    "prefecture": "愛知県",
+    "city": "刈谷市",
+    "address": "愛知県刈谷市高倉町2丁目601",
+    "phone": "0566-62-6155",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1663501be67dbc5059",
+    "name": "スーパーマーケットバロー刈谷店",
+    "prefecture": "愛知県",
+    "city": "刈谷市",
+    "address": "愛知県刈谷市若松町2丁目101 みなくる刈谷 1階",
+    "phone": "0566-63-5777",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-496ea28e88ac1b1f26",
+    "name": "フィール 刈谷恩田店",
+    "prefecture": "愛知県",
+    "city": "刈谷市",
+    "address": "愛知県刈谷市恩田町一丁目154番地9 地図を見る >",
+    "phone": "0566-24-2011",
+    "url": "https://feel-corp.jp/store/nishimikawa/kariya/store-621.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2fdbb655e4ba66e93d",
+    "name": "業務スーパー刈谷店",
+    "prefecture": "愛知県",
+    "city": "刈谷市",
+    "address": "愛知県刈谷市築地町1丁目2-3",
+    "phone": "0566-62-5800",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1299",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ce6b78a01e72c8d769",
+    "name": "カネスエ 西春店",
+    "prefecture": "愛知県",
+    "city": "北名古屋市",
+    "address": "愛知県北名古屋市沖村字天花寺76番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e8%a5%bf%e6%98%a5%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-69079bc78c71beefcd",
+    "name": "スーパーマーケットバロー師勝店",
+    "prefecture": "愛知県",
+    "city": "北名古屋市",
+    "address": "愛知県北名古屋市鹿田西赤土76−1",
+    "phone": "0568-26-6188",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-4e515175257ebe964d",
+    "name": "スーパーマーケットバロー西春店",
+    "prefecture": "愛知県",
+    "city": "北名古屋市",
+    "address": "愛知県北名古屋市沖村山ノ神30",
+    "phone": "0568-27-3311",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bbf13fde9b5fddebfd",
+    "name": "アオキスーパー 乙川店",
+    "prefecture": "愛知県",
+    "city": "半田市",
+    "address": "愛知県半田市長根町1丁目49番地",
+    "phone": "0569-29-3003",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=31",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7be3871a569562fe51",
+    "name": "アオキスーパー 清城店",
+    "prefecture": "愛知県",
+    "city": "半田市",
+    "address": "愛知県半田市清城町2丁目3番地の8",
+    "phone": "0569-23-6490",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=29",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ad882708e99c8bd6ee",
+    "name": "スーパーマーケットバロー半田店",
+    "prefecture": "愛知県",
+    "city": "半田市",
+    "address": "愛知県半田市乙川吉野町9",
+    "phone": "0569-25-0222",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-15fa8bdae83358b219",
+    "name": "フィール Cフェスタ",
+    "prefecture": "愛知県",
+    "city": "半田市",
+    "address": "愛知県半田市青山1丁目1-1 地図を見る >",
+    "phone": "0569-24-3300",
+    "url": "https://feel-corp.jp/store/chita/handa/store-596.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8dc6567e48783e1ea7",
+    "name": "フィール EQVo!(エクボ) 半田店",
+    "prefecture": "愛知県",
+    "city": "半田市",
+    "address": "愛知県半田市岩滑西町1丁目20番地 地図を見る >",
+    "phone": "0569-24-8880",
+    "url": "https://feel-corp.jp/store/chita/handa/store-597.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-405e21962854839af8",
+    "name": "フィール 乙川店",
+    "prefecture": "愛知県",
+    "city": "半田市",
+    "address": "愛知県半田市小神町21 地図を見る >",
+    "phone": "0569-26-2116",
+    "url": "https://feel-corp.jp/store/chita/handa/store-565.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ada46f400a9383773f",
+    "name": "フェルナ 一ノ草店",
+    "prefecture": "愛知県",
+    "city": "半田市",
+    "address": "愛知県半田市一ノ草町202番9",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%b8%80%e3%83%8e%e8%8d%89%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f94b40ec617be7ae5a",
+    "name": "亀崎の湯",
+    "prefecture": "愛知県",
+    "city": "半田市",
+    "address": "愛知県半田市亀崎北浦町2-31",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/5",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-6b06e9700cc6c97886",
+    "name": "業務スーパー半田店",
+    "prefecture": "愛知県",
+    "city": "半田市",
+    "address": "愛知県半田市花園町2丁目2-3",
+    "phone": "0569-32-3702",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=698",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2aa772c3ca9a6073e5",
+    "name": "ぽかぽか温泉新守山乃湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市守山区鳥羽見2-10-10",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/4",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-1af57c0025bc84e846",
+    "name": "アオキスーパー ららぽーとみなとアクルス店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区港明二丁目3番2号1階",
+    "phone": "052-387-8001",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=37",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5142035cf1ef329491",
+    "name": "アオキスーパー アズパーク店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区新家1丁目2421番地",
+    "phone": "052-432-5441",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=23",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5ae3ede2e1a4cf67aa",
+    "name": "アオキスーパー 一色新町店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区一色新町1丁目401番地",
+    "phone": "052-303-2238",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=20",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-18bc383a04d9e9b350",
+    "name": "アオキスーパー 上名古屋店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区上名古屋四丁目5番9号",
+    "phone": "052-528-1870",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=59",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e130249f6a66ee7b24",
+    "name": "アオキスーパー 上飯田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区上飯田南町5丁目85番",
+    "phone": "052-915-7715",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=27",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-498b49a7f3193f41dd",
+    "name": "アオキスーパー 中村店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区鳥居西通一丁目1番地",
+    "phone": "052-412-4029",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=10",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-42daa9e598e37d6b0b",
+    "name": "アオキスーパー 八田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区川前町501",
+    "phone": "052-419-2215",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=17",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ad60b65f1ab07253af",
+    "name": "アオキスーパー 千代が丘店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市千種区千代が丘5番50号",
+    "phone": "052-773-7706",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=26",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c7740ae8ea2b6b7b13",
+    "name": "アオキスーパー 名東よもぎ台店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市名東区よもぎ台二丁目818",
+    "phone": "052-769-6050",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=55",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7abb4b2def61476dd9",
+    "name": "アオキスーパー 大高店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区大高町字天神56番",
+    "phone": "052-626-8150",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=52",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f62c830c8fe334ae5b",
+    "name": "アオキスーパー 戸田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区戸田西3丁目1401番地",
+    "phone": "052-304-5221",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=13",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bd1bf4d73ed5fe7d75",
+    "name": "アオキスーパー 木場店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区木場町2番36号",
+    "phone": "052-692-7201",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=45",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-04bfac59605fd22776",
+    "name": "アオキスーパー 植田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市天白区植田南2丁目701番地",
+    "phone": "052-875-8100",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=47",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c54deb56b94c65a861",
+    "name": "アオキスーパー 烏森店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区烏森町5丁目25番地",
+    "phone": "052-482-7553",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=32",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-303702fb8b176aee44",
+    "name": "アオキスーパー 熱田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市熱田区花表町2103番1",
+    "phone": "052-889-2877",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=53",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ca7328a19cb9922499",
+    "name": "アオキスーパー 福徳店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区福徳町7丁目201番地",
+    "phone": "052-934-7500",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=65",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-80117aff3ade9d52f8",
+    "name": "アオキスーパー 鳴子店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区上旭2丁目101番地",
+    "phone": "052-896-2447",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=36",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-4433f5ec176fc995fd",
+    "name": "アオキスーパー 鳴海店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区水広二丁目1212番地",
+    "phone": "052-879-2131",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=12",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-081b6988e7dcd89fe7",
+    "name": "カネスエ 徳重店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区鶴が沢3丁目1102番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%be%b3%e9%87%8d%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-199b1e77ee6c78ecad",
+    "name": "カネスエ 木場店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区木場町8-51",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%9c%a8%e5%a0%b4%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-acab9b9964d5ca05fb",
+    "name": "カネスエ 砂美店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区砂美町2番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%a0%82%e7%be%8e%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3fdbd6cfa0de4a9cb0",
+    "name": "スーパーマーケットバロー 志段味店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市守山区上志段味 土地区画整理地内83街区",
+    "phone": "052-739-1900",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6a8bfd763c445db460",
+    "name": "スーパーマーケットバローなるぱーく店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区浦里3丁目232 (なるぱーく内1F)",
+    "phone": "052-899-6011",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-59daf2533fed7afa26",
+    "name": "スーパーマーケットバロー中小田井店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区中小田井4丁目380",
+    "phone": "052-509-2300",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5390d361f5f7c5d9de",
+    "name": "スーパーマーケットバロー中志段味店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市守山区中志段味 特定土地区画整理事業95街区仮1番の一部",
+    "phone": "052-739-1022",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-98a45682d31f0d2682",
+    "name": "スーパーマーケットバロー光音寺店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区水草町1丁目47−1",
+    "phone": "052-910-2700",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-71aa682799e68084eb",
+    "name": "スーパーマーケットバロー内田橋店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市南区明治1丁目1413",
+    "phone": "052-698-7900",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1093eddad624d874a4",
+    "name": "スーパーマーケットバロー千音寺店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区 千音寺土地区画整理組合41街区1番",
+    "phone": "052-439-1178",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-26e3c72bd3826af0d8",
+    "name": "スーパーマーケットバロー堀越店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区南堀越2丁目4−78",
+    "phone": "052-528-3220",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ef7dd8074ce623a1a6",
+    "name": "スーパーマーケットバロー戸田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区戸田明正2丁目110 ルビットタウン戸田 1階",
+    "phone": "052-439-5330",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3def781a7a40b9031a",
+    "name": "スーパーマーケットバロー新守山店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市守山区瀬古東2丁目1101番地",
+    "phone": "052-795-8660",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-855759fde322dc3e99",
+    "name": "スーパーマーケットバロー東起店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区東起町2丁目3番地",
+    "phone": "052-389-2900",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a9edf23e1e1346eeb4",
+    "name": "スーパーマーケットバロー港栄店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区港栄2丁目8−30",
+    "phone": "052-659-6601",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6a0954db1455905777",
+    "name": "スーパーマーケットバロー滝川店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市昭和区滝川町14−1",
+    "phone": "052-861-2900",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-82686d036e39757a6a",
+    "name": "スーパーマーケットバロー瑞穂店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市瑞穂区豆田町5丁目2",
+    "phone": "052-884-2550",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-cb2681733425544ead",
+    "name": "スーパーマーケットバロー車道店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市東区葵2丁目996 番の1",
+    "phone": "052-930-6070",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a58a709650aa8724b7",
+    "name": "スーパーマーケットバロー高辻店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市昭和区福江3丁目7−76",
+    "phone": "052-889-7500",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b7105f68b1bcc77f87",
+    "name": "スーパーマーケットバロー鳴海店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区砂田1丁目401",
+    "phone": "052-624-7911",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-56519e8ad6888810c2",
+    "name": "タチヤみなと店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区築盛町120番地",
+    "phone": "（052）661-5440",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f6aa17a012b3d5dad1",
+    "name": "タチヤ八事店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市天白区元八事2-159",
+    "phone": "（052）831-2740",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e2a9b98e11297515f7",
+    "name": "タチヤ堀田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市南区豊4-3-12",
+    "phone": "（052）823-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-cfcc74745c1cfd3d79",
+    "name": "タチヤ平針店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市天白区中平2-3004",
+    "phone": "（052）805-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8e25f402d47e96ca5d",
+    "name": "タチヤ楠店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区楠4-518",
+    "phone": "052-938-5451",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-53c12cd5d31aa155ef",
+    "name": "タチヤ緑神沢店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区神沢1-426-1",
+    "phone": "（052）878-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9d3345c669845ee09e",
+    "name": "タチヤ錦二丁目店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中区錦2-7-18",
+    "phone": "052-211-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-53cd04a6177c374135",
+    "name": "タチヤ高針店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市名東区勢子坊4-1005",
+    "phone": "（052）703-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-006c884262ed4b86aa",
+    "name": "テレビ温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区牛田通1-35",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/2",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-b32fa338922664f666",
+    "name": "フィール EQVo!(エクボ) ちとせ店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区千年2丁目42-12 地図を見る >",
+    "phone": "052-652-0278",
+    "url": "https://feel-corp.jp/store/nagoya/minato/store-577.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d8e513bb3ee5d36c16",
+    "name": "フィール EQVo!(エクボ) もも山店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区桃山4丁目342 地図を見る >",
+    "phone": "052-875-0220",
+    "url": "https://feel-corp.jp/store/nagoya/midori/store-584.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6c1a6f699a3de4a675",
+    "name": "フィール EQVo!(エクボ) 元塩店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市南区元塩町3丁目1-4 地図を見る >",
+    "phone": "052-614-7600",
+    "url": "https://feel-corp.jp/store/nagoya/minami/store-578.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ac4bf9901c570f287e",
+    "name": "フィール EQVo!(エクボ) 入場店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区正保町8丁目57番 地図を見る >",
+    "phone": "052-382-0008",
+    "url": "https://feel-corp.jp/store/nagoya/minato/store-576.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-33f5ac9bfc2fd276ed",
+    "name": "フィール EQVo!(エクボ) 岩塚店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区岩塚町字小池1番地64 地図を見る >",
+    "phone": "052-411-0100",
+    "url": "https://feel-corp.jp/store/nagoya/nakamura/store-563.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0f1cdce63ec4b9c548",
+    "name": "フィール RISE やき山店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市天白区焼山一丁目422番地 地図を見る >",
+    "phone": "052-800-2116",
+    "url": "https://feel-corp.jp/store/nagoya/tenpaku/store-618.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c647f8ebdaad8c980f",
+    "name": "フィール RISE 植田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市天白区井口一丁目1601番地 地図を見る >",
+    "phone": "052-801-8800",
+    "url": "https://feel-corp.jp/store/nagoya/tenpaku/store-619.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-25504d6bdca7b5cf51",
+    "name": "フィール みかん山店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市瑞穂区密柑山町1丁目10 地図を見る >",
+    "phone": "052-834-2116",
+    "url": "https://feel-corp.jp/store/nagoya/mizuho/store-569.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5038be24e5e8bbb01c",
+    "name": "フィール アイアイプラザ",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区野田一丁目250番地 地図を見る >",
+    "phone": "052-354-2116",
+    "url": "https://feel-corp.jp/store/nagoya/nakagawa/store-575.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f64f9b844b934b0616",
+    "name": "フィール エクボスタイル ファミリーテーブル",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区中小田井4丁目206番地 地図を見る >",
+    "phone": "052-503-2116",
+    "url": "https://feel-corp.jp/store/nagoya/nishi/store-570.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5be3b9084c11f5d32d",
+    "name": "フィール エクボスタイルTSUJIMACHI",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区辻町1丁目37番地 地図を見る >",
+    "phone": "052-912-2116",
+    "url": "https://feel-corp.jp/store/nagoya/kita/store-580.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ea294317c237ef482a",
+    "name": "フィール エクボスタイル志賀公園店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区平手町1丁目13番 地図を見る >",
+    "phone": "052-919-2116",
+    "url": "https://feel-corp.jp/store/nagoya/kita/store-581.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3bdc79cf7d72a6f152",
+    "name": "フィール クオリテ上社店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市名東区社台三丁目267番 地図を見る >",
+    "phone": "052-726-8668",
+    "url": "https://feel-corp.jp/store/nagoya/meito/store-628.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9725a27982d6b8e6f7",
+    "name": "フィール クオリテ名東高針店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市名東区勢子坊四丁目101番地 地図を見る >",
+    "phone": "052-705-2116",
+    "url": "https://feel-corp.jp/store/nagoya/store-626.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3fc79afaaaaf93ca8f",
+    "name": "フィール クオリテ平和公園店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市名東区平和が丘一丁目65番1 地図を見る >",
+    "phone": "052-777-2116",
+    "url": "https://feel-corp.jp/store/nagoya/store-631.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ca82d74c6ac2a42801",
+    "name": "フィール シャンピアポート",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市昭和区白金3丁目6-24 地図を見る >",
+    "phone": "052-871-2116",
+    "url": "https://feel-corp.jp/store/nagoya/syouwa/store-560.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-42660de475a7725921",
+    "name": "フィール ステージ八事",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市昭和区高峯町154番地1 地図を見る >",
+    "phone": "052-835-2116",
+    "url": "https://feel-corp.jp/store/nagoya/syouwa/store-633.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c04f863b619c7c56b0",
+    "name": "フィール スマイルプラザ",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区長須賀三丁目306番地 地図を見る >",
+    "phone": "052-431-5400",
+    "url": "https://feel-corp.jp/store/nagoya/nakagawa/store-571.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b45a900d80bfb69f34",
+    "name": "フィール 堀田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市瑞穂区惣作町2丁目4-1 地図を見る >",
+    "phone": "052-882-2116",
+    "url": "https://feel-corp.jp/store/nagoya/mizuho/store-564.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c263d6ca03b110df98",
+    "name": "フィール 富田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区富田町大字榎津字東乗江600 地図を見る >",
+    "phone": "052-304-2116",
+    "url": "https://feel-corp.jp/store/nagoya/nakagawa/store-617.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ccc26bc0f2d8d55f5e",
+    "name": "フィール 有松ジャンボリー",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区南陵601番地 地図を見る >",
+    "phone": "052-626-8811",
+    "url": "https://feel-corp.jp/store/nagoya/midori/store-583.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f42e5edf8ccfa9a743",
+    "name": "フィール 栄生店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区栄生町1番2号 地図を見る >",
+    "phone": "052-482-7676",
+    "url": "https://feel-corp.jp/store/nagoya/nakamura/store-562.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-dbda7477d59e04e329",
+    "name": "フィール 花の木店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区花の木一丁目6番9号 地図を見る >",
+    "phone": "052-522-2116",
+    "url": "https://feel-corp.jp/store/nagoya/nishi/store-616.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d073951cc3cfa6a66e",
+    "name": "フィール 野並店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市天白区井の森町165 地図を見る >",
+    "phone": "052-899-7000",
+    "url": "https://feel-corp.jp/store/nagoya/tenpaku/store-579.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ad901fcfac4cf07994",
+    "name": "フィール 黒川東店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区猿投町2番地1 地図を見る >",
+    "phone": "052-915-2116",
+    "url": "https://feel-corp.jp/store/nagoya/kita/store-638.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a3fec59de34868e2ac",
+    "name": "フェルナ 名古屋茶屋店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区秋葉2丁目130",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%90%8d%e5%8f%a4%e5%b1%8b%e8%8c%b6%e5%b1%8b%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-83eb9bbd90e8f67755",
+    "name": "フェルナ 姥子山店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区姥子山四丁目613番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%a7%a5%e5%ad%90%e5%b1%b1%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2990d13cc28ec735ac",
+    "name": "フェルナ 富が丘店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市名東区富が丘10",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%af%8c%e3%81%8c%e4%b8%98%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c50227a4e9ad11e1bf",
+    "name": "フェルナ 小幡南店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市守山区小幡南一丁目603番1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%b0%8f%e5%b9%a1%e5%8d%97%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5191f5233f5639104f",
+    "name": "フェルナ 森の里店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区森の里1丁目240番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%a3%ae%e3%81%ae%e9%87%8c%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-06f5e5e9abd79be14d",
+    "name": "フェルナ 相原郷店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区相原郷2丁目1710番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%9b%b8%e5%8e%9f%e9%83%b7%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-571dfd50ec186394ba",
+    "name": "ヤマナカ つるまい店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中区千代田2丁目20番1号",
+    "phone": "052-242-6511",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop013",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-223b197bdaf264e731",
+    "name": "ヤマナカ みなと当知店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区当知二丁目401番地1",
+    "phone": "052-381-0025",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop008",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-74c52077c0bd79d213",
+    "name": "ヤマナカ アスティ店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市千種区京命1丁目1番32号",
+    "phone": "052-771-6184",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop011",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-157bf993c2d021ea2d",
+    "name": "ヤマナカ フランテ ロゼ 八事",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市天白区八事石坂501-1",
+    "phone": "052-837-5155",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop020",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f85aa8478387c1c6fa",
+    "name": "ヤマナカ フランテ ロゼ 白壁",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市東区白壁三丁目19番25号",
+    "phone": "052-932-8271",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop025",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c1789683da4a02586b",
+    "name": "ヤマナカ フランテ ロゼ 覚王山",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市千種区丘上町1-39",
+    "phone": "052-752-7201",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop023",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1fcc6a4e07ed34e24e",
+    "name": "ヤマナカ 八田フランテ館",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区岩塚町字西枝1番地の1",
+    "phone": "052-411-8881",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop004",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-196ddd3bb119276427",
+    "name": "ヤマナカ 則武店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区松原町3丁目33番地",
+    "phone": "052-482-3622",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop005",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f297e0206caaccf06e",
+    "name": "ヤマナカ 四軒家フランテ",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市守山区白山1-101",
+    "phone": "052-772-6311",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop022",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-46c01d68c6c1a5de9f",
+    "name": "ヤマナカ 大曽根店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市東区矢田2丁目1番95号",
+    "phone": "052-712-1771",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop010",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-db32a103495ec1968f",
+    "name": "ヤマナカ 太平通店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区八家町3丁目28番地",
+    "phone": "052-353-9630",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop006",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-eafd6b79b3a20d7b1c",
+    "name": "ヤマナカ 安田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市昭和区安田通5丁目6番地",
+    "phone": "052-761-1955",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop014",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6d091b2703caf41197",
+    "name": "ヤマナカ 富士見台フランテ",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市千種区富士見台5丁目24番地",
+    "phone": "052-721-6200",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop021",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ec814eb2bfb302d52d",
+    "name": "ヤマナカ 小田井店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区上小田井1丁目50番地",
+    "phone": "052-503-1747",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop001",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-638a3eb065cb5213cb",
+    "name": "ヤマナカ 庄内通店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区庄内通1丁目40-1",
+    "phone": "052-522-5862",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop002",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a875dc06bc97674a17",
+    "name": "ヤマナカ 新中島店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区中島新町2丁目202",
+    "phone": "052-352-8111",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop007",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8b7c57faef9c0a854d",
+    "name": "ヤマナカ 日比野店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市熱田区大宝一丁目2番3号",
+    "phone": "052-681-9200",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop016",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-894ccb2fc53b558f6d",
+    "name": "ヤマナカ 松原店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中区松原2丁目21-16",
+    "phone": "052-323-3201",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop012",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e63ab0152dff0669d6",
+    "name": "ヤマナカ 柴田店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市南区鳴浜町5丁目1-1",
+    "phone": "052-614-2771",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop017",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-29b8a3b135b9c789da",
+    "name": "ヤマナカ 極楽フランテ",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市名東区極楽1丁目25",
+    "phone": "052-705-0881",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop024",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-da0aece6f6c135466b",
+    "name": "ヤマナカ 清水店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区清水5丁目30番5号",
+    "phone": "052-991-5401",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop009",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-17ebc99ed9d3ee4580",
+    "name": "ヤマナカ 滝ノ水店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区滝ノ水二丁目301番地",
+    "phone": "052-899-0500",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop019",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-972b7810463dac0015",
+    "name": "ヤマナカ 瑞穂店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市瑞穂区十六町2丁目20-1",
+    "phone": "052-842-7881",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop015",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-646ad1dd6a39fcac80",
+    "name": "ヤマナカ 白土フランテ館",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区白土803番地",
+    "phone": "052-877-6710",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop018",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bc6629e3689205b803",
+    "name": "ヤマナカ 稲葉地店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区稲葉地本通1-16",
+    "phone": "052-413-6331",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop003",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1b76dc5d0ad46bee1c",
+    "name": "七福湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市南区観音町4-13",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/4",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-a03673ef3dc98d30c0",
+    "name": "三吉温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市南区三吉町2-54",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/4",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-fb8bd095508d5fbc07",
+    "name": "仁王門湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中区大須3-37-20",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/3",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-8823dc74ea3e0c4887",
+    "name": "児玉湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区児玉2-8-27",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/2",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6c3ec2ebf9f817ebb5",
+    "name": "八千代湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区上名古屋1-12-5",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-a643ff2a73f0d30ed8",
+    "name": "八幡湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市昭和区市御器所4-16-12",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/3",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bf3aea07a7c459d103",
+    "name": "名古屋温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市南区城下町1-15",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/4",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-f3e7a6a9aa9dfedfaf",
+    "name": "地蔵湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区太閤5-18-19",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/2",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f046b62140c4389fac",
+    "name": "報徳湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区平安2-20-43",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-f42f8e1861f468a2dc",
+    "name": "大幸温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市東区大幸3-15-6",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-50b516d7b7d1415274",
+    "name": "大黒湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区二ツ橋町2-58",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/2",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-372af2ebb6535ec49e",
+    "name": "娯楽湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市千種区春岡2-24-20",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-8fc4d7a21e939dc9e0",
+    "name": "富美の湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市昭和区市鶴羽町3-6",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/3",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-87e92afb8cb717c20f",
+    "name": "小田井温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区上小田井2-122",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/2",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-9fc080e9edd45217f0",
+    "name": "山田温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市南区粕畠町2-25",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/4",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-e56131e78b44cf5f04",
+    "name": "川澄湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市瑞穂区川澄町2-20",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/3",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b655910821c682a026",
+    "name": "平田温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市東区相生町38",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-0c0e409fc8eb546ac4",
+    "name": "広路湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市昭和区折戸町3-6",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/3",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d0de34c8c17696c014",
+    "name": "御嶽温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市昭和区御器所3-10-7",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/3",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-e0cb9a1df284308d99",
+    "name": "新元湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区下之一色町南の切54-1",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/4",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-cc61af44e19c871324",
+    "name": "日比津温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区高道町6-4-16",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/2",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-7d9d04e5b867e18144",
+    "name": "松の湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区深川町1-36",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/2",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-023a1b561bb769e641",
+    "name": "柴田温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市南区元柴田西町1-18-1",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/4",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8d3cd5a91240a5d33b",
+    "name": "栄 湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市瑞穂区船原町2-6",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/3",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-25d8177be623523924",
+    "name": "桔梗湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市東区百人町94-1",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-2a89e4ee706ca418a6",
+    "name": "楠 湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区中村本町1-35",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/2",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bb86e5f995cf8e9267",
+    "name": "業務スーパー下志段味店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市守山区下志段味三丁目1412番地",
+    "phone": "052-736-7863",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1526",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b9431efe6d41e51d29",
+    "name": "業務スーパー名東極楽店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市名東区極楽4-1402長谷川ビル1F",
+    "phone": "052-709-3707",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=695",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9c17ccfd8ba58af038",
+    "name": "業務スーパー天白店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市天白区高島2丁目1205",
+    "phone": "052-809-0577",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=696",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7c180986d76aebaf77",
+    "name": "業務スーパー新守山店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市守山区金屋2丁目52番",
+    "phone": "052-796-7977",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=694",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3bddb503ff3c3a9f2a",
+    "name": "業務スーパー福住店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区福住町9-32",
+    "phone": "052-365-7132",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1320",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b5cfc06a534c223a5d",
+    "name": "業務スーパー黄金店",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区黄金通3-22",
+    "phone": "052-459-3777",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=692",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bf142f3bd690c18721",
+    "name": "比良温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区清里町337",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-f15444cf82d4f19394",
+    "name": "永徳温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市港区野跡1-106",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/4",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-7fb1fbb66679087623",
+    "name": "永楽湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中区大須1-19-2",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/3",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c971305ae8c8eeb47c",
+    "name": "炭の湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区亀島2-11-8",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/3",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-917b0b0bd5d3d82762",
+    "name": "玉の湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市瑞穂区弥富通5-56-2",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/4",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-8310de9a5682cf2d20",
+    "name": "白山温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市西区枇杷島1-2-20",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/2",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-fc0aaef033ea1e5193",
+    "name": "萩の湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区萩野通2-6",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-9a26ebbfadf17437f6",
+    "name": "金時湯",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中村区竹橋町39-10",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/2",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1784bab155a79ff8f7",
+    "name": "長喜温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市北区長喜町2-18",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-9e2b94cca388f986e9",
+    "name": "養老温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中区新栄1-32-5",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/3",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-c6d187f5f8bcd330fe",
+    "name": "魚太郎 瑞穂店 鮮魚市場",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市瑞穂区大喜新町3丁目5-1 iiNE MARCHE南棟1F",
+    "phone": "052-618-8205",
+    "url": "https://www.uotaro.com/mizuho/",
+    "kinds": [
+      "fishmongers"
+    ],
+    "sourceName": "魚太郎公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-cec650f6406a1c479b",
+    "name": "鳴海温泉",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市緑区鳴海町字向田179",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/4",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2988807d831cb15afc",
+    "name": "カネスエ 大口店",
+    "prefecture": "愛知県",
+    "city": "大口町",
+    "address": "愛知県丹羽郡大口町余野5丁目312番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%a4%a7%e5%8f%a3%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f4a831897591c87095",
+    "name": "スーパーマーケットバロー大口店",
+    "prefecture": "愛知県",
+    "city": "大口町",
+    "address": "愛知県丹羽郡大口町上小口1丁目754",
+    "phone": "0587-96-1610",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fb6844547e825a81a9",
+    "name": "アオキスーパー 大府店",
+    "prefecture": "愛知県",
+    "city": "大府市",
+    "address": "愛知県大府市明成町一丁目392番地",
+    "phone": "0562-48-4488",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=38",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b248c7a501543843aa",
+    "name": "フィール エクボスタイル共和店",
+    "prefecture": "愛知県",
+    "city": "大府市",
+    "address": "愛知県大府市共和町二丁目16-1 地図を見る >",
+    "phone": "0562-47-7766",
+    "url": "https://feel-corp.jp/store/chita/obu/store-598.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3b2b47945f263b06d5",
+    "name": "フィール キャンパス",
+    "prefecture": "愛知県",
+    "city": "大府市",
+    "address": "愛知県大府市江端町四丁目18 地図を見る >",
+    "phone": "0562-47-2311",
+    "url": "https://feel-corp.jp/store/chita/obu/store-614.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9a556f42c2055f2188",
+    "name": "ヤマナカ 大府店",
+    "prefecture": "愛知県",
+    "city": "大府市",
+    "address": "愛知県大府市柊山町一丁目98番地",
+    "phone": "0562-48-3677",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop042",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e0c6903217ed6a749a",
+    "name": "業務スーパー大府店",
+    "prefecture": "愛知県",
+    "city": "大府市",
+    "address": "愛知県大府市東新町3丁目46",
+    "phone": "0562-45-4677",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=697",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-11010e7a5a5e995895",
+    "name": "業務スーパー大府月見店",
+    "prefecture": "愛知県",
+    "city": "大府市",
+    "address": "愛知県大府市月見町6丁目78",
+    "phone": "0562-46-7470",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2036",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b93dc49c8e69269f3b",
+    "name": "魚太郎 大府店",
+    "prefecture": "愛知県",
+    "city": "大府市",
+    "address": "愛知県大府市吉田町正右エ門新田1-1 JAあぐりタウンげんきの郷内",
+    "phone": "0562-46-6677",
+    "url": "https://www.uotaro.com/obu/",
+    "kinds": [
+      "fishmongers"
+    ],
+    "sourceName": "魚太郎公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d74d22e467effc0429",
+    "name": "アオキスーパー 大治南店",
+    "prefecture": "愛知県",
+    "city": "大治町",
+    "address": "愛知県海部郡大治町大字三本木字金久38番",
+    "phone": "052-462-6141",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=49",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2832bf57cb053f5a3f",
+    "name": "アオキスーパー 大治店",
+    "prefecture": "愛知県",
+    "city": "大治町",
+    "address": "愛知県海部郡大治町大字堀之内字元苗代220番地",
+    "phone": "052-441-1211",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=11",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-aee6495d2336b71b1d",
+    "name": "アオキスーパー 古井店",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市古井町松山5番地の1",
+    "phone": "0566-77-0011",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=39",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e089efc31bab932154",
+    "name": "アオキスーパー 東明店",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市東明町16-4",
+    "phone": "0566-72-8400",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=43",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1380f6eef8d186153f",
+    "name": "スーパーマーケットバロー安城店",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市篠目町1丁目11-17",
+    "phone": "0566-71-2141",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3fe5891797c2d88035",
+    "name": "スーパーマーケットバロー安城日の出店",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市日の出町1番21号",
+    "phone": "0566-73-6711",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e5b609eaf1a62fafb6",
+    "name": "フィール でっかいどう!!",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市高棚町中島138 地図を見る >",
+    "phone": "0566-92-2500",
+    "url": "https://feel-corp.jp/store/nishimikawa/anjo/store-603.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-eada504571551fe5dc",
+    "name": "フィール 新安城店",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市住吉町荒曽根52番地3 地図を見る >",
+    "phone": "0566-96-2116",
+    "url": "https://feel-corp.jp/store/nishimikawa/anjo/store-615.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f81b4dddf1c33b99e2",
+    "name": "フェルナ 今池店",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市今池3丁目8番3",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%bb%8a%e6%b1%a0%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-832b313911f661cde5",
+    "name": "フェルナ 安城和泉町店",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市和泉町町家下4",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%ae%89%e5%9f%8e%e5%92%8c%e6%b3%89%e7%94%ba%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-525c6be8288f6f005c",
+    "name": "ヤマナカ 安城フランテ館",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市南町15番18号",
+    "phone": "0566-74-7111",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop047",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6237eb987de53c34a5",
+    "name": "ヤマナカ 新安城店",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市住吉町3丁目5番28号",
+    "phone": "0566-98-5001",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop046",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1fabb96519ca650a7b",
+    "name": "業務スーパー安城店",
+    "prefecture": "愛知県",
+    "city": "安城市",
+    "address": "愛知県安城市百石町1丁目5-6",
+    "phone": "0566-73-6077",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1557",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-66fd904d4fead28729",
+    "name": "アオキスーパー 小牧店",
+    "prefecture": "愛知県",
+    "city": "小牧市",
+    "address": "愛知県小牧市大字久保一色字関ノ方1391番地",
+    "phone": "0568-41-1670",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=48",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3c932efe782b76e2e5",
+    "name": "カネスエ 小牧清水屋店",
+    "prefecture": "愛知県",
+    "city": "小牧市",
+    "address": "愛知県小牧市郷中1-263",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%b0%8f%e7%89%a7%e6%b8%85%e6%b0%b4%e5%b1%8b%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9cf2ef37545d98b760",
+    "name": "カネスエ 応時店",
+    "prefecture": "愛知県",
+    "city": "小牧市",
+    "address": "愛知県小牧市応時2丁目194",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%bf%9c%e6%99%82%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-642669452e03828a39",
+    "name": "カネスエ 田縣店",
+    "prefecture": "愛知県",
+    "city": "小牧市",
+    "address": "愛知県小牧市田県町113",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%94%b0%e7%b8%a3%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-dd66756c7c9d307ba1",
+    "name": "スーパーマーケットバロー小牧岩崎店",
+    "prefecture": "愛知県",
+    "city": "小牧市",
+    "address": "愛知県小牧市小牧 岩崎山前土地区画整理事業地内68街区1-2",
+    "phone": "0568-42-2580",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b6cbd2b8864acea35e",
+    "name": "フィール 小牧店",
+    "prefecture": "愛知県",
+    "city": "小牧市",
+    "address": "愛知県小牧市郷中二丁目182番地4 地図を見る >",
+    "phone": "0568-77-1717",
+    "url": "https://feel-corp.jp/store/owari/komaki/store-593.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b0c8591167e5e430a7",
+    "name": "業務スーパー新小牧店",
+    "prefecture": "愛知県",
+    "city": "小牧市",
+    "address": "愛知県小牧市応時2丁目217番",
+    "phone": "0568-71-3760",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1865",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-baa19622cd992d9645",
+    "name": "カネスエ 三郷店",
+    "prefecture": "愛知県",
+    "city": "尾張旭市",
+    "address": "愛知県尾張旭市狩宿新町1丁目11-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%b8%89%e9%83%b7%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2e99aad26ad1e6d0db",
+    "name": "カネスエ 中井田店",
+    "prefecture": "愛知県",
+    "city": "尾張旭市",
+    "address": "愛知県尾張旭市三郷町中井田80",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%b8%ad%e4%ba%95%e7%94%b0%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-12803a1aa5badcb39c",
+    "name": "スーパーマーケットバロー城山店",
+    "prefecture": "愛知県",
+    "city": "尾張旭市",
+    "address": "愛知県尾張旭市新居町諏訪南1305",
+    "phone": "0561-55-3055",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d38f2c879bf4fdaf16",
+    "name": "タチヤ旭前店",
+    "prefecture": "愛知県",
+    "city": "尾張旭市",
+    "address": "愛知県尾張旭市旭前町2-6-6",
+    "phone": "（0561）55-5454",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2507b63ded862db85a",
+    "name": "タチヤ長久手店",
+    "prefecture": "愛知県",
+    "city": "尾張旭市",
+    "address": "愛知県尾張旭市南栄町旭ヶ丘10-1",
+    "phone": "(0561)56-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-80284232ea42be2463",
+    "name": "フィール アスカ",
+    "prefecture": "愛知県",
+    "city": "尾張旭市",
+    "address": "愛知県尾張旭市東大道町原田2525 地図を見る >",
+    "phone": "0561-54-8100",
+    "url": "https://feel-corp.jp/store/owari/owariasahi/store-573.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5e191f97eca0034daa",
+    "name": "フィール 三郷店",
+    "prefecture": "愛知県",
+    "city": "尾張旭市",
+    "address": "愛知県尾張旭市尾張旭北原山土地区画整理事業地内第113街区1番 地図を見る >",
+    "phone": "0561-55-3335",
+    "url": "https://feel-corp.jp/store/owari/store-630.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1d7b8a73cb40852a2a",
+    "name": "アオキスーパー 伊賀店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市伊賀町3丁目39番地",
+    "phone": "0564-28-3911",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=44",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3bb05b7d64806cc445",
+    "name": "アオキスーパー 六名店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市六名新町4番4",
+    "phone": "0564-57-2100",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=56",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0f79fa5a997b1a08c9",
+    "name": "アオキスーパー 岡崎康生店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市康生通西3丁目15番地2",
+    "phone": "0564-64-0399",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=51",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d5eda72f4f039e979c",
+    "name": "スーパーマーケットバロー 岡崎店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市 針崎西二丁目7-1",
+    "phone": "0564-57-9022",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e7b7eff74a0dad9a7e",
+    "name": "スーパーマーケットバロー大樹寺店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市大樹寺1丁目2−2",
+    "phone": "0564-87-3511",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0c2d667ae26812ad7c",
+    "name": "スーパーマーケットバロー福岡店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市福岡町荒巻30−30",
+    "phone": "0564-72-5166",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-25447834385cb2e5fb",
+    "name": "スーパーマーケットバロー羽根店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市羽根町小豆坂3番地",
+    "phone": "0564-57-8633",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6f09e98ad21b60d805",
+    "name": "フィール EQVo!(エクボ) 大樹寺店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市鴨田本町4-11 地図を見る >",
+    "phone": "0564-21-2116",
+    "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-567.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e8a49e9222f485743e",
+    "name": "フィール EQVo!(エクボ) 福岡店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市福岡町字善棚10番地 地図を見る >",
+    "phone": "0564-55-0222",
+    "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-608.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2be989e3b836def89b",
+    "name": "フィール KAKEMACHI店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市欠町字野添38番1 地図を見る >",
+    "phone": "0564-65-2828",
+    "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-627.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-42352e9a221a3e1587",
+    "name": "フィール News(ニュース)",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市不吹町1番地2 地図を見る >",
+    "phone": "0564-55-5400",
+    "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-604.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a0a3ab99443e368cb6",
+    "name": "フィール コムタウン",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市上六名町字宮前1番地 地図を見る >",
+    "phone": "0564-71-2116",
+    "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-607.html",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fe14eb82f348a68f50",
+    "name": "フィール 岡崎大和店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市大和町字荒田41 地図を見る >",
+    "phone": "0564-32-9700",
+    "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-606.html",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9523f20997ad847f8f",
+    "name": "フィール 岡崎柱町店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市柱四丁目1-8 地図を見る >",
+    "phone": "0564-72-2116",
+    "url": "https://feel-corp.jp/store/nishimikawa/okazaki/store-605.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ca41c5d22868db1b15",
+    "name": "フェルナ 中島店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市中島町字佐渡22番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%b8%ad%e5%b3%b6%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0b535d318b64a5796f",
+    "name": "フェルナ 井ノ口新町店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市井ノ口新町7番地4",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%ba%95%e3%83%8e%e5%8f%a3%e6%96%b0%e7%94%ba%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3bc1da4d15d753f204",
+    "name": "フェルナ 井内店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市井内町手保9-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%ba%95%e5%86%85%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f2dee14f2f105a5915",
+    "name": "フェルナ 井田西店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市井田西町7番地9",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%ba%95%e7%94%b0%e8%a5%bf%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fed15b54a44964655a",
+    "name": "フェルナ 大和店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市大和町字鳥ヶ城8番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%a4%a7%e5%92%8c%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b7d674e71dbc16eb5f",
+    "name": "フェルナ 柱店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市柱3丁目1‐4",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%9f%b1%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-dcc7283de688bf9975",
+    "name": "フェルナ 法性寺店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市法性寺町字柳之内25番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%b3%95%e6%80%a7%e5%af%ba%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e0c4c8d8430acde5a2",
+    "name": "フェルナ 福岡店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市福岡町字毘沙門56番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%a6%8f%e5%b2%a1%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d909b1f6e701de08ac",
+    "name": "フェルナ 美合店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市美合町坂下14番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%be%8e%e5%90%88%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-127665be0a9d3c331c",
+    "name": "ヤマナカ 岡崎北店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市井ノ口新町2番地10",
+    "phone": "0564-25-7373",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop045",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d4e3703d38d8cbbd51",
+    "name": "業務スーパー中園店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市中園町字忠田34番地1",
+    "phone": "0564-33-3750",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1100",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-4d9093191d4b72d2f9",
+    "name": "業務スーパー岡崎店",
+    "prefecture": "愛知県",
+    "city": "岡崎市",
+    "address": "愛知県岡崎市戸崎元町5-10",
+    "phone": "0564-59-0071",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=691",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8ccde3a2dcc1246d7b",
+    "name": "カネスエ 八剱店",
+    "prefecture": "愛知県",
+    "city": "岩倉市",
+    "address": "愛知県岩倉市八剱町六反田35",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%85%ab%e5%89%b1%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d67372388d872fb18c",
+    "name": "スーパーマーケットバロー岩倉店",
+    "prefecture": "愛知県",
+    "city": "岩倉市",
+    "address": "愛知県岩倉市本町神明西20番",
+    "phone": "0587-65-5600",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-539d27a65e1c91afaf",
+    "name": "スーパーマーケットバロー蒲郡店",
+    "prefecture": "愛知県",
+    "city": "蒲郡市",
+    "address": "愛知県蒲郡市宮成町13番34号",
+    "phone": "0533-66-6680",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-4d5afb5fc9e368f7bb",
+    "name": "ヤマナカ 形原店",
+    "prefecture": "愛知県",
+    "city": "蒲郡市",
+    "address": "愛知県蒲郡市形原町大坪20-1",
+    "phone": "0533-57-1327",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop052",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0a7a57cfd60eeaf544",
+    "name": "業務スーパー蒲郡店",
+    "prefecture": "愛知県",
+    "city": "蒲郡市",
+    "address": "愛知県蒲郡市新井町15-8",
+    "phone": "0533-66-3625",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1141",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b925be5c31f15f11a3",
+    "name": "フィール エクボスタイルGAMAGORI",
+    "prefecture": "愛知県",
+    "city": "蒲郡市",
+    "address": "愛知県蒲郡市水竹町天王前8 地図を見る >",
+    "phone": "0533-65-2116",
+    "url": "https://feel-corp.jp/store/higashimikawa/gamagori/store-611.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-dd3a345c641026f8e8",
+    "name": "魚太郎 ラグーナ蒲郡店",
+    "prefecture": "愛知県",
+    "city": "蒲郡市",
+    "address": "愛知県蒲郡市海陽町2-2-140 ラグーナテンボス フェスティバルマーケット1F",
+    "phone": "0533-59-6677",
+    "url": "https://www.uotaro.com/laguna/",
+    "kinds": [
+      "fishmongers"
+    ],
+    "sourceName": "魚太郎公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-61a0b7b76c9ae5bdbf",
+    "name": "スーパーマーケットバロー常滑店",
+    "prefecture": "愛知県",
+    "city": "常滑市",
+    "address": "愛知県常滑市陶郷町四丁目1番地",
+    "phone": "0569-36-1500",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1a8a935425a941bd65",
+    "name": "フィール とこなめ店",
+    "prefecture": "愛知県",
+    "city": "常滑市",
+    "address": "愛知県常滑市千代ヶ丘五丁目100番地 地図を見る >",
+    "phone": "0569-36-2001",
+    "url": "https://feel-corp.jp/store/chita/store-639.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fd61c6a1b540f21bb2",
+    "name": "ヤマナカ 常滑青海店",
+    "prefecture": "愛知県",
+    "city": "常滑市",
+    "address": "愛知県常滑市北汐見坂1丁目10番1",
+    "phone": "0569-44-3920",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop043",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-805415ed0f46defa88",
+    "name": "カネスエ 幸田店",
+    "prefecture": "愛知県",
+    "city": "幸田町",
+    "address": "愛知県額田郡幸田町大草赤石31-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%b9%b8%e7%94%b0%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a2ceb3286e477a6ac6",
+    "name": "フィール 幸田店",
+    "prefecture": "愛知県",
+    "city": "幸田町",
+    "address": "愛知県額田郡幸田町大字菱池字蔵前200番 地図を見る >",
+    "phone": "0564-56-8005",
+    "url": "https://feel-corp.jp/store/nishimikawa/kota/store-624.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-44de7d3142f091067b",
+    "name": "ヤマナカ パディー店",
+    "prefecture": "愛知県",
+    "city": "弥富市",
+    "address": "愛知県弥富市鯏浦町南前新田123番",
+    "phone": "0567-67-3406",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop026",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-42749f185f0f60f641",
+    "name": "タチヤ扶桑店",
+    "prefecture": "愛知県",
+    "city": "扶桑町",
+    "address": "愛知県丹羽郡扶桑町柏森中島218-1",
+    "phone": "(0587)93-5421",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-709fe0234450b40c6d",
+    "name": "業務スーパー扶桑柏森店",
+    "prefecture": "愛知県",
+    "city": "扶桑町",
+    "address": "愛知県丹羽郡扶桑町斎藤旭369番地",
+    "phone": "0587-93-7874",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2021",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-252869b59ba122ab09",
+    "name": "スーパーマーケットバロー新城店",
+    "prefecture": "愛知県",
+    "city": "新城市",
+    "address": "愛知県新城市野田字西町屋敷75",
+    "phone": "0536-24-0701",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-879a29404cf556b736",
+    "name": "アオキスーパー 日進店",
+    "prefecture": "愛知県",
+    "city": "日進市",
+    "address": "愛知県日進市竹の山二丁目109番地",
+    "phone": "0561-75-5601",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=16",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0472abc281955e228d",
+    "name": "カネスエ 浅田店",
+    "prefecture": "愛知県",
+    "city": "日進市",
+    "address": "愛知県日進市浅田平池260番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%b5%85%e7%94%b0%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-04ce3ee893b80b91d2",
+    "name": "スーパーマーケットバロー日進岩崎店",
+    "prefecture": "愛知県",
+    "city": "日進市",
+    "address": "愛知県日進市岩崎町新ラ田87−14",
+    "phone": "0561-75-6550",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1d307ae80ced7b28c7",
+    "name": "フィール 日進店",
+    "prefecture": "愛知県",
+    "city": "日進市",
+    "address": "愛知県日進市栄一丁目201 地図を見る >",
+    "phone": "0561-74-8088",
+    "url": "https://feel-corp.jp/store/owari/nisshin/store-625.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-12365c28024b1f2d76",
+    "name": "フェルナ 赤池店",
+    "prefecture": "愛知県",
+    "city": "日進市",
+    "address": "愛知県日進市赤池町箕ノ手2-2004",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e8%b5%a4%e6%b1%a0%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5a29abf863a97f9bbf",
+    "name": "業務スーパー赤池モチロ店",
+    "prefecture": "愛知県",
+    "city": "日進市",
+    "address": "愛知県日進市赤池町モチロ61番地9",
+    "phone": "052-809-0707",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1961",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f07a5b6eae43eb8c97",
+    "name": "アオキスーパー 朝宮店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市朝宮町2丁目13番地の13",
+    "phone": "0568-34-6631",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=46",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fc395f7338223bc9ed",
+    "name": "スーパーマーケットバロー 勝川店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市小野町2丁目1−1",
+    "phone": "0568-36-9011",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1b5e97baeab8f42e47",
+    "name": "スーパーマーケットバロー春日井西店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市西高山町2丁目3−6",
+    "phone": "0568-34-8100",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-af1d63a3b91fd57c54",
+    "name": "スーパーマーケットバロー高蔵寺店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市東神明町1丁目1−1",
+    "phone": "0568-52-1222",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6e11ef756a9b499fba",
+    "name": "タチヤ アスティ高蔵寺店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市高蔵寺町3-654-1 JR高蔵寺駅構内",
+    "phone": "(0568)51-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6e15b1b8e112bec730",
+    "name": "タチヤ神領店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市出川町1850-1",
+    "phone": "(0568)29-5401",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6440dbcd797b96f3a1",
+    "name": "フィール EQVo!(エクボ) 上田楽店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市上田楽町字内浦2924-1 地図を見る >",
+    "phone": "0568-89-2116",
+    "url": "https://feel-corp.jp/store/owari/kasugai/store-568.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-11d580c9c107277bf9",
+    "name": "フィール エクボスタイルKASUGAI",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市篠木町8丁目4番地58 地図を見る >",
+    "phone": "0568-86-2116",
+    "url": "https://feel-corp.jp/store/owari/kasugai/store-588.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-06a3aea8ab62340176",
+    "name": "フィール ネットワーク",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市如意申町5丁目7番1 地図を見る >",
+    "phone": "0568-36-1211",
+    "url": "https://feel-corp.jp/store/owari/kasugai/store-589.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-2c2c3889ff3e5b849b",
+    "name": "ヤマナカ 勝川フランテ",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市八光町1丁目5番地",
+    "phone": "0568-31-6271",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop031",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c5759823de9fbb10ca",
+    "name": "ヤマナカ 追進店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市追進町2丁目1番5",
+    "phone": "0568-35-5335",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop034",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fbbfc9540a985060c4",
+    "name": "ヤマナカ 鳥居松店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市鳥居松町7丁目58番地",
+    "phone": "0568-84-0551",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop033",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-690bdc94738c55a54d",
+    "name": "岩本湯",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市花長町2-5-9",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/5",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-172152d1fd45a9dfe6",
+    "name": "春日井温泉",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市乙輪町2-66",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/5",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-d6e59b13953afe5805",
+    "name": "業務スーパー春日井店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市東野町8-1-10",
+    "phone": "0568-83-7701",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1978",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-cac15391104ff098b6",
+    "name": "業務スーパー高蔵寺店",
+    "prefecture": "愛知県",
+    "city": "春日井市",
+    "address": "愛知県春日井市出川町3-15-2",
+    "phone": "0568-53-5071",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=700",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9ad79ae159675497f4",
+    "name": "アオキスーパー 加木屋店",
+    "prefecture": "愛知県",
+    "city": "東海市",
+    "address": "愛知県東海市加木屋町2丁目1番",
+    "phone": "0562-34-2223",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=28",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-520233ed9ec63062d8",
+    "name": "スーパーマーケットバロー 名和店",
+    "prefecture": "愛知県",
+    "city": "東海市",
+    "address": "愛知県東海市名和町字寺徳26",
+    "phone": "052-689-7660",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-068b43900467a13ffc",
+    "name": "スーパーマーケットバロー上野台店",
+    "prefecture": "愛知県",
+    "city": "東海市",
+    "address": "愛知県東海市富木島町東山田7-53",
+    "phone": "052-689-3755",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-38bc7cf9b3e6ba3740",
+    "name": "スーパーマーケットバロー加木屋店",
+    "prefecture": "愛知県",
+    "city": "東海市",
+    "address": "愛知県東海市加木屋町西平子8番地",
+    "phone": "0562-38-2700",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5f96dfdea9f5ab990e",
+    "name": "フィール エクボスタイル太田川店",
+    "prefecture": "愛知県",
+    "city": "東海市",
+    "address": "愛知県東海市大田町後浜新田111番",
+    "phone": "0562-57-2116",
+    "url": "https://feel-corp.jp/store/chita/tokai/store-1590.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e638ef4fdc06a69882",
+    "name": "フィール エクボスタイル新名和店",
+    "prefecture": "愛知県",
+    "city": "東海市",
+    "address": "愛知県東海市名和町向田1-1 地図を見る >",
+    "phone": "052-604-2111",
+    "url": "https://feel-corp.jp/store/chita/tokai/store-1219.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1cc9722ec259fdc735",
+    "name": "フィール ホームタウン",
+    "prefecture": "愛知県",
+    "city": "東海市",
+    "address": "愛知県東海市荒尾町大恵毛48番地 地図を見る >",
+    "phone": "052-604-2116",
+    "url": "https://feel-corp.jp/store/chita/tokai/store-594.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-391cc9dc0810edf667",
+    "name": "フェルナ 加木屋店",
+    "prefecture": "愛知県",
+    "city": "東海市",
+    "address": "愛知県東海市加木屋町一丁目67番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%8a%a0%e6%9c%a8%e5%b1%8b%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1cb69ea9aaee7b1e03",
+    "name": "ヤマナカ 東海店",
+    "prefecture": "愛知県",
+    "city": "東海市",
+    "address": "愛知県東海市富木島町前田面31番地の1",
+    "phone": "052-601-0711",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop037",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-60ab566ebf7ccc4aa7",
+    "name": "ヤマナカ 高横須賀店",
+    "prefecture": "愛知県",
+    "city": "東海市",
+    "address": "愛知県東海市高横須賀町六丁目119番地",
+    "phone": "0562-33-0215",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop038",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-57e2c35a1473626e2d",
+    "name": "アオキスーパー 白鳥店",
+    "prefecture": "愛知県",
+    "city": "東郷町",
+    "address": "愛知県愛知郡東郷町白鳥一丁目4番2号",
+    "phone": "0561-39-0311",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=42",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d4902fdaee2bfd1796",
+    "name": "カネスエ 東郷店",
+    "prefecture": "愛知県",
+    "city": "東郷町",
+    "address": "愛知県愛知郡東郷町白鳥二丁目20-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%9d%b1%e9%83%b7%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3359a6a1292788ff50",
+    "name": "タチヤ東郷店",
+    "prefecture": "愛知県",
+    "city": "東郷町",
+    "address": "愛知県愛知郡東郷町大字春木申下26",
+    "phone": "（0561）38-5481",
+    "url": "https://tachiya.co.jp/store/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "タチヤ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a8fc0f7ecf7a67fdf0",
+    "name": "アオキスーパー 武豊店",
+    "prefecture": "愛知県",
+    "city": "武豊町",
+    "address": "愛知県知多郡武豊町祠峯1丁目97番地",
+    "phone": "0569-73-3086",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=33",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7740c29d96956977e0",
+    "name": "カネスエ 江南西店",
+    "prefecture": "愛知県",
+    "city": "江南市",
+    "address": "愛知県江南市後飛保町前川103",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%b1%9f%e5%8d%97%e8%a5%bf%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-75cb06ccc94864491f",
+    "name": "カネスエ 江南高屋店",
+    "prefecture": "愛知県",
+    "city": "江南市",
+    "address": "愛知県江南市高屋町清水39番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%b1%9f%e5%8d%97%e9%ab%98%e5%b1%8b%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fc170e407bfd27b1e8",
+    "name": "カネスエ 津島愛宕店",
+    "prefecture": "愛知県",
+    "city": "津島市",
+    "address": "愛知県津島市愛宕町7丁目115-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%b4%a5%e5%b3%b6%e6%84%9b%e5%ae%95%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fd9f637e7cd0559313",
+    "name": "フィール 津島店",
+    "prefecture": "愛知県",
+    "city": "津島市",
+    "address": "愛知県津島市藤浪町二丁目8番地 地図を見る >",
+    "phone": "0567-28-5515",
+    "url": "https://feel-corp.jp/store/owari/tsushima/store-591.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e8992e0fb1e46d601f",
+    "name": "ヤマナカ 神守店",
+    "prefecture": "愛知県",
+    "city": "津島市",
+    "address": "愛知県津島市蛭間町字新田376-1",
+    "phone": "0567-23-3661",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop027",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5d9a12200e72a30531",
+    "name": "業務スーパー津島七宝店",
+    "prefecture": "愛知県",
+    "city": "津島市",
+    "address": "愛知県津島市莪原町字宮東1番",
+    "phone": "0567-22-3747",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=703",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-47abd8fd8e78d54455",
+    "name": "池須温泉",
+    "prefecture": "愛知県",
+    "city": "津島市",
+    "address": "愛知県津島市橋詰町3-41",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/5",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-be502fb47d96e83472",
+    "name": "アオキスーパー 西枇杷島店",
+    "prefecture": "愛知県",
+    "city": "清須市",
+    "address": "愛知県清須市枇杷島駅前東1丁目2-3",
+    "phone": "052-509-7605",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=18",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3bf7cade7fae5f869f",
+    "name": "フィール 清須店",
+    "prefecture": "愛知県",
+    "city": "清須市",
+    "address": "愛知県清須市清洲1130 地図を見る >",
+    "phone": "052-401-1151",
+    "url": "https://feel-corp.jp/store/owari/kiyosu/store-592.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7e8e8f2e0c0bb0d8a7",
+    "name": "ヤマナカ 西枇杷島店",
+    "prefecture": "愛知県",
+    "city": "清須市",
+    "address": "愛知県清須市西枇杷島町押花5番",
+    "phone": "052-502-3111",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop030",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d9012733398d5dee98",
+    "name": "業務スーパー清須店",
+    "prefecture": "愛知県",
+    "city": "清須市",
+    "address": "愛知県清須市西枇杷島町城並3丁目13-13",
+    "phone": "052-509-1037",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1132",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ca731e5fb3de01d73c",
+    "name": "スーパーマーケットバロー品野店",
+    "prefecture": "愛知県",
+    "city": "瀬戸市",
+    "address": "愛知県瀬戸市品野町4丁目66−2",
+    "phone": "0561-86-7770",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-40b67df08079b85613",
+    "name": "スーパーマーケットバロー新瀬戸店",
+    "prefecture": "愛知県",
+    "city": "瀬戸市",
+    "address": "愛知県瀬戸市東横山町92",
+    "phone": "0561-89-7220",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bcaaf5e26d42c9b7db",
+    "name": "スーパーマーケットバロー瀬戸西店",
+    "prefecture": "愛知県",
+    "city": "瀬戸市",
+    "address": "愛知県瀬戸市西本地町2丁目250",
+    "phone": "0561-89-6400",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c5a00be0a0d3cd0c51",
+    "name": "フィール 瀬戸店",
+    "prefecture": "愛知県",
+    "city": "瀬戸市",
+    "address": "愛知県瀬戸市新郷町11番地の1 地図を見る >",
+    "phone": "0561-89-2116",
+    "url": "https://feel-corp.jp/store/owari/seto/store-587.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0d9a8d0ac8b29542d1",
+    "name": "ヤマナカ 共栄店",
+    "prefecture": "愛知県",
+    "city": "瀬戸市",
+    "address": "愛知県瀬戸市共栄通2丁目12番地",
+    "phone": "0561-82-2253",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop036",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-19dba4a6a265467374",
+    "name": "業務スーパー尾張瀬戸店",
+    "prefecture": "愛知県",
+    "city": "瀬戸市",
+    "address": "愛知県瀬戸市市場町16",
+    "phone": "0561-97-3700",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1502",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c78b04e765e29ed9b8",
+    "name": "清水温泉",
+    "prefecture": "愛知県",
+    "city": "瀬戸市",
+    "address": "愛知県瀬戸市陶原町3-49",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/5",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0ea14683e8e24833d4",
+    "name": "カネスエ 五郎丸店",
+    "prefecture": "愛知県",
+    "city": "犬山市",
+    "address": "愛知県犬山市大字五郎丸字八龍35-6",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%ba%94%e9%83%8e%e4%b8%b8%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6255427a23fdd89abf",
+    "name": "スーパーマーケットバロー犬山楽田店",
+    "prefecture": "愛知県",
+    "city": "犬山市",
+    "address": "愛知県犬山市字巾前45−28",
+    "phone": "0568-69-1011",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f47b6a966a5e693efc",
+    "name": "フィール 田原店",
+    "prefecture": "愛知県",
+    "city": "田原市",
+    "address": "愛知県田原市豊島町道南19番地1 地図を見る >",
+    "phone": "0531-23-2116",
+    "url": "https://feel-corp.jp/store/higashimikawa/cat91/store-636.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-36c477ce79a3224b74",
+    "name": "ヤマナカ 田原店",
+    "prefecture": "愛知県",
+    "city": "田原市",
+    "address": "愛知県田原市東赤石5丁目60番地",
+    "phone": "0531-22-1183",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop057",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1f40347edd7f7f054b",
+    "name": "フィール エクボスタイル アストリー",
+    "prefecture": "愛知県",
+    "city": "知多市",
+    "address": "愛知県知多市八幡字種池128 地図を見る >",
+    "phone": "0562-31-2116",
+    "url": "https://feel-corp.jp/store/chita/chita/store-595.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-88aa484091dbc486eb",
+    "name": "ヤマナカ アルテ新舞子",
+    "prefecture": "愛知県",
+    "city": "知多市",
+    "address": "愛知県知多市新舞子南西田19番",
+    "phone": "0569-43-3977",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop040",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3be200bc9a86e00fa2",
+    "name": "ヤマナカ 知多店",
+    "prefecture": "愛知県",
+    "city": "知多市",
+    "address": "愛知県知多市にしの台2-100-6",
+    "phone": "0562-54-2300",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop039",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e9129bd34e0d04815b",
+    "name": "ヤマナカ 粕谷台店",
+    "prefecture": "愛知県",
+    "city": "知多市",
+    "address": "愛知県知多市南粕谷2-47-192",
+    "phone": "0569-44-2011",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop041",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e2a6b46a58cabd0706",
+    "name": "業務スーパー知多清水が丘店",
+    "prefecture": "愛知県",
+    "city": "知多市",
+    "address": "愛知県知多市清水が丘1丁目1703番地",
+    "phone": "0562-32-7747",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2002",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fe404576dfda5fc7a3",
+    "name": "アオキスーパー 知立店",
+    "prefecture": "愛知県",
+    "city": "知立市",
+    "address": "愛知県知立市八ッ田町川畔29番地の1",
+    "phone": "0566-82-6005",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=35",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c9913b7344ccaf41b5",
+    "name": "アオキスーパー 碧南店",
+    "prefecture": "愛知県",
+    "city": "碧南市",
+    "address": "愛知県碧南市久沓町3丁目29",
+    "phone": "0566-43-5180",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=50",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3111e9349874be9dc1",
+    "name": "カネスエ 碧南幸町店",
+    "prefecture": "愛知県",
+    "city": "碧南市",
+    "address": "愛知県碧南市幸町7-65",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%a2%a7%e5%8d%97%e5%b9%b8%e7%94%ba%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d5429474b0b3086b92",
+    "name": "スーパーマーケットバロー碧南城山店",
+    "prefecture": "愛知県",
+    "city": "碧南市",
+    "address": "愛知県碧南市城山町1丁目81−1",
+    "phone": "0566-43-5677",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0efed7f43d602a8c26",
+    "name": "スーパーマーケットバロー碧南店",
+    "prefecture": "愛知県",
+    "city": "碧南市",
+    "address": "愛知県碧南市音羽町4丁目34",
+    "phone": "0566-43-3400",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bb4c4394afc90ae590",
+    "name": "フェルナ 六軒町店",
+    "prefecture": "愛知県",
+    "city": "碧南市",
+    "address": "愛知県碧南市六軒町1丁目46番2",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%85%ad%e8%bb%92%e7%94%ba%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1bdf94250fae1dfaad",
+    "name": "アオキスーパー アクロスプラザ稲沢店",
+    "prefecture": "愛知県",
+    "city": "稲沢市",
+    "address": "愛知県稲沢市大塚南五丁目1番地1",
+    "phone": "0587-23-5056",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=21",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-12cb74ca3ab67a12b8",
+    "name": "カネスエ 国府宮店",
+    "prefecture": "愛知県",
+    "city": "稲沢市",
+    "address": "愛知県稲沢市国府宮神田町40-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%9b%bd%e5%ba%9c%e5%ae%ae%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3beef2f2a26da3bd30",
+    "name": "カネスエ 平和店",
+    "prefecture": "愛知県",
+    "city": "稲沢市",
+    "address": "愛知県稲沢市平和町横池中之町186-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%b9%b3%e5%92%8c%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-975156718eea4441be",
+    "name": "スーパーマーケットバロー稲沢平和店",
+    "prefecture": "愛知県",
+    "city": "稲沢市",
+    "address": "愛知県稲沢市平和町上三宅上屋敷1−3",
+    "phone": "0567-69-7751",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b09af916e322702f95",
+    "name": "フィール EQVo!(エクボ) ハーモニー",
+    "prefecture": "愛知県",
+    "city": "稲沢市",
+    "address": "愛知県稲沢市稲島5丁目2 地図を見る >",
+    "phone": "0587-23-2116",
+    "url": "https://feel-corp.jp/store/owari/inazawa/store-572.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-08de6340e22ddf076f",
+    "name": "フィール エクボスタイルINAZAWA",
+    "prefecture": "愛知県",
+    "city": "稲沢市",
+    "address": "愛知県稲沢市井之口大坪町80-1 地図を見る >",
+    "phone": "0587-32-2116",
+    "url": "https://feel-corp.jp/store/owari/inazawa/store-585.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d10871fc0409fdd492",
+    "name": "フィール 美浜店",
+    "prefecture": "愛知県",
+    "city": "美浜町",
+    "address": "愛知県知多郡美浜町大字古布字屋敷73-8 地図を見る >",
+    "phone": "0569-83-1101",
+    "url": "https://feel-corp.jp/store/chita/mihama/store-599.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3ef0e7bba623d583ae",
+    "name": "魚太郎 本店 鮮魚市場",
+    "prefecture": "愛知県",
+    "city": "美浜町",
+    "address": "愛知県知多郡美浜町豊丘字原子32-1",
+    "phone": "0569-82-6188",
+    "url": "https://www.uotaro.com/ichiba/",
+    "kinds": [
+      "fishmongers"
+    ],
+    "sourceName": "魚太郎公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-69fb87e9b2789fb3ae",
+    "name": "アオキスーパー 富吉店",
+    "prefecture": "愛知県",
+    "city": "蟹江町",
+    "address": "愛知県海部郡蟹江町大字蟹江新田字勝田場10番3号",
+    "phone": "0567-94-3980",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=14",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-45a58be60e6c4e4aea",
+    "name": "スーパーマーケットバロー蟹江店",
+    "prefecture": "愛知県",
+    "city": "蟹江町",
+    "address": "愛知県海部郡蟹江町西之森長瀬下65−10",
+    "phone": "0567-94-7500",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-3eb80b3488eb5c1721",
+    "name": "カネスエ 西幡豆店",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市西幡豆町中央台18",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e8%a5%bf%e5%b9%a1%e8%b1%86%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7a4d9144b2d58fdb43",
+    "name": "スーパーマーケットバロー平坂店",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市平坂町如月4",
+    "phone": "0563-58-8588",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b926a367800788c344",
+    "name": "フィール AELU(アエル)",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市矢田1-10-55 地図を見る >",
+    "phone": "0563-55-2116",
+    "url": "https://feel-corp.jp/store/nishimikawa/nishio/store-609.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6d0fd97f16d2a5400a",
+    "name": "フィール いつも !",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市矢曽根町長配8 地図を見る >",
+    "phone": "0563-54-8600",
+    "url": "https://feel-corp.jp/store/nishimikawa/nishio/store-561.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-929b2d2a3ae1387ec0",
+    "name": "フィール ココデイ",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市下町御城下44番地1 地図を見る >",
+    "phone": "0563-54-2116",
+    "url": "https://feel-corp.jp/store/nishimikawa/nishio/store-640.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-001cb4d973b5a1a824",
+    "name": "フェルナ 今川店",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市今川町大城58番",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%bb%8a%e5%b7%9d%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bc9676a8f97a599668",
+    "name": "フェルナ 住崎店",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市住崎町荒子2番1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%bd%8f%e5%b4%8e%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-5682b894112a212ae2",
+    "name": "フェルナ 道光寺店",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市道光寺町東縄51番地1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e9%81%93%e5%85%89%e5%af%ba%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-f616a1fafcf0dd9411",
+    "name": "ヤマナカ 西尾下町店",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市下町神明下25番地",
+    "phone": "0563-57-5125",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop050",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c5a9c1202f5b82042f",
+    "name": "ヤマナカ 西尾寄住店",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市寄住町泡原14番1",
+    "phone": "0563-56-7211",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop051",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e8009d4a200ac32287",
+    "name": "業務スーパー一色店",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市一色町野田小島口63",
+    "phone": "0563-74-3720",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1139",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ff245020ee92323eaf",
+    "name": "業務スーパー西尾店",
+    "prefecture": "愛知県",
+    "city": "西尾市",
+    "address": "愛知県西尾市上町泡原15",
+    "phone": "0563-57-5575",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=2045",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e115ab98b13ae8e090",
+    "name": "カネスエ 蔵子店",
+    "prefecture": "愛知県",
+    "city": "豊川市",
+    "address": "愛知県豊川市下野川町1丁目43番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e8%94%b5%e5%ad%90%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-08479ec843bb73de0d",
+    "name": "スーパーマーケットバロー豊川店",
+    "prefecture": "愛知県",
+    "city": "豊川市",
+    "address": "愛知県豊川市新豊町2丁目45",
+    "phone": "0533-80-2330",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7da7ff0fb56b520a10",
+    "name": "フィール 豊川店",
+    "prefecture": "愛知県",
+    "city": "豊川市",
+    "address": "愛知県豊川市金屋町17番地 地図を見る >",
+    "phone": "0533-83-6100",
+    "url": "https://feel-corp.jp/store/higashimikawa/toyokawa/store-610.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b15d0d101a0e2d244c",
+    "name": "フィール 豊川西店",
+    "prefecture": "愛知県",
+    "city": "豊川市",
+    "address": "愛知県豊川市野口町前野99番地1 地図を見る >",
+    "phone": "0533-89-3900",
+    "url": "https://feel-corp.jp/store/higashimikawa/toyokawa/store-623.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e800bd02a3cd6a26cc",
+    "name": "ヤマナカ 御油店",
+    "prefecture": "愛知県",
+    "city": "豊川市",
+    "address": "愛知県豊川市御油町堺畑13",
+    "phone": "0533-88-3360",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop058",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b6081ff4a08c09d97c",
+    "name": "業務スーパー豊川御油店",
+    "prefecture": "愛知県",
+    "city": "豊川市",
+    "address": "愛知県豊川市御油町字八面横30",
+    "phone": "0533-87-7725",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1126",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-672cdc26848b975a1f",
+    "name": "アオキスーパー 前後店",
+    "prefecture": "愛知県",
+    "city": "豊明市",
+    "address": "愛知県豊明市新栄町4丁目88番地",
+    "phone": "0562-97-8651",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=30",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-0076965bb50419599e",
+    "name": "アオキスーパー 豊明店",
+    "prefecture": "愛知県",
+    "city": "豊明市",
+    "address": "愛知県豊明市二村台二丁目16番地の2",
+    "phone": "0562-92-2340",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=34",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8556e5126aa85afc5b",
+    "name": "フィール エクボスタイル豊明店",
+    "prefecture": "愛知県",
+    "city": "豊明市",
+    "address": "愛知県豊明市新田町吉池6-1 地図を見る >",
+    "phone": "0562-93-4141",
+    "url": "https://feel-corp.jp/store/owari/toyoake/store-590.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b9fda3663bc924d2a8",
+    "name": "カネスエ 豊橋中浜店",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市中浜町212",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e8%b1%8a%e6%a9%8b%e4%b8%ad%e6%b5%9c%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-cae6e8f4b4e65f7cad",
+    "name": "スーパーマーケットバロー牟呂店",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市豊橋柳生川南部土地区画整理事業70街区2画地",
+    "phone": "0532-38-9011",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8a6cebca83d0a1815d",
+    "name": "スーパーマーケットバロー豊橋店",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市前田南町2丁目17−2",
+    "phone": "0532-57-7400",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b250500c81923d19fe",
+    "name": "スーパーマーケットバロー豊橋菰口店",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市菰口町三丁目25番地",
+    "phone": "0532-33-5256",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e251dbb786cccf312e",
+    "name": "フィール エクボスタイルあけぼの",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市曙町測点138 地図を見る >",
+    "phone": "0532-37-7711",
+    "url": "https://feel-corp.jp/store/higashimikawa/toyohashi/store-574.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fe5c9f8acee5e78d12",
+    "name": "フィール エクボスタイルこもぐち",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市菰口町1丁目20番地 地図を見る >",
+    "phone": "0532-35-0070",
+    "url": "https://feel-corp.jp/store/higashimikawa/toyohashi/store-612.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-db2982bdd370db4059",
+    "name": "フィール エクボスタイルはしら",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市柱五番町116-1 地図を見る >",
+    "phone": "0532-29-8008",
+    "url": "https://feel-corp.jp/store/higashimikawa/toyohashi/store-613.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e0c6c6626d747cb7a7",
+    "name": "フィール エクボスタイル牛川店",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市牛川町字郷道5番1",
+    "phone": "0532-63-2116",
+    "url": "https://feel-corp.jp/store/higashimikawa/toyohashi/store-1591.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7ee1ec1b5918fa6c2e",
+    "name": "ヤマナカ 二川店",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市大岩町字久保田9-1",
+    "phone": "0532-41-8161",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop054",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9727ad7444dcd6ce9b",
+    "name": "ヤマナカ 汐田橋店",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市牟呂町扇田21-1",
+    "phone": "0532-37-5131",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop053",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-aba86ac11858d5c947",
+    "name": "ヤマナカ 西羽田店",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市西羽田町90番地",
+    "phone": "0532-31-2141",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop059",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6bb22966f5c7349435",
+    "name": "ヤマナカ 豊橋フランテ館",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市中野町字平北88-19",
+    "phone": "0532-45-9873",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop056",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-4cc1b6ea33fcc6bdcb",
+    "name": "ヤマナカ 赤岩フランテ館",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市東田町井原20-1",
+    "phone": "0532-63-4700",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop055",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d825ad5067a2957bb4",
+    "name": "人蔘湯",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市神明町47",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/5",
+    "kinds": [
+      "sento",
+      "saunas"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "facility"
+  },
+  {
+    "id": "official-7fdfa5adf9518e965b",
+    "name": "業務スーパー二川店",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市大岩町字東郷内4-23",
+    "phone": "0532-65-5710",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1153",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-73f5205d596e900de7",
+    "name": "業務スーパー豊橋店",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市小松町162",
+    "phone": "0532-29-8182",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=690",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8ebbd17af848e1edc1",
+    "name": "石巻湯",
+    "prefecture": "愛知県",
+    "city": "豊橋市",
+    "address": "愛知県豊橋市八町通3-141",
+    "phone": "",
+    "url": "https://aichi1010.jp/page/list/l/5",
+    "kinds": [
+      "sento"
+    ],
+    "sourceName": "愛知県公衆浴場組合公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ef6d382bac77634ba3",
+    "name": "スーパーマーケットバロー 浄水店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市浄水町 四丁目26番地16",
+    "phone": "0565-43-3400",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b4363582f4fe80a8f8",
+    "name": "スーパーマーケットバロー東新町店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市東新町6丁目17-1",
+    "phone": "0565-25-3666",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d0954b4aed0cc31d41",
+    "name": "フィール EQVo!(エクボ) 梅坪店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市東梅坪町5丁目1-13 地図を見る >",
+    "phone": "0565-31-7707",
+    "url": "https://feel-corp.jp/store/nishimikawa/toyota/store-602.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-ad7e96ccb950b0641b",
+    "name": "フィール フードメッセトヨタ",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市前田町5丁目63番地 地図を見る >",
+    "phone": "0565-32-2116",
+    "url": "https://feel-corp.jp/store/nishimikawa/toyota/store-601.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-1d59b465c8683ada0b",
+    "name": "フィール リスタ",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市柿本町2丁目13番地 地図を見る >",
+    "phone": "0565-71-2500",
+    "url": "https://feel-corp.jp/store/nishimikawa/toyota/store-600.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-fd036fc89d190741d1",
+    "name": "フィール 豊田南店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市吉原町平池173番地1 地図を見る >",
+    "phone": "0565-51-2111",
+    "url": "https://feel-corp.jp/store/nishimikawa/toyota/store-637.html",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "フィール公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-9fbd284a3477d669f7",
+    "name": "フェルナ 井上店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市井上町11丁目17番1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e4%ba%95%e4%b8%8a%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-097ea24a6c46b9e32d",
+    "name": "フェルナ 前山店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市前山町4丁目5番3",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%89%8d%e5%b1%b1%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-315d6f14b3a583807a",
+    "name": "フェルナ 志賀店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市志賀町桐山676-11",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e5%bf%97%e8%b3%80%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-b9cce11309e8719b2c",
+    "name": "フェルナ 朝日店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市朝日町7丁目1番2",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%9c%9d%e6%97%a5%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-8cfd89845202fae6a8",
+    "name": "フェルナ 永覚新町店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市永覚新町3丁目4番地1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%b0%b8%e8%a6%9a%e6%96%b0%e7%94%ba%e5%ba%97/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-da4bd8c03c7c76d31d",
+    "name": "フェルナ 浄水店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市浄水町3丁目11番地6",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%b5%84%e6%b0%b4%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-33460b26b9eb29f6eb",
+    "name": "フェルナ 田中店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市田中町3丁目20番地1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%94%b0%e4%b8%ad%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-052c696de81e90a3bd",
+    "name": "フェルナ 緑ヶ丘店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市緑ヶ丘2丁目41番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e7%b7%91%e3%83%b6%e4%b8%98%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-7e55d4eb9e9f1c1751",
+    "name": "フェルナ 西中山店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市西中山町榎前65-3",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e8%a5%bf%e4%b8%ad%e5%b1%b1%e5%ba%97/",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-76963a50e1e42aabf8",
+    "name": "フェルナ 金谷店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市金谷町5丁目105番地1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e9%87%91%e8%b0%b7%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-abf21a5736d4133356",
+    "name": "フェルナ 陣中店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市陣中町2丁目21番地3",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e9%99%a3%e4%b8%ad%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-e6b040c8f70c85792d",
+    "name": "ヤマナカ 豊田陣中店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市陣中町一丁目26番8",
+    "phone": "0565-33-0610",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop044",
+    "kinds": [
+      "supermarkets",
+      "fishmongers"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-382faee1cb0b8d4987",
+    "name": "業務スーパー豊田南店",
+    "prefecture": "愛知県",
+    "city": "豊田市",
+    "address": "愛知県豊田市豊栄町5丁目264-1",
+    "phone": "0565-25-7277",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1370",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-bb87bf632de05c690f",
+    "name": "アオキスーパー 長久手店",
+    "prefecture": "愛知県",
+    "city": "長久手市",
+    "address": "愛知県長久手市東狭間1105番地",
+    "phone": "0561-62-9066",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=24",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-77d1c95ab93b7d0df4",
+    "name": "カネスエ 長久手店",
+    "prefecture": "愛知県",
+    "city": "長久手市",
+    "address": "愛知県長久手市卯塚1丁目404番地",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e9%95%b7%e4%b9%85%e6%89%8b%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-a8a099fde33bdfc166",
+    "name": "フェルナ 段の上店",
+    "prefecture": "愛知県",
+    "city": "長久手市",
+    "address": "愛知県長久手市段の上2805",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%ae%b5%e3%81%ae%e4%b8%8a%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-06fbe4417679f79e1c",
+    "name": "業務スーパー長久手下山店",
+    "prefecture": "愛知県",
+    "city": "長久手市",
+    "address": "愛知県長久手市下山55-2",
+    "phone": "0561-63-7761",
+    "url": "https://www.gyomusuper.jp/shop/detail.php?sh_id=1992",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "業務スーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-64d22bfbcac60555a8",
+    "name": "カネスエ 阿久比店",
+    "prefecture": "愛知県",
+    "city": "阿久比町",
+    "address": "愛知県阿久比町白沢下カナクソ2-1",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e9%98%bf%e4%b9%85%e6%af%94%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-6b541344bd4f447a8c",
+    "name": "フェルナ 蟹田橋店",
+    "prefecture": "愛知県",
+    "city": "阿久比町",
+    "address": "愛知県阿久比町大字宮津字宮家下2番4",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e8%9f%b9%e7%94%b0%e6%a9%8b%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-c47ea063b28f5374a9",
+    "name": "アオキスーパー 高浜店",
+    "prefecture": "愛知県",
+    "city": "高浜市",
+    "address": "愛知県高浜市湯山町1丁目2番地の2",
+    "phone": "0566-53-1172",
+    "url": "https://www.aokisuper.co.jp/shop/detail/?id=41",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "アオキスーパー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-550826dde229daab08",
+    "name": "スーパーマーケットバロー 高浜店",
+    "prefecture": "愛知県",
+    "city": "高浜市",
+    "address": "愛知県高浜市稗田町2丁目2−27",
+    "phone": "0566-54-2077",
+    "url": "https://stores.valor.jp/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "バロー公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-d51238daedcbe3ba71",
+    "name": "フェルナ 沢渡店",
+    "prefecture": "愛知県",
+    "city": "高浜市",
+    "address": "愛知県高浜市沢渡町4丁目1-5",
+    "phone": "",
+    "url": "https://kanesue.co.jp/store/%e6%b2%a2%e6%b8%a1%e5%ba%97/",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "カネスエ・フェルナ公式",
+    "scope": "store"
+  },
+  {
+    "id": "official-87f5a7348d37825227",
+    "name": "ヤマナカ 高浜店",
+    "prefecture": "愛知県",
+    "city": "高浜市",
+    "address": "愛知県高浜市稗田町2丁目1番25",
+    "phone": "0566-53-3340",
+    "url": "https://www.super-yamanaka.co.jp/shop/shop048",
+    "kinds": [
+      "supermarkets"
+    ],
+    "sourceName": "ヤマナカ公式",
+    "scope": "store"
+  },
+  {
+    "id": "hakuryu",
+    "name": "麺切り白流",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市折立909-1",
+    "phone": "058-322-3231",
+    "url": "https://www.mengiri-hakuryu.com/about/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "mametengu",
+    "name": "豆天狗 本店",
+    "prefecture": "岐阜県",
+    "city": "高山市",
+    "address": "岐阜県高山市下一之町3番地3",
+    "phone": "0577-33-5177",
+    "url": "https://mametengu.com/company/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "jingoro",
+    "name": "甚五郎らーめん 本店",
+    "prefecture": "岐阜県",
+    "city": "高山市",
+    "address": "岐阜県高山市西之一色町2-132-1",
+    "phone": "0577-34-5565",
+    "url": "https://www.hidatakayama.or.jp/eat/detail_3028.html",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "飛騨高山観光公式サイト",
+    "scope": "store"
+  },
+  {
+    "id": "tanmen-gifu",
+    "name": "岐阜タンメン 岐阜本店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市手力町38-1",
+    "phone": "058-338-5609",
+    "url": "https://gifu-tanmen.com/99_access/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "tanmen-ogaki",
+    "name": "岐阜タンメン 大垣店",
+    "prefecture": "岐阜県",
+    "city": "大垣市",
+    "address": "岐阜県大垣市長沢町5-27",
+    "phone": "0584-76-5102",
+    "url": "https://gifu-tanmen.com/99_access/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "tanmen-tajimi",
+    "name": "岐阜タンメン 多治見店",
+    "prefecture": "岐阜県",
+    "city": "多治見市",
+    "address": "岐阜県多治見市宝町3丁目61",
+    "phone": "0572-74-2865",
+    "url": "https://gifu-tanmen.com/99_access/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "tanmen-nagara",
+    "name": "岐阜タンメン 長良店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市下土居3丁目2番地17号",
+    "phone": "058-338-7750",
+    "url": "https://gifu-tanmen.com/99_access/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "tanmen-akanabe",
+    "name": "岐阜タンメン 21号茜部店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市茜部菱野1丁目26",
+    "phone": "058-275-3233",
+    "url": "https://gifu-tanmen.com/99_access/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "tanmen-kakamigahara",
+    "name": "岐阜タンメン 各務原店",
+    "prefecture": "岐阜県",
+    "city": "各務原市",
+    "address": "岐阜県各務原市鵜沼川崎町2-224",
+    "phone": "058-325-9192",
+    "url": "https://gifu-tanmen.com/99_access/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "tanmen-minokamo",
+    "name": "岐阜タンメン 美濃加茂店",
+    "prefecture": "岐阜県",
+    "city": "美濃加茂市",
+    "address": "岐阜県美濃加茂市蜂屋町上蜂屋字石塚3501番21",
+    "phone": "0574-58-7146",
+    "url": "https://gifu-tanmen.com/99_access/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "tanmen-seki",
+    "name": "岐阜タンメン 関店",
+    "prefecture": "岐阜県",
+    "city": "関市",
+    "address": "岐阜県関市小屋名字神明前1362番4",
+    "phone": "0575-48-0659",
+    "url": "https://gifu-tanmen.com/99_access/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "tanmen-kani",
+    "name": "岐阜タンメン 可児店",
+    "prefecture": "岐阜県",
+    "city": "可児市",
+    "address": "岐阜県可児市広見5丁目43",
+    "phone": "0574-50-7154",
+    "url": "https://gifu-tanmen.com/99_access/",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "rairai-university",
+    "name": "来来亭 岐阜大学前店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市古市場字神田64",
+    "phone": "058-234-8999",
+    "url": "https://rairaitei.co.jp/store/pref.php?pref_code=21",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "rairai-ginan",
+    "name": "来来亭 岐南店",
+    "prefecture": "岐阜県",
+    "city": "岐南町",
+    "address": "岐阜県羽島郡岐南町八剣4丁目12",
+    "phone": "058-240-6078",
+    "url": "https://rairaitei.co.jp/store/pref.php?pref_code=21",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "rairai-kakamigahara",
+    "name": "来来亭 各務原店",
+    "prefecture": "岐阜県",
+    "city": "各務原市",
+    "address": "岐阜県各務原市那加不動丘2丁目7-1",
+    "phone": "058-371-5139",
+    "url": "https://rairaitei.co.jp/store/pref.php?pref_code=21",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "rairai-ena",
+    "name": "来来亭 恵那店",
+    "prefecture": "岐阜県",
+    "city": "恵那市",
+    "address": "岐阜県恵那市長島町中野1丁目7-6",
+    "phone": "0573-26-1300",
+    "url": "https://rairaitei.co.jp/store/pref.php?pref_code=21",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "rairai-tajimi",
+    "name": "来来亭 多治見店",
+    "prefecture": "岐阜県",
+    "city": "多治見市",
+    "address": "岐阜県多治見市白山町4丁目3-1",
+    "phone": "0572-24-3704",
+    "url": "https://rairaitei.co.jp/store/pref.php?pref_code=21",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "rairai-kani",
+    "name": "来来亭 可児店",
+    "prefecture": "岐阜県",
+    "city": "可児市",
+    "address": "岐阜県可児市広見田尻裏1563-3",
+    "phone": "0574-63-7988",
+    "url": "https://rairaitei.co.jp/store/pref.php?pref_code=21",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "rairai-nishigifu",
+    "name": "来来亭 西岐阜店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市鏡島西3丁目5-5",
+    "phone": "058-214-6350",
+    "url": "https://rairaitei.co.jp/store/pref.php?pref_code=21",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "marugen-kitajima",
+    "name": "丸源ラーメン 岐阜北島店",
+    "prefecture": "岐阜県",
+    "city": "岐阜市",
+    "address": "岐阜県岐阜市北島6-1-6",
+    "phone": "058-296-6366",
+    "url": "https://www.syodai-marugen.jp/shop/6103",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "marugen-ogaki",
+    "name": "丸源ラーメン 大垣店",
+    "prefecture": "岐阜県",
+    "city": "大垣市",
+    "address": "岐阜県大垣市築捨町3-122-1",
+    "phone": "0584-87-2333",
+    "url": "https://www.syodai-marugen.jp/shop/6052",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "marugen-tajimi",
+    "name": "丸源ラーメン 多治見店",
+    "prefecture": "岐阜県",
+    "city": "多治見市",
+    "address": "岐阜県多治見市金岡町4-53-1",
+    "phone": "0572-56-7507",
+    "url": "https://www.syodai-marugen.jp/shop/6209",
+    "kinds": [
+      "ramen"
+    ],
+    "sourceName": "公式店舗情報",
+    "scope": "store"
+  },
+  {
+    "id": "realtime-tenko",
+    "name": "天光の湯",
+    "prefecture": "岐阜県",
+    "city": "多治見市",
+    "address": "岐阜県多治見市大畑町6-105-1",
+    "phone": "",
+    "url": "https://tenko-spa.jp/",
+    "kinds": [
+      "saunas",
+      "sento",
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "realtime-megumi",
+    "name": "恵みの湯",
+    "prefecture": "岐阜県",
+    "city": "各務原市",
+    "address": "岐阜県各務原市鵜沼各務原町2-68",
+    "phone": "",
+    "url": "https://www.meguminoyu.jp/",
+    "kinds": [
+      "saunas",
+      "sento",
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "realtime-minori",
+    "name": "湯どころ みのり",
+    "prefecture": "岐阜県",
+    "city": "岐南町",
+    "address": "岐阜県羽島郡岐南町下印食2-60-1",
+    "phone": "",
+    "url": "https://yudocoro-minori.com/price/",
+    "kinds": [
+      "saunas",
+      "sento",
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "realtime-bizin",
+    "name": "美人の湯かかみがはら",
+    "prefecture": "岐阜県",
+    "city": "各務原市",
+    "address": "岐阜県各務原市蘇原申子町1丁目1",
+    "phone": "",
+    "url": "https://bizin-yu.co.jp/",
+    "kinds": [
+      "saunas",
+      "sento",
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "realtime-eagle",
+    "name": "サウナイーグル",
+    "prefecture": "愛知県",
+    "city": "知立市",
+    "address": "愛知県知立市宝町塩掻58",
+    "phone": "",
+    "url": "https://sauna-eagle.jp/",
+    "kinds": [
+      "saunas",
+      "sento",
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "realtime-canal",
+    "name": "キャナルリゾート",
+    "prefecture": "愛知県",
+    "city": "名古屋市",
+    "address": "愛知県名古屋市中川区玉川町4-1",
+    "phone": "",
+    "url": "https://canalresort.jp/guide/",
+    "kinds": [
+      "saunas",
+      "sento",
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "realtime-toukichirou",
+    "name": "湯吉郎",
+    "prefecture": "愛知県",
+    "city": "清須市",
+    "address": "愛知県清須市下河原下之切1110-1",
+    "phone": "",
+    "url": "https://toukichirou.com/",
+    "kinds": [
+      "saunas",
+      "sento",
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "node/12287627525",
+    "name": "プライベートサウナノエル",
+    "prefecture": "宮城県",
+    "city": "",
+    "address": "",
+    "phone": "",
+    "url": "https://www.sauna-noel.com/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "way/190594224",
+    "name": "勿来温泉;関の湯",
+    "prefecture": "福島県",
+    "city": "",
+    "address": "福島県いわき市勿来町関田須賀1-4",
+    "phone": "",
+    "url": "https://sekinoyu-spa.com/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "node/11844686324",
+    "name": "朝霞サウナ 和",
+    "prefecture": "埼玉県",
+    "city": "",
+    "address": "",
+    "phone": "+81 48 451 3317",
+    "url": "https://asaka-sauna-nagomi.com/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "way/675900375",
+    "name": "秩父温泉 満願の湯",
+    "prefecture": "埼玉県",
+    "city": "",
+    "address": "",
+    "phone": "+81 494 62 3026",
+    "url": "https://www.chichibuonsen.co.jp/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "node/3149055283",
+    "name": "ジートピア",
+    "prefecture": "千葉県",
+    "city": "",
+    "address": "千葉県船橋市本町5-18-1",
+    "phone": "",
+    "url": "https://www.funabashi-sauna.com",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "way/1100968985",
+    "name": "スパメッツァおおたか",
+    "prefecture": "千葉県",
+    "city": "",
+    "address": "",
+    "phone": "",
+    "url": "https://www.ryusenjinoyu.com/spametsaotaka/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "node/9136959916",
+    "name": "幕張温泉 湯楽の里",
+    "prefecture": "千葉県",
+    "city": "",
+    "address": "",
+    "phone": "",
+    "url": "https://www.yurakirari.com/makuhari/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "node/13795581295",
+    "name": "FLOBA",
+    "prefecture": "東京都",
+    "city": "",
+    "address": "東京都三鷹市下連雀三丁目452",
+    "phone": "",
+    "url": "https://floba-mitaka.jp/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "node/13356632101",
+    "name": "Raku SPA",
+    "prefecture": "東京都",
+    "city": "",
+    "address": "",
+    "phone": "",
+    "url": "https://rakuspa.com/musashi/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "node/4887485021",
+    "name": "イーストランド",
+    "prefecture": "東京都",
+    "city": "",
+    "address": "東京都江戸川区西篠崎２－２３－１",
+    "phone": "+81-3-3670-0945",
+    "url": "https://eastland.jp/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "node/6709542829",
+    "name": "タイムズ スパ・レスタ",
+    "prefecture": "東京都",
+    "city": "",
+    "address": "",
+    "phone": "+81 3 5979 8924",
+    "url": "https://www.timesspa-resta.jp/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "node/4554760789",
+    "name": "京王高尾山温泉 極楽湯",
+    "prefecture": "東京都",
+    "city": "",
+    "address": "",
+    "phone": "+81 42 663 4126",
+    "url": "https://www.takaosan-onsen.jp/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "way/275462766",
+    "name": "国立温泉 湯楽の里",
+    "prefecture": "東京都",
+    "city": "",
+    "address": "東京都国立市谷保31431",
+    "phone": "+81 42-580-1726",
+    "url": "https://www.yurakirari.com/kunitachi/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  },
+  {
+    "id": "node/6547536685",
+    "name": "湯どんぶり栄湯",
+    "prefecture": "東京都",
+    "city": "",
+    "address": "",
+    "phone": "+81 3-3875-2885",
+    "url": "https://sakaeyu.com/en/",
+    "kinds": [
+      "sauna"
+    ],
+    "sourceName": "施設公式",
+    "scope": "facility"
+  }
+]

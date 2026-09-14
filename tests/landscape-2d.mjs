@@ -72,10 +72,10 @@ try{
     await page.waitForFunction(()=>!document.documentElement.classList.contains('aitech-play-mode'));
     // Native fullscreen and the orientation API can be denied. The fallback
     // must still expand and its exit must restore settings to their original DOM.
-    await page.evaluate(()=>{Element.prototype.requestFullscreen=undefined;Element.prototype.webkitRequestFullscreen=undefined;});
+    await page.evaluate(()=>{document.documentElement.requestFullscreen=()=>Promise.reject(new DOMException('Unavailable in this browser','NotAllowedError'));});
     await page.locator('#aitech-play-fullscreen').click();
     await page.waitForFunction(()=>document.documentElement.classList.contains('aitech-play-mode'));
-    assert.equal(await page.locator('#aitech-play-fullscreen').getAttribute('aria-pressed'),'true');
+    await page.waitForFunction(()=>document.getElementById('aitech-play-fullscreen').getAttribute('aria-pressed')==='true');
     await page.locator('#aitech-play-fullscreen').click();
     await page.waitForFunction(()=>!document.documentElement.classList.contains('aitech-play-mode'));
     assert.deepEqual(errors,[],`${path}: browser errors`);

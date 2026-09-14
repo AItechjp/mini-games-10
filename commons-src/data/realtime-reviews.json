@@ -1,0 +1,327 @@
+[
+  {
+    "id": "realtime-tenko",
+    "hours": "08:00-23:00",
+    "required": [
+      "営業時間8:00～23:00",
+      "チェックイン最終22:00",
+      "年中無休"
+    ],
+    "scope": "facility",
+    "lastEntry": 1320,
+    "note": "入館は22:00まで。公式が記載するメンテナンス休館は別途あります。"
+  },
+  {
+    "id": "realtime-megumi",
+    "hours": "Mo-Fr 10:00-23:00; Sa,Su 09:00-23:00",
+    "required": [
+      "2026/08/03より",
+      "平日10:00～23:00",
+      "休日9:00～23:00",
+      "祝日曜日に準ずる"
+    ],
+    "scope": "facility",
+    "note": "2026年8月3日からの浴場時間。休日は9:00開店。祝日はその曜日の時間を適用。"
+  },
+  {
+    "id": "realtime-minori",
+    "hours": "06:00-24:00; Feb,Apr,Jun,Aug,Oct,Dec Tu[2] off",
+    "required": [
+      "入館6時～24時",
+      "最終受付23時",
+      "休館偶数月の第二火曜日"
+    ],
+    "scope": "facility",
+    "lastEntry": 1380,
+    "note": "偶数月の第2火曜は休館。岩盤＆サウナLeLuは9:00〜23:00で、入館時間とは別です。"
+  },
+  {
+    "id": "realtime-bizin",
+    "hours": "10:00-23:00",
+    "required": [
+      "10:00～23:00",
+      "最終受付22:30",
+      "年中無休"
+    ],
+    "scope": "facility",
+    "lastEntry": 1350
+  },
+  {
+    "id": "realtime-eagle",
+    "hours": "00:00-08:30,10:00-24:00",
+    "required": [
+      "AM8:30～10:00の間は浴場の清掃",
+      "浴場のご利用が出来ません"
+    ],
+    "scope": "facility",
+    "note": "男性専用。24時間営業の館内と、8:30〜10:00に清掃で休止する浴場を区別しています。表示は浴場利用時間です。"
+  },
+  {
+    "id": "mametengu",
+    "hours": "11:00-16:00; Th off",
+    "scopeStart": "0577-33-5177",
+    "scopeLength": 170,
+    "required": [
+      "11:00〜16:00",
+      "定休日木曜日"
+    ],
+    "scope": "store",
+    "note": "木曜定休。スープ売り切れ時は早仕舞いします。"
+  },
+  {
+    "id": "jingoro",
+    "hours": "10:30-15:00; Tu-Sa 20:00-26:00",
+    "required": [
+      "昼の部10:30-15:00",
+      "夜の部20:00-翌日02:00",
+      "夜の部日曜日と月曜日"
+    ],
+    "scope": "store"
+  },
+  {
+    "id": "way/675900375",
+    "hours": "10:00-21:00",
+    "required": [
+      "全日午前10:00〜午後9:00",
+      "最終入館午後8:30"
+    ],
+    "scope": "facility",
+    "lastEntry": 1230
+  },
+  {
+    "id": "way/1100968985",
+    "hours": "06:00-26:00",
+    "required": [
+      "ご入浴朝6:00〜深夜2:00",
+      "最終受付/深夜1:30",
+      "年中無休"
+    ],
+    "scope": "facility",
+    "lastEntryBeforeClose": 30
+  },
+  {
+    "id": "node/4887485021",
+    "hours": "14:30-23:00; Mo off; Tu[1,3] off",
+    "required": [
+      "14:30-23:00",
+      "月曜日と第1第3火曜日"
+    ],
+    "scope": "facility",
+    "note": "月曜日と第1・第3火曜日は休業。"
+  },
+  {
+    "id": "node/4554760789",
+    "hours": "08:00-22:30",
+    "required": [
+      "営業時間:8:00～22:30",
+      "最終入館受付21:45",
+      "年中無休"
+    ],
+    "scope": "facility",
+    "lastEntry": 1305
+  },
+  {
+    "id": "realtime-canal",
+    "hours": "Mo-Th 09:00-25:00; Fr 09:00-27:00; Sa 08:00-27:00; Su,PH 08:00-25:00",
+    "required": [
+      "月〜木朝9時～深夜1時",
+      "金・祝前日朝9時～深夜3時",
+      "土朝8時～深夜3時",
+      "日・祝朝8時～深夜1時",
+      "閉店時間の40分前"
+    ],
+    "scope": "facility",
+    "lastEntryBeforeClose": 40,
+    "holidayEveClose": "27:00",
+    "weekdayOpen": "09:00",
+    "weekendOpen": "08:00",
+    "note": "金曜・土曜・祝前日は深夜3:00まで。最終受付は閉店40分前。"
+  },
+  {
+    "id": "realtime-toukichirou",
+    "hours": "Mo-Th 09:00-25:00; Fr 09:00-26:00; Sa 06:00-26:00; Su,PH 06:00-25:00",
+    "required": [
+      "朝9時〜25時",
+      "金・土・祝前日:26時",
+      "土日祝:早朝6時"
+    ],
+    "scope": "facility",
+    "lastEntryBeforeClose": 40,
+    "holidayEveClose": "26:00",
+    "weekdayOpen": "09:00",
+    "weekendOpen": "06:00"
+  },
+  {
+    "id": "official-e7107b8fe878d1dc88",
+    "hours": "09:00-19:00",
+    "required": [
+      "[鮮魚市場]9:00～19:00"
+    ],
+    "scope": "store",
+    "note": "鮮魚市場の営業時間。併設の飲食店・BBQの時間とは別です。"
+  },
+  {
+    "id": "official-a701d68a34bddfffa5",
+    "hours": "10:00-19:30",
+    "required": [
+      "[鮮魚市場]10:00～19:30"
+    ],
+    "scope": "store",
+    "note": "鮮魚市場の営業時間。併設の飲食店・BBQの時間とは別です。"
+  },
+  {
+    "id": "official-c6d187f5f8bcd330fe",
+    "hours": "10:00-19:00",
+    "required": [
+      "10:00～19:00"
+    ],
+    "scope": "store",
+    "note": "鮮魚市場の営業時間。併設の飲食店・BBQの時間とは別です。"
+  },
+  {
+    "id": "official-dd3a345c641026f8e8",
+    "hours": "10:00-18:00",
+    "required": [
+      "[鮮魚市場]10:00～18:00"
+    ],
+    "scope": "store",
+    "note": "鮮魚市場の営業時間。併設の飲食店・BBQの時間とは別です。"
+  },
+  {
+    "id": "official-3ef0e7bba623d583ae",
+    "hours": "Mo,Tu,Th,Fr 09:00-16:30; We 09:00-16:00; Sa,Su,PH 08:30-17:00",
+    "required": [
+      "[平日]9:00～16:30(水曜日は～16:00)"
+    ],
+    "scope": "store",
+    "note": "鮮魚市場の営業時間。併設の飲食店・BBQの時間とは別です。"
+  },
+  {
+    "id": "tanmen-gifu",
+    "hours": "11:00-27:00",
+    "required": [
+      "11時～深夜3時"
+    ],
+    "scopeStart": "058-338-5609",
+    "scopeEnd": "駐車場",
+    "scope": "store",
+    "lastEntryBeforeClose": 30
+  },
+  {
+    "id": "tanmen-ogaki",
+    "hours": "Mo-Fr 11:00-27:00; Sa,Su,PH 10:30-27:00",
+    "required": [
+      "[平日]11時～深夜3時",
+      "[土・日・祝]10時30分～深夜3時"
+    ],
+    "scopeStart": "0584-76-5102",
+    "scopeEnd": "駐車場",
+    "scope": "store",
+    "lastEntryBeforeClose": 30
+  },
+  {
+    "id": "tanmen-tajimi",
+    "hours": "11:00-27:00",
+    "required": [
+      "11時～深夜3時"
+    ],
+    "scopeStart": "0572-74-2865",
+    "scopeEnd": "駐車場",
+    "scope": "store",
+    "lastEntryBeforeClose": 30
+  },
+  {
+    "id": "tanmen-nagara",
+    "hours": "11:00-27:00",
+    "required": [
+      "11時～深夜3時"
+    ],
+    "scopeStart": "058-338-7750",
+    "scopeEnd": "駐車場",
+    "scope": "store",
+    "lastEntryBeforeClose": 30
+  },
+  {
+    "id": "tanmen-akanabe",
+    "hours": "11:00-27:00",
+    "required": [
+      "11時～深夜3時"
+    ],
+    "scopeStart": "058-275-3233",
+    "scopeEnd": "駐車場",
+    "scope": "store",
+    "lastEntryBeforeClose": 30
+  },
+  {
+    "id": "tanmen-kakamigahara",
+    "hours": "11:00-27:00",
+    "required": [
+      "11時～深夜3時"
+    ],
+    "scopeStart": "058-325-9192",
+    "scopeEnd": "駐車場",
+    "scope": "store",
+    "lastEntryBeforeClose": 30
+  },
+  {
+    "id": "tanmen-minokamo",
+    "hours": "11:00-27:00",
+    "required": [
+      "11時～深夜3時"
+    ],
+    "scopeStart": "0574-58-7146",
+    "scopeEnd": "駐車場",
+    "scope": "store",
+    "lastEntryBeforeClose": 30
+  },
+  {
+    "id": "tanmen-seki",
+    "hours": "11:00-25:00",
+    "required": [
+      "11時～深夜1時"
+    ],
+    "scopeStart": "0575-48-0659",
+    "scopeEnd": "駐車場",
+    "scope": "store"
+  },
+  {
+    "id": "tanmen-kani",
+    "hours": "11:00-25:00",
+    "required": [
+      "11時～深夜1時"
+    ],
+    "scopeStart": "0574-50-7154",
+    "scopeEnd": "駐車場",
+    "scope": "store"
+  },
+  {
+    "id": "marugen-kitajima",
+    "hours": "11:00-24:00",
+    "required": [
+      "営業時間:11:00-24:00",
+      "ラストオーダー:23:40"
+    ],
+    "scope": "store",
+    "lastEntryBeforeClose": 20
+  },
+  {
+    "id": "marugen-ogaki",
+    "hours": "11:00-24:00",
+    "required": [
+      "営業時間:11:00-24:00",
+      "ラストオーダー:23:40"
+    ],
+    "scope": "store",
+    "lastEntryBeforeClose": 20
+  },
+  {
+    "id": "marugen-tajimi",
+    "hours": "10:30-25:00",
+    "required": [
+      "営業時間:10:30-25:00",
+      "ラストオーダー:24:30"
+    ],
+    "scope": "store",
+    "lastEntryBeforeClose": 30
+  }
+]

@@ -54,6 +54,10 @@
         $('.sidebar')?.prepend(players);
       }
       for (const label of document.querySelectorAll('.arena .player-label')) move(label, players);
+      let hands = $('#aitech-board-hands');
+      if (!hands) { hands = document.createElement('div'); hands.id = 'aitech-board-hands'; players.after(hands); }
+      move($('#hand2'), hands); move($('#hand1'), hands);
+      move($('#choice'), $('.sidebar'));
     }
     if (kind === 'quick-hop') move($('.touch'), $('.game-shell'));
     // Restart is in a hidden keyboard legend in the original mobile layout.
@@ -64,6 +68,7 @@
       if (marker.isConnected) marker.replaceWith(element);
     }
     $('#aitech-board-players')?.remove();
+    $('#aitech-board-hands')?.remove();
   }
   function setFocus(value) {
     if (focused === value) { if (value) moveControls(); return; }
@@ -101,6 +106,7 @@
         const css = getComputedStyle(panel);
         const used = [...panel.children].filter(el => el !== board).reduce((sum, el) => {
           const s = getComputedStyle(el);
+          if (s.display === 'none') return sum;
           return sum + el.getBoundingClientRect().height + (parseFloat(s.marginTop)||0) + (parseFloat(s.marginBottom)||0);
         }, 0);
         const size = Math.max(60, Math.min(panel.clientWidth - parseFloat(css.paddingLeft) - parseFloat(css.paddingRight), panel.clientHeight - parseFloat(css.paddingTop) - parseFloat(css.paddingBottom) - used));
@@ -148,7 +154,7 @@
     } catch {
       fallback = true;
       say(landscape() ? 'ゲームを画面いっぱいに表示しています。' : 'スマホを横向きに回すと、画面いっぱいで遊べます。');
-    } finally { pending = false; full.disabled = false; schedule(); }
+    } finally { pending = false; full.disabled = false; full.setAttribute('aria-pressed', String(!!native() || fallback)); schedule(); }
   }
   async function leave() {
     requested = false; fallback = false; dismissed = true; unlock(); say(''); setFocus(false);

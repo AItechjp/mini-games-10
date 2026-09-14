@@ -1,5 +1,5 @@
 import {LatestRequest} from '@/lib/request-lifecycle';
-import {apiFetch} from '@/aitech/api';
+import {realtimeFetch} from '@/aitech/realtime-api';
 'use client';
 import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {ArrowLeft,ArrowUpRight,CalendarDays,MapPin,RefreshCw,Search,Soup,Flame,Info,Clock,ChevronDown} from 'lucide-react';
@@ -21,7 +21,7 @@ function OpeningRow({item,today,now}:{item:Opening;today:string;now:number}){
       <h2><a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">{item.name}<ArrowUpRight size={19}/></a></h2>
       <p className="opening-address"><MapPin size={16}/>{item.address||item.prefecture+' · 詳細な所在地は出典でご確認ください'}</p>
       {item.note&&<p className="opening-note">{item.note}</p>}
-      <div className="opening-provenance"><span>{item.official?'公式・運営会社の告知':'メディアの開店情報'}</span><span>{item.reviewed?'開店日確認済み':'告知から日付を自動抽出'}</span><time dateTime={item.checkedAt}>確認 {checkedLabel(item.checkedAt)}</time></div>
+      <div className="opening-provenance"><span>{item.official?'公式・運営会社の告知':'メディアの開店情報'}</span><span>本文・施設名・開店日を照合</span><time dateTime={item.checkedAt}>確認 {checkedLabel(item.checkedAt)}</time></div>
       {stale&&<p className="opening-stale"><Clock size={15}/>最終確認から3日以上経過しています。出典で最新情報をご確認ください。</p>}
     </div>
     <div className="opening-links"><a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">出典を開く<ArrowUpRight size={16}/></a><a href={'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(item.name+' '+item.prefecture+' '+item.address)} target="_blank" rel="noopener noreferrer">地図<MapPin size={15}/></a><span>{item.sourceName}</span></div>
@@ -38,7 +38,7 @@ export default function OpeningDirectory({kind,initial,serverNow}:{kind:OpeningK
   const refresh=useCallback(async()=>{
     if(inFlight.current)return;inFlight.current=true;setBusy(true);setError('');
     const request=requests.current.begin(45000);
-    try{const response=await apiFetch('/api/openings',{cache:'no-store',signal:request.signal});if(!response.ok)throw new Error();const data=await response.json() as OpeningSnapshot&{serverNow:string};if(!Array.isArray(data.records)||!Array.isArray(data.sources)||!Number.isFinite(Date.parse(data.serverNow)))throw new Error();if(!request.current())return;setSnapshot(data);clock.current={server:Date.parse(data.serverNow),local:Date.now()};setNow(clock.current.server)}
+    try{const response=await realtimeFetch('/openings',request.signal);if(!response.ok)throw new Error();const data=await response.json() as OpeningSnapshot&{serverNow:string};if(!Array.isArray(data.records)||!Array.isArray(data.sources)||!Number.isFinite(Date.parse(data.serverNow)))throw new Error();if(!request.current())return;setSnapshot(data);clock.current={server:Date.parse(data.serverNow),local:Date.now()};setNow(clock.current.server)}
     catch{if(request.current())setError('最新情報を取得できませんでした。最後に確認できた情報を表示しています。')}
     finally{request.finish();if(request.current()){setBusy(false);inFlight.current=false}}
   },[]);
@@ -53,7 +53,7 @@ export default function OpeningDirectory({kind,initial,serverNow}:{kind:OpeningK
   useEffect(()=>{if(!snapshot.refreshing)return;const timer=setTimeout(()=>void refresh(),10000);return ()=>clearTimeout(timer)},[snapshot.refreshing,snapshot.updatedAt,refresh,busy]);
   useEffect(()=>{if(selectedDay&&(selectedDay<range.start.slice(0,isSauna?7:10)||selectedDay>range.end.slice(0,isSauna?7:10)))setSelectedDay('')},[range.start,range.end,selectedDay,isSauna]);
   const selectRegion=(value:string)=>{setRegion(value);setSelectedDay('');const url=new URL(window.location.href);url.searchParams.set('region',value);window.history.replaceState(null,'',url)};
-  const all=useMemo(()=>snapshot.records.filter(r=>r.kind===kind&&inWindow(r,range.start,range.end)),[snapshot.records,kind,range.start,range.end]);
+  const all=useMemo(()=>snapshot.records.filter(r=>r.kind===kind&&r.reviewed&&now-Date.parse(r.checkedAt)<3600000&&inWindow(r,range.start,range.end)),[snapshot.records,kind,range.start,range.end,now]);
   const filtered=useMemo(()=>all.filter(r=>regionMatches(r,region)&&matchesSearch([r.name,r.prefecture,r.address,r.genre].join(' '),query)),[all,region,query]);
   const visible=filtered.filter(r=>!selectedDay||r.openingDate.startsWith(selectedDay)),days=isSauna?monthsInRange(range.start,range.end):Array.from({length:15},(_,i)=>addDays(range.start,i));
   const failed=snapshot.sources.filter(s=>!s.ok).length;
@@ -73,9 +73,9 @@ export default function OpeningDirectory({kind,initial,serverNow}:{kind:OpeningK
       <section id="opening-results" tabIndex={-1} aria-label={listingLabel+'の一覧'}><div className="opening-results-heading"><h2>{selectedDay?(isSauna?selectedDay.replace('-','年')+'月':dateLabel(selectedDay))+'の'+listingLabel:listingLabel+'一覧'}<span>{visible.length}件</span></h2>{selectedDay&&<button onClick={()=>setSelectedDay('')}>日付の絞り込みを解除</button>}</div>
         {visible.length?<div className="opening-list">{visible.map(item=><OpeningRow key={item.id} item={item} today={today} now={now}/>)}</div>:busy?<div className="opening-loading" aria-label="開店情報を読み込み中"><Skeleton className="h-24 w-full"/><Skeleton className="h-24 w-full"/></div>:<div className="opening-empty"><CalendarDays size={34}/><h3>この条件の{listingLabel}は、まだ確認できていません</h3><p>{uncertainty.length?`${uncertainty.length}件の告知は、開店日を再確認する必要があるため一覧から外しています。`:'開店日が明記された告知を掲載します。情報源に未掲載の施設は表示されません。'}</p><div>{region!=='all'&&<Button onClick={()=>selectRegion('all')}>全国の{listingLabel}を見る{all.length>0?'（'+all.length+'件）':''}</Button>}{(query||selectedDay)&&<Button variant="outline" onClick={()=>{setQuery('');setSelectedDay('')}}>絞り込みを解除</Button>}</div></div>}
       </section>
-      {uncertainty.length>0&&<section className="opening-method" aria-label="開店日を再確認する告知"><h2>開店日・開催状況の再確認が必要（{uncertainty.length}件）</h2><p>確定した予定の件数には含めていません。延期・中止などの可能性を出典で確認できます。</p><ul>{uncertainty.map(item=><li key={item.id}><a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">{item.name} ↗</a><span> {item.prefecture} · {item.sourceName}</span></li>)}</ul></section>}
+
       <section className="opening-method" aria-label="地域別の収録状況"><h2>地域別の収録状況・追加検索</h2><p>0件の地域も選択できます。未収録の告知があるため、開業予定がないという意味ではありません。</p><div className="opening-coverage-grid">{prefectures.map(p=><button key={p} aria-pressed={region===p} onClick={()=>selectRegion(p)}>{p}<span>{all.filter(r=>r.prefecture===p).length}件</span></button>)}</div><p><a href={'https://www.google.com/search?q='+encodeURIComponent((region==='all'?'全国':region==='local'?'岐阜 愛知':region)+' '+title+' オープン 開業 '+range.start.slice(0,7).replace('-','年')+' '+(query||''))} target="_blank" rel="noopener noreferrer">この地域の開業告知を追加検索 ↗</a></p><p>外部の検索結果は掲載件数には含めません。</p></section>
-      <aside className="opening-method"><details><summary><Info size={18}/><span>掲載範囲・情報源・更新について</span><ChevronDown size={17}/></summary><div className="opening-method-body"><p>{isSauna?'日本時間の今日の2か月前から2か月後まで、両端の日付を含む開業情報です。暦の月単位で計算し、同じ日がない月は月末を境界とします。過去の告知もさかのぼって収集します。':'日本時間の今日から14日後まで、合計15日間にオープン予定のラーメン店です。つけ麺・まぜそば・油そばの専門店も含みます。'}アクセス時に対象期間を切り替え、前回の情報取得から6時間以上経っている場合は告知を再取得します。日付は告知に基づき、現在の営業状況を保証するものではありません。訪問前に出典もご確認ください。</p><p>運営会社の告知と公開ニュースを対象にしています。全国の全施設を網羅するものではありません。日付が不明・複数の日付を特定できない告知、イベント、期間限定出店は自動掲載の対象外です。サウナ版には既存施設へのサウナ新設を含みます。</p>{oldFeeds>0&&<p>{oldFeeds}件の配信元は、最新記事の掲載から3日以上経過しています。</p>}<ul>{snapshot.sources.length?snapshot.sources.map(s=><li key={s.url}><a href={s.url.replace(/\/feed\/$/,'/')} target="_blank" rel="noopener noreferrer">{s.name}<ArrowUpRight size={14}/></a><span>{s.ok?'取得済み':'取得できませんでした'}</span></li>):<li>初回の情報取得後に、取得元と取得状況を表示します。</li>}</ul></div></details></aside>
+      <aside className="opening-method"><details><summary><Info size={18}/><span>掲載範囲・情報源・更新について</span><ChevronDown size={17}/></summary><div className="opening-method-body"><p>{isSauna?'日本時間の今日の2か月前から2か月後まで、両端の日付を含む開業情報です。暦の月単位で計算し、同じ日がない月は月末を境界とします。過去の告知もさかのぼって収集します。':'日本時間の今日から14日後まで、合計15日間にオープン予定のラーメン店です。つけ麺・まぜそば・油そばの専門店も含みます。'}アクセス時に対象期間を切り替え、15分ごとに告知本文を再取得します。確認から1時間を過ぎた告知は掲載しません。日付は告知に基づき、現在の営業状況を保証するものではありません。訪問前に出典もご確認ください。</p><p>運営会社の告知と公開ニュースを対象にしています。全国の全施設を網羅するものではありません。日付が不明・複数の日付を特定できない告知、イベント、期間限定出店は自動掲載の対象外です。サウナ版には既存施設へのサウナ新設を含みます。</p>{oldFeeds>0&&<p>{oldFeeds}件の配信元は、最新記事の掲載から3日以上経過しています。</p>}<ul>{snapshot.sources.length?snapshot.sources.map(s=><li key={s.url}><a href={s.url.replace(/\/feed\/$/,'/')} target="_blank" rel="noopener noreferrer">{s.name}<ArrowUpRight size={14}/></a><span>{s.ok?'取得済み':'取得できませんでした'}</span></li>):<li>初回の情報取得後に、取得元と取得状況を表示します。</li>}</ul></div></details></aside>
       <footer className="opening-footer"><a href="/commons/">COMMONS</a><span>開店告知のある、新しい場所へ。</span></footer>
     </main>
   </div>;
