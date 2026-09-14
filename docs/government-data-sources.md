@@ -100,3 +100,12 @@ python import_reemployment.py --output reemployment.json
 Python依存: `openpyxl`, `pdfplumber`。原典はローカルに保存されているためオフラインでも再生成できる。未取得ファイルだけ公開URLからダウンロードする。取得時、内閣官房サイトがデフォルトのPython User-Agentには404を返したため、公開サイト用の`Mozilla/5.0`を指定。各原典のSHA-256をJSONのsourcesに保存している。
 
 主成果物は`reemployment.json`。構造は`{metadata, sources, records}`。`metadata.period`は文字列で、期間の機械可読値は`metadata.periodRange`。全行に`sourceUrl`、1始まりの`sourcePage`、`spreadsheetUrl`、`spreadsheetSheet`、1始まりの`spreadsheetRow`を持つ。
+
+
+## 追加収録した外務省特別職
+
+外務省の2024年度公表対象20件を原典全行と照合し追加。内閣人事局1,733件との重複はなく、画面上の合計は1,753件。採用区分は未確認。元の掲載IDを保持。
+
+出典：https://www.mofa.go.jp/mofaj/files/100910566.pdf
+
+再生成：scripts/import-government-reemployment.py と scripts/import-government-mofa.py。各データの records と sources を連結し、資料別件数を保ったまま統合する。
