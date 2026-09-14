@@ -16,7 +16,7 @@ export function addFullscreen(html, file, root) {
     html = html.replace(/<html\b/i, `<html data-aitech-game="${games[name]}"`)
       .replace(/(<meta\b[^>]*name=["']viewport["'][^>]*content=["'])([^"']*)/i,
         (_, prefix, content) => prefix + (content.includes('viewport-fit=') ? content : content + ',viewport-fit=cover'))
-      .replace(/<\/head>/i, `<link rel="stylesheet" href="${asset}.css?v=20260914-landscape1"><script src="${asset}.js?v=20260914-landscape1" defer data-aitech-game-viewport></script>\n</head>`);
+      .replace(/<\/head>/i, `<link rel="stylesheet" href="${asset}.css?v=20260914-landscape2"><script src="${asset}.js?v=20260914-landscape2" defer data-aitech-game-viewport></script>\n</head>`);
   }
   if (['index.html', 'legal.html', 'ninja-admax-frame.html'].includes(name)) return html;
   if (!/<body\b/i.test(html) || /http-equiv=["']refresh/i.test(html)) return html;
