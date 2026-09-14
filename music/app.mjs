@@ -17,7 +17,7 @@ function renderQueue(){
   queue.slice(0,8).forEach((track,i)=>{
     const li=document.createElement('li'),button=document.createElement('button');button.className='queue-track';button.type='button';button.setAttribute('aria-label',`${track.title} / ${track.artist} を再生`);
     const number=document.createElement('span');number.className='queue-index';number.textContent=String(i+1).padStart(2,'0');
-    const img=document.createElement('img');img.src=thumbnail(track);img.alt='';img.loading='lazy';img.width=64;img.height=48;
+    const img=document.createElement('img');img.src=thumbnail(track);img.alt='';img.loading='lazy';img.width=120;img.height=70;
     const meta=document.createElement('span');meta.className='queue-meta';const title=document.createElement('b');title.textContent=track.title;const subtitle=document.createElement('small');subtitle.textContent=`${track.artist} · ${genreName(track.genre)}`;meta.append(title,subtitle);
     const icon=document.createElement('span');icon.className='queue-play';icon.textContent='▶';icon.setAttribute('aria-hidden','true');button.append(number,img,meta,icon);button.addEventListener('click',()=>select(track));li.append(button);$('queue').append(li);
   });
@@ -67,7 +67,7 @@ async function ensurePlayer(){
       playerVars:{playsinline:1,controls:1,autoplay:0,origin:location.origin,rel:0},
       events:{onReady:e=>{clearTimeout(readyTimer);ready=true;loading=false;e.target.getIframe().title='YouTube 音楽プレーヤー';e.target.getIframe().setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');e.target.setVolume(prefs.volume);if(e.target.getVideoData().video_id!==current.id)e.target.cueVideoById(current.id);playVisible();},
       onStateChange:e=>{
-        if(e.data===1){if(document.hidden||!visible){wantsPlay=false;player.pauseVideo();return;}clearTimeout(errorTimer);consecutiveErrors=0;setPlaying(true);say('再生中。「好き」を押すと、次のおすすめに反映されます。');}
+        if(e.data===1){if(document.hidden||!visible){wantsPlay=false;player.pauseVideo();return;}clearTimeout(errorTimer);consecutiveErrors=0;wantsPlay=true;setPlaying(true);say('再生中。「好き」を押すと、次のおすすめに反映されます。');}
         else if(e.data===2){setPlaying(false);}
         else if(e.data===3){$('play-state').textContent='BUFFERING';}
         else if(e.data===0){setPlaying(false);if($('autoplay').checked&&wantsPlay&&!document.hidden&&visible){advance(false);}else{wantsPlay=false;say('曲が終わりました。再生または次の曲を選んでください。');}}
@@ -75,7 +75,7 @@ async function ensurePlayer(){
       onAutoplayBlocked:()=>{wantsPlay=false;setPlaying(false);say('ブラウザが自動再生を止めました。▶を押すと再開します。');},
       onError:handleError}
     });
-  }catch{loading=false;wantsPlay=false;setPlaying(false);$('start-screen').hidden=false;say('YouTubeに接続できませんでした。通信環境を確認して再生を押すか、YouTubeで開いてください。');}
+  }catch{clearTimeout(readyTimer);loading=false;wantsPlay=false;setPlaying(false);$('start-screen').hidden=false;say('YouTubeに接続できませんでした。通信環境を確認して再生を押すか、YouTubeで開いてください。');}
 }
 function handleError(event){
   clearTimeout(errorTimer);loading=false;setPlaying(false);
@@ -83,7 +83,7 @@ function handleError(event){
   if(code===153){wantsPlay=false;say('YouTubeがこのページからの再生を許可しませんでした。通常のブラウザでページを開き直すか、YouTubeで開いてください。');return;}
   if(current)failed.add(current.id);consecutiveErrors++;buildQueue();
   const reason=[100,101,150].includes(code)?'この動画は削除・地域制限・埋め込み制限などで再生できません。':'この動画を読み込めませんでした。';
-  if($('autoplay').checked&&wantsPlay&&consecutiveErrors<3&&queue.length&&!document.hidden&&visible){say(`${reason} 次の候補に移ります。`);errorTimer=setTimeout(()=>advance(false),1800);}
+  if($('autoplay').checked&&wantsPlay&&consecutiveErrors<3&&queue.length&&!document.hidden&&visible){say(`${reason} 次の候補に移ります。`);errorTimer=setTimeout(()=>{if($('autoplay').checked&&wantsPlay&&!document.hidden&&visible)advance(false);},1800);}
   else{wantsPlay=false;say(`${reason} 別の曲を選ぶか、YouTubeで開いてください。`);}
 }
 async function select(track,{back=false,automatic=false}={}){
@@ -120,7 +120,7 @@ $('next').addEventListener('click',()=>advance());
 $('previous').addEventListener('click',()=>{const previous=history.pop();if(previous)select(previous,{back:true});});
 $('volume').value=prefs.volume;
 $('volume').addEventListener('input',e=>{prefs.volume=Number(e.target.value);if(ready)player.setVolume(prefs.volume);});$('volume').addEventListener('change',save);
-$('autoplay').addEventListener('change',()=>say($('autoplay').checked?'曲が終わると、次のおすすめを再生します。':'今の曲が終わったら停止します。'));
+$('autoplay').addEventListener('change',()=>{if(!$('autoplay').checked)clearTimeout(errorTimer);say($('autoplay').checked?'曲が終わると、次のおすすめを再生します。':'今の曲が終わったら停止します。');});
 function pauseForVisibility(){if(ready&&(playing||wantsPlay)){wantsPlay=false;clearTimeout(errorTimer);player.pauseVideo();setPlaying(false);say('画面外では一時停止します。▶を押すと再開できます。');}}
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseForVisibility();});
 if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].intersectionRatio>.5;if(!visible)pauseForVisibility();},{threshold:[0,.5,.51,1]}).observe($('video-shell'));
