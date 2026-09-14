@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+const env=new Map();globalThis.Deno={env:{get:k=>env.get(k)}};
+const {translationProvider,translateText}=await import('../supabase/functions/commons-cyber/translation.ts');
+assert.equal(translationProvider(),null);await assert.rejects(()=>translateText('Test','en'),/未設定/);
+let captured;
+env.set('DEEPL_AUTH_KEY','test-only:fx');globalThis.fetch=async(url,options)=>{captured={url,options};return new Response(JSON.stringify({translations:[{text:'脆弱性が見つかりました。'}]}),{status:200});};
+assert.equal(await translateText('A vulnerability was found.','en'),'脆弱性が見つかりました。');assert.equal(captured.url,'https://api-free.deepl.com/v2/translate');assert.equal(captured.options.headers.Authorization,'DeepL-Auth-Key test-only:fx');assert.deepEqual(JSON.parse(captured.options.body).text,['A vulnerability was found.']);
+globalThis.fetch=async()=>new Response('{}',{status:429});await assert.rejects(()=>translateText('Test','en'),/429/);
+env.clear();env.set('GOOGLE_TRANSLATE_API_KEY','test-only');globalThis.fetch=async(url,options)=>{captured={url,options};return new Response(JSON.stringify({data:{translations:[{translatedText:'攻撃を検出 &amp; 防止'}]}}));};assert.equal(await translateText('Detect and prevent attacks.','en'),'攻撃を検出 & 防止');assert.equal(captured.options.headers['X-goog-api-key'],'test-only');
+env.clear();env.set('LIBRETRANSLATE_URL','http://localhost');await assert.rejects(()=>translateText('Test','en'),/設定/);
+console.log('Official translation adapters: missing credentials, correct authorization, successful decoding, provider quota errors and HTTPS validation passed (mocked provider responses).');

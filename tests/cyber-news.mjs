@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {parseFeed,RETENTION_MS,safeUrl,plain,retryDelay} from '../supabase/functions/commons-cyber/core.mjs';
+const now=Date.parse('2026-09-14T15:00:00Z');const source={id:'test',website:'https://example.com',language:'en'};
+const item=(date,extra='')=>`<item><title><![CDATA[Test &amp; security]]></title><link>https://example.com/story?utm_source=rss</link><pubDate>${date}</pubDate><description><![CDATA[<p>Safe <b>text</b></p><script>alert(1)</script>]]></description>${extra}</item>`;
+const valid=item(new Date(now-3600000).toUTCString());
+const rss=`<rss><channel>${valid}${valid}${item(new Date(now-RETENTION_MS).toUTCString())}${item(new Date(now+3600000).toUTCString())}${item('')}</channel></rss>`;
+const parsed=parseFeed(rss,source,now);assert.equal(parsed.items.length,1);assert.equal(parsed.undated,1);assert.equal(parsed.items[0].title_original,'Test & security');assert.equal(parsed.items[0].body_original,'Safe text');assert.equal(parsed.items[0].url,'https://example.com/story');assert.equal(Date.parse(parsed.items[0].expires_at)-Date.parse(parsed.items[0].published_at),RETENTION_MS);
+const atom='<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>Atom</title><link rel="self" href="https://example.com/atom"/><link rel="alternate" href="/news"/><updated>2026-09-14T14:30:00+00:00</updated><summary>Safe &lt;b&gt;text&lt;/b&gt;</summary></entry></feed>';
+const a=parseFeed(atom,source,now).items[0];assert.equal(a.url,'https://example.com/news');assert.equal(a.date_basis,'updated');assert.equal(a.body_original,'Safe text');
+const rdf='<rdf:RDF><item rdf:about="x"><title>RDF</title><link>https://example.com/rdf</link><dc:date>2026-09-14T23:30:00+09:00</dc:date></item></rdf:RDF>';assert.equal(parseFeed(rdf,source,now).items.length,1);
+assert.throws(()=>parseFeed('<html>Forbidden</html>',source,now));assert.throws(()=>parseFeed('<!DOCTYPE rss [<!ENTITY x SYSTEM "file:///etc/passwd">]><rss/>',source,now));assert.equal(safeUrl('javascript:alert(1)'),null);assert.equal(safeUrl('https://user:pass@example.com'),null);assert.ok(!plain('&#99999999;').includes('undefined'));assert.ok(retryDelay(1,429,'300')>=300000);
+const sources=JSON.parse(await readFile(new URL('../supabase/functions/commons-cyber/sources.json',import.meta.url)));assert.ok(sources.length>=100);assert.equal(new Set(sources.map(s=>s.id)).size,sources.length);assert.equal(new Set(sources.map(s=>s.feed_url)).size,sources.length);assert.ok(sources.some(s=>s.name.startsWith('Dark Reading')));
+console.log('RSS / Atom / RDF, timestamps, exact 72-hour boundary, duplicates, HTML safety, URLs and source registry: passed');

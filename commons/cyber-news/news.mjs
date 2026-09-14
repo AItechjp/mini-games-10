@@ -1,0 +1,58 @@
+const API='https://dcvtubivtextycifngtk.supabase.co/functions/v1/commons-cyber';
+const $=id=>document.getElementById(id);
+const labels={security:'すべてのセキュリティ情報',ransomware:'ランサムウェア',vulnerability:'脆弱性・ゼロデイ',breach:'情報漏えい',phishing:'フィッシング',malware:'マルウェア',apt:'標的型攻撃'};
+const topicNames={'':'すべてのトピック',ransomware:'ランサムウェア',vulnerability:'脆弱性・ゼロデイ',breach:'情報漏えい',phishing:'フィッシング',malware:'マルウェア',apt:'標的型攻撃',security:'その他のセキュリティ'};
+let data=null,items=[],page=0,mode='news',controller=null,requestNumber=0,nextRefresh=Date.now()+60000,clockOffset=0,searchTimer=null,readerRequest=0;
+const topics=Object.entries(topicNames);
+const dateFormat=new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});
+const timeFormat=new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit',hour12:false});
+const dayFormat=new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'2-digit',day:'2-digit'});
+const fmt=v=>v&&Number.isFinite(Date.parse(v))?dateFormat.format(new Date(v)):'未取得';
+const now=()=>Date.now()+clockOffset;
+function el(tag,className,text){const n=document.createElement(tag);if(className)n.className=className;if(text!==undefined)n.textContent=String(text);return n;}
+function safeLink(url){try{const u=new URL(url);return ['https:','http:'].includes(u.protocol)&&!u.username&&!u.password?u.href:null;}catch{return null;}}
+function anchor(text,url){const a=el('a','',text);const safe=safeLink(url);if(safe){a.href=safe;a.target='_blank';a.rel='noopener noreferrer';}return a;}
+function showError(message){$('error').textContent=message;$('error').hidden=!message;}
+function resetButton(){ $('refresh').disabled=false;$('more').disabled=false;$('article-list').setAttribute('aria-busy','false'); }
+function setMode(value){mode=value;$('news-view').hidden=value!=='news';$('sources-view').hidden=value!=='sources';for(const key of ['news','sources']){$(key+'-tab').classList.toggle('active',key===value);$(key+'-tab').setAttribute('aria-pressed',String(key===value));}$('view-title').textContent=value==='news'?'サイバー攻撃ニュース':'配信元・収集状況';}
+function chooseCategory(value){$('category').value=value;document.querySelectorAll('#topic-nav button').forEach(b=>{b.classList.toggle('active',b.dataset.category===value);b.setAttribute('aria-pressed',String(b.dataset.category===value));});setMode('news');load();}
+for(const [value,label] of topics){const option=el('option','',label);option.value=value;$('category').append(option);const button=el('button','',label);button.dataset.category=value;button.type='button';button.classList.toggle('active',!value);button.setAttribute('aria-pressed',String(!value));button.addEventListener('click',()=>chooseCategory(value));$('topic-nav').append(button);}
+function currentParams(){const p=new URLSearchParams();for(const [key,value] of [['q',$('query').value.trim()],['category',$('category').value],['source',$('source').value]])if(value)p.set(key,value);return p;}
+function updateMeta(){
+ if(!data)return;const stats=data.stats;
+ $('article-count').textContent=stats.articles.toLocaleString('ja-JP');$('ready-count').textContent=stats.ready.toLocaleString('ja-JP');$('healthy-count').textContent=stats.healthy+' / '+stats.sources;$('source-count').textContent=stats.sources;$('rail-count').textContent=stats.articles;
+ const last=stats.last_completed_at,age=last?now()-Date.parse(last):Infinity;
+ $('last-update').textContent=last?fmt(last):'初回の巡回中';$('state-label').textContent=last?(age<180000?'最終巡回完了':'最終巡回から3分以上経過'):'最初の巡回を実行中';
+ const notes=[];if(data.translation?.configured===false)notes.push('海外記事の自動翻訳は接続設定待ちです。現在は日本語原文の記事を表示しています。海外記事'+stats.pending+'件は収集済みですが、まだ翻訳されていません。');else{if(stats.pending)notes.push(stats.pending+'件の配信文を翻訳中です。翻訳が完了した記事から表示します。');if(stats.translation_error)notes.push('翻訳サービスに接続できない記事を再試行しています。');}if(stats.last_error)notes.push(stats.last_error);if(last&&age>=180000)notes.push('定期収集の更新が遅れています。下記は最終取得時点の記事です。');$('notice').textContent=notes.join(' ');$('notice').hidden=notes.length===0;
+ const value=$('source').value;$('source').replaceChildren(new Option('すべての配信元',''));for(const s of data.sources){$('source').append(new Option(s.name+' ('+s.translated+')',s.id));}$('source').value=value;
+}
+function renderArticles(){
+ const root=$('article-list');root.replaceChildren();const current=items.filter(a=>Date.parse(a.expires_at)>now());
+ $('result-label').textContent='新着順 · '+data.total.toLocaleString('ja-JP')+'件';
+ if(!current.length){const empty=el('div','empty');empty.append(el('strong','',data.stats.pending&&data.translation?.configured?'日本語の記事を準備しています':'該当する記事はありません'),el('span','',data.stats.pending&&data.translation?.configured?'最初の収集・翻訳が完了すると自動で表示します。':data.translation?.configured===false?'海外記事の日本語表示には、翻訳サービスの接続設定が必要です。':'条件を変更するか、次の更新をお待ちください。'));root.append(empty);}
+ for(const article of current){const s=data.sources.find(s=>s.id===article.source_id);const row=el('article','article');const time=el('time','article-time');time.dateTime=article.published_at;time.append(el('span','',dayFormat.format(new Date(article.published_at))),el('strong','',timeFormat.format(new Date(article.published_at))));const main=el('div','article-main'),meta=el('div','article-meta');meta.append(el('span','article-source',s?.name||article.source_id),el('span','tag '+article.category,labels[article.category]||'セキュリティ'));if(article.date_basis==='updated')meta.append(el('span','', '更新日時'));const h=el('h2'),b=el('button','',article.title_ja);b.type='button';b.addEventListener('click',()=>openArticle(article));h.append(b);main.append(meta,h,el('p','',article.excerpt||(article.translation_status==='ready'?'配信元で詳しい内容を確認できます。':'配信文を翻訳中です。')));row.append(time,main,el('span','article-arrow','›'));root.append(row);}
+ $('more').hidden=items.length>=data.total;
+}
+function renderSources(){const root=$('source-list');root.replaceChildren();for(const s of data.sources){const card=el('article','source-card'),head=el('div','source-card-head');head.append(el('h3','',s.name));head.append(el('span','source-status'+(s.error?' failed':''),s.error?'取得失敗 · '+(s.http_status||'通信'):s.last_ok_at?'取得済み':'初回確認待ち'));card.append(head,el('p','', '72時間内 '+s.count+'件 · 日本語表示 '+s.translated+'件'),el('p','', '最終確認 '+fmt(s.last_checked_at)+' / 最終成功 '+fmt(s.last_ok_at)));if(s.error)card.append(el('p','error-text',s.error+' · 再確認予定 '+fmt(s.next_check_at)));if(s.skipped_undated)card.append(el('p','', '日時未記載の'+s.skipped_undated+'件は掲載対象外'));const links=el('div','source-links');links.append(anchor('配信元 ↗',s.website),anchor('RSS ↗',s.feed_url));card.append(links);root.append(card);}}
+async function load(more=false){
+ const sequence=++requestNumber;controller?.abort();controller=new AbortController();const localController=controller;
+ $('refresh').disabled=true;$('more').disabled=true;$('article-list').setAttribute('aria-busy','true');
+ const params=currentParams();if(more&&items.length){const last=items.at(-1);params.set('before',last.published_at);params.set('before_id',last.id);}
+ try{
+  const r=await fetch(API+'?'+params,{headers:{apikey:'sb_publishable_IcEN-3GgzcLCHiyNLyRiCQ_RpkAhCGI'},signal:localController.signal,cache:'no-store',credentials:'omit'});if(!r.ok)throw new Error('ニュースを取得できませんでした（HTTP '+r.status+'）。再試行してください。');const next=await r.json();if(sequence!==requestNumber)return;
+  if(!Array.isArray(next.items)||!Array.isArray(next.sources)||!next.stats)throw new Error('ニュースの受信形式を確認できませんでした。');
+  clockOffset=Date.parse(next.now)-Date.now();data=next;page=more?page+1:0;items=more?[...new Map([...items,...next.items].map(x=>[x.id,x])).values()]:next.items;nextRefresh=Date.now()+60000;updateMeta();renderArticles();renderSources();showError('');
+  const filters=currentParams();history.replaceState(null,'',location.pathname+(filters.size?'?'+filters:''));
+ }catch(e){if(e.name==='AbortError')return;showError(e.message);if(!data){$('article-list').replaceChildren(el('div','empty','データを読み込めませんでした。「新着を確認」で再試行できます。'));$('result-label').textContent='取得できませんでした';}nextRefresh=Date.now()+60000;}
+ finally{if(sequence===requestNumber)resetButton();}
+}
+async function openArticle(article){
+ const seq=++readerRequest;$('reader-source').textContent=data.sources.find(s=>s.id===article.source_id)?.name||'';$('reader-title').textContent=article.title_ja;$('reader-original').textContent='';$('reader-meta').textContent=fmt(article.published_at)+' JST'+(article.date_basis==='updated'?' · 更新日時':' · 公開日時');$('reader-body').textContent='';$('reader-status').textContent='配信文を読み込んでいます…';$('reader-note').textContent='';$('reader-link').href=safeLink(article.url)||'#';$('reader').dataset.expires=article.expires_at;if(!$('reader').open)$('reader').showModal();
+ try{const r=await fetch(API+'?id='+encodeURIComponent(article.id),{cache:'no-store',credentials:'omit'});const a=await r.json();if(seq!==readerRequest)return;if(!r.ok)throw new Error(a.error||'記事を取得できませんでした');$('reader-original').textContent=a.title_original!==a.title_ja?a.title_original:'';$('reader-body').textContent=a.body_ja|| (a.translation_status==='ready'?'RSSには配信文がありません。配信元で記事を読むことができます。':'見出しの翻訳が完了しました。配信文の翻訳が終わるまでお待ちください。');$('reader-status').textContent=a.translation_status==='ready'?(a.translator||'日本語'):'配信文を翻訳中';$('reader-note').textContent='公開RSSの配信文です。'+(a.body_truncated?'長いため先頭3,000文字を翻訳しています。':'')+'全文・画像・正確な技術情報は配信元で確認できます。';}
+ catch(e){if(seq===readerRequest)$('reader-status').textContent=e.message;}
+}
+$('refresh').addEventListener('click',()=>load());$('more').addEventListener('click',()=>load(true));$('news-tab').addEventListener('click',()=>setMode('news'));$('sources-tab').addEventListener('click',()=>setMode('sources'));
+$('source').addEventListener('change',()=>load());$('category').addEventListener('change',()=>chooseCategory($('category').value));$('query').addEventListener('input',()=>{clearTimeout(searchTimer);$('clear-search').hidden=!$('query').value;searchTimer=setTimeout(()=>load(),350);});$('clear-search').addEventListener('click',()=>{$('query').value='';$('clear-search').hidden=true;$('query').focus();load();});$('close-reader').addEventListener('click',()=>$('reader').close());$('reader').addEventListener('close',()=>{readerRequest++;$('reader-body').textContent='';});$('reader').addEventListener('click',e=>{if(e.target===$('reader')){const r=$('reader').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('reader').close();}});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()>=nextRefresh)load();});
+setInterval(()=>{const left=Math.max(0,Math.ceil((nextRefresh-Date.now())/1000));$('countdown').textContent=document.hidden?'再表示時に確認':'次の確認まで '+left+'秒';if(!document.hidden&&Date.now()>=nextRefresh&&!$('refresh').disabled)load();if(items.some(a=>Date.parse(a.expires_at)<=now())){items=items.filter(a=>Date.parse(a.expires_at)>now());renderArticles();}if($('reader').open&&Date.parse($('reader').dataset.expires)<=now()){$('reader-body').textContent='';$('reader-status').textContent='この記事の保存期間（72時間）が終了しました。';}},1000);
+const initial=new URLSearchParams(location.search);$('query').value=(initial.get('q')||'').slice(0,120);$('category').value=topicNames[initial.get('category')]?initial.get('category'):'';if(initial.get('source'))$('source').append(new Option(initial.get('source'),initial.get('source'),true,true));load();

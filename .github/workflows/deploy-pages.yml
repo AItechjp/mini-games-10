@@ -54,6 +54,11 @@ jobs:
           node scripts/test-local-hours.mjs
           node scripts/test-coverage.mjs
           node scripts/test-realtime.mjs
+      - name: Build Commons from its current source
+        working-directory: commons-src
+        run: pnpm build:aitech
+      - name: Verify cyber news parsing and retention
+        run: node tests/cyber-news.mjs
       - name: Validate past-question-only learning source
         run: node tests/yobi-past-source.mjs
       - name: Verify arcade game rules and room security
@@ -185,3 +190,4 @@ jobs:
           name: touge-deployed-verification
           path: test-output/
           retention-days: 7
+

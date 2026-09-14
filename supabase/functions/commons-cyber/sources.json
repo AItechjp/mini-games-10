@@ -1,0 +1,1002 @@
+[
+  {
+    "category": "research",
+    "feed_url": "https://nao-sec.org/feed",
+    "id": "nao-sec",
+    "language": "en",
+    "name": "nao sec",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 0,
+    "website": "https://nao-sec.org/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.darknet.org.uk/feed/",
+    "id": "darknet",
+    "language": "en",
+    "name": "Darknet",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 1,
+    "website": "https://www.darknet.org.uk/"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://www.cisecurity.org/feed/advisories",
+    "id": "center-for-internet-security-advisories",
+    "language": "en",
+    "name": "Center for Internet Security (Advisories)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 3,
+    "website": "https://www.cisecurity.org/resources/?type=advisory"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://www.nist.gov/blogs/cybersecurity-insights/rss.xml",
+    "id": "nist-cybersecurity-insights",
+    "language": "en",
+    "name": "NIST Cybersecurity Insights",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 4,
+    "website": "https://www.nist.gov/blogs/cybersecurity-insights"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://isc.sans.edu/rssfeed_full.xml",
+    "id": "sans-internet-storm-center",
+    "language": "en",
+    "name": "SANS Internet Storm Center",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 5,
+    "website": "https://isc.sans.edu/"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://arstechnica.com/tag/security/feed/",
+    "id": "ars-technica-security",
+    "language": "en",
+    "name": "Ars Technica (Security)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 6,
+    "website": "https://arstechnica.com/tag/security/"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.bleepingcomputer.com/feed/",
+    "id": "bleepingcomputer",
+    "language": "en",
+    "name": "BleepingComputer",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 7,
+    "website": "https://www.bleepingcomputer.com/"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.darkreading.com/rss.xml",
+    "id": "dark-reading-all",
+    "language": "en",
+    "name": "Dark Reading (all)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 9,
+    "website": "https://www.darkreading.com/"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://grahamcluley.com/feed/",
+    "id": "graham-cluley",
+    "language": "en",
+    "name": "Graham Cluley",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 10,
+    "website": "https://www.grahamcluley.com/"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.theguardian.com/technology/data-computer-security/rss",
+    "id": "guardian-data-and-computer-security",
+    "language": "en",
+    "name": "Guardian (Data and computer security)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 11,
+    "website": "https://www.theguardian.com/technology/data-computer-security"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.hackmageddon.com/feed/",
+    "id": "hackmageddon",
+    "language": "en",
+    "name": "HACKMAGEDDON",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 13,
+    "website": "https://www.hackmageddon.com/"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.infosecurity-magazine.com/rss/news/",
+    "id": "infosecurity-magazine-news",
+    "language": "en",
+    "name": "Infosecurity Magazine (news)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 15,
+    "website": "https://www.infosecurity-magazine.com/news"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://krebsonsecurity.com/feed/",
+    "id": "krebs-on-security",
+    "language": "en",
+    "name": "Krebs on Security",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 17,
+    "website": "https://krebsonsecurity.com/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.malware-traffic-analysis.net/blog-entries.rss",
+    "id": "malware-traffic-analysis",
+    "language": "en",
+    "name": "Malware Traffic Analysis",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 18,
+    "website": "https://www.malware-traffic-analysis.net/index.html"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.schneier.com/blog/atom.xml",
+    "id": "schneier-on-security",
+    "language": "en",
+    "name": "Schneier on Security",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 19,
+    "website": "https://www.schneier.com/"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://securityaffairs.com/feed",
+    "id": "security-affairs",
+    "language": "en",
+    "name": "Security Affairs",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 20,
+    "website": "https://securityaffairs.co/wordpress"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.techrepublic.com/rssfeeds/topic/security/?feedType=rssfeeds",
+    "id": "techrepublic-security",
+    "language": "en",
+    "name": "TechRepublic (security)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 21,
+    "website": "https://www.techrepublic.com/topic/security/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.troyhunt.com/rss/",
+    "id": "troy-hunt",
+    "language": "en",
+    "name": "Troy Hunt",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 22,
+    "website": "https://www.troyhunt.com"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.wired.com/feed/category/security/latest/rss",
+    "id": "wired-security",
+    "language": "en",
+    "name": "WIRED Security",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 23,
+    "website": "https://www.wired.com/category/security/"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.zdnet.com/topic/security/rss.xml",
+    "id": "zdnet-security",
+    "language": "en",
+    "name": "ZDNet (security)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 24,
+    "website": "https://www.zdnet.com/topic/security/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://0patch.com/rss.xml",
+    "id": "0patch-blog",
+    "language": "en",
+    "name": "0patch Blog",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 25,
+    "website": "https://0patch.com/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.bitdefender.com/blog/api/rss/labs/",
+    "id": "bitdefender-labs",
+    "language": "en",
+    "name": "Bitdefender Labs",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 27,
+    "website": "https://www.bitdefender.com/blog/labs/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://sed-cms.broadcom.com/rss/v1/blogs/rss.xml",
+    "id": "broadcom-symantec-blogs",
+    "language": "en",
+    "name": "Broadcom Symantec blogs",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 28,
+    "website": "https://symantec-enterprise-blogs.security.com/blogs/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://research.checkpoint.com/feed/",
+    "id": "checkpoint",
+    "language": "en",
+    "name": "Checkpoint",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 29,
+    "website": "https://research.checkpoint.com/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blogs.cisco.com/security/feed",
+    "id": "cisco-security-blog",
+    "language": "en",
+    "name": "Cisco Security Blog",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 30,
+    "website": "https://blogs.cisco.com/security/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.talosintelligence.com/rss/",
+    "id": "cisco-talos-intelligence-group",
+    "language": "en",
+    "name": "Cisco Talos Intelligence Group",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 31,
+    "website": "https://blog.talosintelligence.com/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.cloudflare.com/tag/security/rss",
+    "id": "cloudflare-security-blog",
+    "language": "en",
+    "name": "Cloudflare Security Blog",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 32,
+    "website": "https://blog.cloudflare.com/tag/security/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://cofense.com/feed/",
+    "id": "cofense-intelligence",
+    "language": "en",
+    "name": "Cofense Intelligence",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 33,
+    "website": "https://cofense.com/blog/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.eclecticiq.com/rss.xml",
+    "id": "eclecticiq",
+    "language": "en",
+    "name": "EclecticIQ",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 34,
+    "website": "https://blog.eclecticiq.com/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.welivesecurity.com/en/rss/feed/",
+    "id": "we-live-security-eset",
+    "language": "en",
+    "name": "We Live Security (ESET)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 35,
+    "website": "https://www.eset.com/uk/about/newsroom/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.fox-it.com/feed/",
+    "id": "fox-it-international-blog",
+    "language": "en",
+    "name": "Fox-IT International blog",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 36,
+    "website": "https://blog.fox-it.com"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://projectzero.google/feed.xml",
+    "id": "google-project-zero",
+    "language": "en",
+    "name": "Google Project Zero",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 39,
+    "website": "https://projectzero.google"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.malwarebytes.com/blog/feed/index.xml",
+    "id": "malwarebytes-labs",
+    "language": "en",
+    "name": "Malwarebytes Labs",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 41,
+    "website": "https://blog.malwarebytes.com/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.microsoft.com/security/blog/feed/",
+    "id": "microsoft-security-blog",
+    "language": "en",
+    "name": "Microsoft Security Blog",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 43,
+    "website": "https://www.microsoft.com/security/blog/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.proofpoint.com/us/rss.xml",
+    "id": "proofpoint",
+    "language": "en",
+    "name": "Proofpoint",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 45,
+    "website": "https://www.proofpoint.com/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.qualys.com/feed",
+    "id": "qualys-blog",
+    "language": "en",
+    "name": "Qualys Blog",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 46,
+    "website": "https://blog.qualys.com/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.quarkslab.com/feeds/all.rss.xml",
+    "id": "quarkslab-blog",
+    "language": "en",
+    "name": "Quarkslab blog",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 47,
+    "website": "https://blog.quarkslab.com/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.quickheal.com/blogs/feed/",
+    "id": "quick-heal-antivirus",
+    "language": "en",
+    "name": "Quick Heal Antivirus",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 48,
+    "website": "https://www.quickheal.com/blogs/"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://therecord.media/feed/",
+    "id": "the-record",
+    "language": "en",
+    "name": "The Record",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 49,
+    "website": "https://therecord.media/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://securelist.com/feed/",
+    "id": "securelist-kaspersky",
+    "language": "en",
+    "name": "SecureList (Kaspersky)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 50,
+    "website": "https://securelist.com/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://sensepost.com/rss.xml",
+    "id": "sensepost-orange",
+    "language": "en",
+    "name": "SensePost (Orange)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 52,
+    "website": "https://sensepost.com/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.sentinelone.com/labs/feed/",
+    "id": "sentinelone-labs",
+    "language": "en",
+    "name": "SentinelOne Labs",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 53,
+    "website": "https://www.sentinelone.com/labs/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://socprime.com/blog/feed/",
+    "id": "soc-prime",
+    "language": "en",
+    "name": "SOC Prime",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 54,
+    "website": "https://socprime.com/blog/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://specterops.io/feed/",
+    "id": "specterops",
+    "language": "en",
+    "name": "SpecterOps",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 55,
+    "website": "https://posts.specterops.io/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.tripwire.com/state-of-security/feed/",
+    "id": "tripwire",
+    "language": "en",
+    "name": "Tripwire",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 57,
+    "website": "https://www.tripwire.com/state-of-security/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.paloaltonetworks.com/blog/rss",
+    "id": "paloalto-networks-blog",
+    "language": "en",
+    "name": "PaloAlto Networks Blog",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 58,
+    "website": "https://www.paloaltonetworks.com/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://unit42.paloaltonetworks.com/feed/",
+    "id": "paloalto-networks-unit-42",
+    "language": "en",
+    "name": "PaloAlto Networks Unit 42",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 59,
+    "website": "https://unit42.paloaltonetworks.com/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.upguard.com/news/rss.xml",
+    "id": "upguard-blog-news",
+    "language": "en",
+    "name": "UpGuard Blog (news)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 60,
+    "website": "https://www.upguard.com/news"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.upguard.com/breaches/rss.xml",
+    "id": "upguard-blog-breaches",
+    "language": "en",
+    "name": "UpGuard Blog (breaches)",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 61,
+    "website": "https://www.upguard.com/breaches"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.veracode.com/blog/feed/",
+    "id": "veracode-security-blog",
+    "language": "en",
+    "name": "Veracode Security Blog",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 62,
+    "website": "https://www.veracode.com/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.virusbulletin.com/rss",
+    "id": "virus-bulletin",
+    "language": "en",
+    "name": "Virus Bulletin",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 63,
+    "website": "https://www.virusbulletin.com/blog/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.virustotal.com/feeds/posts/default",
+    "id": "virustotal-blog",
+    "language": "en",
+    "name": "VirusTotal Blog",
+    "provenance": "https://github.com/thehappydinoa/awesome-threat-intel-rss",
+    "rank": 64,
+    "website": "https://blog.virustotal.com/"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://feeds.feedburner.com/TheHackersNews",
+    "id": "the-hacker-news",
+    "language": "en",
+    "name": "The Hacker News",
+    "provenance": "https://thehackernews.com",
+    "rank": 66,
+    "website": "https://thehackernews.com"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.helpnetsecurity.com/feed/",
+    "id": "help-net-security",
+    "language": "en",
+    "name": "Help Net Security",
+    "provenance": "https://www.helpnetsecurity.com",
+    "rank": 68,
+    "website": "https://www.helpnetsecurity.com"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://cyberscoop.com/feed/",
+    "id": "cyberscoop",
+    "language": "en",
+    "name": "CyberScoop",
+    "provenance": "https://cyberscoop.com",
+    "rank": 69,
+    "website": "https://cyberscoop.com"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.cybersecuritydive.com/feeds/news/",
+    "id": "cybersecurity-dive",
+    "language": "en",
+    "name": "Cybersecurity Dive",
+    "provenance": "https://www.cybersecuritydive.com",
+    "rank": 70,
+    "website": "https://www.cybersecuritydive.com"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://api.theregister.com/api/v1/article?orderBy=published&site_id=2&remapper=rss&query=tag:security",
+    "id": "the-register-security",
+    "language": "en",
+    "name": "The Register Security",
+    "provenance": "https://www.theregister.com/security/",
+    "rank": 71,
+    "website": "https://www.theregister.com/security/"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+    "id": "cisa",
+    "language": "en",
+    "name": "CISA",
+    "provenance": "https://www.cisa.gov",
+    "rank": 72,
+    "website": "https://www.cisa.gov"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://www.cert.ssi.gouv.fr/feed/",
+    "id": "cert-fr",
+    "language": "fr",
+    "name": "CERT-FR",
+    "provenance": "https://www.cert.ssi.gouv.fr",
+    "rank": 73,
+    "website": "https://www.cert.ssi.gouv.fr"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml",
+    "id": "ncsc-uk",
+    "language": "en",
+    "name": "NCSC UK",
+    "provenance": "https://www.ncsc.gov.uk",
+    "rank": 74,
+    "website": "https://www.ncsc.gov.uk"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://cert.europa.eu/publications/security-advisories-rss",
+    "id": "cert-eu",
+    "language": "en",
+    "name": "CERT-EU",
+    "provenance": "https://cert.europa.eu",
+    "rank": 75,
+    "website": "https://cert.europa.eu"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://www.jpcert.or.jp/rss/jpcert-all.rdf",
+    "id": "jpcert-cc",
+    "language": "ja",
+    "name": "JPCERT/CC",
+    "provenance": "https://www.jpcert.or.jp",
+    "rank": 76,
+    "website": "https://www.jpcert.or.jp"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://www.ipa.go.jp/security/alert-rss.rdf",
+    "id": "ipa",
+    "language": "ja",
+    "name": "IPA",
+    "provenance": "https://www.ipa.go.jp/security/",
+    "rank": 77,
+    "website": "https://www.ipa.go.jp/security/"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://jvn.jp/rss/jvn.rdf",
+    "id": "jvn",
+    "language": "ja",
+    "name": "JVN",
+    "provenance": "https://jvn.jp",
+    "rank": 78,
+    "website": "https://jvn.jp"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://www.security-next.com/feed",
+    "id": "security-next",
+    "language": "ja",
+    "name": "Security NEXT",
+    "provenance": "https://www.security-next.com",
+    "rank": 79,
+    "website": "https://www.security-next.com"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://scan.netsecurity.ne.jp/rss/index.rdf",
+    "id": "scannetsecurity",
+    "language": "ja",
+    "name": "ScanNetSecurity",
+    "provenance": "https://scan.netsecurity.ne.jp",
+    "rank": 80,
+    "website": "https://scan.netsecurity.ne.jp"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://portswigger.net/research/rss",
+    "id": "portswigger-research",
+    "language": "en",
+    "name": "PortSwigger Research",
+    "provenance": "https://portswigger.net/research",
+    "rank": 83,
+    "website": "https://portswigger.net/research"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.trailofbits.com/feed/",
+    "id": "trail-of-bits",
+    "language": "en",
+    "name": "Trail of Bits",
+    "provenance": "https://blog.trailofbits.com",
+    "rank": 84,
+    "website": "https://blog.trailofbits.com"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.huntress.com/blog/rss.xml",
+    "id": "huntress",
+    "language": "en",
+    "name": "Huntress",
+    "provenance": "https://www.huntress.com/blog",
+    "rank": 86,
+    "website": "https://www.huntress.com/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.elastic.co/security-labs/rss/feed.xml",
+    "id": "elastic-security-labs",
+    "language": "en",
+    "name": "Elastic Security Labs",
+    "provenance": "https://www.elastic.co/security-labs",
+    "rank": 88,
+    "website": "https://www.elastic.co/security-labs"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://redcanary.com/blog/feed/",
+    "id": "red-canary",
+    "language": "en",
+    "name": "Red Canary",
+    "provenance": "https://redcanary.com",
+    "rank": 89,
+    "website": "https://redcanary.com"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://asec.ahnlab.com/en/feed/",
+    "id": "ahnlab-asec",
+    "language": "en",
+    "name": "AhnLab ASEC",
+    "provenance": "https://asec.ahnlab.com/en",
+    "rank": 91,
+    "website": "https://asec.ahnlab.com/en"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.wiz.io/feed/rss.xml",
+    "id": "wiz",
+    "language": "en",
+    "name": "Wiz",
+    "provenance": "https://www.wiz.io/blog",
+    "rank": 93,
+    "website": "https://www.wiz.io/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.aquasec.com/rss.xml",
+    "id": "aqua-security",
+    "language": "en",
+    "name": "Aqua Security",
+    "provenance": "https://www.aquasec.com/blog",
+    "rank": 94,
+    "website": "https://www.aquasec.com/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://snyk.io/blog/feed/",
+    "id": "snyk",
+    "language": "en",
+    "name": "Snyk",
+    "provenance": "https://snyk.io/blog",
+    "rank": 97,
+    "website": "https://snyk.io/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.reversinglabs.com/blog/rss.xml",
+    "id": "reversinglabs",
+    "language": "en",
+    "name": "ReversingLabs",
+    "provenance": "https://www.reversinglabs.com/blog",
+    "rank": 98,
+    "website": "https://www.reversinglabs.com/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.wordfence.com/blog/feed/",
+    "id": "wordfence",
+    "language": "en",
+    "name": "Wordfence",
+    "provenance": "https://www.wordfence.com",
+    "rank": 99,
+    "website": "https://www.wordfence.com"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.sucuri.net/feed",
+    "id": "sucuri",
+    "language": "en",
+    "name": "Sucuri",
+    "provenance": "https://blog.sucuri.net",
+    "rank": 100,
+    "website": "https://blog.sucuri.net"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.tenable.com/blog/feed",
+    "id": "tenable",
+    "language": "en",
+    "name": "Tenable",
+    "provenance": "https://www.tenable.com/blog",
+    "rank": 102,
+    "website": "https://www.tenable.com/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://labs.watchtowr.com/rss/",
+    "id": "watchtowr-labs",
+    "language": "en",
+    "name": "WatchTowr Labs",
+    "provenance": "https://labs.watchtowr.com",
+    "rank": 103,
+    "website": "https://labs.watchtowr.com"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://bishopfox.com/blog/feed",
+    "id": "bishop-fox",
+    "language": "en",
+    "name": "Bishop Fox",
+    "provenance": "https://bishopfox.com/blog",
+    "rank": 106,
+    "website": "https://bishopfox.com/blog"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.f5.com/labs/rss-feeds/all.xml",
+    "id": "f5-labs",
+    "language": "en",
+    "name": "F5 Labs",
+    "provenance": "https://www.f5.com/labs",
+    "rank": 107,
+    "website": "https://www.f5.com/labs"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://horizon3.ai/feed/",
+    "id": "horizon3-ai",
+    "language": "en",
+    "name": "Horizon3.ai",
+    "provenance": "https://horizon3.ai",
+    "rank": 109,
+    "website": "https://horizon3.ai"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://databreaches.net/feed/",
+    "id": "ransomware-and-cyber-insurance",
+    "language": "en",
+    "name": "Ransomware and Cyber Insurance",
+    "provenance": "https://www.databreaches.net",
+    "rank": 111,
+    "website": "https://databreaches.net"
+  },
+  {
+    "category": "news",
+    "feed_url": "https://cybersecuritynews.com/feed/",
+    "id": "cybersecurity-news",
+    "language": "en",
+    "name": "Cybersecurity News",
+    "provenance": "https://cybersecuritynews.com",
+    "rank": 112,
+    "website": "https://cybersecuritynews.com"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://ubuntu.com/security/notices/rss.xml",
+    "id": "ubuntu-security",
+    "language": "en",
+    "name": "Ubuntu Security",
+    "provenance": "https://ubuntu.com/security/notices",
+    "rank": 114,
+    "website": "https://ubuntu.com/security/notices"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://www.debian.org/security/dsa-long",
+    "id": "debian-security",
+    "language": "en",
+    "name": "Debian Security",
+    "provenance": "https://www.debian.org/security/",
+    "rank": 115,
+    "website": "https://www.debian.org/security/"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://tailscale.com/security-bulletins/index.xml",
+    "id": "tailscale-security",
+    "language": "en",
+    "name": "Tailscale Security",
+    "provenance": "https://tailscale.com/security-bulletins",
+    "rank": 116,
+    "website": "https://tailscale.com/security-bulletins"
+  },
+  {
+    "category": "official",
+    "feed_url": "https://letsencrypt.org/feed.xml",
+    "id": "let-s-encrypt",
+    "language": "en",
+    "name": "Let's Encrypt",
+    "provenance": "https://letsencrypt.org",
+    "rank": 117,
+    "website": "https://letsencrypt.org"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://thedfirreport.com/feed/",
+    "id": "the-dfir-report",
+    "language": "en",
+    "name": "The DFIR Report",
+    "provenance": "https://thedfirreport.com",
+    "rank": 118,
+    "website": "https://thedfirreport.com"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://blog.mozilla.org/security/feed/",
+    "id": "mozilla-security",
+    "language": "en",
+    "name": "Mozilla Security",
+    "provenance": "https://blog.mozilla.org/security/",
+    "rank": 119,
+    "website": "https://blog.mozilla.org/security/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://aws.amazon.com/blogs/security/feed/",
+    "id": "aws-security",
+    "language": "en",
+    "name": "AWS Security",
+    "provenance": "https://aws.amazon.com/blogs/security/",
+    "rank": 121,
+    "website": "https://aws.amazon.com/blogs/security/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.docker.com/blog/category/security/feed/",
+    "id": "docker-security",
+    "language": "en",
+    "name": "Docker Security",
+    "provenance": "https://www.docker.com/blog/category/security/",
+    "rank": 122,
+    "website": "https://www.docker.com/blog/category/security/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://cert.pl/en/rss.xml",
+    "id": "cert-polska",
+    "language": "en",
+    "name": "CERT Polska",
+    "provenance": "https://cert.pl/en/",
+    "rank": 123,
+    "website": "https://cert.pl/en/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.group-ib.com/blog/rss.xml",
+    "id": "group-ib",
+    "language": "en",
+    "name": "Group-IB",
+    "provenance": "https://www.group-ib.com/blog/",
+    "rank": 125,
+    "website": "https://www.group-ib.com/blog/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.outflank.nl/blog/feed/",
+    "id": "outflank",
+    "language": "en",
+    "name": "Outflank",
+    "provenance": "https://www.outflank.nl/blog/",
+    "rank": 126,
+    "website": "https://www.outflank.nl/blog/"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://www.mdsec.co.uk/feed/",
+    "id": "mdsec",
+    "language": "en",
+    "name": "MDSec",
+    "provenance": "https://www.mdsec.co.uk",
+    "rank": 127,
+    "website": "https://www.mdsec.co.uk"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://trustedsec.com/feed.rss",
+    "id": "trustedsec",
+    "language": "en",
+    "name": "TrustedSec",
+    "provenance": "https://trustedsec.com",
+    "rank": 130,
+    "website": "https://trustedsec.com"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://risky.biz/feeds/risky-business-news/",
+    "id": "risky-business-news",
+    "language": "en",
+    "name": "Risky Business News",
+    "provenance": "https://risky.biz",
+    "rank": 132,
+    "website": "https://risky.biz"
+  },
+  {
+    "category": "research",
+    "feed_url": "https://api.msrc.microsoft.com/update-guide/rss",
+    "id": "microsoft-msrc-updates",
+    "language": "en",
+    "name": "Microsoft MSRC Updates",
+    "provenance": "https://msrc.microsoft.com/update-guide/",
+    "rank": 133,
+    "website": "https://msrc.microsoft.com/update-guide/"
+  }
+]

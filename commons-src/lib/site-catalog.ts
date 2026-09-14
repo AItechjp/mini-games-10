@@ -81,13 +81,14 @@ export const sites:SiteEntry[] = [
     keywords:'Tor オニオン onion ダークウェブ URL 稼働 接続 生存 確認',
     actionLabel:'URLを確認する',
   },
+  {id:'cyber-news',name:'サイバー攻撃ニュース',description:'国内外の公開RSSを日本語で読む。直近72時間の攻撃・脆弱性・調査情報。',href:'/commons/cyber-news/',label:'日本語・1分更新',color:'#2563eb',keywords:'サイバー攻撃 セキュリティ ニュース RSS 翻訳 Dark Reading 脆弱性 ランサムウェア',actionLabel:'ニュースを読む'},
 ];
 
 export const siteGroups = [
   {id:'web',name:'ウェブアプリ',numbers:[1,3,14]},
   {id:'study',name:'勉強',numbers:[2]},
   {id:'realtime',name:'リアルタイム検索',numbers:[4,5,6,7,8,9,10,11,12,13,15]},
-  {id:'security',name:'セキュリティ',numbers:[16,17]},
+  {id:'security',name:'セキュリティ',numbers:[16,17,18]},
 ].map(group=>({...group,sites:group.numbers.map(number=>sites[number-1])}));
 
 export const listedToolIds = new Set(sites.flatMap(site=>site.toolId?[site.toolId]:[]));
@@ -95,3 +96,4 @@ export const studyPages = [
   {name:'短答ノート',description:'過去問演習、自動採点、間違えた問題の復習。',href:'/yobi-quiz.html'},
   {name:'論文ノート',description:'科目別の学習、公式過去問、答案構成・起案。',href:'/yobi-ronbun.html'},
 ];
+
