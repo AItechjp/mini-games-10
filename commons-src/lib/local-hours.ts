@@ -3,7 +3,7 @@ import {holidays,holidayYears} from './ramen-data';
 
 export type LocalKind='supermarkets'|'saunas'|'sento'|'fishmongers';
 export type LocalStore={id:string;name:string;prefecture:string;city:string;address:string;lat?:number;lon?:number;categories:LocalKind[];hours:string;hoursText?:string;phone:string;website:string;sourceUrl:string;sourceName:string;sourceType:'official'|'osm'|'directory'|'registry';checkedAt:string;access?:string;note?:string;scope?:string;exceptions?:Record<string,string>;otherSources?:{name:string;url:string}[]};
-export type LocalStatus={state:'open'|'closed'|'unknown';reason?:string;next?:string};
+export type LocalStatus={state:'open'|'closed'|'unknown';reason?:string;next?:string;nextChange?:number};
 export type LocalSnapshot={updatedAt:string;stores:LocalStore[];sources:{name:string;url:string;count:number;complete:boolean;note:string}[];coverageNote:string};
 const cache=new Map<string,OpeningHours|null>();
 const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -44,7 +44,8 @@ export function localStatus(store:LocalStore,now:number):LocalStatus{
  try{
   if(parser.getUnknown(wall))return unknown(parser.getComment(wall)||'当日の営業を確認');
   const state=parser.getState(wall)?'open':'closed';
-  return {state};
+  const next=parser.getNextChange(wall,new Date(wall.getTime()+48*3600000));
+  return {state,...(next?{nextChange:now+next.getTime()-wall.getTime()}:{})};
  }catch{return unknown('当日の営業を確認');}
 }
 

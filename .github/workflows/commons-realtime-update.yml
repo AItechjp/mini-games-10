@@ -1,0 +1,31 @@
+name: Refresh Commons official evidence
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: commons-official-evidence-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Request bounded, locked collection of official pages and announcements
+        run: |
+          curl --fail --silent --show-error --max-time 35 'https://dcvtubivtextycifngtk.supabase.co/functions/v1/commons-realtime/directory' -o /tmp/commons-directory.json
+          curl --fail --silent --show-error --max-time 35 'https://dcvtubivtextycifngtk.supabase.co/functions/v1/commons-realtime/openings' -o /tmp/commons-openings.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/commons-directory.json'))
+          assert isinstance(d.get('stores'), list), 'Invalid directory response'
+          assert d['coverage']['sitesConfigured'] >= 20, 'Fewer than 20 independent collection sites'
+          assert not d.get('storageError'), 'Collection storage failed'
+          print(d['coverage'])
+          o=json.load(open('/tmp/commons-openings.json'))
+          assert isinstance(o.get('records'), list), 'Invalid opening response'
+          assert not o.get('storageError'), 'Opening collection storage failed'
+          print('Opening records:',len(o['records']))
+          PY

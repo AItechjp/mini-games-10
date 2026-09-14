@@ -6,7 +6,6 @@ import Hub from '@/app/ui/hub';
 import Start from '@/app/ui/start';
 import Study from '@/app/study/page';
 import {findTool} from '@/lib/catalog';
-import {openingSeeds} from '@/lib/opening-seeds';
 import '@/app/globals.css';
 import '@/app/weather/weather.css';
 import '@/app/bitcoin/bitcoin.css';
@@ -15,10 +14,8 @@ const Room=lazy(()=>import('@/app/ui/room'));
 const Weather=lazy(()=>import('@/app/weather/weather'));
 const Bitcoin=lazy(()=>import('@/app/bitcoin/explorer'));
 const Onion=lazy(()=>import('@/app/onion/directory'));
-const Ramen=lazy(()=>import('@/app/ramen/ramen-directory'));
 const Openings=lazy(()=>import('@/app/ui/opening-directory'));
-const Sauna=lazy(()=>import('./sauna'));
-const LocalDirectory=lazy(()=>import('./local-directory'));
+const LiveDirectory=lazy(()=>import('./live-directory'));
 function Router(){
  const path=routePath(location.pathname),params=new URLSearchParams(location.search);
  if(path===null)return <main className="commons-loading"><h1>URLを確認してください</h1><p>リンクの形式が正しくありません。</p><a href="/commons/">サイト一覧へ</a></main>;
@@ -29,10 +26,10 @@ function Router(){
  if(path==='weather')return <Weather initialCity={params.get('city')??'gifu'}/>;
  if(path==='bitcoin')return <Bitcoin/>;
  if(path==='onion')return <Onion/>;
- if(path==='ramen')return <Ramen initialNow={Date.now()}/>;
- if(path==='sauna')return <Sauna/>;
- if(/^local\/(supermarkets|saunas|sento|fishmongers)$/.test(path))return <LocalDirectory kind={path.split('/')[1] as import('@/lib/local-hours').LocalKind}/>;
- if(path==='openings/restaurants'||path==='openings/ramen'||path==='openings/sauna')return <Openings kind={path.endsWith('sauna')?'sauna':'ramen'} initial={{records:openingSeeds,sources:[],updatedAt:null}} serverNow={new Date().toISOString()}/>;
+ if(path==='ramen')return <LiveDirectory kind="ramen"/>;
+ if(path==='sauna')return <LiveDirectory kind="sauna"/>;
+ if(/^local\/(supermarkets|saunas|sento|fishmongers)$/.test(path))return <LiveDirectory kind={path.split('/')[1]}/>;
+ if(path==='openings/restaurants'||path==='openings/ramen'||path==='openings/sauna')return <Openings kind={path.endsWith('sauna')?'sauna':'ramen'} initial={{records:[],sources:[],updatedAt:null}} serverNow={new Date().toISOString()}/>;
  return <main className="commons-loading"><h1>ページが見つかりません</h1><a href="/commons/">コモンズに戻る</a></main>;
 }
 createRoot(document.getElementById('root')!).render(<PageBoundary><Suspense fallback={<main className="commons-loading" role="status"><p>ページを開いています…</p><a href="/commons/help/">読み込めないときは</a></main>}><Router/></Suspense><footer className="commons-support"><a href="/commons/">サイト一覧</a><a href="/commons/help/">使い方・困ったときは</a><span>COMMONS · AITECH</span></footer></PageBoundary>);

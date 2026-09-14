@@ -1,0 +1,29 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {existsSync} from 'node:fs';
+import {build} from 'esbuild';
+await build({stdin:{contents:"export * from './lib/realtime-collector';export * from './lib/realtime-evidence';export * from './lib/local-hours'",resolveDir:process.cwd(),loader:'ts'},outfile:'/tmp/commons-realtime-test.mjs',platform:'node',format:'esm',bundle:true});
+const {inspectTarget,inspectReviewed,validEvidence,localStatus,targets,siteName,visibleText,announcedClosures}=await import('/tmp/commons-realtime-test.mjs');
+const now=new Date('2026-09-14T12:00:00+09:00'),target={id:'test',name:'テスト店',url:'https://example.com/store',prefecture:'岐阜県',city:'各務原市',address:'岐阜県各務原市',phone:'',scope:'store',kinds:['supermarkets'],sourceName:'公式'};
+const inspected=inspectTarget(target,'<h1>テスト店</h1><p>営業時間 09:00～21:00</p>',now);assert.equal(inspected.ok,true);
+assert.equal(inspectTarget(target,'<h1>別の店</h1><p>営業時間 09:00～21:00</p>',now).ok,false);
+assert.equal(inspectTarget(target,'<h1>テスト店</h1><p>営業時間 11:00～14:00 / 17:00～21:00</p>',now).ok,false,'split shifts must not be silently truncated');
+assert.equal(visibleText('<h1>現行</h1><!-- <p>営業時間 24時間</p> -->'),'現行','retired HTML comments are not evidence');
+assert.deepEqual(announcedClosures('<p>お知らせ ＜下記期間において、休業します＞ 【9/17】社内研修のため。</p>',now),{'2026-09-17':'off'});
+assert.deepEqual(announcedClosures('<a href="/2026/09/12/7066/">2026.09.12 休館日のお知らせ 10月27日（火）</a>',now),{'2026-10-27':'off'});
+const conflict='<h1>テスト店</h1><p>営業時間 09:00～21:00</p><script type="application/ld+json">'+JSON.stringify({name:'テスト店',openingHoursSpecification:[{dayOfWeek:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],opens:'10:00',closes:'21:00'}]})+'</script>';
+assert.equal(inspectTarget(target,conflict,now).ok,false,'conflicting official representations must be withheld');
+assert.equal(validEvidence(inspected,now.getTime()+7200000),false,'expired evidence cannot be listed');
+assert.equal(validEvidence(inspected,now.getTime()-1),false,'future-dated evidence cannot be listed');
+const reviews=JSON.parse(await readFile('data/realtime-reviews.json','utf8'));
+for(const r of reviews){const t=targets.find(x=>x.id===r.id),path='/tmp/commons-realtime-captures/'+createHash('sha256').update(t.url).digest('hex')+'.json';if(existsSync(path)){const capture=JSON.parse(await readFile(path,'utf8'));const e=inspectReviewed(t,capture.html,now);assert.equal(e.ok,true,r.id+' official source invariants')}assert.equal(inspectReviewed(t,'<h1>削除された営業案内</h1>',now).ok,false,r.id+' changed source invalidates record');}
+function state(id,date){const r=reviews.find(x=>x.id===id),t=targets.find(x=>x.id===id);return localStatus({...t,hours:r.hours,sourceType:'official',checkedAt:date},Date.parse(date));}
+assert.equal(state('realtime-minori','2026-10-13T12:00:00+09:00').state,'closed','even-month second Tuesday closure');
+assert.equal(state('realtime-minori','2026-09-08T12:00:00+09:00').state,'open','odd month is not a monthly closure');
+assert.equal(state('realtime-eagle','2026-09-14T09:00:00+09:00').state,'closed','bath cleaning break');
+assert.equal(state('tanmen-gifu','2026-09-15T02:40:00+09:00').state,'open','overnight schedule');
+assert.equal(state('tanmen-gifu','2026-09-15T02:40:00+09:00').nextChange,Date.parse('2026-09-15T03:00:00+09:00'),'overnight cutoff can be derived from closing');
+const snapshot=JSON.parse(await readFile('data/realtime-initial.json','utf8'));assert.ok(new Set(snapshot.sources.filter(s=>s.ok).map(s=>siteName(s.url))).size>=20,'at least 20 independent sites actually fetched');
+assert.ok(snapshot.evidence.filter(e=>e.ok).length>=200,'verified real records, not just a source URL list');
+console.log('Realtime evidence, changed sources, conflicts, monthly closures, cleaning, overnight hours and 20-site live collection passed.');

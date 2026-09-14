@@ -53,6 +53,7 @@ jobs:
           node scripts/test-sauna.mjs
           node scripts/test-local-hours.mjs
           node scripts/test-coverage.mjs
+          node scripts/test-realtime.mjs
       - name: Validate past-question-only learning source
         run: node tests/yobi-past-source.mjs
       - name: Verify arcade game rules and room security
@@ -114,6 +115,7 @@ jobs:
           curl -fsS http://127.0.0.1:4173/game23.html | grep -q 'game23-v3-loader.js'
           curl -fsS http://127.0.0.1:4173/fps.html | grep -q 'fps-game.js'
           node tests/quiz-raid-browser.mjs
+          node tests/commons-realtime-browser.mjs
           node tests/quality-browser.mjs
           node tests/commercial-browser.mjs
           APP_GUIDE_BASE_URL=http://127.0.0.1:4173/ node tests/app-guide-smoke.mjs
