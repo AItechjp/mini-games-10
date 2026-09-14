@@ -215,7 +215,7 @@ html.aitech-play-mode body{padding:0!important;margin:0!important}
 .aitech-play-mode:is([data-aitech-game="quiz-raid"],[data-aitech-game="cyber-quiz"]) main{display:grid;grid-template-columns:25% minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:8px;padding-top:6px!important}
 .aitech-play-mode:is([data-aitech-game="quiz-raid"],[data-aitech-game="cyber-quiz"]) main>.arena{width:100%;height:100%;min-height:0;margin:0;grid-column:1;grid-row:1}
 .aitech-play-mode:is([data-aitech-game="quiz-raid"],[data-aitech-game="cyber-quiz"]) main>:is(#setup,#lobby,#play,#result,#summary){grid-column:2;grid-row:1;height:100%;min-height:0;margin:0;padding:10px;overflow:auto;overscroll-behavior:contain}
-.aitech-play-mode[data-aitech-game="cyber-quiz"] main>:is(.intro,.stats){display:none}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] main>:is(.intro,.missionbar){display:none}
 .aitech-play-mode[data-aitech-game="quiz-raid"] #scene{height:100%;min-height:0}
 .aitech-play-mode[data-aitech-game="quiz-raid"] :is(.answer-players,.answers){grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
 .aitech-play-mode[data-aitech-game="quiz-raid"] #question{font-size:16px;line-height:1.5;margin:8px 0}
@@ -244,6 +244,45 @@ html.aitech-play-mode body{padding:0!important;margin:0!important}
 .aitech-play-mode[data-aitech-game="quiz-raid"] .answers{min-height:0;flex:1;grid-template-rows:repeat(2,minmax(0,1fr));gap:4px}
 .aitech-play-mode[data-aitech-game="quiz-raid"] .answers button{height:100%;min-height:44px;min-width:0;overflow:auto;font-size:14px;line-height:1.35;padding:5px;gap:4px}
 .aitech-play-mode[data-aitech-game="quiz-raid"] .answers kbd{display:none}
+/* Two independent questions, with the team's health beside the play area. */
+.aitech-play-mode[data-aitech-game="cyber-quiz"] main{position:relative}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] #scene{width:100%;height:100%;min-height:0;object-fit:cover}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .arena-top{left:8px;right:8px;top:10px;display:flex;flex-direction:column;align-items:start;gap:8px;font-size:11px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .arena-bottom{display:none}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .stats{position:absolute;left:10px;bottom:10px;width:calc(25% - 15px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0;z-index:2;background:#0b1829ed}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .stats>div{min-width:0;padding:6px;border:1px solid #314553}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .stats :is(span,small){font-size:10px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .stats strong{font-size:14px;margin:2px 0}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .stats small{display:none}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .stats .bar{height:4px;margin-top:4px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] #play:not([hidden]){display:flex;flex-direction:column;gap:4px;padding:6px;overflow:hidden}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .roundbar{flex:0 0 30px;height:30px;min-height:0;flex-wrap:nowrap;gap:6px;margin:0}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .roundbar h2{font-size:12px;white-space:nowrap}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .round-tools button{height:30px;min-height:30px;padding:3px 6px;font-size:12px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] #time{font-size:22px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .questions{flex:1;min-height:0;grid-template-rows:minmax(0,1fr);gap:6px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .questions.solo{width:100%;max-width:none;grid-template-columns:minmax(0,1fr)}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .question-card{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:18px minmax(42px,.7fr) minmax(92px,1.3fr) 36px;gap:4px;min-height:0;padding:6px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .player-head{grid-row:1;font-size:11px;line-height:1.2;margin:0}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .player-head>b>span,.aitech-play-mode[data-aitech-game="cyber-quiz"] .q-tags{display:none}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .prompt{grid-row:2;min-height:0;overflow:auto;margin:0;font-size:14px;line-height:1.4}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .answers{grid-row:3;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:4px;min-height:0;margin:0}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .answers:has(.answer:nth-child(2):last-child){grid-template-columns:minmax(0,1fr)}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .answer{min-width:0;min-height:44px;height:100%;overflow:auto;padding:5px;font-size:13px;line-height:1.35;gap:4px;align-items:start}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .answer .key{display:none}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .locked{grid-row:4;margin:0;font-size:10px;line-height:1.3;gap:4px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .skill{flex:none;min-height:34px;height:34px;padding:3px 5px;font-size:11px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] #play-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .question-card:has(.hint){grid-template-rows:minmax(36px,.7fr) minmax(92px,1.3fr) 22px 30px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .question-card:has(.hint) .player-head{display:none}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .question-card:has(.hint) .prompt{grid-row:1}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .question-card:has(.hint) .answers{grid-row:2}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .question-card .hint{grid-row:3;min-height:0;overflow:auto;margin:0;padding:2px 4px;font-size:11px;line-height:1.3}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .question-card:has(.hint) .skill{min-height:30px;height:30px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] #play:has(#result:not([hidden])){display:block;overflow:auto}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] #play:has(#result:not([hidden])) .question-card{display:block;height:auto}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] #play:has(#result:not([hidden])) :is(.prompt,.answers,.locked,.hint){margin-top:8px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] #play:has(#result:not([hidden])) .answer{min-height:44px;height:auto}
 @media(pointer:fine) and (min-width:1100px){.aitech-play-mode[data-aitech-game="quick-hop"] .touch,.aitech-play-mode[data-aitech-game="startrail"] .touch-controls{display:none}.aitech-play-mode[data-aitech-game="lantern-duo"] .controls{opacity:.75}}
 @media(max-width:740px) and (orientation:landscape){#aitech-play-title{max-width:130px}#aitech-game-toolbar button,#aitech-game-toolbar a{padding-inline:8px}.aitech-play-mode .hud{gap:8px!important}.aitech-play-mode .hud .camp{font-size:0}.aitech-play-mode[data-aitech-game="lantern-duo"] .controls-center{min-width:80px}.aitech-play-mode[data-aitech-game="lantern-duo"] #recallButton{max-width:100px}.aitech-play-mode[data-aitech-game="lantern-duo"] #recallButton kbd{display:none}}
 @media(max-height:350px) and (orientation:landscape){html[data-aitech-game]{--aitech-toolbar-height:46px}.aitech-play-mode[data-aitech-game="quick-hop"] .panel .best{display:none}.aitech-play-mode[data-aitech-game="lantern-duo"] .home-description{display:none}.aitech-play-mode[data-aitech-game="lantern-duo"] .home-secondary{margin-top:4px}.aitech-play-mode[data-aitech-game="lantern-duo"] .home-secondary button{min-height:28px}.aitech-play-mode[data-aitech-game="babanuki"] .table{grid-template-rows:40px 38px minmax(0,1fr)}.aitech-play-mode[data-aitech-game="babanuki"] .table-center #announcement{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.aitech-play-mode[data-aitech-game="classic"] .table-zone{grid-template-rows:36px minmax(0,1fr)}}

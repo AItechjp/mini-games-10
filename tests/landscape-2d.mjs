@@ -60,14 +60,30 @@ try{
       assert.equal(await page.locator('.you-area .playing-card.selected').count(),1);
     }
     if(path.includes('quiz-raid'))assert.equal(await page.locator('.answers button').count(),8);
+    if(path.includes('cyber-quiz')){
+      assert.equal(await page.locator('.question-card').count(),2);
+      const answers=await page.locator('.answers button').count();assert(answers>=4&&answers<=8);
+    }
     await page.screenshot({path:`${output}/${viewport.width}-${viewport.height}-${name}.png`});
-    if(viewport.width===844&&['quick-hop/','trump/?game=memory','classic.html?game=daifugo','board-games/?game=gomoku&mode=local','quiz-raid/'].includes(path)){
+    if(viewport.width===844&&['quick-hop/','trump/?game=memory','classic.html?game=daifugo','board-games/?game=gomoku&mode=local','quiz-raid/','cyber-quiz/'].includes(path)){
       console.log('QA_IMAGE '+path+' '+(await page.screenshot({type:'jpeg',quality:40})).toString('base64'));
     }
     await page.locator('#aitech-play-settings').click();
     assert(await page.locator('#aitech-play-menu').isVisible());
+    if(path.includes('cyber-quiz'))assert.equal(await page.locator('#pause').textContent(),'再開する');
     await page.locator('#aitech-play-close').click();
     assert(!await page.locator('#aitech-play-menu').isVisible());
+    if(path.includes('cyber-quiz')){
+      assert.equal(await page.locator('#pause').textContent(),'一時停止');
+      await page.locator('[data-skill="0"]').click();
+      const outside=await page.locator('.questions button').evaluateAll(els=>els.filter(el=>el.getBoundingClientRect().bottom>innerHeight+1).length);
+      assert.equal(outside,0,'Cyber hint must leave the answer buttons visible');
+      await page.locator('[data-side="0"]:not(:disabled)').first().click();
+      await page.locator('[data-side="1"]:not(:disabled)').first().click();
+      await page.locator('#result:not([hidden])').waitFor();
+      await page.locator('[data-next]').click();
+      assert.equal(await page.locator('#result').isVisible(),false);
+    }
     await page.locator('#aitech-play-view').click();
     await page.waitForFunction(()=>!document.documentElement.classList.contains('aitech-play-mode'));
     // Native fullscreen and the orientation API can be denied. The fallback

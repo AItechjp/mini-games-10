@@ -81,7 +81,7 @@
     window.dispatchEvent(new Event('resize'));
   }
   function label() {
-    const titles = {'quick-hop':'QUICK HOP',startrail:'STARTRAIL','lantern-duo':'LANTERN DUO',babanuki:'ババ抜き','quiz-raid':'QUIZ RAID','cyber-quiz':'CYBER DUO'};
+    const titles = {'quick-hop':'QUICK HOP',startrail:'STARTRAIL','lantern-duo':'LANTERN DUO',babanuki:'ババ抜き','quiz-raid':'QUIZ RAID','cyber-quiz':'NEON SENTINELS'};
     $('#aitech-play-title').textContent = titles[kind] || $('#game-title')?.textContent || $('#title')?.textContent || '2Dゲーム';
   }
   function measure() {
@@ -170,7 +170,8 @@
   });
   $('#aitech-play-settings').addEventListener('click', () => {
     if (!focused) return;
-    resumeCards = ['trump','babanuki'].includes(kind) && $('#pause') && !/再開/.test($('#pause').textContent);
+    resumeCards = ['trump','babanuki','cyber-quiz'].includes(kind) && $('#pause') && !$('#pause').disabled && !/再開/.test($('#pause').textContent);
+    if (kind === 'cyber-quiz' && resumeCards) $('#pause').click();
     document.dispatchEvent(new CustomEvent('aitech:guide-open'));
     root.setAttribute('data-aitech-guide-open', '');
     menu.showModal();
