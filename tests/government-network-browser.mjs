@@ -24,6 +24,16 @@ async function assertWholeSheet(p,ids,edgeCount,label){
  assert(actual.world.width>0&&actual.world.height>0,`${label}: the sheet has visible dimensions`);
  assert(actual.world.left>=actual.graph.left-1&&actual.world.top>=actual.graph.top-1&&actual.world.right<=actual.graph.right+1&&actual.world.bottom<=actual.graph.bottom+1,`${label}: the entire sheet fits inside its canvas: ${JSON.stringify({graph:actual.graph,world:actual.world})}`);
 }
+async function assertListFocus(p,label){
+ const initial=await p.locator('#world').evaluate(el=>el.getScreenCTM().a);
+ await p.getByRole('button',{name:'一覧',exact:true}).click();
+ await p.locator('#table-view tbody button').nth(20).click();
+ const node=await p.locator('.node.selected').boundingBox(),graph=await p.locator('#graph').boundingBox();
+ assert(node&&graph&&node.height>=50,label+': selecting a list item reveals a readable node');
+ assert(node.x>=graph.x&&node.y>=graph.y&&node.x+node.width<=graph.x+graph.width&&node.y+node.height<=graph.y+graph.height,label+': selection is centered inside the graph');
+ assert(await p.locator('#world').evaluate(el=>el.getScreenCTM().a)>initial,label+': selection zooms in');
+ await p.locator('#fit').click();
+}
 async function assertZoomControls(p,label){
  const scale=()=>p.locator('#world').evaluate(el=>el.transform.baseVal.consolidate().matrix.a);
  const initial=await scale();
@@ -47,6 +57,7 @@ try{
  await assertWholeSheet(p,agencyIds,178,'Desktop government');
  await assertZoomControls(p,'Desktop government');
  await p.screenshot({path:'test-output/government-network/government-desktop.png'});
+ await assertListFocus(p,'Government desktop');
  await p.selectOption('#kind','国立研究開発法人');
  assert.equal(await p.locator('#table-view tbody tr').count(),26);
  await p.fill('#search','理化学');
@@ -61,6 +72,7 @@ try{
  await assertWholeSheet(p,recordIds,3506,'Desktop reemployment');
  await assertZoomControls(p,'Desktop reemployment');
  await p.screenshot({path:'test-output/government-network/reemployment-desktop.png'});
+ await assertListFocus(p,'Reemployment desktop');
  await p.selectOption('#kind','general');assert.equal(await p.locator('#table-view tbody tr').count(),1733);
  await p.selectOption('#kind','special');assert.equal(await p.locator('#table-view tbody tr').count(),20);
  await p.selectOption('#kind','all');await p.fill('#search','山田滝雄');assert.equal(await p.locator('#table-view tbody tr').count(),2);
@@ -86,6 +98,7 @@ try{
  await assertWholeSheet(p,recordIds,3506,'Mobile reemployment');
  await assertZoomControls(p,'Mobile reemployment');
  await p.screenshot({path:'test-output/government-network/reemployment-mobile.png',fullPage:true});
+ await assertListFocus(p,'Reemployment mobile');
  assert.deepEqual(errors,[]);
  console.log('PASS: all 149 government nodes and 1753 reemployment records fit on one sheet by default on desktop and mobile; zoom, reset, source filters, joint supervision, source links and optional pagination remain usable.');
 }finally{await browser.close();}

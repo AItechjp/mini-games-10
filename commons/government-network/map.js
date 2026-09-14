@@ -139,7 +139,14 @@ function showSelection(id){
  if(!jobs&&(['cabinet','ministry','secretariat'].includes(n.type)||n.name==='内閣官房')&&$('kind').value==='overview'){$('ministry').value=n.id;$('kind').value='all';page=0;update();selection=n}
  if(!graphNodes.some(g=>g.id===id)){let index=filtered.findIndex(r=>r.id===id);if(index<0){$('search').value='';$('ministry').value='';$('kind').value='all';update();index=filtered.findIndex(r=>r.id===id)}if(index>=0){page=Math.floor(index/PAGE_SIZE);renderGraph()}selection=n;}
  for(const el of $('world').querySelectorAll('.node'))el.classList.toggle('selected',el.dataset.id===id);
- renderDetail();
+ renderDetail();focusSelectedNode();
+}
+function focusSelectedNode(){
+ const n=graphNodes.find(n=>n.id===selection?.id);if(!n)return;
+ const box=$('graph').getBoundingClientRect();
+ if(!box.width||!box.height)return;
+ const k=Math.min(1.15,(box.width-48)/n.w);
+ transform={k,x:box.width/2-(n.x+n.w/2)*k,y:box.height/2-(n.y+n.h/2)*k};applyTransform();
 }
 function renderDetail(){
  const n=selection;
