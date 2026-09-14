@@ -61,6 +61,8 @@ jobs:
         run: pnpm build:aitech
       - name: Verify government graph and reemployment source coverage
         run: node tests/government-data.mjs
+      - name: Verify phone warning attribution and masked-number search
+        run: node tests/phone-watch.mjs
       - name: Verify cyber news parsing and retention
         run: node tests/cyber-news.mjs
       - name: Validate past-question-only learning source
