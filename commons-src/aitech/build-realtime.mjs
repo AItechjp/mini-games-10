@@ -1,2 +1,4 @@
-import {build} from 'esbuild';
+import {createRequire} from 'node:module';
+import {realpathSync} from 'node:fs';
+const {build}=createRequire(realpathSync('node_modules/wrangler/package.json'))('esbuild');
 await build({entryPoints:['edge/realtime.ts'],outfile:'edge-output/realtime.js',bundle:true,format:'esm',platform:'neutral',target:'es2022',external:['npm:*'],alias:{opening_hours:'npm:opening_hours@3.14.0'},minify:true});

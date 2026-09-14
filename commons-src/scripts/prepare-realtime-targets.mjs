@@ -1,5 +1,7 @@
 import {readFile,writeFile} from 'node:fs/promises';
-import {build} from 'esbuild';
+import {createRequire} from 'node:module';
+import {realpathSync} from 'node:fs';
+const {build}=createRequire(realpathSync('node_modules/wrangler/package.json'))('esbuild');
 await build({entryPoints:['lib/ramen-data.ts'],outfile:'/tmp/commons-ramen-data.mjs',bundle:true,platform:'node',format:'esm'});
 const {ramenShops}=await import('/tmp/commons-ramen-data.mjs');
 const local=JSON.parse(await readFile('public/local-data.json','utf8'));

@@ -1,6 +1,8 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {build} from 'esbuild';
+import {createRequire} from 'node:module';
+import {realpathSync} from 'node:fs';
+const {build}=createRequire(realpathSync('node_modules/wrangler/package.json'))('esbuild');
 await build({entryPoints:['lib/realtime-collector.ts'],outfile:'/tmp/commons-collector.mjs',bundle:true,platform:'node',format:'esm'});
 await build({entryPoints:['lib/realtime-evidence.ts'],outfile:'/tmp/commons-evidence.mjs',bundle:true,platform:'node',format:'esm'});
 const {siteName,emptySnapshot}=await import('/tmp/commons-evidence.mjs');
