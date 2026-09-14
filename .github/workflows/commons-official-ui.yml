@@ -1,0 +1,32 @@
+name: Verify Commons official information UI
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'commons/law/**'
+      - 'commons/documents/**'
+      - 'commons/public-records/app.*'
+      - 'tests/official-info-browser.mjs'
+      - '.github/workflows/commons-official-ui.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare browser verification
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify the two public information tools
+        run: |
+          python3 -m http.server 4173 >/tmp/official-info-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          node tests/official-info-browser.mjs
