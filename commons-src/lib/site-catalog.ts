@@ -106,7 +106,12 @@ else siteGroups.push({id:'public-information',name:'法律・行政情報',numbe
 
 siteGroups.find(group=>group.id==='security')?.sites.push(...sites.filter(site=>site.id==='manga-links'));
 
-siteGroups.push({id:'cards',name:'カードの物語',numbers:[],sites:sites.filter(site=>['mtg-flavor','duel-masters-flavor','yugioh-flavor'].includes(site.id))});
+sites.push(
+{id:'onepiece-cards',name:'ワンピースカード図鑑',description:'カード画像と効果を読む。収録商品・カード名から探せます。',href:'/commons/onepiece-cards/',label:'カード画像・本文',color:'#f0b768',keywords:'ONE PIECE CARD GAME ワンピースカード図鑑 カード フレーバー 画像',actionLabel:'カードを見る'},
+{id:'pokemon-cards',name:'ポケモンカード図鑑',description:'カード画像と説明を読む。ポケモンの名前・収録商品から探せます。',href:'/commons/pokemon-cards/',label:'カード画像・本文',color:'#f4d954',keywords:'POKÉMON CARD GAME ポケモンカード図鑑 カード フレーバー 画像',actionLabel:'カードを見る'},
+{id:'zx-cards',name:'Z/X カード図鑑',description:'カード画像とフレーバーを読む。カード名・収録商品から探せます。',href:'/commons/zx-cards/',label:'カード画像・本文',color:'#c2a4ff',keywords:'ZILLIONS OF ENEMY X Z/X カード図鑑 カード フレーバー 画像',actionLabel:'カードを見る'},
+);
+siteGroups.push({id:'cards',name:'カードの物語',numbers:[],sites:sites.filter(site=>['mtg-flavor','duel-masters-flavor','yugioh-flavor','onepiece-cards','pokemon-cards','zx-cards'].includes(site.id))});
 const usageSite:SiteEntry={id:'usage-dashboard',name:'使用量と無料枠',description:'Supabase・GitHubの使用量と残り容量。実測値・更新日時・未取得項目を確認。',href:'/commons/usage/',label:'運用・無料枠',color:'#3455ee',keywords:'技術スタック ダッシュボード 使用量 残量 無料枠 容量 Supabase GitHub Cloudflare',actionLabel:'ダッシュボードを開く'};
 sites.push(usageSite);
 siteGroups.push({id:'operations',name:'サイト運用',numbers:[sites.length],sites:[usageSite]});
