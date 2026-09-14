@@ -8,6 +8,7 @@ import { resolve, join, extname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { transform } from 'esbuild';
 import { runInNewContext } from 'node:vm';
+import { measurePublicUsage } from './measure-public-usage.mjs';
 
 // The same artifact can be served by GitHub Pages, Cloudflare Pages or Workers Assets.
 // Build tools, tests, plans and database code never enter the public artifact.
@@ -81,3 +82,4 @@ for (const path of ['index.html','games.html','aitech-home.css','collection-nav.
 const index = await readFile(join(output, 'index.html'), 'utf8');
 if (/src=["'][^"']*(?:supabase|game-backend|game23|smash\.js)/i.test(index)) throw new Error('The hub must not initialize a game engine or an online connection.');
 console.log(JSON.stringify({ output, files: count, bytes }, null, 2));
+console.log('Usage dashboard public build:', JSON.stringify(await measurePublicUsage(output)));

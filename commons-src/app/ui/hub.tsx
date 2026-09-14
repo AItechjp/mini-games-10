@@ -1,7 +1,7 @@
 'use client';
 import {useEffect,useMemo,useState,useRef} from 'react';
 import {matchesSearch} from '@/lib/municipalities';
-import {ArrowRight,ArrowUpRight,Hotel,House,ShoppingBasket,Waves,Fish,Grid2X2,Search,Star,Clock,GraduationCap,Camera,CloudSun,Bitcoin,Globe2,Soup,Flame} from 'lucide-react';
+import {Activity,ArrowRight,ArrowUpRight,Hotel,House,ShoppingBasket,Waves,Fish,Grid2X2,Search,Star,Clock,GraduationCap,Camera,CloudSun,Bitcoin,Globe2,Soup,Flame} from 'lucide-react';
 import {findTool} from '@/lib/catalog';
 import {sites,siteGroups,listedToolIds,type SiteEntry} from '@/lib/site-catalog';
 import {Sidebar,SidebarContent,SidebarFooter,SidebarHeader,SidebarMenu,SidebarMenuItem,SidebarMenuButton,SidebarProvider,SidebarTrigger} from '@/components/ui/sidebar';
@@ -11,6 +11,7 @@ import {Brand,ToolIcon,Blank,api,engineIcons,dateTime} from './common';
 type Recent={id:string;tool:string;title:string;updated:number};
 const entryTone=(site:SiteEntry)=>({'--tone':site.color,'--wash':site.color+'11'} as React.CSSProperties);
 function SiteSymbol({site}:{site:SiteEntry}) {
+  if(site.id==='usage-dashboard')return <Activity aria-hidden="true"/>;
   const Icon=site.id==='hotel-search'?Hotel:site.id==='rental-search'?House:site.id==='local-supermarkets'?ShoppingBasket:site.id==='local-sento'?Waves:site.id==='local-fishmongers'?Fish:site.id==='local-saunas'?Flame:site.id==='restaurant-openings'?Soup:['sauna-openings','sauna-now'].includes(site.id)?Flame:site.id==='ramen'?Soup:site.id==='onion'?Globe2:site.id==='bitcoin'?Bitcoin:site.id==='weather'?CloudSun:site.id==='camera'?Camera:site.toolId?engineIcons[findTool(site.toolId)!.engine]:GraduationCap;
   return <Icon aria-hidden="true"/>;
 }
