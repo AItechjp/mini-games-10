@@ -30,7 +30,7 @@ try{
  await p.selectOption('#kind','special');assert.equal(await p.locator('#table-view tbody tr').count(),20);
  await p.selectOption('#kind','all');await p.fill('#search','山田滝雄');assert.equal(await p.locator('#table-view tbody tr').count(),2);
  await p.getByRole('button',{name:'一覧',exact:true}).click();await p.locator('#table-view tbody button').first().click();
- assert.match(await p.locator('#detail').innerText(),/山田滝雄/);assert.equal(await p.locator('.node.selected').count(),1);
+ assert.match((await p.locator('#detail').innerText()).replace(/\s/g,''),/山田滝雄/);assert.equal(await p.locator('.node.selected').count(),1);
  assert.match(await p.locator('#detail a.source').first().getAttribute('href'),/^https:\/\/www\.mofa\.go\.jp\/.*#page=/);
  await p.screenshot({path:'test-output/government-network/reemployment-desktop.png'});
  await p.getByRole('button',{name:'条件を戻す',exact:true}).click();await p.getByRole('button',{name:'一覧',exact:true}).click();
