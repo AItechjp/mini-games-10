@@ -6,7 +6,7 @@ import {common,family,specific,familyFor} from '../docs/commercial100-spec.mjs';
 // behavior, not evidence that a new feature was authored in this request.
 const fixes={
  'black-site':[6,7,8],smash:[1,2,3,4,5],aether:[1,2,3,4,5,6,7,8,9,10,11],
- 'quick-hop':[1],startrail:[1,2],babanuki:[1,2],
+ 'quick-hop':[1,15,16],startrail:[1,2],babanuki:[1,2],
  whiteboard:[18,19],chat:[17,18],
  'hotel-search':[16,17,18,19],'rental-search':[],
  'local-supermarkets':[16,17,18,19],'local-saunas':[16,17,18],'local-sento':[16,17,18],'local-fishmongers':[16,17,18],
@@ -31,6 +31,7 @@ for(const app of APPS){
   if(item.number<=5){item.status='今回改修';item.evidence='app-guide/ui.mjs';}
   if(['gomoku','shogi','go','othello','chess'].includes(app.id)&&item.number>=41&&item.number<=52){item.status='今回改修';item.evidence='board-games/keyboard.mjs / table.mjs';}
   if(['monopoly','life'].includes(app.id)&&item.number===69){item.status='今回改修';item.evidence='board-games/keyboard.mjs';}
+  if(app.id==='quick-hop'&&item.number===76){item.status='今回改修';item.evidence='quick-hop/index.html / game.js';}
   if(fixes[app.id]?.includes(item.number-80)){item.status='今回改修';item.evidence=sources[app.id]??'commons-src/aitech/local-directory.tsx';}
  }
  audit.apps.push({id:app.id,name:app.name,url:new URL(app.path,'https://aitechd.com').href,items});

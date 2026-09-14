@@ -3035,8 +3035,8 @@
           "category": "用途別",
           "title": "アセット読み込み中の多重開始を防ぐ",
           "priority": "P1",
-          "status": "要対応・要検証",
-          "evidence": ""
+          "status": "今回改修",
+          "evidence": "quick-hop/index.html / game.js"
         },
         {
           "number": 77,
@@ -3187,16 +3187,16 @@
           "category": "個別",
           "title": "自己ベストのNaNと負数を拒否",
           "priority": "P0",
-          "status": "要対応・要検証",
-          "evidence": ""
+          "status": "今回改修",
+          "evidence": "quick-hop/game.js"
         },
         {
           "number": 96,
           "category": "個別",
           "title": "自己ベスト保存失敗を案内",
           "priority": "P0",
-          "status": "要対応・要検証",
-          "evidence": ""
+          "status": "今回改修",
+          "evidence": "quick-hop/game.js"
         },
         {
           "number": 97,
@@ -26637,5 +26637,5 @@
     }
   ],
   "total": 3300,
-  "changed": 302
+  "changed": 305
 }

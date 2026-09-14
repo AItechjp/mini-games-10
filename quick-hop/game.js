@@ -4,7 +4,7 @@
   const $=id=>document.getElementById(id),canvas=$('game'),ctx=canvas.getContext('2d');
   let game=new Game(),last=0,acc=0,noticeUntil=0,frameTime=0,best=0,sound=false,audio;
   const keys=new Set(),pointers=new Map(),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  try{best=Number(localStorage.getItem('aitech-quickhop-best'))||0;}catch{}
+  try{const stored=Number(localStorage.getItem('aitech-quickhop-best'));best=Number.isFinite(stored)&&stored>0?stored:0;}catch{}
   if(best)$('best').textContent=`自己ベスト ${best.toFixed(1)} 秒`;
   function clearInput(){keys.clear();pointers.clear();
   document.querySelectorAll('[data-control]').forEach(b=>b.classList.remove('held'));}
@@ -13,7 +13,7 @@
   function pause(){if(game.state==='playing'){game.state='paused';clearInput();show('ひと休み。','続きは、いつでも。','つづける','PAUSED');$('pause').textContent='再開';}else if(game.state==='paused')start();}
   function show(title,message,button,tag){$('title').textContent=title;$('message').textContent=message;$('start').textContent=button;$('tag').textContent=tag;$('overlay').hidden=false;}
   function notify(text){$('notice').textContent=text;$('notice').classList.add('show');noticeUntil=performance.now()+2200;}
-  function win(){if(!best||game.time<best){best=game.time;try{localStorage.setItem('aitech-quickhop-best',String(best));}catch{}}$('best').textContent=`自己ベスト ${best.toFixed(1)} 秒`;$('pause').disabled=true;show('ゴール、おめでとう！',`${game.time.toFixed(1)} 秒 / コイン ${game.taken.size} / 22 枚 / 落下 ${game.falls} 回`,'もう一度跳ぶ','COURSE CLEAR');clearInput();$('start').focus({preventScroll:true});}
+  function win(){if(!best||game.time<best){best=game.time;try{localStorage.setItem('aitech-quickhop-best',String(best));}catch{notify('自己ベストを端末に保存できませんでした。この画面では記録を保持しています。');}}$('best').textContent=`自己ベスト ${best.toFixed(1)} 秒`;$('pause').disabled=true;show('ゴール、おめでとう！',`${game.time.toFixed(1)} 秒 / コイン ${game.taken.size} / 22 枚 / 落下 ${game.falls} 回`,'もう一度跳ぶ','COURSE CLEAR');clearInput();$('start').focus({preventScroll:true});}
   $('start').addEventListener('click',start);$('restart').addEventListener('click',()=>{game.state='title';start();});$('pause').addEventListener('click',pause);
   $('sound').addEventListener('click',()=>{sound=!sound;$('sound').textContent=`音：${sound?'オン':'オフ'}`;$('sound').setAttribute('aria-pressed',String(sound));if(sound)tone(880);});
   document.addEventListener('aitech:guide-open',()=>{clearInput();if(game.state==='playing')pause();});
@@ -49,5 +49,10 @@
   function frame(now){const elapsed=Math.min(.1,(now-(last||now))/1000);last=now;frameTime=now/1000;if(game.state==='playing'){acc+=elapsed;const [move,jump]=input();while(acc>=1/120&&game.state==='playing'){game.step(1/120,move,jump);acc-=1/120;for(const event of game.events){if(event==='coin')tone(1100);if(event==='jump')tone(440,.07);if(event==='fall'){tone(150,.16);notify('もう一度！ 中間地点から再開できます');}if(event==='camp'){tone(880,.18);notify('中間地点を保存しました');}if(event==='win'){tone(1320,.3);win();}}}}else acc=0;
     $('coins').textContent=String(game.taken.size).padStart(2,'0');$('time').textContent=game.time.toFixed(1);$('falls').textContent=`落下 ${game.falls} 回`;$('camp').textContent=game.checkpoint>100?'中間地点を保存済み':'スタート地点';if(now>noticeUntil)$('notice').classList.remove('show');draw();requestAnimationFrame(frame);
   }
+  // Controls must not accept a click before their deferred handlers exist.
+  draw();
+  for(const control of document.querySelectorAll('#start,#restart,#sound,[data-control]'))control.disabled=false;
+  $('load-status')?.setAttribute('hidden','');
+  canvas.removeAttribute('aria-busy');
   requestAnimationFrame(frame);
 })();
