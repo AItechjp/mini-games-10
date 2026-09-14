@@ -31,7 +31,7 @@ function start(){
   const header=node('header'),heading=node('h2','','');heading.id='quality-heading';const close=button('閉じる',()=>dialog.close());header.append(heading,close);
   const body=node('div','quality-body'),status=node('p','quality-status');status.setAttribute('role','status');dialog.append(header,body,status);
   document.body.append(entry,dialog);
-  const place=()=>{const host=document.querySelector('header nav,header .header-actions,header,.topbar');if(host&&!dialog.contains(host)&&!host.contains(entry))host.append(entry);};
+  const place=()=>{const host=document.querySelector('header nav,header .header-actions,header,.topbar');if(host&&!dialog.contains(host)&&!host.contains(entry)){host.classList.add('quality-host');host.append(entry);}};
   place();
   // Some games replace their complete menu between the lobby and play screens.
   const placement=new MutationObserver(()=>{if(!entry.isConnected){document.body.append(entry);place();}else if(entry.parentElement===document.body)place();});

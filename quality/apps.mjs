@@ -1,6 +1,6 @@
 // This registry describes the apps actually linked by the public catalogs.
 const game=(id,name,path,help,status)=>({id,name,path,kind:'record',help,status,
-  trouble:'動かないときは操作説明と通信状態を確認してください。オンライン対戦の制限時間は、このパネルを開いている間も進みます。記録はこの画面に表示されている内容の控えです。'});
+  trouble:'動かないときは操作説明と通信状態を確認してください。'+(['black-site','skybreak','aether','daifugo'].includes(id)?'オンライン対戦の制限時間は、このパネルを開いている間も進みます。':'')+'記録はこの画面に表示されている内容の控えです。'});
 const directory=(id,name,path,selector,help)=>({id,name,path,kind:'compare',selector,help,
   trouble:'結果がないときは絞り込みを減らし、取得日時と情報源を確認してください。比較候補は選んだ時点の表示内容です。最新の料金・営業状況は掲載元で確認してください。'});
 export const apps=[

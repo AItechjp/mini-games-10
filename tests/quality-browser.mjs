@@ -17,6 +17,7 @@ try{
   const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'テキスト保存',exact:true}).click();const download=await downloadPromise;assert.match(download.suggestedFilename(),/^aitech-memory-.*\.txt$/);
   await page.getByRole('button',{name:'閉じる',exact:true}).click();
   assert.equal(await page.locator('#aitech-assist button').evaluate(el=>el===document.activeElement),true);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,'The mobile game and new controls must fit the viewport');
   await page.reload();assert.equal(await page.locator('html[data-quality-ready]').getAttribute('data-quality-text'),'largest');
   const second=await context.newPage();await second.goto(new URL('trump/?game=speed',base).href);await second.locator('#aitech-assist button').click();await second.getByText('読みやすさ・押しやすさ',{exact:true}).click();await second.getByLabel('文字サイズ',{exact:true}).selectOption('normal');
   await page.waitForFunction(()=>document.documentElement.dataset.qualityText==='normal');await second.close();
