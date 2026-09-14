@@ -1,0 +1,10 @@
+import {DECKS,ENEMIES} from './missions.mjs';
+export function network(m,run){
+ const threat=run?.threat??28;const danger=threat>=65;const names=DECKS[m.type].nodes;const vals=[run?.service??90,run?.data??94,run?.trust??88];
+ const nodes=[[93,65,names[0],vals[0]],[335,38,names[1],vals[1]],[335,126,names[2],vals[2]],[572,85,'防衛中枢',Math.min(...vals)]];
+ return `<svg class="network ${danger?'danger':''} ${run?.combo>=2?'linked':''}" viewBox="0 0 680 175" role="img" aria-label="${m.place}の防衛網。敵の侵入率${threat}パーセント。"><defs><pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M 22 0 L 0 0 0 22" fill="none" stroke="#1b2d3b" stroke-width=".7"/></pattern></defs><rect width="680" height="175" fill="url(#grid)"/><g fill="none" stroke-width="2"><path class="net-path" d="M93 65H203V38H335M203 65V126H335M335 38H464V85H572M335 126H464V85"/><path class="attack-path" d="M0 65H93M93 65H203V126H335"/></g>${nodes.map(([x,y,name,val],i)=>`<g class="net-node ${val<50?'injured':''}"><circle class="pulse" cx="${x}" cy="${y}" r="${i===3?29:20}"/><rect x="${x-10}" y="${y-10}" width="20" height="20" rx="3"/><text x="${x}" y="${y+36}" text-anchor="middle">${name}</text><text class="node-number" x="${x}" y="${y+4}" text-anchor="middle">${i+1}</text></g>`).join('')}<text class="net-caption" x="15" y="158">${ENEMIES[m.level].name} → ${m.boss?'BOSS ATTACK':'ATTACK DETECTED'}</text></svg>`;
+}
+let context;
+export function playSound(type='tap',enabled=false){
+ if(!enabled)return;try{context??=new(window.AudioContext||window.webkitAudioContext)();if(context.state==='suspended')context.resume();const notes=type==='link'?[260,390,520,780]:type==='win'?[330,440,660,880]:type==='hit'?[120,75]:type==='sync'?[440,660]:[320];notes.forEach((f,i)=>{const o=context.createOscillator(),g=context.createGain();o.type=type==='hit'?'sawtooth':'sine';o.frequency.value=f;const t=context.currentTime+i*.09;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.05,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+.22);o.connect(g);g.connect(context.destination);o.start(t);o.stop(t+.24);});}catch{}
+}
