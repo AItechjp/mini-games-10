@@ -89,6 +89,7 @@ export const sites:SiteEntry[] = [
   {id:'manga-links',name:'無料漫画リンク',description:'無料公開を確認した漫画の新着話を検索。出版社・無料巻・作者投稿の36サイトからも探せます。',href:'/commons/manga/',label:'無料公開・5分巡回',color:'#205ce3',keywords:'漫画 マンガ コミック 無料 日本語 読み放題 無料巻 作者投稿 公式 URL 収集 新着 ジャンプ サンデー',actionLabel:'無料の漫画を探す'},
   {id:'mtg-flavor',name:'MTG フレーバー書庫',description:'カード画像とフレーバーテキストを、言語・収録セット・再録版ごとに読む。',href:'/commons/mtg-flavor/',label:'MTG・カードの物語',color:'#9b6a24',keywords:'マジック MTG Magic フレーバーテキスト カード 画像 再録 日本語 英語',actionLabel:'フレーバーを読む'},
   {id:'duel-masters-flavor',name:'デュエマ フレーバー書庫',description:'公式掲載のカード画像とフレーバーを読む。文明・収録セット・本文で検索。',href:'/commons/duel-masters-flavor/',label:'デュエマ・公式掲載版',color:'#7955a7',keywords:'デュエル マスターズ デュエマ DM フレーバーテキスト カード 画像 文明 再録',actionLabel:'フレーバーを読む'},
+  {id:'yugioh-flavor',name:'遊戯王 フレーバー書庫',description:'通常モンスターの物語とカード画像を読む。効果・別イラスト・収録セットも検索。',href:'/commons/yugioh-flavor/',label:'遊戯王OCG・カードの物語',color:'#9a742d',keywords:'遊戯王 Yu-Gi-Oh OCG フレーバーテキスト 通常モンスター カード 画像 効果 ペンデュラム',actionLabel:'フレーバーを読む'},
 ];
 
 export const siteGroups = [
@@ -105,7 +106,7 @@ else siteGroups.push({id:'public-information',name:'法律・行政情報',numbe
 
 siteGroups.find(group=>group.id==='security')?.sites.push(...sites.filter(site=>site.id==='manga-links'));
 
-siteGroups.push({id:'cards',name:'カードの物語',numbers:[],sites:sites.filter(site=>['mtg-flavor','duel-masters-flavor'].includes(site.id))});
+siteGroups.push({id:'cards',name:'カードの物語',numbers:[],sites:sites.filter(site=>['mtg-flavor','duel-masters-flavor','yugioh-flavor'].includes(site.id))});
 const usageSite:SiteEntry={id:'usage-dashboard',name:'使用量と無料枠',description:'Supabase・GitHubの使用量と残り容量。実測値・更新日時・未取得項目を確認。',href:'/commons/usage/',label:'運用・無料枠',color:'#3455ee',keywords:'技術スタック ダッシュボード 使用量 残量 無料枠 容量 Supabase GitHub Cloudflare',actionLabel:'ダッシュボードを開く'};
 sites.push(usageSite);
 siteGroups.push({id:'operations',name:'サイト運用',numbers:[sites.length],sites:[usageSite]});

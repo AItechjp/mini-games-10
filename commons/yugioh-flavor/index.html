@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta id="site-https-policy" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta name="site-security-version" content="20260911-https-v2">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#16120c">
+  <title>遊戯王 フレーバー書庫 | COMMONS</title>
+  <meta name="description" content="遊戯王OCGのカード画像と物語を読む。通常モンスターのフレーバー、カード効果、別イラスト、収録セットを公式データから検索。">
+  <link rel="canonical" href="https://aitechd.com/commons/yugioh-flavor/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316120c'/%3E%3Cpath d='M7 7h8v19H7zM17 7h8v19h-8z' fill='%23e1bd72'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../card-library/styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body data-game="ygo">
+<a class="skip" href="#search-form">カード検索へ</a>
+<header class="masthead"><div class="mast-inner">
+  <a class="brand" href="/commons/">COMMONS <span>FLAVOR LIBRARY</span></a>
+  <nav class="editions" aria-label="カードゲームを選ぶ"><a href="/commons/mtg-flavor/">MTG</a><a href="/commons/duel-masters-flavor/">デュエマ</a><a href="/commons/yugioh-flavor/" aria-current="page">遊戯王</a></nav>
+</div></header>
+<main>
+  <div class="heading"><div><p class="eyebrow">YU-GI-OH! OCG / FLAVOR TEXT</p><h1>遊戯王 フレーバー書庫</h1><p>一枚のカードに、ひとつの物語。モンスターたちの言葉を、画像とともに。</p></div><a class="source-link" href="https://www.db.yugioh-card.com/yugiohdb/card_search.action?request_locale=ja" target="_blank" rel="noopener noreferrer">遊戯王OCG公式 ↗</a></div>
+  <form id="search-form">
+    <div class="search-form">
+      <label class="field search-field"><span>カードを探す</span><input id="q" name="q" type="search" maxlength="50" placeholder="カード名、フレーバーの一節…" autocomplete="off"></label>
+      <label class="field scope-field"><span>検索対象</span><select id="scope" name="scope"><option value="name">カード名</option><option value="text">カード本文</option><option value="pendulum">ペンデュラム効果</option><option value="number">カードNo.</option></select></label>
+      <button class="primary" id="search-button" type="submit">検索する</button>
+    </div>
+    <details class="filters" id="filters" open><summary>カード種別・属性・収録セット・並び順</summary><div class="filter-grid">
+      <label class="field"><span>カード種別</span><select id="type" name="type"><option value="normal">通常モンスター / 物語</option><option value="all">すべてのカード</option><option value="monster">すべてのモンスター</option><option value="effect">効果モンスター</option><option value="spell">魔法カード</option><option value="trap">罠カード</option></select></label>
+      <label class="field set-field"><span>収録セット</span><select id="set" name="set"><option value="">すべての収録セット</option></select></label>
+      <label class="field"><span>属性</span><select id="attribute" name="attribute"><option value="all">すべての属性</option><option value="dark">闇</option><option value="light">光</option><option value="earth">地</option><option value="water">水</option><option value="fire">炎</option><option value="wind">風</option><option value="divine">神</option></select></label>
+      <label class="field"><span>並び順</span><select id="sort" name="sort"><option value="new">公式の発売日 / 新しい順</option><option value="old">公式の発売日 / 古い順</option><option value="name">カード名 / 50音順</option><option value="atk">攻撃力 / 高い順</option></select></label>
+      <button class="reset" id="reset" type="button">条件をリセット</button>
+    </div><p id="set-status" class="stamp" role="status"></p></details>
+  </form>
+  <div class="suggestions" aria-label="おすすめの検索"><span>物語をひらく</span><button type="button" data-query="青眼の白龍">青眼の白龍</button><button type="button" data-query="ブラック・マジシャン">ブラック・マジシャン</button><button type="button" data-query="オッドアイズ・アークペンデュラム">オッドアイズ</button></div>
+  <div class="result-bar"><p class="count" id="count">カードを読み込んでいます…</p><div class="stamp" id="stamp"></div></div>
+  <p class="view-note" id="view-note">通常モンスターのフレーバーを表示します。カード種別を変えると、効果モンスター・魔法・罠の本文も読めます。</p>
+  <div id="results" class="grid" aria-busy="true"><div class="message">公式のカード情報を読み込んでいます。</div></div>
+  <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+  <nav id="pager" class="pager" aria-label="カードのページ" hidden><button id="prev" type="button">← 前へ</button><form id="page-jump"><label><span>ページ</span><input id="page-input" aria-label="ページ番号" type="number" min="1" value="1" inputmode="numeric"><span id="page-total"></span><button type="submit">移動</button></label></form><button id="next" type="button">次へ →</button></nav>
+  <div class="coverage"><details><summary>収録範囲とデータについて</summary>
+    <p>対象は遊戯王OCG公式データベースの日本語ページに登録されたカードです。公式検索の発売日上限を <span id="cutoff"></span>（日本時間）に設定し、検索結果を最後のページまで閲覧できます。海外の賞品カードなどは、公式ページに掲載された原文を表示します。</p>
+    <p>通常モンスターの説明を「フレーバー」、それ以外を「カード効果・説明」と表示します。ペンデュラム効果は別枠です。同名の再録はカード単位でまとめ、詳細に収録セットと公式に掲載された別イラストを表示します。本文は公式データベースの現行表記で、旧版ごとの文章・エラッタ・レアリティ別画像の完全な保存ではありません。</p>
+    <p>発売済み全カードとの完全照合は未確認です。未登録カード・未掲載の画像は含まれず、ラッシュデュエルは別のデータベースのため対象外です。画像上の公式「SAMPLE」表記を含め、出典の画像をそのまま表示します。</p>
+    <p><a id="result-source" href="https://www.db.yugioh-card.com/yugiohdb/card_search.action?request_locale=ja" target="_blank" rel="noopener noreferrer">現在の検索条件を公式サイトで確認 ↗</a></p>
+  </details></div>
+  <footer class="site-footer"><p>非公式のファンサイトです。カード情報・画像の出典：遊戯王ニューロン（オフィシャルカードゲーム カードデータベース）。<br>©スタジオ・ダイス／集英社・テレビ東京・KONAMI</p><a href="/commons/">コモンズに戻る</a><a href="/legal.html#privacy">プライバシー</a><a href="https://www.db.yugioh-card.com/yugiohdb/card_search.action?request_locale=ja" target="_blank" rel="noopener noreferrer">データ出典</a></footer>
+  <noscript><p>カード検索にはJavaScriptが必要です。<a href="https://www.db.yugioh-card.com/yugiohdb/card_search.action?request_locale=ja">公式カード検索を開く</a></p></noscript>
+</main>
+<dialog id="reader-dialog" aria-labelledby="reader-title"><div class="dialog-top"><span>カードを読む · <span id="reader-position"></span></span><button id="reader-close" type="button" autofocus>閉じる ×</button></div><div id="reader-body" class="reader"></div><div class="dialog-nav"><button id="reader-prev" type="button">← 前のカード</button><button id="reader-next" type="button">次のカード →</button></div></dialog>
+</body></html>

@@ -41,6 +41,10 @@ jobs:
           done < <(find . -maxdepth 2 -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
       - name: Verify Commons stays on the AITECH domain
         run: node tests/commons-domain.mjs
+      - name: Verify card catalog parsing
+        run: |
+          node tests/card-library.mjs
+          node tests/yugioh-library.mjs
       - name: Setup Commons package manager
         uses: pnpm/action-setup@v4
         with:

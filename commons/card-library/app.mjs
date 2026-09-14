@@ -214,7 +214,7 @@ function openReader(index) {
   $('reader-position').textContent = (index + 1) + ' / ' + cards.length;
   if (!dialog.open) dialog.showModal(); dialog.scrollTop = 0;
 }
-function resetSearch() { form.reset(); state = readForm(); state.oracle = ''; state.set = ''; page = 1; load(); }
+function resetSearch() { HTMLFormElement.prototype.reset.call(form); state = readForm(); state.oracle = ''; state.set = ''; page = 1; load(); }
 form.addEventListener('submit', e => { e.preventDefault(); state = readForm(); page = 1; load(); });
 for (const n of form.querySelectorAll('select')) n.addEventListener('change', () => { state = readForm(); page = 1; load(); });
 $('reset').onclick = resetSearch;
