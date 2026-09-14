@@ -74,7 +74,7 @@ try{
     await page.locator('#aitech-play-close').click();
     assert(!await page.locator('#aitech-play-menu').isVisible());
     if(path.includes('cyber-quiz')){
-      assert.equal(await page.locator('#pause').textContent(),'一時停止');
+      await page.waitForFunction(()=>document.getElementById('pause').textContent==='一時停止');
       await page.locator('[data-skill="0"]').click();
       const outside=await page.locator('.questions button').evaluateAll(els=>els.filter(el=>el.getBoundingClientRect().bottom>innerHeight+1).length);
       assert.equal(outside,0,'Cyber hint must leave the answer buttons visible');
