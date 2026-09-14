@@ -8,3 +8,19 @@
 @media(min-width:761px) and (min-height:551px){.viewer{max-height:100dvh;overflow-y:auto;scrollbar-width:thin}}
 
 body.has-expanded .viewer{z-index:201;overflow:visible}
+.thumb:before{content:'';position:absolute;inset:-12%;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 25% 20%,#dae5ffbb 0,transparent 45%);opacity:.4;animation:ink-light 5s ease-in-out infinite alternate;animation-play-state:paused}
+.wallpaper-card.is-visible .thumb:before{animation-play-state:running}
+.wallpaper-card[data-variant="1"] .thumb:before{background:linear-gradient(135deg,transparent 47%,#d6d8ff88 49%,transparent 51%) 0 0/160px 230px;animation-name:ink-drift;animation-duration:8s}
+.wallpaper-card[data-variant="2"] .thumb:before{background:linear-gradient(15deg,transparent 25%,#dce2ee99 45%,transparent 60%);animation-name:ink-drift;animation-duration:12s}
+.wallpaper-card[data-variant="3"] .thumb:before{background:radial-gradient(circle,#c9ffbbb0 0 1px,transparent 4px) 0 0/59px 81px;animation-name:ink-drift;animation-duration:7s}
+.wallpaper-card[data-variant="4"] .thumb:before{background:repeating-linear-gradient(115deg,transparent 0 25px,#b4d0e92b 26px,transparent 27px 40px);animation-name:ink-rain;animation-duration:2s;animation-timing-function:linear}
+.wallpaper-card[data-variant="5"] .thumb:before{background:radial-gradient(ellipse,#efb4d499 0 2px,transparent 4px) 0 0/67px 91px;animation-name:ink-drift;animation-duration:9s}
+.wallpaper-card[data-variant="6"] .thumb:before{background:repeating-radial-gradient(circle at 50% 42%,transparent 0 31px,#d7b8ff55 32px,transparent 33px 42px);animation-duration:4s}
+.wallpaper-card[data-variant="7"] .thumb:before{background:radial-gradient(ellipse at 50% 100%,#ef863c77,transparent 65%),radial-gradient(circle,#ffd692bb 0 1px,transparent 3px) 0 0/63px 83px;animation-name:ink-drift;animation-duration:5s}
+.wallpaper-card[data-variant="8"] .thumb:before{background:radial-gradient(circle,#f3f3ffb0 0 1px,transparent 3px) 0 0/43px 57px;animation-name:ink-rain;animation-duration:8s;animation-timing-function:linear}
+.wallpaper-card[data-variant="9"] .thumb:before{background:linear-gradient(130deg,transparent 10%,#91ffe655 35%,#b896fc66 50%,transparent 65%);animation-name:ink-drift;animation-duration:10s}
+body.motion-paused .thumb:before{animation-play-state:paused!important}
+@keyframes ink-light{from{opacity:.15;transform:translateY(-2%)}to{opacity:.6;transform:translateY(2%)}}
+@keyframes ink-drift{from{opacity:.2;transform:translate(-5%,-5%)}to{opacity:.55;transform:translate(5%,5%)}}
+@keyframes ink-rain{from{background-position:0 0}to{background-position:-40px 90px}}
+@media(prefers-reduced-motion:reduce){.thumb:before{animation:none!important}}

@@ -1,4 +1,4 @@
-name: Verify Pixel 10 wallpaper WebGL and PNG
+name: Verify Pixel 10 moving 2D illustrations and PNG
 on:
   push:
     branches: [main]
@@ -25,7 +25,7 @@ jobs:
         run: |
           npm install --no-save --no-package-lock --no-audit --no-fund playwright@1.55.0
           npx playwright install --with-deps chromium
-      - name: Verify actual WebGL rendering, PNG download and mobile layout
+      - name: Verify all 100 Canvas2D animations, PNG download and mobile layout
         env:
           PIXEL_WALLPAPERS_BASE_URL: http://127.0.0.1:4192/
         run: |
@@ -43,7 +43,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: pixel-wallpapers-webgl-png
+          name: pixel-wallpapers-animated-2d-png
           path: test-output/pixel-wallpapers/
           if-no-files-found: warn
           retention-days: 7

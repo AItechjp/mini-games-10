@@ -4,36 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#090b12">
-<meta name="description" content="Pixel 10向けダークファンタジー壁紙。10の世界と10の立体演出、100パターンを選び、きらめきと奥行きを調整して保存。">
-<title>NOCTURNE — Pixel 10 壁紙100選 | AITECH</title>
+<meta name="description" content="Pixel 10向けダークファンタジー壁紙。100パターンの動く2Dイラスト。手描き風の10の世界に、月光・霧・雨・花びらなど10のアニメーション。">
+<title>NOCTURNE — 動く2Dイラスト100選 | AITECH</title>
 <link rel="canonical" href="https://aitechd.com/pixel-wallpapers/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23090b12'/%3E%3Cpath d='M19 4a12 12 0 1 0 9 19A11 11 0 0 1 19 4' fill='%23d7b779'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=1">
-<script type="module" src="app.mjs?v=1" data-aitech-fullscreen></script>
+<link rel="stylesheet" href="style.css?v=2">
+<script type="module" src="app.mjs?v=2" data-aitech-fullscreen></script>
 </head>
 <body>
 <a class="skip" href="#gallery">壁紙を選ぶ</a>
-<header class="topbar"><a class="back" href="/games-2d.html">← <span>2Dゲーム集</span></a><a class="wordmark" href="./">N<span aria-hidden="true">◒</span>CTURNE</a><span class="device">PIXEL 10 <span class="device-dot">·</span> WALLPAPERS</span></header>
+<header class="topbar"><a class="back" href="/games-2d.html">← <span>2Dゲーム集</span></a><a class="wordmark" href="./" aria-label="NOCTURNE">N<span aria-hidden="true">◒</span>CTURNE</a><span class="device">PIXEL 10 <span class="device-dot">·</span> ANIMATED 2D</span></header>
 <main class="workspace">
  <section class="viewer" aria-label="壁紙のプレビュー">
-  <div class="viewer-heading"><span class="eyebrow">THE DARK FANTASY COLLECTION</span><span id="sceneNumber">01 / 100</span></div>
+  <div class="viewer-heading"><span class="eyebrow">ANIMATED 2D ILLUSTRATIONS</span><span id="sceneNumber">01 / 100</span></div>
   <div class="stage" id="stage">
-   <div class="phone" id="phone"><canvas id="scene" aria-label="選択した壁紙。指でなぞると奥行きが変わります。"></canvas><div class="clock" id="clock" aria-hidden="true"><span>9月15日 火曜日</span><b>00:10</b></div><span class="camera-dot" aria-hidden="true"></span><div class="loading" id="loading" role="status">壁紙を読み込み中…</div></div>
+   <div class="phone" id="phone"><canvas id="scene" aria-label="選択した動く2Dイラスト。指でなぞると絵が揺れます。"></canvas><div class="clock" id="clock" aria-hidden="true"><span>9月15日 火曜日</span><b>00:10</b></div><span class="camera-dot" aria-hidden="true"></span><div class="loading" id="loading" role="status">壁紙を読み込み中…</div></div>
    <button class="scene-arrow previous" id="previous" aria-label="前の壁紙">‹</button><button class="scene-arrow next" id="next" aria-label="次の壁紙">›</button>
    <button class="expand" id="expand" aria-label="壁紙を全画面表示">⛶</button><button class="close-fullscreen" id="closeFullscreen">閉じる ×</button>
   </div>
-  <div class="scene-info"><div><p class="scene-world" id="sceneWorld">月影の王城 / 浮遊水晶</p><h1 id="sceneTitle">月を待つ城</h1></div><button class="favorite" id="favorite" aria-label="お気に入りに追加" aria-pressed="false">☆</button></div>
-  <p class="gesture">指でなぞって奥行きを感じる</p>
-  <div class="controls"><label>きらめき <output id="sparkleValue">65%</output><input type="range" id="sparkle" min="0" max="100" value="65"></label><label>奥行き <output id="depthValue">60%</output><input type="range" id="depth" min="0" max="100" value="60"></label><label>明るさ <output id="brightnessValue">100%</output><input type="range" id="brightness" min="50" max="130" value="100"></label></div>
-  <div class="switches"><label><input type="checkbox" id="motion" checked> 動きをつける</label><label><input type="checkbox" id="clockToggle" checked> 時計の見え方</label></div>
+  <div class="scene-info"><div><p class="scene-world" id="sceneWorld">月影の王城 / 月光</p><h1 id="sceneTitle">月を待つ城</h1></div><button class="favorite" id="favorite" aria-label="お気に入りに追加" aria-pressed="false">☆</button></div>
+  <p class="gesture">光・霧・花びらが動く、手描き風の世界</p>
+  <div class="controls"><label>きらめき <output id="sparkleValue">65%</output><input type="range" id="sparkle" min="0" max="100" value="65"></label><label>ゆらぎ <output id="depthValue">60%</output><input type="range" id="depth" min="0" max="100" value="60"></label><label>明るさ <output id="brightnessValue">100%</output><input type="range" id="brightness" min="50" max="130" value="100"></label></div>
+  <div class="switches"><label><input type="checkbox" id="motion" checked> アニメーション</label><label><input type="checkbox" id="clockToggle" checked> 時計の見え方</label></div>
   <button class="save-button" id="save"><span>↓</span> 壁紙を保存 <small>PNG · 1080 × 2424</small></button>
-  <p class="save-note">保存されるのは時計のない静止画です。動く演出はこのページで楽しめます。</p>
+  <p class="save-note">100パターンすべてが動く2Dイラストです。PNG保存は時計のない静止画になります。</p>
   <details class="howto"><summary>Pixelの壁紙に設定するには</summary><p>「壁紙を保存」で画像をダウンロード後、ホーム画面の空いた場所を長押し →「壁紙とスタイル」→「壁紙の変更」→「マイフォト」から保存した画像を選びます。</p><p><a href="https://support.google.com/pixelphone/answer/7158570?hl=ja" target="_blank" rel="noopener">Google公式のPixel 10画面仕様</a></p></details>
  </section>
  <section class="collection" id="gallery" aria-label="100種類の壁紙">
-  <div class="collection-head"><div><p class="eyebrow">CHOOSE YOUR WORLD</p><h2>闇に、光を。</h2><p class="collection-caption">10の世界 × 10の立体演出。100の壁紙。</p></div><span class="total">100<small>DESIGNS</small></span></div>
+  <div class="collection-head"><div><p class="eyebrow">100 ANIMATED ILLUSTRATIONS</p><h2>闇に、光を。</h2><p class="collection-caption">10のイラスト × 10のアニメーション。全100パターン。</p></div><span class="total">100<small>DESIGNS</small></span></div>
   <div class="filterbar"><div class="filters" id="filters" role="group" aria-label="世界で絞り込む"></div><button class="saved-filter" id="savedFilter" aria-pressed="false">☆ お気に入り</button></div>
-  <div class="results-line"><span id="resultCount">すべての世界 · 100件</span><span>絵柄をタップしてプレビュー</span></div>
+  <div class="results-line"><span id="resultCount">すべての世界 · 100件</span><span>タップしてアニメーションを再生</span></div>
   <div class="grid" id="grid"></div><p id="empty" class="empty" hidden>お気に入りはまだありません。プレビューの ☆ で追加できます。</p>
   <footer><span>NOCTURNE / AITECH</span><a href="/games-2d.html">2Dゲーム集へ戻る ↗</a></footer>
  </section>

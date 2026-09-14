@@ -1,411 +1,442 @@
-import * as THREE from './vendor/three.mjs';
+const TAU = Math.PI * 2;
+const finite = (value, fallback = 0) => Number.isFinite(Number(value)) ? Number(value) : fallback;
+const clamp = (value, low = 0, high = 1, fallback = low) => Math.max(low, Math.min(high, finite(value, fallback)));
+const wrap = (value, range = 1) => ((value % range) + range) % range;
+const smoothstep = (start, end, value) => { const t = clamp((value - start) / (end - start)); return t * t * (3 - 2 * t); };
+const randomFrom = seed => { let n = seed >>> 0; return () => { n += 0x6d2b79f5; let t = n; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; };
+const makeCanvas = (width, height) => { const canvas = document.createElement('canvas'); canvas.width = width; canvas.height = height; return canvas; };
+const toPNG = canvas => new Promise((resolve, reject) => canvas.toBlob(blob => blob?.size ? resolve(blob) : reject(new Error('画像の保存に失敗しました。')), 'image/png'));
+const colorRGB = color => /^#[\da-f]{6}$/i.test(color || '') ? [1, 3, 5].map(i => parseInt(color.slice(i, i + 2), 16)) : [180, 198, 255];
+const rgba = (rgb, alpha) => `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${clamp(alpha)})`;
 
-const clamp = (v, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, Number(v) || 0));
-const makeRandom = (seed) => { let a = seed >>> 0; return () => { a += 0x6d2b79f5; let t = a; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; };
-const blobFromCanvas = (canvas) => new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('画像の保存に失敗しました。')), 'image/png'));
-
-const backdropVertex = `varying vec2 vUv; void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
-const backdropFragment = `
-  uniform sampler2D uImage; uniform vec2 uCover; uniform vec2 uPointer;
-  uniform float uDepth; uniform float uBrightness; uniform float uTime; uniform float uVariant;
-  varying vec2 vUv;
-  void main(){
-    vec2 uv=(vUv-.5)*uCover+.5;
-    vec3 base=texture2D(uImage,uv).rgb;
-    float light=dot(base,vec3(.2126,.7152,.0722));
-    float radial=length((vUv-.5)*vec2(1.,.58));
-    float planeDepth=.25+light*.26+smoothstep(.1,.65,radial)*.32;
-    vec2 offset=uPointer*uDepth*.018*planeDepth;
-    offset+=vec2(sin(vUv.y*7.+uTime*.13+uVariant),cos(vUv.x*5.+uTime*.11))*.0007*uDepth;
-    vec3 col=texture2D(uImage,clamp(uv+offset*uCover,vec2(.002),vec2(.998))).rgb;
-    float vignette=1.-smoothstep(.28,.77,length((vUv-.5)*vec2(1.,.85)))*.19;
-    col*=vignette*uBrightness;
-    gl_FragColor=vec4(col,1.);
-    #include <colorspace_fragment>
-  }`;
-const particleVertex = `
-  uniform float uTime; uniform float uHeight; uniform float uDepth; uniform vec2 uPointer;
-  attribute float aSize; attribute float aPhase; attribute float aStar;
-  varying float vAlpha; varying float vStar;
-  void main(){
-    vec3 p=position;
-    p.x+=sin(uTime*.105+aPhase)*.014;
-    p.y+=sin(uTime*.15+aPhase*1.3)*.018;
-    p.xy+=uPointer*.012*(p.z+2.)*uDepth;
-    vec4 mv=modelViewMatrix*vec4(p,1.);
-    gl_Position=projectionMatrix*mv;
-    gl_PointSize=min(76.,aSize*uHeight/900.);
-    vAlpha=.4+.6*pow(.5+.5*sin(uTime*(.4+aStar*.8)+aPhase),2.);
-    vStar=aStar;
-  }`;
-const particleFragment = `
-  uniform vec3 uColor; uniform float uSparkle; uniform float uBrightness;
-  varying float vAlpha; varying float vStar;
-  void main(){
-    vec2 p=gl_PointCoord-.5; float r=length(p); if(r>.5)discard;
-    float core=exp(-r*r*175.);
-    float halo=exp(-r*r*28.)*.19;
-    float crossGlow=exp(-abs(p.x)*110.)*pow(max(0.,1.-abs(p.y)*2.),3.);
-    crossGlow+=exp(-abs(p.y)*110.)*pow(max(0.,1.-abs(p.x)*2.),3.);
-    float a=(core+halo+crossGlow*vStar*.8)*vAlpha*uSparkle;
-    gl_FragColor=vec4(mix(uColor,vec3(1.),core*.8)*(.65+uBrightness*.65),a);
-    #include <colorspace_fragment>
-  }`;
-
-/** Live artwork depth preview. Sparkle/depth: 0..1. Brightness: .5..1.3 (1 is original). */
+/** Animated 2D illustration. No WebGL, perspective camera, or 3D geometry. */
 export class WallpaperRenderer {
   constructor(canvas, { onError } = {}) {
     this.canvas = canvas;
+    this.context = canvas.getContext('2d', { alpha: false, desynchronized: true });
+    if (!this.context) throw new Error('このブラウザではイラストを表示できません。');
     this.onError = typeof onError === 'function' ? onError : () => {};
     this.options = { sparkle: .65, depth: .6, motion: true, brightness: 1 };
     this.pointer = { x: 0, y: 0 };
     this.smoothPointer = { x: 0, y: 0 };
-    this.width = 360; this.height = 808; this.dpr = Math.min(window.devicePixelRatio || 1, 1.65);
-    this.time = 0; this.lastTime = 0; this.frame = 0; this.loadToken = 0;
-    this.disposed = false; this.image = null; this.design = null; this.animations = [];
-    this.fallbackParticles = []; this.fallbackSprites = null; this.fallbackVignettes = new WeakMap(); this._tick = this._tick.bind(this);
-    this._visibility = () => { if (document.hidden) this._stop(); else { this.lastTime = 0; this._render(); this._start(); } };
-    try { this._initWebGL(); } catch (error) { this._initFallback(error); }
-    this._contextLost = event => { event.preventDefault(); this._stop(); this._initFallback(new Error('3D 描画を簡易表示に切り替えました。')); this._resize(); this._start(); };
-    canvas.addEventListener('webglcontextlost', this._contextLost, false);
-    this._resizeObserver = new ResizeObserver(() => this._resize());
-    this._resizeObserver.observe(canvas.parentElement || canvas);
+    this.width = 360; this.height = 808; this.time = 0;
+    this.lastTime = 0; this.lastPaint = 0; this.frame = 0; this.loadToken = 0;
+    this.disposed = false; this.image = null; this.design = null;
+    this.imageCache = new Map(); this.raster = null; this.sprites = null; this.particles = [];
+    this._tick = this._tick.bind(this);
+    this._visibility = () => { if (document.hidden) this._stop(); else { this._render(); this._start(); } };
+    this._windowResize = () => this._resize();
+    this._resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(this._windowResize) : null;
+    this._resizeObserver?.observe(canvas.parentElement || canvas);
+    window.addEventListener('resize', this._windowResize);
     document.addEventListener('visibilitychange', this._visibility);
-    this._resize(); this._start();
+    this._resize();
   }
 
-  get mode() { return this.renderer ? 'webgl' : 'canvas'; }
+  get mode() { return 'canvas'; }
 
-  _initWebGL() {
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true, alpha: false, powerPreference: 'low-power', preserveDrawingBuffer: false });
-    this.renderer.setPixelRatio(this.dpr);
-    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
-    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.1;
-    this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color('#08060f');
-    this.scene.fog = new THREE.FogExp2('#100b24', .026);
-    this.camera = new THREE.OrthographicCamera(-.445, .445, 1, -1, .1, 30);
-    this.camera.position.z = 10;
-    this.backgroundMaterial = new THREE.ShaderMaterial({
-      vertexShader: backdropVertex, fragmentShader: backdropFragment, depthWrite: false, depthTest: false, toneMapped: false,
-      uniforms: { uImage: { value: null }, uCover: { value: new THREE.Vector2(1, 1) }, uPointer: { value: new THREE.Vector2() }, uDepth: { value: .65 }, uBrightness: { value: .7 }, uTime: { value: 0 }, uVariant: { value: 0 } }
-    });
-    this.backdrop = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.backgroundMaterial);
-    this.backdrop.position.z = -5; this.backdrop.renderOrder = -100; this.backdrop.visible = false;
-    this.scene.add(this.backdrop);
-    this.decorations = new THREE.Group(); this.scene.add(this.decorations);
-    this.scene.add(new THREE.HemisphereLight('#d6d0ff', '#271231', 2.1));
-    this.keyLight = new THREE.DirectionalLight('#fff0e5', 3.5); this.keyLight.position.set(-3, 5, 8); this.scene.add(this.keyLight);
-    this.rimLight = new THREE.DirectionalLight('#9c7cff', 4.2); this.rimLight.position.set(4, -1, 2); this.scene.add(this.rimLight);
-  }
-
-  _initFallback(error) {
-    if (this.renderer) { try { this.renderer.dispose(); } catch {} this.renderer = null; }
-    let context = this.canvas.getContext('2d');
-    if (!context) {
-      const alternate = this.canvas.cloneNode(false);
-      alternate.removeAttribute('id'); alternate.setAttribute('aria-hidden', 'true');
-      this._originalCanvasOpacity = this.canvas.style.opacity;
-      this.canvas.style.opacity = '0';
-      Object.assign(alternate.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', pointerEvents: 'none' });
-      this.canvas.insertAdjacentElement('afterend', alternate);
-      this.fallbackCanvas = alternate; context = alternate.getContext('2d');
-      if (this._resizeObserver) { this._resizeObserver.disconnect(); this._resizeObserver.observe(this.canvas.parentElement || this.canvas); }
+  _loadImage(url) {
+    if (this.imageCache.has(url)) {
+      const entry = this.imageCache.get(url);
+      this.imageCache.delete(url); this.imageCache.set(url, entry);
+      return entry;
     }
-    this.context = context;
-    if (error) this.onError(error);
+    const image = new Image();
+    image.crossOrigin = 'anonymous'; image.decoding = 'async';
+    const promise = new Promise((resolve, reject) => {
+      image.onload = async () => {
+        image.onload = null; image.onerror = null;
+        if (image.decode) try { await image.decode(); } catch {}
+        if (!image.naturalWidth || !image.naturalHeight) reject(new Error('イラストを読み込めませんでした。'));
+        else resolve(image);
+      };
+      image.onerror = () => { image.onload = null; image.onerror = null; reject(new Error('イラストを読み込めませんでした。通信を確認して、もう一度選んでください。')); };
+      image.src = url;
+    });
+    this.imageCache.set(url, promise);
+    // Keep three decoded artworks at most; discarded requests may finish but cannot alter the scene.
+    while (this.imageCache.size > 3) this.imageCache.delete(this.imageCache.keys().next().value);
+    promise.catch(() => { if (this.imageCache.get(url) === promise) this.imageCache.delete(url); });
+    return promise;
   }
 
   async setDesign(design) {
+    if (this.disposed) return false;
     const token = ++this.loadToken;
-    const image = new Image(); image.crossOrigin = 'anonymous'; image.decoding = 'async';
-    let loadError = null;
-    try {
-      await new Promise((resolve, reject) => { image.onload = resolve; image.onerror = () => reject(new Error('背景画像を読み込めませんでした。通信を確認して、もう一度選択してください。')); image.src = design.image; });
-      if (image.decode) await image.decode().catch(() => {});
-    } catch (error) { loadError = error; }
-    if (this.disposed || token !== this.loadToken) return false;
-    this.design = design; this.image = loadError ? null : image;
-    this.smoothPointer.x = 0; this.smoothPointer.y = 0; this.pointer.x = 0; this.pointer.y = 0;
-    const random = makeRandom(design.seed || design.id * 737);
-    this._makeFallbackSprites(design.color);
-    this.fallbackParticles = Array.from({ length: 120 }, (_, index) => ({ x: random(), y: random(), size: index % 17 === 0 ? 12 + random() * 9 : 1.3 + random() * 3.5, phase: random() * Math.PI * 2, star: index % 17 === 0 }));
-    if (this.renderer) {
-      if (this.texture) this.texture.dispose();
-      this.texture = this.image ? new THREE.Texture(image) : null;
-      if (this.texture) { this.texture.colorSpace = THREE.SRGBColorSpace; this.texture.minFilter = THREE.LinearFilter; this.texture.magFilter = THREE.LinearFilter; this.texture.generateMipmaps = false; this.texture.needsUpdate = true; }
-      this.backdrop.visible = !!this.image;
-      this.backgroundMaterial.uniforms.uImage.value = this.texture;
-      this.backgroundMaterial.uniforms.uVariant.value = design.variant;
-      this.rimLight.color.set(design.color);
-      this._buildDecorations(); this._updateCover(this.width / this.height);
+    let image;
+    try { image = await this._loadImage(design.image); }
+    catch (error) {
+      if (this.disposed || token !== this.loadToken) return false;
+      this.onError(error); throw error;
     }
-    this._render();
-    if (loadError) { this.onError(loadError); throw loadError; }
+    if (this.disposed || token !== this.loadToken) return false;
+    this.design = { ...design, theme: Math.trunc(clamp(design.theme, 0, 9)), variant: Math.trunc(clamp(design.variant, 0, 9)) };
+    this.image = image; this.raster = null;
+    this.pointer = { x: 0, y: 0 }; this.smoothPointer = { x: 0, y: 0 };
+    const random = randomFrom(finite(design.seed, finite(design.id, 1) * 737));
+    this.particles = Array.from({ length: 104 }, (_, index) => ({
+      x: random(), y: random(), phase: random() * TAU, speed: .65 + random() * 1.2,
+      size: 1.4 + random() * 3.4, tilt: random() * TAU, star: index % 13 === 0,
+    }));
+    this._makeSprites(design.color);
+    this._render(); this._start();
     return true;
   }
 
   setOptions(options = {}) {
-    for (const key of ['sparkle', 'depth']) if (options[key] != null) this.options[key] = clamp(options[key]);
-    if (options.brightness != null) this.options.brightness = clamp(options.brightness, .5, 1.3);
+    if (this.disposed) return;
+    for (const key of ['sparkle', 'depth']) if (options[key] != null) this.options[key] = clamp(options[key], 0, 1, this.options[key]);
+    if (options.brightness != null) this.options.brightness = clamp(options.brightness, .5, 1.3, this.options.brightness);
     if (options.motion != null) this.options.motion = !!options.motion;
     if (!this.options.motion) this._stop();
     this._render(); this._start();
   }
 
   setPointer(x, y) {
-    this.pointer.x = clamp(x, -1, 1); this.pointer.y = clamp(y, -1, 1);
-    if (!this.options.motion) { this.smoothPointer.x = 0; this.smoothPointer.y = 0; this._render(); }
-  }
-
-  _disposeDecorations() {
-    if (!this.decorations) return;
-    const geometries = new Set(), materials = new Set();
-    this.decorations.traverse(object => { if (object.geometry) geometries.add(object.geometry); if (object.material) { if (Array.isArray(object.material)) object.material.forEach(m => materials.add(m)); else materials.add(object.material); } });
-    if (this.ringMaterial) materials.add(this.ringMaterial);
-    geometries.forEach(g => g.dispose()); materials.forEach(m => m.dispose());
-    this.decorations.clear(); this.animations.length = 0; this.particleMaterial = null;
-  }
-
-  _buildDecorations() {
-    this._disposeDecorations();
-    const d = this.design, random = makeRandom((d.seed || d.id * 731) + 19);
-    const color = new THREE.Color(d.color);
-    const geometry = this._crystalGeometry(5 + d.theme % 2);
-    const edgesGeometry = new THREE.EdgesGeometry(geometry, 15);
-    const gemMaterial = new THREE.MeshPhysicalMaterial({ color, metalness: .62, roughness: .18, clearcoat: 1, clearcoatRoughness: .12, emissive: color, emissiveIntensity: .28, transparent: true, opacity: .82, side: THREE.DoubleSide });
-    const edgeMaterial = new THREE.LineBasicMaterial({ color: color.clone().lerp(new THREE.Color('#ffffff'), .65), transparent: true, opacity: .28 });
-    const ringMaterial = new THREE.MeshBasicMaterial({ color: color.clone().lerp(new THREE.Color('#ffffff'), .35), transparent: true, opacity: .27, blending: THREE.AdditiveBlending, depthWrite: false, fog: false });
-    let gemCount = 0;
-    const gem = (x, y, scale, turn = 0, tilt = .15) => {
-      const group = new THREE.Group();
-      group.add(new THREE.Mesh(geometry, gemMaterial)); group.add(new THREE.LineSegments(edgesGeometry, edgeMaterial));
-      group.position.set(x, y, .5 + random() * 1.1);
-      group.scale.set(scale * (.7 + random() * .3), scale * (1.2 + random() * .8), scale * .7);
-      group.rotation.set(tilt, random() * Math.PI, turn);
-      this.decorations.add(group); this.animations.push({ object: group, x, y, rx: group.rotation.x, ry: group.rotation.y, rz: group.rotation.z, phase: random() * 6.28, type: 'gem' }); gemCount++;
-      return group;
-    };
-    const ring = (x, y, radius, tilt, turn, arc = Math.PI * 2) => {
-      const mesh = new THREE.Mesh(new THREE.TorusGeometry(radius, .0012 + random() * .001, 4, arc < 6 ? 72 : 112, arc), ringMaterial);
-      mesh.position.set(x, y, .6); mesh.rotation.set(tilt, .18, turn);
-      this.decorations.add(mesh); this.animations.push({ object: mesh, x, y, rx: tilt, ry: .18, rz: turn, phase: random() * 6.28, type: 'ring' });
-      return mesh;
-    };
-    // Composition varies by geometry and placement; the central artwork stays unobstructed.
-    switch (d.variant % 10) {
-      case 0: // Floating crystals.
-        for (let i = 0; i < 5; i++) gem(.55 + i * .09, -.68 - i * .042, .046 + random() * .03, -.3 + i * .22);
-        ring(-.47, .72, .32, .5, .4, 4.4); break;
-      case 1: // Celestial orbital rings.
-        ring(.12, -.64, .47, 1.1, .2); ring(.12, -.64, .39, .55, -.45); ring(-.68, .71, .22, .5, .3, 4.8);
-        gem(-.8, -.6, .022, .4); gem(.72, -.77, .027, -.2); gem(.8, .72, .023, .7); break;
-      case 2: // Diagonal crystal rain.
-        for (let i = 0; i < 14; i++) { const side = i % 2 ? 1 : -1; gem(side * (.59 + random() * .36), -.94 + random() * 1.86, .018 + random() * .029, -.42, .35); } break;
-      case 3: // Dark angular floating fragments.
-        gemMaterial.color.multiplyScalar(.32); gemMaterial.emissive.multiplyScalar(.18); gemMaterial.metalness = .86; gemMaterial.roughness = .42;
-        for (let i = 0; i < 9; i++) { const shard = gem((i % 2 ? 1 : -1) * (.66 + random() * .23), -.86 + random() * 1.69, .026 + random() * .036, random() * 2, .6); shard.scale.y *= .62; shard.scale.z *= .35; } break;
-      case 4: // Arcane ground seal.
-        ring(0, -.66, .51, 1.12, .15); ring(0, -.66, .42, 1.12, -.2); ring(0, -.66, .30, 1.12, 1.2, 5.2);
-        for (let i = 0; i < 7; i++) { const a = i / 7 * Math.PI * 2; gem(Math.cos(a) * .59, -.66 + Math.sin(a) * .19, .024, a); } break;
-      case 5: { // A linked constellation across the sky.
-        const nodes = [[-.87,.67],[-.63,.82],[-.27,.66],[.11,.81],[.49,.68],[.83,.88]], lines = [];
-        for (let i = 0; i < nodes.length; i++) { const [x,y] = nodes[i]; gem(x, y, .013, .6); if (i) lines.push(...nodes[i - 1], .7, x, y, .7); }
-        const lineGeometry = new THREE.BufferGeometry(); lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(lines, 3));
-        this.decorations.add(new THREE.LineSegments(lineGeometry, edgeMaterial));
-        gem(-.79, -.74, .024, .2); gem(.8, -.82, .018, -.5); break;
-      }
-      case 6: // Twin rings.
-        ring(-.68, -.5, .47, .72, -.65); ring(.67, .63, .38, -.67, .75);
-        gem(-.84, -.79, .035, .6); gem(.86, .37, .029, -.45); break;
-      case 7: // A crystal crown, with a central spire.
-        for (let i = 0; i < 7; i++) { const x = (i - 3) * .18; gem(x, -.72 + Math.abs(i - 3) * .025, .035 + (3 - Math.abs(i - 3)) * .009, (i - 3) * -.16, .16); }
-        ring(0, -.82, .57, 1.27, .0, Math.PI); ring(0, -.84, .53, 1.27, .0, Math.PI); break;
-      case 8: // Armillary celestial sphere.
-        gem(.05, -.61, .078, -.1, .1); gem(-.24, -.74, .021, .6); gem(.33, -.52, .021, -.7);
-        ring(.05, -.66, .32, 1.1, .1); ring(.05, -.59, .29, -.8, .6); ring(.05, -.64, .35, .3, 1.9); break;
-      case 9: { // Distant floating lantern lights, no crystal cluster.
-        const lightGeometry = new THREE.SphereGeometry(.009, 8, 6);
-        const lightMaterial = new THREE.MeshBasicMaterial({ color: color.clone().lerp(new THREE.Color('#fff2c2'), .7), transparent: true, opacity: .8, blending: THREE.AdditiveBlending, depthWrite: false });
-        for (let i = 0; i < 8; i++) {
-          const lamp = new THREE.Mesh(lightGeometry, lightMaterial), x = (i % 2 ? 1 : -1) * (.5 + random() * .4), y = -.86 + random() * 1.68;
-          lamp.position.set(x, y, .8); lamp.scale.set(.52, 1 + random() * .6, .52); this.decorations.add(lamp);
-          this.animations.push({ object: lamp, x, y, rx: 0, ry: 0, rz: 0, phase: random() * 6.28, type: 'lamp' });
-        }
-        break;
-      }
-    }
-    if (!gemCount) { geometry.dispose(); edgesGeometry.dispose(); gemMaterial.dispose(); edgeMaterial.dispose(); }
-    const n = 144, positions = new Float32Array(n * 3), sizes = new Float32Array(n), phases = new Float32Array(n), stars = new Float32Array(n);
-    for (let i = 0; i < n; i++) {
-      positions[i * 3] = (random() - .5) * 1.98; positions[i * 3 + 1] = (random() - .5) * 1.98; positions[i * 3 + 2] = random() * 3;
-      stars[i] = i % 19 === 0 ? 1 : 0; sizes[i] = stars[i] ? 30 + random() * 19 : 3 + random() * 8; phases[i] = random() * Math.PI * 2;
-    }
-    const particleGeometry = new THREE.BufferGeometry();
-    particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3)); particleGeometry.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1)); particleGeometry.setAttribute('aPhase', new THREE.BufferAttribute(phases, 1)); particleGeometry.setAttribute('aStar', new THREE.BufferAttribute(stars, 1));
-    this.particleMaterial = new THREE.ShaderMaterial({ vertexShader: particleVertex, fragmentShader: particleFragment, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false, toneMapped: false, uniforms: { uTime: { value: this.time }, uHeight: { value: this.height * this.dpr }, uDepth: { value: this.options.depth }, uPointer: { value: new THREE.Vector2() }, uColor: { value: color.clone().lerp(new THREE.Color('#ffffff'), .5) }, uSparkle: { value: this.options.sparkle }, uBrightness: { value: this.options.brightness } } });
-    const points = new THREE.Points(particleGeometry, this.particleMaterial); points.renderOrder = 10; this.decorations.add(points);
-    this.gemMaterial = gemMaterial; this.edgeMaterial = edgeMaterial; this.ringMaterial = ringMaterial;
-  }
-
-  _crystalGeometry(sides) {
-    const positions = [];
-    const face = (a, b, c) => positions.push(...a, ...b, ...c);
-    for (let i = 0; i < sides; i++) {
-      const a = i / sides * Math.PI * 2, b = (i + 1) / sides * Math.PI * 2;
-      const p = [Math.cos(a) * .45, .05, Math.sin(a) * .45], q = [Math.cos(b) * .45, .05, Math.sin(b) * .45];
-      face([.08, 1, -.06], p, q); face([-.04, -.75, .03], q, p);
-    }
-    const geometry = new THREE.BufferGeometry(); geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3)); geometry.computeVertexNormals(); return geometry;
-  }
-
-  _updateCover(aspect) {
-    if (!this.renderer) return;
-    this.backdrop.scale.x = aspect;
-    this.decorations.scale.x = aspect;
-    if (!this.image) return;
-    const sourceAspect = this.image.naturalWidth / this.image.naturalHeight;
-    const cover = this.backgroundMaterial.uniforms.uCover.value;
-    const inset = 1 / (1.035 + (this.design?.variant % 3 || 0) * .006);
-    if (sourceAspect > aspect) cover.set(aspect / sourceAspect * inset, inset);
-    else cover.set(inset, sourceAspect / aspect * inset);
+    if (this.disposed) return;
+    this.pointer.x = clamp(x, -1, 1, 0); this.pointer.y = clamp(y, -1, 1, 0);
+    // While paused, retain the exact currently displayed composition, including its offset.
   }
 
   _resize() {
     if (this.disposed) return;
-    const target = this.fallbackCanvas || this.canvas;
-    const rect = target.getBoundingClientRect();
-    this.width = Math.max(1, Math.round(rect.width || this.width)); this.height = Math.max(1, Math.round(rect.height || this.height));
-    if (this.renderer) {
-      this.renderer.setSize(this.width, this.height, false);
-      this.camera.left = -this.width / this.height; this.camera.right = this.width / this.height; this.camera.updateProjectionMatrix();
-      this._updateCover(this.width / this.height);
-    } else if (this.context) { target.width = Math.round(this.width * this.dpr); target.height = Math.round(this.height * this.dpr); }
+    const bounds = this.canvas.getBoundingClientRect();
+    const width = Math.max(1, bounds.width || this.canvas.parentElement?.clientWidth || this.width);
+    const height = Math.max(1, bounds.height || width * 2424 / 1080);
+    const dpr = clamp(window.devicePixelRatio, 1, 2, 1);
+    const pixelWidth = Math.max(1, Math.round(width * dpr)), pixelHeight = Math.max(1, Math.round(height * dpr));
+    this.width = width; this.height = height;
+    if (this.canvas.width !== pixelWidth || this.canvas.height !== pixelHeight) {
+      this.canvas.width = pixelWidth; this.canvas.height = pixelHeight; this.raster = null;
+    }
     this._render();
   }
 
-  _start() { if (!this.disposed && this.options.motion && !document.hidden && !this.frame) this.frame = requestAnimationFrame(this._tick); }
-  _stop() { if (this.frame) cancelAnimationFrame(this.frame); this.frame = 0; this.lastTime = 0; }
-  _tick(now) {
-    this.frame = 0;
-    if (this.disposed || document.hidden || !this.options.motion) return;
-    const dt = this.lastTime ? Math.min((now - this.lastTime) / 1000, .05) : 0;
-    this.lastTime = now; this.time += dt;
-    const follow = 1 - Math.exp(-dt * 5);
-    this.smoothPointer.x += (this.pointer.x - this.smoothPointer.x) * follow;
-    this.smoothPointer.y += (this.pointer.y - this.smoothPointer.y) * follow;
-    this._render(); this._start();
+  _start() {
+    if (!this.frame && !this.disposed && !document.hidden && this.options.motion && this.image) {
+      this.lastTime = 0; this.lastPaint = 0; this.frame = requestAnimationFrame(this._tick);
+    }
   }
 
-  _prepareFrame(pixelHeight) {
-    const o = this.options, p = this.smoothPointer;
-    const pointerX = o.motion ? p.x : 0, pointerY = o.motion ? p.y : 0;
-    const bg = this.backgroundMaterial.uniforms;
-    bg.uPointer.value.set(pointerX, pointerY); bg.uDepth.value = o.depth; bg.uBrightness.value = o.brightness; bg.uTime.value = this.time;
-    if (this.particleMaterial) {
-      const u = this.particleMaterial.uniforms; u.uTime.value = this.time; u.uHeight.value = pixelHeight;
-      u.uDepth.value = o.depth; u.uPointer.value.set(pointerX, pointerY); u.uSparkle.value = o.sparkle; u.uBrightness.value = o.brightness;
+  _stop() {
+    if (this.frame) cancelAnimationFrame(this.frame);
+    this.frame = 0; this.lastTime = 0; this.lastPaint = 0;
+  }
+
+  _tick(now) {
+    this.frame = 0;
+    if (this.disposed || document.hidden || !this.options.motion || !this.image) { this.lastTime = 0; this.lastPaint = 0; return; }
+    if (!this.lastTime) this.lastTime = now;
+    const delta = clamp((now - this.lastTime) / 1000, 0, .08);
+    this.lastTime = now;
+    this.time += delta;
+    const smoothing = 1 - Math.exp(-delta * 5);
+    this.smoothPointer.x += (this.pointer.x - this.smoothPointer.x) * smoothing;
+    this.smoothPointer.y += (this.pointer.y - this.smoothPointer.y) * smoothing;
+    if (!this.lastPaint || now - this.lastPaint >= 1000 / 30 - .5) { this._render(); this.lastPaint = now; }
+    this.frame = requestAnimationFrame(this._tick);
+  }
+
+  _makeSprites(color) {
+    const rgb = colorRGB(color);
+    const glow = makeCanvas(96, 96), g = glow.getContext('2d');
+    const gradient = g.createRadialGradient(48, 48, 0, 48, 48, 48);
+    gradient.addColorStop(0, 'rgba(255,255,239,.95)');
+    gradient.addColorStop(.13, rgba(rgb, .78)); gradient.addColorStop(.38, rgba(rgb, .22)); gradient.addColorStop(1, rgba(rgb, 0));
+    g.fillStyle = gradient; g.fillRect(0, 0, 96, 96);
+    const star = makeCanvas(96, 96), s = star.getContext('2d');
+    s.drawImage(glow, 0, 0); s.translate(48, 48); s.fillStyle = '#fff5d8';
+    s.beginPath(); s.moveTo(0, -33); s.quadraticCurveTo(2, -3, 18, 0); s.quadraticCurveTo(2, 3, 0, 33); s.quadraticCurveTo(-2, 3, -18, 0); s.quadraticCurveTo(-2, -3, 0, -33); s.fill();
+    const mist = makeCanvas(256, 96), m = mist.getContext('2d');
+    m.scale(256, 96); const fog = m.createRadialGradient(.5, .5, 0, .5, .5, .5);
+    fog.addColorStop(0, rgba(rgb, .18)); fog.addColorStop(.48, rgba(rgb, .10)); fog.addColorStop(1, rgba(rgb, 0));
+    m.fillStyle = fog; m.fillRect(0, 0, 1, 1);
+    this.sprites = { glow, star, mist, rgb };
+  }
+
+  _rasterFor(width, height, image) {
+    const pad = Math.ceil(width * .06);
+    const surface = makeCanvas(width + pad * 2, height + pad * 2);
+    const context = surface.getContext('2d', { alpha: false });
+    const scale = Math.max(surface.width / image.naturalWidth, surface.height / image.naturalHeight);
+    context.imageSmoothingEnabled = true; context.imageSmoothingQuality = 'high';
+    context.fillStyle = '#090a13'; context.fillRect(0, 0, surface.width, surface.height);
+    context.drawImage(image, (surface.width - image.naturalWidth * scale) / 2, (surface.height - image.naturalHeight * scale) / 2, image.naturalWidth * scale, image.naturalHeight * scale);
+    return { surface, pad, width, height, image };
+  }
+
+  _drawIllustration(context, width, height, state, raster) {
+    const { time: t, options, design, pointer } = state, k = width / 480;
+    const amount = options.depth;
+    const offsetX = pointer.x * 3.5 * amount * k;
+    const offsetY = pointer.y * 2.4 * amount * k;
+    const clothThemes = [2, 3, 4, 9];
+    const water = design.theme === 6;
+    const organic = clothThemes.includes(design.theme);
+    const start = water ? .60 : organic ? .32 : .64;
+    const strips = 64, stripHeight = height / strips;
+    context.imageSmoothingEnabled = true; context.imageSmoothingQuality = 'high';
+    context.filter = `brightness(${options.brightness})`;
+    for (let i = 0; i < strips; i++) {
+      const y = i * stripHeight, v = (i + .5) / strips;
+      const envelope = smoothstep(start, Math.min(.93, start + .30), v);
+      const sway = Math.sin(t * .73 + v * (water ? 38 : 9) + design.theme * .8);
+      const ripple = Math.sin(t * (water ? 1.8 : 1.1) + v * (water ? 65 : 17));
+      // Adjacent horizontal ink layers flex together: cloth, foliage, smoke, or water.
+      // No perspective transform; the upper architecture and faces remain stable.
+      const dx = amount * k * (sway * (water ? 5 : organic ? 4.4 : 1.9) + ripple * (water ? 2.3 : .9)) * envelope;
+      context.drawImage(raster.surface, raster.pad + offsetX + dx, raster.pad + y + offsetY, width, Math.min(stripHeight + 1, height - y), 0, y, width, Math.min(stripHeight + 1, height - y));
     }
-    if (this.gemMaterial) {
-      this.gemMaterial.emissiveIntensity = .12 + o.sparkle * .36;
-      this.gemMaterial.opacity = .48 + o.depth * .37;
-      this.edgeMaterial.opacity = .11 + o.sparkle * .23;
-      this.ringMaterial.opacity = .10 + o.sparkle * .28;
+    context.filter = 'none';
+  }
+
+  _drawHaze(context, w, h, state, strong = false) {
+    const t = state.time;
+    context.save(); context.globalCompositeOperation = 'screen';
+    for (let i = 0; i < (strong ? 6 : 3); i++) {
+      const p = this.particles[i];
+      const x = w * (.5 + Math.sin(t * .14 + p.phase) * .31);
+      const y = h * (.34 + i * (strong ? .107 : .22)) + Math.sin(t * .32 + i) * 16;
+      context.globalAlpha = strong ? .73 : .34;
+      context.drawImage(this.sprites.mist, x - w * .8, y - h * .085, w * 1.6, h * .17);
     }
-    for (const a of this.animations) {
-      const object = a.object;
-      object.position.x = a.x + pointerX * o.depth * .025;
-      object.position.y = a.y + pointerY * o.depth * .017 + Math.sin(this.time * .27 + a.phase) * .008;
-      object.rotation.x = a.rx + Math.sin(this.time * .14 + a.phase) * .035;
-      object.rotation.y = a.ry + (a.type === 'gem' ? this.time * .065 : Math.sin(this.time * .1) * .06);
-      object.rotation.z = a.rz + Math.sin(this.time * .12 + a.phase) * .055;
+    context.restore();
+  }
+
+  _drawMotes(context, w, h, state) {
+    const t = state.time, sparkle = state.options.sparkle;
+    if (!sparkle) return;
+    context.save(); context.globalCompositeOperation = 'screen';
+    const count = Math.round(24 + sparkle * 64);
+    for (let i = 0; i < count; i++) {
+      const p = this.particles[i];
+      const x = wrap(p.x + Math.sin(t * .32 + p.phase) * .021) * w;
+      const y = wrap(p.y - t * .006 * p.speed) * h;
+      const blink = .18 + .82 * Math.pow(.5 + .5 * Math.sin(t * (1.1 + p.speed * .4) + p.phase), 2);
+      const size = p.star ? 22 + p.size * 2.4 : p.size * 3.4;
+      context.globalAlpha = sparkle * blink * (p.star ? .82 : .74);
+      context.drawImage(p.star ? this.sprites.star : this.sprites.glow, x - size / 2, y - size / 2, size, size);
     }
+    context.restore();
+  }
+
+  _drawLeaf(context, x, y, size, angle, color, feather = false) {
+    context.save(); context.translate(x, y); context.rotate(angle);
+    context.fillStyle = color; context.strokeStyle = 'rgba(245,233,213,.5)'; context.lineWidth = .55;
+    context.beginPath(); context.moveTo(-size, 0);
+    context.bezierCurveTo(-size * .35, -size * (feather ? .35 : .62), size * .85, -size * .44, size, 0);
+    context.bezierCurveTo(size * .15, size * .7, -size * .6, size * .47, -size, 0); context.fill();
+    context.beginPath(); context.moveTo(-size * .9, 0); context.quadraticCurveTo(0, size * .09, size * 1.15, -.6); context.stroke();
+    if (feather) { for (let j = -2; j <= 2; j++) { context.beginPath(); context.moveTo(j * size / 4, 0); context.lineTo((j - .7) * size / 4, -size * .25); context.moveTo(j * size / 4, 0); context.lineTo((j - .65) * size / 4, size * .29); context.stroke(); } }
+    context.restore();
+  }
+
+  _drawDrift(context, w, h, state, kind, count = 20) {
+    const t = state.time, rgb = this.sprites.rgb;
+    context.save();
+    for (let i = 0; i < count; i++) {
+      const p = this.particles[30 + i], falling = kind !== 'ember';
+      const speed = kind === 'snow' ? .018 : kind === 'ember' ? -.033 : .017;
+      const x = wrap(p.x + Math.sin(t * .5 + p.phase) * .055 + t * .0035) * w;
+      const y = wrap(p.y + t * speed * p.speed) * h;
+      const size = p.size * (kind === 'feather' ? 2 : kind === 'leaf' || kind === 'petal' ? 1.35 : .65);
+      context.globalAlpha = .40 + .35 * Math.sin(Math.PI * y / h);
+      if (kind === 'leaf' || kind === 'feather' || kind === 'petal') {
+        const color = kind === 'petal' ? ['#cf6d91', '#e9adbf', '#8f3762'][i % 3] : kind === 'leaf' ? ['#68cbb1', '#accb9d', '#618478'][i % 3] : '#e7d7be';
+        this._drawLeaf(context, x, y, size, p.tilt + Math.sin(t * .78 + p.phase) * 1.3 + t * .08, color, kind === 'feather');
+      } else if (kind === 'ember') {
+        context.fillStyle = i % 3 ? '#ffc37c' : '#ff6b50'; context.fillRect(x, y, size, size * 1.8);
+      } else {
+        context.fillStyle = kind === 'snow' ? '#ecf8ff' : rgba(rgb, .9); context.beginPath(); context.arc(x, y, size, 0, TAU); context.fill();
+        if (kind === 'snow' && i % 6 === 0) {
+          context.strokeStyle = '#e4f5ff'; context.lineWidth = .65;
+          for (let j = 0; j < 3; j++) { const a = j * Math.PI / 3 + t * .2; context.beginPath(); context.moveTo(x - Math.cos(a) * size * 2.4, y - Math.sin(a) * size * 2.4); context.lineTo(x + Math.cos(a) * size * 2.4, y + Math.sin(a) * size * 2.4); context.stroke(); }
+        }
+      }
+    }
+    context.restore();
+  }
+
+  _drawFlames(context, w, h, state, count = 2) {
+    const t = state.time;
+    context.save(); context.globalCompositeOperation = 'screen';
+    for (let i = 0; i < count; i++) {
+      const x = w * (i % 2 ? .9 : .1), y = h * (.79 + Math.floor(i / 2) * .13);
+      const flicker = Math.sin(t * 4.2 + i) * 4 + Math.sin(t * 7.1 + i) * 2;
+      const size = 27 + flicker;
+      context.globalAlpha = .2; context.drawImage(this.sprites.glow, x - size * 2.5, y - size * 2.7, size * 5, size * 5);
+      context.globalAlpha = .7; context.fillStyle = '#ef956c';
+      context.beginPath(); context.moveTo(x, y + 12); context.bezierCurveTo(x - 10, y + 4, x - 6, y - 16, x + flicker, y - 31 - flicker);
+      context.bezierCurveTo(x + 2, y - 12, x + 15, y + 5, x, y + 12); context.fill();
+      context.fillStyle = '#ffe1a4'; context.beginPath(); context.moveTo(x, y + 8); context.quadraticCurveTo(x - 5, y + 1, x + flicker * .35, y - 12); context.quadraticCurveTo(x + 6, y + 3, x, y + 8); context.fill();
+    }
+    context.restore();
+  }
+
+  _drawTheme(context, w, h, state) {
+    const t = state.time, theme = state.design.theme, rgb = this.sprites.rgb;
+    if (theme === 2) this._drawDrift(context, w, h, state, 'ember', 23);
+    else if (theme === 4) this._drawDrift(context, w, h, state, 'leaf', 17);
+    else if (theme === 7) this._drawDrift(context, w, h, state, 'snow', 22);
+    else if (theme === 8) { this._drawDrift(context, w, h, state, 'petal', 13); this._drawFlames(context, w, h, state); }
+    else if (theme === 9) this._drawDrift(context, w, h, state, 'feather', 16);
+    else this._drawDrift(context, w, h, state, 'dust', 17);
+    if (theme === 6) {
+      context.save(); context.strokeStyle = rgba(rgb, .24); context.lineWidth = .8;
+      for (let i = 0; i < 8; i++) {
+        const y = h * (.76 + i * .026); context.beginPath();
+        for (let j = 0; j <= 24; j++) { const x = j / 24 * w, yy = y + Math.sin(j * .59 + t * 1.1 + i) * (2 + i * .4); if (!j) context.moveTo(x, yy); else context.lineTo(x, yy); }
+        context.stroke();
+      }
+      context.restore();
+    }
+    if (theme === 1 || theme === 5) {
+      context.save(); context.globalCompositeOperation = 'screen'; context.strokeStyle = rgba(rgb, .22); context.lineWidth = .8;
+      for (let i = 0; i < 7; i++) {
+        const p = this.particles[70 + i], x = (i % 2 ? .90 : .10) * w + Math.sin(t * .35 + i) * 7, y = h * (.20 + i * .103) + Math.sin(t * .6 + i) * 7;
+        context.save(); context.translate(x, y); context.rotate(Math.sin(t * .23 + i) * .15); context.beginPath();
+        context.moveTo(0, -9); context.lineTo(5, 0); context.lineTo(0, 9); context.lineTo(-5, 0); context.closePath(); context.moveTo(-8, 0); context.lineTo(8, 0); context.stroke();
+        context.globalAlpha = .3 + Math.sin(t + p.phase) * .2; context.drawImage(this.sprites.glow, -16, -16, 32, 32); context.restore();
+      }
+      context.restore();
+    }
+  }
+
+  _drawMoonlight(context, w, h, state) {
+    const t = state.time, rgb = this.sprites.rgb;
+    context.save(); context.globalCompositeOperation = 'screen';
+    for (let i = 0; i < 4; i++) {
+      const x = w * (.14 + i * .27) + Math.sin(t * .22 + i) * 18;
+      const light = context.createLinearGradient(x, h * .10, x + 75, h * .85);
+      light.addColorStop(0, rgba(rgb, .12)); light.addColorStop(.65, rgba(rgb, .025)); light.addColorStop(1, rgba(rgb, 0));
+      context.fillStyle = light; context.globalAlpha = .6 + Math.sin(t * .67 + i) * .22;
+      context.beginPath(); context.moveTo(x, h * .06); context.lineTo(x + 11, h * .06); context.lineTo(x + 145, h * .85); context.lineTo(x + 20, h * .85); context.closePath(); context.fill();
+    }
+    context.restore();
+  }
+
+  _drawMeteors(context, w, h, state) {
+    const t = state.time;
+    context.save(); context.globalCompositeOperation = 'screen';
+    for (let i = 0; i < 4; i++) {
+      const p = this.particles[90 + i], phase = wrap(t * .16 + p.phase / TAU + i * .13);
+      if (phase > .30) continue;
+      const progress = phase / .30, x = (p.x * .8 + progress * .54 - .20) * w, y = (.06 + p.y * .27 + progress * .20) * h;
+      const alpha = Math.sin(progress * Math.PI), length = 45 + p.size * 9;
+      const tail = context.createLinearGradient(x - length, y - length * .63, x, y);
+      tail.addColorStop(0, rgba(this.sprites.rgb, 0)); tail.addColorStop(1, '#f8eadc'); context.strokeStyle = tail; context.lineWidth = 1.2; context.globalAlpha = alpha * .85;
+      context.beginPath(); context.moveTo(x - length, y - length * .63); context.lineTo(x, y); context.stroke(); context.drawImage(this.sprites.glow, x - 10, y - 10, 20, 20);
+    }
+    context.restore();
+  }
+
+  _drawFireflies(context, w, h, state) {
+    const t = state.time;
+    context.save(); context.globalCompositeOperation = 'screen';
+    for (let i = 0; i < 34; i++) {
+      const p = this.particles[45 + i], x = (p.x + Math.sin(t * .7 + p.phase) * .07) * w, y = (p.y + Math.sin(t * .52 + p.phase * 2) * .028) * h;
+      context.globalAlpha = .18 + .72 * Math.pow(.5 + .5 * Math.sin(t * 1.7 + p.phase), 2);
+      const size = 12 + p.size * 4; context.drawImage(this.sprites.glow, x - size / 2, y - size / 2, size, size);
+    }
+    context.restore();
+  }
+
+  _drawRain(context, w, h, state) {
+    const t = state.time;
+    context.save(); context.strokeStyle = rgba(this.sprites.rgb, .56); context.lineWidth = .75;
+    for (let i = 0; i < 68; i++) {
+      const p = this.particles[i], y = wrap(p.y + t * .33 * p.speed) * h, x = wrap(p.x + t * .027 * p.speed) * w;
+      context.globalAlpha = .24 + p.size * .065; context.beginPath(); context.moveTo(x, y); context.lineTo(x - 3.6, y - 16 - p.size * 3); context.stroke();
+    }
+    for (let i = 0; i < 8; i++) {
+      const p = this.particles[80 + i], age = wrap(t * .67 + p.phase / TAU), x = p.x * w, y = h * (.82 + p.y * .16);
+      context.globalAlpha = (1 - age) * .22; context.beginPath(); context.ellipse(x, y, 2 + age * 21, 1 + age * 4, 0, 0, TAU); context.stroke();
+    }
+    context.restore();
+  }
+
+  _drawSigil(context, w, h, state) {
+    const t = state.time, radius = w * .37;
+    context.save(); context.translate(w * .5, h * .77); context.globalCompositeOperation = 'screen';
+    context.globalAlpha = .22 + Math.sin(t * 1.1) * .06; context.strokeStyle = this.design.color; context.lineWidth = 1;
+    context.rotate(t * .045);
+    for (const scale of [1, .92, .70]) { context.beginPath(); context.arc(0, 0, radius * scale, 0, TAU); context.stroke(); }
+    for (let i = 0; i < 12; i++) {
+      const a = i / 12 * TAU, x = Math.cos(a) * radius * .82, y = Math.sin(a) * radius * .82;
+      context.save(); context.translate(x, y); context.rotate(a + Math.PI / 2); context.beginPath(); context.moveTo(-3, -5); context.lineTo(0, 4); context.lineTo(3, -5); context.moveTo(-4, 0); context.lineTo(4, 0); context.stroke(); context.restore();
+    }
+    context.rotate(-t * .09); context.beginPath();
+    for (let i = 0; i <= 6; i++) { const a = i / 6 * TAU, x = Math.cos(a) * radius * .70, y = Math.sin(a) * radius * .70; if (!i) context.moveTo(x, y); else context.lineTo(x, y); } context.stroke();
+    context.restore();
+  }
+
+  _drawAurora(context, w, h, state) {
+    const t = state.time;
+    context.save(); context.globalCompositeOperation = 'screen';
+    for (let layer = 0; layer < 3; layer++) {
+      const gradient = context.createLinearGradient(0, h * .08, 0, h * .5);
+      gradient.addColorStop(0, rgba(this.sprites.rgb, 0)); gradient.addColorStop(.40, rgba(this.sprites.rgb, .055)); gradient.addColorStop(.7, rgba(this.sprites.rgb, .15)); gradient.addColorStop(1, rgba(this.sprites.rgb, 0)); context.fillStyle = gradient;
+      context.beginPath();
+      for (let i = 0; i <= 32; i++) { const x = i / 32 * w, y = h * (.11 + layer * .06) + Math.sin(i * .15 + t * .33 + layer) * 35; if (!i) context.moveTo(x, y); else context.lineTo(x, y); }
+      for (let i = 32; i >= 0; i--) { const x = i / 32 * w, y = h * (.29 + layer * .065) + Math.sin(i * .15 + t * .33 + layer + .8) * 49; context.lineTo(x, y); }
+      context.closePath(); context.fill();
+    }
+    context.restore();
+  }
+
+  _compose(context, width, height, state, raster) {
+    context.setTransform(1, 0, 0, 1, 0, 0); context.globalAlpha = 1; context.globalCompositeOperation = 'source-over';
+    context.fillStyle = '#090a13'; context.fillRect(0, 0, width, height);
+    if (!state.image || !state.design || !this.sprites) return;
+    this._drawIllustration(context, width, height, state, raster);
+    const w = 480, h = height / width * w;
+    context.save(); context.scale(width / w, width / w);
+    this._drawHaze(context, w, h, state, state.design.variant === 2);
+    this._drawTheme(context, w, h, state);
+    switch (state.design.variant) {
+      case 0: this._drawMoonlight(context, w, h, state); break;
+      case 1: this._drawMeteors(context, w, h, state); break;
+      case 2: this._drawMoonlight(context, w, h, state); break;
+      case 3: this._drawFireflies(context, w, h, state); break;
+      case 4: this._drawRain(context, w, h, state); break;
+      case 5: this._drawDrift(context, w, h, state, 'petal', 32); break;
+      case 6: this._drawSigil(context, w, h, state); break;
+      case 7: this._drawFlames(context, w, h, state, 4); this._drawDrift(context, w, h, state, 'ember', 35); break;
+      case 8: this._drawDrift(context, w, h, state, 'snow', 45); break;
+      case 9: this._drawAurora(context, w, h, state); break;
+    }
+    this._drawMotes(context, w, h, state);
+    const vignette = context.createLinearGradient(0, 0, 0, h);
+    vignette.addColorStop(0, 'rgba(5,7,16,.20)'); vignette.addColorStop(.2, 'rgba(5,7,16,0)'); vignette.addColorStop(.73, 'rgba(5,7,16,0)'); vignette.addColorStop(1, 'rgba(5,7,16,.27)');
+    context.fillStyle = vignette; context.fillRect(0, 0, w, h); context.restore();
+  }
+
+  _snapshot() {
+    return { image: this.image, design: this.design, time: this.time, options: { ...this.options }, pointer: { ...this.smoothPointer } };
   }
 
   _render() {
     if (this.disposed) return;
-    if (this.renderer) { this._prepareFrame(this.height * this.dpr); this.renderer.render(this.scene, this.camera); }
-    else if (this.context) this._drawFallback(this.context, (this.fallbackCanvas || this.canvas).width, (this.fallbackCanvas || this.canvas).height);
-  }
-
-  _makeFallbackSprites(color) {
-    this.fallbackSprites = [false, true].map(star => {
-      const sprite = document.createElement('canvas'); sprite.width = 128; sprite.height = 128;
-      const ctx = sprite.getContext('2d');
-      const glow = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-      glow.addColorStop(0, '#fff8ef'); glow.addColorStop(.13, color || '#b899ff'); glow.addColorStop(1, 'transparent');
-      ctx.fillStyle = glow; ctx.fillRect(0, 0, 128, 128);
-      if (star) {
-        const x = 64, y = 64, size = 25;
-        ctx.beginPath(); ctx.moveTo(x, y - size); ctx.lineTo(x + size * .09, y - size * .1); ctx.lineTo(x + size * .8, y); ctx.lineTo(x + size * .09, y + size * .1); ctx.lineTo(x, y + size); ctx.lineTo(x - size * .09, y + size * .1); ctx.lineTo(x - size * .8, y); ctx.lineTo(x - size * .09, y - size * .1); ctx.closePath(); ctx.fillStyle = '#fffbef'; ctx.fill();
-      }
-      return sprite;
-    });
-  }
-
-  _drawFallback(ctx, width, height) {
-    const o = this.options, image = this.image;
-    ctx.save(); ctx.clearRect(0, 0, width, height); ctx.fillStyle = '#0b0712'; ctx.fillRect(0, 0, width, height);
-    if (image) {
-      const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight) * (1.035 + (this.design?.variant % 3 || 0) * .006);
-      const iw = image.naturalWidth * scale, ih = image.naturalHeight * scale;
-      const px = o.motion ? this.smoothPointer.x * o.depth * width * .008 : 0, py = o.motion ? this.smoothPointer.y * o.depth * height * .005 : 0;
-      ctx.filter = `brightness(${o.brightness})`; ctx.drawImage(image, (width - iw) / 2 + px, (height - ih) / 2 + py, iw, ih); ctx.filter = 'none';
-    }
-    let vignette = this.fallbackVignettes.get(ctx);
-    if (!vignette || vignette.width !== width || vignette.height !== height) {
-      const gradient = ctx.createRadialGradient(width * .5, height * .48, width * .25, width * .5, height * .48, height * .67);
-      gradient.addColorStop(0, 'rgba(6,3,15,0)'); gradient.addColorStop(1, 'rgba(6,3,15,.27)');
-      vignette = { width, height, gradient }; this.fallbackVignettes.set(ctx, vignette);
-    }
-    ctx.fillStyle = vignette.gradient; ctx.fillRect(0, 0, width, height);
-    ctx.globalCompositeOperation = 'screen';
-    if (this.fallbackSprites && o.sparkle > 0) for (const particle of this.fallbackParticles) {
-      const x = (particle.x + Math.sin(this.time * .105 + particle.phase) * .008) * width;
-      const y = (particle.y + Math.sin(this.time * .15 + particle.phase) * .009) * height;
-      const radius = particle.size * height / 1800 * 2.6;
-      ctx.globalAlpha = o.sparkle * (.25 + .75 * Math.pow(.5 + .5 * Math.sin(this.time * .7 + particle.phase), 2));
-      ctx.drawImage(this.fallbackSprites[particle.star ? 1 : 0], x - radius, y - radius, radius * 2, radius * 2);
-    }
-    ctx.restore();
+    const width = this.canvas.width, height = this.canvas.height;
+    if (this.image && (!this.raster || this.raster.width !== width || this.raster.height !== height || this.raster.image !== this.image)) this.raster = this._rasterFor(width, height, this.image);
+    this._compose(this.context, width, height, this._snapshot(), this.raster);
   }
 
   async renderStill(width = 1080, height = 2424) {
-    if (this.disposed) throw new Error('表示は終了しています。');
-    width = Math.round(Number(width)); height = Math.round(Number(height));
-    if (!(width > 0 && height > 0 && width <= 4096 && height <= 4096)) throw new Error('保存サイズが範囲外です。');
-    if (!this.image) throw new Error('背景画像の読み込み後に保存してください。');
-    const output = document.createElement('canvas'); output.width = width; output.height = height;
-    const ctx = output.getContext('2d');
-    if (!this.renderer) { this._drawFallback(ctx, width, height); return blobFromCanvas(output); }
-    const target = new THREE.WebGLRenderTarget(width, height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat, type: THREE.UnsignedByteType, depthBuffer: true, stencilBuffer: false });
-    target.texture.colorSpace = THREE.SRGBColorSpace;
-    const previousTarget = this.renderer.getRenderTarget();
-    const camera = new THREE.OrthographicCamera(-width / height, width / height, 1, -1, .1, 30); camera.position.z = 10;
-    try {
-      this._updateCover(width / height); this._prepareFrame(height);
-      this.renderer.setRenderTarget(target); this.renderer.render(this.scene, camera);
-      const pixels = new Uint8Array(width * height * 4); this.renderer.readRenderTargetPixels(target, 0, 0, width, height, pixels);
-      const imageData = ctx.createImageData(width, height), rowLength = width * 4;
-      for (let y = 0; y < height; y++) imageData.data.set(pixels.subarray((height - y - 1) * rowLength, (height - y) * rowLength), y * rowLength);
-      ctx.putImageData(imageData, 0, 0);
-    } finally {
-      this.renderer.setRenderTarget(previousTarget); target.dispose(); this._updateCover(this.width / this.height); this._render();
-    }
-    return blobFromCanvas(output);
+    if (this.disposed || !this.image || !this.design) throw new Error('イラストの読み込みが終わってから保存してください。');
+    width = Math.round(clamp(width, 1, 4096, 1080)); height = Math.round(clamp(height, 1, 8192, 2424));
+    if (width * height > 16777216) throw new Error('保存する画像のサイズが大きすぎます。');
+    const state = this._snapshot(), canvas = makeCanvas(width, height), context = canvas.getContext('2d', { alpha: false });
+    // Export owns its raster and canvas: it never resizes, pauses, or resets the live preview.
+    this._compose(context, width, height, state, this._rasterFor(width, height, state.image));
+    return toPNG(canvas);
   }
 
   destroy() {
     if (this.disposed) return;
-    this.disposed = true; ++this.loadToken; this._stop();
+    this.disposed = true; this.loadToken++; this._stop();
+    this._resizeObserver?.disconnect(); window.removeEventListener('resize', this._windowResize);
     document.removeEventListener('visibilitychange', this._visibility);
-    this.canvas.removeEventListener('webglcontextlost', this._contextLost);
-    this._resizeObserver.disconnect(); this._disposeDecorations();
-    if (this.texture) this.texture.dispose();
-    this.backdrop?.geometry.dispose(); this.backgroundMaterial?.dispose();
-    this.renderer?.dispose(); this.fallbackCanvas?.remove();
-    if (this.fallbackCanvas) this.canvas.style.opacity = this._originalCanvasOpacity || '';
-    this.image = null;
+    this.imageCache.clear(); this.image = null; this.design = null; this.raster = null; this.sprites = null; this.particles.length = 0;
   }
 }
