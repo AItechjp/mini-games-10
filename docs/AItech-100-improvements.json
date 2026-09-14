@@ -1,7 +1,41 @@
 {
   "date": "2026-09-14",
   "scope": "現在のカタログに掲載された33アプリ。旧URL・アーカイブは互換性を維持。",
-  "publication": "検証・公開前",
+  "publication": "改修版公開済み・公開後検査通過",
+  "release": {
+    "date": "2026-09-14",
+    "status": "改修版公開済み・公開後検査通過",
+    "main": {
+      "url": "https://aitechd.com/",
+      "commit": "d95aaf753ac7acdfa28611f902ece0bef41b43f7",
+      "workflow": "https://github.com/AItechjp/mini-games-10/actions/runs/34852209826",
+      "operationChecks": "passed",
+      "httpsChecks": "passed",
+      "htmlDocuments": 64,
+      "browserChecks": 130
+    },
+    "aether": {
+      "url": "https://aether-card-duel.douga071132.chatgpt.site",
+      "commit": "e7ab1123e95412d3d45309d1e84a1ccb21f4d70e",
+      "version": 19,
+      "deployment": "succeeded"
+    },
+    "checks": [
+      "33アプリ各100項目、計3300項目の件数検査",
+      "メモ保存失敗時の入力保持と明示的な閉じる操作",
+      "盤面の矢印キー移動、フォーカス復元、ゲーム変更後のメニュー更新",
+      "カメラの予約撮影をメニュー表示で解除",
+      "Quick Hopの遅いスクリプト読込中の操作無効化と準備後の開始",
+      "古い通信結果の除外、取得タイムアウト、不正な天気予報の拒否",
+      "カード保存・伏せ札の公平性、盤上ゲームのルール、旧ゲーム群の起動互換性",
+      "AETHERの保存失敗・破損データ、対戦エンジン、カード・効果の整合性"
+    ],
+    "notes": [
+      "初回の公開後操作検査でQuick Hop開始待ちがタイムアウト。読み込み完了前に開始ボタンが有効だった問題を修正し、遅延読み込みの回帰検査を追加した。",
+      "任意のCloudflare Pagesミラーは認証ヘッダーの設定不備で未更新。正規ドメインaitechd.comはGitHub Pagesから公開している。",
+      "実機のiPhone・Android、長時間負荷、オンライン2端末対戦、店舗情報の網羅性・鮮度、素材の利用条件などの確認は未完了。"
+    ]
+  },
   "definition": "各アプリ100の改善・確認項目。共通40、用途別40、個別20。同じ実装を共用する項目を含み、3300種類の独立した新機能ではありません。未検証・未実装の項目を完了とは扱いません。",
   "apps": [
     {
