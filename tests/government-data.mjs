@@ -14,5 +14,5 @@ const counts={};
 for(const r of jobs.records){assert(r.name&&r.ministry&&r.formerTitle&&r.destination&&r.destinationTitle);assert.equal(r.careerTrack,'unknown');assert.match(r.sourceUrl,/^https:\/\/www\.(?:cas|mofa)\.go\.jp\/.*\.pdf$/);assert(Number.isInteger(r.sourcePage)&&r.sourcePage>=1&&r.sourcePage<=190);if(!r.isSpecialService)assert(r.spreadsheetRow>=1);counts[r.ministry]=(counts[r.ministry]??0)+1;}
 assert.deepEqual(counts,jobs.metadata.ministryCounts);
 assert.equal(jobs.records.filter(r=>r.senior).length,213);
-for(const route of ['government-network','reemployment-network']){const html=await readFile(`commons/${route}/index.html`,'utf8');assert.match(html,/キャリア|所属/);assert.match(html,/全件を一枚に/);for(const [,p]of html.matchAll(/(?:src|href)="(\/commons\/[^"?]+)\??[^" ]*"/g))if(/\.(?:js|css|svg)$/.test(p))await access('.'+p);}
+for(const route of ['government-network','reemployment-network']){const html=await readFile(`commons/${route}/index.html`,'utf8');assert.match(html,/キャリア|所属/);assert.match(html,/<option value="10000" selected>全件を(?:一|1)枚に/);for(const [,p]of html.matchAll(/(?:src|href)="(\/commons\/[^"?]+)\??[^" ]*"/g))if(/\.(?:js|css|svg)$/.test(p))await access('.'+p);}
 console.log(JSON.stringify({passed:true,nodes:org.nodes.length,edges:org.edges.length,incorporatedAgencies:86,records:1753,sourcePagesValidated:true,careerTrackInferences:0}));
