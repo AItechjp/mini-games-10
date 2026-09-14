@@ -1,0 +1,37 @@
+name: Verify 2D landscape viewport
+on:
+  push:
+    branches: [improve-2d-landscape]
+  pull_request:
+    paths:
+      - 'game-viewport.*'
+      - 'scripts/fullscreen-html.mjs'
+      - 'quick-hop/game.js'
+      - 'lantern-duo/game.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/prepare-public-vendor.mjs && node scripts/build-static.mjs
+      - name: Verify each game in small landscape viewports
+        run: |
+          python3 -m http.server 4187 --directory dist >/tmp/landscape-server.log 2>&1 &
+          node tests/landscape-2d.mjs
+      - name: Retain viewport screenshots and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: landscape-2d
+          path: test-output/landscape/
+          retention-days: 7

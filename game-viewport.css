@@ -1,0 +1,224 @@
+/* Shared 2D play surface. Game rules and input elements remain game-owned. */
+html[data-aitech-game]{--aitech-play-height:100dvh;--aitech-toolbar-height:48px;--aitech-game-room:calc(var(--aitech-play-height) - var(--aitech-toolbar-height) - env(safe-area-inset-top) - env(safe-area-inset-bottom))}
+#aitech-game-toolbar{box-sizing:border-box;position:sticky;top:0;z-index:10000;display:flex;align-items:center;gap:6px;width:100%;height:calc(var(--aitech-toolbar-height) + env(safe-area-inset-top));padding:env(safe-area-inset-top) max(8px,env(safe-area-inset-right)) 0 max(8px,env(safe-area-inset-left));background:#0b1826f5;border-bottom:1px solid #43616d;color:#edf5ed;font:14px/1.2 system-ui,sans-serif}
+#aitech-game-toolbar button,#aitech-game-toolbar a,#aitech-play-close{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-height:44px;height:44px;padding:6px 12px;margin:0;border:1px solid #577584;border-radius:7px;background:#1b3441;color:#edf5ed;font:600 14px/1.2 system-ui,sans-serif;white-space:nowrap;cursor:pointer;touch-action:manipulation;text-decoration:none;box-shadow:none;transform:none}
+#aitech-game-toolbar button:focus-visible,#aitech-game-toolbar a:focus-visible,#aitech-play-close:focus-visible{outline:3px solid #ffe397;outline-offset:-3px}
+#aitech-game-toolbar button:disabled{opacity:.6;cursor:wait}
+#aitech-game-toolbar #aitech-play-fullscreen{background:#b4efcc;color:#11372b;border-color:#b4efcc}
+#aitech-play-title{font-size:14px;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin-right:auto}
+#aitech-rotate-tip{font-size:12px;color:#cee3e1}
+#aitech-game-toolbar [hidden]{display:none!important}
+#aitech-game-toolbar [data-aitech-guide-slot]{display:flex;flex:none}
+#aitech-play-menu{box-sizing:border-box;width:min(760px,calc(100vw - 24px));max-width:none;max-height:calc(100dvh - 20px);margin:auto;padding:16px;background:#122631;color:#edf5ed;border:1px solid #628a91;border-radius:12px;overflow:auto;overscroll-behavior:contain;font:16px/1.5 system-ui,sans-serif}
+#aitech-play-menu::backdrop{background:#020b13c9}
+#aitech-play-menu .aitech-menu-heading{position:sticky;top:-16px;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#122631;padding:8px 0 12px;margin-bottom:8px;border-bottom:1px solid #43616d}
+#aitech-play-menu h2{font-size:18px;margin:0}
+#aitech-play-menu-content{display:flex;flex-direction:column;gap:12px;min-width:0}
+#aitech-play-menu-content>button{align-self:flex-start;min-height:44px}
+#aitech-play-menu-content :is(.sidebar,aside,.panel,.settings,.classic-deluxe-bar,.classic-mode-bar,.classic-lobby){position:static;width:100%;height:auto;max-height:none;max-width:none;margin:0;flex:none;overflow:visible}
+#aitech-play-menu-content .sidebar{padding:14px;border:0}
+#aitech-play-menu-content .settings{display:flex;flex-wrap:wrap}
+#aitech-play-menu-content .settings label{max-width:100%;font-size:14px}
+#aitech-play-menu-content .heading nav{display:flex;flex-wrap:wrap}
+#aitech-play-menu-content #history{max-height:180px;overflow:auto}
+#aitech-play-menu-content #motion{position:static;align-self:flex-start;font-size:14px}
+#aitech-play-notice{position:fixed;z-index:10002;bottom:max(8px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:max-content;max-width:90vw;margin:0;padding:7px 12px;border-radius:8px;background:#102b39ed;border:1px solid #7393a0;color:#fff;font:14px/1.5 system-ui;pointer-events:none;text-align:center}
+#aitech-play-notice:empty{display:none}
+@media(orientation:portrait){#aitech-game-toolbar{flex-wrap:wrap;height:auto;min-height:96px;padding-bottom:6px}#aitech-play-title{flex:1}#aitech-rotate-tip{width:100%;order:3;text-align:center}#aitech-play-view{display:none!important}}
+
+/* The game occupies the viewport, including on browsers without native fullscreen. */
+html.aitech-play-mode,html.aitech-play-mode body{width:100%;height:var(--aitech-play-height);min-height:0!important;overflow:hidden!important;overscroll-behavior:none}
+html.aitech-play-mode body{padding:0!important;margin:0!important}
+.aitech-play-mode #aitech-game-toolbar{position:relative}
+.aitech-play-mode main{box-sizing:border-box;width:100%!important;max-width:none!important;margin:0!important;padding:0 max(4px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(4px,env(safe-area-inset-left))!important;height:var(--aitech-game-room);min-height:0}
+.aitech-play-mode body>header,.aitech-play-mode body>footer,.aitech-play-mode main>.heading,.aitech-play-mode main>.title-row,.aitech-play-mode main>.note,.aitech-play-mode main>.below,.aitech-play-mode main>footer,.aitech-play-mode main>.footnote,.aitech-play-mode main>.table-header,.aitech-play-mode main>.classic-hero,.aitech-play-mode .skip{display:none!important}
+.aitech-play-mode :is(#fullscreen-btn,#fullscreenButton,#fullscreen,#fullscreen-button){display:none!important}
+.aitech-play-mode dialog:not(#aitech-play-menu){max-height:calc(var(--aitech-play-height) - 20px);overflow:auto;overscroll-behavior:contain}
+.aitech-play-mode dialog .dialog-heading,.aitech-play-mode dialog .modal-top{position:sticky;top:0;z-index:5;background:inherit}
+
+/* Action: edge-to-edge scenery, compact HUD, thumb controls over the lower corners. */
+.aitech-play-mode:is([data-aitech-game="quick-hop"],[data-aitech-game="startrail"],[data-aitech-game="lantern-duo"]) .game-shell{position:relative;display:flex;flex-direction:column;width:100%;max-width:none;height:100%;min-height:0;margin:0;border:0;border-radius:0;box-shadow:none}
+.aitech-play-mode:is([data-aitech-game="quick-hop"],[data-aitech-game="startrail"],[data-aitech-game="lantern-duo"]) .hud{box-sizing:border-box;flex:0 0 40px;min-height:40px;height:40px;display:flex;flex-wrap:nowrap;padding:2px 10px;gap:14px;border:0}
+.aitech-play-mode .hud button{min-height:36px;height:36px;font-size:14px;padding:4px 10px}
+.aitech-play-mode .hud .tools{width:auto;margin-left:auto;border:0;padding:0}
+.aitech-play-mode .hud .stat b{font-size:18px}
+.aitech-play-mode .hud .stat small,.aitech-play-mode .hud .zone{font-size:12px}
+.aitech-play-mode[data-aitech-game="quick-hop"] .stage,.aitech-play-mode[data-aitech-game="startrail"] .playfield,.aitech-play-mode[data-aitech-game="lantern-duo"] .scene{position:relative;flex:1;min-height:0!important;max-height:none!important;height:auto!important;aspect-ratio:auto!important;width:100%;overflow:hidden}
+.aitech-play-mode:is([data-aitech-game="quick-hop"],[data-aitech-game="startrail"],[data-aitech-game="lantern-duo"]) canvas{position:absolute;inset:0;display:block;width:100%!important;height:100%!important;aspect-ratio:auto!important;object-fit:fill;touch-action:none}
+.aitech-play-mode .bottom,.aitech-play-mode .keyboard-hints{display:none}
+.aitech-play-mode[data-aitech-game="quick-hop"] .touch,.aitech-play-mode[data-aitech-game="startrail"] .touch-controls{position:absolute;z-index:12;bottom:12px;left:14px;right:14px;width:auto;margin:0;padding:0;display:flex;align-items:end;justify-content:space-between;gap:12px;border:0;background:transparent;pointer-events:none}
+.aitech-play-mode :is(.touch,.touch-controls) button{pointer-events:auto;touch-action:none;min-height:56px;height:56px;min-width:60px;width:60px;padding:4px;border:1px solid #e3fff080!important;background:#143b40c9!important;color:#fff!important;box-shadow:0 3px 12px #0004;font-size:24px}
+.aitech-play-mode :is(.touch,.touch-controls) .jump{width:112px;min-width:112px;font-size:16px;background:#b4efcce8!important;color:#11372b!important}
+.aitech-play-mode .touch-controls .run{font-size:12px;width:108px;min-width:108px;min-height:44px;height:44px;margin-right:auto}
+.aitech-play-mode .touch-controls .jump span{margin-left:5px}
+.aitech-play-mode[data-aitech-game="quick-hop"] .overlay{padding:16px 7%;z-index:15}
+.aitech-play-mode[data-aitech-game="quick-hop"] .panel h2{font-size:clamp(24px,6vh,42px);margin:4px 0 8px}
+.aitech-play-mode[data-aitech-game="quick-hop"] .panel>p:not(.eyebrow):not(.best){font-size:14px;line-height:1.6;margin:6px 0 10px}
+.aitech-play-mode[data-aitech-game="quick-hop"] .panel .primary{font-size:16px;min-height:44px;padding:8px 16px}
+.aitech-play-mode[data-aitech-game="quick-hop"] .panel .eyebrow{display:none}
+.aitech-play-mode[data-aitech-game="startrail"] .overlay{z-index:15;padding:12px 20px;width:min(560px,90%);max-height:96%}
+.aitech-play-mode[data-aitech-game="startrail"] .overlay h2{font-size:30px;margin:4px 0 8px}
+.aitech-play-mode[data-aitech-game="startrail"] .overlay p:not(.eyebrow){font-size:14px;margin:5px 0;line-height:1.5}
+.aitech-play-mode[data-aitech-game="startrail"] .overlay .primary{font-size:16px;min-height:44px;margin-top:10px}
+.aitech-play-mode[data-aitech-game="startrail"] .overlay .start-hint{display:none}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .app{width:100%;max-width:none;padding:0;margin:0}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .topbar{display:none}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .player-strip{flex:0 0 28px;min-height:28px;height:28px;padding:2px 12px;order:0}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .scene{order:1}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .player-status{font-size:12px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .health{font-size:14px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .controls{position:fixed;left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));z-index:12;display:flex;align-items:end;padding:0;gap:16px;pointer-events:none}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .control-group{width:min(36%,270px);max-width:none}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .control-label{display:none}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .control-buttons button{height:56px!important;min-width:44px;pointer-events:auto;background:#132e3bd9;box-shadow:0 2px 10px #0004}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .control-buttons .jump-btn{display:flex;font-size:24px;min-width:64px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .jump-btn small{font-size:14px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .controls-center{display:block;min-width:100px;pointer-events:none}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .controls-center :is(p,.linked-mark){display:none}
+.aitech-play-mode[data-aitech-game="lantern-duo"] #recallButton{pointer-events:auto;min-height:44px;padding:6px 10px;background:#132e3bde;border:1px solid #789c99;border-radius:6px;font-size:12px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .app:not(.playing) .controls{display:none}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .home-screen{padding:12px 5%}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .home-copy{width:min(660px,100%);display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .home-copy .edition{grid-column:1;margin:0;font-size:9px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .home-copy h1{grid-column:1;font-size:clamp(26px,6vh,46px)}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .roman-title{grid-column:1;margin:3px 0;font-size:12px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .home-description{grid-column:1;margin:6px 0;font-size:14px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .mode-picker{grid-column:2;grid-row:1/3;align-self:start;width:100%;margin:0}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .start-btn{grid-column:2;grid-row:3/5;align-self:start;width:100%;margin:12px 0 0;min-height:48px;font-size:16px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .home-secondary{grid-column:2;width:100%;margin:8px 0;position:static;gap:12px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] .home-secondary button{min-height:36px;font-size:12px}
+.aitech-play-mode[data-aitech-game="lantern-duo"] :is(.home-save-note,.home-bottom,.hero-sign){display:none}
+
+/* Memory and speed use all the table width instead of stacking the toolbar. */
+.aitech-play-mode:is([data-aitech-game="trump"],[data-aitech-game="babanuki"]) main>.layout{display:block;width:100%;height:100%;margin:0;padding:0}
+.aitech-play-mode[data-aitech-game="trump"] .felt{height:100%;min-height:0;padding:6px 12px;display:flex;flex-direction:column;border:0;border-radius:0;overflow:hidden}
+.aitech-play-mode[data-aitech-game="trump"] .scoreboard{flex:0 0 30px;padding:0;font-size:14px}
+.aitech-play-mode[data-aitech-game="trump"] .scoreboard b{font-size:18px}
+.aitech-play-mode[data-aitech-game="trump"] .turn{flex:0 0 auto;min-height:0;padding:4px 0 6px}
+.aitech-play-mode[data-aitech-game="trump"] .turn .eyebrow{display:none}
+.aitech-play-mode[data-aitech-game="trump"] .turn h2{font-size:14px;line-height:1.3}
+.aitech-play-mode[data-aitech-game="trump"] .memory-board{flex:1;min-height:0;max-width:none;width:100%;margin:0;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:6px}
+.aitech-play-mode[data-aitech-game="trump"] .memory-board .card{width:100%;height:100%;min-height:0;max-height:none;aspect-ratio:auto;padding:5px 9px;font-size:20px}
+.aitech-play-mode[data-aitech-game="trump"] .memory-board .card>span:last-child{font-size:24px;margin:0}
+.aitech-play-mode[data-aitech-game="trump"] .table-bottom{flex:0 0 22px;margin:3px 0 0;font-size:12px}
+.aitech-play-mode[data-aitech-game="trump"] .felt.speed-table{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:30px 28px minmax(0,1fr) 24px;gap:4px 16px}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table .scoreboard{grid-column:1/-1}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table .cpu-hand{grid-row:2;grid-column:1;padding:0;height:26px;gap:5px;justify-content:start}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table .cpu-hand .card{height:26px;min-height:0;width:22px;padding:0;aspect-ratio:auto;font-size:14px}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table .turn{grid-row:2;grid-column:2;align-self:center;padding:0}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table .piles{grid-column:1;grid-row:3;align-items:center;justify-content:center;gap:18px;margin:0;min-height:0}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table .piles .card{height:min(100%,190px);width:40%;min-height:0;max-height:none;font-size:28px;aspect-ratio:auto}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table .hand{grid-column:2;grid-row:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;gap:8px;padding:8px 0;border:0;min-height:0}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table .hand .card{width:100%;height:100%;min-height:0;max-height:none;aspect-ratio:auto;font-size:24px;padding:8px}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table .hand .card>span:last-child{font-size:30px}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table .table-bottom{grid-column:1/-1;grid-row:4}
+.aitech-play-mode[data-aitech-game="trump"] .speed-table #deal:not([hidden]){grid-column:1;grid-row:3;z-index:2;align-self:end;justify-self:center;min-height:44px;margin:0;background:#153f43}
+
+/* Old Maid: draw on the left, own hand on the right, opponents above. */
+.aitech-play-mode[data-aitech-game="babanuki"] .table{height:100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:48px 52px minmax(0,1fr);gap:4px 12px;padding:6px 12px;border:0;border-radius:0;overflow:hidden}
+.aitech-play-mode[data-aitech-game="babanuki"] .opponents{grid-column:1/-1;padding:0;gap:8px}
+.aitech-play-mode[data-aitech-game="babanuki"] .opponent{display:flex;align-items:center;justify-content:center;gap:8px;padding:4px;font-size:14px}
+.aitech-play-mode[data-aitech-game="babanuki"] .opponent .count{margin:0;font-size:12px}
+.aitech-play-mode[data-aitech-game="babanuki"] .avatar{width:26px;height:26px;margin:0}
+.aitech-play-mode[data-aitech-game="babanuki"] .table-center{grid-column:1/-1;padding:0;min-height:0}
+.aitech-play-mode[data-aitech-game="babanuki"] .table-center :is(.table-mark,.eyebrow){display:none}
+.aitech-play-mode[data-aitech-game="babanuki"] .table-center h2{font-size:16px;margin:0}
+.aitech-play-mode[data-aitech-game="babanuki"] .table-center #announcement{font-size:12px;min-height:0;margin:0}
+.aitech-play-mode[data-aitech-game="babanuki"] :is(.draw-zone,.own-zone){padding:4px;min-height:0;display:flex;flex-direction:column;border:0}
+.aitech-play-mode[data-aitech-game="babanuki"] :is(.draw-zone h3,.hand-heading){margin:0 0 6px;font-size:14px;min-height:32px}
+.aitech-play-mode[data-aitech-game="babanuki"] .hand-heading{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+.aitech-play-mode[data-aitech-game="babanuki"] .hand-heading h3{margin:0}
+.aitech-play-mode[data-aitech-game="babanuki"] #shuffle{min-height:32px;padding:4px 8px;font-size:12px}
+.aitech-play-mode[data-aitech-game="babanuki"] .cards{flex:1;min-height:0;flex-wrap:nowrap;gap:0;align-items:center;justify-content:center;padding:4px 0}
+.aitech-play-mode[data-aitech-game="babanuki"] .card{flex:0 1 70px;width:70px;min-width:24px;height:min(100%,130px);max-height:none;padding:5px 3px;font-size:20px}
+.aitech-play-mode[data-aitech-game="babanuki"] .card .suit{font-size:24px}
+
+/* Boards: fit the actual board to the available height, keep moves and scores alongside. */
+.aitech-play-mode[data-aitech-game="board"] main>.arena{display:none}
+.aitech-play-mode[data-aitech-game="board"] .play-area{display:grid;grid-template-columns:minmax(0,1fr) clamp(170px,27vw,310px);height:100%;width:100%;border:0;border-radius:0;overflow:hidden}
+.aitech-play-mode[data-aitech-game="board"] .board-panel{height:100%;min-height:0;min-width:0;padding:4px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.aitech-play-mode[data-aitech-game="board"] .turn-line{flex:none;width:100%;height:30px;min-height:30px;margin:0 0 4px;font-size:12px}
+.aitech-play-mode[data-aitech-game="board"] #turn-badge{padding:4px 10px;font-size:14px}
+.aitech-play-mode[data-aitech-game="board"] #board:not(.track){box-sizing:border-box;flex:none;width:var(--aitech-board-size,260px);height:var(--aitech-board-size,260px);max-width:100%;max-height:none;margin:0 auto;border-width:4px;aspect-ratio:1;box-shadow:none}
+.aitech-play-mode[data-aitech-game="board"] #board .cell.chess{font-size:calc(var(--aitech-board-size,260px) / 9.5)}
+.aitech-play-mode[data-aitech-game="board"] #board .cell.shogi{font-size:calc(var(--aitech-board-size,260px) / 13)}
+.aitech-play-mode[data-aitech-game="board"] .hand{flex:none;width:100%;max-width:none;margin:2px 0;gap:3px}
+.aitech-play-mode[data-aitech-game="board"] .hand:empty{display:none}
+.aitech-play-mode[data-aitech-game="board"] .hand:not(:empty){min-height:28px}
+.aitech-play-mode[data-aitech-game="board"] .hand button{padding:3px 7px;min-height:28px;font-size:14px}
+.aitech-play-mode[data-aitech-game="board"] .choice{flex:none;margin:3px 0;gap:4px}
+.aitech-play-mode[data-aitech-game="board"] .choice:empty{display:none}
+.aitech-play-mode[data-aitech-game="board"] .choice button{min-height:36px;padding:4px 10px}
+.aitech-play-mode[data-aitech-game="board"] .sidebar{height:100%;min-height:0;padding:8px 10px;border-top:0;border-left:1px solid #456079;overflow:auto;overscroll-behavior:contain}
+.aitech-play-mode[data-aitech-game="board"] .sidebar>.eyebrow{display:none}
+.aitech-play-mode[data-aitech-game="board"] .sidebar h2{font-size:14px;margin:6px 0}
+.aitech-play-mode[data-aitech-game="board"] #status{font-size:14px;line-height:1.5;min-height:0;margin:6px 0}
+.aitech-play-mode[data-aitech-game="board"] .action-list{display:grid;grid-template-columns:1fr;gap:5px;margin:8px 0}
+.aitech-play-mode[data-aitech-game="board"] .action-list button{font-size:14px;min-height:44px;padding:6px 8px}
+.aitech-play-mode[data-aitech-game="board"] #assets:empty{display:none}
+.aitech-play-mode #aitech-board-players{display:grid;gap:4px}
+.aitech-play-mode #aitech-board-players .player-label{position:static;width:100%;min-width:0;padding:4px 6px;grid-template-columns:8px 1fr;gap:2px 6px;border-radius:6px}
+.aitech-play-mode #aitech-board-players .player-label b{font-size:14px}
+.aitech-play-mode #aitech-board-players .player-label small{font-size:12px;max-width:none}
+.aitech-play-mode #aitech-board-players .player-dot{width:7px;height:7px;margin-top:5px}
+.aitech-play-mode[data-aitech-game="board"] #board.track{width:100%;max-width:none;flex:1;min-height:0;aspect-ratio:auto;grid-template-columns:repeat(8,minmax(0,1fr))!important;grid-template-rows:repeat(3,minmax(0,1fr));gap:3px!important;overflow:hidden}
+.aitech-play-mode[data-aitech-game="board"] #board.track .space{grid-column:auto!important;grid-row:auto!important;padding:1px 2px;min-height:0;border-top-width:3px;border-radius:4px;gap:0;overflow:hidden}
+.aitech-play-mode[data-aitech-game="board"] .space b,.aitech-play-mode[data-aitech-game="board"] .space small{font-size:12px;line-height:1.2;word-break:normal;overflow-wrap:anywhere}
+.aitech-play-mode[data-aitech-game="board"] .space .tokens{min-height:14px}
+.aitech-play-mode[data-aitech-game="board"] .space .token{height:14px;width:14px;font-size:10px}
+.aitech-play-mode[data-aitech-game="board"] .track-center{display:none}
+.aitech-play-mode[data-aitech-game="board"] #board.life-track{grid-template-columns:repeat(9,minmax(0,1fr))!important;grid-template-rows:repeat(5,minmax(0,1fr))}
+.aitech-play-mode[data-aitech-game="board"] .choice .die{width:28px;height:28px;font-size:18px;box-shadow:none}
+
+/* Daifugo: rivals in a narrow strip, field and hand side by side. */
+.aitech-play-mode[data-aitech-game="classic"] .classic-game-panel{display:flex;flex-direction:column;height:100%;min-height:0;border:0;border-radius:0;overflow:hidden}
+.aitech-play-mode[data-aitech-game="classic"] .classic-scorebar{display:grid;grid-template-columns:1fr 1.3fr 1fr;flex:0 0 38px;padding:3px 12px;gap:6px}
+.aitech-play-mode[data-aitech-game="classic"] .classic-scorebar>div{min-height:0}
+.aitech-play-mode[data-aitech-game="classic"] .classic-scorebar span,.aitech-play-mode[data-aitech-game="classic"] .classic-scorebar small{font-size:12px}
+.aitech-play-mode[data-aitech-game="classic"] .classic-scorebar strong{font-size:14px}
+.aitech-play-mode[data-aitech-game="classic"] .classic-center-status{grid-column:2;grid-row:1}
+.aitech-play-mode[data-aitech-game="classic"] .classic-scorebar>div:not(.classic-center-status)>span{display:none}
+.aitech-play-mode[data-aitech-game="classic"] .classic-stage{flex:1;min-height:0!important;padding:4px 8px!important;border:0!important;border-radius:0!important;overflow:hidden}
+.aitech-play-mode[data-aitech-game="classic"] .classic-controlbar{position:absolute;bottom:28px;left:12px;z-index:3;margin:0;padding:0;background:transparent}
+.aitech-play-mode[data-aitech-game="classic"] .classic-controlbar button{min-height:38px;padding:6px 16px;font-size:14px}
+.aitech-play-mode[data-aitech-game="classic"] .classic-message{flex:0 0 22px;min-height:22px;font-size:12px;line-height:18px;margin:0;padding:2px 12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aitech-play-mode[data-aitech-game="classic"] #deluxe-status{display:none}
+.aitech-play-mode[data-aitech-game="classic"] .table-zone{display:grid;grid-template-columns:minmax(150px,.65fr) minmax(0,1.4fr);grid-template-rows:50px minmax(0,1fr);gap:6px;height:100%;min-height:0}
+.aitech-play-mode[data-aitech-game="classic"] .rival-area{grid-column:1/-1;padding:2px 6px!important;min-height:0}
+.aitech-play-mode[data-aitech-game="classic"] .rival-area>.area-head,.aitech-play-mode[data-aitech-game="classic"] .seat-cards{display:none}
+.aitech-play-mode[data-aitech-game="classic"] .table-seats{height:100%;gap:6px}
+.aitech-play-mode[data-aitech-game="classic"] .table-seat{padding:2px 8px;max-width:none;display:flex;align-items:center;justify-content:center;gap:8px}
+.aitech-play-mode[data-aitech-game="classic"] .table-seat strong,.aitech-play-mode[data-aitech-game="classic"] .table-seat>span{font-size:14px;margin:0}
+.aitech-play-mode[data-aitech-game="classic"] :is(.center-area,.you-area){min-height:0;padding:5px 8px!important;display:flex;flex-direction:column;overflow:hidden}
+.aitech-play-mode[data-aitech-game="classic"] .area-head{flex:none;margin:0 0 4px;gap:4px}
+.aitech-play-mode[data-aitech-game="classic"] .area-head h3,.aitech-play-mode[data-aitech-game="classic"] .area-head span{font-size:12px}
+.aitech-play-mode[data-aitech-game="classic"] .pile{flex:1;min-height:0;gap:4px;flex-wrap:nowrap}
+.aitech-play-mode[data-aitech-game="classic"] .pile-note{font-size:14px;line-height:1.5}
+.aitech-play-mode[data-aitech-game="classic"] .action-row{flex:none;margin:5px 0 32px;gap:6px}
+.aitech-play-mode[data-aitech-game="classic"] .action-row button{min-height:40px;padding:5px 12px;font-size:14px}
+.aitech-play-mode[data-aitech-game="classic"] .you-area .hand{display:grid;grid-template-columns:repeat(var(--hand-columns,7),minmax(0,1fr));grid-template-rows:repeat(var(--hand-rows,2),minmax(0,1fr));gap:6px 4px;align-items:stretch;flex:1;min-height:0!important;padding:5px 3px;overflow:visible!important;max-width:none}
+.aitech-play-mode[data-aitech-game="classic"] .you-area .playing-card{width:100%;height:100%;min-width:0;min-height:0;max-height:none;margin:0;padding:2px;flex:none;border-radius:5px;gap:0;box-shadow:0 2px 0 #b8b5a4}
+.aitech-play-mode[data-aitech-game="classic"] .playing-card .rank{font-size:16px;line-height:1.1}
+.aitech-play-mode[data-aitech-game="classic"] .playing-card .suit{font-size:22px;line-height:1.1}
+.aitech-play-mode[data-aitech-game="classic"] .playing-card.selected{transform:translateY(-4px);box-shadow:0 0 0 2px #f3d68d}
+.aitech-play-mode[data-aitech-game="classic"] .pile .playing-card{height:min(100%,90px);width:50px;min-width:20px;flex:0 1 50px}
+.aitech-play-mode[data-aitech-game="classic"] .dai-effects{position:absolute;top:86px;left:16px;right:16px;z-index:2;pointer-events:none;display:flex;justify-content:center}
+.aitech-play-mode[data-aitech-game="classic"] .dai-special-banner{font-size:12px;padding:3px}
+.aitech-play-mode[data-aitech-game="classic"] .gomoku-wrap{height:100%;min-height:0;display:flex;align-items:center;justify-content:center;gap:12px;padding:0}
+.aitech-play-mode[data-aitech-game="classic"] .gomoku-board{width:min(70vw,calc(var(--aitech-game-room) - 70px));height:min(70vw,calc(var(--aitech-game-room) - 70px));max-width:none;max-height:none;flex:none;aspect-ratio:1;border-width:5px}
+.aitech-play-mode[data-aitech-game="classic"] .gomoku-caption,.aitech-play-mode[data-aitech-game="classic"] .gomoku-note{max-width:220px;font-size:14px}
+
+/* Quiz pages share the viewport entry point; long explanations remain scrollable. */
+.aitech-play-mode:is([data-aitech-game="quiz-raid"],[data-aitech-game="cyber-quiz"]) main{display:grid;grid-template-columns:25% minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:8px;padding-top:6px!important}
+.aitech-play-mode:is([data-aitech-game="quiz-raid"],[data-aitech-game="cyber-quiz"]) main>.arena{width:100%;height:100%;min-height:0;margin:0;grid-column:1;grid-row:1}
+.aitech-play-mode:is([data-aitech-game="quiz-raid"],[data-aitech-game="cyber-quiz"]) main>:is(#setup,#lobby,#play,#result,#summary){grid-column:2;grid-row:1;height:100%;min-height:0;margin:0;padding:10px;overflow:auto;overscroll-behavior:contain}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] main>:is(.intro,.stats){display:none}
+.aitech-play-mode[data-aitech-game="quiz-raid"] #scene{height:100%;min-height:0}
+.aitech-play-mode[data-aitech-game="quiz-raid"] :is(.answer-players,.answers){grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] #question{font-size:16px;line-height:1.5;margin:8px 0}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .answer-player h3{font-size:14px;margin:6px 0}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .answers button{min-height:44px;font-size:14px;padding:6px}
+.aitech-play-mode[data-aitech-game="cyber-quiz"] .questions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media(pointer:fine) and (min-width:1100px){.aitech-play-mode[data-aitech-game="quick-hop"] .touch,.aitech-play-mode[data-aitech-game="startrail"] .touch-controls{display:none}.aitech-play-mode[data-aitech-game="lantern-duo"] .controls{opacity:.75}}
+@media(max-width:740px) and (orientation:landscape){#aitech-play-title{max-width:130px}#aitech-game-toolbar button,#aitech-game-toolbar a{padding-inline:8px}.aitech-play-mode .hud{gap:8px!important}.aitech-play-mode .hud .camp{font-size:0}.aitech-play-mode[data-aitech-game="lantern-duo"] .controls-center{min-width:80px}.aitech-play-mode[data-aitech-game="lantern-duo"] #recallButton{max-width:100px}.aitech-play-mode[data-aitech-game="lantern-duo"] #recallButton kbd{display:none}}
+@media(max-height:350px) and (orientation:landscape){html[data-aitech-game]{--aitech-toolbar-height:46px}.aitech-play-mode[data-aitech-game="quick-hop"] .panel .best{display:none}.aitech-play-mode[data-aitech-game="lantern-duo"] .home-description{display:none}.aitech-play-mode[data-aitech-game="lantern-duo"] .home-secondary{margin-top:4px}.aitech-play-mode[data-aitech-game="lantern-duo"] .home-secondary button{min-height:28px}.aitech-play-mode[data-aitech-game="babanuki"] .table{grid-template-rows:40px 38px minmax(0,1fr)}.aitech-play-mode[data-aitech-game="babanuki"] .table-center #announcement{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.aitech-play-mode[data-aitech-game="classic"] .table-zone{grid-template-rows:36px minmax(0,1fr)}}
