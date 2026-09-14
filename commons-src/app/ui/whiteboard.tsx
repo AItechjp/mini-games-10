@@ -47,6 +47,10 @@ export default function Canvas({tool,actions:a}:{tool:Tool;actions:Actions}){
   const [clearError,setClearError]=useState('');
   const [expanded,setExpanded]=useState(false);
   const [zoom,setZoom]=useState(1);
+  const [pngBackground,setPngBackground]=useState('white');
+  const [pngScale,setPngScale]=useState(1);
+  const [imageBusy,setImageBusy]=useState(false);
+  const imageBusyRef=useRef(false);
   const [redo,setRedo]=useState<Draft|null>(null);
   const svg=useRef<SVGSVGElement>(null),panel=useRef<HTMLDivElement>(null),viewport=useRef<HTMLDivElement>(null);
   const gesture=useRef<Gesture|null>(null),frame=useRef<number|undefined>(undefined);
@@ -267,17 +271,56 @@ export default function Canvas({tool,actions:a}:{tool:Tool;actions:Actions}){
     clone.querySelectorAll('foreignObject div').forEach(d=>{d.setAttribute('xmlns','http://www.w3.org/1999/xhtml');d.setAttribute('style',`${d.getAttribute('style')??''};padding:13px;font:16px sans-serif;white-space:pre-wrap;height:100%;overflow:hidden;color:#283756;`)});
     download(`commons-${tool.id}.svg`,new XMLSerializer().serializeToString(clone),'image/svg+xml');a.notify('キャンバスを書き出しました');
   }
+  async function pngBlob(){
+    if(!svg.current)throw new Error('キャンバスがありません');
+    const clone=svg.current.cloneNode(true) as SVGSVGElement;
+    clone.setAttribute('xmlns','http://www.w3.org/2000/svg');clone.setAttribute('width','1200');clone.setAttribute('height','800');
+    clone.removeAttribute('style');clone.removeAttribute('class');clone.querySelectorAll('[data-canvas-ui]').forEach(n=>n.remove());
+    // Use SVG text for sticky notes: foreignObject can taint a canvas in browsers.
+    for(const foreign of clone.querySelectorAll('foreignObject')){
+      const x=Number(foreign.getAttribute('x'))||0,y=Number(foreign.getAttribute('y'))||0;
+      const group=document.createElementNS('http://www.w3.org/2000/svg','g');
+      const rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+      for(const [key,value]of Object.entries({x,y,width:195,height:140,fill:(foreign.firstElementChild as HTMLElement)?.style.background||'#fff1b8'}))rect.setAttribute(key,String(value));
+      group.appendChild(rect);const layout=canvasTextLayout(foreign.textContent??'',16,169);
+      layout.lines.slice(0,5).forEach((line,index)=>{const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',String(x+13));t.setAttribute('y',String(y+29+index*22));t.setAttribute('font-size','16');t.setAttribute('font-family','sans-serif');t.setAttribute('fill','#283756');t.textContent=line;group.appendChild(t);});foreign.replaceWith(group);
+    }
+    const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(clone)],{type:'image/svg+xml'}));
+    try{
+      const image=new Image();await new Promise<void>((resolve,reject)=>{image.onload=()=>resolve();image.onerror=()=>reject(new Error('画像を生成できませんでした'));image.src=url;});
+      const canvas=document.createElement('canvas');canvas.width=1200*pngScale;canvas.height=800*pngScale;
+      const ctx=canvas.getContext('2d');if(!ctx)throw new Error('画像の出力に対応していません');
+      if(pngBackground==='white'){ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);}ctx.drawImage(image,0,0,canvas.width,canvas.height);
+      return await new Promise<Blob>((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(new Error('画像を保存できませんでした')),'image/png'));
+    }finally{URL.revokeObjectURL(url);}
+  }
+  async function exportPNG(copy=false){
+    if(imageBusyRef.current||pending.length||drawing||moving)return;
+    imageBusyRef.current=true;setImageBusy(true);
+    try{
+      const result=pngBlob();void result.catch(()=>{});
+      if(copy){
+        if(!navigator.clipboard?.write||typeof ClipboardItem==='undefined'){await result;a.notify('画像コピーに対応していません。PNG保存を利用してください。');return;}
+        await navigator.clipboard.write([new ClipboardItem({'image/png':result})]);a.notify('PNG画像をコピーしました');
+      }else{const blob=await result,url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=`commons-whiteboard-${Date.now()}.png`;link.click();setTimeout(()=>URL.revokeObjectURL(url),60000);a.notify('PNG画像の保存を開始しました');}
+    }catch{a.notify('画像を出力できませんでした。描画は残っています。PNG保存またはSVG書き出しを再試行してください。');}
+    finally{imageBusyRef.current=false;setImageBusy(false);}
+  }
   const selectedItem=items.find(i=>i.id===selected),last=items.filter(i=>i.author===a.data.me).at(-1);
   const clearChanged=clearDialog&&clearDialog.revision!==a.data.room.canvas_revision;
   const failedDrafts=pending.filter(d=>failed.includes(d.id)||d.epoch!==epoch);
   const retryable=failedDrafts.filter(d=>d.epoch===epoch);
   const oldDrafts=failedDrafts.filter(d=>d.epoch!==epoch);
-  return <div ref={panel} className={`panel canvas-panel ${expanded?'canvas-expanded':''}`}>
+  return <div data-quality-app="whiteboard" ref={panel} className={`panel canvas-panel ${expanded?'canvas-expanded':''}`}>
     <div className="canvas-toolbar" role="toolbar" aria-label="描画ツール">
       {([['select',MousePointer2,'選択'],['pen',PenTool,'ペン'],['text',Type,'文字'],['pan',Hand,'移動'],['sticky',StickyNote,'付箋'],['rect',Square,'四角'],['line',Minus,'直線']] as const).map(([m,I,label])=><Button key={m} variant={mode===m?'default':'ghost'} size="sm" aria-pressed={mode===m} onClick={()=>{setMode(m);setSelected(null);if(m==='text')openText('text',visibleCenter())}}><I size={15}/>{label}</Button>)}
       <div className="row colors" style={{gap:10}}>{['#3455ee','#24354e','#e56261','#1a9b83','#bc67cd','#e0a434'].map((c,i)=><button key={c} className={`color-swatch ${color===c?'selected':''}`} style={{background:c}} aria-label={`ペンの色：${['青','黒','赤','緑','紫','黄'][i]}`} aria-pressed={color===c} onClick={()=>setColor(c)}/>)}<span className="canvas-width-label">太さ {width}</span><Slider style={{width:90}} aria-label="ペンの太さ" min={1} max={14} step={1} value={[width]} onValueChange={v=>setWidth(v[0])}/></div>
     </div>
     <div className="canvas-toolbar canvas-actions">
+      <label>PNG背景 <select aria-label="PNGの背景" value={pngBackground} disabled={imageBusy} onChange={e=>setPngBackground(e.target.value)}><option value="white">白</option><option value="transparent">透明</option></select></label>
+      <label>解像度 <select aria-label="PNGの解像度" value={pngScale} disabled={imageBusy} onChange={e=>setPngScale(Number(e.target.value))}><option value={1}>標準 1200×800</option><option value={2}>2倍 2400×1600</option></select></label>
+      <Button variant="outline" size="sm" disabled={imageBusy||!!pending.length||!!drawing||!!moving} onClick={()=>void exportPNG()}>{imageBusy?'画像を生成中…':'PNG保存'}</Button>
+      <Button variant="ghost" size="sm" disabled={imageBusy||!!pending.length||!!drawing||!!moving} onClick={()=>void exportPNG(true)}>画像をコピー</Button>
       <div className="row canvas-zoom" role="group" aria-label="キャンバスの拡大率"><Button variant="ghost" size="sm" aria-label="縮小" disabled={zoom<=1||!!drawing} onClick={()=>changeZoom(zoom-.5)}><ZoomOut size={17}/></Button><button className="canvas-fit" onClick={()=>changeZoom(1)} title="全体を表示" aria-label={`拡大率${zoom*100}%。押すと全体を表示`}>{zoom*100}%</button><Button variant="ghost" size="sm" aria-label="拡大" disabled={zoom>=4||!!drawing} onClick={()=>changeZoom(zoom+.5)}><ZoomIn size={17}/></Button></div>
       <span className="small muted grow">{items.length}件</span>
       <div className="row wrap" style={{gap:3}}>

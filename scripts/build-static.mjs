@@ -1,5 +1,6 @@
 import { readdir, readFile, writeFile, mkdir, copyFile, rm, stat } from 'node:fs/promises';
 import { addFullscreen } from './fullscreen-html.mjs';
+import { addQuality } from './quality-html.mjs';
 import { resolve, join, extname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { transform } from 'esbuild';
@@ -44,7 +45,7 @@ async function copyPublic(dir) {
     const target = join(output, relative(root, src));
     await mkdir(resolve(target, '..'), { recursive: true });
     const extension = extname(item.name);
-    if (extension === '.html') await writeFile(target, await compileHtml(addFullscreen(await readFile(src, 'utf8'), src, root)));
+    if (extension === '.html') await writeFile(target, await compileHtml(addQuality(addFullscreen(await readFile(src, 'utf8'), src, root), src, root)));
     // Unity loaders serialize decompression workers with Function.toString().
     // Re-minifying them injects outer-scope helpers that do not exist in the worker.
     else if (item.name.endsWith('.loader.js')) await copyFile(src, target);

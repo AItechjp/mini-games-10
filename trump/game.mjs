@@ -7,7 +7,7 @@ let state, paused = false, timer, selected = -1, conflict = false;
 try { const saved=JSON.parse(localStorage.getItem(key) || 'null'); if(validState(saved,game)){state=saved;paused=!saved.over;} }
 catch { $('save-status').textContent='保存した対局を読み込めませんでした。新しい対局で遊べます。'; }
 state ||= isMemory ? newMemory() : newSpeed();
-const blocked = () => paused || document.hidden || $('rules').open || $('confirm').open;
+const blocked = () => paused || document.hidden || $('rules').open || $('confirm').open || $('aitech-assist-dialog')?.open;
 function save() {
   if(conflict)return;
   try { localStorage.setItem(key,JSON.stringify(state)); $('save-status').textContent='この端末に対局を保存しました。'; }
@@ -116,5 +116,6 @@ $('rules-button').addEventListener('click',()=>{$('rules').showModal();clearTime
 $('close-rules').addEventListener('click',()=>$('rules').close());
 for(const id of ['confirm','rules'])$(id).addEventListener('close',()=>{render();schedule();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&!state.over){paused=true;clearTimeout(timer);}render();schedule();});
+document.addEventListener('aitech:assist',()=>{clearTimeout(timer);render();schedule();});
 window.addEventListener('storage',event=>{if(event.key===key){conflict=true;paused=true;clearTimeout(timer);$('save-status').textContent='別のタブで対局が更新されました。このタブの進行は保存しません。読み込み直すと最新の対局へ戻れます。';render();}});
 render();schedule();

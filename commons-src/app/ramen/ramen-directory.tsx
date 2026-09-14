@@ -22,7 +22,7 @@ function ShopCard({shop,status,today}:{shop:RamenShop;status:ShopStatus;today:st
   const map='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(shop.name+' '+shop.address);
   const soon=status.state==='open'&&(status.minutesLeft??999)<=30;
   const calendarException=shop.exceptions&&Object.hasOwn(shop.exceptions,today);
-  return <article className={`${s.card} ${status.state==='open'?s.cardOpen:''}`}>
+  return <article data-quality-result className={`${s.card} ${status.state==='open'?s.cardOpen:''}`}>
     <div className={s.cardTop}><span className={s.city}><MapPin size={14}/>{shop.city}</span><span className={`${s.badge} ${s[status.state.replace('-','')]}`}>{labels[status.state]}</span></div>
     <h2>{shop.name}</h2>
     <p className={s.kind}>{shop.kind}</p>

@@ -48,6 +48,27 @@
   let activeReadinessCancel = null;
   const downloadUrls = new Set();
   const webMcpLifecycle = new AbortController();
+  let captureCountdown=null,captureDeadline=0;
+  function cancelCountdown(message=false){
+    clearInterval(captureCountdown);captureCountdown=null;captureDeadline=0;
+    $('capture-countdown').hidden=true;$('cancel-countdown').hidden=true;
+    if(message)showStatus('タイマー撮影を取り消しました。');
+  }
+  function requestCapture(){
+    if(!ready()||state.capturing||captureCountdown)return;
+    const seconds=Number($('capture-delay').value);
+    if(![3,10].includes(seconds)){void capturePhoto();return;}
+    captureDeadline=performance.now()+seconds*1000;
+    $('capture-countdown').hidden=false;$('cancel-countdown').hidden=false;
+    $('capture-countdown').textContent=String(seconds);
+    showStatus(seconds+'秒後に撮影します。「取り消す」で中止できます。');
+    captureCountdown=setInterval(()=>{
+      if(!ready()){cancelCountdown(true);return;}
+      const left=Math.ceil((captureDeadline-performance.now())/1000);
+      if(left<=0){cancelCountdown();void capturePhoto();}
+      else $('capture-countdown').textContent=String(left);
+    },100);
+  }
 
   function stopTracks(stream) {
     if (stream) stream.getTracks().forEach((track) => track.stop());
@@ -397,7 +418,18 @@
 
   ui.startButton.addEventListener('click', () => { void startCamera(); });
   ui.stopButton.addEventListener('click', () => stopCamera());
-  ui.captureButton.addEventListener('click', () => { void capturePhoto(); });
+  ui.captureButton.addEventListener('click', requestCapture);
+  $('cancel-countdown').addEventListener('click',()=>cancelCountdown(true));
+  $('capture-delay').addEventListener('change',()=>cancelCountdown());
+  $('camera-grid').addEventListener('change',()=>{ui.finder.classList.toggle('show-thirds',$('camera-grid').checked);});
+  ui.stopButton.addEventListener('click',()=>cancelCountdown());
+  ui.switchButton.addEventListener('click',()=>cancelCountdown());
+  document.addEventListener('aitech:assist',e=>{if(e.detail.open)cancelCountdown();});
+  document.addEventListener('keydown',e=>{
+    if(e.code!=='Space'||e.repeat||e.ctrlKey||e.metaKey||e.altKey||e.isComposing||document.querySelector('dialog[open]'))return;
+    if(e.target.closest('input,textarea,select,button,a,[contenteditable=true]'))return;
+    e.preventDefault();requestCapture();
+  });
   ui.switchButton.addEventListener('click', () => { void startCamera(state.facing === 'user' ? 'environment' : 'user'); });
   ui.lastButton.addEventListener('click', openPhoto);
   ui.download.addEventListener('click', () => {
@@ -427,11 +459,13 @@
   ui.video.addEventListener('resize', updateControls);
   ui.video.addEventListener('loadeddata', updateControls);
   document.addEventListener('visibilitychange', () => {
+    if(document.hidden)cancelCountdown();
     if (document.hidden && (state.stream || state.phase === 'starting')) {
       stopCamera('ページを離れたため停止しました。再開できます。');
     }
   });
   window.addEventListener('pagehide', (event) => {
+    cancelCountdown();
     stopCamera();
     clearTimeout(statusTimer);
     clearTimeout(flashTimer);

@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import {writeHelp,guides} from './help.mjs';
 import {applySaunaReviews} from './sauna-reviews.mjs';
 import {resolve,join} from 'node:path';
-import {mkdir,readFile,writeFile,cp,rm,realpath} from 'node:fs/promises';
+import {mkdir,readFile,writeFile,cp,rm,realpath,readdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 const source=resolve(fileURLToPath(new URL('..',import.meta.url)));
 const root=resolve(source,'..');
@@ -14,10 +14,16 @@ await applySaunaReviews(source);
 // Preserve independent Commons sites (for example hotels and rentals).
 // Only the routes and files generated below belong to this application.
 await writeFile(input,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#253654"><meta name="robots" content="noindex"><title>コモンズ | AITECH</title><link rel="canonical" href="https://aitechd.com/commons/"><link rel="icon" href="/commons/favicon.svg"></head><body><div id="root"><main style="max-width:640px;margin:15vh auto;padding:24px;font-family:system-ui;line-height:1.8"><h1>コモンズを開いています</h1><p>画面が切り替わらない場合は、通信状態を確認してください。</p><a href="/commons/help/">使い方・読み込めないときは</a><noscript><p>このサービスの操作にはJavaScriptが必要です。使い方ページはJavaScriptなしで読めます。</p></noscript></main></div><script type="module" src="/main.tsx"></script></body></html>');
-await rm(join(output,'assets'),{recursive:true,force:true});
+const existingAssets=await readdir(join(output,'assets')).catch(()=>[]);
+const lastAssets=await readFile(join(source,'aitech/assets-current.json'),'utf8').then(JSON.parse).catch(()=>existingAssets);
 await rm(join(output,'camera-auth.js'),{force:true});
 await rm(join(output,'auth.css'),{force:true});
-await build({configFile:false,root:join(source,'aitech'),base:'/commons/',plugins:[react()],resolve:{alias:{'@':source}},css:{postcss:source},publicDir:false,build:{outDir:output,emptyOutDir:false,assetsInlineLimit:100000,rollupOptions:{input:{index:input},output:{entryFileNames:'assets/[name]-[hash].js'}}}});
+const clientBuild=await build({configFile:false,root:join(source,'aitech'),base:'/commons/',plugins:[react()],resolve:{alias:{'@':source}},css:{postcss:source},publicDir:false,build:{outDir:output,emptyOutDir:false,assetsInlineLimit:100000,rollupOptions:{input:{index:input},output:{entryFileNames:'assets/[name]-[hash].js'}}}});
+const outputs=Array.isArray(clientBuild)?clientBuild:[clientBuild];
+const currentAssets=outputs.flatMap(result=>result.output.map(file=>file.fileName)).filter(name=>name.startsWith('assets/')).map(name=>name.slice(7));
+const keepAssets=new Set([...lastAssets,...currentAssets]);
+for(const name of await readdir(join(output,'assets')))if(!keepAssets.has(name))await rm(join(output,'assets',name),{force:true});
+await writeFile(join(source,'aitech/assets-current.json'),JSON.stringify(currentAssets,null,2));
 const html=await readFile(join(output,'index.html'),'utf8');
 await writeHelp(output);
 const paths=['study','tools/whiteboard','tools/chat','r','weather','bitcoin','onion','ramen','openings/restaurants','openings/ramen','openings/sauna','sauna'];

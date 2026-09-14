@@ -116,3 +116,22 @@ Next priority: verify this release on the public URLs, then rotate through camer
 permission recovery, whiteboard/chat reconnect, complete board matches and mobile
 action gameplay. Check freshness/source claims separately before changing directory data.
 Use successful current app reads before extending a future task to another connector.
+
+## 2026-09-14 — 20 improvements per current app
+
+33 catalog apps: 15 shared display/help/connectivity changes plus five actions per
+app type, documented individually in `quality/release.json`. This is 660
+applications of improvements, using shared implementations, not 660 distinct
+new game features. No graphics or dataset-completeness claim is implied.
+
+Added manual visible-state records with notes/copy/text export, comparison
+shortlists with selection timestamps and source links, whiteboard PNG export
+(background, 1x/2x, clipboard, failure handling), and camera timers/grid/keyboard.
+Board/card CPU timers honor the help dialog. Action games ignore settings typing.
+Commons builds retain the previous generation of hashed assets so already-open
+tabs can still load their lazy modules during a deployment.
+
+Local typecheck, commercial/recovery, board/Memory/Speed rule gates, all route
+and distribution audits passed. The Pages workflow additionally verifies the
+new real UI flows before publication; inspect its matching run before claiming
+public completion. AETHER DUEL is published separately through its existing Site.

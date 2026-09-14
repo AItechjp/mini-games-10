@@ -81,6 +81,7 @@ window.addEventListener('keydown',e=>{
 window.addEventListener('keyup',e=>{ keys.delete(e.code); });
 window.addEventListener('blur',()=>{ clearInput(); if(game.state==='playing'&&!paused) togglePause(); });
 document.addEventListener('visibilitychange',()=>{ if(document.hidden){clearInput(); if(game.state==='playing'&&!paused) togglePause();} });
+document.addEventListener('aitech:assist',e=>{if(e.detail.open&&game.state==='playing'&&!paused)togglePause();});
 document.querySelectorAll('[data-action]').forEach(button=>{
   button.addEventListener('pointerdown',e=>{
     e.preventDefault(); if(!ready||paused||game.state!=='playing') return;

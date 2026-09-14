@@ -91,6 +91,7 @@ jobs:
           node scripts/build-static.mjs
           node tests/private-distribution.mjs
           node tests/browser-release.mjs
+          node tests/quality-release.mjs
           node tests/trump-rules.mjs
       - name: Smoke test games and learning tools locally
         shell: bash
@@ -109,6 +110,7 @@ jobs:
           curl -fsS http://127.0.0.1:4173/yobi-quiz.html | grep -q 'yobi-past.js'
           curl -fsS http://127.0.0.1:4173/game23.html | grep -q 'game23-v3-loader.js'
           curl -fsS http://127.0.0.1:4173/fps.html | grep -q 'fps-game.js'
+          node tests/quality-browser.mjs
           MEGA_BASE_URL=http://127.0.0.1:4173/ MEGA_FULL=1 node tests/mega-smoke.mjs
           YOBI_BASE_URL=http://127.0.0.1:4173/ node tests/yobi-past-smoke.mjs
           GAME23_BASE_URL=http://127.0.0.1:4173/ node tests/game23-smoke.mjs
