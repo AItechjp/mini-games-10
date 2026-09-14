@@ -1,3 +1,4 @@
+import {layoutJobOverview} from './overview-layout.js?v=20260914-whole-map';
 const $=id=>document.getElementById(id);
 const jobs=document.body.dataset.mode==='jobs';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -54,19 +55,6 @@ function packPanels(groups){
  for(const {g,x,y}of best?.placements??[])for(const n of g.nodes){n.x+=x;n.y+=y;graphNodes.push(n)}
  return best?.w??700;
 }
-function layoutJobSheet(items){
- const groups=new Map();
- for(const r of items){if(!groups.has(r.ministry))groups.set(r.ministry,[]);groups.get(r.ministry).push(r)}
- const layouts=[...groups].map(([name,rows])=>{
-  const cols=Math.max(1,Math.ceil(Math.sqrt(rows.length*.27))),w=cols*570+40,h=150+Math.ceil(rows.length/cols)*92;
-  const group={w,h,nodes:[{id:'ministry:'+name,name,type:'ministry',x:(w-270)/2,y:26,w:270,h:68}]};
-  rows.forEach((r,i)=>{const x=20+(i%cols)*570,y=132+Math.floor(i/cols)*92,did='destination-record:'+r.id;
-   group.nodes.push({...r,type:'person',x,y,w:230,h:68},{id:did,name:r.destination,destinationKey:r.destinationId??('destination:'+r.destination),type:'destination',x:x+270,y,w:270,h:68});
-   graphEdges.push({source:'ministry:'+name,target:r.id,type:'reemployment'},{source:r.id,target:did,type:'reemployment'});
-  });return group;
- });
- packPanels(layouts);
-}
 function layoutAgencySheet(){
  const visible=new Map(graphNodes.map(n=>[n.id,n])),parent=new Map();
  for(const e of graphEdges)if(e.type!=='supervision'||e.primary===true)if(!parent.has(e.target))parent.set(e.target,e.source);
@@ -88,7 +76,7 @@ function renderGraph(){
  const sheet=PAGE_SIZE===ALL_ITEMS;document.querySelector('.workspace').classList.toggle('single-sheet',sheet);
  graphNodes=[];graphEdges=[];panels=[];
  const pageItems=filtered.slice(page*PAGE_SIZE,(page+1)*PAGE_SIZE);
- if(jobs&&sheet){layoutJobSheet(pageItems)}else if(jobs){
+ if(jobs){
  const left=[...new Set(pageItems.map(r=>r.ministry))];
  const destKey=r=>r.destinationId??('destination:'+r.destination);const right=[...new Map(pageItems.map(r=>[destKey(r),{id:destKey(r),name:r.destination}])).values()];
  const span=Math.max(pageItems.length,left.length,right.length)*96;
@@ -109,6 +97,7 @@ function renderGraph(){
  for(const [d,col]of cols)col.forEach((n,i)=>graphNodes.push({...n,x:30+d*340,y:50+(i+.5)*totalH/col.length-34,w:n.type==='iaa'?265:230,h:68,context:!pageItems.some(p=>p.id===n.id)}));
  }
  if(sheet&&!jobs)layoutAgencySheet();
+ if(sheet&&jobs){const box=$('graph').getBoundingClientRect();panels=layoutJobOverview(graphNodes,graphEdges,Math.max(.65,Math.min(2.4,box.width/(box.height-100))))}
  const narrow=!sheet&&$('graph').getBoundingClientRect().width<600;
  if(narrow){const byId=new Map(graphNodes.map(n=>[n.id,n])),visited=new Set(),ordered=[];const visit=id=>{if(visited.has(id)||!byId.has(id))return;visited.add(id);ordered.push(byId.get(id));for(const edge of graphEdges)if(edge.source===id)visit(edge.target)};graphNodes.filter(n=>!graphEdges.some(e=>e.target===n.id)).forEach(n=>visit(n.id));graphNodes.forEach(n=>visit(n.id));graphNodes=ordered;graphNodes.forEach((n,i)=>{n.x=24+(jobs&&n.type==='person'?20:0);n.y=40+i*100;n.w=270;});}
  const maxPage=Math.max(1,Math.ceil(filtered.length/PAGE_SIZE));
@@ -119,10 +108,10 @@ function renderGraph(){
  if(!filtered.length)$('graph-empty').innerHTML=`<div><h2>該当する${jobs?'記録':'機関'}がありません</h2><p>${jobs&&k==='career'?'収録した公表資料には採用区分がなく、キャリア採用を確認できる記録は収録していません。':'検索語や対象を変更してください。'}</p></div>`;
  bounds={w:Math.max(narrow?320:700,...graphNodes.map(n=>n.x+n.w+30),...panels.map(p=>p.x+p.w+30)),h:Math.max(500,...graphNodes.map(n=>n.y+n.h+80),...panels.map(p=>p.y+p.h+30))};
  const byId=new Map(graphNodes.map(n=>[n.id,n]));
- const paths=graphEdges.map(e=>{const a=byId.get(e.source),b=byId.get(e.target);if(!a||!b)return '';const x=a.x+a.w,y=a.y+a.h/2,endX=b.x,endY=b.y+b.h/2,mx=(x+endX)/2;const sheetPath=jobs&&a.type==='person'?`M${x},${y} L${endX-7},${endY}`:`M${a.x+a.w/2},${a.y+a.h} C${a.x+a.w/2},${a.y+a.h+28} ${b.x+b.w/2},${b.y-28} ${b.x+b.w/2},${b.y-7}`;const path=sheet?sheetPath:narrow?`M${a.x},${a.y+a.h/2} C6,${a.y+a.h/2} 6,${b.y+b.h/2} ${b.x-7},${b.y+b.h/2}`:`M${x},${y} C${mx},${y} ${mx},${endY} ${endX-7},${endY}`;return `<path class="edge ${esc(e.type)}" d="${path}" marker-end="url(#arrow)"><title>${esc(a.name)} → ${esc(b.name)}（${e.type==='supervision'?'所管':e.type==='reemployment'?'再就職の公表記録':'所属'}）</title></path>`}).join('');
+ const paths=graphEdges.map(e=>{const a=byId.get(e.source),b=byId.get(e.target);if(!a||!b)return '';const x=a.x+a.w,y=a.y+a.h/2,endX=b.x,endY=b.y+b.h/2,mx=(x+endX)/2;const sheetPath=jobs?`M${x},${y} C${mx},${y} ${mx},${endY} ${endX-7},${endY}`:`M${a.x+a.w/2},${a.y+a.h} C${a.x+a.w/2},${a.y+a.h+28} ${b.x+b.w/2},${b.y-28} ${b.x+b.w/2},${b.y-7}`;const path=sheet?sheetPath:narrow?`M${a.x},${a.y+a.h/2} C6,${a.y+a.h/2} 6,${b.y+b.h/2} ${b.x-7},${b.y+b.h/2}`:`M${x},${y} C${mx},${y} ${mx},${endY} ${endX-7},${endY}`;return `<path data-source="${esc(e.source)}" data-target="${esc(e.target)}" class="edge ${esc(e.type)}" d="${path}" marker-end="url(#arrow)"><title>${esc(a.name)} → ${esc(b.name)}（${e.type==='supervision'?'所管':e.type==='reemployment'?'再就職の公表記録':'所属'}）</title></path>`}).join('');
  const ns=graphNodes.map(n=>{const color=n.type==='iaa'||n.type==='destination'?'#204b48':n.type==='person'?'#394137':n.type==='cabinet'?'#354957':'#1e3d51';const stroke=n.type==='iaa'||n.type==='destination'?'#538b77':n.type==='person'?'#938663':'#587585';const chars=n.type==='person'?14:Math.floor((n.w-30)/13);const pieces=wrap(n.name,chars);return `<g class="node${selection?.id===n.id?' selected':''}" tabindex="0" role="button" aria-label="${esc(n.name)}の詳細" data-id="${esc(n.id)}" data-type="${esc(n.type)}" transform="translate(${n.x},${n.y})"><rect width="${n.w}" height="${n.h}" rx="7" fill="${color}" stroke="${stroke}"/><text x="14" y="${pieces.length>1?23:28}">${pieces.map((t,i)=>`<tspan x="14" dy="${i?18:0}">${esc(t)}</tspan>`).join('')}</text>${pieces.length<2?`<text x="14" y="50" class="node-meta">${esc(n.type==='person'?short(n.formerTitle,15):typeLabel[n.type]??n.type)}${n.context?' · 上位機関':''}</text>`:''}<title>${esc(n.name)}${n.formerTitle?' / '+esc(n.formerTitle):''}</title></g>`}).join('');
- $('world').innerHTML=panels.map(p=>`<rect class="ministry-panel" x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" rx="16"/>`).join('')+paths+ns;fit(!sheet);
- $('legend').innerHTML=jobs?'<span><i class="gold"></i> 公表された再就職のつながり</span><span>府省 → 人物 → 再就職先（同じ就職先も記録ごとに配置）</span><span class="hint">クリックで詳細 · ドラッグで移動 · 2本指で拡大</span>':'<span><i></i> 組織上の関係（設置・所轄等）</span><span><i class="dashed"></i> 独立行政法人の所管</span><span class="hint">全件を1枚に表示 · 拡大して名前を確認</span>';
+ $('world').innerHTML=panels.map(p=>`<g class="ministry-panel"><rect x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" rx="16"/>${p.name?`<text x="${p.x+24}" y="${p.y+(p.titleY??60)}" font-size="${p.titleSize??60}">${esc(p.name)}</text>`:''}</g>`).join('')+paths+ns;fit(!sheet);highlightSelection();
+ $('legend').innerHTML=jobs?'<span><i class="gold"></i> 公表された再就職のつながり</span><span>府省 → 人物 → 再就職先</span><span class="hint">クリックで詳細 · ドラッグで移動 · 2本指で拡大</span>':'<span><i></i> 組織上の関係（設置・所轄等）</span><span><i class="dashed"></i> 独立行政法人の所管</span><span class="hint">全件を1枚に表示 · 拡大して名前を確認</span>';
 }
 function short(v,n){const a=Array.from(v??'');return a.length>n?a.slice(0,n-1).join('')+'…':a.join('')}
 function wrap(v,n){const a=Array.from(v??'');if(a.length<=n)return[v];return[a.slice(0,n).join(''),short(a.slice(n).join(''),n)]}
@@ -138,20 +127,13 @@ function showSelection(id){
  if(!n)return;selection=n;
  if(!jobs&&(['cabinet','ministry','secretariat'].includes(n.type)||n.name==='内閣官房')&&$('kind').value==='overview'){$('ministry').value=n.id;$('kind').value='all';page=0;update();selection=n}
  if(!graphNodes.some(g=>g.id===id)){let index=filtered.findIndex(r=>r.id===id);if(index<0){$('search').value='';$('ministry').value='';$('kind').value='all';update();index=filtered.findIndex(r=>r.id===id)}if(index>=0){page=Math.floor(index/PAGE_SIZE);renderGraph()}selection=n;}
- for(const el of $('world').querySelectorAll('.node'))el.classList.toggle('selected',el.dataset.id===id);
- renderDetail();focusSelectedNode();
-}
-function focusSelectedNode(){
- const n=graphNodes.find(n=>n.id===selection?.id);if(!n)return;
- const box=$('graph').getBoundingClientRect();
- if(!box.width||!box.height)return;
- const k=Math.min(1.15,(box.width-48)/n.w);
- transform={k,x:box.width/2-(n.x+n.w/2)*k,y:box.height/2-(n.y+n.h/2)*k};applyTransform();
+ highlightSelection();focusSelection();
+ renderDetail();
 }
 function renderDetail(){
  const n=selection;
  if(!n){const iaa=nodes.filter(n=>n.type==='iaa').length;const companies=new Set(records.map(r=>r.destination)).size;
- $('detail').innerHTML=`<div class="detail-kicker">${jobs?'公表記録をたどる':'関係性をたどる'}</div><h2>${jobs?'どこから、どこへ。':'国の機関を、一枚の図に。'}</h2><div class="summary-stats"><div><strong>${jobs?records.length.toLocaleString():nodes.filter(n=>n.type!=='role').length}</strong><span>${jobs?'公表記録':'収録機関'}</span></div><div><strong>${jobs?companies.toLocaleString():iaa}</strong><span>${jobs?'再就職先（名称で集計）':'独立行政法人'}</span></div></div><p>${jobs?'人物を選ぶと、出身府省・離職時の役職・再就職先の役職を確認できます。府省や役職名で絞り込んでください。':'府省を選ぶと、その機関と所管先を展開します。独立行政法人を選ぶと、複数府省による所管も確認できます。'}</p><h3>${jobs?'キャリア官僚を調べるには':'読み方'}</h3><p>${jobs?'採用区分は原資料にありません。「幹部職経験」は旧役職名に次官・長官・局長・審議官等がある記録の抽出であり、キャリア採用の証明ではありません。':'実線は設置・所轄・管理などの組織上の関係、破線は法人の所管です。独立性のある機関もあり、実線が必ずしも指揮命令関係を意味するわけではありません。全件を1枚に配置しています。検索や府省で絞り込んでも、上位機関とのつながりを残します。'}</p><h3>全件を確認する</h3><p>「一覧」は絞り込み結果をすべて表示します。「CSV」は現在の結果と出典を保存します。</p>`;return}
+ $('detail').innerHTML=`<div class="detail-kicker">${jobs?'公表記録をたどる':'関係性をたどる'}</div><h2>${jobs?'どこから、どこへ。':'国の機関を、一枚の図に。'}</h2><div class="summary-stats"><div><strong>${jobs?records.length.toLocaleString():nodes.filter(n=>n.type!=='role').length}</strong><span>${jobs?'公表記録':'収録機関'}</span></div><div><strong>${jobs?companies.toLocaleString():iaa}</strong><span>${jobs?'再就職先（名称で集計）':'独立行政法人'}</span></div></div><p>${jobs?'全公表記録を府省ごとにまとめ、1枚に表示しています。拡大するか、検索・一覧から人物を選ぶと、役職や再就職先を確認できます。':'最初から収録機関をすべて表示しています。府省で絞り込むと、その機関と所管先を確認できます。独立行政法人を選ぶと、複数府省による所管も確認できます。'}</p><h3>${jobs?'キャリア官僚を調べるには':'読み方'}</h3><p>${jobs?'採用区分は原資料にありません。「幹部職経験」は旧役職名に次官・長官・局長・審議官等がある記録の抽出であり、キャリア採用の証明ではありません。':'実線は設置・所轄・管理などの組織上の関係、破線は法人の所管です。独立性のある機関もあり、実線が必ずしも指揮命令関係を意味するわけではありません。全件を1枚に配置しています。検索や府省で絞り込んでも、上位機関とのつながりを残します。'}</p><h3>全件を確認する</h3><p>「一覧」は絞り込み結果をすべて表示します。「CSV」は現在の結果と出典を保存します。</p>`;return}
  if(jobs){
  if(n.type==='ministry'||n.type==='destination'){const rr=records.filter(r=>n.type==='ministry'?r.ministry===n.name:(r.destinationId??('destination:'+r.destination))===n.destinationKey);$('detail').innerHTML=`<div class="detail-kicker">${typeLabel[n.type]}</div><h2>${esc(n.name)}</h2><p>公表記録 ${rr.length} 件</p><button class="related" data-refine="${esc(n.name)}" data-refine-type="${n.type}">この${n.type==='ministry'?'府省':'再就職先'}に絞り込む →</button><h3>公表対象者</h3>${rr.slice(0,20).map(r=>`<button class="related" data-record="${esc(r.id)}">${esc(r.name)} · ${esc(short(r.formerTitle,22))}</button>`).join('')}${rr.length>20?'<p>ほかの記録は絞り込んで確認できます。</p>':''}`;return}
  $('detail').innerHTML=`<div class="detail-kicker">公表された再就職の記録</div><h2>${esc(n.name)}</h2><dl><dt>出身府省</dt><dd>${esc(n.ministry)}</dd><dt>離職時の役職</dt><dd>${esc(n.formerTitle)}</dd><dt>離職日</dt><dd>${esc(n.retirementDate)||'原資料参照'}</dd><dt>再就職先</dt><dd>${esc(n.destination)}</dd><dt>再就職先の役職</dt><dd>${esc(n.destinationTitle)||'原資料参照'}</dd><dt>再就職日</dt><dd>${esc(n.reemploymentDate)||'原資料参照'}</dd><dt>採用区分</dt><dd>原資料に記載なし</dd></dl><h3>出典</h3>${sourceLink(recordSource(n),`${n.isSpecialService?'外務省':'内閣官房'} 公表資料${n.sourcePage?' · '+n.sourcePage+'ページ':''} ↗`)}<p>同じ氏名でも同一人物とは限りません。図は届出単位で表示しています。</p>`;
@@ -168,6 +150,20 @@ function renderCoverage(){const m=meta();let parts=[];
  parts.push(`<p>本サイトは公表資料を加工して作成した民間のサイトです。掲載件数は収録した基準日時点の範囲を表します。資料の改訂や訂正はリンク先の公式公表を確認してください。</p>`);
  $('coverage-text').innerHTML=parts.join('');
 }
+function highlightSelection(){
+ const id=selection?.id,related=new Set(id?[id]:[]);
+ for(const e of graphEdges)if(e.source===id||e.target===id){related.add(e.source);related.add(e.target)}
+ $('world').classList.toggle('has-selection',Boolean(id));
+ for(const el of $('world').querySelectorAll('.node')){el.classList.toggle('selected',el.dataset.id===id);el.classList.toggle('related-node',related.has(el.dataset.id))}
+ for(const el of $('world').querySelectorAll('.edge'))el.classList.toggle('related-edge',el.dataset.source===id||el.dataset.target===id);
+}
+function focusSelection(){
+ const n=graphNodes.find(n=>n.id===selection?.id);if(!n)return;
+ const box=$('graph').getBoundingClientRect();
+ if(!box.width||!box.height)return;
+ const k=Math.min(1.15,(box.width-48)/n.w);
+ transform={k,x:box.width/2-(n.x+n.w/2)*k,y:box.height/2-(n.y+n.h/2)*k};applyTransform();
+}
 function applyTransform(){ $('world').setAttribute('transform',`translate(${transform.x} ${transform.y}) scale(${transform.k})`);$('zoom-label').textContent=`${Number((transform.k*100).toFixed(transform.k<.1?1:0))}% · ドラッグで移動` }
 function fit(readable=false){const box=$('graph').getBoundingClientRect();if(!box.width||!box.height)return;let k=Math.min(1.1,(box.width-38)/bounds.w,(box.height-100)/bounds.h);if(readable)k=Math.max(box.width<600?.92:.85,k);transform={k,x:bounds.w*k>box.width?16:(box.width-bounds.w*k)/2,y:bounds.h*k>box.height-100?42:50+(box.height-100-bounds.h*k)/2};applyTransform()}
 function zoom(factor,cx,cy){const box=$('graph').getBoundingClientRect();cx??=box.width/2;cy??=box.height/2;const minimum=Math.max(.00001,Math.min(.08,(box.width-38)/bounds.w/4,(box.height-100)/bounds.h/4));const k=Math.max(minimum,Math.min(3,transform.k*factor));transform.x=cx-(cx-transform.x)*k/transform.k;transform.y=cy-(cy-transform.y)*k/transform.k;transform.k=k;applyTransform()}
@@ -176,7 +172,7 @@ for(const id of ['search','ministry','kind'])$(id).addEventListener(id==='search
 $('reset').onclick=()=>{$('search').value='';$('ministry').value='';$('kind').value='all';$('page-size').value=String(ALL_ITEMS);PAGE_SIZE=ALL_ITEMS;page=0;selection=null;update()};
 $('prev').onclick=()=>{page--;renderGraph()};$('next').onclick=()=>{page++;renderGraph()};
 $('graph-view').onclick=()=>setView('graph');$('list-view').onclick=()=>setView('list');$('download').onclick=csv;
-$('page-size').onchange=()=>{PAGE_SIZE=Number($('page-size').value);page=0;renderGraph()};$('fit').onclick=()=>fit(false);$('zoom-in').onclick=()=>zoom(1.25);$('zoom-out').onclick=()=>zoom(.8);
+$('page-size').onchange=()=>{PAGE_SIZE=Number($('page-size').value);page=0;renderGraph()};$('fit').onclick=()=>{selection=null;highlightSelection();renderDetail();fit(false)};$('zoom-in').onclick=()=>zoom(1.25);$('zoom-out').onclick=()=>zoom(.8);
 $('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.querySelector('.graph-wrap').requestFullscreen()}catch{$('zoom-label').textContent='このブラウザは全画面表示に対応していません。'}};
 window.addEventListener('resize',()=>renderGraph());document.addEventListener('fullscreenchange',()=>renderGraph());
 $('world').addEventListener('click',e=>{const n=e.target.closest('.node');if(n&&!dragged)showSelection(n.dataset.id)});

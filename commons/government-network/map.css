@@ -6,7 +6,9 @@
 .single-sheet .graph-wrap:fullscreen{height:100dvh}
 .single-sheet .detail{border-left:0;border-top:1px solid #dce2ea;max-height:400px;min-height:0}
 .single-sheet .summary-stats{max-width:380px}
-.ministry-panel{fill:#193347;fill-opacity:.65;stroke:#4a697b;stroke-width:2;pointer-events:none}
+.ministry-panel rect{fill:#193347;fill-opacity:.65;stroke:#4a697b;stroke-width:2;pointer-events:none}
 .single-sheet .edge{stroke-width:2}
 .single-sheet .canvas-top{gap:12px;flex-wrap:wrap;letter-spacing:.03em}
 @media(max-width:760px){.single-sheet .graph-wrap{height:clamp(400px,64dvh,720px)}.single-sheet .graph-wrap:fullscreen{height:100dvh}.single-sheet .canvas-top{top:12px;font-size:11px}.single-sheet .zoom-label{right:12px;bottom:70px}}
+
+.ministry-panel{pointer-events:none}.ministry-panel text{fill:#c1e1d8;font-weight:700;font-family:system-ui,sans-serif}.has-selection .edge{opacity:.12}.has-selection .edge.related-edge{opacity:1;stroke:#e3d085;stroke-width:2.5}.has-selection .node:not(.related-node){opacity:.3}.node.selected rect{stroke:#f2d28a;stroke-width:3}

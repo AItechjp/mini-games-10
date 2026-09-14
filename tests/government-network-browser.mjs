@@ -24,16 +24,6 @@ async function assertWholeSheet(p,ids,edgeCount,label){
  assert(actual.world.width>0&&actual.world.height>0,`${label}: the sheet has visible dimensions`);
  assert(actual.world.left>=actual.graph.left-1&&actual.world.top>=actual.graph.top-1&&actual.world.right<=actual.graph.right+1&&actual.world.bottom<=actual.graph.bottom+1,`${label}: the entire sheet fits inside its canvas: ${JSON.stringify({graph:actual.graph,world:actual.world})}`);
 }
-async function assertListFocus(p,label){
- const initial=await p.locator('#world').evaluate(el=>el.getScreenCTM().a);
- await p.getByRole('button',{name:'一覧',exact:true}).click();
- await p.locator('#table-view tbody button').nth(20).click();
- const node=await p.locator('.node.selected').boundingBox(),graph=await p.locator('#graph').boundingBox();
- assert(node&&graph&&node.height>=50,label+': selecting a list item reveals a readable node');
- assert(node.x>=graph.x&&node.y>=graph.y&&node.x+node.width<=graph.x+graph.width&&node.y+node.height<=graph.y+graph.height,label+': selection is centered inside the graph');
- assert(await p.locator('#world').evaluate(el=>el.getScreenCTM().a)>initial,label+': selection zooms in');
- await p.locator('#fit').click();
-}
 async function assertZoomControls(p,label){
  const scale=()=>p.locator('#world').evaluate(el=>el.transform.baseVal.consolidate().matrix.a);
  const initial=await scale();
@@ -44,6 +34,13 @@ async function assertZoomControls(p,label){
  assert((await scale())>smaller,`${label}: zoom in increases the scale`);
  await p.getByRole('button',{name:'図を表示範囲に合わせる',exact:true}).click();
  assert(Math.abs((await scale())-initial)<initial*.001,`${label}: fit restores the complete overview`);
+}
+async function assertFocusedSelection(p,previousScale){
+ assert.equal(await p.locator('.node.selected').count(),1);
+ const node=await p.locator('.node.selected').boundingBox(),graph=await p.locator('#graph').boundingBox();
+ assert(node&&graph&&node.height>=50,'List selection enlarges the corresponding node to readable size');
+ assert(node.x>=graph.x-2&&node.y>=graph.y-2&&node.x+node.width<=graph.x+graph.width+2&&node.y+node.height<=graph.y+graph.height+2,'The selected node is inside the graph viewport');
+ assert(await p.locator('#world').evaluate(el=>el.getScreenCTM().a)>previousScale,'List selection zooms in from the whole diagram');
 }
 const browser=await chromium.launch({headless:true});
 const errors=[];
@@ -57,7 +54,10 @@ try{
  await assertWholeSheet(p,agencyIds,178,'Desktop government');
  await assertZoomControls(p,'Desktop government');
  await p.screenshot({path:'test-output/government-network/government-desktop.png'});
- await assertListFocus(p,'Government desktop');
+ let wholeScale=await p.locator('#world').evaluate(el=>el.getScreenCTM().a);
+ await p.getByRole('button',{name:'一覧',exact:true}).click();
+ await p.locator('#table-view').getByRole('button',{name:'理化学研究所',exact:true}).click();
+ await assertFocusedSelection(p,wholeScale);
  await p.selectOption('#kind','国立研究開発法人');
  assert.equal(await p.locator('#table-view tbody tr').count(),26);
  await p.fill('#search','理化学');
@@ -72,7 +72,14 @@ try{
  await assertWholeSheet(p,recordIds,3506,'Desktop reemployment');
  await assertZoomControls(p,'Desktop reemployment');
  await p.screenshot({path:'test-output/government-network/reemployment-desktop.png'});
- await assertListFocus(p,'Reemployment desktop');
+ wholeScale=await p.locator('#world').evaluate(el=>el.getScreenCTM().a);
+ await p.getByRole('button',{name:'一覧',exact:true}).click();
+ const selectedId=await p.locator('#table-view tbody button').nth(100).getAttribute('data-record');
+ await p.locator('#table-view tbody button').nth(100).click();
+ await assertFocusedSelection(p,wholeScale);
+ assert.equal(await p.locator('.node.selected').getAttribute('data-id'),selectedId);
+ assert.equal(await p.locator('#pagination').isVisible(),false);
+ await p.locator('#fit').click();await assertWholeSheet(p,recordIds,3506,'Reemployment after focused fit');
  await p.selectOption('#kind','general');assert.equal(await p.locator('#table-view tbody tr').count(),1733);
  await p.selectOption('#kind','special');assert.equal(await p.locator('#table-view tbody tr').count(),20);
  await p.selectOption('#kind','all');await p.fill('#search','山田滝雄');assert.equal(await p.locator('#table-view tbody tr').count(),2);
@@ -81,8 +88,15 @@ try{
  assert.match(await p.locator('#detail a.source').first().getAttribute('href'),/^https:\/\/www\.mofa\.go\.jp\/.*#page=/);
  await p.getByRole('button',{name:'条件を戻す',exact:true}).click();
  await assertWholeSheet(p,recordIds,3506,'Reemployment reset');
- await p.selectOption('#page-size','8');await p.getByRole('button',{name:'一覧',exact:true}).click();
- await p.locator('#table-view tbody button').nth(100).click();assert.equal(await p.locator('.node.selected').count(),1);assert.equal(await p.locator('#page-label').innerText(),'13 / 220');
+ await p.selectOption('#page-size','8');
+ assert.equal(await p.locator('#pagination').isVisible(),true);assert.equal(await p.locator('#page-label').innerText(),'1 / 220');
+ await p.getByRole('button',{name:'次のページ',exact:true}).click();assert.equal(await p.locator('#page-label').innerText(),'2 / 220');
+ await p.getByRole('button',{name:'一覧',exact:true}).click();
+ await p.locator('#table-view tbody button').nth(100).click();assert.equal(await p.locator('.node.selected').count(),1);assert.equal(await p.locator('.node.selected').getAttribute('data-id'),selectedId);assert.equal(await p.locator('#page-label').innerText(),'13 / 220');
+ await p.selectOption('#page-size','24');assert.equal(await p.locator('#page-label').innerText(),'1 / 74');
+ await p.getByRole('button',{name:'次のページ',exact:true}).click();assert.equal(await p.locator('#page-label').innerText(),'2 / 74');
+ await p.selectOption('#page-size','10000');await assertWholeSheet(p,recordIds,3506,'Reemployment restored whole sheet');
+ await p.selectOption('#page-size','8');
  await p.selectOption('#kind','career');await p.locator('#graph-empty').waitFor({state:'visible'});assert.match(await p.locator('#graph-empty').innerText(),/採用区分/);
  await p.getByRole('button',{name:'条件を戻す',exact:true}).click();
  await assertWholeSheet(p,recordIds,3506,'Reset from paginated career filter');
@@ -93,12 +107,16 @@ try{
  await assertWholeSheet(p,agencyIds,178,'Mobile government');
  await assertZoomControls(p,'Mobile government');
  await p.screenshot({path:'test-output/government-network/government-mobile.png',fullPage:true});
+ await p.selectOption('#page-size','8');assert.equal(await p.locator('#pagination').isVisible(),true);
+ assert((await p.locator('.node').first().boundingBox()).height>=55,'Optional paged mobile view keeps node labels readable');
  await p.goto(new URL('commons/reemployment-network/',base).href);await p.locator('#download:enabled').waitFor();
  assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
  await assertWholeSheet(p,recordIds,3506,'Mobile reemployment');
  await assertZoomControls(p,'Mobile reemployment');
  await p.screenshot({path:'test-output/government-network/reemployment-mobile.png',fullPage:true});
- await assertListFocus(p,'Reemployment mobile');
+ wholeScale=await p.locator('#world').evaluate(el=>el.getScreenCTM().a);
+ await p.getByRole('button',{name:'一覧',exact:true}).click();await p.locator('#table-view tbody button').nth(100).click();
+ await assertFocusedSelection(p,wholeScale);
  assert.deepEqual(errors,[]);
- console.log('PASS: all 149 government nodes and 1753 reemployment records fit on one sheet by default on desktop and mobile; zoom, reset, source filters, joint supervision, source links and optional pagination remain usable.');
+ console.log('PASS: all 149 government nodes and 1753 reemployment records fit on one sheet by default on desktop and mobile; list-to-node focus, zoom, reset, source filters, joint supervision, source links, optional 8/24-record pagination and readable paged mobile view remain usable.');
 }finally{await browser.close();}
