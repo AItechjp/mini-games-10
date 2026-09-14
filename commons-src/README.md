@@ -28,8 +28,10 @@ separately. A source failure invalidates that page's records immediately. Record
 expire after two hours; opening announcements expire after one hour. Ordinary
 published hours are never labelled as direct confirmation of on-site operations.
 
-`.github/workflows/commons-realtime-update.yml` requests a collection every five
-minutes. A database lock and refresh interval bound upstream work. Each pass
+`edge/realtime-schedule.sql` schedules collection in Supabase every five minutes,
+including periods without visitors. `.github/workflows/commons-realtime-update.yml`
+also checks the public response and minimum live source count. A database lock
+and refresh interval bound upstream work. Each pass
 visits the oldest pages across independent domains (64 pages, eight requests at a
 time). It uses `commons.opening_cache` in the private schema; no public table is
 added. Opening announcements are revalidated every 15 minutes.

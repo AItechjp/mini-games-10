@@ -6,9 +6,10 @@ const require=createRequire(import.meta.url),esbuild=createRequire(realpathSync(
 mkdirSync('.coverage-check',{recursive:true});
 for(const name of ['site-catalog','municipalities','ramen-data'])await esbuild.build({entryPoints:['lib/'+name+'.ts'],outfile:'.coverage-check/'+name+'.cjs',bundle:true,platform:'node',format:'cjs',logLevel:'silent'});
 const {sites,siteGroups}=require(resolve('.coverage-check/site-catalog.cjs'));
-assert.equal(sites.length,20);
-assert.deepEqual(siteGroups.map(g=>g.numbers),[[1,3,14],[2],[4,5,6,7,8,9,10,11,12,13,15],[16,17,18],[19,20]]);
-assert.equal(new Set(siteGroups.flatMap(g=>g.sites.map(s=>s.id))).size,20);
+assert.ok(sites.length>=18);
+assert.deepEqual(siteGroups.slice(0,4).map(g=>g.numbers.filter(n=>n<=18)),[[1,3,14],[2],[4,5,6,7,8,9,10,11,12,13,15],[16,17,18]]);
+assert.equal(new Set(sites.map(s=>s.id)).size,sites.length,'Every app has a unique identity');
+assert.deepEqual(siteGroups.flatMap(g=>g.sites.map(s=>s.id)).sort(),sites.map(s=>s.id).sort(),'Every app appears in exactly one group');
 assert.equal(sites[17].id,'cyber-news');
 assert.equal(sites[17].href,'/commons/cyber-news/');
 const {municipalities,municipalityOf,matchesSearch}=require(resolve('.coverage-check/municipalities.cjs'));

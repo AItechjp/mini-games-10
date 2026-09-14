@@ -22,6 +22,8 @@ jobs:
           d=json.load(open('/tmp/commons-directory.json'))
           assert isinstance(d.get('stores'), list), 'Invalid directory response'
           assert d['coverage']['sitesConfigured'] >= 20, 'Fewer than 20 independent collection sites'
+          assert d['coverage']['sitesFetched'] >= 20, 'Fewer than 20 recently fetched sites'
+          assert len(d['stores']) > 0, 'No current verified records'
           assert not d.get('storageError'), 'Collection storage failed'
           print(d['coverage'])
           o=json.load(open('/tmp/commons-openings.json'))
