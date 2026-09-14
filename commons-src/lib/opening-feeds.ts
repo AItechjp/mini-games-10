@@ -91,6 +91,11 @@ function articleBody(html:string){
  if(start){const rest=cleaned.slice(start.index+start[0].length),tags=new RegExp('</?'+start[1]+'\\b[^>]*>','gi');let depth=1;for(const m of rest.matchAll(tags)){depth+=m[0].startsWith('</')?-1:1;if(depth===0)return rest.slice(0,m.index)}}
  return cleaned.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1]||cleaned.replace(/<head\b[^>]*>[\s\S]*?<\/head>/i,'');
 }
+export function verifiedOpeningAddress(address:string,body:string){
+ const normalize=(s:string)=>s.normalize('NFKC').replace(/\s/g,'').replace(/[‐‑–—−]/g,'-').replace(/丁目|番地?|号/g,'-').replace(/字/g,'');
+ const value=normalize(address);
+ return value.length>=7&&/\d|無番地/.test(value)&&normalize(body).includes(value);
+}
 export async function collectOpenings(previous:OpeningSnapshot,now=new Date()):Promise<OpeningSnapshot>{
   const statuses:SourceStatus[]=[],next:Opening[]=[],checkedAt=now.toISOString();
   const byUrl=new Map(previous.records.map(r=>[r.sourceUrl,r]));
@@ -141,7 +146,7 @@ export async function collectOpenings(previous:OpeningSnapshot,now=new Date()):P
         const postStart=html.match(/<div\b[^>]*class="(?:post_content|entry-content)"[^>]*>/i);
         const lead=postStart?cleanText(html.slice(postStart.index!+postStart[0].length)).slice(0,1800):text.slice(0,4000);
         const date=extractOpeningDate('',heading,seed.publishedAt)||extractOpeningDate('',pageTitle,seed.publishedAt)||extractOpeningDate('',lead,seed.publishedAt);
-        const old=previous.records.find(r=>r.id===seed.id)??seed;
+        const old={...previous.records.find(r=>r.id===seed.id),...seed};
         const uncertain=/オープン(?:日|予定)?[^。]{0,12}(?:未定|中止|見合わせ)/.test(text.slice(0,2000));
         next.push({...old,openingDate:date??old.openingDate,status:date&&!uncertain?'scheduled':'uncertain',checkedAt});
         report(source,[{title:'',body:'',url:seed.sourceUrl,publishedAt:seed.publishedAt}]);
@@ -163,7 +168,7 @@ export async function collectOpenings(previous:OpeningSnapshot,now=new Date()):P
       const name=record.name.normalize('NFKC').replace(/\s/g,'');
       if(!normalized.includes(name)||/延期|中止|見合わせ/.test(body.slice(0,5000)))continue;
       const date=extractOpeningDate('',body,record.publishedAt);
-      if(!date||date!==record.openingDate||record.prefecture==='地域未確認'||!record.address)continue;
+      if(!date||date!==record.openingDate||record.prefecture==='地域未確認'||!verifiedOpeningAddress(record.address,body))continue;
       verified.push({...record,status:'scheduled',reviewed:true,checkedAt:new Date().toISOString()});
     }catch{}
   }}

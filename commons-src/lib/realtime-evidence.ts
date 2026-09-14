@@ -61,6 +61,17 @@ export function inspectTarget(target:Target,html:string,now=new Date()):Evidence
  const structured=structuredHours(html,target),plain=textHours(text,target);
  const ranges=(s:string)=>[...new Set(s.match(/\d{2}:\d{2}-\d{2}:\d{2}/g)||[])].sort().join(',');
  if(structured&&plain&&ranges(structured)!==ranges(plain.hours))return {...base,reason:'公式本文と構造化データの営業時間が一致しません'};
+ if(structured&&plain){
+  const closedDays=[...plain.hours.matchAll(/\b(Mo|Tu|We|Th|Fr|Sa|Su) off/g)].map(m=>m[1]);
+  const starts=plain.hours.match(/(\d{2}):(\d{2})-/);
+  if(closedDays.length&&starts){
+   const today=new Date(now.getTime()+9*3600000).toISOString().slice(0,10),midnight=Date.parse(today+'T00:00:00+09:00');
+   for(let day=0;day<7;day++){
+    const at=midnight+day*86400000+(Number(starts[1])*60+Number(starts[2])+1)*60000;
+    if(closedDays.includes(['Su','Mo','Tu','We','Th','Fr','Sa'][new Date(at+9*3600000).getUTCDay()])&&localStatus({...target,hours:structured,checkedAt:base.checkedAt,sourceType:'official'} as unknown as LocalStore,at).state==='open')return {...base,reason:'公式本文と構造化データの定休日が一致しません'};
+   }
+  }
+ }
  const result=structured?{hours:structured,hoursText:readableHours(structured),lastEntry:plain?.lastEntry}:plain;
  if(!result)return {...base,reason:'店舗と曜日別営業時間を本文から一意に確定できません'};
  const store={...target,hours:result.hours,checkedAt:base.checkedAt,sourceType:'official'} as unknown as LocalStore;

@@ -22,7 +22,7 @@ async function cached<T extends object>(key:string,initial:T,interval:number,col
 async function handle(request:Request){
  const u=new URL(request.url),path=u.pathname.replace(/^.*\/commons-realtime/,'');
  if(request.method!=='GET')return Response.json({error:'Method not allowed'},{status:405});
- if(path==='/health')return Response.json({ok:true,service:'commons-realtime',version:1,minimumSites:20});
+ if(path==='/health')return Response.json({ok:true,service:'commons-realtime',version:2,minimumSites:20});
  if(path==='/directory'){
   const snapshot=await cached<EvidenceSnapshot>('evidence-directory-v1',initialEvidence as EvidenceSnapshot,300000,collectEvidence);
   const now=Date.now(),byId=new Map(snapshot.evidence.map(e=>[e.id,e]));
@@ -32,7 +32,7 @@ async function handle(request:Request){
  }
  if(path==='/openings'){
   const initial=initialOpenings as OpeningSnapshot;
-  const snapshot=await cached<OpeningSnapshot>('opening-directory-v3-verified',initial,900000,collectOpenings);
+  const snapshot=await cached<OpeningSnapshot>('opening-directory-v4-verified-address',initial,900000,collectOpenings);
   const now=Date.now();
   return Response.json({...snapshot,records:snapshot.records.filter(r=>r.status==='scheduled'&&r.reviewed&&r.address&&now-Date.parse(r.checkedAt)<3600000&&Date.parse(r.checkedAt)<=now),serverNow:new Date(now).toISOString()});
  }
