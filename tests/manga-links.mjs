@@ -3,7 +3,10 @@ import {readFile} from 'node:fs/promises';
 import {parseFeed,safeEpisode,collectSource,retryDelay,limitedText,INTERVAL} from '../supabase/functions/commons-manga/core.mjs';
 const sources=JSON.parse(await readFile(new URL('../supabase/functions/commons-manga/sources.json',import.meta.url)));
 assert.deepEqual(sources,JSON.parse(await readFile(new URL('../commons/manga/sources.json',import.meta.url))));
-assert.equal(new Set(sources.map(s=>new URL(s.website).hostname)).size,12);
+assert.equal(new Set(sources.map(s=>s.id)).size,sources.length);
+assert.equal(sources.length,36);
+assert.equal(sources.filter(s=>s.feed).length,13);
+assert.ok(sources.every(s=>new URL(s.website).protocol==='https:'&&s.freeNote&&s.kind));
 const source=sources[0],now=Date.parse('2026-09-15T01:00:00Z');
 const episode=(url,title='第1話',time='2026-09-15T00:00:00Z')=>`<entry><title>${title}</title><link href="${url}"/><link rel="enclosure" href="https://images.invalid/1.jpg"/><updated>${time}</updated><content type="html">作品名</content><author><name>作者</name></author><giga:freeTermStartDate>2026-09-15T00:00:00Z</giga:freeTermStartDate></entry>`;
 const valid='https://shonenjumpplus.com/episode/123';
@@ -17,4 +20,4 @@ let requested=false;await collectSource(source,{nextCheckAt:new Date(now+INTERVA
 const unchanged=await collectSource(source,{...good.source,nextCheckAt:null},good.items,async(url,options)=>{assert.equal(options.headers['If-None-Match'],'"abc"');return new Response(null,{status:304});},now+INTERVAL);assert.equal(unchanged.source.contentFetchedAt,good.source.contentFetchedAt);assert.equal(unchanged.source.lastSuccessAt,new Date(now+INTERVAL).toISOString());
 assert.equal(retryDelay(1,'3600',now),3600000);assert.ok(retryDelay(2,null,now)>INTERVAL);await assert.rejects(limitedText(new Response('abcd'),3));
 const redirect=await collectSource(source,{},[],async()=>new Response(null,{status:302,headers:{location:'https://evil.invalid/'}}),now);assert.equal(redirect.source.status,'error');assert.match(redirect.source.error,/転送/);
-console.log('PASS: 12 source identities, strict episode URLs, Atom parsing, deduplication, dates, stale preservation, conditional requests, limits and redirect rejection');
+console.log('PASS: 36 source identities, 13 feeds, strict episode URLs, Atom parsing, deduplication, dates, stale preservation, conditional requests, limits and redirect rejection');

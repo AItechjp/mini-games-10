@@ -46,9 +46,10 @@ export async function collectSource(source,previous={},previousItems=[],fetcher=
   if(status!==200&&status!==304){await response.body?.cancel();throw new Error(status>=300&&status<400?'配信先が転送されました。登録先の確認が必要です':'HTTP '+status);}
   if(status===304&&!previous.lastSuccessAt)throw new Error('初回取得の内容を確認できません');
   const result=status===304?{items:existing,skipped:previous.skipped||0}:parseFeed(await limitedText(response),source,now);
+  if(status===200){const byURL=new Map(existing.map(x=>[x.url,x]));result.items=result.items.map(item=>{const old=byURL.get(item.url);return old&&old.updatedAt===item.updatedAt&&old.freeFrom===item.freeFrom&&old.freeUntil===item.freeUntil?{...old,...item}:item;});}
   return {items:result.items,source:{...current,status:'ok',httpStatus:status,lastCheckedAt:new Date(now).toISOString(),lastSuccessAt:new Date(now).toISOString(),contentFetchedAt:status===304?previous.contentFetchedAt:new Date(now).toISOString(),nextCheckAt:new Date(now+nextInterval(response.headers.get('cache-control')||'')).toISOString(),etag:response.headers.get('etag')||previous.etag||null,lastModified:response.headers.get('last-modified')||previous.lastModified||null,error:null,failures:0,count:result.items.length,skipped:result.skipped}};
  }catch(error){
-  const reason=error?.name==='TimeoutError'||error?.name==='AbortError'?'通信タイムアウト（10秒）':/HTTP|フィード|転送|取得上限|初回|空の応答/.test(error?.message||'')?error.message:'配信元への接続に失敗しました';
+  const reason=error?.name==='TimeoutError'||error?.name==='AbortError'?'通信タイムアウト':/HTTP|フィード|転送|取得上限|初回|空の応答/.test(error?.message||'')?error.message:'配信元への接続に失敗しました';
   return {items:existing,source:{...current,status:'error',httpStatus:status,lastCheckedAt:new Date(now).toISOString(),lastSuccessAt:previous.lastSuccessAt||null,nextCheckAt:new Date(now+retryDelay((previous.failures||0)+1,retryAfter,now)).toISOString(),error:reason,failures:(previous.failures||0)+1,count:existing.length}};
  }
 }
