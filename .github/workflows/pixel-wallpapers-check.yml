@@ -1,0 +1,49 @@
+name: Verify Pixel 10 wallpaper WebGL and PNG
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pixel-wallpapers-check.yml'
+      - 'pixel-wallpapers/**'
+      - 'tests/pixel-wallpapers-browser.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pixel-wallpapers-check-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Chromium verification runtime
+        run: |
+          npm install --no-save --no-package-lock --no-audit --no-fund playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify actual WebGL rendering, PNG download and mobile layout
+        env:
+          PIXEL_WALLPAPERS_BASE_URL: http://127.0.0.1:4192/
+        run: |
+          mkdir -p test-output/pixel-wallpapers
+          python3 -m http.server 4192 --bind 127.0.0.1 >test-output/pixel-wallpapers/server.log 2>&1 &
+          wallpaper_server_pid=$!
+          trap 'kill "$wallpaper_server_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:4192/pixel-wallpapers/ >/dev/null; then break; fi
+            sleep 0.5
+          done
+          curl --fail --silent http://127.0.0.1:4192/pixel-wallpapers/ >/dev/null
+          node tests/pixel-wallpapers-browser.mjs
+      - name: Retain screenshots, downloaded PNG and verification results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pixel-wallpapers-webgl-png
+          path: test-output/pixel-wallpapers/
+          if-no-files-found: warn
+          retention-days: 7
