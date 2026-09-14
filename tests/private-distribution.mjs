@@ -24,7 +24,7 @@ for(const file of files) {
     assert.ok(!/(?:\/\/[#@]|\/\*[#@])\s*sourceMappingURL\s*=/.test(content),`Source map reference in ${name}`);
   }
 }
-for(const route of ['index.html','games.html','game23.html','smash.html','commons/index.html','commons/camera/index.html','unity/Build/Web.wasm','board-games/vendor/tsshogi-LICENSE.txt']) {
+for(const route of ['index.html','games.html','game23.html','smash.html','commons/index.html','commons/camera/index.html','trump/rules.mjs','board-games/vendor/tsshogi-LICENSE.txt']) {
   assert.ok((await stat(join(dist,route))).size>0,`Missing public asset: ${route}`);
 }
 const rules=await readFile(join(dist,'board-games/vendor/rules.mjs'),'utf8');

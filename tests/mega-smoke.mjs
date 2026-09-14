@@ -87,7 +87,8 @@ await page.locator('a[href="games-trump.html"]').click();
 const trumpGames=await page.locator('article[data-game]').evaluateAll(nodes=>nodes.map(n=>n.dataset.game));
 if(JSON.stringify(trumpGames)!==JSON.stringify(['daifugo','babanuki','memory','speed'])) throw new Error('Trump must contain 04, 06, Memory and Speed exactly once');
 for(const id of ['babanuki','memory','speed']){
-  if(await page.locator(`[data-game="${id}"] a[href="trump-unity/?game=${id}"]`).count()!==1) throw new Error(`Missing Unity entry for ${id}`);
+  const href=id==='babanuki'?'babanuki.html':`trump/?game=${id}`;
+  if(await page.locator(`[data-game="${id}"] a[href="${href}"]`).count()!==1) throw new Error(`Missing browser entry for ${id}`);
 }
 if(await page.locator('[data-game="daifugo"] .number').textContent()!=='04'||await page.locator('[data-game="babanuki"] .number').textContent()!=='06') throw new Error('Existing Trump game numbers must be retained');
 await page.locator('.back-categories[href="games-2d.html"]').click();
@@ -130,7 +131,7 @@ await page.addInitScript(() => {
   let seed = 123;
   Math.random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
 });
-// The catalog now launches Unity Old Maid. Keep checking the legacy URL too.
+// The catalog launches the browser Old Maid game.
 await page.goto(root+'babanuki.html',{waitUntil:'domcontentloaded'});
 await page.waitForSelector('#draw-cards button:not(:disabled)');
 await page.locator('#draw-cards button:not(:disabled)').first().click();
@@ -143,6 +144,23 @@ await page.waitForFunction(() => document.querySelector('#move-count').textConte
 const cardOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
 if(cardOverflow > 4) throw new Error(`Old Maid mobile horizontal overflow ${cardOverflow}px`);
 await failIfErrors('Old Maid draw, pause and replay');
+
+for(const kind of ['memory','speed']){
+  await page.goto(root+'trump/?game='+kind,{waitUntil:'domcontentloaded'});
+  await page.waitForSelector(kind==='memory'?'#memory-board .card':'#hand .card');
+  if(kind==='memory'){
+    if(await page.locator('#memory-board .card').count()!==24)throw new Error('Memory must contain 24 cards');
+    await page.locator('#memory-board button').first().click();
+    if(!(await page.locator('#moves').textContent()).startsWith('1 '))throw new Error('Memory flip failed');
+  }else if(await page.locator('#hand .card').count()!==4)throw new Error('Speed must start with four hand cards');
+  await page.locator('#pause').click();
+  if(await page.locator('#memory-board button:not(:disabled),#hand button:not(:disabled)').count())throw new Error('Paused table accepts input');
+  await page.locator('#restart').click();await page.locator('#confirm-restart').click();
+  if(!(await page.locator('#moves').textContent()).startsWith('0 '))throw new Error('New table did not reset');
+  if(await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth)>4)throw new Error('Trump mobile overflow');
+  await failIfErrors('Browser Trump '+kind);
+}
+
 
 
 await page.goto(root + 'games-2d.html', {waitUntil:'domcontentloaded'});

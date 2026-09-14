@@ -90,6 +90,8 @@ jobs:
         run: |
           node scripts/build-static.mjs
           node tests/private-distribution.mjs
+          node tests/browser-release.mjs
+          node tests/trump-rules.mjs
       - name: Smoke test games and learning tools locally
         shell: bash
         run: |

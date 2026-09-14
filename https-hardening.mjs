@@ -20,6 +20,11 @@ function upgrade(text) {
 }
 function hardenHtml(html) {
   html = upgrade(html);
+  // Game gestures are controlled by touch-action on the playing surface. Keep
+  // browser zoom available for setup, instructions and every Commons form.
+  html = html.replace(/<meta\b[^>]*>/gi, tag => /\bname\s*=\s*["']viewport["']/i.test(tag)
+    ? tag.replace(/\bcontent\s*=\s*(["'])(.*?)\1/i, (_,quote,value) => 'content='+quote+value.split(',').map(v=>v.trim()).filter(v=>! /^(?:user-scalable|maximum-scale|minimum-scale)\s*=/i.test(v)).join(',')+quote)
+    : tag);
   html = html.replace(/<script\b[^>]*\bsrc=["'](?:https?:)?\/\/(?:adm\.shinobi\.jp|pagead2\.googlesyndication\.com)\/[^"']*["'][^>]*>\s*<\/script>/gi, '');
   const match = /<head\b[^>]*>([\s\S]*?)<\/head\s*>/i.exec(html);
   if (!match) throw new Error('HTML document has no explicit head; cannot safely install HTTPS policy');
