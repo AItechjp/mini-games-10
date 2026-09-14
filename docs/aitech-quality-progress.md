@@ -159,3 +159,26 @@ Commons typecheck/build and 660-item model/storage checks passed locally.
 Compiled distribution, browser integration and publication gates are checked
 against the integrated source before declaring the release complete.
 Recurrence remains disabled.
+
+## Verified completion of the one-off 20-item request
+
+- Public portal code: `8883bd353cc1da516be8bc41a07bccf3272693bd`.
+- Pages run `34807343725`, job `103863336924`: every step succeeded.
+- Browser UI gates passed: 32 local app entries, all 20 shared guide features,
+  mobile layout, notes round trip, protected game input and board CPU pause/resume.
+  Existing quality controls, records/export, comparison, preference synchronization
+  and camera countdown/cancel/grid/capture also passed.
+- Public HTTPS audit passed: 64 HTML documents, 130 desktop/Android checks,
+  6 redirects and no failures. Public Memory help search, unified record-menu access,
+  and the Commons whiteboard guide were also inspected in the browser.
+- AETHER DUEL version 18, source `74af9d4e62cc04b03dcfac94d47af434ea2908b0`,
+  deployment `appgdep_6aa7828229808191b29c7b83aced08f9`: succeeded, public audience unchanged.
+  Final HTML refreshes both the quality-control and game-handler cache URLs.
+- Cloudflare mirror run `34807343616`, job `103861692400` failed at token validation:
+  codes 6003/6111, invalid Authorization header. No credential was exposed or guessed.
+  GitHub Pages and the AETHER Site are the confirmed updated public destinations.
+- Recurring AItech task `6aa75946913c8191a03732fa590a4c37` was rechecked and remains disabled.
+- Final per-app list and verification record: `docs/AItech-app-improvements-20.md`.
+
+The final receipt commit changes documentation only; the live code fingerprint
+remains the tested portal release above. Do not recreate the cancelled schedule.
