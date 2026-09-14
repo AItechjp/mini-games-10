@@ -7,3 +7,27 @@
 @media(max-height:600px),(orientation:portrait){
 .lobby{grid-template-columns:1fr;padding:10px 28px;overflow:auto;align-items:center}.lobby-copy{display:grid;grid-template-columns:.9fr 1.1fr;column-gap:32px;align-items:start;max-width:1000px;width:100%;margin:auto}.lobby-copy>.eyebrow{grid-column:1;grid-row:1;align-self:end;font-size:.65rem}.lobby-copy>h1{grid-column:1;grid-row:2;font-size:clamp(2.8rem,8dvw,4.2rem);margin:.3rem 0}.lobby-copy>.jp-title{grid-column:1;grid-row:3;margin:.3rem 0;font-size:.8rem}.lobby-copy>.lobby-desc{grid-column:1;grid-row:4;font-size:.75rem;line-height:1.6}.lobby-actions{grid-column:2;grid-row:1 / 5;margin-top:0!important;max-width:none}.lobby-art{display:none}.lobby .data-count{margin-top:8px;padding-top:5px;gap:16px}.lobby .data-count b{font-size:1.2rem}.lobby .data-count span{font-size:.65rem}.dice-pool{grid-template-columns:repeat(5,1fr);gap:3px}.dice-pool .dice-card{min-height:42px;padding:2px 1px}.dice-pool .dice-card svg{height:25px;width:25px}.phase-summon .chosen-summary,.phase-summon .command-copy,.phase-roll .command-copy,.phase-roll>small{display:none}.phase-summon{gap:5px}.phase-summon>.ghost{padding:3px;font-size:.7rem}.phase-summon>button{padding:6px;font-size:.75rem}.phase-summon .rotation-controls button{padding:5px 1px;font-size:.65rem}.net-gallery{gap:3px}.net-gallery button{min-height:25px;padding:2px 1px}.net-gallery svg{height:20px}.summon-picks .dice-card{min-height:39px}.command-panel .dice-card .die-name{font-size:.58rem}
 }
+
+/* Dedicated monster illustrations, shared by the catalog, dice and board. */
+.monster-portrait{display:block;max-width:100%;object-fit:contain;object-position:center;border-radius:5px;background:#101725;aspect-ratio:1}
+.relic{transform:rotate(-5deg);width:min(83%,460px)}
+.relic .monster-portrait{width:100%;height:auto;border:2px solid #b5a26b;outline:1px solid #f5dda65c;outline-offset:6px;box-shadow:0 18px 60px #0008,0 0 45px #4594d02b}
+.unit-detail>.monster-portrait{width:100%;height:180px;flex-shrink:0;border:1px solid #b6a16c66;background:radial-gradient(ellipse,#26353e,#111b21)}
+.dice-card .monster-portrait{width:38px;height:38px;flex-shrink:0;border:1px solid #c7b47a66}
+.catalog-card.illustrated{background:linear-gradient(140deg,#34352b,#1a2824);border-color:#a68c5a}
+.catalog-card.illustrated>.ghost{border-radius:4px;overflow:hidden;border:1px solid #dbb97d88;background:#111923}
+.catalog-card .monster-portrait{width:100%;height:132px;object-fit:cover;object-position:50% 35%;border-radius:0;transition:transform .2s ease}
+.catalog-card>.ghost:hover .monster-portrait{transform:scale(1.035)}
+.defense-art .monster-portrait{width:100%;height:130px;border:1px solid #bba16a66}
+.art-detail{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px;align-items:center}
+.art-detail-portrait{min-width:0;display:flex;justify-content:center;align-items:center}
+.art-detail-portrait>:is(svg,img){width:100%;height:auto;max-height:calc(100dvh - 150px);object-fit:contain}
+.art-detail-portrait>.monster-portrait{border:1px solid #d6b56b;box-shadow:0 8px 32px #0007}
+.art-detail-info{display:flex;flex-direction:column;gap:12px;min-width:0}
+.art-detail-info .stats{margin:6px 0}
+.art-detail-info p+p,.art-detail-info h3{margin:0}
+.art-detail-info>button{margin-top:6px;width:100%}
+@media(max-width:1100px){.unit-detail>.monster-portrait{height:130px}}
+@media(max-height:650px){.unit-detail>.monster-portrait{height:80px}.dice-card .monster-portrait{width:25px;height:25px}.catalog-card .monster-portrait{height:90px}.art-detail{gap:18px}.art-detail-info{gap:7px;font-size:.8rem;line-height:1.55}.art-detail-info .eyebrow{font-size:.65rem}}
+@media(orientation:portrait){.unit-detail>.monster-portrait{height:70px}.dice-card .monster-portrait{width:25px;height:25px}.catalog-card .monster-portrait{height:82px}.art-detail{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:14px}.art-detail-portrait>:is(svg,img){max-height:calc(100dvw - 112px)}.art-detail-info{gap:5px;font-size:.75rem;line-height:1.45}.art-detail-info h3{font-size:.95rem}.art-detail-info .eyebrow{font-size:.6rem}.art-detail-info .stats b{font-size:1.1rem}.art-detail-info .stats{margin:2px 0}.art-detail-info>button{padding:.5rem;margin:0}}
+@media(prefers-reduced-motion:reduce){.catalog-card .monster-portrait{transition:none}.catalog-card>.ghost:hover .monster-portrait{transform:none}}

@@ -1,6 +1,6 @@
 const h=s=>[...s].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7);
 const palettes={dragon:['#b8e8f0','#6b9aa7','#173845'],mage:['#cab2fb','#9173bf','#372849'],warrior:['#e6cd8b','#a69460','#3c3841'],beast:['#b7d7a4','#729b78','#2a413e'],undead:['#c9cec9','#77858a','#31313e'],item:['#efd49b','#bc9356','#493b38']};
-export function portrait(c,size=120){const hash=h(c.en),[light,mid,dark]=palettes[c.tribe]||palettes.warrior,id=`a${hash}${size}`,rarity=c.level===4?'#edd292':mid;let figure='';const eyes='<path d="M43 37l5 2-4 1M57 37l-5 2 4 1" stroke="#f7f2cb" stroke-width="1.8"/>';
+export function fallbackPortrait(c,size=120){const hash=h(c.en),[light,mid,dark]=palettes[c.tribe]||palettes.warrior,id=`a${hash}${size}`,rarity=c.level===4?'#edd292':mid;let figure='';const eyes='<path d="M43 37l5 2-4 1M57 37l-5 2 4 1" stroke="#f7f2cb" stroke-width="1.8"/>';
  if(c.tribe==='dragon')figure=`<path d="M44 61C19 71 16 48 4 36L28 41 14 13 39 28 45 48M56 61C81 71 84 48 96 36L72 41 86 13 61 28 55 48" fill="${mid}"/><path d="M45 49L31 34 26 21 40 31 46 40M55 49L69 34 74 21 60 31 54 40" fill="${dark}"/><path d="M42 44L36 21 44 28 49 16 56 27 66 17 60 40 56 50 65 73 59 80 70 89 53 86 46 80 32 89 28 85 40 72 39 58Z" fill="url(#${id})"/><path d="M48 47L42 38 43 31 50 35 59 32 57 44 53 48 56 58 51 72 46 64" fill="${light}"/><path d="M40 73Q57 103 78 80Q64 89 54 75" fill="${mid}"/><path d="M45 36l5 2M54 36l4-2" stroke="#ffecad" stroke-width="2"/><path d="M49 44l6-1" stroke="${dark}"/><path d="M50 54v15m-5-10h10m-10 5h9" stroke="${dark}" opacity=".5"/>`;
  else if(c.tribe==='mage')figure=`<path d="M34 53L23 90 76 90 64 54 57 47 58 32 43 31 42 47Z" fill="url(#${id})"/><path d="M34 31L41 18 56 8 55 25 66 33 57 38 39 37Z" fill="${mid}"/><path d="M41 33L43 46 50 51 58 45 60 32" fill="${light}"/>${eyes}<path d="M47 52L34 82 50 72 65 84 54 52" fill="${dark}"/><path d="M47 52L50 73 55 51M31 84L46 78M68 85l-16-9" stroke="${light}" fill="none" stroke-width="2"/><path d="M28 61L18 49 24 44 37 53M61 56L78 66 75 73 58 65" fill="${mid}"/><path d="M20 22L25 89" stroke="#cfb06b" stroke-width="3"/><circle cx="19" cy="22" r="7" fill="${dark}" stroke="#cfb06b" stroke-width="2"/><circle cx="19" cy="22" r="3" fill="${light}"/><path d="M59 15l8 6-3 7M69 40l6-5" stroke="${light}" fill="none" opacity=".8"/>`;
  else if(c.tribe==='warrior')figure=`<path d="M39 47L27 58 35 71 37 85 28 92 47 92 50 71 55 91 75 91 65 82 64 59 60 48Z" fill="url(#${id})"/><path d="M39 32L40 21 50 15 62 24 63 39 56 48 42 44Z" fill="${mid}"/><path d="M40 21L35 12 50 20 68 10 61 27" fill="${light}"/><path d="M40 34L60 34 57 41 43 40Z" fill="${dark}"/>${eyes}<path d="M35 48L23 47 20 59 34 63M62 48L74 46 81 58 67 64" fill="${light}"/><path d="M39 53L59 53 56 67 49 72 40 64Z" fill="${dark}" stroke="${light}"/><path d="M19 75L28 16 32 24 23 75Z" fill="#e7eef0"/><path d="M14 69l18 3m-11 2-2 10" stroke="#c0a569" stroke-width="4"/><path d="M68 59L84 56 87 73 78 83 66 75Z" fill="${mid}" stroke="${light}" stroke-width="2"/><path d="M74 62l5 12 3-11" fill="${dark}"/>`;
@@ -10,3 +10,30 @@ export function portrait(c,size=120){const hash=h(c.en),[light,mid,dark]=palette
  return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${light}"/><stop offset=".4" stop-color="${mid}"/><stop offset="1" stop-color="${dark}"/></linearGradient></defs><ellipse cx="50" cy="90" rx="33" ry="7" fill="#000" opacity=".4"/><circle cx="50" cy="48" r="43" fill="${dark}" opacity=".4"/><circle cx="50" cy="48" r="39" fill="none" stroke="${rarity}" opacity=".25" stroke-dasharray="${hash%7+2} 7"/><g transform="translate(0 ${hash%3-1})">${figure}</g><path d="M8 9h12M8 9v12M92 9H80M92 9v12" stroke="${rarity}" opacity=".6" fill="none"/></svg>`;
 }
 export function sigil(tribe){return {dragon:'◆',mage:'✦',warrior:'⚔',beast:'♜',undead:'☽',item:'◇'}[tribe]||'◆';}
+
+// Match the Japanese canonical name so physical and abbreviated GBA names share art.
+// Other monsters keep their existing illustration rather than borrowing another identity.
+export const ARTWORK=Object.freeze({
+ '青眼の白龍':'blue-eyes-white-dragon',
+ '青眼の究極竜':'blue-eyes-ultimate-dragon',
+ 'ブラック・マジシャン':'dark-magician',
+ 'ブラック・マジシャン・ガール':'dark-magician-girl',
+ '真紅眼の黒竜':'red-eyes-black-dragon',
+ 'クリボー':'kuriboh',
+ 'デーモンの召喚':'summoned-skull',
+ 'ホーリー・エルフ':'mystical-elf',
+ 'エルフの剣士':'celtic-guardian',
+ 'ゴッドオーガス':'orgoth-the-relentless',
+ '封印されしエクゾディア':'exodia'
+});
+export function artworkKey(c){return ARTWORK[c.name]||null;}
+export function portraitSource(c,thumbnail=false){
+ const key=artworkKey(c);
+ return key?new URL(`./artwork/${key}${thumbnail?'-thumb':''}.webp`,import.meta.url).href:'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(fallbackPortrait(c,160));
+}
+export function portrait(c,size=120){
+ const key=artworkKey(c);
+ if(!key)return fallbackPortrait(c,size);
+ const eager=size>=300;
+ return `<img class="monster-portrait lv${c.level}" data-art="${key}" src="${portraitSource(c,size<=64)}" width="${size}" height="${size}" alt="" aria-hidden="true" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}>`;
+}

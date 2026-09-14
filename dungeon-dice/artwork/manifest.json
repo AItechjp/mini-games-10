@@ -1,0 +1,106 @@
+{
+  "version": "20260915-anime-v1",
+  "method": "Built-in image_gen tool; original AI-generated reinterpretations, not official card scans.",
+  "count": 11,
+  "images": [
+    {
+      "key": "blue-eyes-white-dragon",
+      "name": "Blue-Eyes White Dragon / 青眼の白龍",
+      "file": "blue-eyes-white-dragon.webp",
+      "thumbnail": "blue-eyes-white-dragon-thumb.webp",
+      "bytes": 41756,
+      "thumbnailBytes": 8898,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Blue-Eyes White Dragon / 青眼の白龍. Subject: A majestic silver-white mechanical-looking dragon, extremely long segmented serpentine neck, angular long snout, intense sapphire-blue eyes, swept ear fins, metallic ribbed belly plates, two huge blue-grey membrane wings, clawed arms. Dynamic forward roaring pose. Cold blue lightning and midnight-blue energy background. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    },
+    {
+      "key": "dark-magician",
+      "name": "Dark Magician / ブラック・マジシャン",
+      "file": "dark-magician.webp",
+      "thumbnail": "dark-magician-thumb.webp",
+      "bytes": 41724,
+      "thumbnailBytes": 7752,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Dark Magician / ブラック・マジシャン. Subject: The iconic young adult male spellcaster, sharp elegant anime face, purple segmented conical wizard helmet with magenta circular trim, matching violet armour and sweeping cape, green jewel-tipped staff held diagonally. Three-quarter waist-up view. Violet magic circle and emerald spell glow. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    },
+    {
+      "key": "red-eyes-black-dragon",
+      "name": "Red-Eyes Black Dragon / 真紅眼の黒竜",
+      "file": "red-eyes-black-dragon.webp",
+      "thumbnail": "red-eyes-black-dragon-thumb.webp",
+      "bytes": 41768,
+      "thumbnailBytes": 7844,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Red-Eyes Black Dragon / 真紅眼の黒竜. Subject: A fierce black dragon with unmistakable glowing red eyes, jagged obsidian scales and long narrow snout, sharp forward curving horns, neck spikes, black-red wings, serrated tail. Aggressive three-quarter view roaring, crimson fire energy background. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    },
+    {
+      "key": "kuriboh",
+      "name": "Kuriboh / クリボー",
+      "file": "kuriboh.webp",
+      "thumbnail": "kuriboh-thumb.webp",
+      "bytes": 41960,
+      "thumbnailBytes": 7392,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Kuriboh / クリボー. Subject: One very cute round shaggy chestnut-brown furball monster, enormous glossy purple eyes, tiny green clawed hands and feet, no humanoid body. Floating in magical sparkles, expressive and instantly recognisable. Teal and warm amber magical background. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    },
+    {
+      "key": "summoned-skull",
+      "name": "Summoned Skull / デーモンの召喚",
+      "file": "summoned-skull.webp",
+      "thumbnail": "summoned-skull-thumb.webp",
+      "bytes": 38490,
+      "thumbnailBytes": 8516,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Summoned Skull / デーモンの召喚. Subject: The powerful skeletal archfiend: large ivory horned demon skull, long curved horns, pronounced ribcage and shoulder bone spikes, purple muscular limbs, dark bat wings. Threatening three-quarter upper-body battle pose, yellow-violet electricity, dark amethyst background, no gore. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    },
+    {
+      "key": "mystical-elf",
+      "name": "Mystical Elf / ホーリー・エルフ",
+      "file": "mystical-elf.webp",
+      "thumbnail": "mystical-elf-thumb.webp",
+      "bytes": 38564,
+      "thumbnailBytes": 7388,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Mystical Elf / ホーリー・エルフ. Subject: An elegant adult female blue-skinned elf with long blonde hair, pointed ears, violet tiara, eyes gently closed, modest flowing magenta and lavender priestess gown with purple shoulder drapes, hands together casting healing light. Calm celestial gold particles in teal aura. Respectful nonsexual composition. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    },
+    {
+      "key": "celtic-guardian",
+      "name": "Celtic Guardian / エルフの剣士",
+      "file": "celtic-guardian.webp",
+      "thumbnail": "celtic-guardian-thumb.webp",
+      "bytes": 41340,
+      "thumbnailBytes": 9536,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Celtic Guardian / エルフの剣士. Subject: Young adult male elven swordsman with long pointed ears, flowing blonde hair, iconic deep green winged helmet and matching green armour over a cream tunic, sturdy brown straps, a longsword raised diagonally in a ready stance. Sharp anime face, emerald forest energy background. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    },
+    {
+      "key": "dark-magician-girl",
+      "name": "Dark Magician Girl / ブラック・マジシャン・ガール",
+      "file": "dark-magician-girl.webp",
+      "thumbnail": "dark-magician-girl-thumb.webp",
+      "bytes": 38934,
+      "thumbnailBytes": 9002,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Dark Magician Girl / ブラック・マジシャン・ガール. Subject: The recognizable female anime magician with wavy blonde hair, turquoise-blue curled conical hat trimmed in pink, blue and pink magical costume and shoulder cape, red circular gem, short spiral staff, cheerful determined face. Modest fully clothed shoulder-up portrait, not sexualized. Pink stars and azure magic aura. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    },
+    {
+      "key": "orgoth-the-relentless",
+      "name": "Orgoth the Relentless / ゴッドオーガス",
+      "file": "orgoth-the-relentless.webp",
+      "thumbnail": "orgoth-the-relentless-thumb.webp",
+      "bytes": 39786,
+      "thumbnailBytes": 8664,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Orgoth the Relentless / ゴッドオーガス. Subject: The iconic Dungeon Dice Monsters warrior: imposing muscular brown-skinned warrior, wild burgundy-red hair, huge gold and orange armour with blue-green jewels and protruding shoulder fins, ornate horned helmet, massive sword, powerful challenging stance. Rich gold, teal and crimson. Ancient temple energy. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    },
+    {
+      "key": "exodia",
+      "name": "Exodia the Forbidden One / 封印されしエクゾディア",
+      "file": "exodia.webp",
+      "thumbnail": "exodia-thumb.webp",
+      "bytes": 40596,
+      "thumbnailBytes": 9526,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Exodia the Forbidden One / 封印されしエクゾディア. Subject: The immense ancient Egyptian guardian with dark bronze skin, broad golden pharaonic headpiece, angular fierce face, layered golden collar, enormous muscular arms emerging from radiant broken chains. Frontal upper body, unmistakable pharaonic silhouette, sandstone gold and dark violet cosmic energy, no writing. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    },
+    {
+      "key": "blue-eyes-ultimate-dragon",
+      "name": "Blue-Eyes Ultimate Dragon / 青眼の究極竜",
+      "file": "blue-eyes-ultimate-dragon.webp",
+      "thumbnail": "blue-eyes-ultimate-dragon-thumb.webp",
+      "bytes": 41434,
+      "thumbnailBytes": 8744,
+      "prompt": "Use case: stylized-concept. Asset type: ONE square 1024x1024 monster portrait for a Yu-Gi-Oh Dungeon Dice Monsters browser game. Create an ORIGINAL illustration of Blue-Eyes Ultimate Dragon / 青眼の究極竜. Subject: Exactly THREE long-necked silver-white Blue-Eyes dragon heads with luminous sapphire-blue eyes emerging from a single colossal armoured dragon body. Distinct three heads fan left centre right, angular snouts, segmented metallic neck plates, enormous blue-grey wings. Powerful roaring pose, cobalt lightning background. Style: high-quality classic Yu-Gi-Oh anime trading-card illustration; bold crisp hand-inked contours, sharp shapes, detailed cel shading, painterly energy highlights, rich colour, dramatic foreshortening, character fidelity. Composition: one centered subject, head and key silhouette unmistakable at small thumbnail size, face near the upper centre, fill 80% of the square without cropping the head. Beautiful atmospheric background confined behind the subject. No text, letters, numbers, logos, signatures, watermarks, card border, interface, collages or multiple panels. Not generic fantasy, not geometric clipart, not a toy or 3D render."
+    }
+  ]
+}
