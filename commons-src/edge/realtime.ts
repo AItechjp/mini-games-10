@@ -8,21 +8,21 @@ import {collectOpenings} from '../lib/opening-feeds';
 import type {OpeningSnapshot} from '../lib/openings';
 declare const EdgeRuntime:{waitUntil(p:Promise<unknown>):void};
 async function cached<T extends object>(key:string,initial:T,interval:number,collect:(value:T)=>Promise<T>):Promise<T&{refreshing?:boolean;storageError?:boolean}>{
- const db=database(),now=Date.now();
+ const db=database(),now=Date.now(),refreshAfter=Math.max(0,interval-5000);
  try{
   await db.prepare('INSERT OR IGNORE INTO opening_cache (key,payload,updated,locked_until) VALUES (?,?,0,0)').bind(key,JSON.stringify(initial)).run();
   const row=await db.prepare('SELECT payload,updated,locked_until FROM opening_cache WHERE key=?').bind(key).first<{payload:string;updated:number;locked_until:number}>();
   const snapshot=row?JSON.parse(row.payload) as T:initial;
-  if(row&&now-row.updated<interval)return snapshot;
-  const lock=await db.prepare('UPDATE opening_cache SET locked_until=? WHERE key=? AND locked_until<? AND updated<? RETURNING key').bind(now+145000,key,now,now-interval).first();
-  if(lock)EdgeRuntime.waitUntil((async()=>{try{const value=await collect(snapshot);await db.prepare('UPDATE opening_cache SET payload=?,updated=?,locked_until=0 WHERE key=?').bind(JSON.stringify(value),Date.now(),key).run()}catch(error){console.error('Commons collection failed',String(error));await db.prepare('UPDATE opening_cache SET locked_until=0 WHERE key=?').bind(key).run()}})());
+  if(row&&now-row.updated<refreshAfter)return snapshot;
+  const lock=await db.prepare('UPDATE opening_cache SET locked_until=? WHERE key=? AND locked_until<? AND updated<? RETURNING key').bind(now+145000,key,now,now-refreshAfter).first();
+  if(lock)EdgeRuntime.waitUntil((async()=>{try{const value=await collect(snapshot);await db.prepare('UPDATE opening_cache SET payload=?,updated=?,locked_until=0 WHERE key=?').bind(JSON.stringify(value),now,key).run()}catch(error){console.error('Commons collection failed',String(error));await db.prepare('UPDATE opening_cache SET locked_until=0 WHERE key=?').bind(key).run()}})());
   return {...snapshot,refreshing:true};
  }catch{return {...initial,storageError:true}}
 }
 async function handle(request:Request){
  const u=new URL(request.url),path=u.pathname.replace(/^.*\/commons-realtime/,'');
  if(request.method!=='GET')return Response.json({error:'Method not allowed'},{status:405});
- if(path==='/health')return Response.json({ok:true,service:'commons-realtime',version:2,minimumSites:20});
+ if(path==='/health')return Response.json({ok:true,service:'commons-realtime',version:3,minimumSites:20});
  if(path==='/directory'){
   const snapshot=await cached<EvidenceSnapshot>('evidence-directory-v1',initialEvidence as EvidenceSnapshot,300000,collectEvidence);
   const now=Date.now(),byId=new Map(snapshot.evidence.map(e=>[e.id,e]));
