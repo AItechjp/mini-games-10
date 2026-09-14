@@ -1321,7 +1321,9 @@
   }
   requestAnimationFrame(frame);
 
+  document.addEventListener('aitech:guide-open',()=>{held.clear();pressed.clear();touchHeld.clear();if(gameState==='playing'&&!onlineSession)togglePause();});
   addEventListener('keydown', event => {
+    if(document.documentElement.hasAttribute('data-aitech-guide-open'))return;
     if(event.target.matches('input,textarea,select'))return;
     if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space'].includes(event.code))event.preventDefault();
     if(!held.has(event.code))pressed.add(event.code);

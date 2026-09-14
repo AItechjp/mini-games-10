@@ -10,7 +10,7 @@ Use current page links and `commons-src/lib/site-catalog.ts` for the current inv
 not an old conversation's app count. The current catalogs contain 17 Commons entries
 and 16 games; the public build also retains older/alternate routes.
 
-An improvement cycle is requested every six hours. Make concrete, tested changes;
+The user cancelled recurrence and requested 20 improvements per app in one batch. Make concrete, tested changes;
 rotate through the inventory and prioritize broken flows before cosmetic changes.
 This log is an engineering checkpoint, not a claim that every app is commercially ready.
 
@@ -63,9 +63,19 @@ Those limitations are not evidence of failure in players' browsers. Actual 3D pl
 is covered by the existing CI environment where supported; inspect its result.
 This log records concrete improvements, not a blanket commercial-readiness claim.
 
-The existing automation `6aa75946913c8191a03732fa590a4c37` is enabled every six hours
-and now includes tested production publication. Do not create duplicate schedules.
-Continue improving and publishing; request no repeat approval for authorized work.
+The existing automation `6aa75946913c8191a03732fa590a4c37` was disabled at the user's request. Do not resume it or create another schedule. The user now requests 20
+improvements per app, with a concrete list, implementation and publication.
+Continue this one-off batch without repeating the already granted release approval.
+
+## Verified publication before the 20-item batch
+
+Portal release `306bcf337bd567815ebc041e3446840f303ea6f1` is live. GitHub Pages
+run `34803839282` passed all steps, including public play checks and desktop/Android
+HTTPS checks. Memory flip/pause/restart, Speed play/save restoration, Commons
+search/clear/room list and old Trump URL redirect were also inspected publicly.
+AETHER DUEL version 13 (`d0657472ff6577143c84d5d9d340809284fd2440`) is published.
+The optional Cloudflare Pages mirror failed with an invalid Authorization header;
+do not present that mirror as updated or expose/guess its credentials.
 
 ## Current app coverage and next passes
 
@@ -76,7 +86,7 @@ The following remaining checks guide future cycles; keep claims specific to evid
 | --- | --- | --- |
 | BLACK SITE | `/game23.html` (solo/co-op) | Browser version restored; gameplay system gates passed; mobile aiming and save continuity remain |
 | SKYBREAK RIVALS | `/smash.html` | Browser version restored; online state/9-stage gates passed; fighter interaction review remains |
-| AETHER DUEL | `https://aether-card-duel.douga071132.chatgpt.site` | Existing public Site resolved, version 12; inspect deck building, 600-card load, campaign and online errors |
+| AETHER DUEL | `https://aether-card-duel.douga071132.chatgpt.site` | Published version 13; fullscreen and background CPU behavior improved; inspect deck building, 600-card load, campaign and online errors |
 | QUICK HOP | `/quick-hop/` | Shared control; checkpoint restart and mobile play remain |
 | STARTRAIL | `/startrail/` | Browser version restored; stage completion and mobile movement remain |
 | 大富豪 | `/classic.html?game=daifugo` | Shared control; complete CPU match, reconnect and room isolation remain |
@@ -135,3 +145,17 @@ Local typecheck, commercial/recovery, board/Memory/Speed rule gates, all route
 and distribution audits passed. The Pages workflow additionally verifies the
 new real UI flows before publication; inspect its matching run before claiming
 public completion. AETHER DUEL is published separately through its existing Site.
+
+## Integrated app guide and personal notes
+
+Preserved concurrent portal changes through `d05092e14e99503f3e74a3ac6b055fc9dfde1a34`
+and AETHER source through `5196060`. Combined both interfaces under one app-menu
+entry; existing record/comparison, camera timer/grid and whiteboard PNG tools remain.
+The detailed 33-by-20 list is in `docs/AItech-app-improvements-20.md`. Shared guides
+add protected per-app notes, search/favorites/recent apps, canonical links, guide
+export and display options. Existing saved games and guest keys remain separate.
+
+Commons typecheck/build and 660-item model/storage checks passed locally.
+Compiled distribution, browser integration and publication gates are checked
+against the integrated source before declaring the release complete.
+Recurrence remains disabled.

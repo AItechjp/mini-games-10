@@ -6,7 +6,7 @@ const browser=await chromium.launch({headless:true,args:['--use-fake-ui-for-medi
 try{
   const context=await browser.newContext({viewport:{width:390,height:844},permissions:['camera'],acceptDownloads:true});
   const page=await context.newPage();
-  const open=async()=>{await page.locator('#aitech-assist button').click();await page.locator('#aitech-assist-dialog').waitFor({state:'visible'});};
+  const open=async(target=page)=>{await target.getByRole('button',{name:'アプリメニューを開く',exact:true}).click();await target.getByRole('button',{name:'画面設定・記録・比較を開く',exact:true}).click();await target.locator('#aitech-assist-dialog').waitFor({state:'visible'});};
   await page.goto(new URL('trump/?game=memory',base).href);
   await open();await page.getByRole('button',{name:'現在の表示を記録',exact:true}).click();assert.match(await page.locator('.quality-history').innerText(),/日本時間/);
   await page.getByLabel('振り返りメモ',{exact:true}).fill('最初の2枚の位置を覚える');
@@ -16,10 +16,10 @@ try{
   await page.getByLabel('操作ボタンを大きく',{exact:true}).check();
   const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'テキスト保存',exact:true}).click();const download=await downloadPromise;assert.match(download.suggestedFilename(),/^aitech-memory-.*\.txt$/);
   await page.getByRole('button',{name:'閉じる',exact:true}).click();
-  assert.equal(await page.locator('#aitech-assist button').evaluate(el=>el===document.activeElement),true);
+  assert.equal(await page.getByRole('button',{name:'アプリメニューを開く',exact:true}).evaluate(el=>el===el.getRootNode().activeElement),true);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,'The mobile game and new controls must fit the viewport');
   await page.reload();assert.equal(await page.locator('html[data-quality-ready]').getAttribute('data-quality-text'),'largest');
-  const second=await context.newPage();await second.goto(new URL('trump/?game=speed',base).href);await second.locator('#aitech-assist button').click();await second.getByText('読みやすさ・押しやすさ',{exact:true}).click();await second.getByLabel('文字サイズ',{exact:true}).selectOption('normal');
+  const second=await context.newPage();await second.goto(new URL('trump/?game=speed',base).href);await open(second);await second.getByText('読みやすさ・押しやすさ',{exact:true}).click();await second.getByLabel('文字サイズ',{exact:true}).selectOption('normal');
   await page.waitForFunction(()=>document.documentElement.dataset.qualityText==='normal');await second.close();
   await page.goto(new URL('commons/sauna/',base).href);await page.getByRole('tab',{name:/すべて/}).click();await page.locator('[data-facility-id]').first().waitFor();await open();
   const options=await page.getByLabel('比較に追加する候補',{exact:true}).locator('option').count();assert.ok(options>1);

@@ -75,6 +75,7 @@ function reset() {
   announcement='同じ数字のペアは自動で取り除きます。';render();renderLog();schedule();
 }
 $('shuffle').addEventListener('click',()=>{state.hands[0]=shuffle(state.hands[0]);announcement='あなたの手札をシャッフルしました。';render();});
+document.addEventListener('aitech:guide-open',()=>{if(!state.over){paused=true;clearTimeout(timer);render();}});
 $('pause').addEventListener('click',()=>{paused=!paused;render();schedule();});
 $('speed').addEventListener('change',schedule);
 $('rules-button').addEventListener('click',()=>{$('rules').showModal();clearTimeout(timer);});

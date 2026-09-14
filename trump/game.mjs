@@ -107,6 +107,7 @@ $('tips').textContent=isMemory?'カードを2枚めくり、同じ数字なら�
 $('rules-title').textContent=title+'の遊び方';
 const rules=isMemory?['24枚のカードから同じ数字のペアを探します。順番に2枚ずつめくり、ペアなら続けてめくれます。','違う数字なら相手の番。最後に多くのペアを集めた方が勝ち、同数なら引き分けです。','CPUは一度表になったカードだけを覚えます。裏向きのカードを見抜くことはありません。']:['52枚をあなたとCPUに分け、4枚の手札と山札で対戦します。中央の場札より1つ大きいか小さい数字を出します。AとKもつながります。','あなたとCPUは順番を待たずに出せます。手札を出すと山札から補充され、先に自分のカードがなくなれば勝ちです。','お互い出せないときは「場札を入れ替える」。山札がなくなった場合は、場札の上2枚を残して使用済みカードを混ぜ、山札を補充します。'];
 $('rules-copy').replaceChildren(...rules.map(text=>{const p=document.createElement('p');p.textContent=text;return p;}));
+document.addEventListener('aitech:guide-open',()=>{if(!state.over){paused=true;clearTimeout(timer);render();}});
 $('pause').addEventListener('click',()=>{paused=!paused;render();schedule();});
 $('deal').addEventListener('click',()=>mutate(()=>dealSpeed(state)));
 $('restart').addEventListener('click',()=>{if(state.over)reset();else{$('confirm').showModal();clearTimeout(timer);}});

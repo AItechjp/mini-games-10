@@ -11,3 +11,5 @@ html[data-quality-motion="true"] *,html[data-quality-motion="true"] *::before,ht
 @media(prefers-reduced-motion:reduce){html[data-quality-motion="system"] *,html[data-quality-motion="system"] *::before,html[data-quality-motion="system"] *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media(max-width:540px){.quality-options{grid-template-columns:1fr}.quality-dialog header{padding:12px 16px}.quality-body{padding:12px 16px calc(20px + env(safe-area-inset-bottom))}.quality-compare th:nth-child(3),.quality-compare td:nth-child(3){width:62px}.quality-entry{margin:8px}.quality-dialog{max-width:calc(100vw - 16px)}}
 @media print{.quality-entry,.quality-dialog{display:none!important}}
+
+html[data-aitech-guide-ready] #aitech-assist{display:none!important}

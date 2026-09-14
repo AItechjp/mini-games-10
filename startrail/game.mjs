@@ -66,8 +66,10 @@ $('sound').addEventListener('click',()=>{
 $('auto-run').addEventListener('click',()=>{
   autoRun=!autoRun; $('auto-run').textContent=`ダッシュ ${autoRun?'ON':'OFF'}`; $('auto-run').setAttribute('aria-pressed',String(autoRun));
 });
+document.addEventListener('aitech:guide-open',()=>{clearInput();if(game.state==='playing'&&!paused)togglePause();});
 const mapped = new Set(['ArrowLeft','ArrowRight','ArrowUp','Space','KeyA','KeyD','KeyW','ShiftLeft','ShiftRight','KeyP','Escape','KeyR','Enter']);
 window.addEventListener('keydown',e=>{
+  if(document.documentElement.hasAttribute('data-aitech-guide-open'))return;
   if(!mapped.has(e.code) || e.altKey || e.ctrlKey || e.metaKey || /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
   if((e.code==='Space'||e.code==='Enter') && e.target.closest('button,a,summary')) return;
   e.preventDefault(); if(!ready) return;

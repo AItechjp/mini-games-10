@@ -43,13 +43,16 @@ function start(){
   function networkState(){network.hidden=navigator.onLine;if(!navigator.onLine)network.textContent='オフラインです。通信が必要な操作は接続後に再試行してください。';}
   networkState();window.addEventListener('offline',networkState);window.addEventListener('online',()=>{network.hidden=false;network.textContent='接続が戻りました。必要な操作を再試行できます。';setTimeout(networkState,7000);});
   window.addEventListener('storage',e=>{if(e.key!==PREFS)return;try{prefs=validPrefs(JSON.parse(e.newValue||'null'));apply();if(dialog.open){render();notify('別タブの表示設定を反映しました。');}}catch{notify('別タブの設定を読み込めませんでした。');}});
-  function open(){
-    app=find()||app;activeId=app.id;opener=document.activeElement;
+  document.addEventListener('aitech:assist-request',e=>open(e.detail?.opener));
+  function open(returnFocus){
+    if(dialog.open||document.querySelector('#aitech-app-guide[data-open]'))return;
+    app=find()||app;activeId=app.id;opener=returnFocus instanceof HTMLElement?returnFocus:document.activeElement;
     if(document.pointerLockElement)document.exitPointerLock?.();
+    document.documentElement.dataset.aitechGuideOpen='';document.dispatchEvent(new CustomEvent('aitech:guide-open'));
     render();dialog.showModal();close.focus();notify(saveFailed?'表示設定を端末に保存できません。この画面では利用できます。':'');
     document.dispatchEvent(new CustomEvent('aitech:assist',{detail:{open:true}}));
   }
-  dialog.addEventListener('close',()=>{document.dispatchEvent(new CustomEvent('aitech:assist',{detail:{open:false}}));if(opener?.isConnected)opener.focus({preventScroll:true});});
+  dialog.addEventListener('close',()=>{delete document.documentElement.dataset.aitechGuideOpen;document.dispatchEvent(new CustomEvent('aitech:guide-close'));document.dispatchEvent(new CustomEvent('aitech:assist',{detail:{open:false}}));if(opener?.isConnected)opener.focus({preventScroll:true});});
   // Keep game window key handlers from consuming typing and Escape inside the panel.
   for(const event of ['keydown','keyup'])dialog.addEventListener(event,e=>e.stopPropagation());
   window.addEventListener('keydown',e=>{if(e.altKey&&!e.ctrlKey&&!e.metaKey&&e.code==='Slash'&&!e.repeat){e.preventDefault();e.stopImmediatePropagation();if(dialog.open)dialog.close();else open();}},true);

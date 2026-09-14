@@ -118,13 +118,14 @@ $('#ops-interact').addEventListener('pointerdown',e=>{e.preventDefault();e.curre
 for(const type of ['pointerup','pointercancel','lostpointercapture'])$('#ops-interact').addEventListener(type,()=>ops.interact=false);
 $('#ops-pause').addEventListener('click',()=>opsSetPause(!ops.paused));
 $('#ops-ping').addEventListener('click',()=>opsPing());
-addEventListener('keydown',e=>{if(e.code==='Escape'&&!e.repeat&&state.running){e.preventDefault();opsSetPause(!ops.paused);}if(e.code==='KeyQ'&&!e.repeat)opsPing();});
+addEventListener('keydown',e=>{if(document.documentElement.hasAttribute('data-aitech-guide-open'))return;if(e.code==='Escape'&&!e.repeat&&state.running){e.preventDefault();opsSetPause(!ops.paused);}if(e.code==='KeyQ'&&!e.repeat)opsPing();});
 addEventListener('blur',opsClearInputs);
 canvas.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button===0&&pointerLocked&&opsCanPlay()){shoot();clearInterval(ops.pcFire);ops.pcFire=setInterval(()=>shoot(),25);}});
 addEventListener('pointerup',e=>{if(e.pointerType==='mouse'){clearInterval(ops.pcFire);ops.pcFire=0;}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){opsClearInputs();if(state.running){if(isHost())opsSetPause(true);else send('pause_request',{});}}});
 startBtn.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();if(state.running){opsSetPause(false);return;}resetMission();},{capture:true});
 
+document.addEventListener('aitech:guide-open',()=>{opsClearInputs();if(state.running&&state.mode==='solo'&&!ops.paused)opsSetPause(true);});
 function opsSetPause(paused){
   if(!state.running)return;
   if(!isHost()){send('pause_request',{paused});toast('ホストに一時停止／再開をリクエスト');return;}
