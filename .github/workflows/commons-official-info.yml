@@ -1,0 +1,48 @@
+name: Refresh Commons legal and government information
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/collect_official_info.py'
+      - 'scripts/test_collect_official_info.py'
+      - 'scripts/official-sources.json'
+      - '.github/workflows/commons-official-info.yml'
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: commons-official-information
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify date, source and failure handling
+        run: python scripts/test_collect_official_info.py
+      - name: Collect attributed official information
+        run: python scripts/collect_official_info.py --sources scripts/official-sources.json --output-dir commons/public-records/data --max-children 8 --workers 6
+      - name: Preserve and publish the latest index
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add commons/public-records/data/records.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Refresh Commons legal and government source index"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then
+              gh workflow run deploy-pages.yml --ref main
+              exit 0
+            fi
+          done
+          exit 1

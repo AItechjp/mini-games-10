@@ -128,6 +128,7 @@ jobs:
           node tests/government-network-browser.mjs
           node tests/quality-browser.mjs
           node tests/commercial-browser.mjs
+          node tests/official-info-browser.mjs
           APP_GUIDE_BASE_URL=http://127.0.0.1:4173/ node tests/app-guide-smoke.mjs
           MEGA_BASE_URL=http://127.0.0.1:4173/ MEGA_FULL=1 node tests/mega-smoke.mjs
           YOBI_BASE_URL=http://127.0.0.1:4173/ node tests/yobi-past-smoke.mjs

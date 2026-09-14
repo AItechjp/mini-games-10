@@ -1,0 +1,2607 @@
+[
+  {
+    "name": "国立公文書館",
+    "url": "http://www.archives.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "内閣府"
+  },
+  {
+    "name": "北方領土問題対策協会",
+    "url": "https://www.hoppou.go.jp/index.html",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "内閣府"
+  },
+  {
+    "name": "国立研究開発法人 日本医療研究開発機構",
+    "url": "https://www.amed.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "内閣府"
+  },
+  {
+    "name": "国民生活センター",
+    "url": "http://www.kokusen.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "消費者庁"
+  },
+  {
+    "name": "国立研究開発法人 情報通信研究機構",
+    "url": "http://www.nict.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "総務省"
+  },
+  {
+    "name": "統計センター",
+    "url": "http://www.nstac.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "総務省"
+  },
+  {
+    "name": "郵便貯金簡易生命保険管理・郵便局ネットワーク支援機構",
+    "url": "https://www.yuchokampo.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "総務省"
+  },
+  {
+    "name": "国際協力機構",
+    "url": "http://www.jica.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外務省"
+  },
+  {
+    "name": "国際交流基金",
+    "url": "http://www.jpf.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外務省"
+  },
+  {
+    "name": "酒類総合研究所",
+    "url": "http://www.nrib.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "財務省"
+  },
+  {
+    "name": "造幣局",
+    "url": "https://www.mint.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "財務省"
+  },
+  {
+    "name": "国立印刷局",
+    "url": "http://www.npb.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "財務省"
+  },
+  {
+    "name": "国立特別支援教育総合研究所",
+    "url": "http://www.nise.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "大学入試センター",
+    "url": "http://www.dnc.ac.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立青少年教育振興機構",
+    "url": "http://www.niye.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立女性教育会館",
+    "url": "https://www.nwec.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立科学博物館",
+    "url": "http://www.kahaku.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立研究開発法人 物質・材料研究機構",
+    "url": "http://www.nims.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立研究開発法人 防災科学技術研究所",
+    "url": "http://www.bosai.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立研究開発法人 量子科学技術研究開発機構",
+    "url": "http://www.qst.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立美術館",
+    "url": "http://www.artmuseums.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立文化財機構",
+    "url": "http://www.nich.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "教職員支援機構",
+    "url": "http://www.nits.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立研究開発法人 科学技術振興機構",
+    "url": "http://www.jst.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "日本学術振興会",
+    "url": "http://www.jsps.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立研究開発法人 理化学研究所",
+    "url": "https://www.riken.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立研究開発法人 宇宙航空研究開発機構",
+    "url": "https://www.jaxa.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "日本スポーツ振興センター",
+    "url": "https://www.jpnsport.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "日本芸術文化振興会",
+    "url": "http://www.ntj.jac.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "日本学生支援機構",
+    "url": "https://www.jasso.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立研究開発法人 海洋研究開発機構",
+    "url": "http://www.jamstec.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立高等専門学校機構",
+    "url": "http://www.kosen-k.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "大学改革支援・学位授与機構",
+    "url": "http://www.niad.ac.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立研究開発法人 日本原子力研究開発機構",
+    "url": "http://www.jaea.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文部科学省"
+  },
+  {
+    "name": "国立研究開発法人 医薬基盤・健康・栄養研究所",
+    "url": "http://www.nibiohn.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "労働者健康安全機構",
+    "url": "http://www.johas.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "勤労者退職金共済機構",
+    "url": "http://www.taisyokukin.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "高齢・障害・求職者雇用支援機構",
+    "url": "https://www.jeed.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "福祉医療機構",
+    "url": "http://www.wam.go.jp/hp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "国立重度知的障害者総合施設のぞみの園",
+    "url": "http://www.nozomi.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "労働政策研究・研修機構",
+    "url": "http://www.jil.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "国立病院機構",
+    "url": "https://nho.hosp.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "医薬品医療機器総合機構",
+    "url": "https://www.pmda.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "地域医療機能推進機構",
+    "url": "https://www.jcho.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "年金積立金管理運用",
+    "url": "http://www.gpif.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "国立研究開発法人 国立がん研究センター",
+    "url": "http://www.ncc.go.jp/jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "国立研究開発法人 国立循環器病研究センター",
+    "url": "http://www.ncvc.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "国立研究開発法人 国立精神・神経医療研究センター",
+    "url": "http://www.ncnp.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "国立研究開発法人 国立国際医療研究センター",
+    "url": "http://www.ncgm.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "国立研究開発法人 国立成育医療研究センター",
+    "url": "http://www.ncchd.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "国立研究開発法人 国立長寿医療研究センター",
+    "url": "http://www.ncgg.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "厚生労働省"
+  },
+  {
+    "name": "農林水産消費安全技術センター",
+    "url": "http://www.famic.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "農林水産省"
+  },
+  {
+    "name": "家畜改良センター",
+    "url": "http://www.nlbc.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "農林水産省"
+  },
+  {
+    "name": "国立研究開発法人 水産研究・教育機構",
+    "url": "https://www.fra.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "農林水産省"
+  },
+  {
+    "name": "国立研究開発法人 農業・食品産業技術総合研究機構",
+    "url": "http://www.naro.affrc.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "農林水産省"
+  },
+  {
+    "name": "国立研究開発法人 国際農林水産業研究センター",
+    "url": "http://www.jircas.affrc.go.jp/index.sjis.html",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "農林水産省"
+  },
+  {
+    "name": "国立研究開発法人 森林研究・整備機構",
+    "url": "http://www.ffpri.affrc.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "農林水産省"
+  },
+  {
+    "name": "農畜産業振興機構",
+    "url": "http://www.alic.go.jp//",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "農林水産省"
+  },
+  {
+    "name": "農業者年金基金",
+    "url": "http://www.nounen.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "農林水産省"
+  },
+  {
+    "name": "農林漁業信用基金",
+    "url": "http://www.jaffic.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "農林水産省"
+  },
+  {
+    "name": "経済産業研究所",
+    "url": "http://www.rieti.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "経済産業省"
+  },
+  {
+    "name": "工業所有権情報・研修館",
+    "url": "http://www.inpit.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "経済産業省"
+  },
+  {
+    "name": "国立研究開発法人 産業技術総合研究所",
+    "url": "http://www.aist.go.jp/index_ja.html",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "経済産業省"
+  },
+  {
+    "name": "製品評価技術基盤機構",
+    "url": "http://www.nite.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "経済産業省"
+  },
+  {
+    "name": "国立研究開発法人 新エネルギー・産業技術総合開発機構",
+    "url": "http://www.nedo.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "経済産業省"
+  },
+  {
+    "name": "日本貿易振興機構",
+    "url": "https://www.jetro.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "経済産業省"
+  },
+  {
+    "name": "情報処理推進機構",
+    "url": "http://www.ipa.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "経済産業省"
+  },
+  {
+    "name": "エネルギー・金属鉱物資源機構",
+    "url": "http://www.jogmec.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "経済産業省"
+  },
+  {
+    "name": "中小企業基盤整備機構",
+    "url": "http://www.smrj.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "経済産業省"
+  },
+  {
+    "name": "国立研究開発法人 土木研究所",
+    "url": "http://www.pwri.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "国土交通省"
+  },
+  {
+    "name": "国立研究開発法人 建築研究所",
+    "url": "http://www.kenken.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "国土交通省"
+  },
+  {
+    "name": "国立研究開発法人 海上・港湾・航空技術研究所",
+    "url": "http://www.mpat.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "国土交通省"
+  },
+  {
+    "name": "海技教育機構",
+    "url": "https://www.jmets.ac.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "国土交通省"
+  },
+  {
+    "name": "航空大学校",
+    "url": "http://www.kouku-dai.ac.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "国土交通省"
+  },
+  {
+    "name": "自動車技術総合機構",
+    "url": "http://www.naltec.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "国土交通省"
+  },
+  {
+    "name": "国立環境研究所",
+    "url": "https://www.nies.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "環境省"
+  },
+  {
+    "name": "環境再生保全機構",
+    "url": "https://www.erca.go.jp/",
+    "group": "independent",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/IAAs.html",
+    "verifiedAt": "2026-09-14T15:31:06.600211+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "環境省"
+  },
+  {
+    "name": "北海道",
+    "url": "http://www.pref.hokkaido.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "青森県",
+    "url": "http://www.pref.aomori.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "岩手県",
+    "url": "http://www.pref.iwate.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "宮城県",
+    "url": "http://www.pref.miyagi.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "秋田県",
+    "url": "http://www.pref.akita.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "山形県",
+    "url": "http://www.pref.yamagata.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "福島県",
+    "url": "http://wwwcms.pref.fukushima.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "茨城県",
+    "url": "http://www.pref.ibaraki.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "栃木県",
+    "url": "http://www.pref.tochigi.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "群馬県",
+    "url": "http://www.pref.gunma.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "埼玉県",
+    "url": "http://www.pref.saitama.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "千葉県",
+    "url": "http://www.pref.chiba.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "東京都",
+    "url": "http://www.metro.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "神奈川県",
+    "url": "http://www.pref.kanagawa.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "新潟県",
+    "url": "http://www.pref.niigata.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "富山県",
+    "url": "http://www.pref.toyama.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "石川県",
+    "url": "http://www.pref.ishikawa.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "福井県",
+    "url": "http://www.pref.fukui.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "山梨県",
+    "url": "http://www.pref.yamanashi.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "長野県",
+    "url": "http://www.pref.nagano.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "岐阜県",
+    "url": "http://www.pref.gifu.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "静岡県",
+    "url": "http://www.pref.shizuoka.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "愛知県",
+    "url": "http://www.pref.aichi.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "三重県",
+    "url": "http://www.pref.mie.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "滋賀県",
+    "url": "http://www.pref.shiga.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "京都府",
+    "url": "http://www.pref.kyoto.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "大阪府",
+    "url": "https://www.pref.osaka.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "兵庫県",
+    "url": "http://web.pref.hyogo.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "奈良県",
+    "url": "http://www.pref.nara.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "和歌山県",
+    "url": "http://www.pref.wakayama.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "鳥取県",
+    "url": "http://www.pref.tottori.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "島根県",
+    "url": "http://www.pref.shimane.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "岡山県",
+    "url": "http://www.pref.okayama.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "広島県",
+    "url": "http://www.pref.hiroshima.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "山口県",
+    "url": "http://www.pref.yamaguchi.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "徳島県",
+    "url": "https://www.pref.tokushima.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "香川県",
+    "url": "http://www.pref.kagawa.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "愛媛県",
+    "url": "http://www.pref.ehime.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "高知県",
+    "url": "http://www.pref.kochi.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "福岡県",
+    "url": "http://www.pref.fukuoka.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "佐賀県",
+    "url": "http://www.pref.saga.lg.jp/web/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "長崎県",
+    "url": "http://www.pref.nagasaki.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "熊本県",
+    "url": "http://www.pref.kumamoto.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "大分県",
+    "url": "http://www.pref.oita.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "宮崎県",
+    "url": "http://www.pref.miyazaki.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "鹿児島県",
+    "url": "http://www.pref.kagoshima.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "沖縄県",
+    "url": "http://www.pref.okinawa.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "都道府県"
+  },
+  {
+    "name": "札幌市",
+    "url": "http://www.city.sapporo.jp/index.html",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "青森市",
+    "url": "http://www.city.aomori.aomori.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "盛岡市",
+    "url": "http://www.city.morioka.iwate.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "仙台市",
+    "url": "http://www.city.sendai.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "秋田市",
+    "url": "https://www.city.akita.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "山形市",
+    "url": "http://www.city.yamagata-yamagata.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "福島市",
+    "url": "http://www.city.fukushima.fukushima.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "水戸市",
+    "url": "http://www.city.mito.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "宇都宮市",
+    "url": "http://www.city.utsunomiya.tochigi.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "前橋市",
+    "url": "http://www.city.maebashi.gunma.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "さいたま市",
+    "url": "http://www.city.saitama.jp/index.html",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "千葉市",
+    "url": "http://www.city.chiba.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "横浜市",
+    "url": "http://www.city.yokohama.lg.jp/front/welcome.html",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "川崎市",
+    "url": "http://www.city.kawasaki.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "相模原市",
+    "url": "http://www.city.sagamihara.kanagawa.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "新潟市",
+    "url": "http://www.city.niigata.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "富山市",
+    "url": "https://www.city.toyama.toyama.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "金沢市",
+    "url": "http://www4.city.kanazawa.lg.jp/index.html",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "福井市",
+    "url": "http://www.city.fukui.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "甲府市",
+    "url": "http://www.city.kofu.yamanashi.jp/index.html",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "長野市",
+    "url": "http://www.city.nagano.nagano.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "岐阜市",
+    "url": "http://www.city.gifu.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "静岡市",
+    "url": "http://www.city.shizuoka.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "浜松市",
+    "url": "https://www.city.hamamatsu.shizuoka.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "名古屋市",
+    "url": "http://www.city.nagoya.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "津市",
+    "url": "http://www.info.city.tsu.mie.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "大津市",
+    "url": "http://www.city.otsu.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "京都市",
+    "url": "http://www.city.kyoto.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "大阪市",
+    "url": "http://www.city.osaka.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "堺市",
+    "url": "http://www.city.sakai.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "神戸市",
+    "url": "http://www.city.kobe.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "奈良市",
+    "url": "http://www.city.nara.lg.jp/www/toppage/0000000000000/APM03000.html",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "和歌山市",
+    "url": "http://www.city.wakayama.wakayama.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "鳥取市",
+    "url": "http://www.city.tottori.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "松江市",
+    "url": "https://www.city.matsue.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "岡山市",
+    "url": "http://www.city.okayama.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "広島市",
+    "url": "http://www.city.hiroshima.lg.jp/www/toppage/0000000000000/APM03000.html",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "山口市",
+    "url": "http://www.city.yamaguchi.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "徳島市",
+    "url": "http://www.city.tokushima.tokushima.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "高松市",
+    "url": "http://www.city.takamatsu.kagawa.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "松山市",
+    "url": "http://www.city.matsuyama.ehime.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "高知市",
+    "url": "http://www.city.kochi.kochi.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "福岡市",
+    "url": "http://www.city.fukuoka.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "北九州市",
+    "url": "http://www.city.kitakyushu.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "佐賀市",
+    "url": "http://www.city.saga.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "長崎市",
+    "url": "http://www.city.nagasaki.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "熊本市",
+    "url": "http://www.city.kumamoto.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "大分市",
+    "url": "http://www.city.oita.oita.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "宮崎市",
+    "url": "http://www.city.miyazaki.miyazaki.jp/www/toppage/0000000000000/APM03000.html",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "鹿児島市",
+    "url": "http://www.city.kagoshima.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "那覇市",
+    "url": "http://www.city.naha.okinawa.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "市（索引掲載分）"
+  },
+  {
+    "name": "千代田区",
+    "url": "http://www.city.chiyoda.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "中央区",
+    "url": "http://www.city.chuo.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "港区",
+    "url": "http://www.city.minato.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "新宿区",
+    "url": "http://www.city.shinjuku.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "文京区",
+    "url": "http://www.city.bunkyo.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "台東区",
+    "url": "http://www.city.taito.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "墨田区",
+    "url": "http://www.city.sumida.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "江東区",
+    "url": "http://www.city.koto.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "品川区",
+    "url": "http://www.city.shinagawa.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "目黒区",
+    "url": "http://www.city.meguro.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "大田区",
+    "url": "http://www.city.ota.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "世田谷区",
+    "url": "http://www.city.setagaya.lg.jp/index.html",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "渋谷区",
+    "url": "http://www.city.shibuya.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "中野区",
+    "url": "http://www.city.tokyo-nakano.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "杉並区",
+    "url": "http://www.city.suginami.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "豊島区",
+    "url": "http://www.city.toshima.lg.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "北区",
+    "url": "http://www.city.kita.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "荒川区",
+    "url": "http://www.city.arakawa.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "板橋区",
+    "url": "http://www.city.itabashi.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "練馬区",
+    "url": "http://www.city.nerima.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "足立区",
+    "url": "http://www.city.adachi.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "葛飾区",
+    "url": "http://www.city.katsushika.lg.jp/index.html",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "江戸川区",
+    "url": "http://www.city.edogawa.tokyo.jp/",
+    "group": "local",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/local-governments.html",
+    "verifiedAt": "2026-09-14T15:31:06.603209+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "subgroup": "東京都特別区"
+  },
+  {
+    "name": "首相官邸",
+    "url": "http://www.kantei.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "内閣官房",
+    "url": "http://www.cas.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "内閣法制局",
+    "url": "https://www.clb.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "人事院",
+    "url": "https://www.jinji.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "内閣府",
+    "url": "https://www.cao.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "日本学術会議",
+    "url": "http://www.scj.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "宮内庁",
+    "url": "https://www.kunaicho.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局等"
+  },
+  {
+    "name": "公正取引委員会",
+    "url": "https://www.jftc.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局等"
+  },
+  {
+    "name": "国家公安委員会",
+    "url": "http://www.npsc.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局等"
+  },
+  {
+    "name": "警察庁",
+    "url": "http://www.npa.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "個人情報保護委員会",
+    "url": "https://www.ppc.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局等"
+  },
+  {
+    "name": "カジノ管理委員会",
+    "url": "https://www.jcrc.go.jp/index.html",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局等"
+  },
+  {
+    "name": "金融庁",
+    "url": "https://www.fsa.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局等"
+  },
+  {
+    "name": "消費者庁",
+    "url": "https://www.caa.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局等"
+  },
+  {
+    "name": "こども家庭庁",
+    "url": "https://www.cfa.go.jp/top/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局等"
+  },
+  {
+    "name": "デジタル庁",
+    "url": "https://www.digital.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "復興庁",
+    "url": "https://www.reconstruction.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "総務省",
+    "url": "https://www.soumu.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "公害等調整委員会",
+    "url": "https://www.soumu.go.jp/kouchoi/index.html",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "消防庁",
+    "url": "https://www.fdma.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "法務省",
+    "url": "http://www.moj.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "検察庁",
+    "url": "http://www.kensatsu.go.jp/top.shtml",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "出入国在留管理庁",
+    "url": "http://www.moj.go.jp/isa/index.html",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "公安審査委員会",
+    "url": "http://www.moj.go.jp/kouanshin/kouanshinsa_index.html",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "公安調査庁",
+    "url": "http://www.moj.go.jp/psia/index.html",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "外務省",
+    "url": "https://www.mofa.go.jp/mofaj/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "財務省",
+    "url": "https://www.mof.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "国税庁",
+    "url": "https://www.nta.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "国税不服審判所",
+    "url": "https://www.kfs.go.jp/index.html",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "文部科学省",
+    "url": "https://www.mext.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "日本学士院",
+    "url": "https://www.japan-acad.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "地震調査研究推進本部",
+    "url": "https://www.jishin.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "スポーツ庁",
+    "url": "https://www.mext.go.jp/sports/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "文化庁",
+    "url": "https://www.bunka.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "日本芸術院",
+    "url": "http://www.geijutuin.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "文化庁の特別の機関"
+  },
+  {
+    "name": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/index.html",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "中央労働委員会",
+    "url": "https://www.mhlw.go.jp/churoi/index.html",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "農林水産省",
+    "url": "https://www.maff.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "林野庁",
+    "url": "https://www.rinya.maff.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "水産庁",
+    "url": "https://www.jfa.maff.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "経済産業省",
+    "url": "https://www.meti.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "資源エネルギー庁",
+    "url": "https://www.enecho.meti.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "特許庁",
+    "url": "https://www.jpo.go.jp/index.html",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "中小企業庁",
+    "url": "https://www.chusho.meti.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "国土交通省",
+    "url": "https://www.mlit.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "国土地理院",
+    "url": "https://www.gsi.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "海難審判所",
+    "url": "https://www.mlit.go.jp/jmat/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "観光庁",
+    "url": "https://www.mlit.go.jp/kankocho/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "気象庁",
+    "url": "http://www.jma.go.jp/jma/index.html",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "運輸安全委員会",
+    "url": "https://www.mlit.go.jp/jtsb/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "海上保安庁",
+    "url": "https://www.kaiho.mlit.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "環境省",
+    "url": "http://www.env.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "原子力規制委員会",
+    "url": "https://www.nsr.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "防衛省",
+    "url": "https://www.mod.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "陸上自衛隊",
+    "url": "https://www.mod.go.jp/gsdf/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "海上自衛隊",
+    "url": "https://www.mod.go.jp/msdf/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "航空自衛隊",
+    "url": "https://www.mod.go.jp/asdf/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "特別の機関"
+  },
+  {
+    "name": "防衛装備庁",
+    "url": "https://www.mod.go.jp/atla/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null,
+    "note": "外局"
+  },
+  {
+    "name": "会計検査院",
+    "url": "https://www.jbaudit.go.jp/",
+    "group": "central",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+    "verifiedAt": "2026-09-14T15:31:06.640529+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "衆議院",
+    "url": "http://www.shugiin.go.jp/internet/index.nsf/html/index.htm",
+    "group": "legislative-judicial",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/parliament-and-court.html",
+    "verifiedAt": "2026-09-14T15:31:06.669096+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "参議院",
+    "url": "https://www.sangiin.go.jp/",
+    "group": "legislative-judicial",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/parliament-and-court.html",
+    "verifiedAt": "2026-09-14T15:31:06.669096+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "裁判官訴追委員会",
+    "url": "https://www.sotsui.go.jp/",
+    "group": "legislative-judicial",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/parliament-and-court.html",
+    "verifiedAt": "2026-09-14T15:31:06.669096+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "裁判官弾劾裁判所",
+    "url": "https://www.dangai.go.jp/",
+    "group": "legislative-judicial",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/parliament-and-court.html",
+    "verifiedAt": "2026-09-14T15:31:06.669096+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "国立国会図書館",
+    "url": "https://www.ndl.go.jp/",
+    "group": "legislative-judicial",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/parliament-and-court.html",
+    "verifiedAt": "2026-09-14T15:31:06.669096+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  },
+  {
+    "name": "裁判所",
+    "url": "https://www.courts.go.jp/index.html",
+    "group": "legislative-judicial",
+    "sourceUrl": "https://www.e-gov.go.jp/government-directory/parliament-and-court.html",
+    "verifiedAt": "2026-09-14T15:31:06.669096+00:00",
+    "verification": "official-index-listed",
+    "targetVerifiedAt": null
+  }
+]
