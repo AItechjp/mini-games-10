@@ -86,6 +86,7 @@ export const sites:SiteEntry[] = [
   {id:'reemployment-network',name:'官僚の再就職先ネットワーク',description:'公表資料にある退職時の所属・人物・再就職先をたどる。収録範囲を明示。',href:'/commons/reemployment-network/',label:'公表資料・再就職',color:'#795b98',keywords:'天下り 官僚 キャリア 再就職 企業 団体 人事 関係図',actionLabel:'再就職先を見る'},
   {id:'law-watch',name:'法律・国会ウォッチ',description:'立法・法改正・国会会議録を公的情報から横断確認。',href:'/commons/law/',label:'法律・国会',color:'#225be4',keywords:'法律 法改正 立法 国会 議案 施行 公布 パブリックコメント',actionLabel:'法律の動きを見る'},
   {id:'government-documents',name:'行政資料ナビ',description:'白書・審議会・検討会資料と行政機関の公式リンクを横断検索。',href:'/commons/documents/',label:'行政・公開資料',color:'#285b78',keywords:'行政 省庁 白書 検討会 審議会 報告書 政府 独立行政法人 自治体',actionLabel:'資料を探す'},
+  {id:'phone-watch',name:'迷惑・詐欺電話ウォッチ',description:'公的注意喚起の掲載番号を検索。出典・公表日・取得状況を確認。',href:'/commons/phone-watch/',label:'公的情報・自動確認',color:'#087765',keywords:'迷惑電話 詐欺電話 悪質 電話番号 検索 セキュリティ 注意喚起',actionLabel:'番号を確認する'},
 ];
 
 export const siteGroups = [
@@ -95,6 +96,7 @@ export const siteGroups = [
   {id:'security',name:'セキュリティ',numbers:[16,17,18]},
   {id:'government',name:'行政・公共情報',numbers:[19,20]},
 ].map(group=>({...group,sites:group.numbers.map(number=>sites[number-1])}));
+siteGroups.find(group=>group.id==='security')?.sites.push(...sites.filter(site=>site.id==='phone-watch'));
 const officialInfoSites=sites.filter(site=>['law-watch','government-documents'].includes(site.id));
 const governmentGroup=siteGroups.find(group=>group.id==='government');
 if(governmentGroup)governmentGroup.sites.push(...officialInfoSites);

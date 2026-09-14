@@ -1,0 +1,4 @@
+export const digits=value=>String(value??'').normalize('NFKC').replace(/[^0-9×]/g,'');
+export function normalizeQuery(value){let q=String(value??'').normalize('NFKC').trim();if(q.startsWith('+81'))q='0'+q.slice(3).replace(/^\s*\(0\)/,'');return digits(q);}
+export function matches(item,query){const q=normalizeQuery(query);if(!q)return !String(query).trim();const number=digits(item.number);if(item.numberType==='full')return number.includes(q);if(q.length===number.length)return [...number].every((n,i)=>n==='×'||n===q[i]);return number.split('×').some(part=>part.includes(q));}
+export function chooseItems(items,{query='',filter='all',sort='new'}={}){return items.filter(r=>(filter==='all'||r.numberType===filter)&&matches(r,query)).sort((a,b)=>(sort==='full'?(a.numberType==='full'?0:1)-(b.numberType==='full'?0:1):0)||(b.publishedAt||'').localeCompare(a.publishedAt||''));}
