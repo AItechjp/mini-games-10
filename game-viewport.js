@@ -7,6 +7,7 @@
   const landscape = () => innerWidth > innerHeight;
   let focused = false, requested = false, dismissed = false, fallback = false;
   let wasNative = false, locked = false, pending = false, frame = 0, scrollYBefore = 0;
+  let resumeCards = false, noticeTimer;
   const moved = [];
   const toolbar = document.createElement('div');
   toolbar.id = 'aitech-game-toolbar';
@@ -115,16 +116,25 @@
         hand.style.setProperty('--hand-rows', rows);
       }
     }
+    if (focused && kind === 'babanuki') {
+      for (const cards of document.querySelectorAll('#draw-cards,#own-cards')) {
+        cards.style.setProperty('--oldmaid-columns', Math.max(1, Math.min(7, cards.children.length)));
+        cards.style.setProperty('--oldmaid-rows', Math.max(1, Math.ceil(cards.children.length / 7)));
+      }
+    }
   }
   function schedule() { if (!frame) frame = requestAnimationFrame(measure); }
   function unlock() {
     if (locked) { try { screen.orientation?.unlock?.(); } catch {} locked = false; }
   }
-  function say(message) { notice.textContent = message; }
+  function say(message) {
+    clearTimeout(noticeTimer); notice.textContent = message;
+    if (message) noticeTimer = setTimeout(() => { notice.textContent = ''; }, 4500);
+  }
   async function enter() {
     if (pending || native()) return;
     pending = true; full.disabled = true;
-    requested = true; dismissed = false; say(''); schedule();
+    requested = true; dismissed = false; say(''); setFocus(landscape()); schedule();
     try {
       const request = root.requestFullscreen || root.webkitRequestFullscreen;
       if (!request) throw new Error('fullscreen-unavailable');
@@ -141,7 +151,7 @@
     } finally { pending = false; full.disabled = false; schedule(); }
   }
   async function leave() {
-    requested = false; fallback = false; dismissed = true; unlock(); say('');
+    requested = false; fallback = false; dismissed = true; unlock(); say(''); setFocus(false);
     try {
       if (native()) await (document.exitFullscreen || document.webkitExitFullscreen).call(document);
     } catch { say('全画面を終了するには、端末の戻る操作かEscキーを使ってください。'); }
@@ -154,6 +164,7 @@
   });
   $('#aitech-play-settings').addEventListener('click', () => {
     if (!focused) return;
+    resumeCards = ['trump','babanuki'].includes(kind) && $('#pause') && !/再開/.test($('#pause').textContent);
     document.dispatchEvent(new CustomEvent('aitech:guide-open'));
     root.setAttribute('data-aitech-guide-open', '');
     menu.showModal();
@@ -163,6 +174,8 @@
   menu.addEventListener('close', () => {
     root.removeAttribute('data-aitech-guide-open');
     document.dispatchEvent(new CustomEvent('aitech:guide-close'));
+    if (resumeCards && !document.querySelector('dialog[open]') && /再開/.test($('#pause')?.textContent || '')) $('#pause').click();
+    resumeCards = false;
   });
   // Existing game-specific full-screen controls also use the same fallback and
   // orientation handling; intercept before their older handlers can run.
@@ -191,7 +204,7 @@
   window.addEventListener('pagehide', unlock);
   document.addEventListener('change', schedule);
   // Bound observation to layouts that really change, not the per-frame HUD.
-  for (const selector of ['.board-panel', '#game-stage', '.classic-shell', '#play']) {
+  for (const selector of ['.board-panel', '#game-stage', '.classic-shell', '#play', '#draw-cards', '#own-cards']) {
     const target = $(selector);
     if (target) new MutationObserver(schedule).observe(target, {childList:true, subtree:true});
   }

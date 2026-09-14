@@ -27,7 +27,7 @@ html[data-aitech-game]{--aitech-play-height:100dvh;--aitech-toolbar-height:48px;
 @media(orientation:portrait){#aitech-game-toolbar{flex-wrap:wrap;height:auto;min-height:96px;padding-bottom:6px}#aitech-play-title{flex:1}#aitech-rotate-tip{width:100%;order:3;text-align:center}#aitech-play-view{display:none!important}}
 
 /* The game occupies the viewport, including on browsers without native fullscreen. */
-html.aitech-play-mode,html.aitech-play-mode body{width:100%;height:var(--aitech-play-height);min-height:0!important;overflow:hidden!important;overscroll-behavior:none}
+html.aitech-play-mode,html.aitech-play-mode body{width:100%;height:var(--aitech-play-height)!important;min-height:0!important;overflow:hidden!important;overscroll-behavior:none}
 html.aitech-play-mode body{padding:0!important;margin:0!important}
 .aitech-play-mode #aitech-game-toolbar{position:relative}
 .aitech-play-mode main{box-sizing:border-box;width:100%!important;max-width:none!important;margin:0!important;padding:0 max(4px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(4px,env(safe-area-inset-left))!important;height:var(--aitech-game-room);min-height:0}
@@ -115,7 +115,7 @@ html.aitech-play-mode body{padding:0!important;margin:0!important}
 .aitech-play-mode[data-aitech-game="trump"] .speed-table #deal:not([hidden]){grid-column:1;grid-row:3;z-index:2;align-self:end;justify-self:center;min-height:44px;margin:0;background:#153f43}
 
 /* Old Maid: draw on the left, own hand on the right, opponents above. */
-.aitech-play-mode[data-aitech-game="babanuki"] .table{height:100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:48px 52px minmax(0,1fr);gap:4px 12px;padding:6px 12px;border:0;border-radius:0;overflow:hidden}
+.aitech-play-mode[data-aitech-game="babanuki"] .table{height:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:48px 52px minmax(0,1fr);gap:4px 12px;padding:6px 12px;border:0;border-radius:0;overflow:hidden}
 .aitech-play-mode[data-aitech-game="babanuki"] .opponents{grid-column:1/-1;padding:0;gap:8px}
 .aitech-play-mode[data-aitech-game="babanuki"] .opponent{display:flex;align-items:center;justify-content:center;gap:8px;padding:4px;font-size:14px}
 .aitech-play-mode[data-aitech-game="babanuki"] .opponent .count{margin:0;font-size:12px}
@@ -124,13 +124,13 @@ html.aitech-play-mode body{padding:0!important;margin:0!important}
 .aitech-play-mode[data-aitech-game="babanuki"] .table-center :is(.table-mark,.eyebrow){display:none}
 .aitech-play-mode[data-aitech-game="babanuki"] .table-center h2{font-size:16px;margin:0}
 .aitech-play-mode[data-aitech-game="babanuki"] .table-center #announcement{font-size:12px;min-height:0;margin:0}
-.aitech-play-mode[data-aitech-game="babanuki"] :is(.draw-zone,.own-zone){padding:4px;min-height:0;display:flex;flex-direction:column;border:0}
+.aitech-play-mode[data-aitech-game="babanuki"] :is(.draw-zone,.own-zone){padding:4px;min-height:0;min-width:0;display:flex;flex-direction:column;border:0}
 .aitech-play-mode[data-aitech-game="babanuki"] :is(.draw-zone h3,.hand-heading){margin:0 0 6px;font-size:14px;min-height:32px}
 .aitech-play-mode[data-aitech-game="babanuki"] .hand-heading{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
 .aitech-play-mode[data-aitech-game="babanuki"] .hand-heading h3{margin:0}
 .aitech-play-mode[data-aitech-game="babanuki"] #shuffle{min-height:32px;padding:4px 8px;font-size:12px}
-.aitech-play-mode[data-aitech-game="babanuki"] .cards{flex:1;min-height:0;flex-wrap:nowrap;gap:0;align-items:center;justify-content:center;padding:4px 0}
-.aitech-play-mode[data-aitech-game="babanuki"] .card{flex:0 1 70px;width:70px;min-width:24px;height:min(100%,130px);max-height:none;padding:5px 3px;font-size:20px}
+.aitech-play-mode[data-aitech-game="babanuki"] .cards{flex:1;min-height:0;min-width:0;display:grid;grid-template-columns:repeat(var(--oldmaid-columns,7),minmax(0,1fr));grid-template-rows:repeat(var(--oldmaid-rows,1),minmax(0,1fr));gap:4px;align-items:center;justify-content:center;padding:4px 0}
+.aitech-play-mode[data-aitech-game="babanuki"] .card{width:100%;min-width:0;height:100%;max-height:140px;padding:5px 3px;font-size:20px}
 .aitech-play-mode[data-aitech-game="babanuki"] .card .suit{font-size:24px}
 
 /* Boards: fit the actual board to the available height, keep moves and scores alongside. */
@@ -178,12 +178,15 @@ html.aitech-play-mode body{padding:0!important;margin:0!important}
 .aitech-play-mode[data-aitech-game="classic"] .classic-scorebar strong{font-size:14px}
 .aitech-play-mode[data-aitech-game="classic"] .classic-center-status{grid-column:2;grid-row:1}
 .aitech-play-mode[data-aitech-game="classic"] .classic-scorebar>div:not(.classic-center-status)>span{display:none}
+.aitech-play-mode[data-aitech-game="classic"] .classic-scorebar{min-height:38px;max-height:38px}
+.aitech-play-mode[data-aitech-game="classic"] .classic-scorebar>div{padding:0!important;line-height:1.2}
+.aitech-play-mode[data-aitech-game="classic"] .classic-shell{overflow:hidden!important}
 .aitech-play-mode[data-aitech-game="classic"] .classic-stage{flex:1;min-height:0!important;padding:4px 8px!important;border:0!important;border-radius:0!important;overflow:hidden}
-.aitech-play-mode[data-aitech-game="classic"] .classic-controlbar{position:absolute;bottom:28px;left:12px;z-index:3;margin:0;padding:0;background:transparent}
+.aitech-play-mode[data-aitech-game="classic"] .classic-controlbar{position:absolute!important;bottom:28px!important;left:12px;z-index:3;margin:0;padding:0!important;background:transparent}
 .aitech-play-mode[data-aitech-game="classic"] .classic-controlbar button{min-height:38px;padding:6px 16px;font-size:14px}
-.aitech-play-mode[data-aitech-game="classic"] .classic-message{flex:0 0 22px;min-height:22px;font-size:12px;line-height:18px;margin:0;padding:2px 12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aitech-play-mode[data-aitech-game="classic"] .classic-message{flex:0 0 22px;min-height:22px;font-size:12px;line-height:18px;margin:0;padding:2px 12px!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .aitech-play-mode[data-aitech-game="classic"] #deluxe-status{display:none}
-.aitech-play-mode[data-aitech-game="classic"] .table-zone{display:grid;grid-template-columns:minmax(150px,.65fr) minmax(0,1.4fr);grid-template-rows:50px minmax(0,1fr);gap:6px;height:100%;min-height:0}
+.aitech-play-mode[data-aitech-game="classic"] .table-zone{display:grid;grid-template-columns:minmax(150px,.65fr) minmax(0,1.4fr);grid-template-rows:50px minmax(0,1fr);gap:6px!important;height:100%!important;min-height:0}
 .aitech-play-mode[data-aitech-game="classic"] .rival-area{grid-column:1/-1;padding:2px 6px!important;min-height:0}
 .aitech-play-mode[data-aitech-game="classic"] .rival-area>.area-head,.aitech-play-mode[data-aitech-game="classic"] .seat-cards{display:none}
 .aitech-play-mode[data-aitech-game="classic"] .table-seats{height:100%;gap:6px}
@@ -192,16 +195,16 @@ html.aitech-play-mode body{padding:0!important;margin:0!important}
 .aitech-play-mode[data-aitech-game="classic"] :is(.center-area,.you-area){min-height:0;padding:5px 8px!important;display:flex;flex-direction:column;overflow:hidden}
 .aitech-play-mode[data-aitech-game="classic"] .area-head{flex:none;margin:0 0 4px;gap:4px}
 .aitech-play-mode[data-aitech-game="classic"] .area-head h3,.aitech-play-mode[data-aitech-game="classic"] .area-head span{font-size:12px}
-.aitech-play-mode[data-aitech-game="classic"] .pile{flex:1;min-height:0;gap:4px;flex-wrap:nowrap}
+.aitech-play-mode[data-aitech-game="classic"] .pile{flex:1;min-height:0!important;gap:4px;flex-wrap:nowrap}
 .aitech-play-mode[data-aitech-game="classic"] .pile-note{font-size:14px;line-height:1.5}
 .aitech-play-mode[data-aitech-game="classic"] .action-row{flex:none;margin:5px 0 32px;gap:6px}
 .aitech-play-mode[data-aitech-game="classic"] .action-row button{min-height:40px;padding:5px 12px;font-size:14px}
 .aitech-play-mode[data-aitech-game="classic"] .you-area .hand{display:grid;grid-template-columns:repeat(var(--hand-columns,7),minmax(0,1fr));grid-template-rows:repeat(var(--hand-rows,2),minmax(0,1fr));gap:6px 4px;align-items:stretch;flex:1;min-height:0!important;padding:5px 3px;overflow:visible!important;max-width:none}
-.aitech-play-mode[data-aitech-game="classic"] .you-area .playing-card{width:100%;height:100%;min-width:0;min-height:0;max-height:none;margin:0;padding:2px;flex:none;border-radius:5px;gap:0;box-shadow:0 2px 0 #b8b5a4}
+.aitech-play-mode[data-aitech-game="classic"] .you-area .playing-card{width:100%!important;height:100%!important;min-width:0;min-height:0;max-height:none;margin:0;padding:2px;flex:none;border-radius:5px;gap:0;box-shadow:0 2px 0 #b8b5a4}
 .aitech-play-mode[data-aitech-game="classic"] .playing-card .rank{font-size:16px;line-height:1.1}
 .aitech-play-mode[data-aitech-game="classic"] .playing-card .suit{font-size:22px;line-height:1.1}
 .aitech-play-mode[data-aitech-game="classic"] .playing-card.selected{transform:translateY(-4px);box-shadow:0 0 0 2px #f3d68d}
-.aitech-play-mode[data-aitech-game="classic"] .pile .playing-card{height:min(100%,90px);width:50px;min-width:20px;flex:0 1 50px}
+.aitech-play-mode[data-aitech-game="classic"] .pile .playing-card{height:min(100%,90px)!important;width:50px!important;min-width:20px;flex:0 1 50px}
 .aitech-play-mode[data-aitech-game="classic"] .dai-effects{position:absolute;top:86px;left:16px;right:16px;z-index:2;pointer-events:none;display:flex;justify-content:center}
 .aitech-play-mode[data-aitech-game="classic"] .dai-special-banner{font-size:12px;padding:3px}
 .aitech-play-mode[data-aitech-game="classic"] .gomoku-wrap{height:100%;min-height:0;display:flex;align-items:center;justify-content:center;gap:12px;padding:0}
@@ -219,6 +222,28 @@ html.aitech-play-mode body{padding:0!important;margin:0!important}
 .aitech-play-mode[data-aitech-game="quiz-raid"] .answer-player h3{font-size:14px;margin:6px 0}
 .aitech-play-mode[data-aitech-game="quiz-raid"] .answers button{min-height:44px;font-size:14px;padding:6px}
 .aitech-play-mode[data-aitech-game="cyber-quiz"] .questions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .arena-top{left:10px;right:10px;top:12px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .arena-badge{display:none}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .stage-label{font-size:12px;letter-spacing:1px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .healthbar{left:10px;right:10px;bottom:10px;grid-template-columns:1fr;gap:9px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .healthbar .center-status small{display:none}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .healthbar .center-status>span{font-size:18px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] #play:not([hidden]){display:grid;grid-template-rows:30px minmax(44px,.6fr) 36px minmax(108px,1.4fr);gap:4px;padding:6px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] #play:has(.explanation:not([hidden])){display:block}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .quiz-top{gap:8px;font-size:12px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] #question-category{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.aitech-play-mode[data-aitech-game="quiz-raid"] #question{min-height:0;overflow:auto;font-size:16px;line-height:1.4;margin:0}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .support{height:36px;min-height:0;flex-wrap:nowrap;gap:4px;margin:0}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .support button{font-size:12px;min-height:34px;padding:4px 7px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .support small{margin-left:3px;font-size:12px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] #intent{width:auto;flex:1;font-size:12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin:0}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .answer-players{min-height:0}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .answer-player{min-height:0;display:flex;flex-direction:column}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .answer-player h3{flex:none;min-height:24px;height:24px;line-height:1.2;flex-wrap:nowrap;margin:0 0 4px;font-size:12px;gap:5px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .answer-player h3 small{display:none}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .answers{min-height:0;flex:1;grid-template-rows:repeat(2,minmax(0,1fr));gap:4px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .answers button{height:100%;min-height:44px;min-width:0;overflow:auto;font-size:14px;line-height:1.35;padding:5px;gap:4px}
+.aitech-play-mode[data-aitech-game="quiz-raid"] .answers kbd{display:none}
 @media(pointer:fine) and (min-width:1100px){.aitech-play-mode[data-aitech-game="quick-hop"] .touch,.aitech-play-mode[data-aitech-game="startrail"] .touch-controls{display:none}.aitech-play-mode[data-aitech-game="lantern-duo"] .controls{opacity:.75}}
 @media(max-width:740px) and (orientation:landscape){#aitech-play-title{max-width:130px}#aitech-game-toolbar button,#aitech-game-toolbar a{padding-inline:8px}.aitech-play-mode .hud{gap:8px!important}.aitech-play-mode .hud .camp{font-size:0}.aitech-play-mode[data-aitech-game="lantern-duo"] .controls-center{min-width:80px}.aitech-play-mode[data-aitech-game="lantern-duo"] #recallButton{max-width:100px}.aitech-play-mode[data-aitech-game="lantern-duo"] #recallButton kbd{display:none}}
 @media(max-height:350px) and (orientation:landscape){html[data-aitech-game]{--aitech-toolbar-height:46px}.aitech-play-mode[data-aitech-game="quick-hop"] .panel .best{display:none}.aitech-play-mode[data-aitech-game="lantern-duo"] .home-description{display:none}.aitech-play-mode[data-aitech-game="lantern-duo"] .home-secondary{margin-top:4px}.aitech-play-mode[data-aitech-game="lantern-duo"] .home-secondary button{min-height:28px}.aitech-play-mode[data-aitech-game="babanuki"] .table{grid-template-rows:40px 38px minmax(0,1fr)}.aitech-play-mode[data-aitech-game="babanuki"] .table-center #announcement{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.aitech-play-mode[data-aitech-game="classic"] .table-zone{grid-template-rows:36px minmax(0,1fr)}}

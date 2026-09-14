@@ -61,12 +61,15 @@ try{
     }
     if(path.includes('quiz-raid'))assert.equal(await page.locator('.answers button').count(),8);
     await page.screenshot({path:`${output}/${viewport.width}-${viewport.height}-${name}.png`});
+    if(viewport.width===844&&['quick-hop/','trump/?game=memory','classic.html?game=daifugo','board-games/?game=gomoku&mode=local','quiz-raid/'].includes(path)){
+      console.log('QA_IMAGE '+path+' '+(await page.screenshot({type:'jpeg',quality:40})).toString('base64'));
+    }
     await page.locator('#aitech-play-settings').click();
     assert(await page.locator('#aitech-play-menu').isVisible());
     await page.locator('#aitech-play-close').click();
     assert(!await page.locator('#aitech-play-menu').isVisible());
     await page.locator('#aitech-play-view').click();
-    assert(!await page.evaluate(()=>document.documentElement.classList.contains('aitech-play-mode')));
+    await page.waitForFunction(()=>!document.documentElement.classList.contains('aitech-play-mode'));
     // Native fullscreen and the orientation API can be denied. The fallback
     // must still expand and its exit must restore settings to their original DOM.
     await page.evaluate(()=>{Element.prototype.requestFullscreen=undefined;Element.prototype.webkitRequestFullscreen=undefined;});
@@ -74,7 +77,7 @@ try{
     await page.waitForFunction(()=>document.documentElement.classList.contains('aitech-play-mode'));
     assert.equal(await page.locator('#aitech-play-fullscreen').getAttribute('aria-pressed'),'true');
     await page.locator('#aitech-play-fullscreen').click();
-    assert(!await page.evaluate(()=>document.documentElement.classList.contains('aitech-play-mode')));
+    await page.waitForFunction(()=>!document.documentElement.classList.contains('aitech-play-mode'));
     assert.deepEqual(errors,[],`${path}: browser errors`);
     records.push({path,viewport,bounds,status:'passed'});
     console.log(`PASS ${viewport.width}x${viewport.height} ${path} ${Math.round(bounds.width)}x${Math.round(bounds.height)}`);
@@ -86,7 +89,7 @@ try{
  const context=await browser.newContext({viewport:{width:1280,height:800}}),page=await context.newPage();
  await page.goto(base+'quick-hop/');await page.locator('#aitech-play-fullscreen').click();
  await page.waitForFunction(()=>document.fullscreenElement||document.getElementById('aitech-play-fullscreen').getAttribute('aria-pressed')==='true');
- assert(await page.evaluate(()=>document.documentElement.classList.contains('aitech-play-mode')));
+ await page.waitForFunction(()=>document.documentElement.classList.contains('aitech-play-mode'));
  await page.locator('#aitech-play-fullscreen').click();
  await page.setViewportSize({width:390,height:844});
  await page.reload();await page.locator('#start:not(:disabled)').waitFor();
