@@ -62,7 +62,7 @@ export function execute(s){if(!canExecute(s))return s;const action=actions(s).fi
  const record={step:s.log.length+1,node:s.node,action:action.label,support:support.label,tech:action.tech,trace:n.trace-s.trace,integrity:n.integrity-s.integrity,cost:action.cost+support.cost};n.log=[...s.log,record];
  const failure=n.flags.abort?'撤退を選択した。':n.trace>=100?'警戒度が100に達し、演習区画が封鎖された。':n.integrity<=0?'データの保全度を失い、任務を継続できなくなった。':action.next==='end'&&objectiveMet(n)&&n.integrity<60?'目標操作は終えたが、保全度が60未満のため完了を確認できなかった。':n.turns<0||n.turns===0&&!objectiveMet(n)?'残り手数を使い切った。':action.next==='end'&&!objectiveMet(n)?'必要な目標がそろっていない。':null;
  const success=!failure&&action.next==='end'&&objectiveMet(n);
- n.feedback={...record,text:failure||(success?scenario(s).epilogue:action.next==='deadend'?'予想と違う区画だった。経路の手掛かりを再確認しよう。':action.next==='recovery'?'境界に阻まれ退避した。警戒を下げて立て直せる。':`${action.label}を完了。${support.label}の支援を反映して、${NODES[action.next]}へ進める。`)};
+ n.feedback={...record,text:failure||(success?scenario(s).epilogue:action.next==='deadend'?'予想と違う区画だった。経路の手掛かりを再確認しよう。':action.next==='recovery'?'境界に阻まれ退避した。警戒を下げて立て直せる。':`「${action.label}」を実行。「${support.label}」の支援を反映して、${NODES[action.next]}へ進める。`)};
  n.phase=success||failure?'ended':'feedback';n.ending=success?{success:true,grade:n.trace<=35&&n.integrity>=95?'S':n.trace<=60&&n.integrity>=80?'A':'B',text:scenario(s).epilogue}:failure?{success:false,grade:'RETRY',text:failure}:null;
  return n;
 }
