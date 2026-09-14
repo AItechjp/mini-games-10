@@ -86,6 +86,7 @@ export const sites:SiteEntry[] = [
   {id:'reemployment-network',name:'官僚の再就職先ネットワーク',description:'公表資料にある退職時の所属・人物・再就職先をたどる。収録範囲を明示。',href:'/commons/reemployment-network/',label:'公表資料・再就職',color:'#795b98',keywords:'天下り 官僚 キャリア 再就職 企業 団体 人事 関係図',actionLabel:'再就職先を見る'},
   {id:'law-watch',name:'法律・国会ウォッチ',description:'立法・法改正・国会会議録を公的情報から横断確認。',href:'/commons/law/',label:'法律・国会',color:'#225be4',keywords:'法律 法改正 立法 国会 議案 施行 公布 パブリックコメント',actionLabel:'法律の動きを見る'},
   {id:'government-documents',name:'行政資料ナビ',description:'白書・審議会・検討会資料と行政機関の公式リンクを横断検索。',href:'/commons/documents/',label:'行政・公開資料',color:'#285b78',keywords:'行政 省庁 白書 検討会 審議会 報告書 政府 独立行政法人 自治体',actionLabel:'資料を探す'},
+  {id:'manga-links',name:'漫画リンク収集',description:'公式漫画サイトの更新フィードから作品名とURLを自動収集。配信元と取得日時を確認して読む。',href:'/commons/manga/',label:'公式配信・5分巡回',color:'#205ce3',keywords:'漫画 マンガ コミック 無料 試し読み 公式 URL 収集 新着 ジャンプ サンデー',actionLabel:'漫画のリンクを見る'},
 ];
 
 export const siteGroups = [
@@ -99,6 +100,8 @@ const officialInfoSites=sites.filter(site=>['law-watch','government-documents'].
 const governmentGroup=siteGroups.find(group=>group.id==='government');
 if(governmentGroup)governmentGroup.sites.push(...officialInfoSites);
 else siteGroups.push({id:'public-information',name:'法律・行政情報',numbers:[],sites:officialInfoSites});
+
+siteGroups.find(group=>group.id==='security')?.sites.push(...sites.filter(site=>site.id==='manga-links'));
 
 export const listedToolIds = new Set(sites.flatMap(site=>site.toolId?[site.toolId]:[]));
 export const studyPages = [
