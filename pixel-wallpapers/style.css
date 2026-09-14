@@ -4,3 +4,5 @@
 @media(max-width:370px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.controls{gap:10px}.controls label{font-size:.8125rem}.save-button{gap:6px}.save-button small{font-size:.75rem}.switches{font-size:.8125rem}}
 @media(max-height:550px) and (orientation:landscape){.workspace{display:grid;grid-template-columns:minmax(310px,43%) 1fr}.viewer{position:relative;padding:20px}.phone{height:330px}.collection{padding:24px 18px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.device{display:none}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+@media(min-width:761px) and (min-height:551px){.viewer{max-height:100dvh;overflow-y:auto;scrollbar-width:thin}}
