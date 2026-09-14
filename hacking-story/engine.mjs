@@ -67,4 +67,17 @@ export function execute(s){if(!canExecute(s))return s;const action=actions(s).fi
  return n;
 }
 export function advance(s){return s.phase==='feedback'?{...s,phase:'play',revision:s.revision+1}:s;}
-export function validState(s){return !!s&&s.version===1&&Number.isInteger(s.mission)&&s.mission>=1&&s.mission<=100&&typeof s.run==='string'&&s.run.length<=80&&Number.isSafeInteger(s.revision)&&s.revision>=0&&Object.hasOwn(NODES,s.node)&&['play','feedback','ended'].includes(s.phase)&&['turns','trace','integrity','intel','assist'].every(k=>Number.isFinite(s[k])&&s[k]>=-5&&s[k]<=1000)&&Array.isArray(s.votes)&&s.votes.length===2&&s.votes.every(x=>x===null||typeof x==='string'&&x.length<40)&&s.flags&&typeof s.flags==='object'&&Array.isArray(s.log)&&s.log.length<=80&&Array.isArray(s.visited)&&s.visited.every(x=>Object.hasOwn(NODES,x))&&JSON.stringify(s).length<50000;}
+export function validState(s){
+ const integer=(v,min,max)=>Number.isSafeInteger(v)&&v>=min&&v<=max;
+ const text=(v,max)=>typeof v==='string'&&v.length<=max;
+ const record=r=>r&&integer(r.step,1,80)&&Object.hasOwn(NODES,r.node)&&text(r.action,240)&&text(r.support,240)&&(r.tech===null||Object.hasOwn(TECHNIQUES,r.tech))&&integer(r.trace,-100,100)&&integer(r.integrity,-100,100)&&integer(r.cost,1,5);
+ if(!s||s.version!==1||!integer(s.mission,1,100)||!text(s.run,80)||!integer(s.revision,0,10000)||!Object.hasOwn(NODES,s.node)||!['play','feedback','ended'].includes(s.phase))return false;
+ if(!integer(s.turns,-5,30)||!integer(s.trace,0,100)||!integer(s.integrity,0,100)||!integer(s.intel,0,100)||!integer(s.assist,0,10)||typeof s.shield!=='boolean')return false;
+ if(!Array.isArray(s.votes)||s.votes.length!==2||!s.votes.every(x=>x===null||text(x,40))||!s.flags||typeof s.flags!=='object'||Array.isArray(s.flags))return false;
+ if(!Array.isArray(s.log)||s.log.length>80||!s.log.every(record)||!Array.isArray(s.visited)||s.visited.length>20||!s.visited.every(x=>Object.hasOwn(NODES,x)))return false;
+ if(s.feedback!==null&&(!record(s.feedback)||!text(s.feedback.text,1500)))return false;
+ if(s.phase!=='play'&&!s.feedback)return false;
+ if(s.ending!==null&&(!s.ending||typeof s.ending.success!=='boolean'||!['S','A','B','RETRY'].includes(s.ending.grade)||!text(s.ending.text,1500)))return false;
+ if(s.phase==='ended'&&!s.ending)return false;
+ return JSON.stringify(s).length<50000;
+}

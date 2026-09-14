@@ -20,6 +20,8 @@ let none={...createMission(1),assist:0};assert.equal(vote(none,1,'watch'),none);
 assert.equal(validState({...createMission(1),mission:101}),false);
 assert.equal(validState({...createMission(1),node:'unknown'}),false);
 assert.equal(validState({...createMission(1),trace:NaN}),false);
+assert.equal(validState({...createMission(1),phase:'feedback',feedback:{text:'bad'}}),false);
+assert.equal(validState({...createMission(1),log:[{step:1,node:'recon',action:'x',support:'x',tech:'javascript:bad',trace:1,integrity:0,cost:1}]}),false);
 // Explore decisions across every scenario; each reachable state keeps valid choices
 // and resource limits guarantee termination even through repeated recovery loops.
 let seed=713;const random=()=>((seed=(seed*1664525+1013904223)>>>0)/4294967296);
