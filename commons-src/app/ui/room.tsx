@@ -57,7 +57,7 @@ export default function Room({id}:{id:string}) {
         if(!full&&version.current!==undefined)params.set('since',String(version.current));
         if(refreshMembers)params.set('members','1');
         const result=await api(`/api/rooms/${id}?${params}`,undefined,{signal:controller.signal});
-        if(!mounted.current)return false;
+        if(!mounted.current||controller.signal.aborted)return false;
         const clockOffset=result.now-Math.round((started+Date.now())/2);
         if(result.unchanged){
           if(current.current){

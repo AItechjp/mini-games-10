@@ -3,7 +3,7 @@ const $ = id => document.getElementById(id);
 let state = newGame(), timer, paused = false, logs = ['カードを配り、最初のペアを取り除きました。'];
 let announcement = '同じ数字のペアは自動で取り除きます。';
 const label = card => card.rank === 0 ? 'ジョーカー' : `${card.suit}${({1:'A',11:'J',12:'Q',13:'K'})[card.rank] || card.rank}`;
-const blocked = () => paused || document.hidden || $('rules').open || $('restart-dialog').open;
+const blocked = () => paused || document.hidden || $('rules').open || $('restart-dialog').open || document.documentElement.hasAttribute('data-aitech-guide-open') || document.getElementById('aitech-assist-dialog')?.open;
 function face(card) {
   const el=document.createElement('div');
   el.className=`card ${['♥','♦'].includes(card.suit)?'red':''} ${card.rank===0?'joker':''}`;
@@ -76,6 +76,7 @@ function reset() {
 }
 $('shuffle').addEventListener('click',()=>{state.hands[0]=shuffle(state.hands[0]);announcement='あなたの手札をシャッフルしました。';render();});
 document.addEventListener('aitech:guide-open',()=>{if(!state.over){paused=true;clearTimeout(timer);render();}});
+document.addEventListener('aitech:assist',e=>{if(e.detail.open&&!state.over){paused=true;clearTimeout(timer);render();}});
 $('pause').addEventListener('click',()=>{paused=!paused;render();schedule();});
 $('speed').addEventListener('change',schedule);
 $('rules-button').addEventListener('click',()=>{$('rules').showModal();clearTimeout(timer);});

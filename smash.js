@@ -1324,11 +1324,11 @@
   document.addEventListener('aitech:guide-open',()=>{held.clear();pressed.clear();touchHeld.clear();if(gameState==='playing'&&!onlineSession)togglePause();});
   addEventListener('keydown', event => {
     if(document.documentElement.hasAttribute('data-aitech-guide-open'))return;
-    if(event.target.matches('input,textarea,select'))return;
+    if(event.isComposing||event.ctrlKey||event.metaKey||event.altKey||event.target.closest('input,textarea,select,button,a,dialog,[contenteditable]'))return;
     if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space'].includes(event.code))event.preventDefault();
     if(!held.has(event.code))pressed.add(event.code);
     held.add(event.code);
-    if(event.code==='Escape')togglePause();
+    if(event.code==='Escape'&&!event.repeat)togglePause();
   });
   addEventListener('keyup', event => {
     held.delete(event.code);
@@ -1338,8 +1338,9 @@
     const key=button.dataset.key;
     const down=event=>{event.preventDefault();if(!touchHeld.has(key))touchPressed.add(key);touchHeld.add(key);button.classList.add('pressed');};
     const up=event=>{event.preventDefault();if(touchHeld.has(key))touchReleased.add(key);touchHeld.delete(key);button.classList.remove('pressed');};
-    button.addEventListener('pointerdown',down);button.addEventListener('pointerup',up);button.addEventListener('pointercancel',up);button.addEventListener('pointerleave',up);
+    button.addEventListener('pointerdown',down);button.addEventListener('pointerup',up);button.addEventListener('pointercancel',up);button.addEventListener('lostpointercapture',up);button.addEventListener('pointerleave',up);
   });
+  window.addEventListener('blur',()=>{held.clear();pressed.clear();touchHeld.clear();touchPressed.clear();document.querySelectorAll('[data-key]').forEach(b=>b.classList.remove('pressed'));if(gameState==='playing'&&!onlineSession)togglePause();});
   document.addEventListener('visibilitychange',()=>{if(document.hidden){held.clear();pressed.clear();touchHeld.clear();}if(document.hidden&&gameState==='playing'&&!onlineSession)togglePause()});
   window.SKYBREAK_BRIDGE={
     getConfig(){return {fighter:selected,stage:stageKey,items:itemsEnabled,rule:matchRule};},

@@ -74,7 +74,7 @@ const v3Parts = runInNewContext(v3Definition[1], Object.create(null), {timeout:1
 if (!Array.isArray(v3Parts) || v3Parts.some(p=>!/^game23-[\w-]+\.js(?:\?[\w=-]+)?$/.test(p))) throw new Error('Invalid V3 fragment manifest');
 const v3Program = (await Promise.all(v3Parts.map(p=>readFile(join(root,p.split('?')[0]),'utf8')))).join('\n');
 await writeFile(join(output,'game23-runtime.mjs'),await compress(v3Program,'js'));
-await writeFile(join(output,'game23-v3-loader.js'),await compress(v3Loader.replace(`const PARTS = ${v3Definition[1]};`,"const PARTS = ['game23-runtime.mjs'];"),'js'));
+await writeFile(join(output,'game23-v3-loader.js'),await compress(v3Loader.replace(`const PARTS = ${v3Definition[1]};`,"const PARTS = ['game23-runtime.mjs?v=20260914-commercial1'];"),'js'));
 for (const path of ['index.html','games.html','aitech-home.css','collection-nav.css','hub.css','archive.html','game23.html','smash.html','legal.html','supabase-config.js']) await stat(join(output, path));
 const index = await readFile(join(output, 'index.html'), 'utf8');
 if (/src=["'][^"']*(?:supabase|game-backend|game23|smash\.js)/i.test(index)) throw new Error('The hub must not initialize a game engine or an online connection.');

@@ -1,3 +1,4 @@
+import {LatestRequest} from '@/lib/request-lifecycle';
 import {apiFetch} from '@/aitech/api';
 'use client';
 
@@ -53,6 +54,7 @@ export default function Directory({snapshot,initialNow,initialStatuses}:{snapsho
   const [stale,setStale]=useState(false);
   const lastSync=useRef(0);
   const busy=useRef(false);
+  const requests=useRef(new LatestRequest());
   const revisionChanged=useRef(false);
   const clockOrigin=useRef({server:initialNow,local:0});
   const count=useMemo(()=>{
@@ -61,17 +63,18 @@ export default function Directory({snapshot,initialNow,initialStatuses}:{snapsho
   async function refresh() {
     if(busy.current)return;
     busy.current=true;setSyncing(true);
-    const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),15000);
+    const request=requests.current.begin();
     try {
-      const response=await apiFetch('/api/sauna/status',{cache:'no-store',signal:controller.signal});
+      const response=await apiFetch('/api/sauna/status',{cache:'no-store',signal:request.signal});
       if(!response.ok)throw new Error('request');
       const data=await response.json() as {now:number;revision:string;statuses:SaunaStatus[]};
+      if(!request.current())return;
       const ids=new Set(snapshot.facilities.map(f=>f.id));
       if(data.revision!==(snapshot.revision??snapshot.fetchedAt)){revisionChanged.current=true;setStale(true);setError('施設データが更新されました。ページを再読み込みしてください。');return;}
       if(!Number.isFinite(data.now)||!Array.isArray(data.statuses)||data.statuses.length!==ids.size||new Set(data.statuses.map((x:SaunaStatus)=>x.id)).size!==ids.size||data.statuses.some((x:SaunaStatus)=>!ids.has(x.id)||!['open','unknown','closed'].includes(x.state)))throw new Error('incomplete');
       clockOrigin.current={server:data.now,local:performance.now()};lastSync.current=performance.now();setNow(data.now);setStatuses(data.statuses);setStale(false);setError('');
-    } catch {setError('営業判定を更新できませんでした。通信が戻ると再試行します。');}
-    finally{clearTimeout(timeout);setSyncing(false);busy.current=false;}
+    } catch {if(request.current())setError('営業判定を更新できませんでした。通信が戻ると再試行します。');}
+    finally{request.finish();if(request.current()){setSyncing(false);busy.current=false;}}
   }
   useEffect(()=>{
     clockOrigin.current.local=performance.now();lastSync.current=performance.now();
@@ -84,7 +87,7 @@ export default function Directory({snapshot,initialNow,initialStatuses}:{snapsho
     const poll=setInterval(()=>{if(document.visibilityState==='visible')void refresh();},60000);
     const visible=()=>{if(document.visibilityState==='visible')void refresh();};
     document.addEventListener('visibilitychange',visible);window.addEventListener('online',visible);
-    return()=>{clearInterval(timer);clearInterval(poll);document.removeEventListener('visibilitychange',visible);window.removeEventListener('online',visible);};
+    return()=>{requests.current.cancel();busy.current=false;clearInterval(timer);clearInterval(poll);document.removeEventListener('visibilitychange',visible);window.removeEventListener('online',visible);};
   // The snapshot is immutable for a page visit; refresh validates its revision.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);

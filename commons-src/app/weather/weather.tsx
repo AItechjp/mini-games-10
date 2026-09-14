@@ -5,7 +5,7 @@ import {ArrowLeft,ArrowUpRight,CloudSun,CloudMoon,Cloud,CloudFog,CloudDrizzle,Cl
 import {Select,SelectContent,SelectGroup,SelectItem,SelectLabel,SelectTrigger,SelectValue} from '@/components/ui/select';
 import {Skeleton} from '@/components/ui/skeleton';
 import {Brand} from '../ui/common';
-import {weatherCities,findWeatherCity,weatherCondition,numberText,japanTime,japanDate,windDirectionText,type WeatherResult,type WeatherDay} from '@/lib/weather';
+import {weatherCities,validForecast,findWeatherCity,weatherCondition,numberText,japanTime,japanDate,windDirectionText,type WeatherResult,type WeatherDay} from '@/lib/weather';
 
 const icons={sun:Sun,moon:Moon,cloudSun:CloudSun,cloudMoon:CloudMoon,cloud:Cloud,fog:CloudFog,drizzle:CloudDrizzle,rain:CloudRain,snow:CloudSnow,thunder:CloudLightning,unknown:CloudOff};
 function WeatherIcon({code,isDay=1,className=''}:{code:number|null;isDay?:number|null;className?:string}){
@@ -42,8 +42,8 @@ export default function Weather({initialCity}:{initialCity:string}){
       .then(async response=>{
         const data=await response.json() as Partial<WeatherResult>&{error?:string};
         if(!response.ok)throw new Error(data.error||'天気データを取得できませんでした。');
-        if(!data.forecast||data.forecast.cityId!==cityId)throw new Error('地域のデータを確認できませんでした。');
-        if(active){setResult({forecast:data.forecast,stale:data.stale===true});setNow(Date.now());}
+        if(!validForecast(data.forecast,cityId))throw new Error('地域のデータを確認できませんでした。');
+        if(active){setResult({forecast:data.forecast!,stale:data.stale===true});setNow(Date.now());}
       }).catch(cause=>{
         if(active)setError(cause instanceof Error&&cause.name!=='AbortError'?cause.message:'通信がタイムアウトしました。接続を確認して再試行してください。');
       }).finally(()=>{clearTimeout(timeout);if(active)setLoading(false);});

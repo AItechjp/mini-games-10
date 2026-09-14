@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import {LatestRequest} from '@/lib/request-lifecycle';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { ArrowLeft, ArrowUpRight, Check, Copy, ExternalLink, Globe2, RefreshCw, Search, Clock3, Radio } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -33,19 +34,22 @@ export default function OnionDirectory() {
   const [copied, setCopied] = useState('');
   const [message, setMessage] = useState('');
   const pageSize = 30;
+  const requests=useRef(new LatestRequest());
 
   async function reload(manual = false) {
-    if (manual) { setBusy(true); setError(''); }
+    const request=requests.current.begin();
+    setBusy(true);setError('');
     try {
-      const response = await fetch('/commons/onion/snapshot.json', { cache: 'no-store' });
+      const response = await fetch('/commons/onion/snapshot.json', { cache: 'no-store', signal:request.signal });
       if (!response.ok) throw new Error('更新データを取得できません。前回の一覧を表示しています。');
       const next = await response.json() as OnionSnapshot;
-      if (next.schemaVersion !== 1 || !Array.isArray(next.sites) || !next.importedAt) throw new Error('更新データを読み取れません。前回の一覧を表示しています。');
+      if (next.schemaVersion !== 1 || !Array.isArray(next.sites) || !Number.isFinite(Date.parse(next.importedAt)) || next.sites.some(s=>!s||typeof s.id!=='string'||typeof s.name!=='string'||typeof s.url!=='string'||typeof s.host!=='string'||typeof s.category!=='string'||typeof s.categoryLabel!=='string'||s.checkedAt!==null&&!Number.isFinite(Date.parse(s.checkedAt)))) throw new Error('更新データを読み取れません。前回の一覧を表示しています。');
+      if(!request.current())return;
       setData(next); setNow(Date.now());
       if (manual) setMessage('最新の掲載データを読み込みました。');
     } catch (e) {
-      setError(e instanceof Error ? e.message : '更新できませんでした。');
-    } finally { if (manual) setBusy(false); }
+      if(request.current())setError(request.timedOut()?'更新が時間内に完了しませんでした。前回の一覧を表示しています。':e instanceof Error ? e.message : '更新できませんでした。');
+    } finally { request.finish();if(request.current())setBusy(false); }
   }
 
   useEffect(() => {
@@ -54,7 +58,7 @@ export default function OnionDirectory() {
     if (params.get('q')) { setQuery(params.get('q')!.slice(0,500)); setFilter('all'); }
     void reload();
     const tick = window.setInterval(() => { setNow(Date.now()); if (document.visibilityState === 'visible') void reload(); }, 60000);
-    return () => window.clearInterval(tick);
+    return () => {requests.current.cancel();window.clearInterval(tick);};
   }, []);
   useEffect(() => { setPage(0); }, [query, category, filter]);
   useEffect(() => {

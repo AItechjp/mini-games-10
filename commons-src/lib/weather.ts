@@ -48,3 +48,12 @@ export function japanTime(value:string, options:Intl.DateTimeFormatOptions={hour
 export function windDirectionText(value:number|null) {
   return value===null?'—':['北','北北東','北東','東北東','東','東南東','南東','南南東','南','南南西','南西','西南西','西','西北西','北西','北北西'][Math.round(value/22.5)%16];
 }
+
+// Validate remote dates before Intl formatting; retain the last good forecast on errors.
+export function validForecast(value:unknown,cityId:string):value is WeatherForecast{
+  if(!value||typeof value!=='object')return false;
+  const f=value as WeatherForecast;
+  const date=(v:unknown)=>typeof v==='string'&&Number.isFinite(Date.parse(v));
+  const numbers=(v:unknown,keys:string[])=>!!v&&typeof v==='object'&&keys.every(k=>{const n=(v as Record<string,unknown>)[k];return n===null||typeof n==='number'&&Number.isFinite(n)});
+  return f.cityId===cityId&&date(f.fetchedAt)&&!!f.current&&date(f.current.time)&&numbers(f.current,['temperature','feelsLike','humidity','windSpeed','windDirection','code','isDay'])&&Array.isArray(f.days)&&f.days.length>0&&f.days.length<=16&&f.days.every(d=>d&&date(d.date)&&numbers(d,['code','high','low','probability','precipitation'])&&(d.sunrise===null||date(d.sunrise))&&(d.sunset===null||date(d.sunset)))&&Array.isArray(f.hourly)&&f.hourly.length<=744&&f.hourly.every(h=>h&&date(h.time)&&numbers(h,['temperature','probability','precipitation','code','isDay']));
+}

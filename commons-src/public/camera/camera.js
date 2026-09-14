@@ -55,7 +55,7 @@
     if(message)showStatus('タイマー撮影を取り消しました。');
   }
   function requestCapture(){
-    if(!ready()||state.capturing||captureCountdown)return;
+    if(!ready()||state.capturing||captureCountdown||document.documentElement.hasAttribute('data-aitech-guide-open'))return;
     const seconds=Number($('capture-delay').value);
     if(![3,10].includes(seconds)){void capturePhoto();return;}
     captureDeadline=performance.now()+seconds*1000;
@@ -130,6 +130,7 @@
   }
 
   function stopCamera(reason = 'カメラを停止しました') {
+    cancelCountdown();
     state.requestId += 1;
     state.phase = 'idle';
     releaseCurrentStream();
@@ -323,7 +324,7 @@
   }
 
   async function capturePhoto() {
-    if (!ready() || state.capturing) return;
+    if (!ready() || state.capturing || document.hidden || document.documentElement.hasAttribute('data-aitech-guide-open')) return;
     state.capturing = true;
     updateControls();
     const canvas = document.createElement('canvas');
@@ -424,6 +425,7 @@
   $('camera-grid').addEventListener('change',()=>{ui.finder.classList.toggle('show-thirds',$('camera-grid').checked);});
   ui.stopButton.addEventListener('click',()=>cancelCountdown());
   ui.switchButton.addEventListener('click',()=>cancelCountdown());
+  document.addEventListener('aitech:guide-open',()=>cancelCountdown(true));
   document.addEventListener('aitech:assist',e=>{if(e.detail.open)cancelCountdown();});
   document.addEventListener('keydown',e=>{
     if(e.code!=='Space'||e.repeat||e.ctrlKey||e.metaKey||e.altKey||e.isComposing||document.querySelector('dialog[open]'))return;

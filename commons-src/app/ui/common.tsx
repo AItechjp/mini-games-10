@@ -24,11 +24,13 @@ export async function api(path:string,data?:unknown,options:{signal?:AbortSignal
     const res=await apiFetch(path,{...(data===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}),cache:'no-store',signal:controller.signal});
     let result:any;
     try{result=await res.json()}catch{throw new RequestError('応答を受け取れませんでした。入力を残して、再試行してください。',res.status)}
+    if(!result||typeof result!=='object'||Array.isArray(result))throw new RequestError('応答の形式を確認できませんでした。入力を残して、再試行してください。',res.status);
     if(!res.ok)throw new RequestError(result.error??'接続できませんでした。',res.status);
     return result;
   }catch(e){
+    if(options.signal?.aborted)throw new DOMException('Request cancelled','AbortError');
     if(e instanceof RequestError)throw e;
     throw new RequestError(controller.signal.aborted?'通信がタイムアウトしました。入力を残して、再試行してください。':'接続できませんでした。通信状態を確認してください。');
   }finally{clearTimeout(timeout);options.signal?.removeEventListener('abort',cancel)}
 }
-export function download(name:string,data:string,type='application/json'){const url=URL.createObjectURL(new Blob([data],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+export function download(name:string,data:string,type='application/json'){const url=URL.createObjectURL(new Blob([data],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),30000)}

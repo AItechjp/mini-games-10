@@ -53,7 +53,7 @@ shoot=function(){
 const uxBaseBeginArea=beginArea;
 beginArea=function(fromStart=true){if(fromStart||state.area===0)uxResetAmmo();return uxBaseBeginArea(fromStart);};
 uxReloadBtn.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();uxReload();});
-addEventListener('keydown',e=>{if(e.code==='KeyR'){e.preventDefault();uxReload();}},{capture:true});
+addEventListener('keydown',e=>{if(e.code==='KeyR'&&!e.repeat&&!e.isComposing&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!document.documentElement.hasAttribute('data-aitech-guide-open')&&!e.composedPath().some(n=>n?.matches?.('input,select,textarea,button,a,dialog,[contenteditable]'))){e.preventDefault();uxReload();}},{capture:true});
 uxUpdateAmmo();
 
 function uxActive(){return !!document.fullscreenElement||document.body.classList.contains('game23-focus-mode');}

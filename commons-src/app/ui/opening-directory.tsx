@@ -1,3 +1,4 @@
+import {LatestRequest} from '@/lib/request-lifecycle';
 import {apiFetch} from '@/aitech/api';
 'use client';
 import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
@@ -29,24 +30,25 @@ function OpeningRow({item,today,now}:{item:Opening;today:string;now:number}){
 
 export default function OpeningDirectory({kind,initial,serverNow}:{kind:OpeningKind;initial:OpeningSnapshot;serverNow:string}){
   const [snapshot,setSnapshot]=useState(initial),[now,setNow]=useState(Date.parse(serverNow)),[region,setRegion]=useState('local'),[query,setQuery]=useState(''),[selectedDay,setSelectedDay]=useState(''),[busy,setBusy]=useState(true),[error,setError]=useState('');
+  const requests=useRef(new LatestRequest());
   const inFlight=useRef(false),clock=useRef({server:Date.parse(serverNow),local:0});
   const title=kind==='ramen'?'ラーメン屋':'サウナ',Icon=kind==='ramen'?Soup:Flame;
   const range=windowFor(new Date(now),kind),today=japanDay(new Date(now)),isSauna=kind==='sauna';
   const listingLabel=isSauna?'開業情報':'開店予定';
   const refresh=useCallback(async()=>{
     if(inFlight.current)return;inFlight.current=true;setBusy(true);setError('');
-    const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),45000);
-    try{const response=await apiFetch('/api/openings',{cache:'no-store',signal:controller.signal});if(!response.ok)throw new Error();const data=await response.json() as OpeningSnapshot&{serverNow:string};if(!Array.isArray(data.records)||!Array.isArray(data.sources)||!Number.isFinite(Date.parse(data.serverNow)))throw new Error();setSnapshot(data);clock.current={server:Date.parse(data.serverNow),local:Date.now()};setNow(clock.current.server)}
-    catch{setError('最新情報を取得できませんでした。最後に確認できた情報を表示しています。')}
-    finally{clearTimeout(timeout);setBusy(false);inFlight.current=false}
+    const request=requests.current.begin(45000);
+    try{const response=await apiFetch('/api/openings',{cache:'no-store',signal:request.signal});if(!response.ok)throw new Error();const data=await response.json() as OpeningSnapshot&{serverNow:string};if(!Array.isArray(data.records)||!Array.isArray(data.sources)||!Number.isFinite(Date.parse(data.serverNow)))throw new Error();if(!request.current())return;setSnapshot(data);clock.current={server:Date.parse(data.serverNow),local:Date.now()};setNow(clock.current.server)}
+    catch{if(request.current())setError('最新情報を取得できませんでした。最後に確認できた情報を表示しています。')}
+    finally{request.finish();if(request.current()){setBusy(false);inFlight.current=false}}
   },[]);
   useEffect(()=>{
     clock.current.local=Date.now();const params=new URLSearchParams(window.location.search),r=params.get('region');if(r==='all'||r==='local'||prefectures.includes(r??''))setRegion(r!);
     void refresh();
     const tick=()=>{setNow(clock.current.server+Date.now()-clock.current.local)};
-    const timer=setInterval(tick,30000),update=setInterval(()=>void refresh(),15*60*1000);
+    const timer=setInterval(tick,30000),update=setInterval(()=>{if(!document.hidden)void refresh()},15*60*1000);
     const visible=()=>{if(document.visibilityState==='visible'){tick();void refresh()}};document.addEventListener('visibilitychange',visible);
-    return ()=>{clearInterval(timer);clearInterval(update);document.removeEventListener('visibilitychange',visible)};
+    return ()=>{requests.current.cancel();inFlight.current=false;clearInterval(timer);clearInterval(update);document.removeEventListener('visibilitychange',visible)};
   },[refresh]);
   useEffect(()=>{if(!snapshot.refreshing)return;const timer=setTimeout(()=>void refresh(),10000);return ()=>clearTimeout(timer)},[snapshot.refreshing,snapshot.updatedAt,refresh,busy]);
   useEffect(()=>{if(selectedDay&&(selectedDay<range.start.slice(0,isSauna?7:10)||selectedDay>range.end.slice(0,isSauna?7:10)))setSelectedDay('')},[range.start,range.end,selectedDay,isSauna]);

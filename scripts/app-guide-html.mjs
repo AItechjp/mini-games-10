@@ -6,5 +6,5 @@ export function addAppGuide(html,source,root){
  const path=relative(root,source).replaceAll('\\','/');
  if(!pages.has(path)||/\bdata-aitech-app-guide\b/.test(html))return html;
  const script=relative(dirname(source),join(root,'app-guide/ui.mjs')).replaceAll('\\','/');
- return html.replace(/<\/head>/i,`<script type="module" src="${script}" data-aitech-app-guide></script>\n</head>`);
+ return html.replace(/<\/head>/i,`<script type="module" src="${script}?v=20260914-commercial1" data-aitech-app-guide></script>\n</head>`);
 }

@@ -6,7 +6,7 @@
   const keys=new Set(),pointers=new Map(),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   try{best=Number(localStorage.getItem('aitech-quickhop-best'))||0;}catch{}
   if(best)$('best').textContent=`自己ベスト ${best.toFixed(1)} 秒`;
-  function clearInput(){keys.clear();pointers.clear();document.addEventListener('aitech:assist',e=>{if(e.detail.open&&game.state==='playing')pause();});
+  function clearInput(){keys.clear();pointers.clear();
   document.querySelectorAll('[data-control]').forEach(b=>b.classList.remove('held'));}
   function tone(freq,duration=.09){if(!sound)return;try{audio=audio||new (window.AudioContext||window.webkitAudioContext)();audio.resume().catch(()=>{});const o=audio.createOscillator(),v=audio.createGain();o.type='sine';o.frequency.setValueAtTime(freq,audio.currentTime);v.gain.setValueAtTime(.06,audio.currentTime);v.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(v);v.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch{}}
   function start(){if(game.state==='paused'){game.state='playing';}else{game=new Game();game.state='playing';}$('overlay').hidden=true;$('pause').disabled=false;$('pause').textContent='一時停止';clearInput();acc=0;last=performance.now();canvas.focus({preventScroll:true});tone(660);}
@@ -17,6 +17,7 @@
   $('start').addEventListener('click',start);$('restart').addEventListener('click',()=>{game.state='title';start();});$('pause').addEventListener('click',pause);
   $('sound').addEventListener('click',()=>{sound=!sound;$('sound').textContent=`音：${sound?'オン':'オフ'}`;$('sound').setAttribute('aria-pressed',String(sound));if(sound)tone(880);});
   document.addEventListener('aitech:guide-open',()=>{clearInput();if(game.state==='playing')pause();});
+  document.addEventListener('aitech:assist',e=>{if(e.detail.open&&game.state==='playing')pause();});
   const allowed=new Set(['ArrowLeft','ArrowRight','ArrowUp','KeyA','KeyD','KeyW','Space']);
   window.addEventListener('keydown',e=>{if(document.documentElement.hasAttribute('data-aitech-guide-open'))return;if(e.ctrlKey||e.metaKey||e.altKey||e.isComposing||e.target.closest('input,textarea,select,button,a,dialog,[contenteditable=true]'))return;if(allowed.has(e.code)&&game.state==='playing'){e.preventDefault();keys.add(e.code);}if(e.repeat)return;if(e.code==='KeyP'||e.code==='Escape'){e.preventDefault();pause();}if(e.code==='KeyR'){game.state='title';start();}if(e.code==='Enter'&&e.target===canvas&&game.state!=='playing')start();});
   window.addEventListener('keyup',e=>keys.delete(e.code));window.addEventListener('blur',()=>{clearInput();if(game.state==='playing')pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden){clearInput();if(game.state==='playing')pause();}});

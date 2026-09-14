@@ -9,7 +9,7 @@ import {Tabs,TabsList,TabsTrigger} from '@/components/ui/tabs';
 import {Empty,EmptyHeader,EmptyTitle,EmptyDescription} from '@/components/ui/empty';
 import {Skeleton} from '@/components/ui/skeleton';
 import {Brand} from '@/app/ui/common';
-import {btc,EXAMPLE_TX,outputKind,parseTarget,relation,sampleNext,sampleTx,shortId,type AddressInfo,type Spend,type Transaction} from '@/lib/bitcoin';
+import {transactionSchema,addressSchema,spendSchema,btc,EXAMPLE_TX,outputKind,parseTarget,relation,sampleNext,sampleTx,shortId,type AddressInfo,type Spend,type Transaction} from '@/lib/bitcoin';
 
 type Envelope<T>={data:T;source:string;fetchedAt:string};
 type Visit={tx:Transaction;source:string;fetchedAt:string;via?:string};
@@ -30,7 +30,11 @@ async function requestData<T>(kind:string,id:string,signal?:AbortSignal,extra:Re
     if(!body||typeof body!=='object')throw new Error('応答を受け取れませんでした。再検索してください。');
     if(!response.ok)throw new Error(body.error??'データを取得できませんでした。');
     if(!('data' in body)||typeof body.source!=='string'||typeof body.fetchedAt!=='string')throw new Error('データの形式を確認できませんでした。');
-    return body as Envelope<T>;
+    const schema=kind==='tx'?transactionSchema:kind==='address'?addressSchema:kind==='history'?transactionSchema.array().max(20000):spendSchema;
+    const parsed=schema.safeParse(body.data);
+    if(!parsed.success||!Number.isFinite(Date.parse(body.fetchedAt)))throw new Error('取得データの内容を確認できませんでした。もう一度検索してください。');
+    if(kind==='tx'&&(parsed.data as Transaction).txid!==id)throw new Error('別の取引が返されました。もう一度検索してください。');
+    return {...body,data:parsed.data} as Envelope<T>;
   }catch(e){
     if(signal?.aborted)throw e;
     if(controller.signal.aborted)throw new Error('通信に時間がかかっています。もう一度お試しください。');
@@ -153,8 +157,8 @@ export default function BitcoinExplorer(){
     try{
       const r=await requestData<Transaction[]>('history',address,controller.signal,{cursor});if(controller.signal.aborted||generation.current!==turn)return;
       for(const transaction of r.data)historyMeta.current[transaction.txid]={source:r.source,fetchedAt:r.fetchedAt};
-      setTransactions(old=>{const seen=new Set(old.map(t=>t.txid));return [...old,...r.data.filter(t=>!seen.has(t.txid))];});
-      setCursor(r.data.at(-1)?.txid??'');setMore(r.data.length===25);setHistorySource(r.source);
+      setTransactions(old=>{const seen=new Set(old.map(t=>t.txid));return [...old,...r.data.filter(t=>{if(seen.has(t.txid))return false;seen.add(t.txid);return true})];});
+      setCursor(r.data.at(-1)?.txid??'');setMore(r.data.length===25&&r.data.at(-1)?.txid!==cursor);setHistorySource(r.source);
     }catch(e){if(!controller.signal.aborted&&generation.current===turn)setHistoryError(e instanceof Error?e.message:'追加の取引を取得できませんでした。');}
     finally{if(historyRequest.current===controller)setMoreBusy(false);}
   }

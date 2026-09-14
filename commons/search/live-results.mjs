@@ -16,9 +16,9 @@ export function createLiveResults(kind,onStatus){
     $('#load-more').disabled=busy;
     $('#live-count').textContent=`取得済み ${items.length}${hotel?'施設':'件'}`;
     if(source){
-      const date=new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(source.fetchedAt));
+      const date=Number.isFinite(Date.parse(source.fetchedAt))?new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(source.fetchedAt)):'取得日時不明';
       $('#live-meta').textContent=`${source.source} · ${date}取得（日本時間）${source.omitted?' · 条件・料金を確認できない情報は除外':''}`;
-      $('#live-source').href=safeUrl(source.sourceUrl);$('#live-source').hidden=false;
+      $('#live-source').href=safeUrl(source.sourceUrl);$('#live-source').hidden=safeUrl(source.sourceUrl)==='#';
     }
   }
   function message(title,text){$('#live-message').innerHTML=`<h3>${escape(title)}</h3><p>${escape(text)}</p>`;$('#live-message').hidden=false;}
@@ -28,7 +28,7 @@ export function createLiveResults(kind,onStatus){
     const active=controller;let timedOut=false;
     const timeout=setTimeout(()=>{timedOut=true;active.abort();},26000);
     $('#live-retry').hidden=true;$('#live-message').hidden=true;
-    $('#live-loading').hidden=false;$('#live-loading').textContent=page===1?'掲載元の情報を取得しています…':'次のページを取得しています…';
+    $('#live-loading').hidden=false;$('#live-loading').setAttribute('role','status');$('#live-loading').textContent=page===1?'掲載元の情報を取得しています…':'次のページを取得しています…';
     $('#live-list').setAttribute('aria-busy','true');$('#load-more').disabled=true;onStatus('取得中');
     const params=new URLSearchParams({kind,page:String(page)});
     for(const [key,value] of Object.entries(query)){if(Array.isArray(value)){for(const v of value)params.append(key,v);}else if(value!==''&&value!=null)params.set(key,String(value));}
@@ -38,10 +38,10 @@ export function createLiveResults(kind,onStatus){
       if(!response.ok)throw new Error(data.error||'掲載情報を取得できませんでした。');
       if(!Array.isArray(data.items)||data.kind!==kind||data.page!==page)throw new Error('検索結果の形式を確認できませんでした。');
       if(version!==generation)return;
-      const valid=data.items.filter(item=>item.id&&typeof item.name==='string'&&Number.isFinite(item.price)&&item.price>0&&safeUrl(item.url)!=='#');
+      const valid=data.items.filter(item=>item&&typeof item.id==='string'&&item.id.length>0&&typeof item.name==='string'&&Number.isSafeInteger(item.price)&&item.price>0&&safeUrl(item.url)!=='#');
       items=[...new Map([...items,...valid].map(item=>[item.id,item])).values()];
       nextPage=data.nextPage===page+1?data.nextPage:null;source=data;
-      const areas=Array.isArray(data.areas)?data.areas:[];
+      const areas=Array.isArray(data.areas)?data.areas.filter(a=>a&&typeof a.name==='string'&&typeof a.area==='string'&&/^[A-Za-z0-9_-]{1,60}$/.test(a.area)&&(!a.subarea||/^[A-Za-z0-9_-]{1,60}$/.test(a.subarea))):[];
       if(areas.length){
         $('#live-areas').innerHTML='<p>宿泊する地域を選んでください。</p>'+areas.map((area,index)=>`<button type="button" data-area="${index}">${escape(area.name)} <span aria-hidden="true">→</span></button>`).join('');
         $('#live-areas').hidden=false;
