@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  if (document.documentElement.dataset.aitechGame) return;
   if (document.getElementById('aitech-fullscreen')) return;
   // Preserve the racing game's own toolbar and make its exit action explicit.
   const builtIn = document.getElementById('fullscreen-btn');
