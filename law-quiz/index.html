@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja" data-quiz-subject="law" data-quiz-title="法律クイズ">
+<head>
+<meta charset="utf-8">
+<meta id="site-https-policy" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta name="site-security-version" content="20260911-https-v2">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#241f2c"><meta name="description" content="法律500問。2人で答えを合わせ、3Dキャラクターの連携技でボスを倒す協力クイズ。">
+<title>法律クイズ｜LAW RAID | AItech</title>
+<link rel="canonical" href="https://aitechd.com/law-quiz/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23101929'/%3E%3Cpath d='M9 8h10l5 8-8 10-8-10z' fill='%235eefd0'/%3E%3Cpath d='M16 10v9m0 3v1' stroke='%23101929' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../quiz-raid/style.css?v=20260914-split1">
+<script type="module" src="../quiz-raid/app.mjs?v=20260914-split1"></script>
+</head>
+<body>
+<header class="topbar"><a href="../games-2d.html">← 2Dゲーム集</a><a class="wordmark" href="./">LAW<span>RAID</span></a><div class="tools"><button id="sound" aria-pressed="false" aria-label="効果音を切り替える">音 OFF</button><button id="fullscreen" data-aitech-fullscreen aria-label="全画面に切り替える">全画面</button></div></header>
+<main>
+<section class="arena" aria-label="3Dバトルのステージ">
+ <div class="arena-top"><span class="stage-label" id="stage">HALL OF JUSTICE</span><span class="arena-badge">2人協力 × 3Dバトル</span></div>
+ <div id="scene"><p class="scene-loading">アリーナを準備しています…</p></div>
+ <div class="healthbar"><div class="team-status"><div><span>TEAM</span><strong id="team-hp">240 / 240</strong></div><progress id="team-bar" max="240" value="240" aria-label="味方チームの体力"></progress></div><div class="center-status"><span id="combo">READY</span><small id="wave">知識を、チームの力に。</small></div><div class="enemy-status"><div><span id="boss-name">グリッチ・ガーディアン</span><strong id="boss-hp">BOSS</strong></div><progress id="boss-bar" max="220" value="220" aria-label="敵の体力"></progress></div></div>
+ <div id="battle-call" class="battle-call" role="status"></div>
+</section>
+<section id="setup" class="setup panel">
+ <div class="setup-title"><div><p class="eyebrow">LAW RAID · CO-OP QUIZ BATTLE</p><h1>法律クイズ<br><span class="title-tagline">知識を合わせて、ボスを撃破。</span></h1></div><p class="bank-count"><strong>500</strong><span>問・すべて解説付き</span></p></div>
+ <p class="lead">憲法・民法・刑法から、事例や条文の穴埋めまで。2人の知識を合わせて、5体のボスに挑もう。</p>
+ <div class="setup-grid"><fieldset><legend>法律の出題分野</legend><p class="subject-note">憲法・行政法・民法・商法・民事訴訟法・刑法・刑事訴訟法・司法制度</p><label class="select-label">分野 <select id="category"><option value="all">すべての分野</option></select></label></fieldset>
+ <fieldset><legend>プレイ人数</legend><div class="segmented" id="modes"><button data-mode="duo" aria-pressed="true">2人で協力<small>同じ画面で遊ぶ</small></button><button data-mode="solo" aria-pressed="false">1人で挑戦<small>CPUが仲間になる</small></button></div><label class="select-label">難しさ <select id="difficulty"><option value="normal">スタンダード · 30秒</option><option value="easy">じっくり · 時間制限なし</option><option value="hard">エキスパート · 20秒</option></select></label></fieldset></div>
+ <div class="roles"><label><span class="player-dot cyan">1P</span> <input id="name1" maxlength="12" value="プレイヤー1" aria-label="プレイヤー1の名前"><select id="role1" aria-label="プレイヤー1の職業"><option value="striker">ブレイカー · 攻撃＋</option><option value="guard">ガーディアン · 防御＋</option><option value="healer">ヒーラー · 正解で回復</option></select></label><label><span class="player-dot gold">2P</span> <input id="name2" maxlength="12" value="プレイヤー2" aria-label="プレイヤー2の名前"><select id="role2" aria-label="プレイヤー2の職業"><option value="guard">ガーディアン · 防御＋</option><option value="striker">ブレイカー · 攻撃＋</option><option value="healer">ヒーラー · 正解で回復</option></select></label></div>
+ <div class="start-row"><button id="start" class="primary" disabled>問題を読み込み中…</button><button id="review-start" class="secondary" disabled>間違えた問題を復習 <span id="wrong-count">0</span></button></div>
+ <p id="load-message" role="status" class="subtle">法律の問題集を準備しています。</p>
+ <details class="help"><summary>遊び方・出題について</summary><p>1Pと2Pがそれぞれ4択に回答。両方の回答がそろうまで正解は表示されません。2人とも正解すると連携ゲージがたまり、100%で「ユニゾン」を発動できます。3問ごとの大技は「守る」で軽減。「ヒント」は誤答を2つ消します。使える回数は1戦ごとに回復します。</p><p>PC操作：1Pは A / S / D / F、2Pは J / K / L / ;。次の問題は Enter、ポーズは Esc。スマホは各プレイヤーの回答欄をタップしてください。2人プレイは1台の端末を共有します。</p><p>法律500問。制度210問・事例35問・条文穴埋め255問のオリジナル学習問題です。過去問ではありません。条文資料は2026年9月10日取得。各解説から原典を確認できます。</p><p><a href="sources.html">出典・問題構成を見る</a> · 法律クイズの成績と復習履歴を、この端末に保存します。</p></details>
+</section>
+<section id="play" class="panel play" hidden>
+ <div class="quiz-top"><span id="question-number">QUESTION 01</span><span id="question-category"></span><button id="pause">一時停止</button><span id="timer" role="timer" aria-label="残り時間">30</span></div>
+ <h2 id="question"></h2>
+ <div id="support" class="support"><button id="hint">ヒント <small>2 / 2</small></button><button id="guard">守る <small>2 / 2</small></button><button id="unison" disabled>ユニゾン <small>0%</small></button><span id="intent">敵は攻撃を準備中</span></div>
+ <div class="answer-players"><section class="answer-player player-one"><h3><span class="player-dot cyan">1P</span><span id="player-name1">プレイヤー1</span><small id="answer-state1">回答してください</small></h3><div id="answers1" class="answers"></div></section><section class="answer-player player-two"><h3><span class="player-dot gold">2P</span><span id="player-name2">プレイヤー2</span><small id="answer-state2">回答してください</small></h3><div id="answers2" class="answers"></div></section></div>
+ <div id="explanation" class="explanation" hidden aria-live="polite"><div class="explain-title"><strong id="verdict"></strong><span id="damage"></span></div><p id="correct-answer"></p><p id="explain-text"></p><a id="source-link" target="_blank" rel="noopener noreferrer"></a><div><button id="next" class="primary">次の問題へ →</button></div></div>
+</section>
+<section id="result" class="panel result" hidden><p class="eyebrow" id="result-label">RAID COMPLETE</p><h2 id="result-title">勝利！</h2><p id="result-copy"></p><div id="result-stats" class="result-stats"></div><div class="start-row"><button id="again" class="primary">もう一度挑戦</button><button id="result-review" class="secondary">間違えた問題を復習</button><button id="home" class="secondary">ゲーム設定に戻る</button></div><p id="save-status" class="subtle"></p></section>
+<footer><span>AItech · LAW RAID</span><span id="progress-text">今日のひらめきを積み重ねよう。</span><a href="sources.html">出典・収録問題</a></footer>
+</main>
+<dialog id="pause-dialog"><h2>ひと休み</h2><p>タイマーも止まっています。</p><button id="resume" class="primary">バトルに戻る</button><button id="quit" class="secondary">この挑戦を終了</button></dialog>
+<noscript>遊ぶにはJavaScriptを有効にしてください。</noscript>
+</body></html>

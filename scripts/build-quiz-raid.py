@@ -176,6 +176,11 @@ for q in bank:
     assert len(q['options'])==4 and len(set(q['options']))==4
     assert q['source'].startswith('https://') and q['explanation']
 counts={d:dict(collections.Counter(q['category'] for q in bank if q['domain']==d)) for d in ['law','it']}
-result={'version':'2026-09-14.1','count':1000,'counts':counts,'notes':{'law':'オリジナル制度・事例問題と2026-09-10取得のe-Gov条文に基づく穴埋め。','it':'用語問題と、数値の異なる計算・コード演習を含むオリジナル問題。'},'questions':bank}
-(OUT/'questions.json').write_text(json.dumps(result,ensure_ascii=False,separators=(',',':'))+'\n')
+notes={'law':'オリジナル制度・事例問題と2026-09-10取得のe-Gov条文に基づく穴埋め。','it':'用語問題と、数値の異なる計算・コード演習を含むオリジナル問題。'}
+for domain in ['law','it']:
+    questions=[q for q in bank if q['domain']==domain]
+    assert len(questions)==500
+    target=ROOT/f'{domain}-quiz';target.mkdir(exist_ok=True)
+    result={'version':'2026-09-14.split1','domain':domain,'count':500,'counts':counts[domain],'notes':notes[domain],'questions':questions}
+    (target/'questions.json').write_text(json.dumps(result,ensure_ascii=False,separators=(',',':'))+'\n')
 print(json.dumps({'count':len(bank),'categories':counts,'kinds':dict(collections.Counter(q['kind'] for q in bank))},ensure_ascii=False))

@@ -17,8 +17,8 @@ const games=[
  ['classic.html?game=daifugo','#game-stage',null,'.you-area .playing-card,#play-selected'],
  ...['gomoku','shogi','go','othello','chess','monopoly','life'].map(game=>[`board-games/?game=${game}&mode=local`,'#board',null,'#board button.cell']),
 ];
-for(const path of ['quiz-raid/','cyber-quiz/']){
- try{await access(`dist/${path}index.html`);games.push([path,'#play','#start',path.startsWith('quiz')?'.answers button':'.questions button']);}catch{}
+for(const path of ['law-quiz/','it-quiz/','cyber-quiz/']){
+ try{await access(`dist/${path}index.html`);games.push([path,'#play','#start',['law-quiz/','it-quiz/'].includes(path)?'.answers button':'.questions button']);}catch{}
 }
 const rect=element=>{const r=element.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
 try{
@@ -59,13 +59,13 @@ try{
       const card=page.locator('.you-area .playing-card').first();await card.click();
       assert.equal(await page.locator('.you-area .playing-card.selected').count(),1);
     }
-    if(path.includes('quiz-raid'))assert.equal(await page.locator('.answers button').count(),8);
+    if(['law-quiz/','it-quiz/'].includes(path))assert.equal(await page.locator('.answers button').count(),8);
     if(path.includes('cyber-quiz')){
       assert.equal(await page.locator('.question-card').count(),2);
       const answers=await page.locator('.answers button').count();assert(answers>=4&&answers<=8);
     }
     await page.screenshot({path:`${output}/${viewport.width}-${viewport.height}-${name}.png`});
-    if(viewport.width===844&&['quick-hop/','trump/?game=memory','classic.html?game=daifugo','board-games/?game=gomoku&mode=local','quiz-raid/','cyber-quiz/'].includes(path)){
+    if(viewport.width===844&&['quick-hop/','trump/?game=memory','classic.html?game=daifugo','board-games/?game=gomoku&mode=local','law-quiz/','it-quiz/','cyber-quiz/'].includes(path)){
       console.log('QA_IMAGE '+path+' '+(await page.screenshot({type:'jpeg',quality:40})).toString('base64'));
     }
     await page.locator('#aitech-play-settings').click();

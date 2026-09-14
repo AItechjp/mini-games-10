@@ -82,7 +82,7 @@
   }
   function label() {
     const titles = {'quick-hop':'QUICK HOP',startrail:'STARTRAIL','lantern-duo':'LANTERN DUO',babanuki:'ババ抜き','quiz-raid':'QUIZ RAID','cyber-quiz':'NEON SENTINELS'};
-    $('#aitech-play-title').textContent = titles[kind] || $('#game-title')?.textContent || $('#title')?.textContent || '2Dゲーム';
+    $('#aitech-play-title').textContent = root.dataset.quizTitle || titles[kind] || $('#game-title')?.textContent || $('#title')?.textContent || '2Dゲーム';
   }
   function measure() {
     frame = 0;

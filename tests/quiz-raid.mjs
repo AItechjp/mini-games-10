@@ -2,7 +2,11 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {runInNewContext} from 'node:vm';
 import {BOSSES,newRaid,resolveRound,nextRound,useSkill,selectQuestions} from '../quiz-raid/core.mjs';
-const {questions:q}=JSON.parse(await readFile(new URL('../quiz-raid/questions.json',import.meta.url)));
+const banks=await Promise.all(['law','it'].map(async domain=>{
+ const data=JSON.parse(await readFile(new URL(`../${domain}-quiz/questions.json`,import.meta.url)));
+ assert.equal(data.domain,domain);assert.equal(data.count,500);assert.equal(data.questions.length,500);assert.ok(data.questions.every(q=>q.domain===domain),'each game must contain only its subject');return data.questions;
+}));
+const q=banks.flat();
 assert.equal(q.length,1000);assert.equal(new Set(q.map(x=>x.id)).size,1000);assert.equal(new Set(q.map(x=>x.question)).size,1000);
 for(const domain of ['law','it'])assert.equal(q.filter(x=>x.domain===domain).length,500);
 for(const x of q){assert.equal(x.options.length,4,x.id);assert.equal(new Set(x.options).size,4,x.id);assert.ok(x.correct>=0&&x.correct<4,x.id);assert.ok(x.explanation.length>10,x.id);assert.ok(/^https:\/\//.test(x.source),x.id);}

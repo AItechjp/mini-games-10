@@ -2,3 +2,22 @@
 @media(max-width:700px){.topbar{height:61px;padding:0 14px;gap:8px}.wordmark{font-size:19px}.topbar>a:first-child{font-size:12px}.tools button{padding:7px 8px;font-size:12px}main{padding:0 12px}.arena{height:250px;border-radius:15px 15px 0 0}.arena-top{left:14px;right:14px;top:13px}.stage-label{font-size:10px;letter-spacing:1px}.arena-badge{font-size:10px;padding:5px 7px}.healthbar{inset:auto 14px 15px;gap:12px;grid-template-columns:1fr .65fr 1fr}.healthbar>div>div{font-size:10px;gap:4px;flex-wrap:wrap;margin-bottom:6px}.healthbar strong{font-size:11px}.center-status>span{font-size:18px}.center-status small{font-size:10px}.panel{padding:23px 17px}.setup-title{align-items:flex-start}h1{font-size:22px;line-height:1.6;letter-spacing:-.7px}.mobile-break{display:block}.eyebrow{font-size:10px;letter-spacing:1px}.bank-count{margin-top:24px}.bank-count strong{font-size:30px}.bank-count span{font-size:10px}.lead{font-size:13px;line-height:1.9;margin:13px 0 22px}.setup-grid{grid-template-columns:1fr;gap:23px}.roles{gap:13px;margin:23px 0}.roles select{font-size:12px;padding:9px 5px}.start-row{gap:9px}.start-row>button{flex-basis:100%!important;padding:13px 10px}.quiz-top{gap:8px;font-size:11px}#question{font-size:18px;line-height:1.8;margin:16px 0}#timer{font-size:22px}.support{gap:6px;margin-bottom:19px}.support button{padding:8px 9px;font-size:12px}.support small{font-size:11px;margin-left:4px}#intent{width:100%;margin-top:4px;font-size:11px}.answer-players{gap:14px}.answer-player h3{font-size:12px;gap:6px;flex-wrap:wrap}.answer-player h3 small{font-size:10px;width:100%;margin:0}.answers button{font-size:14px;padding:11px 9px;gap:7px;min-height:69px;align-items:flex-start}.answers kbd{font-size:10px;min-width:20px;padding:3px 5px}.answer-player .player-dot{font-size:10px;padding:5px 6px}.explanation{padding:17px;font-size:14px}.explain-title strong{font-size:16px}.explain-title span{font-size:11px}.result-stats{grid-template-columns:repeat(2,1fr)}footer{font-size:11px;gap:8px;padding-bottom:22px}.text-page{margin:15px;padding:20px}body.playing .arena{height:220px}}
 @media(max-width:380px){.wordmark{font-size:16px}.topbar{padding:0 10px}.tools button{padding:7px 5px}.answer-players{grid-template-columns:1fr}.answers{grid-template-columns:1fr 1fr}.answers button{font-size:13px}.bank-count{display:none}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+:root[data-quiz-subject="law"]{--bg:#1a1b29;--panel:#292536;--line:#51475b;--cyan:#f4cd8f;--gold:#a8d7ff}
+[data-quiz-subject="law"] .arena{border-color:#76634e}
+[data-quiz-subject="law"] .primary{background:var(--cyan);border-color:var(--cyan)}
+.title-tagline{font-size:.57em;font-weight:600;letter-spacing:0;color:var(--muted)}
+.subject-note{font-size:13px;line-height:1.9;color:var(--muted);margin:0 0 12px}
+.quiz-selection{max-width:1080px;padding-top:52px}
+.quiz-selection>h1{font-size:clamp(28px,4vw,46px);margin:12px 0}
+.quiz-selection-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:36px 0}
+.quiz-choice{display:flex;flex-direction:column;align-items:flex-start;position:relative;overflow:hidden;padding:30px;border:1px solid var(--line);border-radius:20px;transition:transform .15s,border-color .15s}
+.quiz-choice:hover{text-decoration:none;transform:translateY(-4px);border-color:currentColor}
+.quiz-choice h2{font-size:30px;margin:8px 0;color:var(--text)}
+.quiz-choice p{font-size:15px;line-height:2;color:var(--muted);margin:8px 0 24px}
+.quiz-choice strong{margin-top:20px;font-size:16px}
+.choice-count{font-weight:900;font-size:24px}
+.choice-mark{font:800 78px/1 system-ui;opacity:.15;position:absolute;right:22px;top:24px;pointer-events:none}
+.law-choice{background:linear-gradient(135deg,#332d39,#1c2232);color:#f4cd8f}
+.it-choice{background:linear-gradient(135deg,#1d3445,#152331);color:#5eefd0}
+.selection-note{font-size:14px;line-height:2;color:var(--muted);text-align:center;margin:32px 0}
+@media(max-width:700px){.quiz-selection{padding-top:25px}.quiz-selection-grid{grid-template-columns:1fr;gap:16px;margin:24px 0}.quiz-choice{padding:24px}.quiz-choice h2{font-size:25px}.quiz-choice p{margin-bottom:12px}.quiz-selection .lead{font-size:14px}.title-tagline{font-size:.62em}}
