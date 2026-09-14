@@ -4,5 +4,5 @@ export function addQuality(html,file,root){
   const path='/'+relative(root,file).replaceAll('\\','/').replace(/index\.html$/,'');
   const included=appFor(path)||['/board-games/','/trump/','/classic.html','/commons/r/'].includes(path);
   if(!included||html.includes('data-aitech-quality'))return html;
-  return html.replace('</head>','<link rel="stylesheet" href="/quality/assist.css?v=20260914-20b"><script type="module" src="/quality/assist.mjs?v=20260914-20b" data-aitech-quality></script></head>');
+  return html.replace('</head>','<link rel="stylesheet" href="/quality/assist.css?v=20260914-guide1"><script type="module" src="/quality/assist.mjs?v=20260914-guide1" data-aitech-quality></script></head>');
 }
