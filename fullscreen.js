@@ -22,29 +22,43 @@
   const shadow = host.attachShadow({ mode: 'open' });
   shadow.innerHTML = `<style>
     :host{position:fixed!important;top:max(var(--fullscreen-top,8px),env(safe-area-inset-top))!important;right:max(8px,env(safe-area-inset-right))!important;z-index:2147483647!important;display:block!important}
-    button{font:600 13px/1.3 system-ui,sans-serif;color:#fff;background:#172235;border:1px solid #8996ab;border-radius:9px;padding:10px 13px;min-height:44px;cursor:pointer;box-shadow:0 2px 8px #0004;touch-action:manipulation}
+    :host([data-docked]){position:static!important;z-index:auto!important}
+    button{font:600 14px/1.3 system-ui,sans-serif;color:#fff;background:#172235;border:1px solid #8996ab;border-radius:9px;padding:10px 13px;min-height:44px;cursor:pointer;box-shadow:0 2px 8px #0004;touch-action:manipulation}
     button:focus-visible{outline:3px solid #60cfff;outline-offset:3px}button:disabled{cursor:wait;opacity:.7}
     p{max-width:230px;margin:4px 0;padding:6px;background:#172235;color:#fff;border-radius:6px;font:12px/1.4 system-ui}p:empty{display:none}
-  </style><button type="button" aria-pressed="false">⛶ 全画面</button><p role="status" aria-live="polite"></p>`;
+  </style><button type="button" aria-label="全画面で表示" aria-pressed="false">⛶ 全画面</button><p role="status" aria-live="polite"></p>`;
   const button = shadow.querySelector('button');
   const status = shadow.querySelector('p');
   let positioning = false;
+  let positionTimer;
+  // Apps with a toolbar can reserve a slot instead of covering their play area.
+  function dock() {
+    const parent = document.fullscreenElement || document.webkitFullscreenElement;
+    const slot = document.querySelector('[data-aitech-fullscreen-slot]');
+    const available = slot && (!parent || parent.contains(slot));
+    host.toggleAttribute('data-docked', !!available);
+    if (available && host.parentNode !== slot) slot.append(host);
+    return !!available;
+  }
   function position() {
-    if (positioning) return;
+    if (dock() || positioning || document.hidden) return;
     positioning = true;
-    requestAnimationFrame(() => {
+    // Game HUDs can mutate every frame. Bound layout work during these updates.
+    positionTimer = setTimeout(() => requestAnimationFrame(() => {
       positioning = false;
+      if (dock() || document.hidden || shadow.activeElement) return;
       const own = host.getBoundingClientRect();
       const controls = [...document.querySelectorAll('button,a,input,select,textarea,[role="button"]')]
-        .filter(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden')
-        .map(el => el.getBoundingClientRect());
+        .map(el => ({el, rect:el.getBoundingClientRect()}))
+        .filter(({el,rect:r}) => r.width && r.height && r.bottom > 0 && r.top < innerHeight && r.right > own.left - 8 && r.left < own.right + 8 && getComputedStyle(el).visibility !== 'hidden')
+        .map(({rect}) => rect);
       for (let top = 8; top < innerHeight - own.height - 8; top += 52) {
         if (!controls.some(r => r.right > own.left - 8 && r.left < own.right + 8 && r.bottom > top - 8 && r.top < top + own.height + 8)) {
           host.style.setProperty('--fullscreen-top', `${top}px`);
           break;
         }
       }
-    });
+    }), 160);
   }
   let expanded = false;
   const nativeElement = () => document.fullscreenElement || document.webkitFullscreenElement;
@@ -52,11 +66,14 @@
     const active = !!nativeElement() || expanded;
     button.textContent = active ? '↙ 元に戻す' : '⛶ 全画面';
     button.setAttribute('aria-pressed', String(active));
+    button.setAttribute('aria-label', active ? '全画面を終了' : '全画面で表示');
     button.title = active ? '全画面を終了（Escキーでも戻れます）' : '全画面で表示';
     // A game may enter fullscreen on its own container. Keep the exit reachable.
     const parent = nativeElement();
-    if (parent && !/^(CANVAS|VIDEO|IFRAME)$/.test(parent.tagName)) parent.append(host);
-    else if (host.parentNode !== document.body) document.body.append(host);
+    if (!dock()) {
+      if (parent && !/^(CANVAS|VIDEO|IFRAME)$/.test(parent.tagName)) parent.append(host);
+      else if (host.parentNode !== document.body) document.body.append(host);
+    }
     position();
   }
   function fallback() {
@@ -77,6 +94,7 @@
       } else if (expanded) {
         expanded = false;
         root.classList.remove('aitech-expanded');
+        status.textContent = '';
         window.dispatchEvent(new Event('resize'));
       } else {
         const enter = root.requestFullscreen || root.webkitRequestFullscreen;
@@ -87,11 +105,14 @@
     } catch { status.textContent = '全画面を終了できませんでした。Escキーを押してください。'; }
     finally { button.disabled = false; sync(); button.focus({ preventScroll: true }); }
   });
-  host.addEventListener('keydown', event => event.stopPropagation());
+  for (const type of ['keydown','keyup','pointerdown','pointerup','pointermove']) {
+    host.addEventListener(type, event => event.stopPropagation());
+  }
+  host.addEventListener('focusout', position);
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && nativeElement()) {
       const exit = document.exitFullscreen || document.webkitExitFullscreen;
-      Promise.resolve(exit.call(document)).catch(() => {});
+      if (exit) Promise.resolve().then(() => exit.call(document)).catch(() => {});
     }
     if (event.key === 'Escape' && expanded) {
       expanded = false;
@@ -108,6 +129,12 @@
   document.head.append(style);
   document.body.append(host);
   window.addEventListener('resize', position);
+  document.addEventListener('scroll', position, {passive:true,capture:true});
+  window.visualViewport?.addEventListener('resize', position);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { clearTimeout(positionTimer); positioning = false; }
+    else position();
+  });
   document.addEventListener('click', position, true);
   new MutationObserver(records => {
     if (records.some(r => r.target !== host && (r.type === 'attributes' || [...r.addedNodes, ...r.removedNodes].some(n => n.nodeType === 1 && n !== host)))) position();

@@ -90,6 +90,7 @@ jobs:
         run: |
           node scripts/build-static.mjs
           node tests/private-distribution.mjs
+          UNITY_PLAYER_DIST=1 node tests/unity-player.mjs
       - name: Smoke test games and learning tools locally
         shell: bash
         run: |
