@@ -82,6 +82,8 @@ export const sites:SiteEntry[] = [
     actionLabel:'URLを確認する',
   },
   {id:'cyber-news',name:'サイバー攻撃ニュース',description:'国内外の公開RSSを日本語で読む。直近72時間の攻撃・脆弱性・調査情報。',href:'/commons/cyber-news/',label:'日本語・1分更新',color:'#2563eb',keywords:'サイバー攻撃 セキュリティ ニュース RSS 翻訳 Dark Reading 脆弱性 ランサムウェア',actionLabel:'ニュースを読む'},
+  {id:'government-network',name:'行政機関・独立行政法人の関係図',description:'府省・外局と独立行政法人の主たる所管を、公式資料付きの図で確認。',href:'/commons/government-network/',label:'組織・所管関係',color:'#126d85',keywords:'行政機関 独立行政法人 省庁 所管 親子 関係図 ネットワーク',actionLabel:'関係図を開く'},
+  {id:'reemployment-network',name:'官僚の再就職先ネットワーク',description:'公表資料にある退職時の所属・人物・再就職先をたどる。収録範囲を明示。',href:'/commons/reemployment-network/',label:'公表資料・再就職',color:'#795b98',keywords:'天下り 官僚 キャリア 再就職 企業 団体 人事 関係図',actionLabel:'再就職先を見る'},
 ];
 
 export const siteGroups = [
@@ -89,6 +91,7 @@ export const siteGroups = [
   {id:'study',name:'勉強',numbers:[2]},
   {id:'realtime',name:'リアルタイム検索',numbers:[4,5,6,7,8,9,10,11,12,13,15]},
   {id:'security',name:'セキュリティ',numbers:[16,17,18]},
+  {id:'government',name:'行政・公共情報',numbers:[19,20]},
 ].map(group=>({...group,sites:group.numbers.map(number=>sites[number-1])}));
 
 export const listedToolIds = new Set(sites.flatMap(site=>site.toolId?[site.toolId]:[]));

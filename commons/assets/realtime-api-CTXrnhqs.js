@@ -1,0 +1,1 @@
+import{E as e,T as t}from"./index-CWuLhA_H.js";async function n(n,r){if(![`/directory`,`/openings`].includes(n))throw Error(`Invalid collection path`);return fetch(t+`/functions/v1/commons-realtime`+n,{headers:{apikey:e,"x-region":`ap-southeast-2`},signal:r,cache:`no-store`,credentials:`omit`})}export{n as t};

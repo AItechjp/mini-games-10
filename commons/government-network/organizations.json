@@ -1,0 +1,2291 @@
+{
+  "nodes": [
+    {
+      "id": "内閣",
+      "name": "内閣",
+      "kind": "内閣",
+      "url": "https://www.kantei.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "内閣官房",
+      "name": "内閣官房",
+      "kind": "府省等",
+      "url": "https://www.cas.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "内閣法制局",
+      "name": "内閣法制局",
+      "kind": "府省等",
+      "url": "https://www.clb.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "人事院",
+      "name": "人事院",
+      "kind": "府省等",
+      "url": "https://www.jinji.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "内閣府",
+      "name": "内閣府",
+      "kind": "府省等",
+      "url": "https://www.cao.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "日本学術会議",
+      "name": "日本学術会議",
+      "kind": "特別の機関",
+      "url": "https://www.scj.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "宮内庁",
+      "name": "宮内庁",
+      "kind": "外局等",
+      "url": "https://www.kunaicho.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "公正取引委員会",
+      "name": "公正取引委員会",
+      "kind": "外局等",
+      "url": "https://www.jftc.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "国家公安委員会",
+      "name": "国家公安委員会",
+      "kind": "外局等",
+      "url": "https://www.npsc.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "警察庁",
+      "name": "警察庁",
+      "kind": "特別の機関",
+      "url": "https://www.npa.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "個人情報保護委員会",
+      "name": "個人情報保護委員会",
+      "kind": "外局等",
+      "url": "https://www.ppc.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "カジノ管理委員会",
+      "name": "カジノ管理委員会",
+      "kind": "外局等",
+      "url": "https://www.jcrc.go.jp/index.html",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "金融庁",
+      "name": "金融庁",
+      "kind": "外局等",
+      "url": "https://www.fsa.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "消費者庁",
+      "name": "消費者庁",
+      "kind": "外局等",
+      "url": "https://www.caa.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "こども家庭庁",
+      "name": "こども家庭庁",
+      "kind": "外局等",
+      "url": "https://www.cfa.go.jp/top/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "デジタル庁",
+      "name": "デジタル庁",
+      "kind": "府省等",
+      "url": "https://www.digital.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "復興庁",
+      "name": "復興庁",
+      "kind": "府省等",
+      "url": "https://www.reconstruction.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "総務省",
+      "name": "総務省",
+      "kind": "府省等",
+      "url": "https://www.soumu.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "公害等調整委員会",
+      "name": "公害等調整委員会",
+      "kind": "外局",
+      "url": "https://www.soumu.go.jp/kouchoi/index.html",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "消防庁",
+      "name": "消防庁",
+      "kind": "外局",
+      "url": "https://www.fdma.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "法務省",
+      "name": "法務省",
+      "kind": "府省等",
+      "url": "https://www.moj.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "検察庁",
+      "name": "検察庁",
+      "kind": "特別の機関",
+      "url": "https://www.kensatsu.go.jp/top.shtml",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "出入国在留管理庁",
+      "name": "出入国在留管理庁",
+      "kind": "外局",
+      "url": "https://www.moj.go.jp/isa/index.html",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "公安審査委員会",
+      "name": "公安審査委員会",
+      "kind": "外局",
+      "url": "https://www.moj.go.jp/kouanshin/kouanshinsa_index.html",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "公安調査庁",
+      "name": "公安調査庁",
+      "kind": "外局",
+      "url": "https://www.moj.go.jp/psia/index.html",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "外務省",
+      "name": "外務省",
+      "kind": "府省等",
+      "url": "https://www.mofa.go.jp/mofaj/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "財務省",
+      "name": "財務省",
+      "kind": "府省等",
+      "url": "https://www.mof.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "国税庁",
+      "name": "国税庁",
+      "kind": "外局",
+      "url": "https://www.nta.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "国税不服審判所",
+      "name": "国税不服審判所",
+      "kind": "特別の機関",
+      "url": "https://www.kfs.go.jp/index.html",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "文部科学省",
+      "name": "文部科学省",
+      "kind": "府省等",
+      "url": "https://www.mext.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "日本学士院",
+      "name": "日本学士院",
+      "kind": "特別の機関",
+      "url": "https://www.japan-acad.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "地震調査研究推進本部",
+      "name": "地震調査研究推進本部",
+      "kind": "特別の機関",
+      "url": "https://www.jishin.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "スポーツ庁",
+      "name": "スポーツ庁",
+      "kind": "外局",
+      "url": "https://www.mext.go.jp/sports/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "文化庁",
+      "name": "文化庁",
+      "kind": "外局",
+      "url": "https://www.bunka.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "日本芸術院",
+      "name": "日本芸術院",
+      "kind": "文化庁の特別の機関",
+      "url": "https://www.geijutuin.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "厚生労働省",
+      "name": "厚生労働省",
+      "kind": "府省等",
+      "url": "https://www.mhlw.go.jp/index.html",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "中央労働委員会",
+      "name": "中央労働委員会",
+      "kind": "外局",
+      "url": "https://www.mhlw.go.jp/churoi/index.html",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "農林水産省",
+      "name": "農林水産省",
+      "kind": "府省等",
+      "url": "https://www.maff.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "林野庁",
+      "name": "林野庁",
+      "kind": "外局",
+      "url": "https://www.rinya.maff.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "水産庁",
+      "name": "水産庁",
+      "kind": "外局",
+      "url": "https://www.jfa.maff.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "経済産業省",
+      "name": "経済産業省",
+      "kind": "府省等",
+      "url": "https://www.meti.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "資源エネルギー庁",
+      "name": "資源エネルギー庁",
+      "kind": "外局",
+      "url": "https://www.enecho.meti.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "特許庁",
+      "name": "特許庁",
+      "kind": "外局",
+      "url": "https://www.jpo.go.jp/index.html",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "中小企業庁",
+      "name": "中小企業庁",
+      "kind": "外局",
+      "url": "https://www.chusho.meti.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "国土交通省",
+      "name": "国土交通省",
+      "kind": "府省等",
+      "url": "https://www.mlit.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "国土地理院",
+      "name": "国土地理院",
+      "kind": "特別の機関",
+      "url": "https://www.gsi.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "海難審判所",
+      "name": "海難審判所",
+      "kind": "特別の機関",
+      "url": "https://www.mlit.go.jp/jmat/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "観光庁",
+      "name": "観光庁",
+      "kind": "外局",
+      "url": "https://www.mlit.go.jp/kankocho/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "気象庁",
+      "name": "気象庁",
+      "kind": "外局",
+      "url": "https://www.jma.go.jp/jma/index.html",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "運輸安全委員会",
+      "name": "運輸安全委員会",
+      "kind": "外局",
+      "url": "https://www.mlit.go.jp/jtsb/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "海上保安庁",
+      "name": "海上保安庁",
+      "kind": "外局",
+      "url": "https://www.kaiho.mlit.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "環境省",
+      "name": "環境省",
+      "kind": "府省等",
+      "url": "https://www.env.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "原子力規制委員会",
+      "name": "原子力規制委員会",
+      "kind": "外局",
+      "url": "https://www.nsr.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "防衛省",
+      "name": "防衛省",
+      "kind": "府省等",
+      "url": "https://www.mod.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "陸上自衛隊",
+      "name": "陸上自衛隊",
+      "kind": "特別の機関",
+      "url": "https://www.mod.go.jp/gsdf/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "海上自衛隊",
+      "name": "海上自衛隊",
+      "kind": "特別の機関",
+      "url": "https://www.mod.go.jp/msdf/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "航空自衛隊",
+      "name": "航空自衛隊",
+      "kind": "特別の機関",
+      "url": "https://www.mod.go.jp/asdf/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "防衛装備庁",
+      "name": "防衛装備庁",
+      "kind": "外局",
+      "url": "https://www.mod.go.jp/atla/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "会計検査院",
+      "name": "会計検査院",
+      "kind": "府省等",
+      "url": "https://www.jbaudit.go.jp/",
+      "source": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+      "asOf": "取得日 2026-09-14"
+    },
+    {
+      "id": "3010005005429",
+      "name": "国立公文書館",
+      "kind": "行政執行法人",
+      "parent": "内閣府",
+      "number": "3010005005429",
+      "url": "https://www.archives.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8010505001641",
+      "name": "北方領土問題対策協会",
+      "kind": "中期目標管理法人",
+      "parent": "内閣府",
+      "number": "8010505001641",
+      "url": "https://www.hoppou.go.jp/index.html",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "9010005023796",
+      "name": "日本医療研究開発機構",
+      "kind": "国立研究開発法人",
+      "parent": "内閣府",
+      "number": "9010005023796",
+      "url": "https://www.amed.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4021005002918",
+      "name": "国民生活センター",
+      "kind": "中期目標管理法人",
+      "parent": "消費者庁",
+      "number": "4021005002918",
+      "url": "https://www.kokusen.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "7012405000492",
+      "name": "情報通信研究機構",
+      "kind": "国立研究開発法人",
+      "parent": "総務省",
+      "number": "7012405000492",
+      "url": "https://www.nict.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "7011105002089",
+      "name": "統計センター",
+      "kind": "行政執行法人",
+      "parent": "総務省",
+      "number": "7011105002089",
+      "url": "https://www.nstac.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8010405006889",
+      "name": "郵便貯金簡易生命保険管理・郵便局ネットワーク支援機構",
+      "kind": "中期目標管理法人",
+      "parent": "総務省",
+      "number": "8010405006889",
+      "url": "https://www.yuchokampo.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "9010005014408",
+      "name": "国際協力機構",
+      "kind": "中期目標管理法人",
+      "parent": "外務省",
+      "number": "9010005014408",
+      "url": "https://www.jica.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "3011105003801",
+      "name": "国際交流基金",
+      "kind": "中期目標管理法人",
+      "parent": "外務省",
+      "number": "3011105003801",
+      "url": "https://www.jpf.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "3240005003987",
+      "name": "酒類総合研究所",
+      "kind": "中期目標管理法人",
+      "parent": "財務省",
+      "number": "3240005003987",
+      "url": "https://www.nrib.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6120005008509",
+      "name": "造幣局",
+      "kind": "行政執行法人",
+      "parent": "財務省",
+      "number": "6120005008509",
+      "url": "https://www.mint.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6010405003434",
+      "name": "国立印刷局",
+      "kind": "行政執行法人",
+      "parent": "財務省",
+      "number": "6010405003434",
+      "url": "https://www.npb.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4021005008147",
+      "name": "国立特別支援教育総合研究所",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "4021005008147",
+      "url": "https://www.nise.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "5013205000379",
+      "name": "大学入試センター",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "5013205000379",
+      "url": "https://www.dnc.ac.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8011005001124",
+      "name": "国立青少年教育振興機構",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "8011005001124",
+      "url": "https://www.niye.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "1030005011641",
+      "name": "国立女性教育会館",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "1030005011641",
+      "url": "https://www.nwec.go.jp/\n",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4010505001182",
+      "name": "国立科学博物館",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "4010505001182",
+      "url": "https://www.kahaku.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "2050005005211",
+      "name": "物質・材料研究機構",
+      "kind": "国立研究開発法人",
+      "parent": "文部科学省",
+      "number": "2050005005211",
+      "url": "https://www.nims.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": true
+    },
+    {
+      "id": "3050005005210",
+      "name": "防災科学技術研究所",
+      "kind": "国立研究開発法人",
+      "parent": "文部科学省",
+      "number": "3050005005210",
+      "url": "https://www.bosai.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8040005001619",
+      "name": "量子科学技術研究開発機構",
+      "kind": "国立研究開発法人",
+      "parent": "文部科学省",
+      "number": "8040005001619",
+      "url": "https://www.qst.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8010005005424",
+      "name": "国立美術館",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "8010005005424",
+      "url": "https://www.artmuseums.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "3010505001183",
+      "name": "国立文化財機構",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "3010505001183",
+      "url": "https://www.nich.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8050005005214",
+      "name": "教職員支援機構",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "8050005005214",
+      "url": "https://www.nits.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4030005012570",
+      "name": "科学技術振興機構",
+      "kind": "国立研究開発法人",
+      "parent": "文部科学省",
+      "number": "4030005012570",
+      "url": "https://www.jst.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "1010005006890",
+      "name": "日本学術振興会",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "1010005006890",
+      "url": "https://www.jsps.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "1030005007111",
+      "name": "理化学研究所",
+      "kind": "国立研究開発法人",
+      "parent": "文部科学省",
+      "number": "1030005007111",
+      "url": "https://www.riken.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": true
+    },
+    {
+      "id": "9012405001241",
+      "name": "宇宙航空研究開発機構",
+      "kind": "国立研究開発法人",
+      "parent": "文部科学省",
+      "number": "9012405001241",
+      "url": "https://www.jaxa.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "5011105002256",
+      "name": "日本スポーツ振興センター",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "5011105002256",
+      "url": "https://www.jpnsport.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "7010005006877",
+      "name": "日本芸術文化振興会",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "7010005006877",
+      "url": "https://www.ntj.jac.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "7020005004962",
+      "name": "日本学生支援機構",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "7020005004962",
+      "url": "https://www.jasso.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "7021005008268",
+      "name": "海洋研究開発機構",
+      "kind": "国立研究開発法人",
+      "parent": "文部科学省",
+      "number": "7021005008268",
+      "url": "https://www.jamstec.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8010105000820",
+      "name": "国立高等専門学校機構",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "8010105000820",
+      "url": "https://www.kosen-k.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "5012705001234",
+      "name": "大学改革支援・学位授与機構",
+      "kind": "中期目標管理法人",
+      "parent": "文部科学省",
+      "number": "5012705001234",
+      "url": "https://www.niad.ac.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6050005002007",
+      "name": "日本原子力研究開発機構",
+      "kind": "国立研究開発法人",
+      "parent": "文部科学省",
+      "number": "6050005002007",
+      "url": "https://www.jaea.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "7013305001903",
+      "name": "勤労者退職金共済機構",
+      "kind": "中期目標管理法人",
+      "parent": "厚生労働省",
+      "number": "7013305001903",
+      "url": "https://www.taisyokukin.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8040005016947",
+      "name": "高齢・障害・求職者雇用支援機構",
+      "kind": "中期目標管理法人",
+      "parent": "厚生労働省",
+      "number": "8040005016947",
+      "url": "https://www.jeed.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8010405003688",
+      "name": "福祉医療機構",
+      "kind": "中期目標管理法人",
+      "parent": "厚生労働省",
+      "number": "8010405003688",
+      "url": "https://www.wam.go.jp/hp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8070005002779",
+      "name": "国立重度知的障害者総合施設のぞみの園",
+      "kind": "中期目標管理法人",
+      "parent": "厚生労働省",
+      "number": "8070005002779",
+      "url": "https://www.nozomi.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "9011605001191",
+      "name": "労働政策研究・研修機構",
+      "kind": "中期目標管理法人",
+      "parent": "厚生労働省",
+      "number": "9011605001191",
+      "url": "https://www.jil.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "7020005008492",
+      "name": "労働者健康安全機構",
+      "kind": "中期目標管理法人",
+      "parent": "厚生労働省",
+      "number": "7020005008492",
+      "url": "https://www.johas.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "1013205001281",
+      "name": "国立病院機構",
+      "kind": "中期目標管理法人",
+      "parent": "厚生労働省",
+      "number": "1013205001281",
+      "url": "https://nho.hosp.go.jp/\n",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "3010005007409",
+      "name": "医薬品医療機器総合機構",
+      "kind": "中期目標管理法人",
+      "parent": "厚生労働省",
+      "number": "3010005007409",
+      "url": "https://www.pmda.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "9120905002657",
+      "name": "医薬基盤・健康・栄養研究所",
+      "kind": "国立研究開発法人",
+      "parent": "厚生労働省",
+      "number": "9120905002657",
+      "url": "https://www.nibiohn.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6040005003798",
+      "name": "地域医療機能推進機構",
+      "kind": "中期目標管理法人",
+      "parent": "厚生労働省",
+      "number": "6040005003798",
+      "url": "https://www.jcho.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "9010005010010",
+      "name": "年金積立金管理運用独立行政法人",
+      "kind": "中期目標管理法人",
+      "parent": "厚生労働省",
+      "number": "9010005010010",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6010005015219",
+      "name": "国立がん研究センター",
+      "kind": "国立研究開発法人",
+      "parent": "厚生労働省",
+      "number": "6010005015219",
+      "url": "https://www.ncc.go.jp/jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "3120905003033",
+      "name": "国立循環器病研究センター",
+      "kind": "国立研究開発法人",
+      "parent": "厚生労働省",
+      "number": "3120905003033",
+      "url": "https://www.ncvc.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6012705001563",
+      "name": "国立精神・神経医療研究センター",
+      "kind": "国立研究開発法人",
+      "parent": "厚生労働省",
+      "number": "6012705001563",
+      "url": "https://www.ncnp.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6010905002126",
+      "name": "国立成育医療研究センター",
+      "kind": "国立研究開発法人",
+      "parent": "厚生労働省",
+      "number": "6010905002126",
+      "url": "https://www.ncchd.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4180005012861",
+      "name": "国立長寿医療研究センター",
+      "kind": "国立研究開発法人",
+      "parent": "厚生労働省",
+      "number": "4180005012861",
+      "url": "https://www.ncgg.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "5030005001226",
+      "name": "農林水産消費安全技術センター",
+      "kind": "行政執行法人",
+      "parent": "農林水産省",
+      "number": "5030005001226",
+      "url": "https://www.famic.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8380005004744",
+      "name": "家畜改良センター",
+      "kind": "中期目標管理法人",
+      "parent": "農林水産省",
+      "number": "8380005004744",
+      "url": "https://www.nlbc.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "7050005005207",
+      "name": "農業・食品産業技術総合研究機構",
+      "kind": "国立研究開発法人",
+      "parent": "農林水産省",
+      "number": "7050005005207",
+      "url": "https://www.naro.affrc.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "7050005005215",
+      "name": "国際農林水産業研究センター",
+      "kind": "国立研究開発法人",
+      "parent": "農林水産省",
+      "number": "7050005005215",
+      "url": "https://www.jircas.affrc.go.jp/index.sjis.html",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4050005005317",
+      "name": "森林研究・整備機構",
+      "kind": "国立研究開発法人",
+      "parent": "農林水産省",
+      "number": "4050005005317",
+      "url": "https://www.ffpri.affrc.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "1020005004051",
+      "name": "水産研究・教育機構",
+      "kind": "国立研究開発法人",
+      "parent": "農林水産省",
+      "number": "1020005004051",
+      "url": "https://www.fra.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4010405003683",
+      "name": "農畜産業振興機構",
+      "kind": "中期目標管理法人",
+      "parent": "農林水産省",
+      "number": "4010405003683",
+      "url": "https://www.alic.go.jp//",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "1010405003686",
+      "name": "農業者年金基金",
+      "kind": "中期目標管理法人",
+      "parent": "農林水産省",
+      "number": "1010405003686",
+      "url": "https://www.nounen.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "5010005006887",
+      "name": "農林漁業信用基金",
+      "kind": "中期目標管理法人",
+      "parent": "農林水産省",
+      "number": "5010005006887",
+      "url": "https://www.jaffic.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6010005005426",
+      "name": "経済産業研究所",
+      "kind": "中期目標管理法人",
+      "parent": "経済産業省",
+      "number": "6010005005426",
+      "url": "https://www.rieti.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "5010005005427",
+      "name": "工業所有権情報・研修館",
+      "kind": "中期目標管理法人",
+      "parent": "経済産業省",
+      "number": "5010005005427",
+      "url": "https://www.inpit.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "7010005005425",
+      "name": "産業技術総合研究所",
+      "kind": "国立研究開発法人",
+      "parent": "経済産業省",
+      "number": "7010005005425",
+      "url": "https://www.aist.go.jp/index_ja.html",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": true
+    },
+    {
+      "id": "9011005001123",
+      "name": "製品評価技術基盤機構",
+      "kind": "行政執行法人",
+      "parent": "経済産業省",
+      "number": "9011005001123",
+      "url": "https://www.nite.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "2020005008480",
+      "name": "新エネルギー・産業技術総合開発機構",
+      "kind": "国立研究開発法人",
+      "parent": "経済産業省",
+      "number": "2020005008480",
+      "url": "https://www.nedo.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "2010405003693",
+      "name": "日本貿易振興機構",
+      "kind": "中期目標管理法人",
+      "parent": "経済産業省",
+      "number": "2010405003693",
+      "url": "https://www.jetro.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "5010005007126",
+      "name": "情報処理推進機構",
+      "kind": "中期目標管理法人",
+      "parent": "経済産業省",
+      "number": "5010005007126",
+      "url": "https://www.ipa.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4010405009573",
+      "name": "エネルギー・金属鉱物資源機構",
+      "kind": "中期目標管理法人",
+      "parent": "経済産業省",
+      "number": "4010405009573",
+      "url": "https://www.jogmec.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "2010405004147",
+      "name": "中小企業基盤整備機構",
+      "kind": "中期目標管理法人",
+      "parent": "経済産業省",
+      "number": "2010405004147",
+      "url": "https://www.smrj.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8050005005206",
+      "name": "土木研究所",
+      "kind": "国立研究開発法人",
+      "parent": "国土交通省",
+      "number": "8050005005206",
+      "url": "https://www.pwri.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "9050005005205",
+      "name": "建築研究所",
+      "kind": "国立研究開発法人",
+      "parent": "国土交通省",
+      "number": "9050005005205",
+      "url": "https://www.kenken.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "5012405001732",
+      "name": "海上・港湾・航空技術研究所",
+      "kind": "国立研究開発法人",
+      "parent": "国土交通省",
+      "number": "5012405001732",
+      "url": "https://www.mpat.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6080005003150",
+      "name": "海技教育機構",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "6080005003150",
+      "url": "https://www.jmets.ac.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4350005001054",
+      "name": "航空大学校",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "4350005001054",
+      "url": "https://www.kouku-dai.ac.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "1011105001930",
+      "name": "自動車技術総合機構",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "1011105001930",
+      "url": "https://www.naltec.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4020005004767",
+      "name": "鉄道建設・運輸施設整備支援機構",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "4020005004767",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "4010005006896",
+      "name": "国際観光振興機構",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "4010005006896",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6030005001745",
+      "name": "水資源機構",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "6030005001745",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "9010005006883",
+      "name": "自動車事故対策機構",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "9010005006883",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "1120905003729",
+      "name": "空港周辺整備機構",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "1120905003729",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "1020005005090",
+      "name": "都市再生機構",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "1020005005090",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "5340005004841",
+      "name": "奄美群島振興開発基金",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "5340005004841",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "3010405004914",
+      "name": "日本高速道路保有・債務返済機構",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "3010405004914",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "2010005011502",
+      "name": "住宅金融支援機構",
+      "kind": "中期目標管理法人",
+      "parent": "国土交通省",
+      "number": "2010005011502",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "6050005005208",
+      "name": "国立環境研究所",
+      "kind": "国立研究開発法人",
+      "parent": "環境省",
+      "number": "6050005005208",
+      "url": "https://www.nies.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8020005008491",
+      "name": "環境再生保全機構",
+      "kind": "中期目標管理法人",
+      "parent": "環境省",
+      "number": "8020005008491",
+      "url": "https://www.erca.go.jp/",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    },
+    {
+      "id": "8010405009306",
+      "name": "駐留軍等労働者労務管理機構",
+      "kind": "行政執行法人",
+      "parent": "防衛省",
+      "number": "8010405009306",
+      "url": "",
+      "source": "https://www.soumu.go.jp/main_content/001000284.pdf",
+      "asOf": "2025-04-01",
+      "special": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "内閣",
+      "target": "内閣官房",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "内閣法制局",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "人事院",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "内閣府",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣府",
+      "target": "日本学術会議",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣府",
+      "target": "宮内庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣府",
+      "target": "公正取引委員会",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣府",
+      "target": "国家公安委員会",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "国家公安委員会",
+      "target": "警察庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣府",
+      "target": "個人情報保護委員会",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣府",
+      "target": "カジノ管理委員会",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣府",
+      "target": "金融庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣府",
+      "target": "消費者庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣府",
+      "target": "こども家庭庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "デジタル庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "復興庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "総務省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "総務省",
+      "target": "公害等調整委員会",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "総務省",
+      "target": "消防庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "法務省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "法務省",
+      "target": "検察庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "法務省",
+      "target": "出入国在留管理庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "法務省",
+      "target": "公安審査委員会",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "法務省",
+      "target": "公安調査庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "外務省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "財務省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "財務省",
+      "target": "国税庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "国税庁",
+      "target": "国税不服審判所",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "文部科学省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "文部科学省",
+      "target": "日本学士院",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "文部科学省",
+      "target": "地震調査研究推進本部",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "文部科学省",
+      "target": "スポーツ庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "文部科学省",
+      "target": "文化庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "文化庁",
+      "target": "日本芸術院",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "厚生労働省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "中央労働委員会",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "農林水産省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "農林水産省",
+      "target": "林野庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "農林水産省",
+      "target": "水産庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "経済産業省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "経済産業省",
+      "target": "資源エネルギー庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "経済産業省",
+      "target": "特許庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "経済産業省",
+      "target": "中小企業庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "国土交通省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "国土交通省",
+      "target": "国土地理院",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "国土交通省",
+      "target": "海難審判所",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "国土交通省",
+      "target": "観光庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "国土交通省",
+      "target": "気象庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "国土交通省",
+      "target": "運輸安全委員会",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "国土交通省",
+      "target": "海上保安庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "環境省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "環境省",
+      "target": "原子力規制委員会",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣",
+      "target": "防衛省",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "防衛省",
+      "target": "陸上自衛隊",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "防衛省",
+      "target": "海上自衛隊",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "防衛省",
+      "target": "航空自衛隊",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "防衛省",
+      "target": "防衛装備庁",
+      "type": "組織関係",
+      "evidence": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html"
+    },
+    {
+      "source": "内閣府",
+      "target": "3010005005429",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "内閣府",
+      "target": "8010505001641",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "内閣府",
+      "target": "9010005023796",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "消費者庁",
+      "target": "4021005002918",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "総務省",
+      "target": "7012405000492",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "総務省",
+      "target": "7011105002089",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "総務省",
+      "target": "8010405006889",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "外務省",
+      "target": "9010005014408",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "外務省",
+      "target": "3011105003801",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "財務省",
+      "target": "3240005003987",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "財務省",
+      "target": "6120005008509",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "財務省",
+      "target": "6010405003434",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "4021005008147",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "5013205000379",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "8011005001124",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "1030005011641",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "4010505001182",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "2050005005211",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "3050005005210",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "8040005001619",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "8010005005424",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "3010505001183",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "8050005005214",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "4030005012570",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "1010005006890",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "1030005007111",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "9012405001241",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "5011105002256",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "7010005006877",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "7020005004962",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "7021005008268",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "8010105000820",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "5012705001234",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "文部科学省",
+      "target": "6050005002007",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "7013305001903",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "8040005016947",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "8010405003688",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "8070005002779",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "9011605001191",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "7020005008492",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "1013205001281",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "3010005007409",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "9120905002657",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "6040005003798",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "9010005010010",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "6010005015219",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "3120905003033",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "6012705001563",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "6010905002126",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "厚生労働省",
+      "target": "4180005012861",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "農林水産省",
+      "target": "5030005001226",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "農林水産省",
+      "target": "8380005004744",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "農林水産省",
+      "target": "7050005005207",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "農林水産省",
+      "target": "7050005005215",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "農林水産省",
+      "target": "4050005005317",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "農林水産省",
+      "target": "1020005004051",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "農林水産省",
+      "target": "4010405003683",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "農林水産省",
+      "target": "1010405003686",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "農林水産省",
+      "target": "5010005006887",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "経済産業省",
+      "target": "6010005005426",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "経済産業省",
+      "target": "5010005005427",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "経済産業省",
+      "target": "7010005005425",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "経済産業省",
+      "target": "9011005001123",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "経済産業省",
+      "target": "2020005008480",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "経済産業省",
+      "target": "2010405003693",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "経済産業省",
+      "target": "5010005007126",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "経済産業省",
+      "target": "4010405009573",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "経済産業省",
+      "target": "2010405004147",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "8050005005206",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "9050005005205",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "5012405001732",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "6080005003150",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "4350005001054",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "1011105001930",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "4020005004767",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "4010005006896",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "6030005001745",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "9010005006883",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "1120905003729",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "1020005005090",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "5340005004841",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "3010405004914",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "国土交通省",
+      "target": "2010005011502",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "環境省",
+      "target": "6050005005208",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "環境省",
+      "target": "8020005008491",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    },
+    {
+      "source": "防衛省",
+      "target": "8010405009306",
+      "type": "主たる所管",
+      "evidence": "https://www.soumu.go.jp/main_content/001000284.pdf"
+    }
+  ],
+  "checkedAt": "2026-09-14",
+  "agencySource": "https://www.e-gov.go.jp/government-directory/ministries-and-agencies.html",
+  "iaaSource": "https://www.soumu.go.jp/main_content/001000284.pdf",
+  "iaaAsOf": "2025-04-01",
+  "notes": [
+    "独立行政法人は総務省の2025年4月1日現在の一覧86法人を全件収録。複数府省共管の場合は主たる所管のみ。",
+    "行政機関はe-Gov掲載の府省・外局・特別の機関等。内部部局、地方支分部局、自治体、地方独立行政法人は未収録。",
+    "資料時点の関係図です。取得日時は組織情報の基準日を意味しません。会計検査院は内閣から独立しているため内閣との上下線を付けません。"
+  ]
+}
