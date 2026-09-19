@@ -1,0 +1,875 @@
+{
+  "ST01-001": {
+    "id": "ST01-001",
+    "number": "ST01-001",
+    "name": "モンキー・D・ルフィ",
+    "nameJa": "モンキー・D・ルフィ",
+    "type": "leader",
+    "rarity": "L",
+    "cost": null,
+    "life": 5,
+    "power": 5000,
+    "counter": 0,
+    "attribute": "打",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "超新星",
+      "麦わらの一味"
+    ],
+    "effect": "〖起動メイン〗〖ターン1回〗このリーダーか自分のキャラ1枚にレストのドン!!1枚までを付与する。",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-001.png?260828"
+  },
+  "ST01-002": {
+    "id": "ST01-002",
+    "number": "ST01-002",
+    "name": "ウソップ",
+    "nameJa": "ウソップ",
+    "type": "character",
+    "rarity": "C",
+    "cost": 2,
+    "life": null,
+    "power": 2000,
+    "counter": 1000,
+    "attribute": "射",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "麦わらの一味"
+    ],
+    "effect": "〖ドン!!×2〗〖アタック時〗相手は、このバトル中、パワー5000以上のキャラの〖ブロッカー〗を発動できない。",
+    "trigger": "〖トリガー〗このカードを登場させる。",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-002.png?260828"
+  },
+  "ST01-003": {
+    "id": "ST01-003",
+    "number": "ST01-003",
+    "name": "カルー",
+    "nameJa": "カルー",
+    "type": "character",
+    "rarity": "C",
+    "cost": 1,
+    "life": null,
+    "power": 3000,
+    "counter": 1000,
+    "attribute": "打",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "動物",
+      "アラバスタ王国"
+    ],
+    "effect": "-",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-003.png?260828"
+  },
+  "ST01-004": {
+    "id": "ST01-004",
+    "number": "ST01-004",
+    "name": "サンジ",
+    "nameJa": "サンジ",
+    "type": "character",
+    "rarity": "C",
+    "cost": 2,
+    "life": null,
+    "power": 4000,
+    "counter": 0,
+    "attribute": "打",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "麦わらの一味"
+    ],
+    "effect": "〖ドン!!×2〗このキャラは〖速攻〗を得る。\n(このカードは登場したターンにアタックできる)",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-004.png?260828"
+  },
+  "ST01-005": {
+    "id": "ST01-005",
+    "number": "ST01-005",
+    "name": "ジンベエ",
+    "nameJa": "ジンベエ",
+    "type": "character",
+    "rarity": "C",
+    "cost": 3,
+    "life": null,
+    "power": 5000,
+    "counter": 0,
+    "attribute": "打",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "魚人族",
+      "麦わらの一味"
+    ],
+    "effect": "〖ドン!!×1〗〖アタック時〗このキャラ以外の自分のリーダーかキャラ1枚までを、このターン中、パワー+1000。",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-005.png?260828"
+  },
+  "ST01-006": {
+    "id": "ST01-006",
+    "number": "ST01-006",
+    "name": "トニートニー・チョッパー",
+    "nameJa": "トニートニー・チョッパー",
+    "type": "character",
+    "rarity": "C",
+    "cost": 1,
+    "life": null,
+    "power": 1000,
+    "counter": 0,
+    "attribute": "打",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "動物",
+      "麦わらの一味"
+    ],
+    "effect": "〖ブロッカー〗(相手のアタックの後、このカードをレストにし、アタックの対象をこのカードにできる)",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-006.png?260828"
+  },
+  "ST01-007": {
+    "id": "ST01-007",
+    "number": "ST01-007",
+    "name": "ナミ",
+    "nameJa": "ナミ",
+    "type": "character",
+    "rarity": "C",
+    "cost": 1,
+    "life": null,
+    "power": 1000,
+    "counter": 1000,
+    "attribute": "特",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "麦わらの一味"
+    ],
+    "effect": "〖起動メイン〗〖ターン1回〗自分のリーダーかキャラ1枚にレストのドン!!1枚までを付与する。",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-007.png?260828"
+  },
+  "ST01-008": {
+    "id": "ST01-008",
+    "number": "ST01-008",
+    "name": "ニコ・ロビン",
+    "nameJa": "ニコ・ロビン",
+    "type": "character",
+    "rarity": "C",
+    "cost": 3,
+    "life": null,
+    "power": 5000,
+    "counter": 1000,
+    "attribute": "知",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "麦わらの一味"
+    ],
+    "effect": "-",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-008.png?260828"
+  },
+  "ST01-009": {
+    "id": "ST01-009",
+    "number": "ST01-009",
+    "name": "ネフェルタリ・ビビ",
+    "nameJa": "ネフェルタリ・ビビ",
+    "type": "character",
+    "rarity": "C",
+    "cost": 2,
+    "life": null,
+    "power": 4000,
+    "counter": 1000,
+    "attribute": "斬",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "アラバスタ王国"
+    ],
+    "effect": "-",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-009.png?260828"
+  },
+  "ST01-010": {
+    "id": "ST01-010",
+    "number": "ST01-010",
+    "name": "フランキー",
+    "nameJa": "フランキー",
+    "type": "character",
+    "rarity": "C",
+    "cost": 4,
+    "life": null,
+    "power": 6000,
+    "counter": 1000,
+    "attribute": "打",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "麦わらの一味"
+    ],
+    "effect": "-",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-010.png?260828"
+  },
+  "ST01-011": {
+    "id": "ST01-011",
+    "number": "ST01-011",
+    "name": "ブルック",
+    "nameJa": "ブルック",
+    "type": "character",
+    "rarity": "C",
+    "cost": 2,
+    "life": null,
+    "power": 3000,
+    "counter": 2000,
+    "attribute": "斬",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "麦わらの一味"
+    ],
+    "effect": "〖登場時〗自分のリーダーかキャラ1枚にレストのドン!!2枚までを付与する。",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-011.png?260828"
+  },
+  "ST01-012": {
+    "id": "ST01-012",
+    "number": "ST01-012",
+    "name": "モンキー・D・ルフィ",
+    "nameJa": "モンキー・D・ルフィ",
+    "type": "character",
+    "rarity": "SR",
+    "cost": 5,
+    "life": null,
+    "power": 6000,
+    "counter": 0,
+    "attribute": "打",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "超新星",
+      "麦わらの一味"
+    ],
+    "effect": "〖速攻〗(このカードは登場したターンにアタックできる)\n〖ドン!!×2〗〖アタック時〗相手は、このバトル中、〖ブロッカー〗を発動できない。",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-012.png?260828"
+  },
+  "ST01-013": {
+    "id": "ST01-013",
+    "number": "ST01-013",
+    "name": "ロロノア・ゾロ",
+    "nameJa": "ロロノア・ゾロ",
+    "type": "character",
+    "rarity": "SR",
+    "cost": 3,
+    "life": null,
+    "power": 5000,
+    "counter": 0,
+    "attribute": "斬",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "超新星",
+      "麦わらの一味"
+    ],
+    "effect": "〖ドン!!×1〗このキャラのパワー+1000。",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-013.png?260828"
+  },
+  "ST01-014": {
+    "id": "ST01-014",
+    "number": "ST01-014",
+    "name": "毛皮強化",
+    "nameJa": "毛皮強化",
+    "type": "event",
+    "rarity": "C",
+    "cost": 1,
+    "life": null,
+    "power": null,
+    "counter": 0,
+    "attribute": "-",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "動物",
+      "麦わらの一味"
+    ],
+    "effect": "〖カウンター〗自分のリーダーかキャラ1枚までを、このバトル中、パワー+3000。",
+    "trigger": "〖トリガー〗自分のリーダーかキャラ1枚までを、このターン中、パワー+1000。",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-014.png?260828"
+  },
+  "ST01-015": {
+    "id": "ST01-015",
+    "number": "ST01-015",
+    "name": "ゴムゴムのJET銃",
+    "nameJa": "ゴムゴムのJET銃",
+    "type": "event",
+    "rarity": "C",
+    "cost": 4,
+    "life": null,
+    "power": null,
+    "counter": 0,
+    "attribute": "-",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "超新星",
+      "麦わらの一味"
+    ],
+    "effect": "〖メイン〗相手のパワー6000以下のキャラ1枚までを、KOする。",
+    "trigger": "〖トリガー〗このカードの〖メイン〗効果を発動する。",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-015.png?260828"
+  },
+  "ST01-016": {
+    "id": "ST01-016",
+    "number": "ST01-016",
+    "name": "悪魔風脚",
+    "nameJa": "悪魔風脚",
+    "type": "event",
+    "rarity": "C",
+    "cost": 1,
+    "life": null,
+    "power": null,
+    "counter": 0,
+    "attribute": "-",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "麦わらの一味"
+    ],
+    "effect": "〖メイン〗自分の特徴《麦わらの一味》を持つ、リーダーかキャラ1枚までを選ぶ。相手は、このターン中、そのリーダーかキャラがアタックする場合〖ブロッカー〗を発動できない。",
+    "trigger": "〖トリガー〗相手のコスト3以下の〖ブロッカー〗を持つキャラ1枚までを、KOする。",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-016.png?260828"
+  },
+  "ST01-017": {
+    "id": "ST01-017",
+    "number": "ST01-017",
+    "name": "サウザンド・サニー号",
+    "nameJa": "サウザンド・サニー号",
+    "type": "stage",
+    "rarity": "C",
+    "cost": 2,
+    "life": null,
+    "power": null,
+    "counter": 0,
+    "attribute": "-",
+    "colors": [
+      "red"
+    ],
+    "traits": [
+      "麦わらの一味"
+    ],
+    "effect": "〖起動メイン〗このステージをレストにできる：自分の特徴《麦わらの一味》を持つリーダーかキャラ1枚までを、このターン中、パワー+1000。",
+    "trigger": "",
+    "seriesId": "550001",
+    "set": "麦わらの一味【ST-01】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-017.png?260828"
+  },
+  "ST02-001": {
+    "id": "ST02-001",
+    "number": "ST02-001",
+    "name": "ユースタス・キッド",
+    "nameJa": "ユースタス・キッド",
+    "type": "leader",
+    "rarity": "L",
+    "cost": null,
+    "life": 5,
+    "power": 5000,
+    "counter": 0,
+    "attribute": "特",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "キッド海賊団"
+    ],
+    "effect": "〖起動メイン〗〖ターン1回〗③(コストエリアのドン!!を指定の数レストにできる)，自分の手札1枚を捨てることができる：このリーダーをアクティブにする。",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-001.png?260828"
+  },
+  "ST02-002": {
+    "id": "ST02-002",
+    "number": "ST02-002",
+    "name": "ヴィト",
+    "nameJa": "ヴィト",
+    "type": "character",
+    "rarity": "C",
+    "cost": 3,
+    "life": null,
+    "power": 5000,
+    "counter": 1000,
+    "attribute": "射",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "ファイアタンク海賊団"
+    ],
+    "effect": "-",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-002.png?260828"
+  },
+  "ST02-003": {
+    "id": "ST02-003",
+    "number": "ST02-003",
+    "name": "ウルージ",
+    "nameJa": "ウルージ",
+    "type": "character",
+    "rarity": "C",
+    "cost": 2,
+    "life": null,
+    "power": 3000,
+    "counter": 1000,
+    "attribute": "打",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "破戒僧海賊団"
+    ],
+    "effect": "〖ドン!!×1〗自分のキャラが3枚以上いる場合、このキャラのパワー+2000。",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-003.png?260828"
+  },
+  "ST02-004": {
+    "id": "ST02-004",
+    "number": "ST02-004",
+    "name": "カポネ・ベッジ",
+    "nameJa": "カポネ・ベッジ",
+    "type": "character",
+    "rarity": "C",
+    "cost": 1,
+    "life": null,
+    "power": 1000,
+    "counter": 0,
+    "attribute": "特",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "ファイアタンク海賊団"
+    ],
+    "effect": "〖ブロッカー〗(相手のアタックの後、このカードをレストにし、アタックの対象をこのカードにできる)",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-004.png?260828"
+  },
+  "ST02-005": {
+    "id": "ST02-005",
+    "number": "ST02-005",
+    "name": "キラー",
+    "nameJa": "キラー",
+    "type": "character",
+    "rarity": "C",
+    "cost": 3,
+    "life": null,
+    "power": 3000,
+    "counter": 1000,
+    "attribute": "斬",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "キッド海賊団"
+    ],
+    "effect": "〖登場時〗相手のレストのコスト3以下のキャラ1枚までを、KOする。",
+    "trigger": "〖トリガー〗このカードを登場させる。",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-005.png?260828"
+  },
+  "ST02-006": {
+    "id": "ST02-006",
+    "number": "ST02-006",
+    "name": "コビー",
+    "nameJa": "コビー",
+    "type": "character",
+    "rarity": "C",
+    "cost": 4,
+    "life": null,
+    "power": 6000,
+    "counter": 1000,
+    "attribute": "打",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "海軍"
+    ],
+    "effect": "-",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-006.png?260828"
+  },
+  "ST02-007": {
+    "id": "ST02-007",
+    "number": "ST02-007",
+    "name": "ジュエリー・ボニー",
+    "nameJa": "ジュエリー・ボニー",
+    "type": "character",
+    "rarity": "C",
+    "cost": 1,
+    "life": null,
+    "power": 1000,
+    "counter": 1000,
+    "attribute": "特",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "ボニー海賊団"
+    ],
+    "effect": "〖起動メイン〗①(コストエリアのドン!!を指定の数レストにできる)，このキャラをレストにできる：自分のデッキの上から5枚を見て、特徴《超新星》を持つカード1枚までを公開し、手札に加える。その後、残りを好きな順番でデッキの下に置く。",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-007.png?260828"
+  },
+  "ST02-008": {
+    "id": "ST02-008",
+    "number": "ST02-008",
+    "name": "スクラッチメン・アプー",
+    "nameJa": "スクラッチメン・アプー",
+    "type": "character",
+    "rarity": "C",
+    "cost": 2,
+    "life": null,
+    "power": 3000,
+    "counter": 2000,
+    "attribute": "射",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "オンエア海賊団"
+    ],
+    "effect": "〖ドン!!×1〗〖アタック時〗相手のドン!!1枚までを、レストにする。",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-008.png?260828"
+  },
+  "ST02-009": {
+    "id": "ST02-009",
+    "number": "ST02-009",
+    "name": "トラファルガー・ロー",
+    "nameJa": "トラファルガー・ロー",
+    "type": "character",
+    "rarity": "SR",
+    "cost": 5,
+    "life": null,
+    "power": 6000,
+    "counter": 1000,
+    "attribute": "斬",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "ハートの海賊団"
+    ],
+    "effect": "〖登場時〗自分のレストのコスト5以下の特徴《超新星》か《ハートの海賊団》を持つキャラ1枚までを、アクティブにする。",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-009.png?260828"
+  },
+  "ST02-010": {
+    "id": "ST02-010",
+    "number": "ST02-010",
+    "name": "バジル・ホーキンス",
+    "nameJa": "バジル・ホーキンス",
+    "type": "character",
+    "rarity": "C",
+    "cost": 5,
+    "life": null,
+    "power": 6000,
+    "counter": 0,
+    "attribute": "斬",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "ホーキンス海賊団"
+    ],
+    "effect": "〖ドン!!×1〗〖ターン1回〗〖自分のターン中〗このキャラが相手のキャラとバトルした場合、このキャラをアクティブにする。",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-010.png?260828"
+  },
+  "ST02-011": {
+    "id": "ST02-011",
+    "number": "ST02-011",
+    "name": "ヒート",
+    "nameJa": "ヒート",
+    "type": "character",
+    "rarity": "C",
+    "cost": 2,
+    "life": null,
+    "power": 4000,
+    "counter": 1000,
+    "attribute": "特",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "キッド海賊団"
+    ],
+    "effect": "-",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-011.png?260828"
+  },
+  "ST02-012": {
+    "id": "ST02-012",
+    "number": "ST02-012",
+    "name": "ベポ",
+    "nameJa": "ベポ",
+    "type": "character",
+    "rarity": "C",
+    "cost": 1,
+    "life": null,
+    "power": 3000,
+    "counter": 1000,
+    "attribute": "打",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "ミンク族",
+      "ハートの海賊団"
+    ],
+    "effect": "-",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-012.png?260828"
+  },
+  "ST02-013": {
+    "id": "ST02-013",
+    "number": "ST02-013",
+    "name": "ユースタス・キッド",
+    "nameJa": "ユースタス・キッド",
+    "type": "character",
+    "rarity": "SR",
+    "cost": 7,
+    "life": null,
+    "power": 7000,
+    "counter": 0,
+    "attribute": "特",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "キッド海賊団"
+    ],
+    "effect": "〖ブロッカー〗(相手のアタックの後、このカードをレストにし、アタックの対象をこのカードにできる)\n〖ドン!!×1〗〖自分のターン終了時〗このキャラをアクティブにする。",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-013.png?260828"
+  },
+  "ST02-014": {
+    "id": "ST02-014",
+    "number": "ST02-014",
+    "name": "X・ドレーク",
+    "nameJa": "X・ドレーク",
+    "type": "character",
+    "rarity": "C",
+    "cost": 4,
+    "life": null,
+    "power": 5000,
+    "counter": 1000,
+    "attribute": "斬",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "海軍",
+      "超新星",
+      "ドレーク海賊団"
+    ],
+    "effect": "〖ドン!!×1〗〖自分のターン中〗このキャラがレストの場合、自分の特徴《超新星》か《海軍》を持つリーダーとキャラのパワー+1000。",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-014.png?260828"
+  },
+  "ST02-015": {
+    "id": "ST02-015",
+    "number": "ST02-015",
+    "name": "メス",
+    "nameJa": "メス",
+    "type": "event",
+    "rarity": "C",
+    "cost": 1,
+    "life": null,
+    "power": null,
+    "counter": 0,
+    "attribute": "-",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "ハートの海賊団"
+    ],
+    "effect": "〖カウンター〗自分のリーダーかキャラ1枚までを、このバトル中、パワー+2000。その後、自分のドン!!1枚までを、アクティブにする。",
+    "trigger": "〖トリガー〗自分のドン!!2枚までを、アクティブにする。",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-015.png?260828"
+  },
+  "ST02-016": {
+    "id": "ST02-016",
+    "number": "ST02-016",
+    "name": "反発",
+    "nameJa": "反発",
+    "type": "event",
+    "rarity": "C",
+    "cost": 2,
+    "life": null,
+    "power": null,
+    "counter": 0,
+    "attribute": "-",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "キッド海賊団"
+    ],
+    "effect": "〖カウンター〗自分のリーダーかキャラ1枚までを、このバトル中、パワー+4000。その後、自分のドン!!1枚までを、アクティブにする。",
+    "trigger": "",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-016.png?260828"
+  },
+  "ST02-017": {
+    "id": "ST02-017",
+    "number": "ST02-017",
+    "name": "藁備手刀",
+    "nameJa": "藁備手刀",
+    "type": "event",
+    "rarity": "C",
+    "cost": 2,
+    "life": null,
+    "power": null,
+    "counter": 0,
+    "attribute": "-",
+    "colors": [
+      "green"
+    ],
+    "traits": [
+      "超新星",
+      "ホーキンス海賊団"
+    ],
+    "effect": "〖メイン〗相手のキャラ1枚までを、レストにする。",
+    "trigger": "〖トリガー〗自分の手札のコスト2以下の特徴《超新星》を持つカード1枚までを、登場させる。",
+    "seriesId": "550002",
+    "set": "最悪の世代【ST-02】",
+    "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-017.png?260828"
+  }
+}
