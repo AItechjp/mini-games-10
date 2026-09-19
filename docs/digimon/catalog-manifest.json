@@ -1,0 +1,647 @@
+{
+  "retrievedAt": "2026-09-19T13:33:02.542599+00:00",
+  "source": "https://digimoncard.com/cards/",
+  "locale": "ja-JP",
+  "uniqueCards": 4474,
+  "tokenRecords": 6,
+  "numberedCards": 4468,
+  "uniqueIllustrations": 7472,
+  "listingEntries": 7480,
+  "categoriesDiscovered": 78,
+  "categoriesRequested": 78,
+  "categoriesAcquired": 78,
+  "categories": [
+    {
+      "categoryId": "503001",
+      "name": "ブースターパック NEW EVOLUTION【BT-01】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503001",
+      "printings": 134,
+      "uniqueCards": 115,
+      "sourceSha256": "eba4dfaaa0803e6e3d6ec661746ed34f3bdb19d383688396ab0a3324ecd3dc9d"
+    },
+    {
+      "categoryId": "503002",
+      "name": "ブースターパック ULTIMATE POWER【BT-02】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503002",
+      "printings": 129,
+      "uniqueCards": 112,
+      "sourceSha256": "565b583ab71a8a7e3aa5eaffc4dbeab662cb1b62022395ae6c1a3b8677b3f4fc"
+    },
+    {
+      "categoryId": "503003",
+      "name": "ブースターパック ユニオンインパクト【BT-03】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503003",
+      "printings": 130,
+      "uniqueCards": 112,
+      "sourceSha256": "56310d66a75645e94dd921b17e4b578ba2ef2eb181add2a0d1cc927ec4316cd5"
+    },
+    {
+      "categoryId": "503004",
+      "name": "ブースターパック グレイトレジェンド【BT-04】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503004",
+      "printings": 136,
+      "uniqueCards": 115,
+      "sourceSha256": "0587c80a87a3762610840a0c945fb8dab570450aefe1e63b722cc8bc0815defc"
+    },
+    {
+      "categoryId": "503005",
+      "name": "ブースターパック バトルオブオメガ【BT-05】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503005",
+      "printings": 130,
+      "uniqueCards": 112,
+      "sourceSha256": "05ce16395e414b9b5803e700a63839e84a45982fdb1dc02034133e786087ab6b"
+    },
+    {
+      "categoryId": "503006",
+      "name": "ブースターパック ダブルダイヤモンド【BT-06】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503006",
+      "printings": 147,
+      "uniqueCards": 123,
+      "sourceSha256": "a6659a63cf8a54aa971c43e3c25877b0b0f07bf42127302f01deb7c1681e2a81"
+    },
+    {
+      "categoryId": "503007",
+      "name": "テーマブースター クラシックコレクション【EX-01】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503007",
+      "printings": 103,
+      "uniqueCards": 73,
+      "sourceSha256": "e9dcf142891defbaba81ea1fda71a47cc0d925a54a1360eadb71d25859478c47"
+    },
+    {
+      "categoryId": "503008",
+      "name": "ブースターパック ネクストアドベンチャー【BT-07】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503008",
+      "printings": 144,
+      "uniqueCards": 120,
+      "sourceSha256": "72da53cdf38c128f5fe5d6250c485e7298439b806f2613ad9d3b2a82c53a3a20"
+    },
+    {
+      "categoryId": "503009",
+      "name": "ブースターパック ニューヒーロー【BT-08】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503009",
+      "printings": 136,
+      "uniqueCards": 112,
+      "sourceSha256": "5629bf3e4d44af233cc509c69a0b91596394a18ac1030d8105ab9c83e84a9b46"
+    },
+    {
+      "categoryId": "503010",
+      "name": "テーマブースター デジタルハザード【EX-02】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503010",
+      "printings": 104,
+      "uniqueCards": 74,
+      "sourceSha256": "fa10aa3381c47c999621f34bcd72f9e715b2486a28c37a64fb62988f8c4f06bb"
+    },
+    {
+      "categoryId": "503011",
+      "name": "ブースターパック Xレコード【BT-09】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503011",
+      "printings": 136,
+      "uniqueCards": 112,
+      "sourceSha256": "9c87bd6579c32d129e179acb102d7e93771e7015caf0cdac2fdb4599ce46f2bf"
+    },
+    {
+      "categoryId": "503012",
+      "name": "ブースターパック クロスエンカウンター【BT-10】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503012",
+      "printings": 137,
+      "uniqueCards": 113,
+      "sourceSha256": "854b758f44c07e8835947a1984cdd6cfce0e5479586423fc205187f11f342ef7"
+    },
+    {
+      "categoryId": "503013",
+      "name": "テーマブースター ドラゴンズロア【EX-03】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503013",
+      "printings": 99,
+      "uniqueCards": 75,
+      "sourceSha256": "cc2bef5c421842aa09d9ebb74968315446ffd303f4abd1d4de27ff0bd2f26369"
+    },
+    {
+      "categoryId": "503014",
+      "name": "ブースターパック ディメンショナルフェイズ【BT-11】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503014",
+      "printings": 140,
+      "uniqueCards": 116,
+      "sourceSha256": "bf7d8644deaad16ff0694b6a100f652055bdc9fa18e1576f053d7d2bee645b17"
+    },
+    {
+      "categoryId": "503015",
+      "name": "ブースターパック アクロス・タイム【BT-12】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503015",
+      "printings": 139,
+      "uniqueCards": 113,
+      "sourceSha256": "f843e019efe9871776d0cdfbb8ae05f25aed3dd843ff7edcfb7ff2d4126d4d71"
+    },
+    {
+      "categoryId": "503016",
+      "name": "テーマブースター オルタナティブビーイング【EX-04】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503016",
+      "printings": 99,
+      "uniqueCards": 75,
+      "sourceSha256": "d2492b132437620c25c7f2454d0bb559a98732f3f8b642fabfc8781cddb97c51"
+    },
+    {
+      "categoryId": "503017",
+      "name": "リブートブースター ライジングウインド【RB-01】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503017",
+      "printings": 148,
+      "uniqueCards": 122,
+      "sourceSha256": "aefb2a82620d8697c8e3e75a20552ce82597f0d446da6b64adf807c888e85ed4"
+    },
+    {
+      "categoryId": "503018",
+      "name": "ブースターパック VSロイヤルナイツ【BT-13】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503018",
+      "printings": 142,
+      "uniqueCards": 112,
+      "sourceSha256": "585693d097f84419d346201f4a8d71b7705ebfbe4b8ce4b78ccea8c45595e297"
+    },
+    {
+      "categoryId": "503019",
+      "name": "ブースターパック BLAST ACE【BT-14】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503019",
+      "printings": 130,
+      "uniqueCards": 104,
+      "sourceSha256": "a9dc55a384e84109f93f04fefbc20ef6a2ed0aefe4fdaab2fcba94967fa67940"
+    },
+    {
+      "categoryId": "503020",
+      "name": "テーマブースター アニマルコロシアム【EX-05】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503020",
+      "printings": 101,
+      "uniqueCards": 74,
+      "sourceSha256": "188e5628ee6fe5b9964ce1c4860cab6495e1680884a1303d40e45489b5d1a146"
+    },
+    {
+      "categoryId": "503021",
+      "name": "ブースターパック エクシード・アポカリプス【BT-15】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503021",
+      "printings": 137,
+      "uniqueCards": 106,
+      "sourceSha256": "a1a911a2055969b7098602ca48f2687ee61c033a10c862705720859c8c6d2831"
+    },
+    {
+      "categoryId": "503022",
+      "name": "ブースターパック BEGINNING OBSERVER 【BT-16】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503022",
+      "printings": 135,
+      "uniqueCards": 103,
+      "sourceSha256": "a0a63786868227bf0debddf099893a9b90b42988da6f4150d83185aebcde41f1"
+    },
+    {
+      "categoryId": "503023",
+      "name": "テーマブースター インファナル・アセンション【EX-06】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503023",
+      "printings": 106,
+      "uniqueCards": 74,
+      "sourceSha256": "279db0e4bd293e7e2bf099a576217009e20cc42c12142b48733fab362f884dec"
+    },
+    {
+      "categoryId": "503024",
+      "name": "ブースターパック シークレットクライシス【BT-17】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503024",
+      "printings": 136,
+      "uniqueCards": 102,
+      "sourceSha256": "fe0c2adb04208332712b3bf392b40b7c04338b57a02c3cd0371de8873b3a4f58"
+    },
+    {
+      "categoryId": "503025",
+      "name": "エクストラブースター デジモンリベレイター【EX-07】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503025",
+      "printings": 146,
+      "uniqueCards": 79,
+      "sourceSha256": "0e829fae73cdb9f9900e719d98f160a6c5044efdfae3eb32fd484fe7ab9902d8"
+    },
+    {
+      "categoryId": "503026",
+      "name": "ブースターパック エレメントサクセサー【BT-18】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503026",
+      "printings": 134,
+      "uniqueCards": 103,
+      "sourceSha256": "726a1163824f44396d4269dc8c7a950f8e233a0579770bd04296c0c341ff213e"
+    },
+    {
+      "categoryId": "503027",
+      "name": "ブースターパック クロスエボリューション【BT-19】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503027",
+      "printings": 134,
+      "uniqueCards": 102,
+      "sourceSha256": "a89013076101153a4720f87a2cb53fb16557466c4ed015d6ea26b369d9517c73"
+    },
+    {
+      "categoryId": "503028",
+      "name": "エクストラブースター CHAIN OF LIBERATION【EX-08】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503028",
+      "printings": 154,
+      "uniqueCards": 87,
+      "sourceSha256": "81d1c68370de705b15a990cbd6a478c4de5c5e0e4d9ef0781f66fdd091181696"
+    },
+    {
+      "categoryId": "503029",
+      "name": "ブースターパック OVER THE X【BT-20】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503029",
+      "printings": 138,
+      "uniqueCards": 104,
+      "sourceSha256": "7454a268c700370ca425c4c9b99104f6a802053d6e56466e40310fcb4a06abfd"
+    },
+    {
+      "categoryId": "503030",
+      "name": "ブースターパック WORLD CONVERGENCE【BT-21】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503030",
+      "printings": 134,
+      "uniqueCards": 109,
+      "sourceSha256": "98b621a2d0feb0c5aa2780a6737a89aad5b916e3cd21757d63f3902cf05e7a34"
+    },
+    {
+      "categoryId": "503031",
+      "name": "エクストラブースター VERSUS MONSTERS【EX-09】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503031",
+      "printings": 147,
+      "uniqueCards": 79,
+      "sourceSha256": "e41da41fd1236ce7fecb9e1f28216371651f8bf039ffd04a248cb6b47eb25a3a"
+    },
+    {
+      "categoryId": "503032",
+      "name": "ブースターパック CYBER EDEN【BT-22】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503032",
+      "printings": 134,
+      "uniqueCards": 103,
+      "sourceSha256": "554e1c3958e67e92922038451b0f057cb355fc671eb90791eed0a8e4479eed4e"
+    },
+    {
+      "categoryId": "503033",
+      "name": "エクストラブースター SINISTER ORDER【EX-10】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503033",
+      "printings": 146,
+      "uniqueCards": 79,
+      "sourceSha256": "7ce5cbd32a6937127d73c648d5bd0ca30a24bb4bc8ece9b5d76869a662969033"
+    },
+    {
+      "categoryId": "503034",
+      "name": "ブースターパック HACKERS' SLUMBER【BT-23】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503034",
+      "printings": 135,
+      "uniqueCards": 103,
+      "sourceSha256": "2581b2ab1d3c5987a433387932b85532cf02ef80a560429b49812d83235ede8d"
+    },
+    {
+      "categoryId": "503035",
+      "name": "ブースターパック TIME STRANGER【BT-24】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503035",
+      "printings": 134,
+      "uniqueCards": 103,
+      "sourceSha256": "fc10b37a0bdee2e8cd527c1943e583da4a281479987bddbb8b6fdbee32b7e679"
+    },
+    {
+      "categoryId": "503036",
+      "name": "エクストラブースター DAWN OF LIBERATOR【EX-11】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503036",
+      "printings": 158,
+      "uniqueCards": 82,
+      "sourceSha256": "20933c03cb14061b7c08124f8fcba90681164b0b6fe27bac1263be891ddf999c"
+    },
+    {
+      "categoryId": "503037",
+      "name": "アドバンスブースター DIGIMON GENERATION【AD-01】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503037",
+      "printings": 291,
+      "uniqueCards": 196,
+      "sourceSha256": "611a5be05fcf4424ec01003c3a0898f3e6e29cc79acb0e6be1da821528f22522"
+    },
+    {
+      "categoryId": "503038",
+      "name": "ブースターパック DUAL REVOLUTION【BT-25】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503038",
+      "printings": 143,
+      "uniqueCards": 110,
+      "sourceSha256": "1a0702f815e6a94779e1f7304b87d6ec9017ea65084d9ded494eb49e1b09f943"
+    },
+    {
+      "categoryId": "503039",
+      "name": "エクストラブースター DIGITAL WORLD SHAMBALA【EX-12】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503039",
+      "printings": 152,
+      "uniqueCards": 77,
+      "sourceSha256": "b51fc6463dc0ea20721615d0ef3a7065dec9497315d7f9414c1052dd8da6fc36"
+    },
+    {
+      "categoryId": "503040",
+      "name": "ブースターパック TIMELESS BONDS【BT-26】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503040",
+      "printings": 136,
+      "uniqueCards": 104,
+      "sourceSha256": "70299906ff9a1a7da515a0488c281d726dc5efe94a45795540b5f1e0acdc22cd"
+    },
+    {
+      "categoryId": "503041",
+      "name": "エクストラブースター CHIVALROUS XIII【EX-13】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503041",
+      "printings": 164,
+      "uniqueCards": 77,
+      "sourceSha256": "44e4cd79d04c742fb167102c744480b4e0393da44f73d3b5d434f977acb88990"
+    },
+    {
+      "categoryId": "503101",
+      "name": "スタートデッキ ガイアレッド【ST-1】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503101",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "ea17f8dfd41ea129d97cab5c61d24d5d1fc5f9635d447f6d2270dada350991a5"
+    },
+    {
+      "categoryId": "503102",
+      "name": "スタートデッキ コキュートスブルー【ST-2】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503102",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "96e556e17c264d3bc3bfca69e64ea999fbaffee53b9d8b0a1a17999ae7258282"
+    },
+    {
+      "categoryId": "503103",
+      "name": "スタートデッキ ヘブンズイエロー【ST-3】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503103",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "83997a0f923741d02e790bda5d1ea2a33b5d89d9302d8131bf8f01d52e548a74"
+    },
+    {
+      "categoryId": "503104",
+      "name": "スタートデッキ ギガグリーン【ST-4】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503104",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "54ba6cb0048b59fdcb7cd59feacc34374a078f64765fd755f1263cc48cb15858"
+    },
+    {
+      "categoryId": "503105",
+      "name": "スタートデッキ ムゲンブラック【ST-5】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503105",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "28e551334dd9e17b46460cc681d3c2cc666bc631b163145474cdf6e9c702a658"
+    },
+    {
+      "categoryId": "503106",
+      "name": "スタートデッキ ヴェノムヴァイオレット【ST-6】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503106",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "36255b3587eae6f724566b9afddadfddd52b116aa72df852155d1fb9925877dc"
+    },
+    {
+      "categoryId": "503107",
+      "name": "スタートデッキ デュークモン【ST-7】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503107",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "637f5d0a5d1b19333ec9ae84d8ea8ac6228c23e5a8165f2de9fc76a9f6500cd2"
+    },
+    {
+      "categoryId": "503108",
+      "name": "スタートデッキ アルフォースブイドラモン【ST-8】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503108",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "5af18428ef202d5d2fb5b0a005bf7d679d64dc1bdfa75d265d00ae7e3fbfb768"
+    },
+    {
+      "categoryId": "503109",
+      "name": "スタートデッキ 究極の古代竜【ST-9】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503109",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "406864ae59b5f37c87c5ce4a3ba85bd0cddf5896b653b0358927bce24a6e7a95"
+    },
+    {
+      "categoryId": "503110",
+      "name": "スタートデッキ 異世界の軍師【ST-10】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503110",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "0e7905f846398bf269c87d307b3fb81ee3ea6750f4c1310e700fc4f5c6d559dc"
+    },
+    {
+      "categoryId": "503111",
+      "name": "スタートデッキ スペシャルエントリーセット【ST-11】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503111",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "73f6c59cc28921bdebcefbba214ac4e3c2df726654409379b19c3e461361ee55"
+    },
+    {
+      "categoryId": "503112",
+      "name": "スタートデッキ ジエスモン【ST-12】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503112",
+      "printings": 22,
+      "uniqueCards": 22,
+      "sourceSha256": "72bc65b23cff24b9661710ae434e5d45e61cf976c74d218164906e991703415d"
+    },
+    {
+      "categoryId": "503113",
+      "name": "スタートデッキ ラグナロードモン【ST-13】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503113",
+      "printings": 22,
+      "uniqueCards": 22,
+      "sourceSha256": "4fdd594e85421c794233931d8cfb663c15768da3594eabf7824b253cccc7cc04"
+    },
+    {
+      "categoryId": "503114",
+      "name": "アドバンスデッキ ベルゼブモン【ST-14】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503114",
+      "printings": 26,
+      "uniqueCards": 25,
+      "sourceSha256": "04a446d44c0e33a0c19448321e44d12a92e3c690f4d891bdc142b8ebe6007365"
+    },
+    {
+      "categoryId": "503115",
+      "name": "スタートデッキ 勇気の戦竜【ST-15】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503115",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "761953b3b213ec8cf6057ea66b5c550850ba3c4a13a3c8465d6240d5c4e3c7bf"
+    },
+    {
+      "categoryId": "503116",
+      "name": "スタートデッキ 友情の鋼狼【ST-16】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503116",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "53de3b67286c7de84deacb394d5b29f9b19679dbc23bd6cacb82ba908bda9286"
+    },
+    {
+      "categoryId": "503117",
+      "name": "アドバンスデッキ ダブルタイフーン【ST-17】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503117",
+      "printings": 33,
+      "uniqueCards": 26,
+      "sourceSha256": "5e489c884dfeb2fc7cd5210b1892aad26f510723a15109d34d22984187177429"
+    },
+    {
+      "categoryId": "503118",
+      "name": "スタートデッキ 旋風の守護者【ST-18】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503118",
+      "printings": 22,
+      "uniqueCards": 22,
+      "sourceSha256": "19d153438bb5c870072786604d3fc132bbcc24124a082685dd2a13225ef4bf35"
+    },
+    {
+      "categoryId": "503119",
+      "name": "スタートデッキ 童話の舞踏【ST-19】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503119",
+      "printings": 22,
+      "uniqueCards": 22,
+      "sourceSha256": "93ad9649b63911b81119388da1045c06e54697d2a7262d2ac8cd563bbd9058c1"
+    },
+    {
+      "categoryId": "503120",
+      "name": "スタートデッキ PROTECTOR OF LIGHT【ST-20】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503120",
+      "printings": 22,
+      "uniqueCards": 21,
+      "sourceSha256": "cde7c182978aea1cc8439e5fceda22381b05f140fe654226f4d674962139e7fe"
+    },
+    {
+      "categoryId": "503121",
+      "name": "スタートデッキ HERO OF HOPE【ST-21】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503121",
+      "printings": 22,
+      "uniqueCards": 21,
+      "sourceSha256": "17e3b84bad7d225c5fad682c62d93e40a6a4e525c5c498ea73f4965c9d263d4d"
+    },
+    {
+      "categoryId": "503122",
+      "name": "アドバンスデッキ 金剛界曼荼羅【ST-22】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503122",
+      "printings": 26,
+      "uniqueCards": 25,
+      "sourceSha256": "9a7d7b79f1e5a66735ce36f24164186e5f14b0018966569fa6bf38ac07e15120"
+    },
+    {
+      "categoryId": "503123",
+      "name": "スタートデッキ DIGIMON BEATBREAK【ST-23】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503123",
+      "printings": 22,
+      "uniqueCards": 21,
+      "sourceSha256": "12f4997be69d0fa4fba746107aa5e08695614968697e60e242329f0162534228"
+    },
+    {
+      "categoryId": "503124",
+      "name": "スタートデッキ DIGIMON SAVERS【ST-24】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503124",
+      "printings": 22,
+      "uniqueCards": 21,
+      "sourceSha256": "1bcfb3a6d37d01af6c2eaa7b352a7fc064b618ad1c11b4d935929e755ccb7860"
+    },
+    {
+      "categoryId": "503201",
+      "name": "リミテッドカードパック デジモンゴーストゲーム【LM-01】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503201",
+      "printings": 30,
+      "uniqueCards": 30,
+      "sourceSha256": "caac72ea21a05f689651c6a615788dd4bd769d4fa31caa4599eb12d27f54240a"
+    },
+    {
+      "categoryId": "503202",
+      "name": "リミテッドカードパック デクスモン【LM-02】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503202",
+      "printings": 33,
+      "uniqueCards": 33,
+      "sourceSha256": "8c170785047245d9de54c3a4ce7a9e918e6b6f40547e908447b47fa7d9ac9177"
+    },
+    {
+      "categoryId": "503203",
+      "name": "リミテッドカードセット2024【LM-03】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503203",
+      "printings": 12,
+      "uniqueCards": 12,
+      "sourceSha256": "4f6b63f4cb131292391cd75556d6b971afd8f95db6ae2ccd0d485d9cc9f2fae3"
+    },
+    {
+      "categoryId": "503204",
+      "name": "リミテッドカードパック トリッドヴァイス【LM-04】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503204",
+      "printings": 33,
+      "uniqueCards": 33,
+      "sourceSha256": "dcae4b9da5a8e43ed0a63c1e37c81cd1a500c02c8c234ef8ac82472fb8a2f01b"
+    },
+    {
+      "categoryId": "503205",
+      "name": "リミテッドカードパック ファイナル・エリシオン【LM-05】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503205",
+      "printings": 31,
+      "uniqueCards": 31,
+      "sourceSha256": "ba961cc4230c61d715c415c65658fd35de208e5c5509fbd41a92583ece03a169"
+    },
+    {
+      "categoryId": "503206",
+      "name": "リミテッドカードパック ビリオン・バレット【LM-06】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503206",
+      "printings": 33,
+      "uniqueCards": 33,
+      "sourceSha256": "130240bdf04044314118277683583e1c898d8e032af413f024d556ad127b9622"
+    },
+    {
+      "categoryId": "503207",
+      "name": "リミテッドカードパック ANOTHER KNIGHT【LM-07】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503207",
+      "printings": 33,
+      "uniqueCards": 33,
+      "sourceSha256": "66a94922f5f77c2a57f87899fca27918bfe1f7f92a9b2185a9c6c07b88b6091e"
+    },
+    {
+      "categoryId": "503208",
+      "name": "リミテッドカードパック FINAL CREST【LM-08】",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503208",
+      "printings": 33,
+      "uniqueCards": 33,
+      "sourceSha256": "ee51d3abbc0ae05bfd088a0bb00352ea6b59fc538aa4cc7ebe6487112be2394c"
+    },
+    {
+      "categoryId": "503901",
+      "name": "プロモーションカード",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503901",
+      "printings": 243,
+      "uniqueCards": 243,
+      "sourceSha256": "f72f862e27cb5cda87d929832912de5aa68da7c52dd6028b82c0a4797d5ba37d"
+    },
+    {
+      "categoryId": "503902",
+      "name": "プレミアムバンダイ・イベント物販",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503902",
+      "printings": 327,
+      "uniqueCards": 309,
+      "sourceSha256": "ab55a9437461f8b075989162687d51c42e04128e9adb9363b5473f394ced68f2"
+    },
+    {
+      "categoryId": "503903",
+      "name": "その他物販",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503903",
+      "printings": 16,
+      "uniqueCards": 16,
+      "sourceSha256": "c53d631e8af98a90226798374be3e81ecd175f5a69f72ebd9f659244d79c2bd5"
+    },
+    {
+      "categoryId": "503904",
+      "name": "公式大会景品",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503904",
+      "printings": 112,
+      "uniqueCards": 100,
+      "sourceSha256": "ac308df5b3b2b581067f50f105c87d6f0bd5163f43bb70271bb461ff7f977def"
+    },
+    {
+      "categoryId": "503905",
+      "name": "店舗イベント景品",
+      "sourceUrl": "https://digimoncard.com/cards/?search=true&category=503905",
+      "printings": 417,
+      "uniqueCards": 365,
+      "sourceSha256": "d6efb69c6d2ed5467d57ee4d3f7ab8ad679edb2112daf4a3a484e673ff3c1da7"
+    }
+  ],
+  "errors": [],
+  "scope": "All nonempty category options exposed by the official Japanese card-list selector at retrieval time.",
+  "limitations": [
+    "Includes officially listed cards, including announced future releases if listed.",
+    "Card effects are official text, not a promise that every effect has been programmed.",
+    "Illustration URLs come from official listing HTML. Binary image acquisition and integrity are tracked separately in images-manifest.json.",
+    "Alternate printings with the same card number share one gameplay record."
+  ]
+}
