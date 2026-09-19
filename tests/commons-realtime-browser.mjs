@@ -11,8 +11,8 @@ try{
   await page.route('**/functions/v1/commons-realtime/directory',route=>route.fulfill({status:200,contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify(data)}));
   for(const path of ['ramen','sauna','local/supermarkets','local/saunas','local/sento','local/fishmongers']){
    await page.goto('http://127.0.0.1:4173/commons/'+path+'/');
-   await page.locator('.verified-source-strip b').filter({hasText:/\d+サイト/}).waitFor();
-   await page.getByRole('button',{name:/確認できた全件/}).first().click();
+   await page.locator('.verified-source-strip b').filter({hasText:path==='sauna'?/収集元を統合/:/\d+サイト/}).waitFor();
+   await page.getByRole('group',{name:'営業時間で絞り込み'}).getByRole('button',{name:path==='sauna'?/掲載全件/:/確認できた全件/}).first().click();
    assert.ok(await page.locator('.verified-list article').count()>0,path+' has verified results');
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),path+' fits viewport');
    assert.equal(await page.locator('.verified-list').getByText('要確認',{exact:true}).count(),0);

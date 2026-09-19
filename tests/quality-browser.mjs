@@ -25,7 +25,7 @@ try{
   await page.reload();assert.equal(await page.locator('html[data-quality-ready]').getAttribute('data-quality-text'),'largest');
   const second=await context.newPage();await second.goto(new URL('trump/?game=speed',base).href);await open(second);await second.getByText('読みやすさ・押しやすさ',{exact:true}).click();await second.getByLabel('文字サイズ',{exact:true}).selectOption('normal');
   await page.waitForFunction(()=>document.documentElement.dataset.qualityText==='normal');await second.close();
-  await page.goto(new URL('commons/sauna/',base).href);await page.getByRole('group',{name:'営業時間で絞り込み'}).getByRole('button',{name:/確認できた全件/}).click();await page.locator('.verified-list article').first().waitFor();await open();
+  await page.goto(new URL('commons/sauna/',base).href);await page.getByRole('group',{name:'営業時間で絞り込み'}).getByRole('button',{name:/掲載全件/}).click();await page.locator('.verified-list article').first().waitFor();await open();
   const options=await page.getByLabel('比較に追加する候補',{exact:true}).locator('option').count();assert.ok(options>1);
   await page.getByLabel('比較に追加する候補',{exact:true}).selectOption('0');await page.getByRole('button',{name:'比較に追加',exact:true}).click();assert.equal(await page.locator('.quality-compare tbody tr').count(),1);
   await page.getByRole('button',{name:'比較に追加',exact:true}).click();assert.equal(await page.locator('.quality-compare tbody tr').count(),1);
