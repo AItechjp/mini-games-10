@@ -1,0 +1,383 @@
+{
+  "queryComplete": true,
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "query": "[out:json][timeout:40];\nrel[\"boundary\"=\"administrative\"][\"admin_level\"=\"2\"][\"ISO3166-1\"=\"JP\"];map_to_area->.japan;\n(node(id:10585337805,11577295869,11622141769,13380724385,1968652278,2176727294,5580322221,6344060186,6463675191,6485703185,6596376226,6816287185,7274386285,8386731018,9768669990);way(id:1240368237,450304642,514449130);)->.audit;\nmake phase name=\"current\";out;\n.audit out center tags;.audit out count;\nmake phase name=\"insideJapan\";out;\nnwr.audit(area.japan);out ids;out count;\nmake phase name=\"complete\";out;\n",
+  "querySha256": "8c23b7c84adf751fe43814326f2250fc07653a5f028763f471eaa1701318efe7",
+  "responseSha256": "4452bf5832edf13dc853ce78e1e775267ccb93c96d69bf2c2dac60a96d5176d7",
+  "acquiredAt": null,
+  "processedAt": "2026-09-19T21:34:36.427829+00:00",
+  "sourceDate": "2026-09-19T21:26:02Z",
+  "sourceAreaDate": "2026-09-18T11:19:50Z",
+  "baselineSourceDate": "2026-05-31T22:37:44Z",
+  "snapshotSourceDate": "2026-09-19T21:10:41Z",
+  "summary": {
+    "requested": 18,
+    "current": 6,
+    "insideJapan": 3,
+    "reasons": {
+      "not_found_current_osm": 12,
+      "target_tags_removed": 3,
+      "outside_osm_japan_national_area": 3
+    },
+    "officialRecovery": 2
+  },
+  "records": [
+    {
+      "id": "node/10585337805",
+      "previousName": "名称未登録",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/10585337805",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [
+        {
+          "id": "node/6463830787",
+          "name": "石川湯",
+          "distanceMeters": 20.6,
+          "sourceUrl": "https://www.openstreetmap.org/node/6463830787",
+          "interpretation": "nearby existing query record; identity/migration not proven by exact-ID query"
+        }
+      ],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/11577295869",
+      "previousName": "旭湯",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/11577295869",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [
+        {
+          "id": "node/10285799628",
+          "name": "旭湯",
+          "distanceMeters": 4.9,
+          "sourceUrl": "https://www.openstreetmap.org/node/10285799628",
+          "interpretation": "nearby existing query record; identity/migration not proven by exact-ID query"
+        }
+      ],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/11622141769",
+      "previousName": "松の湯",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/11622141769",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [
+        {
+          "id": "node/11485657869",
+          "name": "松の湯",
+          "distanceMeters": 5.2,
+          "sourceUrl": "https://www.openstreetmap.org/node/11485657869",
+          "interpretation": "nearby existing query record; identity/migration not proven by exact-ID query"
+        }
+      ],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/13380724385",
+      "previousName": "ドーミーイン青森",
+      "reason": "target_tags_removed",
+      "currentVisible": true,
+      "insideJapan": true,
+      "sourceUrl": "https://www.openstreetmap.org/node/13380724385",
+      "currentTags": {
+        "addr:city": "青森市",
+        "addr:housenumber": "5-1",
+        "addr:neighbourhood": "新町2丁目",
+        "addr:postcode": "030-0801",
+        "addr:province": "青森県",
+        "brand": "ドーミーイン",
+        "brand:en": "Dormy Inn",
+        "brand:ja": "ドーミーイン",
+        "email": "inn-aomori@dormy-hotels.com",
+        "internet_access": "wlan;wired",
+        "internet_access:fee": "customers",
+        "name": "ドーミーイン青森",
+        "name:en": "Dormy Inn Aomori",
+        "name:ja": "ドーミーイン青森",
+        "official_name": "天然温泉 淡雪の湯 ドーミーイン青森",
+        "operator": "共立メンテナンス",
+        "phone": "017-721-5489",
+        "rooms": "194",
+        "tourism": "hotel",
+        "website": "https://dormy-hotels.com/dormyinn/hotels/aomori/"
+      },
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現行 OSM オブジェクトは国内に存在するが対象サウナ・浴場タグがない。",
+      "officialRecovery": {
+        "file": "official-osm-gap-baths.json",
+        "sourceUrl": "https://dormy-hotels.com/dormyinn/hotels/aomori/spa/",
+        "checkedAt": "2026-09-19",
+        "interpretation": "公式施設ページにサウナと大浴場、具体的営業時間あり。宿泊者限定として別の公式データに回収。"
+      }
+    },
+    {
+      "id": "node/1968652278",
+      "previousName": "名称未登録",
+      "reason": "outside_osm_japan_national_area",
+      "currentVisible": true,
+      "insideJapan": false,
+      "sourceUrl": "https://www.openstreetmap.org/node/1968652278",
+      "currentTags": {
+        "leisure": "sauna"
+      },
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現在も sauna タグがあるが、OSM の日本国境 area 3600382313 の対象外。"
+    },
+    {
+      "id": "node/2176727294",
+      "previousName": "Баня",
+      "reason": "outside_osm_japan_national_area",
+      "currentVisible": true,
+      "insideJapan": false,
+      "sourceUrl": "https://www.openstreetmap.org/node/2176727294",
+      "currentTags": {
+        "leisure": "sauna",
+        "name": "Баня"
+      },
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現在も sauna タグがあるが、OSM の日本国境 area 3600382313 の対象外。"
+    },
+    {
+      "id": "node/5580322221",
+      "previousName": "いるまの湯",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/5580322221",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [
+        {
+          "id": "way/387682885",
+          "name": "アクアリゾート いるまの湯",
+          "distanceMeters": 15.7,
+          "sourceUrl": "https://www.openstreetmap.org/way/387682885",
+          "interpretation": "nearby existing query record; identity/migration not proven by exact-ID query"
+        }
+      ],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/6344060186",
+      "previousName": "孫の湯(廃)",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/6344060186",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/6463675191",
+      "previousName": "給田湯",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/6463675191",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/6485703185",
+      "previousName": "名称未登録",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/6485703185",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/6596376226",
+      "previousName": "みどり湯",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/6596376226",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [
+        {
+          "id": "relation/21204917",
+          "name": "みどり湯",
+          "distanceMeters": 22.4,
+          "sourceUrl": "https://www.openstreetmap.org/relation/21204917",
+          "interpretation": "nearby existing query record; identity/migration not proven by exact-ID query"
+        },
+        {
+          "id": "way/1548247184",
+          "name": "みどり湯",
+          "distanceMeters": 22.4,
+          "sourceUrl": "https://www.openstreetmap.org/way/1548247184",
+          "interpretation": "nearby existing query record; identity/migration not proven by exact-ID query"
+        },
+        {
+          "id": "way/694650962",
+          "name": "みどり湯",
+          "distanceMeters": 22.4,
+          "sourceUrl": "https://www.openstreetmap.org/way/694650962",
+          "interpretation": "nearby existing query record; identity/migration not proven by exact-ID query"
+        }
+      ],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/6816287185",
+      "previousName": "極楽湯 幸手店",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/6816287185",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/7274386285",
+      "previousName": "入船湯",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/7274386285",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/8386731018",
+      "previousName": "曙湯",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/8386731018",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "node/9768669990",
+      "previousName": "Healing space 岩盤浴 ASPEN（アスペン）",
+      "reason": "not_found_current_osm",
+      "currentVisible": false,
+      "insideJapan": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/9768669990",
+      "currentTags": null,
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [
+        {
+          "id": "way/593692356",
+          "name": "ヒーリングスペース岩盤浴アスペン",
+          "distanceMeters": 1.4,
+          "sourceUrl": "https://www.openstreetmap.org/way/593692356",
+          "interpretation": "nearby existing query record; identity/migration not proven by exact-ID query"
+        }
+      ],
+      "explanation": "現行 Overpass exact-ID 応答に存在しない。削除・統合・表現変更の可能性があり、実施設の閉業とは断定しない。"
+    },
+    {
+      "id": "way/1240368237",
+      "previousName": "別府八湯 御宿 野乃 別府",
+      "reason": "target_tags_removed",
+      "currentVisible": true,
+      "insideJapan": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/1240368237",
+      "currentTags": {
+        "addr:city": "別府市",
+        "addr:housenumber": "6",
+        "addr:neighbourhood": "駅前本町",
+        "addr:postcode": "874-0934",
+        "addr:street": "駅前本町",
+        "brand": "御宿 野乃",
+        "brand:en": "Onyado Nono",
+        "building": "yes",
+        "email": "inn-nonobeppu@dormy-hotels.com",
+        "internet_access": "wlan;wired",
+        "internet_access:fee": "customers",
+        "name": "御宿 野乃別府",
+        "name:en": "Onyado NonoBeppu",
+        "name:ja": "御宿 野乃別府",
+        "official_name": "別府八湯 御宿 野乃別府",
+        "operator": "共立メンテナンス",
+        "phone": "0977-21-5489",
+        "rooms": "269",
+        "tourism": "hotel",
+        "website": "https://dormy-hotels.com/dormyinn/hotels/nono_beppu/"
+      },
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現行 OSM オブジェクトは国内に存在するが対象サウナ・浴場タグがない。",
+      "officialRecovery": {
+        "file": "official-osm-gap-baths.json",
+        "sourceUrl": "https://dormy-hotels.com/dormyinn/hotels/nono_beppu/spa/",
+        "checkedAt": "2026-09-19",
+        "interpretation": "公式施設ページにサウナと大浴場、具体的営業時間あり。宿泊者限定として別の公式データに回収。"
+      }
+    },
+    {
+      "id": "way/450304642",
+      "previousName": "名称未登録",
+      "reason": "outside_osm_japan_national_area",
+      "currentVisible": true,
+      "insideJapan": false,
+      "sourceUrl": "https://www.openstreetmap.org/way/450304642",
+      "currentTags": {
+        "building": "yes",
+        "description": "Баня",
+        "leisure": "sauna"
+      },
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [],
+      "explanation": "現在も sauna タグがあるが、OSM の日本国境 area 3600382313 の対象外。"
+    },
+    {
+      "id": "way/514449130",
+      "previousName": "健幸プラザ 西大寺",
+      "reason": "target_tags_removed",
+      "currentVisible": true,
+      "insideJapan": true,
+      "sourceUrl": "https://www.openstreetmap.org/way/514449130",
+      "currentTags": {},
+      "realWorldClosureEstablished": false,
+      "nearbyCandidates": [
+        {
+          "id": "relation/21027750",
+          "name": "健幸プラザ 西大寺",
+          "distanceMeters": 0.8,
+          "sourceUrl": "https://www.openstreetmap.org/relation/21027750",
+          "interpretation": "nearby existing query record; identity/migration not proven by exact-ID query"
+        },
+        {
+          "id": "node/6466628318",
+          "name": "健幸プラザ西大寺",
+          "distanceMeters": 10.8,
+          "sourceUrl": "https://www.openstreetmap.org/node/6466628318",
+          "interpretation": "nearby existing query record; identity/migration not proven by exact-ID query"
+        }
+      ],
+      "explanation": "現行 OSM オブジェクトは国内に存在するが対象サウナ・浴場タグがない。旧施設名と同名で約 1 m の relation/21027750 が現行抽出に存在。"
+    }
+  ],
+  "limitations": "Missing IDs establish only absence in the current OSM response, not business closure. Nearby candidates are not automatic identity merges. Official additions are separate from the complete OSM tag query."
+}

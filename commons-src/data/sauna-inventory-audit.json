@@ -1,0 +1,5300 @@
+{
+  "duplicates": [
+    {
+      "kept": "national-a931edb5f7afa9ee",
+      "merged": "official-70561a51abd00f58f9"
+    },
+    {
+      "kept": "national-8f05fbd43c50c2e1",
+      "merged": "official-37f17229c00d351ac0"
+    },
+    {
+      "kept": "national-e6f4e0df01485664",
+      "merged": "official-2dde38cf2d7b638c13"
+    },
+    {
+      "kept": "national-b04eaa52871a4f18",
+      "merged": "official-7b9a972a39e2e714aa"
+    },
+    {
+      "kept": "national-a1886e4a8433df62",
+      "merged": "official-902baa571c7c9296aa"
+    },
+    {
+      "kept": "national-126adac59c5fa92d",
+      "merged": "official-8a77a96d10acf7b5b3"
+    },
+    {
+      "kept": "national-be51a15d1078f905",
+      "merged": "official-d4079e8556ae1da892"
+    },
+    {
+      "kept": "national-4e9d29749be45ec9",
+      "merged": "official-9e7bff45591db0577f"
+    },
+    {
+      "kept": "national-fb984e3b9ee3e68a",
+      "merged": "official-48d4337106cdb4248c"
+    },
+    {
+      "kept": "national-a2c1834ff274b5b6",
+      "merged": "official-f225ff64cbfd0b08cd"
+    },
+    {
+      "kept": "national-bf0117c32225d889",
+      "merged": "official-1b65f9d9392d0b4cc8"
+    },
+    {
+      "kept": "national-4132395eafa48dc6",
+      "merged": "official-2c88ea6e39c4f7e0a8"
+    },
+    {
+      "kept": "national-f6a229e74de393ba",
+      "merged": "official-9fe531319fdb00d5c6"
+    },
+    {
+      "kept": "national-1a4033a4864b3ce2",
+      "merged": "official-3f5d630d4142734fa7"
+    },
+    {
+      "kept": "national-952e578d66cdd462",
+      "merged": "official-45482597118a983efe"
+    },
+    {
+      "kept": "national-ac71f5a5c2a36792",
+      "merged": "official-7da2a5c2b5f9ffc8a2"
+    },
+    {
+      "kept": "national-1a9cbdb0118a633d",
+      "merged": "official-7baa325b6228918961"
+    },
+    {
+      "kept": "national-203bdd605661dac0",
+      "merged": "official-376178ee565ca77b80"
+    },
+    {
+      "kept": "way/275462766",
+      "merged": "official-349f46f892bfa4a402"
+    },
+    {
+      "kept": "national-4b68422ffdd00814",
+      "merged": "official-c6199772b5f1d0f84c"
+    },
+    {
+      "kept": "national-cf0fef8701b30531",
+      "merged": "official-c0bbe4d09f4a9d73b9"
+    },
+    {
+      "kept": "national-e01431d19def6efd",
+      "merged": "official-e0dcf6a1aa2b38d29a"
+    },
+    {
+      "kept": "national-9f577db0bacc6447",
+      "merged": "official-2deb17a3932e7e8c6e"
+    },
+    {
+      "kept": "national-415cf872e4822d96",
+      "merged": "official-4e6f573e7acfa14056"
+    },
+    {
+      "kept": "national-962b3811f938f0b6",
+      "merged": "official-68237178a53c1f51ff"
+    },
+    {
+      "kept": "national-33600c29dfe2f72d",
+      "merged": "official-696ef89becc922ec00"
+    },
+    {
+      "kept": "node/4554760789",
+      "merged": "official-2f605d8df86250b781"
+    },
+    {
+      "kept": "national-fec90d41c61ac067",
+      "merged": "official-daf0bc35014ee43d6c"
+    },
+    {
+      "kept": "node/9136959916",
+      "merged": "official-39431baedc0fbd2cba"
+    },
+    {
+      "kept": "national-6762775a9a0181fe",
+      "merged": "official-2b0d5f52df4a348916"
+    },
+    {
+      "kept": "national-103c91bdb8ff8a97",
+      "merged": "union-de39d74946a5e5"
+    },
+    {
+      "kept": "national-36f941240df41d97",
+      "merged": "union-d87be008bf50d8"
+    },
+    {
+      "kept": "national-81b51fb976dc2193",
+      "merged": "union-61c803d04f6cbe"
+    },
+    {
+      "kept": "national-df088d98fb3a4571",
+      "merged": "union-39111db3f83f38"
+    },
+    {
+      "kept": "union-c3f75fa557b7cb",
+      "merged": "node/10090229417"
+    },
+    {
+      "kept": "union-5ffa67f4e988bf",
+      "merged": "node/10171316122"
+    },
+    {
+      "kept": "union-5a069fe7b20196",
+      "merged": "node/10980676907"
+    },
+    {
+      "kept": "union-7c48ff741217f6",
+      "merged": "node/10980957305"
+    },
+    {
+      "kept": "union-b8b6d327bbc8b5",
+      "merged": "node/10980957306"
+    },
+    {
+      "kept": "union-82dc1266753a17",
+      "merged": "node/10980978605"
+    },
+    {
+      "kept": "union-92e56365a3b84c",
+      "merged": "node/10981938705"
+    },
+    {
+      "kept": "national-a5ea688f3a457293",
+      "merged": "node/13521903624"
+    },
+    {
+      "kept": "union-2ab6f620e4fedc",
+      "merged": "node/2779384662"
+    },
+    {
+      "kept": "union-a6a6d1714477bf",
+      "merged": "node/3657128361"
+    },
+    {
+      "kept": "node/4554760789",
+      "merged": "node/4554760789"
+    },
+    {
+      "kept": "node/4887485021",
+      "merged": "node/4887485021"
+    },
+    {
+      "kept": "union-0299b36c27a347",
+      "merged": "node/5474538427"
+    },
+    {
+      "kept": "union-4533b2113dbb1d",
+      "merged": "node/5727676687"
+    },
+    {
+      "kept": "official-05f15643579cb96738",
+      "merged": "node/6463426485"
+    },
+    {
+      "kept": "official-9fbe06e98d164493e2",
+      "merged": "node/6726540091"
+    },
+    {
+      "kept": "national-962b3811f938f0b6",
+      "merged": "node/6816278485"
+    },
+    {
+      "kept": "union-a6a6d1714477bf",
+      "merged": "node/7140673798"
+    },
+    {
+      "kept": "union-2ab6f620e4fedc",
+      "merged": "node/8124131917"
+    },
+    {
+      "kept": "union-7989d2e4482638",
+      "merged": "node/8625521879"
+    },
+    {
+      "kept": "node/9136959916",
+      "merged": "node/9136959916"
+    },
+    {
+      "kept": "union-eced867a428c6e",
+      "merged": "node/9707123717"
+    },
+    {
+      "kept": "union-8c52bb5d4756ab",
+      "merged": "node/9772688417"
+    },
+    {
+      "kept": "union-9765b0e0dc8e01",
+      "merged": "node/9785347717"
+    },
+    {
+      "kept": "union-7dbd8fc36ec372",
+      "merged": "node/9846069017"
+    },
+    {
+      "kept": "union-027a173e3a2070",
+      "merged": "node/9924822517"
+    },
+    {
+      "kept": "union-8d10f9ecad5b30",
+      "merged": "node/9931952417"
+    },
+    {
+      "kept": "node/5831418537",
+      "merged": "relation/11619250"
+    },
+    {
+      "kept": "node/6507361074",
+      "merged": "relation/11889866"
+    },
+    {
+      "kept": "node/6514708214",
+      "merged": "relation/16790357"
+    },
+    {
+      "kept": "node/6466628318",
+      "merged": "relation/21027750"
+    },
+    {
+      "kept": "node/5948514986",
+      "merged": "relation/21262286"
+    },
+    {
+      "kept": "node/5948514986",
+      "merged": "way/1003510436"
+    },
+    {
+      "kept": "node/9610486756",
+      "merged": "way/1044439796"
+    },
+    {
+      "kept": "official-08d261d4abec6699e7",
+      "merged": "way/1082954443"
+    },
+    {
+      "kept": "way/1100968985",
+      "merged": "way/1100968985"
+    },
+    {
+      "kept": "node/6483876906",
+      "merged": "way/1107077512"
+    },
+    {
+      "kept": "node/11554364671",
+      "merged": "way/1108099998"
+    },
+    {
+      "kept": "node/11558863371",
+      "merged": "way/1120722242"
+    },
+    {
+      "kept": "node/11636785169",
+      "merged": "way/1147608601"
+    },
+    {
+      "kept": "node/7293686186",
+      "merged": "way/1151603508"
+    },
+    {
+      "kept": "node/10716477151",
+      "merged": "way/1151603789"
+    },
+    {
+      "kept": "node/6680114563",
+      "merged": "way/115358454"
+    },
+    {
+      "kept": "node/12231167493",
+      "merged": "way/1169513132"
+    },
+    {
+      "kept": "node/11005200017",
+      "merged": "way/1184765617"
+    },
+    {
+      "kept": "node/9398175892",
+      "merged": "way/1196357796"
+    },
+    {
+      "kept": "relation/16436292",
+      "merged": "way/1213178193"
+    },
+    {
+      "kept": "node/6515098679",
+      "merged": "way/1214079205"
+    },
+    {
+      "kept": "relation/16764213",
+      "merged": "way/1227363285"
+    },
+    {
+      "kept": "node/11573266769",
+      "merged": "way/1235777264"
+    },
+    {
+      "kept": "node/11486362669",
+      "merged": "way/1236932484"
+    },
+    {
+      "kept": "node/6418059979",
+      "merged": "way/1255174220"
+    },
+    {
+      "kept": "relation/19193619",
+      "merged": "way/1390949834"
+    },
+    {
+      "kept": "national-7524e4b2846ceed6",
+      "merged": "way/1411284390"
+    },
+    {
+      "kept": "node/6488090287",
+      "merged": "way/1434327895"
+    },
+    {
+      "kept": "node/1657213967",
+      "merged": "way/151815443"
+    },
+    {
+      "kept": "relation/21114285",
+      "merged": "way/1540235103"
+    },
+    {
+      "kept": "node/6496467354",
+      "merged": "way/1545931872"
+    },
+    {
+      "kept": "relation/21204917",
+      "merged": "way/1548247184"
+    },
+    {
+      "kept": "node/5948514986",
+      "merged": "way/1551479680"
+    },
+    {
+      "kept": "node/6513807222",
+      "merged": "way/178938021"
+    },
+    {
+      "kept": "node/6416145406",
+      "merged": "way/182943462"
+    },
+    {
+      "kept": "node/1936284550",
+      "merged": "way/189469231"
+    },
+    {
+      "kept": "national-5f3cc2db694d9bc4",
+      "merged": "way/191891460"
+    },
+    {
+      "kept": "node/6482152982",
+      "merged": "way/192292278"
+    },
+    {
+      "kept": "node/8348077218",
+      "merged": "way/204738146"
+    },
+    {
+      "kept": "node/7366434685",
+      "merged": "way/206516738"
+    },
+    {
+      "kept": "union-721b3b39ac7560",
+      "merged": "way/218821063"
+    },
+    {
+      "kept": "node/6332717441",
+      "merged": "way/243123052"
+    },
+    {
+      "kept": "node/11558673869",
+      "merged": "way/260734418"
+    },
+    {
+      "kept": "node/8569300136",
+      "merged": "way/263921815"
+    },
+    {
+      "kept": "node/6510178363",
+      "merged": "way/269549701"
+    },
+    {
+      "kept": "way/275462766",
+      "merged": "way/275462766"
+    },
+    {
+      "kept": "node/6440272458",
+      "merged": "way/275656191"
+    },
+    {
+      "kept": "node/6485588357",
+      "merged": "way/286589647"
+    },
+    {
+      "kept": "node/6487502846",
+      "merged": "way/288396689"
+    },
+    {
+      "kept": "node/6483113277",
+      "merged": "way/288913249"
+    },
+    {
+      "kept": "node/4784037139",
+      "merged": "way/289203309"
+    },
+    {
+      "kept": "node/5126103933",
+      "merged": "way/292985026"
+    },
+    {
+      "kept": "node/6483127442",
+      "merged": "way/295803752"
+    },
+    {
+      "kept": "node/6511629495",
+      "merged": "way/297467439"
+    },
+    {
+      "kept": "node/6511640129",
+      "merged": "way/297467445"
+    },
+    {
+      "kept": "node/7738498409",
+      "merged": "way/303442904"
+    },
+    {
+      "kept": "node/7738498409",
+      "merged": "way/303442905"
+    },
+    {
+      "kept": "node/7738498409",
+      "merged": "way/303442907"
+    },
+    {
+      "kept": "node/7738498409",
+      "merged": "way/303442909"
+    },
+    {
+      "kept": "node/6480814794",
+      "merged": "way/311488869"
+    },
+    {
+      "kept": "node/6515898039",
+      "merged": "way/311836519"
+    },
+    {
+      "kept": "node/6481161889",
+      "merged": "way/312021930"
+    },
+    {
+      "kept": "node/6481110169",
+      "merged": "way/312152837"
+    },
+    {
+      "kept": "node/6481073731",
+      "merged": "way/313787287"
+    },
+    {
+      "kept": "node/6522335069",
+      "merged": "way/318491165"
+    },
+    {
+      "kept": "node/3254958504",
+      "merged": "way/319077694"
+    },
+    {
+      "kept": "relation/9465738",
+      "merged": "way/335168650"
+    },
+    {
+      "kept": "node/6438644941",
+      "merged": "way/345418511"
+    },
+    {
+      "kept": "node/6436452261",
+      "merged": "way/345807387"
+    },
+    {
+      "kept": "relation/18314549",
+      "merged": "way/355598779"
+    },
+    {
+      "kept": "node/6436500957",
+      "merged": "way/372293834"
+    },
+    {
+      "kept": "node/6489614042",
+      "merged": "way/376798849"
+    },
+    {
+      "kept": "way/330331117",
+      "merged": "way/378623058"
+    },
+    {
+      "kept": "node/3833604261",
+      "merged": "way/380011555"
+    },
+    {
+      "kept": "relation/19191739",
+      "merged": "way/380196484"
+    },
+    {
+      "kept": "node/6374177061",
+      "merged": "way/380547221"
+    },
+    {
+      "kept": "node/8625641209",
+      "merged": "way/381728177"
+    },
+    {
+      "kept": "union-4533b2113dbb1d",
+      "merged": "way/382298835"
+    },
+    {
+      "kept": "node/6414451275",
+      "merged": "way/382867251"
+    },
+    {
+      "kept": "node/3916603324",
+      "merged": "way/388464479"
+    },
+    {
+      "kept": "way/384635538",
+      "merged": "way/388737166"
+    },
+    {
+      "kept": "node/6516601069",
+      "merged": "way/410691877"
+    },
+    {
+      "kept": "node/6516589807",
+      "merged": "way/410709932"
+    },
+    {
+      "kept": "node/6495753422",
+      "merged": "way/410741010"
+    },
+    {
+      "kept": "node/6516584257",
+      "merged": "way/411191369"
+    },
+    {
+      "kept": "node/6516460046",
+      "merged": "way/411262463"
+    },
+    {
+      "kept": "node/6516450262",
+      "merged": "way/412925637"
+    },
+    {
+      "kept": "node/6496647299",
+      "merged": "way/415341135"
+    },
+    {
+      "kept": "node/8625538794",
+      "merged": "way/418206245"
+    },
+    {
+      "kept": "node/6520850621",
+      "merged": "way/424798336"
+    },
+    {
+      "kept": "node/6520837042",
+      "merged": "way/424798337"
+    },
+    {
+      "kept": "node/6526897365",
+      "merged": "way/426718935"
+    },
+    {
+      "kept": "node/9863243654",
+      "merged": "way/427199104"
+    },
+    {
+      "kept": "node/6305042296",
+      "merged": "way/429794071"
+    },
+    {
+      "kept": "union-7989d2e4482638",
+      "merged": "way/430201662"
+    },
+    {
+      "kept": "node/6303448232",
+      "merged": "way/431427745"
+    },
+    {
+      "kept": "node/6361929598",
+      "merged": "way/437975495"
+    },
+    {
+      "kept": "national-1ace1ae49a89bd6e",
+      "merged": "way/438229175"
+    },
+    {
+      "kept": "node/9863243653",
+      "merged": "way/439002238"
+    },
+    {
+      "kept": "node/6448934108",
+      "merged": "way/439267657"
+    },
+    {
+      "kept": "union-69733a0665d7b7",
+      "merged": "way/445379248"
+    },
+    {
+      "kept": "node/6532088133",
+      "merged": "way/446698365"
+    },
+    {
+      "kept": "node/7254777640",
+      "merged": "way/447438080"
+    },
+    {
+      "kept": "node/6487452000",
+      "merged": "way/452105557"
+    },
+    {
+      "kept": "node/6520566172",
+      "merged": "way/469310295"
+    },
+    {
+      "kept": "node/5995089285",
+      "merged": "way/478609044"
+    },
+    {
+      "kept": "node/9079452317",
+      "merged": "way/479997647"
+    },
+    {
+      "kept": "node/11637186469",
+      "merged": "way/481149569"
+    },
+    {
+      "kept": "node/6481779705",
+      "merged": "way/500472008"
+    },
+    {
+      "kept": "node/6515039898",
+      "merged": "way/505574499"
+    },
+    {
+      "kept": "node/6515708118",
+      "merged": "way/506061166"
+    },
+    {
+      "kept": "node/6515021009",
+      "merged": "way/506871444"
+    },
+    {
+      "kept": "node/6515201370",
+      "merged": "way/507104233"
+    },
+    {
+      "kept": "node/6514858035",
+      "merged": "way/507181758"
+    },
+    {
+      "kept": "node/6514859263",
+      "merged": "way/507192925"
+    },
+    {
+      "kept": "node/8363739117",
+      "merged": "way/508530802"
+    },
+    {
+      "kept": "way/521142636",
+      "merged": "way/521142637"
+    },
+    {
+      "kept": "node/6314343370",
+      "merged": "way/522951486"
+    },
+    {
+      "kept": "node/6305761152",
+      "merged": "way/527868632"
+    },
+    {
+      "kept": "node/7480434486",
+      "merged": "way/530826888"
+    },
+    {
+      "kept": "national-221a7f7627b8063a",
+      "merged": "way/536654152"
+    },
+    {
+      "kept": "node/6485920225",
+      "merged": "way/542237058"
+    },
+    {
+      "kept": "node/6440176792",
+      "merged": "way/543329486"
+    },
+    {
+      "kept": "node/5255055623",
+      "merged": "way/543608393"
+    },
+    {
+      "kept": "node/6483875489",
+      "merged": "way/550120388"
+    },
+    {
+      "kept": "union-ad8d09f1c8fd95",
+      "merged": "way/550219729"
+    },
+    {
+      "kept": "node/6440191661",
+      "merged": "way/553132608"
+    },
+    {
+      "kept": "node/5404544257",
+      "merged": "way/560412412"
+    },
+    {
+      "kept": "node/6475478700",
+      "merged": "way/560631842"
+    },
+    {
+      "kept": "node/6462338596",
+      "merged": "way/560966321"
+    },
+    {
+      "kept": "node/6855301788",
+      "merged": "way/568435905"
+    },
+    {
+      "kept": "national-e458af4e781ddea5",
+      "merged": "way/574957450"
+    },
+    {
+      "kept": "node/8360225817",
+      "merged": "way/587078976"
+    },
+    {
+      "kept": "node/5644125298",
+      "merged": "way/591223297"
+    },
+    {
+      "kept": "node/6408687851",
+      "merged": "way/591446762"
+    },
+    {
+      "kept": "node/9817566718",
+      "merged": "way/600468870"
+    },
+    {
+      "kept": "union-4dd13901ba680c",
+      "merged": "way/605099024"
+    },
+    {
+      "kept": "node/7168788725",
+      "merged": "way/609042840"
+    },
+    {
+      "kept": "node/6466547572",
+      "merged": "way/609620560"
+    },
+    {
+      "kept": "node/8360225717",
+      "merged": "way/612023123"
+    },
+    {
+      "kept": "node/6480726238",
+      "merged": "way/614679787"
+    },
+    {
+      "kept": "node/4350535895",
+      "merged": "way/616213714"
+    },
+    {
+      "kept": "node/6477656591",
+      "merged": "way/620096494"
+    },
+    {
+      "kept": "node/5862702902",
+      "merged": "way/620522728"
+    },
+    {
+      "kept": "node/6314387839",
+      "merged": "way/622370010"
+    },
+    {
+      "kept": "node/6480744879",
+      "merged": "way/624778426"
+    },
+    {
+      "kept": "node/5307975522",
+      "merged": "way/625080986"
+    },
+    {
+      "kept": "node/6513469020",
+      "merged": "way/636872382"
+    },
+    {
+      "kept": "node/6515717271",
+      "merged": "way/639854518"
+    },
+    {
+      "kept": "node/6503252447",
+      "merged": "way/639854533"
+    },
+    {
+      "kept": "node/8364248417",
+      "merged": "way/641131404"
+    },
+    {
+      "kept": "node/5743405849",
+      "merged": "way/645306910"
+    },
+    {
+      "kept": "node/6487763094",
+      "merged": "way/645318189"
+    },
+    {
+      "kept": "node/6487897656",
+      "merged": "way/655564707"
+    },
+    {
+      "kept": "node/1652824261",
+      "merged": "way/655893728"
+    },
+    {
+      "kept": "node/6511756542",
+      "merged": "way/659010838"
+    },
+    {
+      "kept": "node/6045218851",
+      "merged": "way/661363985"
+    },
+    {
+      "kept": "node/4884233000",
+      "merged": "way/664546761"
+    },
+    {
+      "kept": "national-1bea29e07b1f32e4",
+      "merged": "way/666009075"
+    },
+    {
+      "kept": "node/6241251964",
+      "merged": "way/666607541"
+    },
+    {
+      "kept": "node/6303108765",
+      "merged": "way/673071792"
+    },
+    {
+      "kept": "node/6305063925",
+      "merged": "way/673273600"
+    },
+    {
+      "kept": "node/10938995921",
+      "merged": "way/673898665"
+    },
+    {
+      "kept": "national-962b3811f938f0b6",
+      "merged": "way/674083470"
+    },
+    {
+      "kept": "node/6680849086",
+      "merged": "way/674181959"
+    },
+    {
+      "kept": "node/6315222231",
+      "merged": "way/674335062"
+    },
+    {
+      "kept": "node/6317383100",
+      "merged": "way/674574402"
+    },
+    {
+      "kept": "node/6320299941",
+      "merged": "way/674878544"
+    },
+    {
+      "kept": "node/6320427572",
+      "merged": "way/674892968"
+    },
+    {
+      "kept": "relation/16436292",
+      "merged": "way/674922551"
+    },
+    {
+      "kept": "node/6322050145",
+      "merged": "way/675067116"
+    },
+    {
+      "kept": "way/675900375",
+      "merged": "way/675900375"
+    },
+    {
+      "kept": "node/6332502688",
+      "merged": "way/676185772"
+    },
+    {
+      "kept": "node/6332684539",
+      "merged": "way/676209469"
+    },
+    {
+      "kept": "node/6332751024",
+      "merged": "way/676217461"
+    },
+    {
+      "kept": "node/6332763961",
+      "merged": "way/676218537"
+    },
+    {
+      "kept": "node/6463675385",
+      "merged": "way/679018557"
+    },
+    {
+      "kept": "node/6463675585",
+      "merged": "way/679431048"
+    },
+    {
+      "kept": "node/6538418955",
+      "merged": "way/680045671"
+    },
+    {
+      "kept": "node/6392952914",
+      "merged": "way/682598995"
+    },
+    {
+      "kept": "node/6392961320",
+      "merged": "way/682600046"
+    },
+    {
+      "kept": "node/6393773368",
+      "merged": "way/682680692"
+    },
+    {
+      "kept": "node/6394124512",
+      "merged": "way/682714419"
+    },
+    {
+      "kept": "node/6396089800",
+      "merged": "way/682886583"
+    },
+    {
+      "kept": "node/6401663676",
+      "merged": "way/683467684"
+    },
+    {
+      "kept": "node/6493228316",
+      "merged": "way/683471933"
+    },
+    {
+      "kept": "node/6401852142",
+      "merged": "way/683487199"
+    },
+    {
+      "kept": "node/6177102959",
+      "merged": "way/684031272"
+    },
+    {
+      "kept": "node/6408172367",
+      "merged": "way/684056071"
+    },
+    {
+      "kept": "node/8968501631",
+      "merged": "way/684073019"
+    },
+    {
+      "kept": "node/6408756000",
+      "merged": "way/684109107"
+    },
+    {
+      "kept": "node/6408773646",
+      "merged": "way/684111263"
+    },
+    {
+      "kept": "node/6408942667",
+      "merged": "way/684126404"
+    },
+    {
+      "kept": "node/6408985193",
+      "merged": "way/684130952"
+    },
+    {
+      "kept": "node/4965006151",
+      "merged": "way/684390816"
+    },
+    {
+      "kept": "node/3867501630",
+      "merged": "way/684604756"
+    },
+    {
+      "kept": "node/6416426121",
+      "merged": "way/684809017"
+    },
+    {
+      "kept": "node/5612703922",
+      "merged": "way/685026532"
+    },
+    {
+      "kept": "node/6429787070",
+      "merged": "way/686017211"
+    },
+    {
+      "kept": "node/6434766249",
+      "merged": "way/686511828"
+    },
+    {
+      "kept": "node/6434775653",
+      "merged": "way/686512793"
+    },
+    {
+      "kept": "node/6436307501",
+      "merged": "way/686656172"
+    },
+    {
+      "kept": "node/13859777602",
+      "merged": "way/686692840"
+    },
+    {
+      "kept": "node/6442004391",
+      "merged": "way/687273012"
+    },
+    {
+      "kept": "node/6464737380",
+      "merged": "way/689149121"
+    },
+    {
+      "kept": "node/6465886121",
+      "merged": "way/689246836"
+    },
+    {
+      "kept": "node/6466195382",
+      "merged": "way/689280454"
+    },
+    {
+      "kept": "node/6466541641",
+      "merged": "way/689322861"
+    },
+    {
+      "kept": "node/7602181688",
+      "merged": "way/689555031"
+    },
+    {
+      "kept": "node/6469161159",
+      "merged": "way/689584003"
+    },
+    {
+      "kept": "node/6469204226",
+      "merged": "way/689587954"
+    },
+    {
+      "kept": "node/6475510951",
+      "merged": "way/690219811"
+    },
+    {
+      "kept": "node/6477941092",
+      "merged": "way/690475296"
+    },
+    {
+      "kept": "node/6477971788",
+      "merged": "way/690478837"
+    },
+    {
+      "kept": "node/6478043112",
+      "merged": "way/690485749"
+    },
+    {
+      "kept": "node/5957384387",
+      "merged": "way/690490701"
+    },
+    {
+      "kept": "node/6478672853",
+      "merged": "way/690526205"
+    },
+    {
+      "kept": "node/6480094707",
+      "merged": "way/690658117"
+    },
+    {
+      "kept": "node/6480312722",
+      "merged": "way/690681320"
+    },
+    {
+      "kept": "node/6468094985",
+      "merged": "way/690684703"
+    },
+    {
+      "kept": "node/6480492676",
+      "merged": "way/690692044"
+    },
+    {
+      "kept": "node/6480535290",
+      "merged": "way/690694924"
+    },
+    {
+      "kept": "node/6480550879",
+      "merged": "way/690696256"
+    },
+    {
+      "kept": "node/6480586517",
+      "merged": "way/690699743"
+    },
+    {
+      "kept": "node/6481798135",
+      "merged": "way/690831881"
+    },
+    {
+      "kept": "node/6482068540",
+      "merged": "way/690856489"
+    },
+    {
+      "kept": "node/6482082794",
+      "merged": "way/690857840"
+    },
+    {
+      "kept": "node/6482163408",
+      "merged": "way/690868458"
+    },
+    {
+      "kept": "node/6482169491",
+      "merged": "way/690869140"
+    },
+    {
+      "kept": "node/6482171934",
+      "merged": "way/690869753"
+    },
+    {
+      "kept": "node/6482204693",
+      "merged": "way/690873686"
+    },
+    {
+      "kept": "node/6482384777",
+      "merged": "way/690893906"
+    },
+    {
+      "kept": "node/6482390513",
+      "merged": "way/690894664"
+    },
+    {
+      "kept": "node/6482414753",
+      "merged": "way/690897626"
+    },
+    {
+      "kept": "node/4271092672",
+      "merged": "way/690916317"
+    },
+    {
+      "kept": "node/6482604150",
+      "merged": "way/690917555"
+    },
+    {
+      "kept": "node/6483119148",
+      "merged": "way/690963179"
+    },
+    {
+      "kept": "node/6483125425",
+      "merged": "way/690965661"
+    },
+    {
+      "kept": "node/6483277960",
+      "merged": "way/690979584"
+    },
+    {
+      "kept": "node/6483284945",
+      "merged": "way/690980696"
+    },
+    {
+      "kept": "node/6483300845",
+      "merged": "way/690982820"
+    },
+    {
+      "kept": "node/6483314686",
+      "merged": "way/690984455"
+    },
+    {
+      "kept": "node/6483321917",
+      "merged": "way/690985388"
+    },
+    {
+      "kept": "node/6483332863",
+      "merged": "way/690986541"
+    },
+    {
+      "kept": "node/6483336035",
+      "merged": "way/690986905"
+    },
+    {
+      "kept": "node/6483592020",
+      "merged": "way/691012410"
+    },
+    {
+      "kept": "node/6483909267",
+      "merged": "way/691042854"
+    },
+    {
+      "kept": "node/6483934095",
+      "merged": "way/691045792"
+    },
+    {
+      "kept": "node/6483948097",
+      "merged": "way/691046957"
+    },
+    {
+      "kept": "node/6483988522",
+      "merged": "way/691050874"
+    },
+    {
+      "kept": "node/6484003410",
+      "merged": "way/691052351"
+    },
+    {
+      "kept": "node/6484242323",
+      "merged": "way/691069942"
+    },
+    {
+      "kept": "node/6484244879",
+      "merged": "way/691070163"
+    },
+    {
+      "kept": "node/6485488143",
+      "merged": "way/691203945"
+    },
+    {
+      "kept": "node/6485499053",
+      "merged": "way/691204590"
+    },
+    {
+      "kept": "node/6485521897",
+      "merged": "way/691205967"
+    },
+    {
+      "kept": "node/6485726318",
+      "merged": "way/691221042"
+    },
+    {
+      "kept": "node/6485794575",
+      "merged": "way/691226098"
+    },
+    {
+      "kept": "node/6485868527",
+      "merged": "way/691231588"
+    },
+    {
+      "kept": "node/6486034261",
+      "merged": "way/691242808"
+    },
+    {
+      "kept": "node/6486858427",
+      "merged": "way/691311110"
+    },
+    {
+      "kept": "node/6486885859",
+      "merged": "way/691314782"
+    },
+    {
+      "kept": "node/5657109124",
+      "merged": "way/691344359"
+    },
+    {
+      "kept": "node/6487416257",
+      "merged": "way/691373583"
+    },
+    {
+      "kept": "node/6487423898",
+      "merged": "way/691374207"
+    },
+    {
+      "kept": "node/6487929396",
+      "merged": "way/691418705"
+    },
+    {
+      "kept": "node/6488055454",
+      "merged": "way/691422879"
+    },
+    {
+      "kept": "node/6488783587",
+      "merged": "way/691482822"
+    },
+    {
+      "kept": "node/6489559213",
+      "merged": "way/691547960"
+    },
+    {
+      "kept": "node/6489592823",
+      "merged": "way/691550391"
+    },
+    {
+      "kept": "node/6489751382",
+      "merged": "way/691565264"
+    },
+    {
+      "kept": "node/6489824470",
+      "merged": "way/691573062"
+    },
+    {
+      "kept": "node/6490942520",
+      "merged": "way/691664581"
+    },
+    {
+      "kept": "node/6491061020",
+      "merged": "way/691670228"
+    },
+    {
+      "kept": "node/6491242236",
+      "merged": "way/691687472"
+    },
+    {
+      "kept": "node/6491259184",
+      "merged": "way/691688929"
+    },
+    {
+      "kept": "node/6491273725",
+      "merged": "way/691690299"
+    },
+    {
+      "kept": "node/6491286676",
+      "merged": "way/691691745"
+    },
+    {
+      "kept": "node/6491318583",
+      "merged": "way/691694450"
+    },
+    {
+      "kept": "node/6491633089",
+      "merged": "way/691715109"
+    },
+    {
+      "kept": "node/6491697641",
+      "merged": "way/691721413"
+    },
+    {
+      "kept": "node/6493235898",
+      "merged": "way/691833229"
+    },
+    {
+      "kept": "node/6493258796",
+      "merged": "way/691835366"
+    },
+    {
+      "kept": "node/6493262239",
+      "merged": "way/691835529"
+    },
+    {
+      "kept": "node/6494814359",
+      "merged": "way/691936658"
+    },
+    {
+      "kept": "node/6494923080",
+      "merged": "way/691945693"
+    },
+    {
+      "kept": "node/6495007003",
+      "merged": "way/691952810"
+    },
+    {
+      "kept": "node/6495126825",
+      "merged": "way/691963403"
+    },
+    {
+      "kept": "node/6495176095",
+      "merged": "way/691967763"
+    },
+    {
+      "kept": "node/6496476743",
+      "merged": "way/692093939"
+    },
+    {
+      "kept": "node/6496599110",
+      "merged": "way/692106923"
+    },
+    {
+      "kept": "node/6497761583",
+      "merged": "way/692229763"
+    },
+    {
+      "kept": "node/6497774593",
+      "merged": "way/692230750"
+    },
+    {
+      "kept": "node/6497794734",
+      "merged": "way/692232355"
+    },
+    {
+      "kept": "node/6498269772",
+      "merged": "way/692272486"
+    },
+    {
+      "kept": "node/6498301754",
+      "merged": "way/692275342"
+    },
+    {
+      "kept": "node/6498980004",
+      "merged": "way/692345858"
+    },
+    {
+      "kept": "node/6498982937",
+      "merged": "way/692346287"
+    },
+    {
+      "kept": "relation/16884876",
+      "merged": "way/692348817"
+    },
+    {
+      "kept": "node/6499277456",
+      "merged": "way/692373991"
+    },
+    {
+      "kept": "node/6499444783",
+      "merged": "way/692390382"
+    },
+    {
+      "kept": "node/6499552647",
+      "merged": "way/692400928"
+    },
+    {
+      "kept": "node/6499605039",
+      "merged": "way/692406094"
+    },
+    {
+      "kept": "node/6499604036",
+      "merged": "way/692406330"
+    },
+    {
+      "kept": "node/6499728232",
+      "merged": "way/692421575"
+    },
+    {
+      "kept": "node/6499803158",
+      "merged": "way/692428631"
+    },
+    {
+      "kept": "node/6499823790",
+      "merged": "way/692431081"
+    },
+    {
+      "kept": "node/6499897372",
+      "merged": "way/692439089"
+    },
+    {
+      "kept": "node/6500411963",
+      "merged": "way/692454754"
+    },
+    {
+      "kept": "node/6501874525",
+      "merged": "way/692569318"
+    },
+    {
+      "kept": "node/6501890848",
+      "merged": "way/692570130"
+    },
+    {
+      "kept": "node/6501955139",
+      "merged": "way/692575874"
+    },
+    {
+      "kept": "node/6501977354",
+      "merged": "way/692577406"
+    },
+    {
+      "kept": "node/6502115037",
+      "merged": "way/692592448"
+    },
+    {
+      "kept": "node/6502135212",
+      "merged": "way/692594110"
+    },
+    {
+      "kept": "node/6502151997",
+      "merged": "way/692596126"
+    },
+    {
+      "kept": "node/6502172392",
+      "merged": "way/692597105"
+    },
+    {
+      "kept": "node/6502180549",
+      "merged": "way/692598078"
+    },
+    {
+      "kept": "node/6502206670",
+      "merged": "way/692598982"
+    },
+    {
+      "kept": "node/6503657742",
+      "merged": "way/692740523"
+    },
+    {
+      "kept": "node/6503773370",
+      "merged": "way/692748780"
+    },
+    {
+      "kept": "node/6503805698",
+      "merged": "way/692751838"
+    },
+    {
+      "kept": "node/6503888684",
+      "merged": "way/692759979"
+    },
+    {
+      "kept": "node/6504149987",
+      "merged": "way/692787821"
+    },
+    {
+      "kept": "node/6505020378",
+      "merged": "way/692877082"
+    },
+    {
+      "kept": "node/6505033891",
+      "merged": "way/692878883"
+    },
+    {
+      "kept": "node/6505341486",
+      "merged": "way/692912979"
+    },
+    {
+      "kept": "node/6505765696",
+      "merged": "way/692965048"
+    },
+    {
+      "kept": "node/6507323329",
+      "merged": "way/693115952"
+    },
+    {
+      "kept": "node/6507344192",
+      "merged": "way/693117259"
+    },
+    {
+      "kept": "node/6507394663",
+      "merged": "way/693122486"
+    },
+    {
+      "kept": "node/6507413292",
+      "merged": "way/693124299"
+    },
+    {
+      "kept": "node/6507444789",
+      "merged": "way/693126301"
+    },
+    {
+      "kept": "node/6507613753",
+      "merged": "way/693142648"
+    },
+    {
+      "kept": "node/6507645428",
+      "merged": "way/693145568"
+    },
+    {
+      "kept": "node/6507833858",
+      "merged": "way/693164579"
+    },
+    {
+      "kept": "node/6508414387",
+      "merged": "way/693269952"
+    },
+    {
+      "kept": "node/6508962048",
+      "merged": "way/693328775"
+    },
+    {
+      "kept": "node/6509036720",
+      "merged": "way/693334826"
+    },
+    {
+      "kept": "node/6510048190",
+      "merged": "way/693432114"
+    },
+    {
+      "kept": "node/6510096077",
+      "merged": "way/693434347"
+    },
+    {
+      "kept": "node/6510096840",
+      "merged": "way/693434983"
+    },
+    {
+      "kept": "node/6510200424",
+      "merged": "way/693438595"
+    },
+    {
+      "kept": "node/6510360223",
+      "merged": "way/693454964"
+    },
+    {
+      "kept": "node/6510384589",
+      "merged": "way/693456410"
+    },
+    {
+      "kept": "node/6510443053",
+      "merged": "way/693462968"
+    },
+    {
+      "kept": "node/6510554973",
+      "merged": "way/693472252"
+    },
+    {
+      "kept": "node/6510790484",
+      "merged": "way/693498954"
+    },
+    {
+      "kept": "node/6510858159",
+      "merged": "way/693499834"
+    },
+    {
+      "kept": "node/6510868818",
+      "merged": "way/693500631"
+    },
+    {
+      "kept": "node/6510897590",
+      "merged": "way/693504059"
+    },
+    {
+      "kept": "node/6511195081",
+      "merged": "way/693528751"
+    },
+    {
+      "kept": "node/6511212798",
+      "merged": "way/693532400"
+    },
+    {
+      "kept": "node/6511263911",
+      "merged": "way/693535044"
+    },
+    {
+      "kept": "node/6511311241",
+      "merged": "way/693540277"
+    },
+    {
+      "kept": "node/6511343856",
+      "merged": "way/693542538"
+    },
+    {
+      "kept": "node/6511381088",
+      "merged": "way/693546388"
+    },
+    {
+      "kept": "node/6511425666",
+      "merged": "way/693550648"
+    },
+    {
+      "kept": "node/6511715167",
+      "merged": "way/693582477"
+    },
+    {
+      "kept": "node/6511801879",
+      "merged": "way/693590015"
+    },
+    {
+      "kept": "node/6512282166",
+      "merged": "way/693643408"
+    },
+    {
+      "kept": "node/6512289062",
+      "merged": "way/693643738"
+    },
+    {
+      "kept": "node/6512294435",
+      "merged": "way/693644225"
+    },
+    {
+      "kept": "node/6512295683",
+      "merged": "way/693644432"
+    },
+    {
+      "kept": "node/6512321652",
+      "merged": "way/693647898"
+    },
+    {
+      "kept": "node/6512468672",
+      "merged": "way/693660797"
+    },
+    {
+      "kept": "node/6512473331",
+      "merged": "way/693661203"
+    },
+    {
+      "kept": "node/6512561530",
+      "merged": "way/693670380"
+    },
+    {
+      "kept": "node/6512641860",
+      "merged": "way/693679995"
+    },
+    {
+      "kept": "node/6512675030",
+      "merged": "way/693683533"
+    },
+    {
+      "kept": "node/6512700812",
+      "merged": "way/693686305"
+    },
+    {
+      "kept": "node/6512721711",
+      "merged": "way/693688996"
+    },
+    {
+      "kept": "node/6512733998",
+      "merged": "way/693690151"
+    },
+    {
+      "kept": "node/6512770541",
+      "merged": "way/693694091"
+    },
+    {
+      "kept": "node/6512950263",
+      "merged": "way/693714044"
+    },
+    {
+      "kept": "node/6512967471",
+      "merged": "way/693715220"
+    },
+    {
+      "kept": "node/6513055720",
+      "merged": "way/693724727"
+    },
+    {
+      "kept": "node/6513067244",
+      "merged": "way/693727281"
+    },
+    {
+      "kept": "node/6513109669",
+      "merged": "way/693728846"
+    },
+    {
+      "kept": "node/6513114735",
+      "merged": "way/693729502"
+    },
+    {
+      "kept": "node/6513135669",
+      "merged": "way/693732989"
+    },
+    {
+      "kept": "node/6513144849",
+      "merged": "way/693733799"
+    },
+    {
+      "kept": "node/6513174385",
+      "merged": "way/693735416"
+    },
+    {
+      "kept": "node/6513207330",
+      "merged": "way/693738822"
+    },
+    {
+      "kept": "node/6513217533",
+      "merged": "way/693740500"
+    },
+    {
+      "kept": "node/6513245886",
+      "merged": "way/693742397"
+    },
+    {
+      "kept": "node/6513249625",
+      "merged": "way/693744679"
+    },
+    {
+      "kept": "node/6513279134",
+      "merged": "way/693746367"
+    },
+    {
+      "kept": "node/6513302028",
+      "merged": "way/693748766"
+    },
+    {
+      "kept": "node/6513328420",
+      "merged": "way/693750314"
+    },
+    {
+      "kept": "node/6513311981",
+      "merged": "way/693750967"
+    },
+    {
+      "kept": "node/6513425244",
+      "merged": "way/693761245"
+    },
+    {
+      "kept": "node/6513452135",
+      "merged": "way/693762197"
+    },
+    {
+      "kept": "node/6513495806",
+      "merged": "way/693765909"
+    },
+    {
+      "kept": "node/6513542125",
+      "merged": "way/693770502"
+    },
+    {
+      "kept": "node/6513641557",
+      "merged": "way/693780306"
+    },
+    {
+      "kept": "node/6513743804",
+      "merged": "way/693783826"
+    },
+    {
+      "kept": "node/6513764244",
+      "merged": "way/693784651"
+    },
+    {
+      "kept": "node/6514663086",
+      "merged": "way/693874069"
+    },
+    {
+      "kept": "node/6514671908",
+      "merged": "way/693874730"
+    },
+    {
+      "kept": "node/6514661049",
+      "merged": "way/693874731"
+    },
+    {
+      "kept": "node/6514657836",
+      "merged": "way/693875979"
+    },
+    {
+      "kept": "node/6514718423",
+      "merged": "way/693880239"
+    },
+    {
+      "kept": "node/6514687745",
+      "merged": "way/693880938"
+    },
+    {
+      "kept": "node/6514731353",
+      "merged": "way/693882118"
+    },
+    {
+      "kept": "node/6514772494",
+      "merged": "way/693888846"
+    },
+    {
+      "kept": "node/6514786626",
+      "merged": "way/693890101"
+    },
+    {
+      "kept": "node/6514785478",
+      "merged": "way/693891509"
+    },
+    {
+      "kept": "node/6514792050",
+      "merged": "way/693894337"
+    },
+    {
+      "kept": "node/6515039891",
+      "merged": "way/693915115"
+    },
+    {
+      "kept": "node/6515029610",
+      "merged": "way/693915882"
+    },
+    {
+      "kept": "node/6515127101",
+      "merged": "way/693924249"
+    },
+    {
+      "kept": "node/6515202315",
+      "merged": "way/693934320"
+    },
+    {
+      "kept": "node/6515245689",
+      "merged": "way/693938653"
+    },
+    {
+      "kept": "node/6515269887",
+      "merged": "way/693941503"
+    },
+    {
+      "kept": "node/6515265149",
+      "merged": "way/693944595"
+    },
+    {
+      "kept": "node/6515366716",
+      "merged": "way/693990855"
+    },
+    {
+      "kept": "node/6515724686",
+      "merged": "way/693991396"
+    },
+    {
+      "kept": "node/6515734646",
+      "merged": "way/693993170"
+    },
+    {
+      "kept": "node/6515729665",
+      "merged": "way/693993434"
+    },
+    {
+      "kept": "node/6515712620",
+      "merged": "way/693994116"
+    },
+    {
+      "kept": "node/6515742980",
+      "merged": "way/693994985"
+    },
+    {
+      "kept": "node/6515763961",
+      "merged": "way/693995619"
+    },
+    {
+      "kept": "node/6515843740",
+      "merged": "way/694003335"
+    },
+    {
+      "kept": "node/6515886295",
+      "merged": "way/694007894"
+    },
+    {
+      "kept": "node/6515975300",
+      "merged": "way/694017018"
+    },
+    {
+      "kept": "node/6515972775",
+      "merged": "way/694020517"
+    },
+    {
+      "kept": "node/6516092986",
+      "merged": "way/694033351"
+    },
+    {
+      "kept": "node/6516108518",
+      "merged": "way/694034986"
+    },
+    {
+      "kept": "node/6516106735",
+      "merged": "way/694036329"
+    },
+    {
+      "kept": "node/6516122621",
+      "merged": "way/694037457"
+    },
+    {
+      "kept": "node/6516135208",
+      "merged": "way/694038237"
+    },
+    {
+      "kept": "node/6516144203",
+      "merged": "way/694040065"
+    },
+    {
+      "kept": "node/6516137400",
+      "merged": "way/694040642"
+    },
+    {
+      "kept": "node/6516112971",
+      "merged": "way/694040998"
+    },
+    {
+      "kept": "node/6516185926",
+      "merged": "way/694044692"
+    },
+    {
+      "kept": "node/6516202215",
+      "merged": "way/694045900"
+    },
+    {
+      "kept": "node/6516290638",
+      "merged": "way/694055927"
+    },
+    {
+      "kept": "node/6516267235",
+      "merged": "way/694061596"
+    },
+    {
+      "kept": "node/6517228263",
+      "merged": "way/694166956"
+    },
+    {
+      "kept": "node/6517182268",
+      "merged": "way/694169749"
+    },
+    {
+      "kept": "node/6517328321",
+      "merged": "way/694192102"
+    },
+    {
+      "kept": "node/6517420233",
+      "merged": "way/694196241"
+    },
+    {
+      "kept": "node/6517496922",
+      "merged": "way/694202113"
+    },
+    {
+      "kept": "node/6517507569",
+      "merged": "way/694203077"
+    },
+    {
+      "kept": "node/6517510642",
+      "merged": "way/694203208"
+    },
+    {
+      "kept": "node/6517508110",
+      "merged": "way/694203491"
+    },
+    {
+      "kept": "node/6517534790",
+      "merged": "way/694204432"
+    },
+    {
+      "kept": "node/6517616000",
+      "merged": "way/694211633"
+    },
+    {
+      "kept": "node/6517588226",
+      "merged": "way/694212142"
+    },
+    {
+      "kept": "node/6517626720",
+      "merged": "way/694213392"
+    },
+    {
+      "kept": "node/6517636734",
+      "merged": "way/694214303"
+    },
+    {
+      "kept": "node/6518271113",
+      "merged": "way/694274327"
+    },
+    {
+      "kept": "node/6518255468",
+      "merged": "way/694276805"
+    },
+    {
+      "kept": "node/6518703766",
+      "merged": "way/694318986"
+    },
+    {
+      "kept": "node/6518710996",
+      "merged": "way/694320175"
+    },
+    {
+      "kept": "node/6518718330",
+      "merged": "way/694322279"
+    },
+    {
+      "kept": "node/6518758998",
+      "merged": "way/694323834"
+    },
+    {
+      "kept": "node/6520119666",
+      "merged": "way/694407548"
+    },
+    {
+      "kept": "node/6520130633",
+      "merged": "way/694409062"
+    },
+    {
+      "kept": "node/6520140892",
+      "merged": "way/694410142"
+    },
+    {
+      "kept": "node/6520448603",
+      "merged": "way/694438925"
+    },
+    {
+      "kept": "node/6520448955",
+      "merged": "way/694442673"
+    },
+    {
+      "kept": "node/6520539505",
+      "merged": "way/694444429"
+    },
+    {
+      "kept": "node/6520674099",
+      "merged": "way/694456034"
+    },
+    {
+      "kept": "node/6520739698",
+      "merged": "way/694460358"
+    },
+    {
+      "kept": "node/6520736682",
+      "merged": "way/694461112"
+    },
+    {
+      "kept": "node/6520754496",
+      "merged": "way/694461584"
+    },
+    {
+      "kept": "node/6520736753",
+      "merged": "way/694462935"
+    },
+    {
+      "kept": "node/6520732970",
+      "merged": "way/694464794"
+    },
+    {
+      "kept": "node/6520868077",
+      "merged": "way/694470562"
+    },
+    {
+      "kept": "node/6520850363",
+      "merged": "way/694471648"
+    },
+    {
+      "kept": "node/6520932588",
+      "merged": "way/694475100"
+    },
+    {
+      "kept": "node/6521054846",
+      "merged": "way/694487738"
+    },
+    {
+      "kept": "node/6521229546",
+      "merged": "way/694498548"
+    },
+    {
+      "kept": "node/6521322478",
+      "merged": "way/694508994"
+    },
+    {
+      "kept": "node/6521363495",
+      "merged": "way/694510753"
+    },
+    {
+      "kept": "node/6521385750",
+      "merged": "way/694512653"
+    },
+    {
+      "kept": "node/6521385750",
+      "merged": "way/694513686"
+    },
+    {
+      "kept": "node/6521419350",
+      "merged": "way/694518523"
+    },
+    {
+      "kept": "node/6521455652",
+      "merged": "way/694520161"
+    },
+    {
+      "kept": "node/6521477921",
+      "merged": "way/694526536"
+    },
+    {
+      "kept": "node/6521528404",
+      "merged": "way/694530000"
+    },
+    {
+      "kept": "node/6521566201",
+      "merged": "way/694535105"
+    },
+    {
+      "kept": "node/6521539463",
+      "merged": "way/694536535"
+    },
+    {
+      "kept": "node/6521703040",
+      "merged": "way/694545806"
+    },
+    {
+      "kept": "node/6521700161",
+      "merged": "way/694547335"
+    },
+    {
+      "kept": "node/6521764140",
+      "merged": "way/694551408"
+    },
+    {
+      "kept": "node/6521771878",
+      "merged": "way/694553009"
+    },
+    {
+      "kept": "node/6522454615",
+      "merged": "way/694624486"
+    },
+    {
+      "kept": "node/6522452653",
+      "merged": "way/694627538"
+    },
+    {
+      "kept": "relation/21204917",
+      "merged": "way/694650962"
+    },
+    {
+      "kept": "node/6522721884",
+      "merged": "way/694653801"
+    },
+    {
+      "kept": "node/6531359529",
+      "merged": "way/695549019"
+    },
+    {
+      "kept": "node/6531464850",
+      "merged": "way/695561359"
+    },
+    {
+      "kept": "node/6984204217",
+      "merged": "way/695781989"
+    },
+    {
+      "kept": "node/6984204215",
+      "merged": "way/695782354"
+    },
+    {
+      "kept": "node/7142416239",
+      "merged": "way/695791294"
+    },
+    {
+      "kept": "node/7168774798",
+      "merged": "way/695792413"
+    },
+    {
+      "kept": "node/5132588636",
+      "merged": "way/699018742"
+    },
+    {
+      "kept": "relation/19193619",
+      "merged": "way/710095367"
+    },
+    {
+      "kept": "node/6565960449",
+      "merged": "way/711330024"
+    },
+    {
+      "kept": "relation/16764213",
+      "merged": "way/711399499"
+    },
+    {
+      "kept": "node/11005200017",
+      "merged": "way/714665592"
+    },
+    {
+      "kept": "node/4910764696",
+      "merged": "way/714755746"
+    },
+    {
+      "kept": "relation/21114285",
+      "merged": "way/723394239"
+    },
+    {
+      "kept": "node/7738498410",
+      "merged": "way/829009351"
+    },
+    {
+      "kept": "node/7738498410",
+      "merged": "way/829009352"
+    },
+    {
+      "kept": "node/6502125012",
+      "merged": "way/832757133"
+    },
+    {
+      "kept": "node/6461697402",
+      "merged": "way/844668201"
+    },
+    {
+      "kept": "way/858731215",
+      "merged": "way/858731560"
+    },
+    {
+      "kept": "node/6461406283",
+      "merged": "way/861061762"
+    },
+    {
+      "kept": "node/9026374217",
+      "merged": "way/908375612"
+    },
+    {
+      "kept": "node/13040175787",
+      "merged": "registry-0cad278bf420857f"
+    },
+    {
+      "kept": "registry-1bed3a0fa9e102ea",
+      "merged": "registry-d36f57e9ddb0ddb7"
+    },
+    {
+      "kept": "national-1a9cbdb0118a633d",
+      "merged": "registry-d485c8fd74fed56b"
+    },
+    {
+      "kept": "national-7524e4b2846ceed6",
+      "merged": "registry-7f133fd1af6f4466"
+    },
+    {
+      "kept": "national-d1ae61869a8e5c3c",
+      "merged": "registry-87120bee9fa97439"
+    },
+    {
+      "kept": "national-be2791aaf2c7083c",
+      "merged": "registry-1ff55f87338fe830"
+    },
+    {
+      "kept": "national-b8c19d3e76be63d0",
+      "merged": "registry-db8224778126ec34"
+    },
+    {
+      "kept": "node/6344060191",
+      "merged": "registry-15339b7e5d734b30"
+    },
+    {
+      "kept": "node/6344060190",
+      "merged": "registry-2e533bdc0deaae99"
+    },
+    {
+      "kept": "node/6344060789",
+      "merged": "registry-a398a5fe1d8d59cf"
+    },
+    {
+      "kept": "node/6461687025",
+      "merged": "registry-cf2a1e1bde23461d"
+    },
+    {
+      "kept": "node/6344060787",
+      "merged": "registry-9ae4eeca2817cf77"
+    },
+    {
+      "kept": "node/8360225817",
+      "merged": "registry-095e7f747c55a317"
+    },
+    {
+      "kept": "node/6461697402",
+      "merged": "registry-0793b7948b60e4d9"
+    },
+    {
+      "kept": "node/6055078588",
+      "merged": "registry-7a828f5f186eeeed"
+    },
+    {
+      "kept": "node/6461885785",
+      "merged": "registry-2849ffb5ed676b9a"
+    },
+    {
+      "kept": "node/8360225717",
+      "merged": "registry-092d1188201149ba"
+    },
+    {
+      "kept": "node/6461687027",
+      "merged": "registry-2bfb0590d7cda387"
+    },
+    {
+      "kept": "node/6461687028",
+      "merged": "registry-a525bfb31e558f92"
+    },
+    {
+      "kept": "node/6344060785",
+      "merged": "registry-397df00a9d7e7b2d"
+    },
+    {
+      "kept": "node/6344060486",
+      "merged": "registry-bf359f8b37efb7e2"
+    },
+    {
+      "kept": "national-0516fe7e93e3fef6",
+      "merged": "registry-6cd5d5db0ed09267"
+    },
+    {
+      "kept": "node/6741660285",
+      "merged": "registry-e222c1e7981d7a53"
+    },
+    {
+      "kept": "node/4861194715",
+      "merged": "registry-3dd7db9279f7ef58"
+    },
+    {
+      "kept": "node/5387240861",
+      "merged": "registry-98209a071f5f4de1"
+    },
+    {
+      "kept": "node/6458132385",
+      "merged": "registry-acedafbce7b7417a"
+    },
+    {
+      "kept": "way/229411931",
+      "merged": "registry-a8266f1059f9547b"
+    },
+    {
+      "kept": "node/2584332992",
+      "merged": "registry-09b61aa6838c28bc"
+    },
+    {
+      "kept": "node/5160875457",
+      "merged": "registry-a1b6c2f4c14f06bb"
+    },
+    {
+      "kept": "node/6458133085",
+      "merged": "registry-f43b3de640da31ab"
+    },
+    {
+      "kept": "node/4956242430",
+      "merged": "registry-61203e9bf4b2acc7"
+    },
+    {
+      "kept": "node/6344060192",
+      "merged": "registry-cfdc5f67cc36904f"
+    },
+    {
+      "kept": "node/5643018464",
+      "merged": "registry-4124a14b6b86f9a4"
+    },
+    {
+      "kept": "node/5593591182",
+      "merged": "registry-edaf7c9818bc9b7f"
+    },
+    {
+      "kept": "node/6462459085",
+      "merged": "registry-80150c342f3b94f4"
+    },
+    {
+      "kept": "node/6464748985",
+      "merged": "registry-7bbcefc6765d9884"
+    },
+    {
+      "kept": "node/6464014086",
+      "merged": "registry-b772b0768607d277"
+    },
+    {
+      "kept": "node/6464015686",
+      "merged": "registry-875f6e5980eecaf0"
+    },
+    {
+      "kept": "node/5829109250",
+      "merged": "registry-f76776d208d66e54"
+    },
+    {
+      "kept": "node/6463426490",
+      "merged": "registry-f59596e5f803e2d9"
+    },
+    {
+      "kept": "node/6463426491",
+      "merged": "registry-a2dffb857e5e60a5"
+    },
+    {
+      "kept": "node/6389438985",
+      "merged": "registry-f89f850cd220173a"
+    },
+    {
+      "kept": "node/6463446288",
+      "merged": "registry-ca29188a4d49cd3b"
+    },
+    {
+      "kept": "national-54bcfaa54856ea6c",
+      "merged": "registry-e037cfd0d81f34d6"
+    },
+    {
+      "kept": "national-0516fe7e93e3fef6",
+      "merged": "node/6344060187"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "node/10234994205",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10285454996",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10311233718",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/10312922782",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10589076662",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10813939131",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10813957607",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10815528907",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10831140472",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10836417472",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10836417476",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10836417487",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10918088634",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/10931213144",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/10982272206",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/11005699530",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11007472699",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11012076265",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11048839696",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11048839704",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11091471846",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11273477268",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11276698757",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11486553669",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/11524004048",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11524004050",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11559711069",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/11576588614",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11829281804",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/11868287216",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12105407154",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12112014866",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/12112735568",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12112735569",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12112824743",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12141526564",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12309075065",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/12432239316",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/1243959302",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/12464988102",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12533664534",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12545858714",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/12645417237",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12709848905",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12735515917",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12759731058",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12861488937",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12885528554",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12961051628",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12993962150",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/12993970612",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13028687184",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/13110259613",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13124229554",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/13124363145",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13128044586",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13153908934",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13153908939",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13208223906",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13236029284",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13236034834",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13261587357",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13396580650",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13606825890",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13665325548",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13666127827",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13666127831",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13666127833",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13666127837",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13666127838",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13666127839",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13666127848",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13742099822",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13749481825",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13779829434",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13819628601",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13853589525",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/13970319652",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/13981960796",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13982901788",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13982901790",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13982901793",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13982901798",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13982945202",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13982945205",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/13982945206",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/14007292455",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/14008406460",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/14014622294",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/14057778443",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/14057778445",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/14067321962",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/14067321963",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/14067321975",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/14081115686",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/14119219718",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/1711476912",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/2286379801",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/2287622953",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/2290060752",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/2290064455",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/2290259198",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/2290280538",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/2290735004",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/2290739395",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/2291053518",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/2569428192",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/2643897066",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/3079572096",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/3104884114",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/3129179544",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/3210240834",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/3420765003",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/3721587172",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/3830064288",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/3830069882",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/3833604259",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/3879956156",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4029229253",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4224990594",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4224990595",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4247932806",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/4501653544",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4708341094",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4727887896",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4809634399",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4819151812",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4827813421",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/4837886778",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4837886785",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4843126086",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/4963007749",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/5049784184",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5055307322",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/5104538927",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5112034321",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5114996121",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5132411241",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5132412342",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5160785821",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5210657560",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5252383787",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5255414316",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5304395998",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5328850120",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5423722632",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/5467744381",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5500232503",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5504121116",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/5582101510",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/5698397074",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5700001049",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5733814621",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5761038578",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5774643157",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/5800160065",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5820133754",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/5835795909",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5835796195",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5843441559",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5844465185",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5852858444",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5905777755",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/5925984885",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6052325792",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6124511771",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6301142752",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6344060193",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6347419689",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6347425789",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6355716615",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6355716625",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6355716636",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6356165299",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6362383689",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6392349485",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6402119583",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6435175285",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6435668986",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6435669486",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6436146387",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6436148185",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6437763487",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6445673797",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6457138185",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6457265894",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6461929585",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6466703385",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6467586387",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6467588385",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6469999226",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6471234888",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6484591327",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6488076411",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6501325595",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6534563718",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6534563724",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6573711543",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6578254986",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6634785928",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6702010766",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6815358199",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6831890285",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6843761096",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6854692800",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6888580906",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6911096086",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/6985833355",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/6996249710",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7054528304",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7080362466",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7095172118",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7108428184",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7108432988",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7108432989",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7151233093",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7157734753",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7157837565",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7286983544",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7425904685",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/7472769775",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7707315523",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7749768985",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/7802253903",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/7916818470",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/8118235394",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/8145140934",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/8204491922",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/8204492025",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/8417956205",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/8676289017",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/873032027",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/8836014447",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/8837453095",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/8951682520",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9115798957",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/9459867527",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/9494134292",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9658493078",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/9817586922",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9817891819",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9817911422",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9819074918",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9819167017",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9819167117",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9819167317",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9819292218",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9819298918",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9819299117",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9819299217",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9819299317",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9819299417",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9827070397",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/9834740417",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9858170618",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "node/9892277789",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/9916955859",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "node/9976651650",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "relation/12011776",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "relation/13875677",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/1000486691",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1041893291",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1041893292",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1044426804",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1044429745",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1046219751",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1078992359",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1079488684",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1195521582",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1198011091",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1200990873",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1203870686",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1204161408",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1210842972",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1211263229",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1216989453",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1217936276",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1221406978",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1221406982",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1240748250",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1240754908",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1266392019",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1297289693",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1305099761",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1307975768",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1323865863",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1323872249",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1324078137",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1371041621",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1415910914",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1455349133",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/1467953851",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/182425886",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/189808273",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/193446543",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/268098880",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/270650443",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/276424206",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/279779185",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/286674694",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/288244851",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/297349710",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/300742123",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/302182119",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/327023734",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/360940323",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/363488690",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/367395981",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/382408085",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/391309326",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/400847827",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/413011258",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/417446115",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/417446138",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/417893185",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/419329373",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/427361853",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/429573576",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/435142932",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/440752898",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/450084615",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/460696190",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/474647460",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/482849137",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/501088383",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/517487946",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/529325432",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/539578546",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/546945418",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/547524083",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/548292682",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/548927966",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/555878613",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/585140386",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/586644979",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/587486281",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/616078221",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/640218581",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/645037051",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/651988918",
+      "reason": "福祉専用の利用条件"
+    },
+    {
+      "id": "way/675165212",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/678194169",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/685372736",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/702283584",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/709217340",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/710591457",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/717406434",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/741802412",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/741802413",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/762188591",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/766648289",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "way/775721752",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/823014107",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/831015666",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/839842004",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/858025388",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/865190189",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/875019202",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/898032029",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/931180170",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/931569857",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/972322263",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "way/986234098",
+      "reason": "休廃業の記載"
+    },
+    {
+      "id": "registry-ffe7cd0e999a11b4",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c864b3eb2bd717fa",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-97d86b93d209a851",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a2a32330484bad87",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-eba023237c357fba",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-de80c36414db9f8c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-39c329999e63882a",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-308047153cdea44a",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d707523039dd7c2c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-87ccccc96f97d691",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-7a21da81b783fcbe",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-9137598481215228",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3c6e76c00c83841f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0bcf18800aa360b7",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-135b5abf7260c4fd",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4500cfd902eb150d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c134072c628490a6",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-21c595475bc1093b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a7e3c7dd8534af0d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-6ef82a881db3663e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a8322599f76af127",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-78d17c86d82f878f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e233fecbc0b3f870",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-7dbea8a801614a8d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4674617ec71bf931",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e1447d6ba16c1f91",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-bdf4bd24fab48732",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c508cc861872da84",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-cc99d5965b99d87d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2147de7e22391ec7",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-36b20040f771374e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-9ef463232245bc04",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-9b17ff2340396b83",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d92ed545869131bd",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-acb256ce90f74d3d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-21c5bbfd92aaa6cf",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d47015bf1cd07b45",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-39b1dcd12e36d81b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0321610d623f42d6",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f56eab9af8620b2d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f04f42068162798e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-25abedbf24ed1c3b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c4499f3d172f020a",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-36cc65f6e9812bcd",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a8978eda787fff8a",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-13e3e3e1cc552263",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-aabdbcc281159fe9",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ac7125a8642ebc89",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-db1234f123b86154",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-898355fb70367c73",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2143441e5844b655",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-112e438ad8d8aea5",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c7ec563283d04d1c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-98ac8887319814fe",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a0b57f9085c403a2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-de6693594cd5998b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0b1e37cee08e869f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c68445f77e546f0b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d79f9fa7be68c8ee",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f655a1b14d7a0a8e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d5be17b79bd8a7a8",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-fc9664e87410d0bd",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1d157bbd91f23206",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f7d3b0eb5181f7f8",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-87ada224d1422cdd",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e471cc3547fd6c13",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d1c8e708f70a8d01",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3b61e04ab307e8e1",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-9057f20eddb2feb9",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4bd262ac2e5f5efb",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-fec925f7935453a2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-86c6b9ef706008e3",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c20a425919b0e1c3",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2519ce6d183bcafc",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-40aa2d6a90cc06e1",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-344f031e430a5213",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-61cbcca7dcda1fe4",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e292a14ae151b5b7",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-947777b5da720e6d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-6d4380acb8ae7f07",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1d2f24188bfeb719",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-05a7eae80075d168",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-977c20fc209d0093",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2ba91fcfdb828e02",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4553f39a7252acd6",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-05c39949fc0fe920",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-cfbaeb9c9e8c1878",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-bf5f5e8354e191d1",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-084cb78e80b2c25a",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c9bdac878ae2b27d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2ba4648db22a451d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-947d19a7d44159f6",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-bc301dc796be44d2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-db03d14bf63c3bd4",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-048bc59184ba641c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-cd6ff28f7bc56ce3",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ffa388120d43d7d9",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-90ea21f49606ea76",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1ab3598354824291",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-9ee4584152ab345f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-9351e3f4dfbc78f3",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-022d7303266f4720",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-6f8223cf95072700",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-618299a2951781a7",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-490bca557a482dd8",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-15901deb383ec71b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b720c29c7cc8f452",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-5ca330682ed81d1b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-94b3f2b1e1a6ac97",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-8af11fecf3c89d0d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4305a124570e49d1",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-81a0f9619c3a599f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-762aa060c0b0e019",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f1f069090702eafa",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d5c226ee5850a8de",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-46f11786deba7842",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2ff611b2b279828d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b024c477cccf72c0",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-650f4c22668ff7fa",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-53e755eccf7d20f5",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-94866cc4e7faee49",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b608159568ea5bdb",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3228a8bf43589e34",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-dd4cfc9e92b16170",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-81caa45741b60239",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-bbaf555b8010d883",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-513ba1d71521efab",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a1f3c167eac76627",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-28a4bfe9f998c101",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-04a8f2e4e8337533",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-55c3048907b1cb0b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-456779f2cafb2d5e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e493f811e5223b30",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-517ad8c4e9617366",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f52649d4003a14a4",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-336dda1566e556f3",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ef146bd6a411e89e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a478abfbc5700569",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ce6ec053730a2432",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-318aded9718a23bf",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ce4fcf2099104b45",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1178fd75b99d41a3",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-18878332f7bee98c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2998461f646f849e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-77953e8da01543bb",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-18dce9db45f56c05",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0bd74fc6ae1087cb",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-9be8eec05a0abf5e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-fa7df0cfaa6d0801",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b1d17da475e85211",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-166639def45df974",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-41ac15ddd663f206",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-15b6526e64baa85d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-9ef7301cb5a07699",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c3e855234e5ee779",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3e95d2835b9a7e00",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-917724e83c742623",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a7870a2d76833822",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-462019b0c3624f8a",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-12c264b2c43b431f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-5c759fddc56630f2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-79e9612629c2dc09",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-bbe25da79c6431c7",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-356fb7dd5fb4ece2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-54109e05adf12500",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3ba4af4ca27dc162",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-30b6283a37d44707",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-5fd6d713f477394f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a30905d7fba8684b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-8dc32dde73b14aad",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-95a245c65474f457",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-053dad04e9805bce",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1f4a1dd173ae25fb",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b1235bec424ad2c5",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e8c596ef45d6a76e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1a576d88e3fe39f7",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-eb40b9b6e42a6666",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b0f04af678dcc260",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-8b1335a2d1e0816a",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-04240eb56f2e142e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-7db1c3df23bce3b5",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4365a9a8921df29b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-fc81488e5304f87f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d15067a3f0c74be2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-8984b2d9bbcfa269",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-263ccd9666a24b06",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e3c365b59f84fc31",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1b8cb6bc8eee80a0",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2d0afa9e9b54194b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b0a9fbd4a14db9e3",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b7c319006ac7bdc2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-853b590dc0176d41",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f65e2e9733cb1af6",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-8917f5b3dd4c6dc6",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-21afef7c3a07ba36",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3f265210623e5239",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-85976e50f5dd50b8",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-7dfd7a60a249350c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0f7738413f3f147f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-334464d7475eb950",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-583e31618a32770a",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-dba8e7ab09b049f4",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-74dbd7b835a12806",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-048eaf109d79e46c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-231ef098fce8cd2e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3cc9ca8a480d185b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ffac32b978506788",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-8a926678d2fe68ab",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-12813b8999a7ffe5",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-872eab4335b57ca3",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-9832f7fee98ce49c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d21e29d27ca2efa4",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e3153dcd82bd3c9c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-5f3d7723989998e6",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-8be81fcc0be4fa64",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f0750d5c79dc8b23",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-81d1f9a7a26ea423",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-29e9d1aafd9e43bb",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a8ff8a62ad093c04",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1df65add196d2fb7",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a0f6e5643e982dee",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d6299b9025b0113d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f4acf4abf655ef4d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e869c4447c3ed66d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-31dca29b01c3b1a4",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e24db1b9a72799f2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ec5e6c759fdf4f63",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a418920a729888ab",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-07ada2873e15e11f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-358c1ab0ec3f5443",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3ac0f3850bda34ec",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d9020e8712f8374d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f151e964f34bf3cd",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ecae649b72ccaf8a",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3188a91a86bffaef",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-bf11869a7bffbcb5",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d14b6b069e1c9743",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-412d6c8095ede68f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f21732fb35fb3ffb",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-5c98f2f6af5e053c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-6fef5f1c67bdc9b3",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-87d60b13b3ce28bb",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e85912258f348bc2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e4a6ae764611d265",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-cc45b3f0ce633beb",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-8a0f3860881ef750",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a16acaacc8dbb16f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-22fa89e3d7a4ca11",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-697c70d1f708ebff",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0af6d52df493a2a6",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-aa389c741d45a0c6",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-7bdef642fb7dce1d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e98f531c98ff894b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b6bbedfc7e30708b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e603cab68174e892",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-360ba25ab10e686e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-eb9863d356592298",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0632d3cef4614d26",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d5872e367786ca0f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-40542afb094b204d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-84da58c5f153ca68",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-fb3cbe6913da7028",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b64ac493c2ccf533",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-cbd17eb5534bd340",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-14fc69e4a2c53d4f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-432107b97392db91",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-7cb561e7f2a5be22",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a2f5245da3f96301",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2f7c7cdbfda4d7d1",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-66d39d3d33388e12",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-804300961b53fc0e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4339d767c2295d76",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0a2433a993dd2f6b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-196008bd6aa0ebc2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-8bfd627814533e70",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-bef16e690fce3157",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0a174ed273766c87",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e5f8599ce24de01d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-6ba889702d2ede6c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b3bcada496525665",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4019797b39af54de",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-dd66a5ad8c5e40d5",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-49f4846153af8d95",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-36c7539bcc267bb9",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-f707522b610a9e14",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2d12a1426ec3e708",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4ca4ba31ff7a055b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-05830d6905cf1ad5",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a627df2a467571a8",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-2858f92694dd27c2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ad67d3840c5c8cc1",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4a4daa79d8fd4e4c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-6fa394c723b9b6ec",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-a7bd19b8966ef385",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0ab2df5ad9a21201",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-404b5ea90a29ff98",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-976b678f0b590bc5",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-4e49929a4b14fb05",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3410f2ec35e5ef23",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-83c81150d3022f17",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-7f1f942edd1bede5",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-69cc2dfc119a3297",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1480b8978a97c2a7",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-178bed88128d273b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-7baa58132a6c725d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c4bc11b1f5fc3b4f",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-5c99b094dca58b42",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-aa6b8916511a001c",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-519476eefdbf6217",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-56e7b6ecc4d5d25d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-6e4f2066b6d319e1",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-dd08bc588f839980",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-664422bbf685bc99",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b1eddc28b2a019ef",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0a637f0c3ff3596e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0d59433d232ebcef",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0c10edfebf658649",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-63e3b3dbd718adf8",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1667ed421dc97d1e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-7d680feed0d8b2cf",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-3853dd903fe4ceba",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-0685cf76bac168f4",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e05e49461e28688d",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b0813ccd20f1f6fe",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-85f6b84bd397c81e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-fdd8b595362b5d73",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ce65711167dfc8dd",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d87fb935b4034beb",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-c3607c9110d11ab2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-6b4e8a5845e1c0c2",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e8494febe282dd0e",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-1df29cfc56c2ee63",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-5636a9521e920d37",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-ddd847c8ad0f6040",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-777438e22132f942",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-d3ef359033ad0f3b",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-b69fdcc7a0c4c7a8",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-feb07251d84a1266",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-97a8bb4646930c41",
+      "reason": "掲載対象の確認待ち"
+    },
+    {
+      "id": "registry-e9e8500004b9b7b3",
+      "reason": "掲載対象の確認待ち"
+    }
+  ],
+  "upstreamExclusions": [
+    {
+      "source": "registry.json",
+      "count": 198
+    }
+  ]
+}

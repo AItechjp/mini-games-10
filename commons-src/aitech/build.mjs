@@ -41,6 +41,7 @@ let camera=await readFile(join(source,'app/camera/document.html'),'utf8');
 await writeFile(join(output,'camera/index.html'),camera);
 await cp(join(source,'data/onion-snapshot.json'),join(output,'onion/snapshot.json'));
 await cp(join(source,'public/sauna-data.json'),join(output,'sauna-data.json'));
+await cp(join(source,'public/sauna-inventory.json'),join(output,'sauna-inventory.json'));
 await cp(join(source,'public/local-data.json'),join(output,'local-data.json'));
 await build({configFile:false,root:source,publicDir:false,resolve:{alias:[{find:'opening_hours',replacement:'npm:opening_hours@3.14.0'},{find:'@/db',replacement:join(source,'edge/database.ts')},{find:'@',replacement:source}]},build:{outDir:join(source,'edge-output'),emptyOutDir:true,minify:false,lib:{entry:join(source,'edge/index.ts'),formats:['es'],fileName:()=> 'index.js'},rollupOptions:{external:id=>id.startsWith('npm:')||id.startsWith('node:')}}});
 const require=createRequire(await realpath(join(source,'node_modules/vite/package.json')));

@@ -1,0 +1,502 @@
+{
+  "fetchedAt": "2026-09-19T21:21:34.518853+00:00",
+  "sourceDate": "2026-09-19T21:20:00Z",
+  "sourceAreaDate": "2026-09-18T13:42:06Z",
+  "queryComplete": true,
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "query": "[out:json][timeout:60];\nmake lookup facilityId=\"node/10312922782\";out;\nis_in(35.4642085,139.8749712)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/13742099822\";out;\nis_in(31.5915478,130.5931851)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/4528240107\";out;\nis_in(29.225694,129.3310271)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/4796051121\";out;\nis_in(34.7774134,138.7656459)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/5976906386\";out;\nis_in(42.5841578,140.7055879)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6326887296\";out;\nis_in(35.5012699,135.7374482)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6466685655\";out;\nis_in(34.8042584,134.4613301)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6483592020\";out;\nis_in(33.0309123,131.920645)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6483909267\";out;\nis_in(32.3419472,131.6271576)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6487452000\";out;\nis_in(31.5587626,130.7455178)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6489538851\";out;\nis_in(31.3788493,130.5453475)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6501955139\";out;\nis_in(32.6583411,129.7552805)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6503888684\";out;\nis_in(33.055746,129.8238069)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6505184512\";out;\nis_in(33.4054368,129.8546034)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6505632525\";out;\nis_in(33.4714523,129.8495037)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6709084785\";out;\nis_in(34.3641119,139.2425013)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/6996249710\";out;\nis_in(34.2553251,134.7194335)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"node/9459867527\";out;\nis_in(34.9847493,139.0945735)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/1008058732\";out;\nis_in(35.088275,139.080137)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/1204161408\";out;\nis_in(34.3640019,139.2426272)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/1346764463\";out;\nis_in(34.4950085,136.8363796)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/1384178053\";out;\nis_in(43.1428892,140.4279968)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/1426849736\";out;\nis_in(44.1779673,145.3122313)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/196121710\";out;\nis_in(34.642832,135.0129312)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/386522276\";out;\nis_in(34.6266591,135.0450212)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/416895008\";out;\nis_in(45.1847184,141.1335143)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/441752170\";out;\nis_in(35.5198425,133.2601502)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/452105557\";out;\nis_in(31.5587889,130.7455233)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/480190738\";out;\nis_in(37.1192087,136.9969761)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/539578546\";out;\nis_in(36.8652371,136.986883)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/601255014\";out;\nis_in(34.4930128,133.9561814)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/612662915\";out;\nis_in(31.5914066,130.5936397)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/690855657\";out;\nis_in(33.7354875,131.6836257)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/691012410\";out;\nis_in(33.0308763,131.9206115)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/691042854\";out;\nis_in(32.3419957,131.6270742)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/691547522\";out;\nis_in(31.2922163,130.6064266)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/692450856\";out;\nis_in(32.8717214,130.237055)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/692575874\";out;\nis_in(32.6583603,129.7552711)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/692759979\";out;\nis_in(33.0558269,129.8239035)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/696125143\";out;\nis_in(37.6347908,138.7605482)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/708226699\";out;\nis_in(36.0374987,136.0100676)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/787165994\";out;\nis_in(35.4812781,135.632218)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"way/873020645\";out;\nis_in(35.4892567,135.5953228)->.containing;\narea.containing[\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"][\"ISO3166-2\"~\"^JP-\"];out tags;\nmake lookup facilityId=\"__complete__\";out;\n",
+  "responseSha256": "19bd4681d62dc9dd29af9f9a744bdad2fe922cd78f896318c65fd275e4d174cf",
+  "summary": {
+    "initialUnassigned": 49,
+    "explicitAddress": 6,
+    "areaLookups": 43,
+    "resolved": 49,
+    "unresolved": []
+  },
+  "overrides": {
+    "node/2012226376": {
+      "lat": 34.9845536,
+      "lon": 139.0943804,
+      "prefecture": "静岡県",
+      "prefectureCode": "22",
+      "prefectureSource": "OSM explicit addr:province",
+      "sourceUrl": "https://www.openstreetmap.org/node/2012226376",
+      "sourceDate": "2026-09-19T21:10:41Z"
+    },
+    "node/3079572083": {
+      "lat": 42.5840784,
+      "lon": 140.7059257,
+      "prefecture": "北海道",
+      "prefectureCode": "01",
+      "prefectureSource": "OSM explicit addr:province",
+      "sourceUrl": "https://www.openstreetmap.org/node/3079572083",
+      "sourceDate": "2026-09-19T21:10:41Z"
+    },
+    "node/4788010523": {
+      "lat": 33.6769556,
+      "lon": 135.3370223,
+      "prefecture": "和歌山県",
+      "prefectureCode": "30",
+      "prefectureSource": "OSM explicit addr:province",
+      "sourceUrl": "https://www.openstreetmap.org/node/4788010523",
+      "sourceDate": "2026-09-19T21:10:41Z"
+    },
+    "way/326847063": {
+      "lat": 45.3002334,
+      "lon": 141.0474474,
+      "prefecture": "北海道",
+      "prefectureCode": "01",
+      "prefectureSource": "OSM explicit addr:province",
+      "sourceUrl": "https://www.openstreetmap.org/way/326847063",
+      "sourceDate": "2026-09-19T21:10:41Z"
+    },
+    "way/450355579": {
+      "lat": 34.1548401,
+      "lon": 135.1766917,
+      "prefecture": "和歌山県",
+      "prefectureCode": "30",
+      "prefectureSource": "OSM explicit addr:province",
+      "sourceUrl": "https://www.openstreetmap.org/way/450355579",
+      "sourceDate": "2026-09-19T21:10:41Z"
+    },
+    "way/932260894": {
+      "lat": 32.4722036,
+      "lon": 130.2066858,
+      "prefecture": "熊本県",
+      "prefectureCode": "43",
+      "prefectureSource": "OSM explicit addr:province",
+      "sourceUrl": "https://www.openstreetmap.org/way/932260894",
+      "sourceDate": "2026-09-19T21:10:41Z"
+    },
+    "node/10312922782": {
+      "lat": 35.4642085,
+      "lon": 139.8749712,
+      "prefecture": "千葉県",
+      "prefectureCode": "12",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/2679957",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3602679957
+    },
+    "node/13742099822": {
+      "lat": 31.5915478,
+      "lon": 130.5931851,
+      "prefecture": "鹿児島県",
+      "prefectureCode": "46",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842186",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842186
+    },
+    "node/4528240107": {
+      "lat": 29.225694,
+      "lon": 129.3310271,
+      "prefecture": "鹿児島県",
+      "prefectureCode": "46",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842186",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842186
+    },
+    "node/4796051121": {
+      "lat": 34.7774134,
+      "lon": 138.7656459,
+      "prefecture": "静岡県",
+      "prefectureCode": "22",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3793581",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603793581
+    },
+    "node/5976906386": {
+      "lat": 42.5841578,
+      "lon": 140.7055879,
+      "prefecture": "北海道",
+      "prefectureCode": "01",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3795658",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603795658
+    },
+    "node/6326887296": {
+      "lat": 35.5012699,
+      "lon": 135.7374482,
+      "prefecture": "福井県",
+      "prefectureCode": "18",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/357112",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600357112
+    },
+    "node/6466685655": {
+      "lat": 34.8042584,
+      "lon": 134.4613301,
+      "prefecture": "兵庫県",
+      "prefectureCode": "28",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/356912",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600356912
+    },
+    "node/6483592020": {
+      "lat": 33.0309123,
+      "lon": 131.920645,
+      "prefecture": "大分県",
+      "prefectureCode": "44",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/356911",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600356911
+    },
+    "node/6483909267": {
+      "lat": 32.3419472,
+      "lon": 131.6271576,
+      "prefecture": "宮崎県",
+      "prefectureCode": "45",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842184",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842184
+    },
+    "node/6487452000": {
+      "lat": 31.5587626,
+      "lon": 130.7455178,
+      "prefecture": "鹿児島県",
+      "prefectureCode": "46",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842186",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842186
+    },
+    "node/6489538851": {
+      "lat": 31.3788493,
+      "lon": 130.5453475,
+      "prefecture": "鹿児島県",
+      "prefectureCode": "46",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842186",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842186
+    },
+    "node/6501955139": {
+      "lat": 32.6583411,
+      "lon": 129.7552805,
+      "prefecture": "長崎県",
+      "prefectureCode": "42",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842151",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842151
+    },
+    "node/6503888684": {
+      "lat": 33.055746,
+      "lon": 129.8238069,
+      "prefecture": "長崎県",
+      "prefectureCode": "42",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842151",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842151
+    },
+    "node/6505184512": {
+      "lat": 33.4054368,
+      "lon": 129.8546034,
+      "prefecture": "佐賀県",
+      "prefectureCode": "41",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842150",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842150
+    },
+    "node/6505632525": {
+      "lat": 33.4714523,
+      "lon": 129.8495037,
+      "prefecture": "佐賀県",
+      "prefectureCode": "41",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842150",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842150
+    },
+    "node/6709084785": {
+      "lat": 34.3641119,
+      "lon": 139.2425013,
+      "prefecture": "東京都",
+      "prefectureCode": "13",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1543125",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601543125
+    },
+    "node/6996249710": {
+      "lat": 34.2553251,
+      "lon": 134.7194335,
+      "prefecture": "兵庫県",
+      "prefectureCode": "28",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/356912",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600356912
+    },
+    "node/9459867527": {
+      "lat": 34.9847493,
+      "lon": 139.0945735,
+      "prefecture": "静岡県",
+      "prefectureCode": "22",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3793581",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603793581
+    },
+    "way/1008058732": {
+      "lat": 35.088275,
+      "lon": 139.080137,
+      "prefecture": "静岡県",
+      "prefectureCode": "22",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3793581",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603793581
+    },
+    "way/1204161408": {
+      "lat": 34.3640019,
+      "lon": 139.2426272,
+      "prefecture": "東京都",
+      "prefectureCode": "13",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1543125",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601543125
+    },
+    "way/1346764463": {
+      "lat": 34.4950085,
+      "lon": 136.8363796,
+      "prefecture": "三重県",
+      "prefectureCode": "24",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/812190",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600812190
+    },
+    "way/1384178053": {
+      "lat": 43.1428892,
+      "lon": 140.4279968,
+      "prefecture": "北海道",
+      "prefectureCode": "01",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3795658",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603795658
+    },
+    "way/1426849736": {
+      "lat": 44.1779673,
+      "lon": 145.3122313,
+      "prefecture": "北海道",
+      "prefectureCode": "01",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3795658",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603795658
+    },
+    "way/196121710": {
+      "lat": 34.642832,
+      "lon": 135.0129312,
+      "prefecture": "兵庫県",
+      "prefectureCode": "28",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/356912",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600356912
+    },
+    "way/386522276": {
+      "lat": 34.6266591,
+      "lon": 135.0450212,
+      "prefecture": "兵庫県",
+      "prefectureCode": "28",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/356912",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600356912
+    },
+    "way/416895008": {
+      "lat": 45.1847184,
+      "lon": 141.1335143,
+      "prefecture": "北海道",
+      "prefectureCode": "01",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3795658",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603795658
+    },
+    "way/441752170": {
+      "lat": 35.5198425,
+      "lon": 133.2601502,
+      "prefecture": "鳥取県",
+      "prefectureCode": "31",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3285636",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603285636
+    },
+    "way/452105557": {
+      "lat": 31.5587889,
+      "lon": 130.7455233,
+      "prefecture": "鹿児島県",
+      "prefectureCode": "46",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842186",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842186
+    },
+    "way/480190738": {
+      "lat": 37.1192087,
+      "lon": 136.9969761,
+      "prefecture": "石川県",
+      "prefectureCode": "17",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3794726",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603794726
+    },
+    "way/539578546": {
+      "lat": 36.8652371,
+      "lon": 136.986883,
+      "prefecture": "富山県",
+      "prefectureCode": "16",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3793529",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603793529
+    },
+    "way/601255014": {
+      "lat": 34.4930128,
+      "lon": 133.9561814,
+      "prefecture": "岡山県",
+      "prefectureCode": "33",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3794962",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603794962
+    },
+    "way/612662915": {
+      "lat": 31.5914066,
+      "lon": 130.5936397,
+      "prefecture": "鹿児島県",
+      "prefectureCode": "46",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842186",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842186
+    },
+    "way/690855657": {
+      "lat": 33.7354875,
+      "lon": 131.6836257,
+      "prefecture": "大分県",
+      "prefectureCode": "44",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/356911",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600356911
+    },
+    "way/691012410": {
+      "lat": 33.0308763,
+      "lon": 131.9206115,
+      "prefecture": "大分県",
+      "prefectureCode": "44",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/356911",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600356911
+    },
+    "way/691042854": {
+      "lat": 32.3419957,
+      "lon": 131.6270742,
+      "prefecture": "宮崎県",
+      "prefectureCode": "45",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842184",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842184
+    },
+    "way/691547522": {
+      "lat": 31.2922163,
+      "lon": 130.6064266,
+      "prefecture": "鹿児島県",
+      "prefectureCode": "46",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842186",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842186
+    },
+    "way/692450856": {
+      "lat": 32.8717214,
+      "lon": 130.237055,
+      "prefecture": "長崎県",
+      "prefectureCode": "42",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842151",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842151
+    },
+    "way/692575874": {
+      "lat": 32.6583603,
+      "lon": 129.7552711,
+      "prefecture": "長崎県",
+      "prefectureCode": "42",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842151",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842151
+    },
+    "way/692759979": {
+      "lat": 33.0558269,
+      "lon": 129.8239035,
+      "prefecture": "長崎県",
+      "prefectureCode": "42",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/1842151",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3601842151
+    },
+    "way/696125143": {
+      "lat": 37.6347908,
+      "lon": 138.7605482,
+      "prefecture": "新潟県",
+      "prefectureCode": "15",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/3559887",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3603559887
+    },
+    "way/708226699": {
+      "lat": 36.0374987,
+      "lon": 136.0100676,
+      "prefecture": "福井県",
+      "prefectureCode": "18",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/357112",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600357112
+    },
+    "way/787165994": {
+      "lat": 35.4812781,
+      "lon": 135.632218,
+      "prefecture": "福井県",
+      "prefectureCode": "18",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/357112",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600357112
+    },
+    "way/873020645": {
+      "lat": 35.4892567,
+      "lon": 135.5953228,
+      "prefecture": "福井県",
+      "prefectureCode": "18",
+      "prefectureSource": "OSM current administrative area point containment",
+      "sourceUrl": "https://www.openstreetmap.org/relation/357112",
+      "sourceDate": "2026-09-18T13:42:06Z",
+      "areaId": 3600357112
+    }
+  }
+}

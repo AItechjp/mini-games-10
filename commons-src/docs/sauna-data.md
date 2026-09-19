@@ -1,10 +1,108 @@
-# Nationwide sauna directory
+# SaunaNow nationwide inventory
 
-`/sauna` is part of the existing COMMONS Site. Its public hub entry and side navigation use `lib/site-catalog.ts`.
+`https://aitechd.com/commons/sauna/` uses `aitech/sauna-nationwide.tsx` and
+`data/sauna-inventory.json`. This is the complete acquired scope of the listed
+sources, **not a certified complete register of every bathing facility in Japan**.
+The page shows coverage and missing opening hours explicitly. Unavailable hours
+must not be fabricated, and facilities must not disappear just because hours are
+missing. No top-N cap is applied during acquisition, assembly or search.
 
-The dataset is an OpenStreetMap extract, **not an exhaustive register of Japan's saunas**. The first import contains 901 records across 42 prefectures; all 47 prefecture filters remain visible. 0 records means no data, not no facilities. Neither scheduled opening hours nor a fresh status response confirms actual operation or admission. The source snapshot date is June 1, 2026 in Japan; the later acquisition date is displayed separately. The page does not claim a live facility-data feed.
+## Sources and provenance
 
-## Import and coverage
+- OpenStreetMap: the whole Japanese administrative area, including sauna,
+  public bath, onsen/sento and bath-type tags, plus lifecycle-tagged features.
+  The acquisition requires no Overpass remark and reconciles every object type
+  with the final `out count`. Both OSM database time and area time are retained.
+  All 47 prefectures are assigned by prefecture polygons; coastal exceptions
+  use explicit addresses or a current OSM administrative-area lookup, never
+  proximity to a guessed prefecture.
+- Municipal open data: all rows from 12 specifically identified public license
+  or bath inventories. The source table gives their actual geographic scope.
+  Data dates and catalog metadata modification dates are separate. Registry
+  presence does not establish continuing operation or public admission.
+- Bath unions: the complete published lists for Hyogo, Kyoto, Hokkaido and the
+  three Kanagawa regions, 342 entries before cross-source deduplication.
+- Operators: the specified eight chain lists. Inaccessible or unverified
+  entries are recorded as gaps in source coverage, never counted as collected.
+- The original 124 individually reviewed schedules remain the highest-priority
+  records, including their closures, bath-specific hours and admission notes.
+
+All records have source URLs. OSM-derived data is available as a database under
+[ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/) with
+[OpenStreetMap attribution](https://www.openstreetmap.org/copyright). Municipal
+licenses and direct data URLs are retained per source. Official-site facts do
+not include copyrighted venue descriptions, reviews or photographs.
+
+`checkedAt` means a schedule evidence/check date; an OSM download timestamp is
+never substituted for `check_date:opening_hours`. `sourceDate` is the date of the
+source data, and `acquiredAt` is the acquisition date. Old registry schedules
+remain dated as old. Weekday-only OSM rules are kept as calendar notes and never
+reported as explicit opening times or assumed to mean 24-hour bathing.
+
+## Scope, merge and status rules
+
+Foot/hand/finger baths, toilets, explicitly closed/demolished facilities and
+non-bathing license categories are excluded with reasons. Classification gaps
+in municipal permit records stay in the source snapshot but are excluded from
+public results. Temporary closures are retained and visibly marked. A closed
+sauna inside an otherwise operating bath is handled separately. Access limits,
+reservation requirements and known welfare-only limits are preserved.
+
+Equal names alone are insufficient to merge records. A match requires the same
+source ID or the same normalized name/prefecture with additional address, phone,
+website or close-coordinate evidence and no conflicting city. Generic unnamed
+points are not merged by proximity. Additional evidence from later sources gets
+a second reconciliation pass. Reviewed schedules have priority; other sources
+and source IDs are retained. `sauna-inventory-audit.json` accounts for every
+merged/excluded row. Source totals must equal displayed records plus duplicates
+and exclusions, including rows rejected during registry preprocessing.
+
+The UI searches every record, then paginates the matching results at 50 or 100
+per page. Filters include all 47 prefectures, municipality, venue type, presence
+of hours and access conditions. Conditional, undated, stale or unparseable
+schedules never produce an unqualified currently-open badge. Explicit closure
+periods and reception cutoffs retain the original tested behavior. A prose
+schedule remains visible without guessing a machine-readable weekly rule.
+
+Only the existing live collector's small configured subset is periodically
+rechecked. A one-minute UI refresh is not a nationwide source refresh. Failed
+requests never remove saved facilities. Matching fresh evidence updates both
+schedule provenance and its date; conflicting evidence is displayed for review.
+
+## Rebuild and validation
+
+Normalized acquired snapshots are in `data/sauna-sources/` and retain their
+source counts, dates, licensing and gaps. To rebuild the inventory from the
+committed snapshots:
+
+```sh
+python3 scripts/assemble-sauna-inventory.py
+python3 scripts/test-sauna-inventory.py
+node scripts/test-sauna-nationwide.mjs
+pnpm typecheck
+pnpm build:aitech
+```
+
+`stage-sauna-sources.py --help` describes the explicit raw collector inputs.
+The OSM collector and prefecture reconciliation helper are under
+`scripts/sauna-sources/`; their CLI supports an output directory, original
+acquisition timestamp when reprocessing, boundary file and baseline snapshot.
+A fresh OSM import must download current prefecture boundaries, re-resolve any
+unassigned coastal points, and retain the original acquisition metadata.
+Never publish partial/failed network responses as complete.
+
+`data/sauna-inventory.json` and `public/sauna-inventory.json` must match exactly.
+The build copies the latter to `/commons/sauna-inventory.json`. Validation covers
+source-count reconciliation, missing-hour preservation, all prefectures,
+non-ambiguous merging, unchanged reviewed schedules, restricted/stale status,
+closure exceptions and overnight entry cutoffs.
+
+## Legacy dataset
+
+The earlier 901-record sauna-only snapshot and its original endpoint remain
+available to legacy consumers. They are not the current nationwide inventory.
+
+### Legacy import and coverage
 
 Public Overpass instance: `https://overpass.private.coffee/api/interpreter`.
 
@@ -23,7 +121,7 @@ To update, acquire the four responses and boundary data, run `scripts/import-sau
 
 `data/sauna-snapshot.json` is the server dataset. `public/sauna-data.json` is the identical downloadable database, offered under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/) with [OpenStreetMap attribution](https://www.openstreetmap.org/copyright).
 
-## Opening status
+### Legacy opening status
 
 `opening_hours` 3.14.0 evaluates the published OSM expressions in the UTC Worker, shifted to Japanese wall-clock time. Simple Japanese holiday rules are expanded to the Cabinet Office's 2026/2027 calendar before parsing, including substitute and citizens' holidays missing from the package's Japanese calendar. Unsupported holiday intersections/offsets and unverified years remain unknown. Facility hours are distinguished from sauna-specific hours. Unparseable, by-appointment, solar, school-holiday, or non-public entries return `unknown` instead of inventing hours. The status API returns every ID and no-store server time; the client checks the complete set of IDs and the dataset revision. A status refresh runs once per minute while visible and on reconnection. After two minutes without a successful response, all displayed status badges become `unknown`.
 
@@ -32,32 +130,3 @@ Rendering has no pagination, top-N limit, or load-more cutoff. CSS `content-visi
 Validation: `node scripts/test-sauna.mjs` and the existing project build. A request to `/api/sauna/status` provides calculated status, not a fresh facility-data import.
 
 The opening-hours parser is used server-side under LGPL-3.0-only. Its published source and license are available at [opening-hours/opening_hours.js](https://github.com/opening-hours/opening_hours.js).
-
-## Current public SaunaNow (2026-09-19)
-
-The canonical `/commons/sauna/` route uses `aitech/sauna-nationwide.tsx` and
-`data/sauna-nationwide.json`. The legacy OSM dataset described above is retained
-for its original consumers; it is not the nationwide page's current inventory.
-The nationwide inventory has 124 researched facilities across all 47 prefectures,
-including 24 sento/public baths. It is not a complete registry of Japanese baths.
-Each entry has its source URL, checked date, explicit hours and applicable notes.
-Official operators, municipalities, bath associations and tourism associations
-supply these facts. No hours are guessed from nearby or similar facilities.
-
-The page keeps the researched schedule visible during collection outages. Only
-fresh bath records from the existing collector are considered for enrichment.
-A conflicting new expression stops automatic open/closed classification instead
-of replacing detailed researched hours with a simpler facility-wide expression.
-Reviewed bath-specific hours can be locked against that less precise expression.
-A schedule's date is distinct from the clock or the API refresh time.
-
-The normal weekly schedule is calculated using the existing Japan-aware parser.
-Explicit closures, partial-day exceptions, date-effective schedule changes and
-monthly closed days have separate fields. Holiday-shift rules which cannot be
-represented safely use `manualCalendar`; their full opening hours remain visible.
-Entrance cutoffs from a single time range must not be applied to a different
-morning/afternoon range. Source `hoursText` includes the complete admission and
-sauna/bath distinctions even where automatic admission classification is omitted.
-
-Run `node scripts/test-sauna-nationwide.mjs`, the existing local-hours/realtime
-checks, typecheck and the Commons build after changing these records.

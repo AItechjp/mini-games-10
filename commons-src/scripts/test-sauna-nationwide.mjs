@@ -5,6 +5,25 @@ const {build}=createRequire(await realpath('node_modules/vite/package.json'))('e
 await build({stdin:{contents:"export {combineFacilities,facilityState} from './aitech/sauna-nationwide';export {localStatus} from './lib/local-hours';export {prefectures} from './lib/sauna-types'",resolveDir:process.cwd(),loader:'ts'},outfile:'/tmp/sauna-national-test.mjs',platform:'node',format:'esm',bundle:true,loader:{'.css':'empty'}});
 const {combineFacilities,facilityState,localStatus,prefectures}=await import('/tmp/sauna-national-test.mjs');
 const facilities=JSON.parse(await readFile('data/sauna-nationwide.json'));
+const inventory=JSON.parse(await readFile('data/sauna-inventory.json'));
+const published=await readFile('public/sauna-inventory.json','utf8');
+assert.equal(published,await readFile('data/sauna-inventory.json','utf8'),'Download must contain the same inventory as the UI');
+const all=inventory.facilities,c=inventory.coverage;
+assert.equal(new Set(all.map(s=>s.id)).size,all.length);
+assert.equal(new Set(all.map(s=>s.prefecture)).size,47);
+assert.equal(c.uniqueFacilities,all.length);
+assert.equal(c.rawRecords,all.length+c.excluded+c.duplicates,'Every acquired record must have a disposition');
+assert.equal(c.withHours,all.filter(s=>s.hours||s.hoursText).length);
+assert.equal(c.withoutHours,all.filter(s=>!s.hours&&!s.hoursText).length);
+assert.equal(c.rawRecords,c.sources.reduce((sum,s)=>sum+s.count,0),'Source counts must reconcile with all acquired rows');
+assert.equal(c.sourceCount,c.sources.length);
+for(const f of all){
+ assert.ok(prefectures.includes(f.prefecture)&&/^https?:\/\//.test(f.sourceUrl),f.id+' source and prefecture');
+ if(f.sourceType==='osm'&&f.hours)assert.match(f.hours,/\d{1,2}:\d{2}|24\/7/,f.id+' weekday-only rules are not opening times');
+ if(!f.hours&&!f.hoursText&&f.status!=='inactive')assert.equal(facilityState(f,Date.now()),'unlisted');
+}
+for(const saved of facilities){const current=all.find(s=>s.id===saved.id);assert.ok(current,saved.id+' reviewed facility retained');assert.equal(current.hours,saved.hours);assert.equal(current.hoursText,saved.hoursText);}
+for(const p of prefectures){assert.equal(c.prefectures[p].count,all.filter(s=>s.prefecture===p).length);}
 assert.equal(new Set(facilities.map(s=>s.id)).size,facilities.length);
 assert.equal(new Set(facilities.map(s=>s.prefecture)).size,47);
 for(const p of prefectures)assert.ok(facilities.filter(s=>s.prefecture===p).length>=2,p);
@@ -28,4 +47,10 @@ assert.equal(facilityState(yulax,at('2026-11-20T18:00:00')),'open');
 const live={...sample,kinds:['sauna'],lastEntry:1410,lastEntryBeforeClose:undefined,checkedAt:'2026-09-19T11:50:00+09:00',expiresAt:'2026-09-19T13:50:00+09:00'};
 assert.equal(combineFacilities([{...sample,lastEntryBeforeClose:60}],[live],now)[0].lastEntryBeforeClose,undefined);
 assert.equal(combineFacilities([sample],[{...live,expiresAt:'2026-09-19T10:00:00+09:00'}],now)[0].checkedAt,sample.checkedAt);
-console.log(`Verified ${facilities.length} facilities, all 47 prefectures, source completeness, schedules, overnight admission and merge freshness.`);
+const pending={...sample,hours:'',hoursText:'',checkedAt:'',manualCalendar:true,inventoryOnly:true};
+const supplemented=combineFacilities([pending],[live],now)[0];
+assert.equal(supplemented.hours,live.hours);assert.equal(supplemented.inventoryOnly,false);assert.equal(supplemented.manualCalendar,false);
+assert.equal(combineFacilities([pending],[{...live,expiresAt:'invalid'}],now)[0].hours,'');
+const otherCity={...live,id:'other-city',city:'別の市',address:'別の市100'};
+assert.equal(combineFacilities([{...sample,city:'もとの市'}],[otherCity],now).length,2,'Same name in a different city is not the same facility');
+console.log(`Verified ${all.length} inventory records, all 47 prefectures, source reconciliation, ${facilities.length} preserved schedules, overnight admission and merge freshness.`);

@@ -46,7 +46,7 @@ export const sites:SiteEntry[] = [
     actionLabel:'営業中の店を見る',
   },
   {
-    id:'sauna-now', name:'サウナナウ 全国版', description:'47都道府県のサウナ・銭湯を検索。掲載全件の営業時間・定休日・出典を確認。',
+    id:'sauna-now', name:'サウナナウ 全国版', description:'全国のサウナ・銭湯・温浴施設を都道府県から検索。営業時間・利用条件と収集状況を確認。',
     href:'/commons/sauna/', label:'全国・サウナ', color:'#087d73',
     keywords:'全国 都道府県 サウナ 営業中 深夜 今 温泉 銭湯 スパ 岐阜 愛知',
     actionLabel:'サウナ一覧を見る',
