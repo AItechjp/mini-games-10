@@ -88,6 +88,7 @@ jobs:
           node tests/board-games.mjs
           node tests/dungeon-dice.mjs
           node tests/quiz-raid.mjs
+          node tests/onepiece-engine.mjs
       - name: Install browser smoke-test runtime and self-hosted 3D engine
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0 three@0.180.0
@@ -135,6 +136,7 @@ jobs:
           curl -fsS http://127.0.0.1:4173/game23.html | grep -q 'game23-v3-loader.js'
           curl -fsS http://127.0.0.1:4173/fps.html | grep -q 'fps-game.js'
           node tests/quiz-raid-browser.mjs
+          node tests/onepiece-browser.mjs
           node tests/usage-dashboard-browser.mjs
           node tests/commons-realtime-browser.mjs
           node tests/government-network-browser.mjs

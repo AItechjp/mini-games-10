@@ -23,7 +23,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-001.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-001.png?260828",
+    "localImage": "./art/ST01-001.webp"
   },
   "ST01-002": {
     "id": "ST01-002",
@@ -48,7 +49,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-002.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-002.png?260828",
+    "localImage": "./art/ST01-002.webp"
   },
   "ST01-003": {
     "id": "ST01-003",
@@ -74,7 +76,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-003.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-003.png?260828",
+    "localImage": "./art/ST01-003.webp"
   },
   "ST01-004": {
     "id": "ST01-004",
@@ -99,7 +102,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-004.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-004.png?260828",
+    "localImage": "./art/ST01-004.webp"
   },
   "ST01-005": {
     "id": "ST01-005",
@@ -125,7 +129,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-005.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-005.png?260828",
+    "localImage": "./art/ST01-005.webp"
   },
   "ST01-006": {
     "id": "ST01-006",
@@ -151,7 +156,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-006.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-006.png?260828",
+    "localImage": "./art/ST01-006.webp"
   },
   "ST01-007": {
     "id": "ST01-007",
@@ -176,7 +182,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-007.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-007.png?260828",
+    "localImage": "./art/ST01-007.webp"
   },
   "ST01-008": {
     "id": "ST01-008",
@@ -201,7 +208,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-008.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-008.png?260828",
+    "localImage": "./art/ST01-008.webp"
   },
   "ST01-009": {
     "id": "ST01-009",
@@ -226,7 +234,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-009.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-009.png?260828",
+    "localImage": "./art/ST01-009.webp"
   },
   "ST01-010": {
     "id": "ST01-010",
@@ -251,7 +260,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-010.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-010.png?260828",
+    "localImage": "./art/ST01-010.webp"
   },
   "ST01-011": {
     "id": "ST01-011",
@@ -276,7 +286,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-011.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-011.png?260828",
+    "localImage": "./art/ST01-011.webp"
   },
   "ST01-012": {
     "id": "ST01-012",
@@ -302,7 +313,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-012.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-012.png?260828",
+    "localImage": "./art/ST01-012.webp"
   },
   "ST01-013": {
     "id": "ST01-013",
@@ -328,7 +340,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-013.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-013.png?260828",
+    "localImage": "./art/ST01-013.webp"
   },
   "ST01-014": {
     "id": "ST01-014",
@@ -354,7 +367,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-014.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-014.png?260828",
+    "localImage": "./art/ST01-014.webp"
   },
   "ST01-015": {
     "id": "ST01-015",
@@ -380,7 +394,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-015.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-015.png?260828",
+    "localImage": "./art/ST01-015.webp"
   },
   "ST01-016": {
     "id": "ST01-016",
@@ -405,7 +420,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-016.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-016.png?260828",
+    "localImage": "./art/ST01-016.webp"
   },
   "ST01-017": {
     "id": "ST01-017",
@@ -430,7 +446,8 @@
     "seriesId": "550001",
     "set": "麦わらの一味【ST-01】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550001",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-017.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST01-017.png?260828",
+    "localImage": "./art/ST01-017.webp"
   },
   "ST02-001": {
     "id": "ST02-001",
@@ -456,7 +473,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-001.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-001.png?260828",
+    "localImage": "./art/ST02-001.webp"
   },
   "ST02-002": {
     "id": "ST02-002",
@@ -481,7 +499,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-002.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-002.png?260828",
+    "localImage": "./art/ST02-002.webp"
   },
   "ST02-003": {
     "id": "ST02-003",
@@ -507,7 +526,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-003.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-003.png?260828",
+    "localImage": "./art/ST02-003.webp"
   },
   "ST02-004": {
     "id": "ST02-004",
@@ -533,7 +553,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-004.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-004.png?260828",
+    "localImage": "./art/ST02-004.webp"
   },
   "ST02-005": {
     "id": "ST02-005",
@@ -559,7 +580,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-005.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-005.png?260828",
+    "localImage": "./art/ST02-005.webp"
   },
   "ST02-006": {
     "id": "ST02-006",
@@ -584,7 +606,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-006.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-006.png?260828",
+    "localImage": "./art/ST02-006.webp"
   },
   "ST02-007": {
     "id": "ST02-007",
@@ -610,7 +633,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-007.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-007.png?260828",
+    "localImage": "./art/ST02-007.webp"
   },
   "ST02-008": {
     "id": "ST02-008",
@@ -636,7 +660,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-008.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-008.png?260828",
+    "localImage": "./art/ST02-008.webp"
   },
   "ST02-009": {
     "id": "ST02-009",
@@ -662,7 +687,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-009.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-009.png?260828",
+    "localImage": "./art/ST02-009.webp"
   },
   "ST02-010": {
     "id": "ST02-010",
@@ -688,7 +714,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-010.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-010.png?260828",
+    "localImage": "./art/ST02-010.webp"
   },
   "ST02-011": {
     "id": "ST02-011",
@@ -713,7 +740,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-011.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-011.png?260828",
+    "localImage": "./art/ST02-011.webp"
   },
   "ST02-012": {
     "id": "ST02-012",
@@ -739,7 +767,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-012.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-012.png?260828",
+    "localImage": "./art/ST02-012.webp"
   },
   "ST02-013": {
     "id": "ST02-013",
@@ -765,7 +794,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-013.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-013.png?260828",
+    "localImage": "./art/ST02-013.webp"
   },
   "ST02-014": {
     "id": "ST02-014",
@@ -792,7 +822,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-014.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-014.png?260828",
+    "localImage": "./art/ST02-014.webp"
   },
   "ST02-015": {
     "id": "ST02-015",
@@ -818,7 +849,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-015.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-015.png?260828",
+    "localImage": "./art/ST02-015.webp"
   },
   "ST02-016": {
     "id": "ST02-016",
@@ -844,7 +876,8 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-016.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-016.png?260828",
+    "localImage": "./art/ST02-016.webp"
   },
   "ST02-017": {
     "id": "ST02-017",
@@ -870,6 +903,7 @@
     "seriesId": "550002",
     "set": "最悪の世代【ST-02】",
     "sourceUrl": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
-    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-017.png?260828"
+    "image": "https://www.onepiece-cardgame.com/images/cardlist/card/ST02-017.png?260828",
+    "localImage": "./art/ST02-017.webp"
   }
 }

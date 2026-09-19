@@ -1,5 +1,5 @@
 /** Deterministic ONE PIECE CARD GAME engine. Supported pool: ST01 / ST02 only. */
-import catalog from './cards.json' with { type: 'json' };
+import catalog from './cards.mjs?v=20260919-art1';
 export const CARDS = Object.freeze(Object.fromEntries(Object.entries(catalog).map(([id,c])=>[id,Object.freeze({...c,id,name:c.nameJa||c.name,nameJa:c.nameJa||c.name,type:c.type.toLowerCase(),colors:c.colors||[id.startsWith('ST01')?'red':'green'],traits:c.traits||[],cost:Number(c.cost)||0,power:Number(c.power)||0,counter:Number(c.counter)||0})])));
 const counts01=[4,4,4,4,4,4,4,4,2,4,2,2,2,2,2,2];
 const counts02=[4,4,4,4,2,4,4,2,2,4,4,2,2,2,4,2];

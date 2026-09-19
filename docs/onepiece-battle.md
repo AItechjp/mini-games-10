@@ -43,15 +43,28 @@ deck exhaustion, and all supported starter card effects through explicit
 target/choice prompts. Attached DON's inherent power applies only on its
 owner's turn; conditional printed card effects have their own timing.
 
-Card artwork uses actual URLs discovered in the official Japanese card list.
-Artwork rights remain with their respective owners. A collected image URL is
-not a downloaded image file. Retrieval metadata and per-series totals in
-`catalog.json` distinguish coverage, unique card numbers and local downloads.
-Remote images may fail independently of gameplay; textual cards remain usable.
+All 34 playable ST01/ST02 cards have Japanese artwork stored in `art/*.webp`,
+matching the Digimon game’s same-origin image delivery. Leaders, characters,
+hands, prompts, trash and detail views use `localImage` from the starter data.
+The art manifest records each source image, matching card number and hash.
+Original official metadata/image URLs are retained; other catalog printings
+remain remote and retain their own illustrations. Artwork rights remain with
+their respective owners. Catalog collection and local downloads are counted
+separately in `catalog.json`.
 
 ## Verification
 
 `node tests/onepiece-engine.mjs` covers rules and complete CPU matches.
+After `node scripts/build-static.mjs`, serve `dist/` on port 4173 and run
+`node tests/onepiece-browser.mjs`. This checks PC/mobile startup, actual decoding
+of all 34 bundled images, in-play/detail images, CPU actions, hotseat privacy
+and recovery from a failed module request. GitHub Pages runs both tests.
+
+Starter data is authored in `cards.json`; `scripts/build-onepiece-data.mjs`
+generates `cards.mjs` during the static build. The engine uses an ordinary
+JavaScript import because the ES2022 transform removes native JSON import
+attributes without bundling, which previously broke the published game. The
+versioned bootstrap displays a reload action if a dependency cannot load.
 `node tests/onepiece-online.mjs` exercises independent live clients, redacted
 state, legal moves, rejected stale/illegal commands and reconnection.
 
@@ -62,8 +75,9 @@ reorder object keys.
 ## Catalog snapshot
 
 The 2026-09-19 snapshot covers all 62 listed series: 4,987 printings / official
-image URLs and 2,823 card numbers; no series failed. Zero image files were
-downloaded. Some printings have unavailable numeric metadata, retained as null.
+image URLs and 2,823 card numbers; no series failed. The 34 original ST01/ST02
+images are bundled locally; the remaining catalog images are remote. Some
+printings have unavailable numeric metadata, retained as null.
 Catalog JSON is split into 100-record parts referenced by `catalog.json`.
 
 To collect a future snapshot (Python 3.10+ and aiohttp):
