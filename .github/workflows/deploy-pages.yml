@@ -57,6 +57,7 @@ jobs:
           node scripts/test-commercial.mjs
           node scripts/test-recovery.mjs
           node scripts/test-sauna.mjs
+          node scripts/test-sauna-nationwide.mjs
           node scripts/test-local-hours.mjs
           node scripts/test-coverage.mjs
           node scripts/test-realtime.mjs

@@ -32,3 +32,32 @@ Rendering has no pagination, top-N limit, or load-more cutoff. CSS `content-visi
 Validation: `node scripts/test-sauna.mjs` and the existing project build. A request to `/api/sauna/status` provides calculated status, not a fresh facility-data import.
 
 The opening-hours parser is used server-side under LGPL-3.0-only. Its published source and license are available at [opening-hours/opening_hours.js](https://github.com/opening-hours/opening_hours.js).
+
+## Current public SaunaNow (2026-09-19)
+
+The canonical `/commons/sauna/` route uses `aitech/sauna-nationwide.tsx` and
+`data/sauna-nationwide.json`. The legacy OSM dataset described above is retained
+for its original consumers; it is not the nationwide page's current inventory.
+The nationwide inventory has 124 researched facilities across all 47 prefectures,
+including 24 sento/public baths. It is not a complete registry of Japanese baths.
+Each entry has its source URL, checked date, explicit hours and applicable notes.
+Official operators, municipalities, bath associations and tourism associations
+supply these facts. No hours are guessed from nearby or similar facilities.
+
+The page keeps the researched schedule visible during collection outages. Only
+fresh bath records from the existing collector are considered for enrichment.
+A conflicting new expression stops automatic open/closed classification instead
+of replacing detailed researched hours with a simpler facility-wide expression.
+Reviewed bath-specific hours can be locked against that less precise expression.
+A schedule's date is distinct from the clock or the API refresh time.
+
+The normal weekly schedule is calculated using the existing Japan-aware parser.
+Explicit closures, partial-day exceptions, date-effective schedule changes and
+monthly closed days have separate fields. Holiday-shift rules which cannot be
+represented safely use `manualCalendar`; their full opening hours remain visible.
+Entrance cutoffs from a single time range must not be applied to a different
+morning/afternoon range. Source `hoursText` includes the complete admission and
+sauna/bath distinctions even where automatic admission classification is omitted.
+
+Run `node scripts/test-sauna-nationwide.mjs`, the existing local-hours/realtime
+checks, typecheck and the Commons build after changing these records.

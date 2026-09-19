@@ -16,6 +16,7 @@ const Bitcoin=lazy(()=>import('@/app/bitcoin/explorer'));
 const Onion=lazy(()=>import('@/app/onion/directory'));
 const Openings=lazy(()=>import('@/app/ui/opening-directory'));
 const LiveDirectory=lazy(()=>import('./live-directory'));
+const SaunaNationwide=lazy(()=>import('./sauna-nationwide'));
 function Router(){
  const path=routePath(location.pathname),params=new URLSearchParams(location.search);
  if(path===null)return <main className="commons-loading"><h1>URLを確認してください</h1><p>リンクの形式が正しくありません。</p><a href="/commons/">サイト一覧へ</a></main>;
@@ -27,7 +28,7 @@ function Router(){
  if(path==='bitcoin')return <Bitcoin/>;
  if(path==='onion')return <Onion/>;
  if(path==='ramen')return <LiveDirectory kind="ramen"/>;
- if(path==='sauna')return <LiveDirectory kind="sauna"/>;
+ if(path==='sauna')return <SaunaNationwide/>;
  if(/^local\/(supermarkets|saunas|sento|fishmongers)$/.test(path))return <LiveDirectory kind={path.split('/')[1]}/>;
  if(path==='openings/restaurants'||path==='openings/ramen'||path==='openings/sauna')return <Openings kind={path.endsWith('sauna')?'sauna':'ramen'} initial={{records:[],sources:[],updatedAt:null}} serverNow={new Date().toISOString()}/>;
  return <main className="commons-loading"><h1>ページが見つかりません</h1><a href="/commons/">コモンズに戻る</a></main>;
