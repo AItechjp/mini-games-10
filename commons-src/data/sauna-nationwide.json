@@ -226,7 +226,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "営業中判定は大浴場・サウナの利用時間。"
+    "note": "浴場・サウナは06:00〜翌01:00、館内は24時間利用可能。"
   },
   {
     "id": "national-56f78dc083782f3a",
@@ -271,7 +271,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "営業中判定は大浴場の利用時間。日帰り入館チェックイン05:00、チェックアウト09:00。"
+    "note": "日帰り入館チェックイン05:00、チェックアウト09:00。"
   },
   {
     "id": "national-bf66a35b6449162c",
@@ -476,7 +476,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "金土祝前日は館内を翌08:00まで利用可能。ただし02:00〜05:00は入浴不可。営業中判定は浴場の時間。",
+    "note": "金土祝前日は館内を翌08:00まで利用可能。ただし02:00〜05:00は入浴不可。",
     "manualCalendar": true
   },
   {
@@ -617,7 +617,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "営業中判定は浴室終了22:45まで。公式サイト新旧双方の営業時間記載を照合。",
+    "note": "浴室・プール・フィットネスは施設閉館の15分前に終了。",
     "lastEntry": 1320
   },
   {
@@ -821,7 +821,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "2026年10月1日から開館を8:00へ変更する公式画像告知を確認。9月1～9日はタンク修繕休館。サウナあり。",
+    "note": "2026年10月1日から開館が08:00に変更。サウナあり。",
     "manualCalendar": true,
     "scheduleChanges": [
       {
@@ -1557,7 +1557,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "公式営業案内の検索インデックスで時間・休館条件を確認。ページ直接取得は502。",
+    "note": "",
     "lastEntry": 1440
   },
   {
@@ -1741,7 +1741,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "祝日の木曜営業・翌日振替休業は機械判定の通常曜日スケジュールに含めていないため、営業時間本文を優先。",
+    "note": "木曜日が祝日の場合は営業し、翌日が振替休業。",
     "manualCalendar": true
   },
   {
@@ -1907,7 +1907,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "hoursは浴室の最終利用時刻に合わせた。岩盤浴は10:00～22:30（受付21:30まで）。",
+    "note": "岩盤浴は10:00〜22:30（受付21:30まで）。",
     "lastEntry": 1335
   },
   {
@@ -1999,7 +1999,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "祝前日は曜日にかかわらず翌2:00まで。hoursの曜日規則だけでは祝前日延長を表せないため、hoursTextを優先。",
+    "note": "祝前日は曜日にかかわらず翌02:00まで。",
     "manualCalendar": true
   },
   {
@@ -2045,7 +2045,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "営業時間判定は温泉・サウナの利用可能時間。所在地公式 https://www.yulax.info/access/ 。",
+    "note": "08:00〜10:00は清掃のため入浴できません。",
     "exceptions": {
       "2026-11-16": "00:00-10:00",
       "2026-11-17": "off",
@@ -2169,7 +2169,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "hoursは日帰り浴場の利用時間。アウトドアのGRAN SAUNA MIYAZAKIは別施設・別利用時間。",
+    "note": "アウトドアのGRAN SAUNA MIYAZAKIは別施設・別利用時間。",
     "lastEntry": 1260
   },
   {
@@ -2192,7 +2192,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "鹿児島県公衆浴場業生活衛生同業組合の公式情報。天然温泉・電気式サウナあり。毎月の休業日はclosedTextで管理。",
+    "note": "天然温泉・電気式サウナあり。",
     "closedMonthDays": [
       5,
       15,
@@ -2219,7 +2219,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "鹿児島県公衆浴場業生活衛生同業組合の公式情報。サウナあり。祝日振替休業はclosedTextで管理。",
+    "note": "サウナあり。",
     "manualCalendar": true
   },
   {
@@ -2309,7 +2309,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "営業時間判定は浴場の利用時間。浴場清掃は2:00〜6:00、露天風呂は1:00〜6:00。岩盤浴は8:00〜翌1:00。"
+    "note": "浴場清掃は02:00〜06:00、露天風呂は01:00〜06:00。岩盤浴は08:00〜翌01:00。"
   },
   {
     "id": "national-a5ea688f3a457293",
@@ -2422,7 +2422,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "公式ページの営業時間画像を目視確認。営業時間画像: https://static.wixstatic.com/media/dbd57b_371f6765f1a04104a99f4180977eae20~mv2.png",
+    "note": "",
     "lastEntry": 1410
   },
   {
@@ -2490,7 +2490,7 @@
     "sourceType": "official",
     "checkedAt": "2026-09-19T12:00:00+09:00",
     "scope": "facility",
-    "note": "2026年10月1日以降の営業中判定を停止すること。ホテル・日帰り入浴・レストラン全館休業予定。",
+    "note": "工事期間中はホテル・日帰り入浴・レストラン全館が休業予定。",
     "closurePeriods": [
       {
         "from": "2026-10-01",
@@ -2659,7 +2659,8 @@
     ],
     "kind": "spa",
     "website": "https://www.meguminoyu.jp/",
-    "closedText": ""
+    "closedText": "",
+    "hoursText": "平日10:00〜23:00／土日09:00〜23:00。祝日はその曜日の時間を適用。"
   },
   {
     "id": "realtime-bizin",
@@ -2683,7 +2684,8 @@
     ],
     "kind": "spa",
     "website": "https://bizin-yu.co.jp/",
-    "closedText": ""
+    "closedText": "",
+    "hoursText": "10:00〜23:00"
   },
   {
     "id": "realtime-eagle",
@@ -2707,7 +2709,8 @@
     ],
     "kind": "sauna",
     "website": "https://sauna-eagle.jp/",
-    "closedText": ""
+    "closedText": "",
+    "hoursText": "浴場00:00〜08:30・10:00〜24:00。08:30〜10:00は清掃。館内は24時間営業。"
   },
   {
     "id": "realtime-toukichirou",
@@ -2767,7 +2770,8 @@
     ],
     "kind": "spa",
     "website": "https://toukichirou.com/",
-    "closedText": ""
+    "closedText": "",
+    "hoursText": "月〜木09:00〜翌01:00／金09:00〜翌02:00／土06:00〜翌02:00／日・祝06:00〜翌01:00"
   },
   {
     "id": "way/675900375",
@@ -2855,7 +2859,7 @@
     "checkedAt": "2026-09-19T13:35:00.612Z",
     "sourceUrl": "https://eastland.jp/",
     "sourceType": "official",
-    "note": "月曜日と第1・第3火曜日は休業。 公式発表の休業日：2024-08-16",
+    "note": "月曜日と第1・第3火曜日は休業。",
     "exceptions": {
       "2024-08-16": "off"
     },
@@ -2864,7 +2868,8 @@
     ],
     "kind": "sento",
     "website": "https://eastland.jp/",
-    "closedText": ""
+    "closedText": "",
+    "hoursText": "14:30〜23:00。月曜と第1・第3火曜は休業。"
   },
   {
     "id": "node/4554760789",
