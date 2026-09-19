@@ -1,0 +1,15 @@
+[
+  {
+    "cardId": "ST1-10",
+    "field": "evolution[0].level",
+    "listedValue": 6,
+    "correctedValue": 5,
+    "reason": "Japanese HTML card list incorrectly lists Lv.6; original official Japanese image visibly states Lv.5. Official English listing corroborates Lv.5, cost 2.",
+    "evidence": [
+      "https://digimoncard.com/images/cardlist/card/ST1-10.png?04",
+      "https://world.digimoncard.com/cards/?search=true&category=522101"
+    ],
+    "verifiedAt": "2026-09-19",
+    "verificationMethod": "Visual inspection of downloaded original Japanese card image; official English listing."
+  }
+]

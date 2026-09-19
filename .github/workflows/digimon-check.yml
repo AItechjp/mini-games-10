@@ -1,0 +1,39 @@
+name: Digimon card game checks
+on:
+  pull_request:
+    paths: ['digimon-card/**', 'tests/digimon-*', '.github/workflows/digimon-check.yml']
+  push:
+    branches: [main]
+    paths: ['digimon-card/**', 'tests/digimon-*', '.github/workflows/digimon-check.yml']
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify engine rules and source syntax
+        run: |
+          node --check digimon-card/app.mjs
+          node --check digimon-card/network.mjs
+          node --test tests/digimon-engine.mjs
+      - name: Install browser test runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify desktop, phone, landscape and hotseat
+        run: |
+          python3 -m http.server 4173 >/tmp/digimon-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          node tests/digimon-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: digimon-browser-evidence
+          path: test-output/digimon/
+          retention-days: 7
