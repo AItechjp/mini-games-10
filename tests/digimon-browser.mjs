@@ -10,8 +10,8 @@ try{
   await page.goto(base+'/digimon-card/');await page.getByRole('button',{name:'CPUと対戦 →',exact:true}).waitFor();
   await page.locator('.hero-card').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.complete?null:new Promise(r=>{i.onload=r;i.onerror=r}))));
   assert(await page.locator('.hero-card').evaluateAll(imgs=>imgs.every(i=>i.naturalWidth>0)),'starter art must load');
-  assert((await page.evaluate(()=>document.documentElement.scrollWidth))<=viewport.width+1,'home must not overflow');
   await page.screenshot({path:`test-output/digimon/${name}-home.png`,fullPage:true});
+  assert((await page.evaluate(()=>document.documentElement.scrollWidth))<=viewport.width+1,'home must not overflow');
   await page.getByRole('button',{name:'CPUと対戦 →',exact:true}).click();
   await page.getByRole('button',{name:'この手札で始める',exact:true}).waitFor({timeout:10000});await page.getByRole('button',{name:'この手札で始める',exact:true}).click();
   await page.locator('.hand .board-card').first().waitFor();
