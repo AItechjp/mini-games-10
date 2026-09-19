@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta id="site-https-policy" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta name="site-security-version" content="20260911-https-v2">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#183c36">
+  <meta name="description" content="予備試験の憲法を総論・人権・統治から体系的に学ぶマインドマップ。条文、判例、短答の注意点、論文の判断手順を階層でつなぐ。">
+  <title>憲法マインドマップ｜予備試験・短答と論文｜コモンズ</title>
+  <link rel="canonical" href="https://aitechd.com/commons/constitution/">
+  <link rel="icon" href="/commons/favicon.svg">
+  <link rel="stylesheet" href="./style.css?v=1">
+</head>
+<body>
+  <a class="skip" href="#detail">学習内容へ</a>
+  <header class="topbar">
+    <div class="brand"><a href="/commons/">COMMONS</a><span>/</span><a href="/commons/study/">予備試験</a></div>
+    <div class="header-actions"><a href="/yobi-quiz.html">短答過去問 ↗</a><a href="/yobi-ronbun.html">論文ノート ↗</a><button id="print" type="button">全範囲を印刷</button></div>
+  </header>
+  <section class="heading">
+    <div><p class="eyebrow">CONSTITUTION / 知識をつなぐ</p><h1>憲法マインドマップ</h1></div>
+    <p id="stats" class="stats" role="status">教材を読み込んでいます…</p>
+  </section>
+  <main class="workspace" id="workspace">
+    <aside class="chapters" aria-label="分野一覧">
+      <div class="chapter-heading">学習する分野 <span>CONTENTS</span></div>
+      <nav id="chapters"></nav>
+      <div class="progress-box"><span id="progress-label">想起できた論点</span><progress id="progress" value="0" max="1" aria-labelledby="progress-label"></progress><p id="progress-text">0 / 0</p><small>記録はこの端末・ブラウザに保存</small></div>
+      <details class="about"><summary>収録範囲・使い方</summary><p>枝をたどり、論点を選ぶと規範・短答・論文・判例を確認できます。「想起チェック」で説明できるか確かめてください。</p><p>主要論点を体系化した独自教材です。判例の事案・射程と学説を区別し、条文・公式過去問を併用してください。暗記のみで合格や知識の完全性を保証するものではありません。</p><p id="review-date"></p><a href="https://laws.e-gov.go.jp/law/321CONSTITUTION" target="_blank" rel="noopener">日本国憲法・条文 ↗</a></details>
+    </aside>
+    <section class="map-panel" aria-label="憲法の体系図">
+      <div class="mobile-chapter"><label for="chapter-select">分野</label><select id="chapter-select"></select></div>
+      <div class="search-row"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="論点・条文・判例を検索" aria-label="全分野の論点・条文・判例を検索" autocomplete="off"></label><button id="unlearned" aria-pressed="false" title="まだ想起できていない論点を表示">未習得</button></div>
+      <div class="map-toolbar"><div class="segmented" aria-label="表示切替"><button id="view-map" aria-pressed="true">マップ</button><button id="view-tree" aria-pressed="false">階層一覧</button></div><div class="branch-actions"><button id="expand">すべて開く</button><button id="collapse">折りたたむ</button></div></div>
+      <div id="map-label" class="map-label"></div>
+      <div id="map-viewport" class="map-viewport" tabindex="0" aria-label="マインドマップ。画面をスクロールして移動できます"><div id="map-sizer"><div id="map-canvas"></div></div></div>
+      <div id="outline" class="outline" hidden></div>
+      <div id="results" class="results" hidden aria-live="polite"></div>
+      <div class="map-footer"><span id="map-hint">項目を選ぶと解説、＋で枝を展開</span><div id="zoom-controls"><button id="zoom-out" aria-label="縮小">−</button><button id="zoom-reset" aria-label="標準倍率に戻す">100%</button><button id="zoom-in" aria-label="拡大">＋</button></div></div>
+    </section>
+    <section id="detail" class="detail" tabindex="-1" aria-label="選択した論点の解説"><div class="empty"><h2>知識を、体系から。</h2><p>学習する分野を選んでください。</p></div></section>
+  </main>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="print-content"></div>
+  <noscript><p class="noscript">枝の開閉や検索にはJavaScriptが必要です。<a href="./textbook.html">全範囲のテキスト版を読む</a></p></noscript>
+  <script type="module" src="./app.mjs?v=1"></script>
+</body>
+</html>

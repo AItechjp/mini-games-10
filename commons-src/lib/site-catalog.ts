@@ -116,8 +116,13 @@ const usageSite:SiteEntry={id:'usage-dashboard',name:'使用量と無料枠',des
 sites.push(usageSite);
 siteGroups.push({id:'operations',name:'サイト運用',numbers:[sites.length],sites:[usageSite]});
 
+const constitutionSite:SiteEntry={id:'constitution-map',name:'憲法マインドマップ',description:'総論・人権・統治を階層で整理。条文・判例から短答の注意点と論文の答案構成へ。',href:'/commons/constitution/',label:'予備試験・短答と論文',color:'#196552',keywords:'憲法 予備試験 司法試験 マインドマップ マインドツリー 暗記 短答 論文 人権 統治 判例',actionLabel:'マップを開く'};
+sites.push(constitutionSite);
+siteGroups.find(group=>group.id==='study')?.sites.push(constitutionSite);
+
 export const listedToolIds = new Set(sites.flatMap(site=>site.toolId?[site.toolId]:[]));
 export const studyPages = [
+  {name:'憲法マインドマップ',description:'条文・規範・判例を体系化。短答の注意点、論文の処理、想起チェック。',href:'/commons/constitution/'},
   {name:'短答ノート',description:'過去問演習、自動採点、間違えた問題の復習。',href:'/yobi-quiz.html'},
   {name:'論文ノート',description:'科目別の学習、公式過去問、答案構成・起案。',href:'/yobi-ronbun.html'},
 ];

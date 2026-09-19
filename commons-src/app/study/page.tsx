@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import {ArrowLeft,ArrowUpRight,BookOpen,PenLine} from 'lucide-react';
+import {ArrowLeft,ArrowUpRight,BookOpen,PenLine,Network} from 'lucide-react';
 import {studyPages} from '@/lib/site-catalog';
 import {Brand} from '@/app/ui/common';
 
@@ -10,7 +10,7 @@ export default function Study() {
     <main className="study-page">
       <div className="intro"><h1>予備試験対策集</h1><p>今日取り組む学習を選びましょう。</p></div>
       <div className="study-grid">{studyPages.map((page,index)=>{
-        const Icon=index===0?BookOpen:PenLine;
+        const Icon=page.href.includes('constitution')?Network:page.href.includes('quiz')?BookOpen:PenLine;
         return <a className="study-card" key={page.href} href={page.href}><span className="study-icon"><Icon size={28}/></span><h2>{page.name}</h2><p>{page.description}</p><span className="study-open">{page.name}を開く<ArrowUpRight size={18}/></span></a>;
       })}</div>
       <p className="study-note">学習の進捗は、この端末・ブラウザに保存されます。これまでの短答・論文ノートの記録をそのまま使えます。</p>
