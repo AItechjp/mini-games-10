@@ -12,3 +12,7 @@ https-release.json
 __pycache__/
 
 /cyber-quiz/bank.json
+
+# Reproducible official card image cache; bundled and verified during deploy.
+onepiece-battle/art/catalog/
+onepiece-battle/art/catalog-manifest.json

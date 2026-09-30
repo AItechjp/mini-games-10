@@ -1,10 +1,11 @@
-import { CARDS, STARTER_DECKS, createGame, act, legalActions, viewFor, chooseAI, actingPlayer } from './engine.mjs?v=20260919-art1';
+import { CARDS, STARTER_DECKS, createGame, act, legalActions, viewFor, chooseAI, actingPlayer } from './engine.mjs?v=20260930-all-art';
 
 const $ = id => document.getElementById(id);
 const html = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const TYPES = {leader:'リーダー',character:'キャラクター',event:'イベント',stage:'ステージ'};
 const COLORS = {'赤':'red','緑':'green','青':'blue','紫':'purple','黒':'black','黄':'yellow'};
 const DECKS = {ST01:{name:'麦わらの一味',sub:'ST-01 · モンキー・D・ルフィ',color:'red'},ST02:{name:'最悪の世代',sub:'ST-02 · ユースタス・キッド',color:'green'}};
+const CATALOG_RELEASE = '20260930-all-art';
 const GROUPS = {all:'すべて',play:'登場・イベント',attack:'アタック',attach:'DON!!付与',activate:'起動効果'};
 let mode='solo', state=null, currentView=null, currentActions=[], viewer=0, pendingViewer=null;
 let selectedUid=null, actionFilter='all', aiTimer=null, toastTimer=null, session=null, onlineInfo=null, endShown=false;
@@ -15,7 +16,7 @@ const cardMap=new Map(catalog.map(c=>[c.id,c]));
 function imageUrl(card){
   const remote=card?.image || card?.imageUrl || card?.image_url;
   const starter=CARDS[card?.number||card?.id];
-  // Reprints keep their own illustration; only the matching original uses local art.
+  // Each printing keeps its own illustration; legacy starter art is used only for the matching original.
   const samePrinting=starter&&remote?.split('?')[0]===starter.image?.split('?')[0];
   const url=card?.localImage || (samePrinting?starter.localImage:'') || remote;
   return typeof url==='string'&&/^(https?:\/\/|\.?\.?\/|\/)/.test(url)?url:'';
@@ -26,8 +27,19 @@ function warmStarterArt(){if(starterArtWarmed)return;starterArtWarmed=true;for(c
 function colorOf(card){const c=card?.colors?.[0]||'';return COLORS[c]||c||((card?.number||card?.id||'').startsWith('ST02')?'green':'red');}
 function cardName(card){return card?.nameJa||card?.name||card?.number||card?.id||'カード';}
 function fallback(card){return `<span class="card-fallback ${html(colorOf(card))}"><span class="fallback-id">${html(card?.number||card?.id||'')}</span><span class="fallback-name">${html(cardName(card))}</span><span class="fallback-type">${html(TYPES[card?.type]||card?.type||'')}</span>${card?.power?`<span class="fallback-power">${html(card.power)}</span>`:''}</span>`;}
-function cardPicture(card,lazy=true){const url=imageUrl(card);return fallback(card)+(url?`<img src="${html(url)}" alt="${html(cardName(card))}" ${lazy?'loading="lazy"':''} decoding="async" referrerpolicy="no-referrer">`:'');}
-document.addEventListener('error',event=>{if(event.target instanceof HTMLImageElement){event.target.classList.add('card-image-error');event.target.setAttribute('aria-hidden','true');}},true);
+function cardPicture(card,lazy=true){
+  const url=imageUrl(card),remote=card?.image||card?.imageUrl||card?.image_url;
+  const backup=typeof remote==='string'&&/^https?:\/\//.test(remote)&&remote!==url?remote:'';
+  return fallback(card)+(url?`<img src="${html(url)}" alt="${html(cardName(card))}" ${backup?`data-image-backup="${html(backup)}"`:''} ${lazy?'loading="lazy"':''} decoding="async" referrerpolicy="no-referrer">`:'');
+}
+document.addEventListener('error',event=>{
+  const image=event.target;
+  if(!(image instanceof HTMLImageElement))return;
+  // A stale or incomplete deployment may lack a file. Retry the same printing
+  // once from its original source, then keep the readable text placeholder.
+  if(image.dataset.imageBackup){const backup=image.dataset.imageBackup;delete image.dataset.imageBackup;image.src=backup;return;}
+  image.classList.add('card-image-error');image.setAttribute('aria-hidden','true');
+},true);
 function showToast(message){clearTimeout(toastTimer);$('toast').textContent=message;$('toast').hidden=false;toastTimer=setTimeout(()=>$('toast').hidden=true,4200);}
 function openDialog(id){const dialog=$(id);if(!dialog.open)dialog.showModal();}
 function closeDialogs(){for(const dialog of document.querySelectorAll('dialog[open]'))dialog.close();}
@@ -78,7 +90,39 @@ function showResult(){if(currentView?.winner===null||!currentView)return;$('resu
 $('play-again').addEventListener('click',startLocal);
 $('result-back').addEventListener('click',quitBattle);
 
-async function loadCatalog(){if(catalogLoaded||catalogLoading)return;catalogLoading=true;try{const response=await fetch('./catalog.json');if(!response.ok)throw Error('catalog');const data=await response.json();const all=Array.isArray(data)?data:data.cards||(Array.isArray(data.parts)?(await Promise.all(data.parts.map(async path=>{const r=await fetch('./'+path);if(!r.ok)throw Error('catalog');return r.json();}))).flat():null);if(!Array.isArray(all)||!all.length)throw Error('catalog');catalog=all.map(c=>({...c,type:String(c.type||'').toLowerCase(),colors:(c.colors||[]).map(v=>COLORS[v]||v)}));for(const c of Object.values(CARDS)){if(!catalog.some(x=>(x.number||x.id)===c.id))catalog.push(c);}cardMap.clear();for(const c of catalog)cardMap.set(c.id,c);for(const c of Object.values(CARDS))if(!cardMap.has(c.id))cardMap.set(c.id,c);catalogLoaded=true;if(data.coverage){$('catalog-coverage').textContent=`公式掲載 ${data.coverage.seriesComplete}/${data.coverage.seriesTotal}シリーズ · ${data.coverage.printings.toLocaleString()}収録版 · ${data.coverage.uniqueCards.toLocaleString()}種類。対戦カード34種類は画像を収録済み。その他の画像は公式サイトから表示します。`;}$('catalog-count').textContent=catalog.length.toLocaleString();if($('catalog-dialog').open)renderCatalog();}catch{if($('catalog-dialog').open)showToast('図鑑の追加データを読み込めないため、対戦対応カードを表示しています。');}finally{catalogLoading=false;}}
+function catalogCoverage(data){
+  const count=catalog.length,unique=new Set(catalog.map(c=>c.number||c.id)).size;
+  const local=catalog.filter(c=>{
+    const source=imageUrl(c);if(!source)return false;
+    const url=new URL(source,location.href);
+    return url.origin===location.origin&&url.pathname.includes('/onepiece-battle/art/');
+  }).length;
+  const coverage=data.coverage||{},date=typeof data.fetchedAt==='string'?data.fetchedAt.slice(0,10).replaceAll('-','/'):'';
+  const series=Number.isFinite(coverage.seriesComplete)&&Number.isFinite(coverage.seriesTotal)?`公式掲載 ${coverage.seriesComplete}/${coverage.seriesTotal}シリーズ · `:'';
+  const remaining=count-local;
+  return `${date?date+'取得 · ':''}${series}${unique.toLocaleString()}種類 / ${count.toLocaleString()}版（パラレル・再録含む）。画像収録 ${local.toLocaleString()}/${count.toLocaleString()}版。${remaining?`未収録の${remaining.toLocaleString()}版は公式サイトから読み込みます。`:''}取得時点の公式カードリストが収録対象です。`;
+}
+async function loadCatalog(){
+  if(catalogLoaded||catalogLoading)return;catalogLoading=true;
+  try{
+    const response=await fetch(`./catalog.json?v=${CATALOG_RELEASE}`);if(!response.ok)throw Error('catalog');
+    const data=await response.json();
+    const all=Array.isArray(data)?data:data.cards||(Array.isArray(data.parts)?(await Promise.all(data.parts.map(async path=>{
+      const url=new URL(path,location.href);url.searchParams.set('v',CATALOG_RELEASE);
+      const r=await fetch(url);if(!r.ok)throw Error('catalog');return r.json();
+    }))).flat():null);
+    if(!Array.isArray(all)||!all.length)throw Error('catalog');
+    catalog=all.map(c=>({...c,type:String(c.type||'').toLowerCase(),colors:(c.colors||[]).map(v=>COLORS[v]||v)}));
+    for(const c of Object.values(CARDS)){if(!catalog.some(x=>(x.number||x.id)===c.id))catalog.push(c);}
+    cardMap.clear();for(const c of catalog)cardMap.set(c.id,c);
+    for(const c of Object.values(CARDS))if(!cardMap.has(c.id))cardMap.set(c.id,c);
+    catalogLoaded=true;$('catalog-coverage').textContent=catalogCoverage(data);
+    $('catalog-count').textContent=catalog.length.toLocaleString();
+  }catch{
+    $('catalog-coverage').textContent='追加のカード一覧を読み込めませんでした。現在は対戦対応のST-01 / ST-02のみ表示しています。';
+    if($('catalog-dialog').open)showToast('図鑑の追加データを読み込めないため、対戦対応カードを表示しています。');
+  }finally{catalogLoading=false;if($('catalog-dialog').open)renderCatalog();}
+}
 function renderCatalog(){const query=$('catalog-search').value.trim().toLocaleLowerCase(),color=$('catalog-color').value,type=$('catalog-type').value;catalogResults=catalog.filter(c=>(!query||[c.id,c.number,c.name,c.nameJa,...(c.traits||[])].join(' ').toLocaleLowerCase().includes(query))&&(!color||(c.colors||[]).some(v=>(COLORS[v]||v)===color))&&(!type||c.type===type));$('catalog-result-count').textContent=`${catalogResults.length.toLocaleString()}件${catalogLoading?' · データを読み込み中':''}`;$('catalog-grid').innerHTML=catalogResults.slice(0,catalogLimit).map((c,i)=>`<button class="catalog-item" data-catalog-index="${i}" aria-label="${html(cardName(c))}、${html(c.number||c.id)}の詳細"><span class="catalog-picture">${cardPicture(c)}</span><span class="catalog-name">${html(cardName(c))}</span><span class="catalog-id">${html(c.number||c.id)}${CARDS[c.number||c.id]?'<span class="supported-badge">対戦対応</span>':''}</span></button>`).join('')||'<p class="empty-state">条件に一致するカードがありません。</p>';$('catalog-more').hidden=catalogResults.length<=catalogLimit;}
 $('catalog-open').addEventListener('click',()=>{catalogLimit=60;openDialog('catalog-dialog');renderCatalog();loadCatalog();});
 $('catalog-search').addEventListener('input',()=>{catalogLimit=60;renderCatalog();});
@@ -89,7 +133,7 @@ $('catalog-count').textContent=catalog.length.toLocaleString();
 
 function resetRoom(){$('room-status').hidden=true;$('room-tools').hidden=true;$('online-start').hidden=true;$('create-room').disabled=false;$('join-room').disabled=false;$('deck-self').disabled=false;$('room-code').disabled=false;}
 function updateRoom(info){onlineInfo=info;viewer=info.side??0;$('room-status').hidden=false;$('room-tools').hidden=false;$('create-room').disabled=true;$('join-room').disabled=true;$('deck-self').disabled=true;$('room-code').disabled=true;$('online-start').hidden=viewer!==0||!info.peer||!info.connected||Boolean(info.view);const status=info.peer?(viewer===0?'相手が参加しました。対戦を開始できます。':'参加しました。ホストの開始を待っています。'):'対戦相手の参加を待っています。';$('room-status').innerHTML=`<span>${viewer===0?'あなたのルーム':'参加中のルーム'}</span> <strong>${html(info.code||'接続中…')}</strong><span>${html(!info.connected?'接続しています…':status)}</span>`;if(info.view){const token=JSON.stringify([info.rev,info.view.turn,info.view.phase,info.view.log?.length,info.actions,info.connected,info.peer]);currentView=info.view;currentActions=info.connected&&info.peer?(info.actions||[]):[];if(token!==lastRenderToken){lastRenderToken=token;showBattle();renderBattle();}}}
-async function connectRoom(join=false){if(session)return;try{$('create-room').disabled=true;$('join-room').disabled=true;$('room-status').hidden=false;$('room-status').textContent='ルームに接続しています…';const {BattleSession}=await import('./online.mjs?v=20260919-art1');session=new BattleSession();session.addEventListener('update',event=>updateRoom(event.detail));session.addEventListener('error',event=>showToast(String(event.detail)));if(join)await session.join($('room-code').value.trim().toUpperCase(),$('deck-self').value);else await session.create($('deck-self').value);endShown=false;lastRenderToken='';}catch(error){session?.leave();session=null;resetRoom();showToast(error.message==='Failed to fetch'?'通信できませんでした。接続を確認して、もう一度お試しください。':error.message||'ルームに接続できませんでした。');}}
+async function connectRoom(join=false){if(session)return;try{$('create-room').disabled=true;$('join-room').disabled=true;$('room-status').hidden=false;$('room-status').textContent='ルームに接続しています…';const {BattleSession}=await import('./online.mjs?v=20260930-all-art');session=new BattleSession();session.addEventListener('update',event=>updateRoom(event.detail));session.addEventListener('error',event=>showToast(String(event.detail)));if(join)await session.join($('room-code').value.trim().toUpperCase(),$('deck-self').value);else await session.create($('deck-self').value);endShown=false;lastRenderToken='';}catch(error){session?.leave();session=null;resetRoom();showToast(error.message==='Failed to fetch'?'通信できませんでした。接続を確認して、もう一度お試しください。':error.message||'ルームに接続できませんでした。');}}
 $('create-room').addEventListener('click',()=>connectRoom(false));
 $('join-room-form').addEventListener('submit',event=>{event.preventDefault();if($('room-code').value.trim())connectRoom(true);});
 $('online-start').addEventListener('click',()=>{try{session?.start();}catch(error){showToast(error.message);}});

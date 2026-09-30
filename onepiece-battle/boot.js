@@ -25,7 +25,7 @@
   }, 12000);
   // A fresh retry also refreshes the entry module; dependencies carry a release tag.
   const refresh = new URL(location.href).searchParams.get('reload');
-  import('./app.mjs?v=20260919-art1' + (refresh ? '&reload=' + encodeURIComponent(refresh) : ''))
+  import('./app.mjs?v=20260930-all-art' + (refresh ? '&reload=' + encodeURIComponent(refresh) : ''))
     .then(() => {
       clearTimeout(slow);
       controls.forEach(element => { element.disabled = false; });
