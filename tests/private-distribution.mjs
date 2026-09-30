@@ -15,9 +15,11 @@ async function walk(dir) {
 await walk(dist);
 const release=JSON.parse(await readFile(join(dist,'https-release.json'),'utf8'));
 assert.ok(!release.pages.some(p=>p.startsWith('dist/')),'A rebuild must not treat the previous distribution as source');
+assert.ok(!release.pages.some(p=>p.startsWith('onepiece-battle/')),'The Android-only game must not appear in the public page manifest');
+assert.ok(!(await readFile(join(dist,'games-2d.html'),'utf8')).includes('onepiece-battle'),'The Android-only game must not be linked in the web catalog');
 for(const file of files) {
   const name=relative(dist,file);
-  assert.ok(!/(^|\/)(?:\.git|\.env[^/]*|commons-src|src|source|scripts|tests|supabase|backend|node_modules)(\/|$)/.test(name),`Private file in distribution: ${name}`);
+  assert.ok(!/(^|\/)(?:\.git|\.env[^/]*|commons-src|src|source|scripts|tests|supabase|backend|node_modules|onepiece-battle)(\/|$)/.test(name),`Private file in distribution: ${name}`);
   assert.ok(!/\.(?:map|ts|tsx|cs|sql|md)$/.test(name),`Development source in distribution: ${name}`);
   if(/\.(?:js|mjs|css|html)$/.test(name)) {
     const content=await readFile(file,'utf8');

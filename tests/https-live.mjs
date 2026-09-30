@@ -29,7 +29,7 @@ for (let attempt=0; attempt<24; attempt++) {
 }
 if(!release || !Array.isArray(release.pages) || !release.pages.includes('index.html') || !release.pages.every(safePath)) throw new Error('A matching HTTPS release manifest was not published');
 // An omitted source page must not silently disappear from the audit.
-const tracked=execFileSync('git',['ls-files','-z','*.html','*.htm'],{encoding:'utf8'}).split('\0').filter(Boolean).filter(p=>!/(^|\/)(?:commons-src|source|src|tests|node_modules|vendor|test-output|\.github|tools|scripts)\//.test(p));
+const tracked=execFileSync('git',['ls-files','-z','*.html','*.htm'],{encoding:'utf8'}).split('\0').filter(Boolean).filter(p=>!/(^|\/)(?:commons-src|source|src|tests|node_modules|vendor|test-output|\.github|tools|scripts|onepiece-battle)\//.test(p));
 for(const path of tracked) check(release.pages.includes(path),`Published manifest omits source HTML: ${path}`);
 const paths=[...new Set(['',...release.pages])];
 async function saveReport(complete=false) {

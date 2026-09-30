@@ -47,26 +47,6 @@ jobs:
           node tests/fps-systems.mjs
           node tests/game23-systems.mjs
 
-      - name: Restore ONE PIECE card image cache
-        id: onepiece-art-cache
-        uses: actions/cache/restore@v4
-        with:
-          path: onepiece-battle/art/catalog
-          key: onepiece-art-webp88-v1-${{ hashFiles('onepiece-battle/catalog/*.json') }}
-          restore-keys: onepiece-art-webp88-v1-
-
-      - name: Bundle and verify every ONE PIECE card image
-        run: |
-          python3 -m pip install 'Pillow==12.3.0' 'aiohttp==3.13.5'
-          python3 scripts/bundle-onepiece-images.py
-
-      - name: Save verified ONE PIECE card images
-        if: steps.onepiece-art-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: onepiece-battle/art/catalog
-          key: ${{ steps.onepiece-art-cache.outputs.cache-primary-key }}
-
       - name: Build static bundle
         shell: bash
         run: |

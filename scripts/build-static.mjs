@@ -1,6 +1,5 @@
 // Build the original 1,000-question bank from the private curriculum source.
 await import('./build-cyber-bank.mjs');
-await import('./build-onepiece-data.mjs');
 import { readdir, readFile, writeFile, mkdir, copyFile, rm, stat } from 'node:fs/promises';
 import { addFullscreen } from './fullscreen-html.mjs';
 import { addAppGuide } from './app-guide-html.mjs';
@@ -15,7 +14,8 @@ import { measurePublicUsage } from './measure-public-usage.mjs';
 // Build tools, tests, plans and database code never enter the public artifact.
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const output = join(root, 'dist');
-const excludedDirs = new Set(['dist','commons-src','source','src','node_modules','supabase','backend','cloudflare','scripts','tests','docs','roadmap','coverage','test-results','test-output','_site','playwright-report']);
+// ONE PIECE is distributed as an Android app; retain its source outside the website.
+const excludedDirs = new Set(['dist','commons-src','source','src','node_modules','supabase','backend','cloudflare','scripts','tests','docs','roadmap','coverage','test-results','test-output','_site','playwright-report','onepiece-battle']);
 const excludedFiles = new Set(['https-hardening.mjs','shogi-adapter.mjs','supabase-config.example.js','package.json','package-lock.json','pnpm-lock.yaml','yarn.lock','tsconfig.json','jsconfig.json']);
 const publicFiles = new Set(['CNAME','.nojekyll','_headers','_redirects']);
 const extensions = new Set(['.html','.css','.js','.mjs','.json','.txt','.xml','.svg','.png','.jpg','.jpeg','.webp','.avif','.gif','.ico','.woff','.woff2','.ttf','.otf','.mp3','.ogg','.wav','.m4a','.mp4','.webm','.glb','.gltf','.bin','.obj','.mtl','.ktx2','.basis','.wasm','.data','.unityweb','.webmanifest']);
