@@ -47,15 +47,21 @@ All 34 playable ST01/ST02 cards have Japanese artwork stored in `art/*.webp`,
 matching the Digimon game’s same-origin image delivery. Leaders, characters,
 hands, prompts, trash and detail views use `localImage` from the starter data.
 The art manifest records each source image, matching card number and hash.
-Original official metadata/image URLs are retained; other catalog printings
-remain remote and retain their own illustrations. Artwork rights remain with
+All 4,987 catalog printings (2,823 card numbers), including parallel and reprint
+illustrations, are bundled during deployment in `art/catalog/*.webp`.
+`python3 scripts/bundle-onepiece-images.py` downloads and decodes every official
+image, preserves source dimensions, and only publishes localImage references
+after the entire catalog succeeds. It produces a source URL/hash/dimensions
+manifest and resumes from the CI image cache. Original official metadata and
+image URLs are retained as same-printing fallback sources. Artwork rights remain with
 their respective owners. Catalog collection and local downloads are counted
 separately in `catalog.json`.
 
 ## Verification
 
 `node tests/onepiece-engine.mjs` covers rules and complete CPU matches.
-After `node scripts/build-static.mjs`, serve `dist/` on port 4173 and run
+After `python3 scripts/bundle-onepiece-images.py` and
+`node scripts/build-static.mjs`, serve `dist/` on port 4173 and run
 `node tests/onepiece-browser.mjs`. This checks PC/mobile startup, actual decoding
 of all 34 bundled images, in-play/detail images, CPU actions, hotseat privacy
 and recovery from a failed module request. GitHub Pages runs both tests.
@@ -75,9 +81,10 @@ reorder object keys.
 ## Catalog snapshot
 
 The 2026-09-19 snapshot covers all 62 listed series: 4,987 printings / official
-image URLs and 2,823 card numbers; no series failed. The 34 original ST01/ST02
-images are bundled locally; the remaining catalog images are remote. Some
-printings have unavailable numeric metadata, retained as null.
+image URLs and 2,823 card numbers; no series failed. All 62 current official
+series were compared again on 2026-09-30 and their image-path sets matched the
+snapshot exactly. All 4,987 catalog images are bundled locally at deployment.
+Some printings have unavailable numeric metadata, retained as null.
 Catalog JSON is split into 100-record parts referenced by `catalog.json`.
 
 To collect a future snapshot (Python 3.10+ and aiohttp):

@@ -47,7 +47,7 @@ async function loadedImages(page, selector, minimum = 1) {
   assert(await page.locator(selector).evaluateAll(images => images.every(image => {
     const url = new URL(image.currentSrc || image.src);
     return url.origin === location.origin && url.pathname.includes('/onepiece-battle/art/');
-  })), `${selector} uses bundled starter art`);
+  })), `${selector} uses bundled card art`);
 }
 
 async function allStarterArt(page) {
@@ -140,6 +140,54 @@ async function hotseat() {
   }
 }
 
+async function catalogArt() {
+  const context = await contextFor();
+  try {
+    const remoteRequests = [];
+    await context.route(/^https:\/\/(?:www\.)?onepiece-cardgame\.com\/images\//, route => {
+      remoteRequests.push(route.request().url());
+      return route.abort();
+    });
+    const page = await context.newPage();
+    const errors = [], catalogRequests = [];
+    page.on('pageerror', error => errors.push(error.message));
+    page.on('request', request => {
+      if (/\/onepiece-battle\/(?:catalog\.json|catalog\/part-[^/]+\.json)(?:\?|$)/.test(request.url())) catalogRequests.push(request.url());
+    });
+    await page.goto(gameUrl, { waitUntil: 'domcontentloaded' });
+    await ready(page);
+    await page.locator('#catalog-open').click();
+    await page.waitForFunction(() => document.querySelector('#catalog-count')?.textContent === '4,987');
+    const coverage = await page.locator('#catalog-coverage').innerText();
+    assert(coverage.includes('2026/09/19取得'), 'catalog gives the snapshot date');
+    assert(coverage.includes('2,823種類 / 4,987版'), 'types and parallel/reprint editions are distinct counts');
+    assert(coverage.includes('画像収録 4,987/4,987版'), 'all catalog editions report bundled art');
+    assert(!coverage.includes('未収録の'), 'no unbundled edition remains');
+    assert.equal(catalogRequests.length, 51, 'manifest and all 50 parts loaded');
+    assert(catalogRequests.every(url => new URL(url).searchParams.get('v') === '20260930-all-art'), 'manifest and parts share the release cache key');
+    for (const number of ['EB01-001', 'ST01-001']) {
+      await page.locator('#catalog-search').fill(number);
+      const images = page.locator('#catalog-grid img');
+      assert(await images.count() >= 2, `${number} includes its original and parallel editions`);
+      // The first two search results remain visible even on smaller windows.
+      await loadedImages(page, '#catalog-grid .catalog-item:nth-child(-n+2) img', 2);
+      const sources = await images.evaluateAll(items => items.map(item => item.currentSrc || item.src));
+      assert.equal(new Set(sources).size, sources.length, `${number} editions retain distinct illustrations`);
+      assert(sources.every(source => new URL(source).pathname.includes('/art/catalog/')), `${number} catalog images all come from the full local bundle`);
+      await page.locator('#catalog-grid .catalog-item').nth(1).click();
+      await loadedImages(page, '#details-dialog .detail-card-picture img');
+      assert.equal(await page.locator('#details-dialog .detail-card-picture img').getAttribute('src').then(source => new URL(source, gameUrl).href), sources[1], 'parallel detail retains the selected image');
+      await page.locator('#details-dialog .close-dialog').click();
+    }
+    assert.deepEqual(remoteRequests, [], 'catalog and parallel detail render without contacting official image hosting');
+    assert.deepEqual(errors, [], 'catalog has no runtime errors');
+    await page.screenshot({ path: 'test-output/onepiece/catalog-local-art.png', fullPage: true });
+    console.log('PASS catalog: 4,987 local editions, snapshot counts, release cache keys, original/parallel detail with official images blocked');
+  } finally {
+    await context.close();
+  }
+}
+
 async function startupRecovery() {
   const context = await contextFor();
   try {
@@ -166,6 +214,7 @@ try {
   await solo('desktop', { width: 1440, height: 1000 }, true);
   await solo('mobile', { width: 393, height: 852 }, false);
   await hotseat();
+  await catalogArt();
   await startupRecovery();
 } finally {
   await browser.close();
