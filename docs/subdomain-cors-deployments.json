@@ -1,0 +1,49 @@
+{
+  "project": "dcvtubivtextycifngtk",
+  "deployedOn": "2026-10-04",
+  "changes": "Exact CORS allowlists only; no database, authentication, keys or business logic changes.",
+  "functions": [
+    {
+      "slug": "commons-search",
+      "version": 4,
+      "verify_jwt": false,
+      "sourceVerified": true,
+      "bundleSha256": "ecaf51f35ba70c02525408d76c0fb7140ae8e34ea2aeb23d01cbd596bf5da17a"
+    },
+    {
+      "slug": "commons-yugioh",
+      "version": 3,
+      "verify_jwt": false,
+      "sourceVerified": true,
+      "bundleSha256": "01afa24b387cb04f96d08b1db0580606123748e32032e49b67e954881ed8ed59"
+    },
+    {
+      "slug": "commons-cards",
+      "version": 3,
+      "verify_jwt": false,
+      "sourceVerified": true,
+      "bundleSha256": "e5909f411be88690f5932a823ef7ff34505f300ad108616d8ee68ff1a816bf23"
+    },
+    {
+      "slug": "commons-tcg",
+      "version": 7,
+      "verify_jwt": false,
+      "sourceVerified": true,
+      "bundleSha256": "106748c46275707bb375f251abb1f930c756fa13cf5e36804b223bec035b103d"
+    },
+    {
+      "slug": "commons-api",
+      "version": 7,
+      "verify_jwt": false,
+      "sourceVerified": true,
+      "bundleSha256": "3b46f0f30c2680c666e5fc1a73ec65cc3e27637273b7932021a0ccc9c0a49f38"
+    },
+    {
+      "slug": "commons-realtime",
+      "version": 4,
+      "verify_jwt": false,
+      "sourceVerified": true,
+      "bundleSha256": "a3fe23ef5aad9bd6efaa9f6ab4f03aec2283d8085e6185aa9db3102414310ca5"
+    }
+  ]
+}

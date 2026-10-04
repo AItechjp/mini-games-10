@@ -1,0 +1,332 @@
+{
+  "verifiedAt": "2026-10-04T05:18:23.688202+00:00",
+  "project": "dcvtubivtextycifngtk",
+  "passed": true,
+  "requests": 36,
+  "results": [
+    {
+      "function": "commons-search",
+      "method": "OPTIONS",
+      "origin": "https://hotels.aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://hotels.aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-search",
+      "method": "OPTIONS",
+      "origin": "https://aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-search",
+      "method": "GET",
+      "origin": "https://hotels.aitechd.com",
+      "status": 400,
+      "allowOrigin": "https://hotels.aitechd.com",
+      "expectedStatus": 400,
+      "passed": true
+    },
+    {
+      "function": "commons-search",
+      "method": "OPTIONS",
+      "origin": "null",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-search",
+      "method": "OPTIONS",
+      "origin": "http://tools.aitechd.com",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-search",
+      "method": "OPTIONS",
+      "origin": "https://tools.aitechd.com.evil.example",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-yugioh",
+      "method": "OPTIONS",
+      "origin": "https://yugioh.aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://yugioh.aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-yugioh",
+      "method": "OPTIONS",
+      "origin": "https://aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-yugioh",
+      "method": "GET",
+      "origin": "https://yugioh.aitechd.com",
+      "status": 400,
+      "allowOrigin": "https://yugioh.aitechd.com",
+      "expectedStatus": 400,
+      "passed": true
+    },
+    {
+      "function": "commons-yugioh",
+      "method": "OPTIONS",
+      "origin": "null",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-yugioh",
+      "method": "OPTIONS",
+      "origin": "http://tools.aitechd.com",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-yugioh",
+      "method": "OPTIONS",
+      "origin": "https://tools.aitechd.com.evil.example",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-cards",
+      "method": "OPTIONS",
+      "origin": "https://duel-masters.aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://duel-masters.aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-cards",
+      "method": "OPTIONS",
+      "origin": "https://aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-cards",
+      "method": "GET",
+      "origin": "https://duel-masters.aitechd.com",
+      "status": 400,
+      "allowOrigin": "https://duel-masters.aitechd.com",
+      "expectedStatus": 400,
+      "passed": true
+    },
+    {
+      "function": "commons-cards",
+      "method": "OPTIONS",
+      "origin": "null",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-cards",
+      "method": "OPTIONS",
+      "origin": "http://tools.aitechd.com",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-cards",
+      "method": "OPTIONS",
+      "origin": "https://tools.aitechd.com.evil.example",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-tcg",
+      "method": "OPTIONS",
+      "origin": "https://pokemon-cards.aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://pokemon-cards.aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-tcg",
+      "method": "OPTIONS",
+      "origin": "https://aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-tcg",
+      "method": "GET",
+      "origin": "https://pokemon-cards.aitechd.com",
+      "status": 400,
+      "allowOrigin": "https://pokemon-cards.aitechd.com",
+      "expectedStatus": 400,
+      "passed": true
+    },
+    {
+      "function": "commons-tcg",
+      "method": "OPTIONS",
+      "origin": "null",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-tcg",
+      "method": "OPTIONS",
+      "origin": "http://tools.aitechd.com",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-tcg",
+      "method": "OPTIONS",
+      "origin": "https://tools.aitechd.com.evil.example",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-api",
+      "method": "OPTIONS",
+      "origin": "https://whiteboard.aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://whiteboard.aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-api",
+      "method": "OPTIONS",
+      "origin": "https://aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-api",
+      "method": "GET",
+      "origin": "https://whiteboard.aitechd.com",
+      "status": 200,
+      "allowOrigin": "https://whiteboard.aitechd.com",
+      "expectedStatus": 200,
+      "passed": true
+    },
+    {
+      "function": "commons-api",
+      "method": "OPTIONS",
+      "origin": "null",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-api",
+      "method": "OPTIONS",
+      "origin": "http://tools.aitechd.com",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-api",
+      "method": "OPTIONS",
+      "origin": "https://tools.aitechd.com.evil.example",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-realtime",
+      "method": "OPTIONS",
+      "origin": "https://local-sauna.aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://local-sauna.aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-realtime",
+      "method": "OPTIONS",
+      "origin": "https://aitechd.com",
+      "status": 204,
+      "allowOrigin": "https://aitechd.com",
+      "expectedStatus": 204,
+      "passed": true
+    },
+    {
+      "function": "commons-realtime",
+      "method": "GET",
+      "origin": "https://local-sauna.aitechd.com",
+      "status": 200,
+      "allowOrigin": "https://local-sauna.aitechd.com",
+      "expectedStatus": 200,
+      "passed": true
+    },
+    {
+      "function": "commons-realtime",
+      "method": "OPTIONS",
+      "origin": "null",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-realtime",
+      "method": "OPTIONS",
+      "origin": "http://tools.aitechd.com",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    },
+    {
+      "function": "commons-realtime",
+      "method": "OPTIONS",
+      "origin": "https://tools.aitechd.com.evil.example",
+      "status": 403,
+      "allowOrigin": null,
+      "expectedStatus": 403,
+      "passed": true
+    }
+  ]
+}

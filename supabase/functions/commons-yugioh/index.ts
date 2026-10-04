@@ -1,18 +1,14 @@
+import { commonsCors } from '../_shared/commons-cors.mjs';
 import { ORIGIN, PAGE_SIZE, parseSearch, parseSets, parseDetail, searchParams, validId, japanDate, filterPack } from './core.mjs';
 import { PUBLIC_KEY } from './public-key.mjs';
 
 // Public catalog reader. It neither reads nor writes the database or private data.
-const origins = new Set(['https://aitechd.com', 'https://www.aitechd.com']);
+const cors = commonsCors('yugioh');
 const cache = new Map<string, { at: number; data: any }>();
 const pending = new Map<string, Promise<any>>();
 const budgets = new Map<string, { at: number; count: number }>();
 let active = 0;
-const headers = (origin: string | null) => ({
-  'Access-Control-Allow-Origin': origin && origins.has(origin) ? origin : 'https://aitechd.com',
-  'Access-Control-Allow-Headers': 'apikey, content-type, x-region',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS', 'Access-Control-Max-Age': '600',
-  'Vary': 'Origin', 'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff',
-});
+const headers = cors.headers;
 async function upstream(path: string, body?: URLSearchParams) {
   // Fixed origin and fixed paths: this is not an arbitrary URL proxy.
   const r = await fetch(ORIGIN + path, { method: body ? 'POST' : 'GET', body,
@@ -39,7 +35,7 @@ async function cached(key: string, ttl: number, fn: () => Promise<any>) {
 export async function handler(request: Request) {
   const origin = request.headers.get('origin');
   const send = (data: any, status = 200) => Response.json(data, { status, headers: headers(origin) });
-  if (origin && !origins.has(origin)) return send({ error: 'このサイトからは利用できません。' }, 403);
+  if (!cors.isAllowed(origin)) return send({ error: 'このサイトからは利用できません。' }, 403);
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: headers(origin) });
   if (request.method !== 'GET') return send({ error: 'GETのみ利用できます。' }, 405);
   if (request.headers.get('apikey') !== PUBLIC_KEY) return send({ error: 'カード検索の接続設定を確認してください。' }, 401);

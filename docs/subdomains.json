@@ -1,0 +1,2250 @@
+{
+  "schemaVersion": 1,
+  "domain": "aitechd.com",
+  "preparedAt": "2026-10-04",
+  "sourceCommit": "a4c7a061d2870b41f6e3841a71c780aab7ae3625",
+  "status": "configuration-only-not-activated",
+  "notes": [
+    "No DNS records, custom domains or production deployments are created by this file.",
+    "Existing paid-sales policy and advertising allowlists are unchanged.",
+    "A listed route is not a claim of rights clearance or production readiness."
+  ],
+  "hosts": {
+    "aether.aitechd.com": {
+      "target": "https://aether-card-duel.douga071132.chatgpt.site",
+      "name": "aether",
+      "delivery": "sites",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified",
+      "notes": "Requires its existing Sites custom-domain binding; the static Worker does not route this hostname."
+    },
+    "app-001.aitechd.com": {
+      "target": "/app-tool.html?id=1",
+      "name": "会議5分タイマー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-002.aitechd.com": {
+      "target": "/app-tool.html?id=2",
+      "name": "引き継ぎボード",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-003.aitechd.com": {
+      "target": "/app-tool.html?id=3",
+      "name": "定型業務チェッカー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-004.aitechd.com": {
+      "target": "/app-tool.html?id=4",
+      "name": "締切逆算プランナー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-005.aitechd.com": {
+      "target": "/app-tool.html?id=5",
+      "name": "集中スプリント",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-006.aitechd.com": {
+      "target": "/app-tool.html?id=6",
+      "name": "意思決定ログ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-007.aitechd.com": {
+      "target": "/app-tool.html?id=7",
+      "name": "定型文パレット",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-008.aitechd.com": {
+      "target": "/app-tool.html?id=8",
+      "name": "会議アクション整理",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-009.aitechd.com": {
+      "target": "/app-tool.html?id=9",
+      "name": "作業時間ストップウォッチ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-010.aitechd.com": {
+      "target": "/app-tool.html?id=10",
+      "name": "ひとりCRM",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-011.aitechd.com": {
+      "target": "/app-tool.html?id=11",
+      "name": "ゴミ出しナビ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-012.aitechd.com": {
+      "target": "/app-tool.html?id=12",
+      "name": "賞味期限ボード",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-013.aitechd.com": {
+      "target": "/app-tool.html?id=13",
+      "name": "冷蔵庫在庫メモ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-014.aitechd.com": {
+      "target": "/app-tool.html?id=14",
+      "name": "洗濯終了タイマー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-015.aitechd.com": {
+      "target": "/app-tool.html?id=15",
+      "name": "掃除ローテーション",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-016.aitechd.com": {
+      "target": "/app-tool.html?id=16",
+      "name": "生活費わりかん",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-017.aitechd.com": {
+      "target": "/app-tool.html?id=17",
+      "name": "どこに置いた？メモ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-018.aitechd.com": {
+      "target": "/app-tool.html?id=18",
+      "name": "駐車位置メモ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-019.aitechd.com": {
+      "target": "/app-tool.html?id=19",
+      "name": "日用品ストック",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-020.aitechd.com": {
+      "target": "/app-tool.html?id=20",
+      "name": "余りもの献立メモ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-021.aitechd.com": {
+      "target": "/app-tool.html?id=21",
+      "name": "サブスク棚卸し",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-022.aitechd.com": {
+      "target": "/app-tool.html?id=22",
+      "name": "今日使える予算",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-023.aitechd.com": {
+      "target": "/app-tool.html?id=23",
+      "name": "貯金チャレンジ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-024.aitechd.com": {
+      "target": "/app-tool.html?id=24",
+      "name": "立替精算ミニ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-025.aitechd.com": {
+      "target": "/app-tool.html?id=25",
+      "name": "価格メモ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-026.aitechd.com": {
+      "target": "/app-tool.html?id=26",
+      "name": "キャッシュフローカレンダー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-027.aitechd.com": {
+      "target": "/app-tool.html?id=27",
+      "name": "税金ざっくり計算メモ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-028.aitechd.com": {
+      "target": "/app-tool.html?id=28",
+      "name": "ポイント期限帳",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-029.aitechd.com": {
+      "target": "/app-tool.html?id=29",
+      "name": "保険一覧カード",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-030.aitechd.com": {
+      "target": "/app-tool.html?id=30",
+      "name": "24時間購入クールダウン",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-031.aitechd.com": {
+      "target": "/app-tool.html?id=31",
+      "name": "水分チェック",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-032.aitechd.com": {
+      "target": "/app-tool.html?id=32",
+      "name": "ストレッチタイマー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-033.aitechd.com": {
+      "target": "/app-tool.html?id=33",
+      "name": "寝る前ルーティン",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-034.aitechd.com": {
+      "target": "/app-tool.html?id=34",
+      "name": "服薬リマインド記録",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-035.aitechd.com": {
+      "target": "/app-tool.html?id=35",
+      "name": "体調日誌",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-036.aitechd.com": {
+      "target": "/app-tool.html?id=36",
+      "name": "歩数ストリーク",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-037.aitechd.com": {
+      "target": "/app-tool.html?id=37",
+      "name": "食事写真ログ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-038.aitechd.com": {
+      "target": "/app-tool.html?id=38",
+      "name": "姿勢休憩アラーム",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-039.aitechd.com": {
+      "target": "/app-tool.html?id=39",
+      "name": "診察メモ整理",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-040.aitechd.com": {
+      "target": "/app-tool.html?id=40",
+      "name": "緊急情報カード",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-041.aitechd.com": {
+      "target": "/app-tool.html?id=41",
+      "name": "忘却曲線カード",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-042.aitechd.com": {
+      "target": "/app-tool.html?id=42",
+      "name": "試験カウントダウン",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-043.aitechd.com": {
+      "target": "/app-tool.html?id=43",
+      "name": "読書進捗メーター",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-044.aitechd.com": {
+      "target": "/app-tool.html?id=44",
+      "name": "単語1対1バトル",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-045.aitechd.com": {
+      "target": "/app-tool.html?id=45",
+      "name": "間違いノート",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-046.aitechd.com": {
+      "target": "/app-tool.html?id=46",
+      "name": "オンライン自習室",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-047.aitechd.com": {
+      "target": "/app-tool.html?id=47",
+      "name": "自動クイズメーカー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-048.aitechd.com": {
+      "target": "/app-tool.html?id=48",
+      "name": "講義ノート整理",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-049.aitechd.com": {
+      "target": "/app-tool.html?id=49",
+      "name": "勉強ヒートマップ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-050.aitechd.com": {
+      "target": "/app-tool.html?id=50",
+      "name": "説明して覚える録音帳",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-051.aitechd.com": {
+      "target": "/app-tool.html?id=51",
+      "name": "旅程1枚ボード",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-052.aitechd.com": {
+      "target": "/app-tool.html?id=52",
+      "name": "忘れ物ゼロリスト",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-053.aitechd.com": {
+      "target": "/app-tool.html?id=53",
+      "name": "旅行共同財布",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-054.aitechd.com": {
+      "target": "/app-tool.html?id=54",
+      "name": "乗換メモ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-055.aitechd.com": {
+      "target": "/app-tool.html?id=55",
+      "name": "観光地みんなで投票",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-056.aitechd.com": {
+      "target": "/app-tool.html?id=56",
+      "name": "旅先トイレ・休憩メモ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-057.aitechd.com": {
+      "target": "/app-tool.html?id=57",
+      "name": "ホテル比較ノート",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-058.aitechd.com": {
+      "target": "/app-tool.html?id=58",
+      "name": "旅行フレーズカード",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-059.aitechd.com": {
+      "target": "/app-tool.html?id=59",
+      "name": "オフライン緊急カード",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-060.aitechd.com": {
+      "target": "/app-tool.html?id=60",
+      "name": "写真スポットチェック",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-061.aitechd.com": {
+      "target": "/app-tool.html?id=61",
+      "name": "家族掲示板",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-062.aitechd.com": {
+      "target": "/app-tool.html?id=62",
+      "name": "共有買い物リスト",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-063.aitechd.com": {
+      "target": "/app-tool.html?id=63",
+      "name": "家事ポイント",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-064.aitechd.com": {
+      "target": "/app-tool.html?id=64",
+      "name": "学校予定まとめ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-065.aitechd.com": {
+      "target": "/app-tool.html?id=65",
+      "name": "家族購入申請",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-066.aitechd.com": {
+      "target": "/app-tool.html?id=66",
+      "name": "ペットお世話ログ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-067.aitechd.com": {
+      "target": "/app-tool.html?id=67",
+      "name": "見守り連絡リマインダー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-068.aitechd.com": {
+      "target": "/app-tool.html?id=68",
+      "name": "贈り物台帳",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-069.aitechd.com": {
+      "target": "/app-tool.html?id=69",
+      "name": "家族イベントカウントダウン",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-070.aitechd.com": {
+      "target": "/app-tool.html?id=70",
+      "name": "今夜なに食べる投票",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-071.aitechd.com": {
+      "target": "/app-tool.html?id=71",
+      "name": "キャプション3案メーカー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-072.aitechd.com": {
+      "target": "/app-tool.html?id=72",
+      "name": "サムネA/B記録",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-073.aitechd.com": {
+      "target": "/app-tool.html?id=73",
+      "name": "投稿カレンダー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-074.aitechd.com": {
+      "target": "/app-tool.html?id=74",
+      "name": "ネタ箱",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-075.aitechd.com": {
+      "target": "/app-tool.html?id=75",
+      "name": "案件ミニCRM",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-076.aitechd.com": {
+      "target": "/app-tool.html?id=76",
+      "name": "請求書ミニ作成",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-077.aitechd.com": {
+      "target": "/app-tool.html?id=77",
+      "name": "リンク集クリック記録",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-078.aitechd.com": {
+      "target": "/app-tool.html?id=78",
+      "name": "コメント仕分け箱",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-079.aitechd.com": {
+      "target": "/app-tool.html?id=79",
+      "name": "ブラウザ台本プロンプター",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-080.aitechd.com": {
+      "target": "/app-tool.html?id=80",
+      "name": "素材ファイル命名メーカー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-081.aitechd.com": {
+      "target": "/app-tool.html?id=81",
+      "name": "JSON整形ツール",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-082.aitechd.com": {
+      "target": "/app-tool.html?id=82",
+      "name": "APIレスポンスDIFF",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-083.aitechd.com": {
+      "target": "/app-tool.html?id=83",
+      "name": "正規表現テスター",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-084.aitechd.com": {
+      "target": "/app-tool.html?id=84",
+      "name": "Cron見える化",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-085.aitechd.com": {
+      "target": "/app-tool.html?id=85",
+      "name": "ENVチェックリスト",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-086.aitechd.com": {
+      "target": "/app-tool.html?id=86",
+      "name": "SQLスクラッチパッド",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-087.aitechd.com": {
+      "target": "/app-tool.html?id=87",
+      "name": "Webhook練習場",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-088.aitechd.com": {
+      "target": "/app-tool.html?id=88",
+      "name": "エンドポイント応答チェッカー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-089.aitechd.com": {
+      "target": "/app-tool.html?id=89",
+      "name": "CHANGELOGメーカー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-090.aitechd.com": {
+      "target": "/app-tool.html?id=90",
+      "name": "文字列ツール箱",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-091.aitechd.com": {
+      "target": "/app-tool.html?id=91",
+      "name": "近所イベント掲示板",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-092.aitechd.com": {
+      "target": "/app-tool.html?id=92",
+      "name": "町内ミニ掲示板",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-093.aitechd.com": {
+      "target": "/app-tool.html?id=93",
+      "name": "防災備蓄チェック",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-094.aitechd.com": {
+      "target": "/app-tool.html?id=94",
+      "name": "駐車料金メモ共有",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-095.aitechd.com": {
+      "target": "/app-tool.html?id=95",
+      "name": "地域の落とし物ボード",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-096.aitechd.com": {
+      "target": "/app-tool.html?id=96",
+      "name": "待ち時間シェア",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-097.aitechd.com": {
+      "target": "/app-tool.html?id=97",
+      "name": "近所のお得情報",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-098.aitechd.com": {
+      "target": "/app-tool.html?id=98",
+      "name": "サークル出欠ミニ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-099.aitechd.com": {
+      "target": "/app-tool.html?id=99",
+      "name": "フリマ在庫メモ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "app-100.aitechd.com": {
+      "target": "/app-tool.html?id=100",
+      "name": "公共施設営業時間メモ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "apps.aitechd.com": {
+      "target": "/apps.html",
+      "name": "使えるアプリ100 + SPECIAL LABS - 20秒ミニゲームズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-001.aitechd.com": {
+      "target": "/arcade100/?game=g001",
+      "name": "二人三脚ダンジョン",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-002.aitechd.com": {
+      "target": "/arcade100/?game=g002",
+      "name": "同時スイッチ脱出",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-003.aitechd.com": {
+      "target": "/arcade100/?game=g003",
+      "name": "ぐらぐら引っ越し隊",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-004.aitechd.com": {
+      "target": "/arcade100/?game=g004",
+      "name": "消防レスキュー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-005.aitechd.com": {
+      "target": "/arcade100/?game=g005",
+      "name": "巨大ボス討伐隊",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-006.aitechd.com": {
+      "target": "/arcade100/?game=g006",
+      "name": "宇宙船緊急修理",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-007.aitechd.com": {
+      "target": "/arcade100/?game=g007",
+      "name": "深海バディ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-008.aitechd.com": {
+      "target": "/arcade100/?game=g008",
+      "name": "坑道トロッコ救出",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-009.aitechd.com": {
+      "target": "/arcade100/?game=g009",
+      "name": "停電都市の配電班",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-010.aitechd.com": {
+      "target": "/arcade100/?game=g010",
+      "name": "護衛列車",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-011.aitechd.com": {
+      "target": "/arcade100/?game=g011",
+      "name": "爆弾迷路アリーナ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-012.aitechd.com": {
+      "target": "/arcade100/?game=g012",
+      "name": "スキルドッジボール",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-013.aitechd.com": {
+      "target": "/arcade100/?game=g013",
+      "name": "ワイヤー争奪戦",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-014.aitechd.com": {
+      "target": "/arcade100/?game=g014",
+      "name": "ペイント陣取り",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-015.aitechd.com": {
+      "target": "/arcade100/?game=g015",
+      "name": "重力反転デュエル",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-016.aitechd.com": {
+      "target": "/arcade100/?game=g016",
+      "name": "一発勝負ガンマン",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-017.aitechd.com": {
+      "target": "/arcade100/?game=g017",
+      "name": "崩れる六角アリーナ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-018.aitechd.com": {
+      "target": "/arcade100/?game=g018",
+      "name": "影分身アサシン",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-019.aitechd.com": {
+      "target": "/arcade100/?game=g019",
+      "name": "王冠の丘",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-020.aitechd.com": {
+      "target": "/arcade100/?game=g020",
+      "name": "巨人対ハンター",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-021.aitechd.com": {
+      "target": "/arcade100/?game=g021",
+      "name": "ドリフトチェックポイント",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-022.aitechd.com": {
+      "target": "/arcade100/?game=g022",
+      "name": "スタントカート",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-023.aitechd.com": {
+      "target": "/arcade100/?game=g023",
+      "name": "ワイヤーリレー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-024.aitechd.com": {
+      "target": "/arcade100/?game=g024",
+      "name": "雪山ボードクロス",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-025.aitechd.com": {
+      "target": "/arcade100/?game=g025",
+      "name": "ホバー艇レガッタ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-026.aitechd.com": {
+      "target": "/arcade100/?game=g026",
+      "name": "ギミックエアホッケー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-027.aitechd.com": {
+      "target": "/arcade100/?game=g027",
+      "name": "同時打ちミニゴルフ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-028.aitechd.com": {
+      "target": "/arcade100/?game=g028",
+      "name": "ブーストサッカー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-029.aitechd.com": {
+      "target": "/arcade100/?game=g029",
+      "name": "バディカヤック",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-030.aitechd.com": {
+      "target": "/arcade100/?game=g030",
+      "name": "妨害ハードル走",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-031.aitechd.com": {
+      "target": "/arcade100/?game=g031",
+      "name": "5分リバーシ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-032.aitechd.com": {
+      "target": "/arcade100/?game=g032",
+      "name": "重力コネクト4",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-033.aitechd.com": {
+      "target": "/arcade100/?game=g033",
+      "name": "ミニチェスアリーナ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-034.aitechd.com": {
+      "target": "/arcade100/?game=g034",
+      "name": "同時指令タクティクス",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-035.aitechd.com": {
+      "target": "/arcade100/?game=g035",
+      "name": "路線つなぎバトル",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-036.aitechd.com": {
+      "target": "/arcade100/?game=g036",
+      "name": "数字陣取り",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-037.aitechd.com": {
+      "target": "/arcade100/?game=g037",
+      "name": "隠密艦隊",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-038.aitechd.com": {
+      "target": "/arcade100/?game=g038",
+      "name": "迷路の壁職人",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-039.aitechd.com": {
+      "target": "/arcade100/?game=g039",
+      "name": "ドミノ航路",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-040.aitechd.com": {
+      "target": "/arcade100/?game=g040",
+      "name": "島の資源争奪",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-041.aitechd.com": {
+      "target": "/arcade100/?game=g041",
+      "name": "スピード大富豪",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-042.aitechd.com": {
+      "target": "/arcade100/?game=g042",
+      "name": "ブラフ入札",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-043.aitechd.com": {
+      "target": "/arcade100/?game=g043",
+      "name": "共同ナンバークエスト",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-044.aitechd.com": {
+      "target": "/arcade100/?game=g044",
+      "name": "ペアトリック",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-045.aitechd.com": {
+      "target": "/arcade100/?game=g045",
+      "name": "ドラフト商会",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-046.aitechd.com": {
+      "target": "/arcade100/?game=g046",
+      "name": "協力デッキダンジョン",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-047.aitechd.com": {
+      "target": "/arcade100/?game=g047",
+      "name": "予約アクションカード戦",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-048.aitechd.com": {
+      "target": "/arcade100/?game=g048",
+      "name": "10枚スピード",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-049.aitechd.com": {
+      "target": "/arcade100/?game=g049",
+      "name": "記憶泥棒",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-050.aitechd.com": {
+      "target": "/arcade100/?game=g050",
+      "name": "美術館オークション",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-051.aitechd.com": {
+      "target": "/arcade100/?game=g051",
+      "name": "お絵描き伝言リレー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-052.aitechd.com": {
+      "target": "/arcade100/?game=g052",
+      "name": "禁止ワード説明会",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-053.aitechd.com": {
+      "target": "/arcade100/?game=g053",
+      "name": "偽絵師を探せ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-054.aitechd.com": {
+      "target": "/arcade100/?game=g054",
+      "name": "5分宇宙船人狼",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-055.aitechd.com": {
+      "target": "/arcade100/?game=g055",
+      "name": "動く家具かくれんぼ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-056.aitechd.com": {
+      "target": "/arcade100/?game=g056",
+      "name": "うそつき競売",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-057.aitechd.com": {
+      "target": "/arcade100/?game=g057",
+      "name": "密輸人の交渉所",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-058.aitechd.com": {
+      "target": "/arcade100/?game=g058",
+      "name": "見えない迷路ガイド",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-059.aitechd.com": {
+      "target": "/arcade100/?game=g059",
+      "name": "多数派トラップ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-060.aitechd.com": {
+      "target": "/arcade100/?game=g060",
+      "name": "宝箱すり替え探偵",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-061.aitechd.com": {
+      "target": "/arcade100/?game=g061",
+      "name": "混雑キッチン",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-062.aitechd.com": {
+      "target": "/arcade100/?game=g062",
+      "name": "庭園レスキュー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-063.aitechd.com": {
+      "target": "/arcade100/?game=g063",
+      "name": "複線ダイヤ司令室",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-064.aitechd.com": {
+      "target": "/arcade100/?game=g064",
+      "name": "5分組立工場",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-065.aitechd.com": {
+      "target": "/arcade100/?game=g065",
+      "name": "満室ホテル",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-066.aitechd.com": {
+      "target": "/arcade100/?game=g066",
+      "name": "宇宙補給ステーション",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-067.aitechd.com": {
+      "target": "/arcade100/?game=g067",
+      "name": "橋を架ける二人",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-068.aitechd.com": {
+      "target": "/arcade100/?game=g068",
+      "name": "回転寿司リレー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-069.aitechd.com": {
+      "target": "/arcade100/?game=g069",
+      "name": "飛行船クルー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-070.aitechd.com": {
+      "target": "/arcade100/?game=g070",
+      "name": "災害まちづくり",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-071.aitechd.com": {
+      "target": "/arcade100/?game=g071",
+      "name": "連鎖オーブ対戦",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-072.aitechd.com": {
+      "target": "/arcade100/?game=g072",
+      "name": "落ちものバトル",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-073.aitechd.com": {
+      "target": "/arcade100/?game=g073",
+      "name": "共同マインフィールド",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-074.aitechd.com": {
+      "target": "/arcade100/?game=g074",
+      "name": "分担ブロック崩し",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-075.aitechd.com": {
+      "target": "/arcade100/?game=g075",
+      "name": "ミラーレーザー工房",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-076.aitechd.com": {
+      "target": "/arcade100/?game=g076",
+      "name": "相互テレポート迷宮",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-077.aitechd.com": {
+      "target": "/arcade100/?game=g077",
+      "name": "数字パネル奪取",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-078.aitechd.com": {
+      "target": "/arcade100/?game=g078",
+      "name": "鍵と時差の部屋",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-079.aitechd.com": {
+      "target": "/arcade100/?game=g079",
+      "name": "パイプ水圧バトル",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-080.aitechd.com": {
+      "target": "/arcade100/?game=g080",
+      "name": "数列バトン",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-081.aitechd.com": {
+      "target": "/arcade100/?game=g081",
+      "name": "ツイン宇宙シューター",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-082.aitechd.com": {
+      "target": "/arcade100/?game=g082",
+      "name": "協力タワーディフェンス",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-083.aitechd.com": {
+      "target": "/arcade100/?game=g083",
+      "name": "送り込みタワー戦",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-084.aitechd.com": {
+      "target": "/arcade100/?game=g084",
+      "name": "即席ロボット対戦",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-085.aitechd.com": {
+      "target": "/arcade100/?game=g085",
+      "name": "2対2拠点潜入",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-086.aitechd.com": {
+      "target": "/arcade100/?game=g086",
+      "name": "操縦と砲手",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-087.aitechd.com": {
+      "target": "/arcade100/?game=g087",
+      "name": "魔法サークル防衛",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-088.aitechd.com": {
+      "target": "/arcade100/?game=g088",
+      "name": "空母防衛隊",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-089.aitechd.com": {
+      "target": "/arcade100/?game=g089",
+      "name": "ドローン制圧戦",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-090.aitechd.com": {
+      "target": "/arcade100/?game=g090",
+      "name": "3分ミニRTS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-091.aitechd.com": {
+      "target": "/arcade100/?game=g091",
+      "name": "闇夜の追跡者",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-092.aitechd.com": {
+      "target": "/arcade100/?game=g092",
+      "name": "呪いの遺品回収",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-093.aitechd.com": {
+      "target": "/arcade100/?game=g093",
+      "name": "どうぶつ宅配レース",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-094.aitechd.com": {
+      "target": "/arcade100/?game=g094",
+      "name": "巨大魚フィッシング",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-095.aitechd.com": {
+      "target": "/arcade100/?game=g095",
+      "name": "砂の城と大波",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-096.aitechd.com": {
+      "target": "/arcade100/?game=g096",
+      "name": "雪合戦の砦",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-097.aitechd.com": {
+      "target": "/arcade100/?game=g097",
+      "name": "花火職人コンビ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-098.aitechd.com": {
+      "target": "/arcade100/?game=g098",
+      "name": "幽霊列車の終着駅",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-099.aitechd.com": {
+      "target": "/arcade100/?game=g099",
+      "name": "プレゼント搬送リレー",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade-100.aitechd.com": {
+      "target": "/arcade100/?game=g100",
+      "name": "ルール変化アリーナ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "arcade.aitechd.com": {
+      "target": "/arcade100/",
+      "name": "ARCADE 100 | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "babanuki.aitechd.com": {
+      "target": "/babanuki.html",
+      "name": "ババ抜き | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "bayline.aitechd.com": {
+      "target": "/bayline/",
+      "name": "BAYLINE — AFTER HOURS | 2人協力オープンワールド",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "bitcoin.aitechd.com": {
+      "target": "/commons/bitcoin/",
+      "name": "ビットコイン送金マップ | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "black-site.aitechd.com": {
+      "target": "/game23.html",
+      "name": "BLACK SITE — 灰の巡礼",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "board.aitechd.com": {
+      "target": "/board-games/",
+      "name": "ボードゲーム | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "brawler.aitechd.com": {
+      "target": "/brawler.html",
+      "name": "NEON BRAWL ARENA",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "camera.aitechd.com": {
+      "target": "https://shizuka-camera.douga071132.chatgpt.site",
+      "name": "camera",
+      "delivery": "sites",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified",
+      "notes": "Requires its existing Sites custom-domain binding; the static Worker does not route this hostname."
+    },
+    "chain-orbs.aitechd.com": {
+      "target": "/game15.html",
+      "name": "GAME 15 - CHAIN ORBS VS CPU",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "chain-trace.aitechd.com": {
+      "target": "/chain-trace.html",
+      "name": "CHAIN TRACE - Public Blockchain Flow Analyzer",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "chat.aitechd.com": {
+      "target": "/commons/tools/chat/",
+      "name": "ルームチャット | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "chess.aitechd.com": {
+      "target": "/board-games/?game=chess",
+      "name": "chess",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "classic.aitechd.com": {
+      "target": "/classic.html",
+      "name": "大富豪・五目並べ | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "commons.aitechd.com": {
+      "target": "https://commons-100.douga071132.chatgpt.site",
+      "name": "commons",
+      "delivery": "sites",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified",
+      "notes": "Existing Sites project redirects to https://aitechd.com/commons/. Use tools.aitechd.com for the canonical static Commons bundle. This registry does not change the existing Sites redirect."
+    },
+    "constitution-text.aitechd.com": {
+      "target": "/commons/constitution/textbook.html",
+      "name": "憲法・全範囲テキスト｜予備試験｜コモンズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "constitution.aitechd.com": {
+      "target": "/commons/constitution/",
+      "name": "憲法マインドマップ｜予備試験・短答と論文｜コモンズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "cyber-news.aitechd.com": {
+      "target": "/commons/cyber-news/",
+      "name": "サイバー攻撃ニュース | コモンズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "cyber-quiz.aitechd.com": {
+      "target": "/cyber-quiz/",
+      "name": "NEON SENTINELS — 協力ハッキングクイズ | AItech",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "daifugo.aitechd.com": {
+      "target": "/classic.html?game=daifugo",
+      "name": "大富豪・五目並べ | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "digimon.aitechd.com": {
+      "target": "/digimon-card/",
+      "name": "DIGIMON CARD LAB | AITECH 2D",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "documents.aitechd.com": {
+      "target": "/commons/documents/",
+      "name": "行政資料ナビ | コモンズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "drums.aitechd.com": {
+      "target": "/pulse-drums/?mode=duo",
+      "name": "PULSE DRUMS — ドラムリズムゲーム | AITECH 2D",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "duel-masters.aitechd.com": {
+      "target": "/commons/duel-masters-flavor/",
+      "name": "デュエマ フレーバー書庫 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "dungeon-dice.aitechd.com": {
+      "target": "/dungeon-dice/",
+      "name": "ダンジョンダイス | AITECH 2D",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "fishmongers.aitechd.com": {
+      "target": "/commons/local/fishmongers/",
+      "name": "岐阜・愛知の魚屋 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "fps.aitechd.com": {
+      "target": "/fps.html",
+      "name": "GAME 11 - LIMINAL ZOMBIE FPS REBORN",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "games-2d.aitechd.com": {
+      "target": "/games-2d.html",
+      "name": "2Dゲーム集 | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "games-3d.aitechd.com": {
+      "target": "/games-3d.html",
+      "name": "3Dゲーム集 | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "games-board.aitechd.com": {
+      "target": "/games-board.html",
+      "name": "ボードゲーム | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "games-trump.aitechd.com": {
+      "target": "/games-trump.html",
+      "name": "トランプ | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "games.aitechd.com": {
+      "target": "/games.html",
+      "name": "ゲーム集 | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "gash.aitechd.com": {
+      "target": "https://gash-card-battle-aitech.douga071132.chatgpt.site",
+      "name": "gash",
+      "delivery": "sites",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified",
+      "notes": "Requires its existing Sites custom-domain binding; the static Worker does not route this hostname."
+    },
+    "go.aitechd.com": {
+      "target": "/board-games/?game=go",
+      "name": "go",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "gomoku-online.aitechd.com": {
+      "target": "/classic.html?game=gomoku&mode=online",
+      "name": "大富豪・五目並べ | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "gomoku.aitechd.com": {
+      "target": "/board-games/?game=gomoku",
+      "name": "gomoku",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "government.aitechd.com": {
+      "target": "/commons/government-network/",
+      "name": "行政機関・独立行政法人マップ | コモンズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "hacking-story.aitechd.com": {
+      "target": "/hacking-story/",
+      "name": "GHOSTLINE — 協力ハッキングストーリー | AItech",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "hotels.aitechd.com": {
+      "target": "/commons/hotels/",
+      "name": "全国ホテル検索 | AITECH コモンズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "it-quiz.aitechd.com": {
+      "target": "/it-quiz/",
+      "name": "ITクイズ｜IT RAID | AItech",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "lantern-duo.aitechd.com": {
+      "target": "/lantern-duo/",
+      "name": "LANTERN DUO — ふたりの灯台",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "law-quiz.aitechd.com": {
+      "target": "/law-quiz/",
+      "name": "法律クイズ｜LAW RAID | AItech",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "law.aitechd.com": {
+      "target": "/commons/law/",
+      "name": "法律・国会ウォッチ | コモンズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "legacy-chat.aitechd.com": {
+      "target": "/chat.html",
+      "name": "チャット | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "legacy-whiteboard.aitechd.com": {
+      "target": "/whiteboard.html",
+      "name": "共有ホワイトボード | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "life.aitechd.com": {
+      "target": "/board-games/?game=life",
+      "name": "life",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "local-sauna.aitechd.com": {
+      "target": "/commons/local/saunas/",
+      "name": "岐阜・愛知のサウナ | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "manga.aitechd.com": {
+      "target": "/commons/manga/",
+      "name": "無料漫画を探す | コモンズセキュリティ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "mega.aitechd.com": {
+      "target": "/mega-arcade.html",
+      "name": "MEGA ARCADE 320",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "memory.aitechd.com": {
+      "target": "/trump/?game=memory",
+      "name": "トランプ | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "monopoly.aitechd.com": {
+      "target": "/board-games/?game=monopoly",
+      "name": "monopoly",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "mountain-shadow.aitechd.com": {
+      "target": "/game16.html",
+      "name": "GAME 16 - MOUNTAIN SHADOW",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "mtg.aitechd.com": {
+      "target": "/commons/mtg-flavor/",
+      "name": "MTG フレーバー書庫 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "music.aitechd.com": {
+      "target": "/music/",
+      "name": "FLOW — おすすめ音楽ラジオ | AITECH",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "naruto.aitechd.com": {
+      "target": "https://naruto-card-battle-aitech.douga071132.chatgpt.site",
+      "name": "naruto",
+      "delivery": "sites",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified",
+      "notes": "Requires its existing Sites custom-domain binding; the static Worker does not route this hostname."
+    },
+    "onepiece-cards.aitechd.com": {
+      "target": "/commons/onepiece-cards/",
+      "name": "ワンピースカード図鑑 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "onion.aitechd.com": {
+      "target": "/commons/onion/",
+      "name": "Onion URL確認 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "othello.aitechd.com": {
+      "target": "/board-games/?game=othello",
+      "name": "othello",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-24.aitechd.com": {
+      "target": "/party.html?game=24",
+      "name": "REACTOR RELAY",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-25.aitechd.com": {
+      "target": "/party.html?game=25",
+      "name": "METEOR DEFENSE",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-26.aitechd.com": {
+      "target": "/party.html?game=26",
+      "name": "CARGO RUSH",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-27.aitechd.com": {
+      "target": "/party.html?game=27",
+      "name": "VIRUS PURGE",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-28.aitechd.com": {
+      "target": "/party.html?game=28",
+      "name": "TREASURE HEIST",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-29.aitechd.com": {
+      "target": "/party.html?game=29",
+      "name": "SKY TOWER BUILDERS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-30.aitechd.com": {
+      "target": "/party.html?game=30",
+      "name": "ESCAPE SWITCH",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-31.aitechd.com": {
+      "target": "/party.html?game=31",
+      "name": "SNOWBALL ARENA",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-32.aitechd.com": {
+      "target": "/party.html?game=32",
+      "name": "CRYSTAL CAPTURE",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-33.aitechd.com": {
+      "target": "/party.html?game=33",
+      "name": "BOMB PASS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-34.aitechd.com": {
+      "target": "/party.html?game=34",
+      "name": "KITCHEN CHAOS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-35.aitechd.com": {
+      "target": "/party.html?game=35",
+      "name": "GHOST HUNT",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-36.aitechd.com": {
+      "target": "/party.html?game=36",
+      "name": "SPACE SALVAGE",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-37.aitechd.com": {
+      "target": "/party.html?game=37",
+      "name": "BRIDGE BUILDERS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-38.aitechd.com": {
+      "target": "/party.html?game=38",
+      "name": "LASER MAZE",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-39.aitechd.com": {
+      "target": "/party.html?game=39",
+      "name": "CASTLE SIEGE",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-40.aitechd.com": {
+      "target": "/party.html?game=40",
+      "name": "FISHING FRENZY",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-41.aitechd.com": {
+      "target": "/party.html?game=41",
+      "name": "FIRE BRIGADE",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-42.aitechd.com": {
+      "target": "/party.html?game=42",
+      "name": "RHYTHM RELAY",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party-43.aitechd.com": {
+      "target": "/party.html?game=43",
+      "name": "CROWN RACE",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "party.aitechd.com": {
+      "target": "/party.html",
+      "name": "PARTY 5 - 2人対戦・協力ゲーム",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "pokemon-cards.aitechd.com": {
+      "target": "/commons/pokemon-cards/",
+      "name": "ポケモンカード図鑑 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "quick-hop.aitechd.com": {
+      "target": "/quick-hop/",
+      "name": "Quick Hop | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "quiz-raid.aitechd.com": {
+      "target": "/quiz-raid/",
+      "name": "法律クイズ・ITクイズを選ぶ | AItech",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "racing.aitechd.com": {
+      "target": "https://apex-horizon-racing.douga071132.chatgpt.site",
+      "name": "APEX HORIZON Racing",
+      "delivery": "sites",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified",
+      "notes": "Separate Sites version; this static Worker does not route this hostname."
+    },
+    "ramen-openings.aitechd.com": {
+      "target": "/commons/openings/ramen/",
+      "name": "ラーメン屋オープン予定 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "ramen.aitechd.com": {
+      "target": "/commons/ramen/",
+      "name": "岐阜のラーメン | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "reemployment.aitechd.com": {
+      "target": "/commons/reemployment-network/",
+      "name": "官僚の再就職先マップ | コモンズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "rentals.aitechd.com": {
+      "target": "/commons/rentals/",
+      "name": "岐阜・愛知の賃貸検索 | AITECH コモンズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "sauna-openings.aitechd.com": {
+      "target": "/commons/openings/sauna/",
+      "name": "サウナ開業情報 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "sauna.aitechd.com": {
+      "target": "/commons/sauna/",
+      "name": "全国のサウナ | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "saunanow.aitechd.com": {
+      "target": "https://saunanow.douga071132.chatgpt.site",
+      "name": "saunanow",
+      "delivery": "sites",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified",
+      "notes": "Separate Sites version; freshness relative to /commons/sauna/ is not verified. Use sauna.aitechd.com for the canonical static app."
+    },
+    "sento.aitechd.com": {
+      "target": "/commons/local/sento/",
+      "name": "岐阜・愛知の銭湯 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "shogi.aitechd.com": {
+      "target": "/board-games/?game=shogi",
+      "name": "shogi",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "shooting.aitechd.com": {
+      "target": "/shooting.html",
+      "name": "GAME 12 - 20秒シューティング",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "silent-camera.aitechd.com": {
+      "target": "/commons/camera/",
+      "name": "SHIZUKA — カメラ | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "skybreak.aitechd.com": {
+      "target": "/smash.html",
+      "name": "SKYBREAK RIVALS | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "speed.aitechd.com": {
+      "target": "/trump/?game=speed",
+      "name": "トランプ | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "startrail.aitechd.com": {
+      "target": "/startrail/",
+      "name": "STARTRAIL — 5分間の小さな冒険 | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "study.aitechd.com": {
+      "target": "/commons/study/",
+      "name": "予備試験対策集 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "supermarkets.aitechd.com": {
+      "target": "/commons/local/supermarkets/",
+      "name": "岐阜・愛知のスーパー | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "threat-intel.aitechd.com": {
+      "target": "/threat-intel.html",
+      "name": "DARK INTEL WATCH - Safe Threat Intelligence Dashboard",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "tools.aitechd.com": {
+      "target": "/commons/",
+      "name": "コモンズ | AITECH",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "touge.aitechd.com": {
+      "target": "/touge/",
+      "name": "MIDNIGHT TOUGE — 夜を、駆ける。",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "trump-legacy.aitechd.com": {
+      "target": "/trump-unity/",
+      "name": "トランプ旧入口",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "trump.aitechd.com": {
+      "target": "/trump/",
+      "name": "トランプ | AITECH GAMES",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "typing.aitechd.com": {
+      "target": "/typing.html",
+      "name": "GAME 14 - HIRAGANA TYPE ATTACK | 20秒ミニゲームズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "usage.aitechd.com": {
+      "target": "/commons/usage/",
+      "name": "使用量と無料枠 | コモンズ",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "velora.aitechd.com": {
+      "target": "https://velora-afterlight.douga071132.chatgpt.site",
+      "name": "velora",
+      "delivery": "sites",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified",
+      "notes": "Requires its existing Sites custom-domain binding; the static Worker does not route this hostname."
+    },
+    "video.aitechd.com": {
+      "target": "/video-hub.html",
+      "name": "STREAMBOX - Video Hub",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "wallpapers.aitechd.com": {
+      "target": "/pixel-wallpapers/",
+      "name": "NOCTURNE — 動く2Dイラスト100選 | AITECH",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "weather.aitechd.com": {
+      "target": "/commons/weather/",
+      "name": "岐阜の天気 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "whiteboard.aitechd.com": {
+      "target": "/commons/tools/whiteboard/",
+      "name": "ホワイトボード | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "windbound.aitechd.com": {
+      "target": "https://windbound-duo.douga071132.chatgpt.site",
+      "name": "windbound",
+      "delivery": "sites",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified",
+      "notes": "Requires its existing Sites custom-domain binding; the static Worker does not route this hostname."
+    },
+    "yobi-quiz.aitechd.com": {
+      "target": "/yobi-quiz.html",
+      "name": "短答ノート｜予備試験・司法試験 過去問演習",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "yobi-ronbun.aitechd.com": {
+      "target": "/yobi-ronbun.html",
+      "name": "論文ノート｜予備試験 必須科目の学習と起案",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "yugioh.aitechd.com": {
+      "target": "/commons/yugioh-flavor/",
+      "name": "遊戯王 フレーバー書庫 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "zx-cards.aitechd.com": {
+      "target": "/commons/zx-cards/",
+      "name": "Z/X カード図鑑 | COMMONS",
+      "delivery": "static",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified"
+    },
+    "zx.aitechd.com": {
+      "target": "https://zx-solo-lab-aitech.douga071132.chatgpt.site",
+      "name": "zx",
+      "delivery": "sites",
+      "activation": "pending-dns-and-hosting",
+      "commercialReview": "not-verified",
+      "notes": "Requires its existing Sites custom-domain binding; the static Worker does not route this hostname."
+    }
+  }
+}

@@ -23,9 +23,10 @@ are deduplicated, and at most four upstream reads run per isolate. Per-IP limits
 are best-effort in-memory limits, not a distributed quota.
 
 The public publishable key is validated by the handler; it is intentionally
-public, not an account credential. Browser origins are restricted to aitechd.com
-and www.aitechd.com. Deploy index.ts, core.mjs and public-key.mjs with
-verify_jwt=false because this endpoint uses that custom key check.
+public, not an account credential. Browser origins use the exact per-endpoint
+allowlist in `../_shared/commons-cors.mjs`; see `docs/subdomain-cors.md`. Deploy
+index.ts, core.mjs, public-key.mjs and the shared CORS module with their relative
+paths intact. Retain verify_jwt=false because this endpoint uses that custom key check.
 
 Coverage: registered OCG cards, grouped by official card ID. Japanese database
 pages sometimes contain English prize cards; their original text is preserved.

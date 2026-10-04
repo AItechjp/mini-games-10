@@ -1,3 +1,4 @@
+import { commonsCors } from '../_shared/commons-cors.mjs';
 import {validateHotel,validateRental,hotelSearches,rentalSearches} from './search-core.mjs';
 import {parseHotels,parseRentals,parseHotelAreas} from './parsers.mjs';
 import stations from './stations.mjs';
@@ -5,12 +6,12 @@ import {PUBLIC_KEY} from './public-key.mjs';
 
 // This endpoint reads public listings only. It never opens the project database.
 // A project publishable key is required; no service-role key or user data is used.
-const origins = new Set(['https://aitechd.com','https://www.aitechd.com','https://commons-100.douga071132.chatgpt.site']);
+const cors = commonsCors('search');
 const cache = new Map<string,{at:number;data:unknown}>();
 const pending = new Map<string,Promise<unknown>>();
 const budgets = new Map<string,{at:number;count:number}>();
 let inFlight=0;
-function headers(origin:string|null){return {'Access-Control-Allow-Origin':origin&&origins.has(origin)?origin:'https://aitechd.com','Access-Control-Allow-Headers':'apikey, authorization, content-type','Access-Control-Allow-Methods':'GET, OPTIONS','Access-Control-Max-Age':'600','Vary':'Origin','Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff'};}
+const headers = cors.headers;
 function json(data:unknown,origin:string|null,status=200){return Response.json(data,{status,headers:headers(origin)});}
 async function fetchListing(initial:URL){
   let url=initial;const signal=AbortSignal.timeout(18000);
@@ -34,7 +35,7 @@ async function boundedText(response:Response){
 }
 export default {async fetch(request:Request){
   const origin=request.headers.get('origin');
-  if(origin&&!origins.has(origin))return json({error:'このサイトからは利用できません。'},origin,403);
+  if(!cors.isAllowed(origin))return json({error:'このサイトからは利用できません。'},origin,403);
   if(request.method==='OPTIONS')return new Response(null,{status:204,headers:headers(origin)});
   if(request.method!=='GET')return json({error:'GETのみ利用できます。'},origin,405);
   if(request.headers.get('apikey')!==PUBLIC_KEY)return json({error:'検索サービスの接続設定を確認してください。'},origin,401);

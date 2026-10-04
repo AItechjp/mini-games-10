@@ -11,3 +11,5 @@ Read-only Edge Function for the AITECH hotel and rental search pages. It fetches
 Frontend: `commons/search/live-results.mjs` and `live-config.mjs`. Prices are numeric, source-attributed and timestamped; sorting covers loaded records only. Hotel room/occupancy basis is retained from the source's price label. Rental rent sorting excludes management and initial fees.
 
 The sources can change their HTML or stop serving results. Display the retrieval error and preserve a direct source search route in that case. This integration does not guarantee complete inventory coverage or final booking prices. No search-user data is saved.
+
+The exact browser-origin allowlist is shared in `../_shared/commons-cors.mjs`. Include that file with relative paths intact when deploying. Subdomain origins, deployment versions and validation are recorded in `docs/subdomain-cors.md`.
