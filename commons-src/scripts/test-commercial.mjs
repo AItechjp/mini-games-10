@@ -8,7 +8,9 @@ const out=resolve('work/commercial-tests');await mkdir(out,{recursive:true});
 await esbuild.build({stdin:{contents:"export * from './lib/weather-provider';export * from './lib/weather';export * from './edge/origins';export * from './lib/sauna-status';export * from './lib/local-data';",resolveDir:process.cwd()},outfile:join(out,'commercial.cjs'),bundle:true,platform:'node',format:'cjs',logLevel:'silent'});
 process.env.TZ='UTC';
 const {weatherProviderUrl,weatherCities,allowedOrigins,serviceHosts,saunaStatus,parseLocalSnapshot}=require(join(out,'commercial.cjs'));
-assert.equal(serviceHosts.length,17);
+const expectedHosts=['canvas','law','talk','stay','sumai','market','tokai-sauna','sento','sakana','ramen','sauna','ramen-news','sauna-news','camera','weather','btc','onion','commons','tools','whiteboard','chat','hotels','rentals','supermarkets','local-sauna','fishmongers','ramen-openings','sauna-openings','silent-camera','bitcoin','saunanow'];
+assert.deepEqual([...serviceHosts].sort(),expectedHosts.sort());
+assert.equal(new Set(serviceHosts).size,serviceHosts.length);
 for(const host of serviceHosts)assert(allowedOrigins.has(`https://${host}.aitechd.com`));
 for(const bad of ['http://sauna.aitechd.com','https://sauna.aitechd.com.evil.example','https://evil.aitechd.com','null','https://aitechd.com:8443'])assert(!allowedOrigins.has(bad));
 assert.throws(()=>weatherProviderUrl(weatherCities[0],{commercial:true}));
@@ -33,5 +35,5 @@ assert.throws(()=>parseLocalSnapshot({...local,stores:[{...local.stores[0],note:
 assert.throws(()=>parseLocalSnapshot({...local,updatedAt:'not-a-date'}));
 assert.ok(!local.stores.some(s=>/^市/.test(s.city)));
 const g=local.stores.filter(s=>s.address.startsWith('愛知県蒲郡市'));assert(g.length>=6);assert(g.every(s=>s.city==='蒲郡市'||!s.city));
-const result={passed:true,serviceOrigins:17,rejectedOrigins:5,commercialWeatherConfiguration:true,officialClosureAndJstBoundaries:true,cityCorrection:true};
+const result={passed:true,serviceOrigins:serviceHosts.length,rejectedOrigins:5,commercialWeatherConfiguration:true,officialClosureAndJstBoundaries:true,cityCorrection:true};
 await writeFile(join(out,'commercial-result.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
