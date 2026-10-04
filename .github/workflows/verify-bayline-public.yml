@@ -1,4 +1,4 @@
-name: Verify Bayline public release
+name: Verify removed 3D URLs
 on:
   workflow_run:
     workflows: ['Deploy GitHub Pages']
@@ -7,28 +7,53 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: bayline-public-verification
+  group: removed-3d-public-verification
   cancel-in-progress: true
 jobs:
-  live:
+  verify-removal:
     if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install verification browser
+      - name: Verify removed 3D pages and assets return 404 over valid HTTPS
         run: |
-          npm install --no-save --no-package-lock playwright@1.55.0
-          npx playwright install --with-deps chromium
-      - name: Verify actual HTTPS deployment and two-player public UI
-        run: node scripts/verify-bayline-public.mjs
-      - name: Retain production screenshots and results
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import {mkdir,writeFile} from 'node:fs/promises';
+          const output='test-output/removed-3d';
+          await mkdir(output,{recursive:true});
+          const report={checkedAt:new Date().toISOString(),checks:[],failures:[]};
+          try {
+            const release=await fetch('https://aitechd.com/https-release.json',{signal:AbortSignal.timeout(15000)});
+            assert(release.ok,`Release manifest returned ${release.status}`);
+            report.commit=(await release.json()).commit;
+            const paths=['games-3d.html','bayline/','bayline/index.html','bayline/game.mjs','game23.html','game23-runtime.mjs','smash.html','smash.js','fps.html','touge/','racing.html','unity/black-site.html','unity/skybreak-rivals.html'];
+            for (const hostname of ['aitechd.com','www.aitechd.com']) {
+              for (const path of paths) {
+                const url=`https://${hostname}/${path}?removal-audit=${report.commit}`;
+                try {
+                  // Native fetch validates every TLS certificate, including redirects.
+                  const response=await fetch(url,{signal:AbortSignal.timeout(15000)});
+                  report.checks.push({url,status:response.status,finalURL:response.url});
+                  if(response.status!==404)report.failures.push(`${url} returned ${response.status}; expected 404`);
+                  await response.body?.cancel();
+                } catch(error) { report.failures.push(`${url}: ${error.message}`); }
+              }
+            }
+          } catch(error) { report.failures.push(error.message); }
+          report.passed=report.failures.length===0;
+          await writeFile(`${output}/results.json`,JSON.stringify(report,null,2));
+          console.log(JSON.stringify(report,null,2));
+          if(!report.passed)process.exitCode=1;
+          JS
+      - name: Retain removal verification results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bayline-production-verification
+          name: removed-3d-production-verification
           retention-days: 7
-          path: test-output/bayline-public/
+          path: test-output/removed-3d/
+          if-no-files-found: error

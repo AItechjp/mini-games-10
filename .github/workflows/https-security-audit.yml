@@ -2,11 +2,8 @@ name: HTTPS full-site security audit
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/https-security-audit.yml
-      - tests/https-live.mjs
+  # The deploy workflow already runs this full audit after publication.
+  # Keep this dedicated entry point for manual rechecks, not pre-deploy pushes.
 
 permissions:
   contents: read
@@ -21,7 +18,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Select the currently deployed release
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+          commit="$(curl --fail --silent --show-error 'https://aitechd.com/https-release.json' | jq -er '.commit | select(test("^[0-9a-f]{40}$"))')"
+          printf 'commit=%s\n' "$commit" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.release.outputs.commit }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -40,6 +46,7 @@ jobs:
       - name: Inspect all live pages without bypassing certificate errors
         env:
           HTTPS_BASE_URL: https://aitechd.com/
+          HTTPS_EXPECT_COMMIT: ${{ steps.release.outputs.commit }}
         run: node tests/https-live.mjs
       - name: Save full security evidence
         if: always()
