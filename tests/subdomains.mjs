@@ -3,7 +3,6 @@ import { readFile, stat } from 'node:fs/promises';
 import { resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { apps as guidedApps } from '../quality/apps.mjs';
-import { GAMES } from '../arcade100/catalog.mjs';
 import { createRootRouter, validateRegistry } from '../cloudflare/subdomain-router.mjs';
 import worker from '../cloudflare/subdomain-worker.mjs';
 
@@ -27,8 +26,43 @@ for (const [host, entry] of local) {
 const targets = local.map(([, item]) => new URL(item.target, 'https://aitechd.com'));
 const key = url => url.pathname.replace(/index\.html$/, '') + '|' + (url.searchParams.get('game') || '');
 const known = new Set(targets.map(key));
-// Assert coverage against real public links, including the individual board/card games.
-for (const page of ['index.html', 'games.html', 'games-2d.html', 'games-3d.html', 'games-trump.html', 'games-board.html', 'apps.html']) {
+// The user's current scope is all 31 Commons sites and these ten retained 2D entries.
+const commonsSites = [
+  ['whiteboard', 'tools/whiteboard'], ['yobi', 'study'], ['chat', 'tools/chat'],
+  ['hotel-search', 'hotels'], ['rental-search', 'rentals'],
+  ['local-supermarkets', 'local/supermarkets'], ['local-saunas', 'local/saunas'],
+  ['local-sento', 'local/sento'], ['local-fishmongers', 'local/fishmongers'],
+  ['ramen', 'ramen'], ['sauna-now', 'sauna'], ['restaurant-openings', 'openings/ramen'],
+  ['sauna-openings', 'openings/sauna'], ['camera', 'camera'], ['weather', 'weather'],
+  ['bitcoin', 'bitcoin'], ['onion', 'onion'], ['cyber-news', 'cyber-news'],
+  ['government-network', 'government-network'], ['reemployment-network', 'reemployment-network'],
+  ['law-watch', 'law'], ['government-documents', 'documents'], ['manga-links', 'manga'],
+  ['mtg-flavor', 'mtg-flavor'], ['duel-masters-flavor', 'duel-masters-flavor'],
+  ['yugioh-flavor', 'yugioh-flavor'], ['onepiece-cards', 'onepiece-cards'],
+  ['pokemon-cards', 'pokemon-cards'], ['zx-cards', 'zx-cards'],
+  ['usage-dashboard', 'usage'], ['constitution-map', 'constitution'],
+];
+const gameDirectories = ['pulse-drums', 'pixel-wallpapers', 'cyber-quiz', 'music', 'law-quiz',
+  'it-quiz', 'hacking-story', 'lantern-duo', 'quick-hop', 'startrail'];
+const supportPages = ['/games.html', '/games-2d.html', '/yobi-quiz.html', '/yobi-ronbun.html',
+  '/commons/', '/commons/constitution/textbook.html'];
+const allowedPaths = new Set([...commonsSites.map(([, path]) => `/commons/${path}/`),
+  ...gameDirectories.map(path => `/${path}/`), ...supportPages]);
+assert.equal(commonsSites.length, 31);
+assert.equal(new Set(commonsSites.map(([id]) => id)).size, 31);
+assert.equal(local.length, 47);
+assert.equal(entries.length, 50);
+assert.deepEqual(entries.filter(([, entry]) => entry.delivery === 'sites').map(([host]) => host),
+  ['camera.aitechd.com', 'commons.aitechd.com', 'saunanow.aitechd.com']);
+assert.deepEqual(new Set(targets.map(url => url.pathname)), allowedPaths);
+for (const [id, path] of commonsSites) {
+  assert(known.has(key(new URL(`/commons/${path}/`, 'https://aitechd.com'))), `Missing Commons site: ${id}`);
+}
+for (const path of gameDirectories) {
+  assert(known.has(key(new URL(`/${path}/`, 'https://aitechd.com'))), `Missing retained 2D entry: ${path}`);
+}
+// Assert coverage against the current public navigation, not removed catalog pages.
+for (const page of ['index.html', 'games.html', 'games-2d.html']) {
   for (const [, href] of (await read(page)).matchAll(/<a\b[^>]*\bhref=["']([^"']+)["']/gi)) {
     if (href.startsWith('#') || /legal\.html/.test(href)) continue;
     const url = new URL(href.replaceAll('&amp;', '&'), 'https://aitechd.com/' + page);
@@ -39,7 +73,7 @@ for (const page of ['index.html', 'games.html', 'games-2d.html', 'games-3d.html'
     }
   }
 }
-for (const app of guidedApps.filter(app => app.path.startsWith('/'))) {
+for (const app of guidedApps.filter(app => app.path.startsWith('/') && allowedPaths.has(new URL(app.path, 'https://aitechd.com').pathname))) {
   assert(known.has(key(new URL(app.path, 'https://aitechd.com'))), `Missing guided app: ${app.id}`);
 }
 // The Commons catalog also contains generated local-directory entries; cover those explicitly.
@@ -50,30 +84,24 @@ for (const [, path] of commonsSource.matchAll(/href:\s*['"]([^'"]+)['"]/g)) {
 for (const kind of ['supermarkets', 'saunas', 'sento', 'fishmongers']) {
   assert(known.has(key(new URL(`/commons/local/${kind}/`, 'https://aitechd.com'))));
 }
-const appNames = [...(await read('apps.js')).matchAll(/\['([^']*)','([^']*)','([^']*)','([^']*)','([^']*)'\]/g)];
-assert.equal(appNames.length, 100);
-for (let id = 1; id <= 100; id++) {
-  const entry = registry.hosts[`app-${String(id).padStart(3, '0')}.aitechd.com`];
-  assert.equal(entry.target, `/app-tool.html?id=${id}`);
-  assert.equal(entry.name, appNames[id - 1][1]);
-}
-assert.equal(GAMES.length, 100);
-for (const game of GAMES) {
-  assert.equal(registry.hosts[`arcade-${String(game.number).padStart(3, '0')}.aitechd.com`].target, `/arcade100/?game=${game.id}`);
-}
-for (let id = 24; id <= 43; id++) {
-  assert.equal(registry.hosts[`party-${id}.aitechd.com`].target, `/party.html?game=${id}`);
+assert(!entries.some(([host]) => /^(?:app-\d|arcade-\d|party-\d)/.test(host)), 'Removed bulk catalogs must not return to migration');
+for (const name of ['aether', 'zx', 'naruto', 'gash', 'velora', 'windbound', 'racing', 'black-site',
+  'skybreak', 'digimon', 'dungeon-dice', 'trump', 'board', 'babanuki', 'daifugo', 'gomoku',
+  'games-3d', 'games-board', 'games-trump', 'apps', 'arcade', 'party']) {
+  const host = `${name}.aitechd.com`;
+  assert(!Object.hasOwn(registry.hosts, host), `Removed host must not be listed: ${host}`);
+  assert.equal(route(new Request(`https://${host}/`)), null, `Removed host must not be routed: ${host}`);
 }
 
-const response = route(new Request('https://app-007.aitechd.com/?id=98&room=AB12&tag=a&tag=b&next=https%3A%2F%2Fevil.invalid'));
-const result = new URL(response.headers.get('Location'), 'https://app-007.aitechd.com');
-assert.equal(result.pathname, '/app-tool.html');
-assert.equal(result.searchParams.get('id'), '7');
+const response = route(new Request('https://drums.aitechd.com/?mode=solo&room=AB12&tag=a&tag=b&next=https%3A%2F%2Fevil.invalid'));
+const result = new URL(response.headers.get('Location'), 'https://drums.aitechd.com');
+assert.equal(result.pathname, '/pulse-drums/');
+assert.equal(result.searchParams.get('mode'), 'duo');
 assert.equal(result.searchParams.get('room'), 'AB12');
 assert.deepEqual(result.searchParams.getAll('tag'), ['a', 'b']);
-assert.equal(result.origin, 'https://app-007.aitechd.com');
+assert.equal(result.origin, 'https://drums.aitechd.com');
 assert.equal(response.headers.get('Cache-Control'), 'no-store');
-assert.equal(route(new Request('https://gomoku.aitechd.com/?mode=local&room=ABC')).headers.get('Location'), '/board-games/?game=gomoku&mode=local&room=ABC');
+assert.equal(route(new Request('https://whiteboard.aitechd.com/?room=ABC')).headers.get('Location'), '/commons/tools/whiteboard/?room=ABC');
 assert.equal(route(new Request('https://games.aitechd.com/', { method: 'HEAD' })).status, 302);
 
 for (const url of ['https://aitechd.com/', 'https://www.aitechd.com/', 'https://unknown.aitechd.com/',
@@ -113,4 +141,4 @@ assert(!targets.some(url => url.pathname.startsWith('/onepiece-battle')));
 const build = await read('scripts/build-static.mjs');
 assert(build.includes("'onepiece-battle'"), 'Keep the APK-only ONE PIECE source out of the public bundle');
 assert(build.includes("'cloudflare'") && build.includes("'docs'"), 'Do not publish routing infrastructure or the private registry');
-console.log(`Subdomains passed: ${local.length} existing local routes, ${appNames.length} utility apps, ${GAMES.length} arcade entries, ${entries.length - local.length} separate/reserved hosts; query preservation, source coverage and private exclusions verified.`);
+console.log(`Subdomains passed: ${local.length} local routes with ${commonsSites.length} Commons sites and ${gameDirectories.length} retained 2D entries, ${entries.length - local.length} separate/reserved hosts; removed-host exclusion, query preservation and source coverage verified.`);

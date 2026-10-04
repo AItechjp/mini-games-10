@@ -1,10 +1,11 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import { isPublicPath, containsPublicPath } from './scripts/public-scope.mjs';
 
 // Run against the publish directory (or the working tree for existing callers).
 const root = path.resolve(process.argv[2] || process.cwd());
 const VERSION = '20260911-https-v2';
-const skipDirs = new Set(['.git', '.github', 'node_modules', 'tests', 'supabase', 'tools', 'scripts', 'test-output', 'test-results', 'playwright-report', '_site', 'vendor', 'commons-src', 'dist', 'src', 'source', 'backend', 'cloudflare', 'docs', 'roadmap', 'onepiece-battle']);
+const skipDirs = new Set(['.git', '.github', 'node_modules', 'tests', 'supabase', 'scripts', 'test-output', 'test-results', 'playwright-report', '_site', 'vendor', 'commons-src', 'dist', 'src', 'source', 'backend', 'cloudflare', 'docs', 'roadmap', 'onepiece-battle']);
 const skipFiles = new Set(['https-hardening.mjs', 'shogi-adapter.mjs']);
 const webExts = new Set(['.html', '.htm', '.css', '.js', '.mjs']);
 const namespaces = [
@@ -49,8 +50,8 @@ async function walk(dir) {
   for (const entry of (await fs.readdir(dir, {withFileTypes:true})).sort((a,b)=>a.name.localeCompare(b.name))) {
     if (entry.isSymbolicLink()) continue;
     const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) { if (!skipDirs.has(entry.name)) files.push(...await walk(full)); }
-    else if (webExts.has(path.extname(entry.name).toLowerCase()) && !skipFiles.has(entry.name)) files.push(full);
+    if (entry.isDirectory()) { if (!skipDirs.has(entry.name) && containsPublicPath(path.relative(root, full))) files.push(...await walk(full)); }
+    else if (webExts.has(path.extname(entry.name).toLowerCase()) && !skipFiles.has(entry.name) && isPublicPath(path.relative(root, full))) files.push(full);
   }
   return files;
 }

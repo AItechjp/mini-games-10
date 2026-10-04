@@ -10,10 +10,6 @@ export const canonical=id=>new URL(BY_ID[id].path,'https://aitechd.com/').href;
 export function appFromURL(value,hint){
  if(hint&&BY_ID[hint])return BY_ID[hint];
  const url=new URL(value,'https://aitechd.com'),p=url.pathname.replace(/index\.html$/,'').replace(/\/$/,'')||'/';
- if(url.hostname==='aether-card-duel.douga071132.chatgpt.site')return BY_ID.aether;
- if(p==='/board-games')return BY_ID[url.searchParams.get('game')]?.path.startsWith('/board-games/')?BY_ID[url.searchParams.get('game')]:BY_ID.gomoku;
- if(p==='/trump')return BY_ID[url.searchParams.get('game')==='speed'?'speed':'memory'];
- if(p==='/classic.html'){const game=url.searchParams.get('game');return !game||game==='daifugo'?BY_ID.daifugo:game==='gomoku'?BY_ID.gomoku:null;}
  if(p==='/yobi-quiz.html'||p==='/yobi-ronbun.html')return BY_ID.yobi;
  return APPS.find(a=>new URL(a.path,'https://aitechd.com').pathname.replace(/\/$/,'')===p)??null;
 }
@@ -52,7 +48,7 @@ export function featureDetails(app){
   `${app.controls[0]}を含む操作を、PC・タッチの早見表にまとめる。`,
   `${app.name}の開始手順・操作・困りごとを複数語で検索できるようにする。`,
   `「${app.faq[0][0]}」など、このアプリの困りごとから解決方法を探せるようにする。`,
-  `${app.name}を使いながら、33アプリを名前・用途から検索して移動できるようにする。`,
+  `${app.name}を使いながら、${APPS.length}アプリを名前・用途から検索して移動できるようにする。`,
   `${app.name}をお気に入りへ登録・解除し、次回すぐに開けるようにする。`,
   `${app.name}を含む直近8アプリへ、最近使った順で戻れるようにする。`,
   `${(app.related??[]).map(id=>BY_ID[id]?.name).filter(Boolean).join('・')}への導線を用意する。`,

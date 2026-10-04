@@ -7,7 +7,7 @@ import { addQuality } from './quality-html.mjs';
 import { resolve, join, extname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { transform } from 'esbuild';
-import { runInNewContext } from 'node:vm';
+import { isPublicPath, containsPublicPath } from './public-scope.mjs';
 import { measurePublicUsage } from './measure-public-usage.mjs';
 
 // The same artifact can be served by GitHub Pages, Cloudflare Pages or Workers Assets.
@@ -41,10 +41,10 @@ async function copyPublic(dir) {
     const src = join(dir, item.name);
     if (item.isSymbolicLink()) continue;
     if (item.isDirectory()) {
-      if (!item.name.startsWith('.') && !excludedDirs.has(item.name)) await copyPublic(src);
+      if (!item.name.startsWith('.') && !excludedDirs.has(item.name) && containsPublicPath(relative(root, src))) await copyPublic(src);
       continue;
     }
-    if (!item.isFile() || excludedFiles.has(item.name)) continue;
+    if (!item.isFile() || excludedFiles.has(item.name) || !isPublicPath(relative(root, src))) continue;
     if (relative(root,src).startsWith('arcade100/assets/') && extname(item.name)==='.png') continue;
     if (!publicFiles.has(item.name) && (item.name.startsWith('.') || !extensions.has(extname(item.name)))) continue;
     const target = join(output, relative(root, src));
@@ -63,23 +63,7 @@ async function copyPublic(dir) {
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await copyPublic(root);
-// The legacy loader concatenates these text fragments before execution. Compile them
-// together so the browser receives executable output rather than editable fragments.
-const legacyParts = Array.from({length:8},(_,i)=>`game23-v2-p${i+1}.txt`);
-const legacyCode = (await Promise.all(legacyParts.map(p=>readFile(join(root,p),'utf8')))).join('\n').replace(/^import[^;]+;\s*/, '');
-const legacyOutput = await compress(legacyCode, 'js');
-for (let i=0;i<legacyParts.length;i++) await writeFile(join(output,legacyParts[i]), i === 0 ? legacyOutput : '');
-// V3 shares lexical bindings across its fragments. Minify the complete program,
-// then point the distribution loader at one module to preserve those bindings.
-const v3Loader = await readFile(join(root,'game23-v3-loader.js'),'utf8');
-const v3Definition = v3Loader.match(/const PARTS = ([\s\S]*?);\s*const THREE_IMPORT/);
-if (!v3Definition) throw new Error('Cannot locate the V3 fragment manifest');
-const v3Parts = runInNewContext(v3Definition[1], Object.create(null), {timeout:1000});
-if (!Array.isArray(v3Parts) || v3Parts.some(p=>!/^game23-[\w-]+\.js(?:\?[\w=-]+)?$/.test(p))) throw new Error('Invalid V3 fragment manifest');
-const v3Program = (await Promise.all(v3Parts.map(p=>readFile(join(root,p.split('?')[0]),'utf8')))).join('\n');
-await writeFile(join(output,'game23-runtime.mjs'),await compress(v3Program,'js'));
-await writeFile(join(output,'game23-v3-loader.js'),await compress(v3Loader.replace(`const PARTS = ${v3Definition[1]};`,"const PARTS = ['game23-runtime.mjs?v=20260914-commercial1'];"),'js'));
-for (const path of ['index.html','games.html','aitech-home.css','collection-nav.css','hub.css','archive.html','game23.html','smash.html','legal.html','supabase-config.js']) await stat(join(output, path));
+for (const path of ['index.html','games.html','games-2d.html','aitech-home.css','collection-nav.css','hub.css','commons/index.html','yobi-quiz.html','yobi-ronbun.html','legal.html','supabase-config.js']) await stat(join(output, path));
 const index = await readFile(join(output, 'index.html'), 'utf8');
 if (/src=["'][^"']*(?:supabase|game-backend|game23|smash\.js)/i.test(index)) throw new Error('The hub must not initialize a game engine or an online connection.');
 console.log(JSON.stringify({ output, files: count, bytes }, null, 2));

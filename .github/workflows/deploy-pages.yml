@@ -75,28 +75,20 @@ jobs:
           node tests/manga-free.mjs
       - name: Validate past-question-only learning source
         run: node tests/yobi-past-source.mjs
-      - name: Verify arcade game rules and room security
+      - name: Verify retained 2D games and learning rules
         run: |
-          node tests/arcade-games.mjs
-          node tests/arcade-online.mjs
-          node tests/smash-online-state.mjs
-          node tests/graphics-performance.mjs
-          node tests/fps-systems.mjs
-          node tests/game23-systems.mjs
-          node tests/gomoku.mjs
-          node tests/classic-deluxe.mjs
-          node tests/babanuki.mjs
-          node tests/board-games.mjs
-          node tests/dungeon-dice.mjs
+          node tests/quick-hop.mjs
+          node tests/startrail.mjs
+          node tests/lantern-duo.mjs
+          node tests/pulse-drums.mjs
+          node tests/pulse-drums-coop.mjs
+          node tests/cyber-quiz.mjs
+          node tests/ghostline.mjs
           node tests/quiz-raid.mjs
-          node tests/onepiece-engine.mjs
-      - name: Install browser smoke-test runtime and self-hosted 3D engine
+      - name: Install browser smoke-test runtime
         run: |
-          npm install --no-save --no-package-lock playwright@1.55.0 three@0.180.0
+          npm install --no-save --no-package-lock playwright@1.55.0
           npx playwright install --with-deps chromium
-          mkdir -p touge/vendor
-          cp -r node_modules/three/build node_modules/three/examples touge/vendor/
-          cp node_modules/three/LICENSE touge/vendor/LICENSE
       - name: Harden every public web asset for HTTPS
         run: node https-hardening.mjs
       - name: Verify hardening is idempotent
@@ -118,8 +110,8 @@ jobs:
           node tests/quality-release.mjs
           node tests/app-guide-model.mjs
           node tests/commercial-core.mjs
-          node tests/trump-rules.mjs
-      - name: Smoke test games and learning tools locally
+          node tests/site-retention.mjs
+      - name: Smoke test retained apps and Commons locally
         shell: bash
         run: |
           set -euo pipefail
@@ -127,15 +119,15 @@ jobs:
           server_pid=$!
           trap 'kill $server_pid || true' EXIT
           for i in {1..20}; do
-            if curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null && curl -fsS http://127.0.0.1:4173/yobi-quiz.html >/dev/null && curl -fsS http://127.0.0.1:4173/game23.html >/dev/null && curl -fsS http://127.0.0.1:4173/fps.html >/dev/null; then
+            if curl -fsS http://127.0.0.1:4173/games.html >/dev/null && curl -fsS http://127.0.0.1:4173/commons/ >/dev/null; then
               break
             fi
             sleep 1
           done
-          curl -fsS http://127.0.0.1:4173/mega-arcade.html >/dev/null
+          curl -fsS http://127.0.0.1:4173/games.html >/dev/null
+          curl -fsS http://127.0.0.1:4173/commons/ >/dev/null
           curl -fsS http://127.0.0.1:4173/yobi-quiz.html | grep -q 'yobi-past.js'
-          curl -fsS http://127.0.0.1:4173/game23.html | grep -q 'game23-v3-loader.js'
-          curl -fsS http://127.0.0.1:4173/fps.html | grep -q 'fps-game.js'
+          node tests/retained-browser.mjs
           node tests/quiz-raid-browser.mjs
           node tests/usage-dashboard-browser.mjs
           node tests/commons-realtime-browser.mjs
@@ -144,11 +136,7 @@ jobs:
           node tests/commercial-browser.mjs
           node tests/official-info-browser.mjs
           APP_GUIDE_BASE_URL=http://127.0.0.1:4173/ node tests/app-guide-smoke.mjs
-          MEGA_BASE_URL=http://127.0.0.1:4173/ MEGA_FULL=1 node tests/mega-smoke.mjs
           YOBI_BASE_URL=http://127.0.0.1:4173/ node tests/yobi-past-smoke.mjs
-          GAME23_BASE_URL=http://127.0.0.1:4173/ node tests/game23-smoke.mjs
-          FPS_BASE_URL=http://127.0.0.1:4173/ node tests/fps-smoke.mjs
-          TOUGE_BASE_URL=http://127.0.0.1:4173/ node tests/touge-smoke.mjs
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Verify domain and server-side HTTPS enforcement
@@ -176,7 +164,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Verify deployed Pages in browser
+      - name: Verify deployed retained apps and removed URLs
         shell: bash
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
@@ -184,18 +172,15 @@ jobs:
           set -euo pipefail
           ok=0
           for i in {1..18}; do
-            if curl -fsS "${PAGE_URL}mega-arcade.html" | grep -q 'mega-final.js' && curl -fsS "${PAGE_URL}yobi-quiz.html" | grep -q 'yobi-past.js' && curl -fsS "${PAGE_URL}game23.html" | grep -q 'game23-v3-loader.js' && curl -fsS "${PAGE_URL}fps.html" | grep -q 'LIMINAL ZOMBIE FPS — REBORN'; then
+            if curl -fsS "${PAGE_URL}https-release.json?retention=${GITHUB_SHA}" | jq -e --arg sha "$GITHUB_SHA" '.commit == $sha' >/dev/null; then
               ok=1
               break
             fi
             sleep 5
           done
           test "$ok" = 1
-          MEGA_BASE_URL="$PAGE_URL" MEGA_FULL=0 node tests/mega-smoke.mjs
+          RETAINED_BASE_URL="$PAGE_URL" node tests/retained-browser.mjs
           YOBI_BASE_URL="$PAGE_URL" node tests/yobi-past-smoke.mjs
-          GAME23_BASE_URL="$PAGE_URL" node tests/game23-smoke.mjs
-          FPS_BASE_URL="$PAGE_URL" node tests/fps-smoke.mjs
-          TOUGE_BASE_URL="$PAGE_URL" node tests/touge-smoke.mjs
       - name: Verify every page in desktop and Android Chromium
         if: ${{ !cancelled() && steps.deployment.outcome == 'success' }}
         env:
@@ -209,10 +194,10 @@ jobs:
           name: https-security-verification
           path: test-output/https/
           retention-days: 7
-      - name: Retain racing verification screenshots
+      - name: Retain public-app verification screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: touge-deployed-verification
+          name: retained-app-verification
           path: test-output/
           retention-days: 7

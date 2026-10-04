@@ -1,10 +1,10 @@
-name: Arcade 100 gameplay and online review
+name: Archived game source review
 on:
   pull_request:
-    paths: ['graphics-performance.js', 'tests/graphics-performance.mjs', 'arcade100/**', 'smash*', 'tests/arcade*', 'tests/smash-online-state.mjs', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
+    paths: ['graphics-performance.js', 'tests/graphics-performance.mjs', 'arcade100/**', 'smash*', 'tests/arcade*', 'tests/smash-online-state.mjs', 'scripts/public-scope.mjs', '.github/workflows/arcade-review.yml']
   push:
     branches: ['main']
-    paths: ['graphics-performance.js', 'tests/graphics-performance.mjs', 'arcade100/**', 'smash*', 'tests/arcade*', 'tests/smash-online-state.mjs', 'scripts/build-static.mjs', '.github/workflows/arcade-review.yml']
+    paths: ['graphics-performance.js', 'tests/graphics-performance.mjs', 'arcade100/**', 'smash*', 'tests/arcade*', 'tests/smash-online-state.mjs', 'scripts/public-scope.mjs', '.github/workflows/arcade-review.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -28,17 +28,17 @@ jobs:
         run: |
           node tests/smash-online-state.mjs
           node tests/graphics-performance.mjs
-      - name: Syntax and static bundle
+      - name: Verify source syntax and exclusion from publication
         run: |
           node --check arcade100/app.mjs
           node --check arcade100/render.mjs
           node --check arcade100/network.mjs
           node --check smash.js
           node --check smash-online.mjs
-          node scripts/build-static.mjs
-          test -f dist/arcade100/index.html
-          test ! -d dist/arcade100/backend
-      - name: Install live integration dependency
-        run: npm install --prefix /tmp/arcade-ci --no-audit --no-fund @supabase/supabase-js@2.57.0
-      - name: Verify deployed multiplayer service
-        run: node tests/arcade-online-live.mjs
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import {isPublicPath} from './scripts/public-scope.mjs';
+          for (const path of ['arcade100/index.html','arcade100/app.mjs','smash.html','smash.js','game23.html']) {
+            assert.equal(isPublicPath(path), false, `Archived source must stay outside the public site: ${path}`);
+          }
+          JS

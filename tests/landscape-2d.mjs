@@ -11,11 +11,7 @@ const games=[
  ['quick-hop/','#game','#start','[data-control]'],
  ['startrail/','#game','#start','[data-action="left"],[data-action="right"],[data-action="jump"]'],
  ['lantern-duo/','#gameCanvas','#startButton','[data-player]'],
- ['babanuki.html','.table',null,'#draw-cards .card,#own-cards .card'],
- ['trump/?game=memory','#memory-board',null,'#memory-board .card'],
- ['trump/?game=speed','#table',null,'#hand .card,#piles .card'],
- ['classic.html?game=daifugo','#game-stage',null,'.you-area .playing-card,#play-selected'],
- ...['gomoku','shogi','go','othello','chess','monopoly','life'].map(game=>[`board-games/?game=${game}&mode=local`,'#board',null,'#board button.cell']),
+
 ];
 for(const path of ['law-quiz/','it-quiz/','cyber-quiz/']){
  try{await access(`dist/${path}index.html`);games.push([path,'#play','#start',['law-quiz/','it-quiz/'].includes(path)?'.answers button':'.questions button']);}catch{}
@@ -32,8 +28,6 @@ try{
     await page.waitForFunction(()=>document.documentElement.classList.contains('aitech-play-mode'));
     if(start){await page.locator(`${start}:not(:disabled)`).waitFor();await page.locator(start).click();}
     await page.locator(surface).waitFor({state:'visible'});
-    if(path.includes('board-games'))await page.locator('#board > :first-child').waitFor();
-    if(path.includes('daifugo'))await page.locator('.you-area .playing-card').first().waitFor();
     // Allow ResizeObserver and one layout frame after the game initializes.
     await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
     const bounds=await page.locator(surface).evaluate(rect);
@@ -46,26 +40,13 @@ try{
     }).map(el=>({text:el.textContent,rect:el.getBoundingClientRect().toJSON()})));
     assert.deepEqual(bad,[],`${path}: clipped controls`);
     if(path==='quick-hop/')await page.waitForFunction(()=>Number(document.getElementById('time').textContent)>0);
-    if(path.includes('game=memory')){
-      assert.equal(await page.locator('#memory-board .card').count(),24);
-      const card=page.locator('#memory-board .card').first();await card.click();
-      assert(!await card.getAttribute('class').then(c=>c.includes('back-card')),'Memory card must flip');
-    }
-    if(path.includes('game=gomoku')){
-      await page.locator('#board button.cell').first().click();
-      assert.equal(await page.locator('#board .stone').count(),1);
-    }
-    if(path.includes('daifugo')){
-      const card=page.locator('.you-area .playing-card').first();await card.click();
-      assert.equal(await page.locator('.you-area .playing-card.selected').count(),1);
-    }
     if(['law-quiz/','it-quiz/'].includes(path))assert.equal(await page.locator('.answers button').count(),8);
     if(path.includes('cyber-quiz')){
       assert.equal(await page.locator('.question-card').count(),2);
       const answers=await page.locator('.answers button').count();assert(answers>=4&&answers<=8);
     }
     await page.screenshot({path:`${output}/${viewport.width}-${viewport.height}-${name}.png`});
-    if(viewport.width===844&&['quick-hop/','trump/?game=memory','classic.html?game=daifugo','board-games/?game=gomoku&mode=local','law-quiz/','it-quiz/','cyber-quiz/'].includes(path)){
+    if(viewport.width===844&&['quick-hop/','law-quiz/','it-quiz/','cyber-quiz/'].includes(path)){
       console.log('QA_IMAGE '+path+' '+(await page.screenshot({type:'jpeg',quality:40})).toString('base64'));
     }
     await page.locator('#aitech-play-settings').click();

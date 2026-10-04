@@ -1,6 +1,8 @@
 import { chromium, devices } from 'playwright';
 import { promises as fs } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { isPublicPath } from '../scripts/public-scope.mjs';
+import { removedEntries } from './release-scope.mjs';
 
 const base = new URL(process.env.HTTPS_BASE_URL || 'https://aitechd.com/');
 if (base.protocol !== 'https:') throw new Error('HTTPS_BASE_URL must use HTTPS');
@@ -28,9 +30,15 @@ for (let attempt=0; attempt<24; attempt++) {
   await sleep(5000);
 }
 if(!release || !Array.isArray(release.pages) || !release.pages.includes('index.html') || !release.pages.every(safePath)) throw new Error('A matching HTTPS release manifest was not published');
-// An omitted source page must not silently disappear from the audit.
-const tracked=execFileSync('git',['ls-files','-z','*.html','*.htm'],{encoding:'utf8'}).split('\0').filter(Boolean).filter(p=>!/(^|\/)(?:commons-src|source|src|tests|node_modules|vendor|test-output|\.github|tools|scripts|onepiece-battle)\//.test(p));
-for(const path of tracked) check(release.pages.includes(path),`Published manifest omits source HTML: ${path}`);
+// Every retained source page must appear in the published HTTPS audit.
+const tracked=execFileSync('git',['ls-files','-z','*.html','*.htm'],{encoding:'utf8'}).split('\0').filter(Boolean).filter(isPublicPath);
+for(const path of tracked) check(release.pages.includes(path),`Published manifest omits retained HTML: ${path}`);
+for(const path of release.pages)check(isPublicPath(path),`Out-of-scope page is still published: ${path}`);
+for(const path of removedEntries){
+  const target=new URL(path,base);target.searchParams.set('removal-audit',release.commit||version);
+  try{const response=await fetch(target,{redirect:'manual',signal:AbortSignal.timeout(15000)});check(response.status===404,`Removed URL returned ${response.status}: ${path}`);await response.body?.cancel();}
+  catch(error){failures.push(`Removed URL check failed for ${path}: ${error.message}`);}
+}
 const paths=[...new Set(['',...release.pages])];
 async function saveReport(complete=false) {
   const report={version,commit:release.commit,checkedAt:new Date().toISOString(),complete,browser:'full Chromium',base:base.href,htmlDocuments:release.pages.length,checks:results.length,redirects,failures,results};
@@ -40,7 +48,7 @@ async function saveReport(complete=false) {
 // Check actual server redirects. JavaScript redirects do not pass this test.
 const aliases=base.hostname==='aitechd.com'?['aitechd.com','www.aitechd.com']:[base.hostname];
 for(const hostname of aliases) {
-  for(const path of ['', 'yobi-quiz.html', 'game23.html']) {
+  for(const path of ['', 'yobi-quiz.html', 'quick-hop/']) {
     const target=new URL(path,base);target.hostname=hostname;target.protocol='http:';target.search='https-audit=redirect';
     try {
       const response=await fetch(target,{redirect:'manual',signal:AbortSignal.timeout(15000)});
@@ -94,7 +102,7 @@ try {
         const response=await page.goto(target.href,{waitUntil:'load',timeout:45000});
         row.status=response?.status();row.tls=await response?.securityDetails();
         check(Boolean(response?.ok()),`${profile.name} ${path}: document status ${row.status}`);
-        await page.waitForTimeout(path==='game23.html'?7000:2000);
+        await page.waitForTimeout(2000);
         // Exercise the reported learning page, not just its initial HTML shell.
         if(path==='yobi-quiz.html') {
           const practice=page.getByRole('button',{name:/今日の20問を始める/});
@@ -111,7 +119,7 @@ try {
         check(!transportFailures.length,`${profile.name} ${path}: TLS/security request failure`);
         const brokenOwn=row.badResponses.filter(r=>new URL(r.url).origin===base.origin);
         check(!brokenOwn.length,`${profile.name} ${path}: missing same-origin resources: ${JSON.stringify(brokenOwn)}`);
-        if(['','yobi-quiz.html','game23.html'].includes(path))await page.screenshot({path:`${out}/${profile.name}-${path||'index'}.png`,fullPage:false});
+        if(['','yobi-quiz.html','games.html'].includes(path))await page.screenshot({path:`${out}/${profile.name}-${path||'index'}.png`,fullPage:false});
       }catch(error){failures.push(`${profile.name} ${path}: ${error.message}`);row.error=error.message;}
       row.ok=failures.length===start;
       results.push(row);

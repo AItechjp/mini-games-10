@@ -5,7 +5,7 @@ window.SITE_ADSENSE = Object.assign({
   client: "ca-pub-5820558629755748",
   autoAds: true,
   paths: [
-    "/", "/index.html", "/games.html", "/games-3d.html", "/games-2d.html",
-    "/games-trump.html", "/games-board.html", "/commons/", "/commons/index.html"
+    "/", "/index.html", "/games.html", "/games-2d.html",
+    "/commons/", "/commons/index.html"
   ]
 }, window.SITE_ADSENSE || {});

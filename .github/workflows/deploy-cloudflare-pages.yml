@@ -44,18 +44,28 @@ jobs:
       - name: Validate past-question-only learning source
         run: |
           node tests/yobi-past-source.mjs
-          node tests/fps-systems.mjs
-          node tests/game23-systems.mjs
 
-      - name: Build static bundle
+      - name: Setup Commons package manager
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+
+      - name: Build Commons from its current source
+        working-directory: commons-src
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm typecheck
+          pnpm build:aitech
+
+      - name: Build and verify the scoped public bundle
         shell: bash
         run: |
           set -euo pipefail
           npm run build
+          node tests/commons-domain.mjs
           node tests/private-distribution.mjs
-          test -f dist/index.html
-          test -f dist/mega-arcade.html
-          test -f dist/mega-final.js
+          node tests/browser-release.mjs
+          node tests/site-retention.mjs
           test -f dist/yobi-quiz.html
           test -f dist/yobi-past.js
           test -f dist/yobi-past.css

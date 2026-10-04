@@ -20,18 +20,7 @@ try{
  assert.equal(await page.locator('#best').textContent(),'');
  await page.locator('#start').click();await page.waitForFunction(()=>Number(document.querySelector('#time').textContent)>0);
  await page.unroute('**/quick-hop/game.js*');
- await page.goto(base+'board-games/?game=gomoku&mode=local');
- const first=page.locator('#board [data-index="0"]');await first.waitFor();await first.focus();
- await page.keyboard.press('ArrowRight');await page.keyboard.press('ArrowDown');
- assert.equal(await page.evaluate(()=>document.activeElement.dataset.index),'16');
- await page.keyboard.press('Enter');assert.equal(await page.locator('#board .stone').count(),1);
- assert.equal(await page.evaluate(()=>document.activeElement.dataset.index),'16');
- assert.equal(await page.locator('#board button[tabindex="0"]').count(),1);
- await page.keyboard.press('Control+End');assert.equal(await page.evaluate(()=>document.activeElement.dataset.index),'224');
- await page.locator('#game').selectOption('chess');await page.locator('#confirm-yes').click();await page.waitForFunction(()=>document.querySelector('#aitech-app-guide')?.dataset.app==='chess');
- await page.goto(base+'board-games/?game=monopoly&mode=local');
- await page.waitForFunction(()=>document.querySelector('#board')?.getAttribute('aria-label')==='盤面。進行は操作ボタンで行います。');
- await page.goto(base+'trump/?game=memory');
+ await page.goto(base+'startrail/');
  await page.getByRole('button',{name:'アプリメニューを開く',exact:true}).click();
  const pane=page.locator('#aitech-app-guide');await pane.getByRole('tab',{name:'個人メモ',exact:true}).click();
  await page.evaluate(()=>{const original=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key.startsWith('aitech.app-guide.note.'))throw new DOMException('full','QuotaExceededError');return original.call(this,key,value)};});
@@ -52,5 +41,5 @@ try{
  assert(!await camera.locator('#capture-countdown').isVisible());
  await camera.waitForTimeout(3300);assert(!(await camera.locator('#thumbnail').getAttribute('src')));
  assert.deepEqual(errors,[]);await context.close();
- console.log('Commercial UI regressions: board keyboard/focus, failed-note-save retention, explicit defer and camera countdown cancellation passed.');
+ console.log('Commercial UI regressions: Quick Hop loading/score recovery, failed-note-save retention, explicit defer and camera countdown cancellation passed.');
 }finally{await browser.close();}

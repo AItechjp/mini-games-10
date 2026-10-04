@@ -1,9 +1,6 @@
-import { cp, mkdir } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
-const root = new URL('../', import.meta.url);
-const target = new URL('touge/vendor/', root);
-await mkdir(target, { recursive: true });
-for (const file of ['build', 'examples', 'LICENSE']) {
-  await cp(new URL(`node_modules/three/${file}`, root), new URL(file, target), { recursive: true });
+import { access } from 'node:fs/promises';
+// The retained LAW/IT quizzes use the checked-in, bundled Three.js renderer.
+for (const file of ['three.mjs', 'three-LICENSE.txt']) {
+  await access(new URL(`../board-games/vendor/${file}`, import.meta.url));
 }
-console.log(`Prepared Three.js assets in ${fileURLToPath(target)}`);
+console.log('Verified shared quiz renderer and license');
